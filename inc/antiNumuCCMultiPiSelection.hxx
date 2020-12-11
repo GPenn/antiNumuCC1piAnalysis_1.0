@@ -1,16 +1,14 @@
-#ifndef antiNumuCCMultiPiSelection_h
-#define antiNumuCCMultiPiSelection_h
+#ifndef antiNumuCC1piSelection_h
+#define antiNumuCC1piSelection_h
 
 #include "SelectionBase.hxx"
-#include "antiNumuCCSelection.hxx"
-#include "numuCCMultiPiSelection.hxx"
+#include "antiNumuCCMultiPiSelection.hxx"
 
 
-
-class antiNumuCCMultiPiSelection: public SelectionBase{
+class antiNumuCC1piSelection: public SelectionBase{
 public:
-  antiNumuCCMultiPiSelection(bool forceBreak=true);
-  virtual ~antiNumuCCMultiPiSelection(){}
+  antiNumuCC1piSelection(bool forceBreak=true);
+  virtual ~antiNumuCC1piSelection(){}
 
   //---- These are mandatory functions
   void DefineSteps();
@@ -34,45 +32,47 @@ public:
   void SetDetectorFV(SubDetId_h det, Int_t ibranch=-1){
     SelectionBase::SetDetectorFV(det, ibranch);
     // Set to the selection that are used
-    _antiNumuCCSelection.SetDetectorFV(det, ibranch); 
-    _numuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
+    //_antiNumuCCSelection.SetDetectorFV(det, ibranch); 
+    //_numuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
+    _antiNumuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
   }
 
 
 
 protected:
-  antiNumuCCSelection _antiNumuCCSelection;
-  numuCCMultiPiSelection _numuCCMultiPiSelection;
+  //antiNumuCCSelection _antiNumuCCSelection;
+  //numuCCMultiPiSelection _numuCCMultiPiSelection;
+  antiNumuCCMultiPiSelection _antiNumuCCMultiPiSelection;
   
   Int_t _MuonPIDCutIndex;
   Int_t _FindPionsStepIndex; 
   bool  _useECalPiZeroInfo;
 };
 
-class ToyBoxAntiCCMultiPi: public ToyBoxCCMultiPi{
+/*class ToyBoxAntiCCMultiPi: public ToyBoxCCMultiPi{
 
 public:
   ToyBoxAntiCCMultiPi(){}
 
   virtual ~ToyBoxAntiCCMultiPi(){}
 
-};
+};*/
 
-inline ToyBoxB* antiNumuCCMultiPiSelection::MakeToyBox(){return new ToyBoxAntiCCMultiPi();}
+inline ToyBoxB* antiNumuCC1piSelection::MakeToyBox(){return new ToyBoxAntiCCMultiPi();}
 
 
 
-class FillSummaryAction_antinuCCMultiPi: public StepBase{
+class FillSummaryAction_antinuCC1pi: public StepBase{
 public:
   using StepBase::Apply;
   bool Apply(AnaEventC& event, ToyBoxB& box) const;  
-  StepBase* MakeClone(){return new FillSummaryAction_antinuCCMultiPi();}
+  StepBase* MakeClone(){return new FillSummaryAction_antinuCC1pi();}
 };
 
-class FindPionsAction_antinuCCMultiPi: public StepBase{
+class FindPionsAction_antinuCC1pi: public StepBase{
 public:
   using StepBase::Apply;
-  FindPionsAction_antinuCCMultiPi(){
+  FindPionsAction_antinuCC1pi(){
     pionSelParams.useTPCPions                 = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseTPCPions");
     pionSelParams.useME                       = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseME");
     pionSelParams.useFGDPions                 = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseFGDPions");
@@ -85,7 +85,7 @@ public:
     pionSelParams.ECalPIDMipEmCut = 0.;
   } 
   bool Apply(AnaEventC& event, ToyBoxB& box) const;  
-  StepBase* MakeClone(){return new FindPionsAction_antinuCCMultiPi();}
+  StepBase* MakeClone(){return new FindPionsAction_antinuCC1pi();}
 
 protected:
   mutable multipart::PionSelectionParams pionSelParams;
