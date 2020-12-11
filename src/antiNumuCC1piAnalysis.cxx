@@ -88,7 +88,7 @@ void antiNumuCC1piAnalysis::DefineSelections(){
 }
 
 //********************************************************************
-void antiNumuCCMultiPiAnalysis::DefineMicroTrees(bool addBase){
+void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
 //********************************************************************
 
   // -------- Add variables to the analysis tree ----------------------
