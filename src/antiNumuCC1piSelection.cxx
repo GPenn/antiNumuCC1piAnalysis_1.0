@@ -240,7 +240,7 @@ bool antiNumuCC1piSelection::IsRelevantRecObjectForSystematicInToy(const AnaEven
 bool  antiNumuCC1piSelection::IsRelevantTrueObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaTrueObjectC* trueObj, SystId_h systId, Int_t branch) const{
   //**************************************************
   
-  return _antiNumuCCMultiPiSelection.IsRelevantTrueObjectForSystematicInToy(event,box,trueTrack,systId,branch);
+  return _antiNumuCCMultiPiSelection.IsRelevantTrueObjectForSystematicInToy(event,box,trueObj,systId,branch);
   
   /*const ToyBoxCCMultiPi* ccmultipibox = static_cast<const ToyBoxCCMultiPi*>(&box);
   
