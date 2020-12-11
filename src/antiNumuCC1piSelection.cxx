@@ -190,7 +190,7 @@ bool antiNumuCC1piSelection::IsRelevantTrueObjectForSystematic(const AnaEventC& 
 bool antiNumuCC1piSelection::IsRelevantRecObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
   //**************************************************
   
-  return _antiNumuCCMultiPiSelection.IsRelevantRecObjectForSystematicInToy(event,trueTrack,systId,branch);
+  return _antiNumuCCMultiPiSelection.IsRelevantRecObjectForSystematicInToy(event,box,track,systId,branch);
   
   /*if (!track) return false;
 
@@ -240,7 +240,7 @@ bool antiNumuCC1piSelection::IsRelevantRecObjectForSystematicInToy(const AnaEven
 bool  antiNumuCC1piSelection::IsRelevantTrueObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaTrueObjectC* trueObj, SystId_h systId, Int_t branch) const{
   //**************************************************
   
-  return _antiNumuCCMultiPiSelection.IsRelevantTrueObjectForSystematicInToy(event,trueTrack,systId,branch);
+  return _antiNumuCCMultiPiSelection.IsRelevantTrueObjectForSystematicInToy(event,box,trueTrack,systId,branch);
   
   /*const ToyBoxCCMultiPi* ccmultipibox = static_cast<const ToyBoxCCMultiPi*>(&box);
   
