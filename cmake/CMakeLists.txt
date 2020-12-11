@@ -6,13 +6,13 @@ if( NOT nd280SoftwarePolicy_FOUND)
    message(FATAL_ERROR " nd280SoftwarePolicy not found - abort ")
 endif()
 
-include(antiNumuCCMultiPiAnalysisPackageVersion.cmake)
-ND280_PROJECT(antiNumuCCMultiPiAnalysis ${PACKAGE_VERSION} NOVERSION)
-include(antiNumuCCMultiPiAnalysisND280_USE.cmake)
+include(antiNumuCC1piAnalysisPackageVersion.cmake)
+ND280_PROJECT(antiNumuCC1piAnalysis ${PACKAGE_VERSION} NOVERSION)
+include(antiNumuCC1piAnalysisND280_USE.cmake)
 
 
 ND280_STANDARD_LIBRARY()
 
-ND280_EXECUTABLE(RunAntiNumuCCMultiPiAnalysis RunAntiNumuCCMultiPiAnalysis.cxx)
+ND280_EXECUTABLE(RunAntiNumuCC1piAnalysis RunAntiNumuCC1piAnalysis.cxx)
 
 ND280_END_PROJECT()
