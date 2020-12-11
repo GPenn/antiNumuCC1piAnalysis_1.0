@@ -1,13 +1,13 @@
 --- Cut levels --------
 
- < antiNumuCCMultiPiAnalysis.MinAccumLevelToSave = 0 >   // minimum accum level to save the event
+ < antiNumuCC1piAnalysis.MinAccumLevelToSave = 0 >   // minimum accum level to save the event
 
 ------ Selections ------------------------
 
 Analysis sample (1 for FGD1, 2 for FGD2, 3 for both)
 
- < antiNumuCCMultiPiAnalysis.Selections.whichFGD = 1 >
+ < antiNumuCC1piAnalysis.Selections.whichFGD = 1 >
 
- < antiNumuCCMultiPiAnalysis.Selections.RunMultiTrack = 0 >
- < antiNumuCCMultiPiAnalysis.MicroTrees.StoreAllTruePrimaryPions = 0 >
+ < antiNumuCC1piAnalysis.Selections.RunMultiTrack = 0 >
+ < antiNumuCC1piAnalysis.MicroTrees.StoreAllTruePrimaryPions = 0 >
  
