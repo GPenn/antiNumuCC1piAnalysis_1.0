@@ -11,21 +11,19 @@
  * 2. antiNumuCCMultiTrackSelection and antiNumuCCMultiTrackFGD2Selection.
  **************************************/
 
-#ifndef antiNumuCCMultiPiAnalysis_h
-#define antiNumuCCMultiPiAnalysis_h
+#ifndef antiNumuCC1piAnalysis_h
+#define antiNumuCC1piAnalysis_h
 
-#include "antiNumuCCAnalysis.hxx"
-#include "numuCCMultiPiAnalysis.hxx"
-#include "ND280AnalysisUtils.hxx"
+#include "antiNumuCCMultiPiAnalysis.hxx"
 
-class antiNumuCCMultiPiAnalysis: public baseTrackerAnalysis {
+class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
  public:
-  antiNumuCCMultiPiAnalysis(AnalysisAlgorithm* ana=NULL);
-  virtual ~antiNumuCCMultiPiAnalysis(){}
+  antiNumuCC1piAnalysis(AnalysisAlgorithm* ana=NULL);
+  virtual ~antiNumuCC1piAnalysis(){}
 
   //---- These are mandatory functions
   void DefineSelections();
-  void DefineCorrections(){_antiNumuCCAnalysis->DefineCorrections();}
+  void DefineCorrections(){_antiNumuCCMultiPiAnalysis->DefineCorrections();}
   void DefineMicroTrees(bool addBase=true);
   void DefineTruthTree();
 
@@ -43,8 +41,9 @@ class antiNumuCCMultiPiAnalysis: public baseTrackerAnalysis {
 
 protected:
   
-  antiNumuCCAnalysis*    _antiNumuCCAnalysis;
-  numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
+  //antiNumuCCAnalysis*    _antiNumuCCAnalysis;
+  //numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
+ antiNumuCCMultiPiAnalysis* _antiNumuCCMultiPiAnalysis;
 
 private:
   Int_t _whichFGD; // 1 for FGD1 analysis, 2 for FGD2, 3 for both
