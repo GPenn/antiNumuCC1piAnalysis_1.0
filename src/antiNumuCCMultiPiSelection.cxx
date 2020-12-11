@@ -1,5 +1,5 @@
+#include "antiNumuCC1piSelection.hxx"
 #include "antiNumuCCMultiPiSelection.hxx"
-#include "antiNumuCCSelection.hxx"
 #include "baseSelection.hxx"
 #include "CutUtils.hxx"
 #include "EventBoxUtils.hxx"
@@ -11,47 +11,21 @@
 
 
 //********************************************************************
-antiNumuCCMultiPiSelection::antiNumuCCMultiPiSelection(bool forceBreak): SelectionBase(forceBreak,EventBoxId::kEventBoxTracker) {
+antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak): SelectionBase(forceBreak,EventBoxId::kEventBoxTracker) {
   //********************************************************************
-  _antiNumuCCSelection.Initialize();
-  _numuCCMultiPiSelection.Initialize(); 
-  _useECalPiZeroInfo = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
-  _numuCCMultiPiSelection.SetUseECalPiZeroInfo(_useECalPiZeroInfo);
+  //_antiNumuCCSelection.Initialize();
+  //_numuCCMultiPiSelection.Initialize(); 
+  _antiNumuCCMultiPiSelection.Initialize(); 
+  //_useECalPiZeroInfo = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
+  //_numuCCMultiPiSelection.SetUseECalPiZeroInfo(_useECalPiZeroInfo);
 }
 
 //********************************************************************
-void antiNumuCCMultiPiSelection::DefineSteps(){
+void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
 
   // Copy all steps from the antiNumuCCSelection
-  CopySteps(_antiNumuCCSelection);
-
-  //Pawel - Pions sele
-  //Additional actions for the multi-pi selection.
-  
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  
-  AddStep(StepBase::kAction, "set_vertex_to_box",                 new SetVertexToBoxAction());
-  AddStep(StepBase::kAction, "fill_iso_fgd_proton_mom_to_vertex", new FillFgdIsoProtonsKinVertexAction());
-  AddStep(StepBase::kAction, "find_iso_fgd_pion_mom_to_vertex",   new FillFgdIsoPionsKinVertexAction());
-  
-  
-  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
-
-  //Add a split to the trunk with 3 branches.
-  AddSplit(3);
-
-  //First branch is for CC-0pi
-  AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
-  AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
-
-  //Second branch is for CC-1pi
-  AddStep(1, StepBase::kCut, "CC-1pi",        new OnePionCut(false));
-  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
-
-  //Third branch is for CC-Other
-  AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
+  CopySteps(_antiNumuCCMultiPiSelection);
 
   // Set the branch aliases to the three branches
   SetBranchAlias(0,"CC-0pi",  0);
@@ -68,7 +42,7 @@ void antiNumuCCMultiPiSelection::DefineSteps(){
 }
 
 //********************************************************************
-void antiNumuCCMultiPiSelection::DefineDetectorFV(){
+void antiNumuCC1piSelection::DefineDetectorFV(){
   //********************************************************************
 
   // The detector in which the selection is applied
@@ -77,7 +51,7 @@ void antiNumuCCMultiPiSelection::DefineDetectorFV(){
 }
 
 //********************************************************************
-bool antiNumuCCMultiPiSelection::FillEventSummary(AnaEventC& event, Int_t allCutsPassed[]){
+bool antiNumuCC1piSelection::FillEventSummary(AnaEventC& event, Int_t allCutsPassed[]){
   //********************************************************************
 
   //taken from numuCCMultiPi
@@ -99,7 +73,7 @@ bool antiNumuCCMultiPiSelection::FillEventSummary(AnaEventC& event, Int_t allCut
 }
 
 //*********************************************************************
-bool FillSummaryAction_antinuCCMultiPi::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+bool FillSummaryAction_antinuCC1pi::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //*********************************************************************
 
   // Cast the ToyBox to the appropriate type
@@ -167,7 +141,7 @@ bool FillSummaryAction_antinuCCMultiPi::Apply(AnaEventC& event, ToyBoxB& boxB) c
 }
 
 //*********************************************************************
-bool FindPionsAction_antinuCCMultiPi::Apply(AnaEventC& event, ToyBoxB& box) const{
+bool FindPionsAction_antinuCC1pi::Apply(AnaEventC& event, ToyBoxB& box) const{
   //*********************************************************************
 
   // Slightly different filling w.r.t. the one of numuCCmultipi, so keep it 
@@ -199,24 +173,26 @@ bool FindPionsAction_antinuCCMultiPi::Apply(AnaEventC& event, ToyBoxB& box) cons
 }
 
 //**************************************************
-bool antiNumuCCMultiPiSelection::IsRelevantRecObjectForSystematic(const AnaEventC& event, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
+bool antiNumuCC1piSelection::IsRelevantRecObjectForSystematic(const AnaEventC& event, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
   //**************************************************
 
-  return _numuCCMultiPiSelection.IsRelevantRecObjectForSystematic(event,track,systId,branch);
+  return _antiNumuCCMultiPiSelection.IsRelevantRecObjectForSystematic(event,track,systId,branch);
 }
 
 //**************************************************
-bool antiNumuCCMultiPiSelection::IsRelevantTrueObjectForSystematic(const AnaEventC& event, AnaTrueObjectC* trueTrack, SystId_h systId, Int_t branch) const{
+bool antiNumuCC1piSelection::IsRelevantTrueObjectForSystematic(const AnaEventC& event, AnaTrueObjectC* trueTrack, SystId_h systId, Int_t branch) const{
   //**************************************************
 
-  return _numuCCMultiPiSelection.IsRelevantTrueObjectForSystematic(event,trueTrack,systId,branch);
+  return _antiNumuCCMultiPiSelection.IsRelevantTrueObjectForSystematic(event,trueTrack,systId,branch);
 }
 
 //**************************************************
-bool antiNumuCCMultiPiSelection::IsRelevantRecObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
+bool antiNumuCC1piSelection::IsRelevantRecObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
   //**************************************************
-
-  if (!track) return false;
+  
+  return _antiNumuCCMultiPiSelection.IsRelevantRecObjectForSystematicInToy(event,trueTrack,systId,branch);
+  
+  /*if (!track) return false;
 
   const ToyBoxCCMultiPi* ccmultipibox = static_cast<const ToyBoxCCMultiPi*>(&box);
   
@@ -256,15 +232,17 @@ bool antiNumuCCMultiPiSelection::IsRelevantRecObjectForSystematicInToy(const Ana
   
   // The rest of the systematics gets tuning from numu multi-pi
   return _numuCCMultiPiSelection.IsRelevantRecObjectForSystematicInToy(event, box, track, systId, branch);
-
+*/
 }
 
 
 //**************************************************
-bool  antiNumuCCMultiPiSelection::IsRelevantTrueObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaTrueObjectC* trueObj, SystId_h systId, Int_t branch) const{
+bool  antiNumuCC1piSelection::IsRelevantTrueObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaTrueObjectC* trueObj, SystId_h systId, Int_t branch) const{
   //**************************************************
-
-  const ToyBoxCCMultiPi* ccmultipibox = static_cast<const ToyBoxCCMultiPi*>(&box);
+  
+  return _antiNumuCCMultiPiSelection.IsRelevantTrueObjectForSystematicInToy(event,trueTrack,systId,branch);
+  
+  /*const ToyBoxCCMultiPi* ccmultipibox = static_cast<const ToyBoxCCMultiPi*>(&box);
   
   AnaTrueParticleB* trueTrack = static_cast<AnaTrueParticleB*>(trueObj);
   if (!trueTrack) return false;
@@ -315,51 +293,54 @@ bool  antiNumuCCMultiPiSelection::IsRelevantTrueObjectForSystematicInToy(const A
 
   // For the rest of the systematic use numuCC multi-pion tuning
   return _numuCCMultiPiSelection.IsRelevantTrueObjectForSystematicInToy(event, box, trueObj, systId, branch);
-
+*/
 }
 
 //**************************************************
-bool antiNumuCCMultiPiSelection::IsRelevantSystematic(const AnaEventC& event, const ToyBoxB& box, SystId_h systId, Int_t branch) const{
+bool antiNumuCC1piSelection::IsRelevantSystematic(const AnaEventC& event, const ToyBoxB& box, SystId_h systId, Int_t branch) const{
   //**************************************************
 
-  return _numuCCMultiPiSelection.IsRelevantSystematic(event, box, systId, branch);
+  return _antiNumuCCMultiPiSelection.IsRelevantSystematic(event, box, systId, branch);
 }
 
 //**************************************************
-Int_t antiNumuCCMultiPiSelection::GetRelevantRecObjectGroupsForSystematic(SystId_h systId, Int_t* IDs, Int_t branch) const{
+Int_t antiNumuCC1piSelection::GetRelevantRecObjectGroupsForSystematic(SystId_h systId, Int_t* IDs, Int_t branch) const{
 //**************************************************
 
-  return _numuCCMultiPiSelection.GetRelevantRecObjectGroupsForSystematic(systId, IDs, branch);
+  return _antiNumuCCMultiPiSelection.GetRelevantRecObjectGroupsForSystematic(systId, IDs, branch);
 }
 
 //**************************************************
-Int_t antiNumuCCMultiPiSelection::GetRelevantTrueObjectGroupsForSystematic(SystId_h systId, Int_t* IDs, Int_t branch) const{
+Int_t antiNumuCC1piSelection::GetRelevantTrueObjectGroupsForSystematic(SystId_h systId, Int_t* IDs, Int_t branch) const{
 //**************************************************
 
-  return _numuCCMultiPiSelection.GetRelevantTrueObjectGroupsForSystematic(systId, IDs, branch);
+  return _antiNumuCCMultiPiSelection.GetRelevantTrueObjectGroupsForSystematic(systId, IDs, branch);
 }
 
 //**************************************************
-void antiNumuCCMultiPiSelection::InitializeEvent(AnaEventC& eventC){
+void antiNumuCC1piSelection::InitializeEvent(AnaEventC& eventC){
   //**************************************************
-
+  
+  
+  
   AnaEventB& event = *static_cast<AnaEventB*>(&eventC); 
   
-  _antiNumuCCSelection.InitializeEvent(event); 
-  
+  //_antiNumuCCSelection.InitializeEvent(event); 
+  _antiNumuCCMultiPiSelection.InitializeEvent(event); 
+  /*
   boxUtils::FillTracksWithECal(event);
   boxUtils::FillFGDMichelElectrons(event, (SubDetId::SubDetEnum)GetDetectorFV(),
       (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.Prod5Cuts"));
   
-  boxUtils::FillTrajsInECal(event);
+  boxUtils::FillTrajsInECal(event);*/
 }
 
 //********************************************************************
-bool antiNumuCCMultiPiSelection::CheckRedoSelection(const AnaEventC& event, const ToyBoxB& PreviousToyBox, Int_t& redoFromStep){
+bool antiNumuCC1piSelection::CheckRedoSelection(const AnaEventC& event, const ToyBoxB& PreviousToyBox, Int_t& redoFromStep){
   //********************************************************************
 
   // Must redo selection if antiNumuCCSelection decides so
-  if( _antiNumuCCSelection.CheckRedoSelection(event,PreviousToyBox,redoFromStep)) return true;
+  if( _antiNumuCCMultiPiSelection.CheckRedoSelection(event,PreviousToyBox,redoFromStep)) return true;
 
   // Otherwise selection should not be redone since the number of tracks with TPC and FGD will not be changed by systematics
   return false;
