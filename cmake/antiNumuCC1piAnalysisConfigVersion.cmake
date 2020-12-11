@@ -7,7 +7,7 @@
 # PACKAGE_VERSION_COMPATIBLE if the current version is >= requested version.
 # The variable CVF_VERSION must be set before calling configure_file().
 
-include(${CMAKE_CURRENT_LIST_DIR}/antiNumuCCMultiPiAnalysisPackageVersion.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/antiNumuCC1piAnalysisPackageVersion.cmake)
 
 if(PACKAGE_VERSION VERSION_LESS PACKAGE_FIND_VERSION)
    set(PACKAGE_VERSION_COMPATIBLE FALSE)
