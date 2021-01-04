@@ -42,9 +42,9 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_myAntinuCCMultiPi());
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_myAntinuCCMultiPi());
+  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
 
   //Add a split to the trunk with 3 branches.
   AddSplit(3);
