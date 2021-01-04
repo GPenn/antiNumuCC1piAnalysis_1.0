@@ -64,16 +64,16 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   
-  AddSplit(2,1);
+  //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
-  AddStep(1, 0, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
+  AddStep(1, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
   
-  AddStep(1, 0, StepBase::kCut, "ECal Muon E/L", new MuonECalEMEnergyLengthCut());
-  //AddStep(1, 0, StepBase::kCut, "ECal Muon MipPion", new MuonECalMipPionCut());
-  AddStep(1, 0, StepBase::kCut, "ECal Pion E/L", new PionECalEMEnergyLengthCut());
+  AddStep(1, StepBase::kCut, "ECal Muon E/L", new MuonECalEMEnergyLengthCut());
+  //AddStep(1, StepBase::kCut, "ECal Muon MipPion", new MuonECalMipPionCut());
+  AddStep(1, StepBase::kCut, "ECal Pion E/L", new PionECalEMEnergyLengthCut());
   
   //CC1pi without muon candidate ECal segment
-  AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
+  //AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
   
   //Third branch is for CC-Other
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
@@ -87,7 +87,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   //SetBranchAlias(1,"CC-1pi",  1);
   SetBranchAlias(1, "CC-1pi with ECal",  1,0);
   SetBranchAlias(2,"CC-Other",2);
-  SetBranchAlias(3, "CC-1pi without ECal",  1,1);
+  //SetBranchAlias(3, "CC-1pi without ECal",  1,1);
 
   // By default the preselection correspond to cuts 0-2
   SetPreSelectionAccumLevel(2);
