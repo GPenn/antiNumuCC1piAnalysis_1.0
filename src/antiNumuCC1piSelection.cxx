@@ -25,18 +25,72 @@ void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
 
   // Copy all steps from the antiNumuCCSelection
-  CopySteps(_antiNumuCCMultiPiSelection);
+  //CopySteps(_antiNumuCCMultiPiSelection);
+  
+  // Cuts must be added in the right order
+  // last "true" means the step sequence is broken if cut is not passed (default is "false")
+  AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
+  AddStep(StepBase::kCut,    "> 0 tracks ",        new TotalMultiplicityCut(),      true);  
+  AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
+  AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
+  AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
+  AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
+  //AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+  AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
+  AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
+  AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
+  AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_myAntinuCCMultiPi());
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_myAntinuCCMultiPi());
 
-  // Set the branch aliases to the three branches
+  //Add a split to the trunk with 3 branches.
+  AddSplit(3);
+
+  //First branch is for CC-0pi
+  AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
+  AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+  
+  //AddStep(0, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
+  AddStep(0, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
+  AddStep(0, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
+
+  //Second branch is for CC-1pi
+  AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
+  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+  
+  AddSplit(2,1);
+  //CC1pi with muon candidate ECal segment
+  AddStep(1, 0, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
+  
+  AddStep(1, 0, StepBase::kCut, "ECal Muon E/L", new MuonECalEMEnergyLengthCut());
+  //AddStep(1, 0, StepBase::kCut, "ECal Muon MipPion", new MuonECalMipPionCut());
+  AddStep(1, 0, StepBase::kCut, "ECal Pion E/L", new PionECalEMEnergyLengthCut());
+  
+  //CC1pi without muon candidate ECal segment
+  AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
+  
+  //Third branch is for CC-Other
+  AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
+  
+  //AddStep(2, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
+  AddStep(2, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
+  AddStep(2, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
+
+  // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
-  SetBranchAlias(1,"CC-1pi",  1);
+  //SetBranchAlias(1,"CC-1pi",  1);
+  SetBranchAlias(1, "CC-1pi with ECal",  1,0);
   SetBranchAlias(2,"CC-Other",2);
+  SetBranchAlias(3, "CC-1pi without ECal",  1,1);
 
   // By default the preselection correspond to cuts 0-2
   SetPreSelectionAccumLevel(2);
 
   // Step and Cut numbers needed by CheckRedoSelection
-  _MuonPIDCutIndex     = GetCutNumber("muon PID");
+  _MuonPIDCutIndex     = GetCutNumber("Antimu PID loop");
   _FindPionsStepIndex  = GetStepNumber("find_pions");
 
 }
@@ -344,4 +398,138 @@ bool antiNumuCC1piSelection::CheckRedoSelection(const AnaEventC& event, const To
 
   // Otherwise selection should not be redone since the number of tracks with TPC and FGD will not be changed by systematics
   return false;
+}
+
+// PID cuts:
+
+//**************************************************
+bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+//**************************************************
+
+  (void)event;
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+  
+  // Check that HMPT exists and momentum is positive
+  if (!box.HMPtrack) return false;
+  if (box.HMPtrack->Momentum < 0.) return false;
+  
+  // Loop over positive TPC tracks, applying antimu PID
+  Int_t NTracks = box.nPositiveTPCtracks;
+  Int_t NMuonLike = 0;
+  
+  AnaTrackB** PosTracksArray = box.PositiveTPCtracks;
+  
+  for (int i=0; i < NTracks; i++)
+  {
+    AnaTrackB* track = PosTracksArray[i];
+    
+    if (track->Momentum < 0.) continue; // Check that track momentum is valid
+    
+    if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
+    {
+      box.MainTrack = track;
+      NMuonLike++;
+    }
+  }
+  
+  
+  if (NMuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
+  return false; // Otherwise, i.e. if there are no antimu-like tracks, or more than one, the cut is failed
+  
+  //Old version just applies PID to the HMPT
+  //return cutUtils::AntiMuonPIDCut(*(box.HMPtrack));
+  
+}
+
+//**************************************************
+bool MuonWithECalSegmentsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+
+  if (box.MainTrack->nECALSegments > 0) return true;
+
+  return false;
+
+}
+
+//**************************************************
+bool MuonWithoutECalSegmentsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+
+  if (box.MainTrack->nECALSegments == 0) return true;
+
+  return false;
+
+}
+
+//**************************************************
+bool MuonECalEMEnergyLengthCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  if (box.MainTrack->nECALSegments == 0) return true;
+  
+  AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
+
+  if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) < 1.0) return true;
+
+  return false;
+
+}
+
+//**************************************************
+bool MuonECalMipPionCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  if (box.MainTrack->nECALSegments == 0) return true;
+  
+  AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
+
+  if (ECalSeg->PIDMipPion < 0.0) return true;
+
+  return false;
+}
+
+//**************************************************
+bool PionECalEMEnergyLengthCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  // Waive cut if HMN track does not exist
+  if (!box.HMNtrack) return true;
+  
+  // Waive cut if pion candidate track has no ECal segments
+  if (box.HMNtrack->nECALSegments == 0) return true;
+  
+  AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
+
+  if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) > 1.0) return true;
+
+  return false;
+
 }
