@@ -85,7 +85,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
   //SetBranchAlias(1,"CC-1pi",  1);
-  SetBranchAlias(1, "CC-1pi with ECal",  1,0);
+  SetBranchAlias(1, "CC-1pi with ECal",  1);
   SetBranchAlias(2,"CC-Other",2);
   //SetBranchAlias(3, "CC-1pi without ECal",  1,1);
 
