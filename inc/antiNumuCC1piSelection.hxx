@@ -91,5 +91,49 @@ protected:
   mutable multipart::PionSelectionParams pionSelParams;
 };
 
+//--------------
+// My cuts
+
+class AntiMuonPIDCut_Loop: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new AntiMuonPIDCut_Loop();}
+};
+
+class MuonWithECalSegmentsCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new MuonWithECalSegmentsCut();}
+};
+
+class MuonWithoutECalSegmentsCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new MuonWithoutECalSegmentsCut();}
+};
+
+class MuonECalEMEnergyLengthCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new MuonECalEMEnergyLengthCut();}
+};
+
+class MuonECalMipPionCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new MuonECalMipPionCut();}
+};
+
+class PionECalEMEnergyLengthCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new PionECalEMEnergyLengthCut();}
+};
 
 #endif
