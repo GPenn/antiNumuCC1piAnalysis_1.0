@@ -8,6 +8,9 @@
 #include "VersioningUtils.hxx"
 #include "SystematicUtils.hxx"
 #include "SystematicTuning.hxx"
+#include "DataClasses.hxx"
+#include "trackerSelectionUtils.hxx"
+
 
 
 //********************************************************************
