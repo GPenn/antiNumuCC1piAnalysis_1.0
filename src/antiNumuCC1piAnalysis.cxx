@@ -103,9 +103,9 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   _antiNumuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
   
   // --- Pion candidates 
-  AddToyVarVF(output(),NegPionECalEMEnergy,"",   MyNNegPion);
-  AddToyVarVF(output(),NegPionECalLength,"",     MyNNegPion);
-  AddToyVarVF(output(),NegPionECalMipPion,"",    MyNNegPion);
+  AddVarVF(output(),NegPionECalEMEnergy,"",   MyNNegPion);
+  AddVarVF(output(),NegPionECalLength,"",     MyNNegPion);
+  AddVarVF(output(),NegPionECalMipPion,"",    MyNNegPion);
 
   
   baseTrackerAnalysis::AddEffCounters();
