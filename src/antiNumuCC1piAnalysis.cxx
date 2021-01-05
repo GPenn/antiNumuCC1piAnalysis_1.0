@@ -102,6 +102,12 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
   
+  // --- Pion candidates 
+  AddToyVarVF(output(),NegPionECalEMEnergy,"",   NNegPion);
+  AddToyVarVF(output(),NegPionECalLength,"",     NNegPion);
+  AddToyVarVF(output(),NegPionECalMipPion,"",    NNegPion);
+
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
@@ -134,8 +140,27 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
-  baseTrackerAnalysis::FillEffCounters();
+  // Selected negative pions 
+  for( Int_t i = 0; i < mybox().pionBox.nNegativePionTPCtracks; i++ ){
+
+    AnaTrackB *track = mybox().pionBox.NegativePionTPCtracks[i];
+
+    if( track->TrueObject ){
+      
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( track->ECALSegments[0] );
+      
+      if (ECalSeg){
+      
+        output().FillVectorVar(NegPionECalEMEnergy,  ECalSeg->EMEnergy);
+        output().FillVectorVar(NegPionECalLength,    ECalSeg->Length);
+        output().FillVectorVar(NegPionECalMipPion,   ECalSeg->PIDMipPion);
+      }
+    }
+  }
+
   
+  baseTrackerAnalysis::FillEffCounters();
+    
 }
 
 //********************************************************************
