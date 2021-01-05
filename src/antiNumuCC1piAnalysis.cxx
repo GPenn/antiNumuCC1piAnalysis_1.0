@@ -149,8 +149,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       
         AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( track->ECALSegments[0] );
       
-        output().FillVectorVar(NegPionECalEMEnergy,  ECalSeg->EMEnergy);
-        output().FillVectorVar(NegPionECalLength,    ECalSeg->Length);
+        //output().FillVectorVar(NegPionECalEMEnergy,  ECalSeg->EMEnergy);
+        //output().FillVectorVar(NegPionECalLength,    ECalSeg->Length);
         //output().FillVectorVar(NegPionECalMipPion,   ECalSeg->PIDMipPion);
       }
       
