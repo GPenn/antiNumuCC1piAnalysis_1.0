@@ -144,10 +144,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   for( Int_t i = 0; i < mybox().pionBox.nNegativePionTPCtracks; i++ ){
 
     AnaTrackB *track = mybox().pionBox.NegativePionTPCtracks[i];
+    
+      if (track->ECALSegments[0]) {
       
-      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( track->ECALSegments[0] );
-      
-      if (ECalSeg){
+        AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( track->ECALSegments[0] );
       
         output().FillVectorVar(NegPionECalEMEnergy,  ECalSeg->EMEnergy);
         output().FillVectorVar(NegPionECalLength,    ECalSeg->Length);
