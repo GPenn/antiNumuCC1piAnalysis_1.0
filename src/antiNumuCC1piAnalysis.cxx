@@ -103,9 +103,9 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   _antiNumuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
   
   // --- Pion candidates 
-  AddToyVarVF(output(),NegPionECalEMEnergy,"",   NNegPion);
-  AddToyVarVF(output(),NegPionECalLength,"",     NNegPion);
-  AddToyVarVF(output(),NegPionECalMipPion,"",    NNegPion);
+  AddToyVarVF(output(),NegPionECalEMEnergy,"",   MyNNegPion);
+  AddToyVarVF(output(),NegPionECalLength,"",     MyNNegPion);
+  AddToyVarVF(output(),NegPionECalMipPion,"",    MyNNegPion);
 
   
   baseTrackerAnalysis::AddEffCounters();
@@ -144,8 +144,6 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   for( Int_t i = 0; i < mybox().pionBox.nNegativePionTPCtracks; i++ ){
 
     AnaTrackB *track = mybox().pionBox.NegativePionTPCtracks[i];
-
-    if( track->TrueObject ){
       
       AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( track->ECALSegments[0] );
       
@@ -155,7 +153,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
         output().FillVectorVar(NegPionECalLength,    ECalSeg->Length);
         output().FillVectorVar(NegPionECalMipPion,   ECalSeg->PIDMipPion);
       }
-    }
+      
+      output().IncrementCounter(MyNNegPion);
   }
 
   
