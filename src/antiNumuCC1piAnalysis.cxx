@@ -141,7 +141,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
   // Selected negative pions 
-  for( Int_t i = 0; i < mybox().pionBox.nNegativePionTPCtracks; i++ ){
+  /*for( Int_t i = 0; i < mybox().pionBox.nNegativePionTPCtracks; i++ ){
 
     AnaTrackB *track = mybox().pionBox.NegativePionTPCtracks[i];
       
@@ -155,7 +155,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       }
       
       output().IncrementCounter(MyNNegPion);
-  }
+  }*/
 
   
   baseTrackerAnalysis::FillEffCounters();
