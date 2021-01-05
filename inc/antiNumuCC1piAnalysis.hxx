@@ -40,6 +40,16 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
   void FillCategories();
  
   const ToyBoxCCMultiPi& mybox(){return *static_cast<const ToyBoxCCMultiPi*>(&box());}
+ 
+  enum enumStandardMicroTrees_antiNumuCC1piAnalysis{
+    HM_pos= numuCCMultiPiAnalysis::enumStandardMicroTreesLast_numuCCMultiPiAnalysis + 1,
+    
+    NegPionECalEMEnergy,
+    NegPionECalLength,
+    NegPionECalMipPion,
+  
+    enumStandardMicroTreesLast_antiNumuCC1piAnalysis
+  };
 
 protected:
   
