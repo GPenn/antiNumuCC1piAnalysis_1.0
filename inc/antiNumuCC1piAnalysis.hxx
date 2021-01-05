@@ -38,6 +38,8 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
 
   bool Initialize();
   void FillCategories();
+ 
+  const ToyBoxCCMultiPi& mybox(){return *static_cast<const ToyBoxCCMultiPi*>(&box());}
 
 protected:
   
