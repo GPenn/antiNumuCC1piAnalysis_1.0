@@ -146,22 +146,15 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
-  // Selected negative pions 
-  for( Int_t i = 0; i < mybox().pionBox.nNegativePionTPCtracks; i++ ){
-
-    AnaTrackB *track = mybox().pionBox.NegativePionTPCtracks[i];
-    
-      if (track->ECALSegments[0]) {
-      
-        AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( track->ECALSegments[0] );
-        
-        Float_t dummy = 13.0;
-        output().FillVectorVar(NegPionECalEMEnergy,  dummy);
-        //output().FillVectorVar(NegPionECalLength,    ECalSeg->Length);
-        //output().FillVectorVar(NegPionECalMipPion,   ECalSeg->PIDMipPion);
-      }
-      
-      output().IncrementCounter(MyNNegPion);
+  // Fill HMNT variables
+  if (my_box().HMNtrack  ) 
+  {
+    output().FillVar(HMNT_mom,      my_box().HMNtrack->Momentum);
+    //output().FillVar(HMNT_costheta, my_box().HMNtrack->Costheta);
+    if (my_box().HMNtrack->GetTrueParticle()  ) 
+    { 
+      output().FillVar(HMNT_truepdg, mybox().HMNtrack->GetTrueParticle()->PDG);
+    }
   }
 
   
