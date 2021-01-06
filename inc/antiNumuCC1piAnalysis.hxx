@@ -43,11 +43,15 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
  
   enum enumStandardMicroTrees_antiNumuCC1piAnalysis{
     HM_pos= numuCCMultiPiAnalysis::enumStandardMicroTreesLast_numuCCMultiPiAnalysis + 1,
-    
-    MyNNegPion,
-    NegPionECalEMEnergy,
-    NegPionECalLength,
-    NegPionECalMipPion,
+   
+    HMNT_mom,
+    HMNT_costheta,
+    HMNT_pdg,
+    HMNT_truepdg,
+    HMNT_NEcalSegments,
+    HMNT_ecal_EMenergy,
+    HMNT_ecal_length,
+    HMNT_ecal_mippion
   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
