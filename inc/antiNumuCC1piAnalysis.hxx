@@ -51,7 +51,7 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     HMNT_NEcalSegments,
     HMNT_ecal_EMenergy,
     HMNT_ecal_length,
-    HMNT_ecal_mippion
+    HMNT_ecal_mippion,
   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
