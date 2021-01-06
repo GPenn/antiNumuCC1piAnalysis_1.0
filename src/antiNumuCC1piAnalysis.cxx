@@ -102,10 +102,16 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
   
-  // --- Pion candidates 
-  AddVarVF(output(),NegPionECalEMEnergy,"",   MyNNegPion);
-  AddVarVF(output(),NegPionECalLength,"",     MyNNegPion);
-  AddVarVF(output(),NegPionECalMipPion,"",    MyNNegPion);
+  // --- Highest-momentum negative track variables
+    
+  AddVarF(output(),HMNT_mom, "");
+  AddVarF(output(),HMNT_costheta, "");
+  AddVarI(output(),HMNT_pdg, "");
+  AddVarI(output(),HMNT_truepdg, "");
+  AddVarI(output(),HMNT_NEcalSegments, "");
+  AddVarF(output(),HMNT_ecal_EMenergy, "");
+  AddVarF(output(),HMNT_ecal_length, "");
+  AddVarF(output(),HMNT_ecal_mippion, "");
 
   
   baseTrackerAnalysis::AddEffCounters();
