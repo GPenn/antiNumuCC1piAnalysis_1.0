@@ -167,7 +167,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_ecal_EMenergy,      ECalSeg->EMEnergy);
       output().FillVar(HMNT_ecal_length,        ECalSeg->Length);
       output().FillVar(HMNT_ecal_mippion,       ECalSeg->PIDMipPion);
-      output().FillVar(HMNT_ecal_mippion,       ECalSeg->PID_Angle);
+      output().FillVar(HMNT_ecal_angle,         ECalSeg->PID_Angle);
     }
     
   }
