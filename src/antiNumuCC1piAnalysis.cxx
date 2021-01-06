@@ -147,11 +147,11 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
   // Fill HMNT variables
-  if (my_box().HMNtrack  ) 
+  if (mybox().HMNtrack  ) 
   {
-    output().FillVar(HMNT_mom,      my_box().HMNtrack->Momentum);
-    //output().FillVar(HMNT_costheta, my_box().HMNtrack->Costheta);
-    if (my_box().HMNtrack->GetTrueParticle()  ) 
+    output().FillVar(HMNT_mom,      mybox().HMNtrack->Momentum);
+    //output().FillVar(HMNT_costheta, mybox().HMNtrack->Costheta);
+    if (mybox().HMNtrack->GetTrueParticle()  ) 
     { 
       output().FillVar(HMNT_truepdg, mybox().HMNtrack->GetTrueParticle()->PDG);
     }
