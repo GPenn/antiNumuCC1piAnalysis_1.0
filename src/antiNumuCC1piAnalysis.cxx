@@ -108,10 +108,12 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_costheta, "");
   AddVarI(output(),HMNT_pdg, "");
   AddVarI(output(),HMNT_truepdg, "");
+  
   AddVarI(output(),HMNT_NEcalSegments, "");
   AddVarF(output(),HMNT_ecal_EMenergy, "");
   AddVarF(output(),HMNT_ecal_length, "");
   AddVarF(output(),HMNT_ecal_mippion, "");
+  AddVarF(output(),HMNT_ecal_angle, "");
 
   
   baseTrackerAnalysis::AddEffCounters();
@@ -165,6 +167,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_ecal_EMenergy,      ECalSeg->EMEnergy);
       output().FillVar(HMNT_ecal_length,        ECalSeg->Length);
       output().FillVar(HMNT_ecal_mippion,       ECalSeg->PIDMipPion);
+      output().FillVar(HMNT_ecal_mippion,       ECalSeg->PID_Angle);
     }
     
   }
