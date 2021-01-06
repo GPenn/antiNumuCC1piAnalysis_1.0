@@ -150,11 +150,23 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   if (mybox().HMNtrack  ) 
   {
     output().FillVar(HMNT_mom,      mybox().HMNtrack->Momentum);
-    output().FillVar(HMNT_costheta, mybox().HMNtrack->Costheta);
+    //output().FillVar(HMNT_costheta, mybox().HMNtrack->Costheta);
     if (mybox().HMNtrack->GetTrueParticle()  ) 
     { 
       output().FillVar(HMNT_truepdg, mybox().HMNtrack->GetTrueParticle()->PDG);
     }
+    
+    output().FillVar(HMNT_NEcalSegments,      mybox().HMNtrack->nECALSegments);
+    
+    if (mybox().HMNtrack->nECALSegments > 0)
+    {
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
+      
+      output().FillVar(HMNT_ecal_EMenergy,      ECalSeg->EMEnergy);
+      output().FillVar(HMNT_ecal_length,        ECalSeg->Length);
+      output().FillVar(HMNT_ecal_mippion,       ECalSeg->PIDMipPion);
+    }
+    
   }
 
   
