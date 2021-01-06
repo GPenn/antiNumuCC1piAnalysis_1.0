@@ -160,7 +160,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     
     if (mybox().HMNtrack->nECALSegments > 0)
     {
-      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( mybox.HMNtrack->ECALSegments[0] );
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( mybox().HMNtrack->ECALSegments[0] );
       
       output().FillVar(HMNT_ecal_EMenergy,      ECalSeg->EMEnergy);
       output().FillVar(HMNT_ecal_length,        ECalSeg->Length);
