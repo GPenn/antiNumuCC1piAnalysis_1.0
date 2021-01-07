@@ -223,7 +223,7 @@ void CutOptimisation( TString myMethodList = "" )
    //factory->AddBackgroundTree( background, backgroundWeight );
    factory->SetInputTrees( inputTree, signalCut, backgrCut );
    
-   /*
+ 
    // To give different trees for training and testing, do as follows:
    //    factory->AddSignalTree( signalTrainingTree, signalTrainWeight, "Training" );
    //    factory->AddSignalTree( signalTestTree,     signalTestWeight,  "Test" );
@@ -266,7 +266,7 @@ void CutOptimisation( TString myMethodList = "" )
    // Set individual event weights (the variables must exist in the original TTree)
    //    for signal    : factory->SetSignalWeightExpression    ("weight1*weight2");
    //    for background: factory->SetBackgroundWeightExpression("weight1*weight2");
-   factory->SetBackgroundWeightExpression( "weight" );
+   //factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
    TCut mycuts = ""; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
@@ -283,6 +283,8 @@ void CutOptimisation( TString myMethodList = "" )
    factory->PrepareTrainingAndTestTree( mycuts, mycutb,
                                         "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
 
+   
+   
    // ---- Book MVA methods
    //
    // Please lookup the various method configuration options in the corresponding cxx files, eg:
@@ -484,7 +486,7 @@ void CutOptimisation( TString myMethodList = "" )
    factory->EvaluateAllMethods();
 
    // --------------------------------------------------------------
-   */
+   
    // Save the output
    outputFile->Close();
 
