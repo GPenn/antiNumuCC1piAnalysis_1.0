@@ -12,6 +12,36 @@
 #include <TChain.h>
 #include <TFile.h>
 
+#include <iostream>
+#include <string>
+#include <vector>
+
+class defaultOut {
+public :
+  defaultOut(std::string outname);
+
+  void Fill() {fDefaultOut->Fill(); };
+  void Write(){fDefaultOut->Write(); fOutFile->Close();};
+
+   
+  Int_t           topology;
+  Float_t         selmu_ecal_mippion;
+  Float_t         selmu_ecal_EMenergy;
+  Float_t         selmu_ecal_length;
+
+protected:
+
+private:
+  TFile *fOutFile;
+  TTree *fDefaultOut;
+  
+  TBranch        *foutb_topology;
+  TBranch        *foutb_selmu_ecal_mippion;
+  TBranch        *foutb_selmu_ecal_EMenergy;
+  TBranch        *foutb_selmu_ecal_length;
+ 
+};
+
 // Header file for the classes stored in the TTree if any.
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
@@ -675,7 +705,7 @@ public :
    TBranch        *b_HMNT_ecal_mippion;   //!
    TBranch        *b_HMNT_ecal_angle;   //!
 
-   defaultAntiNumuCC1pi(TTree *tree=0);
+   defaultAntiNumuCC1pi(TTree *tree=0, std::string outFileName="defaultTest.root");
    virtual ~defaultAntiNumuCC1pi();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -684,12 +714,14 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+   
+   defaultOut  *defout;
 };
 
 #endif
 
 #ifdef defaultAntiNumuCC1pi_cxx
-defaultAntiNumuCC1pi::defaultAntiNumuCC1pi(TTree *tree) : fChain(0) 
+defaultAntiNumuCC1pi::defaultAntiNumuCC1pi(TTree *tree, std::string outFileName) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
@@ -702,6 +734,8 @@ defaultAntiNumuCC1pi::defaultAntiNumuCC1pi(TTree *tree) : fChain(0)
 
    }
    Init(tree);
+   
+   defout = new defaultOut(outFileName);
 }
 
 defaultAntiNumuCC1pi::~defaultAntiNumuCC1pi()
