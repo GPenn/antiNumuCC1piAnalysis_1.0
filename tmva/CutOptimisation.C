@@ -160,7 +160,7 @@ void CutOptimisation( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "TMVA.root" );
+   TString outfileName( "output/TMVA.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -197,7 +197,7 @@ void CutOptimisation( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "../output/output_p6T_run7_all_ecalpi0.root";
+   TString fname = "../output/test.root";
    
    TFile *input = TFile::Open( fname );
    
