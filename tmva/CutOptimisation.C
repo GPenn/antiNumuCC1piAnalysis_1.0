@@ -187,7 +187,8 @@ void CutOptimisation( TString myMethodList = "" )
    //factory->AddVariable( "myvar1 := var1+var2", 'F' );
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
-   factory->AddVariable( "selmu_ecal_mippion", "Muon candidate MipPion", "", 'F' );
+   factory->AddVariable( "selmu_ecal_mippion",                                    "Muon candidate MipPion", "", 'F' );
+   factory->AddVariable( "selmu_EoverL := selmu_ecal_EMenergy/selmu_ecal_length", "Muon candidate E/L",     "", 'F' );
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
    // but will appear in the final "TestTree" produced by TMVA. This TestTree will contain the
