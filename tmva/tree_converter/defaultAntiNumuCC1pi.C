@@ -3,6 +3,7 @@
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
+#include <ctime> 
 
 void defaultAntiNumuCC1pi::Loop()
 {
@@ -31,13 +32,103 @@ void defaultAntiNumuCC1pi::Loop()
 //by  b_branchname->GetEntry(ientry); //read only this branch
    if (fChain == 0) return;
 
-   Long64_t nentries = fChain->GetEntriesFast();
+   Long64_t nentries = fChain->GetEntries();
+   
+   std::cout << "Total entries to convert: " << nentries << std::endl << std::endl;
+   
+   std::time_t time_start = std::time(0);
+      
+      for (Long64_t jentry=0; jentry<nentries;jentry++) {
+   
+          fChain->GetEntry(jentry);
 
-   Long64_t nbytes = 0, nb = 0;
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {
-      Long64_t ientry = LoadTree(jentry);
-      if (ientry < 0) break;
-      nb = fChain->GetEntry(jentry);   nbytes += nb;
-      // if (Cut(ientry) < 0) continue;
+          // Cut on accum_level etc.
+          if (accum_level[0][1] < 8) continue; // Set accum_level
+     
+            defout->topology		                  = topology;
+            defout->selmu_ecal_mippion		         = selmu_ecal_mippion[0];	
+            defout->selmu_ecal_EMenergy            = selmu_ecal_EMenergy[0];
+            defout->selmu_ecal_length              = selmu_ecal_length[0]; 
+         
+            defout->Fill();
+            
+         
+            // Code to keep track of completion percentage and estimate time remaining:
+         
+            Double_t completion = (Double_t)jentry/(Double_t)nentries;
+         
+            std::time_t time_now = std::time(0);
+            std::time_t time_sofar = time_now - time_start;
+         
+            Long64_t time_total_guess = time_sofar / completion;
+            Long64_t time_left_guess = time_total_guess - time_sofar;
+         
+            std::cout << "Converted " << jentry << " of " << nentries << " entries (" << (Int_t)(completion*100) << "\%). " 
+               << "Time elapsed: " << time_sofar << "s. "
+               << "Estimated time remaining: " << time_left_guess << "s. \r";
+
    }
+   
+   std::cout << std::endl << "All entries converted. Writing output file...\n\n";
+   
+   defout->Write();
+}
+
+int main(int argc, char* argv[]) {
+
+  std::string outFileName;
+
+  // Check for command line options
+  for (;;) {
+    int c = getopt(argc, argv, "o:");
+    if (c<0) break;
+    switch (c) {
+    case 'o':
+      outFileName = optarg;
+      break;
+    }
+  } // Closes process options for loop 
+  
+  // Test for further command line arguments after options
+  if (argc<=optind) {
+    std::cout << "ERROR: No input file(s)" << std::endl << std::endl;
+    return 1;
+  }
+
+  // Create file TChain
+  TChain* rootFiles = new TChain("default");
+  std::cout<<"Number of files to read  = "<<argc-optind<<std::endl;
+
+  std::vector<std::string> files;
+  for(int i=optind; i<argc; i++){
+    char* f = argv[i];
+    files.push_back(f);
+    std::cout<<files[i-optind]<<std::endl;
+  }
+  
+  for(std::vector<std::string>::const_iterator f = files.begin(); f != files.end(); ++f){
+    // Add files to TChain
+    rootFiles->Add(f->c_str());
+    std::cout<<"Adding file "<<f->c_str()<<std::endl;
+  }
+  
+  defaultAntiNumuCC1pi *deftree = new defaultAntiNumuCC1pi(rootFiles, outFileName);
+  
+  deftree->Loop();
+
+  return 0;
+}
+
+defaultOut::defaultOut(std::string outname) {
+  
+  fOutFile = new TFile(outname.c_str(), "RECREATE");
+  fOutFile->cd();
+  fDefaultOut = new TTree("default", "");
+
+  foutb_topology 	                   = fDefaultOut->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_selmu_ecal_mippion 	       = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
+  foutb_selmu_ecal_EMenergy 	       = fDefaultOut->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
+  foutb_selmu_ecal_length  	       = fDefaultOut->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
+   
+  return;
 }
