@@ -34,6 +34,7 @@ public :
   Float_t         HMNT_ecal_mippion;
   Float_t         HMNT_ecal_EMenergy;
   Float_t         HMNT_ecal_length;
+  Float_t         HMNT_ecal_EoverL;
  
   
 
@@ -53,6 +54,7 @@ private:
   TBranch        *foutb_HMNT_ecal_mippion;
   TBranch        *foutb_HMNT_ecal_EMenergy;
   TBranch        *foutb_HMNT_ecal_length;
+  TBranch        *foutb_HMNT_ecal_EoverL;
  
 };
 
