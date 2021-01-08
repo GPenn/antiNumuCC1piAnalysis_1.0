@@ -62,7 +62,7 @@ void defaultAntiNumuCC1pi::Loop()
             }
             else
             {
-               defout->HMNT_ecal_EoverL            = -999;
+               defout->HMNT_ecal_EoverL            = -1.0;
             }
          
             
