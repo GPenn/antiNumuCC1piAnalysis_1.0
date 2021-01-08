@@ -47,9 +47,14 @@ void defaultAntiNumuCC1pi::Loop()
      
             defout->topology		                  = topology;
             defout->particle		                  = particle;
+         
             defout->selmu_ecal_mippion		         = selmu_ecal_mippion[0];	
             defout->selmu_ecal_EMenergy            = selmu_ecal_EMenergy[0];
             defout->selmu_ecal_length              = selmu_ecal_length[0]; 
+         
+            defout->HMNT_ecal_mippion		         = HMNT_ecal_mippion[0];	
+            defout->HMNT_ecal_EMenergy             = HMNT_ecal_EMenergy[0];
+            defout->HMNT_ecal_length               = HMNT_ecal_length[0]; 
          
             defout->Fill();
             
@@ -128,9 +133,14 @@ defaultOut::defaultOut(std::string outname) {
 
   foutb_topology 	                   = fDefaultOut->Branch("topology"                       , &topology 	                  , "topology/I");
   foutb_particle 	                   = fDefaultOut->Branch("particle"                       , &particle 	                  , "particle/I");
+   
   foutb_selmu_ecal_mippion 	       = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
   foutb_selmu_ecal_EMenergy 	       = fDefaultOut->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
   foutb_selmu_ecal_length  	       = fDefaultOut->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
+   
+  foutb_HMNT_ecal_mippion 	          = fDefaultOut->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
+  foutb_HMNT_ecal_EMenergy 	       = fDefaultOut->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
+  foutb_HMNT_ecal_length  	          = fDefaultOut->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
    
   return;
 }
