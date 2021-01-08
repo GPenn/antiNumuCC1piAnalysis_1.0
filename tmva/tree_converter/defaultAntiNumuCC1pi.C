@@ -55,6 +55,17 @@ void defaultAntiNumuCC1pi::Loop()
             defout->HMNT_ecal_mippion		         = HMNT_ecal_mippion;	
             defout->HMNT_ecal_EMenergy             = HMNT_ecal_EMenergy;
             defout->HMNT_ecal_length               = HMNT_ecal_length; 
+            
+            if (HMNT_NEcalSegments>0)
+            {
+               defout->HMNT_ecal_EoverL            = HMNT_ecal_EMenergy / HMNT_ecal_length;
+            }
+            else
+            {
+               defout->HMNT_ecal_EoverL            = -999;
+            }
+         
+            
          
             defout->Fill();
             
@@ -141,6 +152,8 @@ defaultOut::defaultOut(std::string outname) {
   foutb_HMNT_ecal_mippion 	          = fDefaultOut->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
   foutb_HMNT_ecal_EMenergy 	       = fDefaultOut->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
   foutb_HMNT_ecal_length  	          = fDefaultOut->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
+   
+  foutb_HMNT_ecal_EoverL  	          = fDefaultOut->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
    
   return;
 }
