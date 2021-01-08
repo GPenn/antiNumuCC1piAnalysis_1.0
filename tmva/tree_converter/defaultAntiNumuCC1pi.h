@@ -31,10 +31,6 @@ public :
   Float_t         selmu_ecal_EMenergy;
   Float_t         selmu_ecal_length;
   
-  Float_t         selmu_ecal_mippion;
-  Float_t         selmu_ecal_EMenergy;
-  Float_t         selmu_ecal_length;
-  
   Float_t         HMNT_ecal_mippion;
   Float_t         HMNT_ecal_EMenergy;
   Float_t         HMNT_ecal_length;
