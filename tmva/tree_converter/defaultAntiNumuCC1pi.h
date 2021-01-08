@@ -26,9 +26,20 @@ public :
    
   Int_t           topology;
   Int_t           particle;
+  
   Float_t         selmu_ecal_mippion;
   Float_t         selmu_ecal_EMenergy;
   Float_t         selmu_ecal_length;
+  
+  Float_t         selmu_ecal_mippion;
+  Float_t         selmu_ecal_EMenergy;
+  Float_t         selmu_ecal_length;
+  
+  Float_t         HMNT_ecal_mippion;
+  Float_t         HMNT_ecal_EMenergy;
+  Float_t         HMNT_ecal_length;
+ 
+  
 
 protected:
 
@@ -38,9 +49,14 @@ private:
   
   TBranch        *foutb_topology;
   TBranch        *foutb_particle;
+  
   TBranch        *foutb_selmu_ecal_mippion;
   TBranch        *foutb_selmu_ecal_EMenergy;
   TBranch        *foutb_selmu_ecal_length;
+  
+  TBranch        *foutb_HMNT_ecal_mippion;
+  TBranch        *foutb_HMNT_ecal_EMenergy;
+  TBranch        *foutb_HMNT_ecal_length;
  
 };
 
