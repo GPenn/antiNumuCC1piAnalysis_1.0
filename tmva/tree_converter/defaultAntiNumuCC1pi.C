@@ -127,6 +127,7 @@ defaultOut::defaultOut(std::string outname) {
   fDefaultOut = new TTree("default", "");
 
   foutb_topology 	                   = fDefaultOut->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_particle 	                   = fDefaultOut->Branch("particle"                       , &particle 	                  , "particle/I");
   foutb_selmu_ecal_mippion 	       = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
   foutb_selmu_ecal_EMenergy 	       = fDefaultOut->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
   foutb_selmu_ecal_length  	       = fDefaultOut->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
