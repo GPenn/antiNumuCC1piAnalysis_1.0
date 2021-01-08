@@ -198,7 +198,7 @@ void CutOptimisation( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "tree_converter/output/testDefault.root";
+   TString fname = "tree_converter/output/mva_input_p6T_run7_all.root";
    
    TFile *input = TFile::Open( fname );
    
