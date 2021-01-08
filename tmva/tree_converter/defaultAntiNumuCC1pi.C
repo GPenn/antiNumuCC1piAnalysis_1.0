@@ -46,6 +46,7 @@ void defaultAntiNumuCC1pi::Loop()
           if (accum_level[0][1] < 8) continue; // Set accum_level
      
             defout->topology		                  = topology;
+            defout->particle		                  = particle;
             defout->selmu_ecal_mippion		         = selmu_ecal_mippion[0];	
             defout->selmu_ecal_EMenergy            = selmu_ecal_EMenergy[0];
             defout->selmu_ecal_length              = selmu_ecal_length[0]; 
