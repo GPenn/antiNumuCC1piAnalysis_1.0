@@ -6,3 +6,5 @@
 /tmva/tree_converter/bin
 /tmva/tree_converter/output
 /tmva/output
+/tmva/plots
+/tmva/weights
