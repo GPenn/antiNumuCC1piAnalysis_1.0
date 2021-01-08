@@ -211,8 +211,8 @@ void CutOptimisation( TString myMethodList = "" )
    
    TTree *inputTree = (TTree*)input->Get("default");
    
-   TCut signalCut = "topology==1"; // how to identify signal events
-   TCut backgrCut = "topology!=1"; // how to identify background events
+   TCut signalCut = "particle==-13"; // how to identify signal events
+   TCut backgrCut = "particle!=-13"; // how to identify background events
    
    
    // global event weights per tree (see below for setting event-wise weights)
