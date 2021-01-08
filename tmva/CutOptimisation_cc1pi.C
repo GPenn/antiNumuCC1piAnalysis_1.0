@@ -47,7 +47,7 @@
 #include "TMVA/Tools.h"
 #endif
 
-void CutOptimisation( TString myMethodList = "" )
+void CutOptimisation_cc1pi( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
