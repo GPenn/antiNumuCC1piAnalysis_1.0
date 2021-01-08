@@ -52,9 +52,9 @@ void defaultAntiNumuCC1pi::Loop()
             defout->selmu_ecal_EMenergy            = selmu_ecal_EMenergy[0];
             defout->selmu_ecal_length              = selmu_ecal_length[0]; 
          
-            defout->HMNT_ecal_mippion		         = HMNT_ecal_mippion[0];	
-            defout->HMNT_ecal_EMenergy             = HMNT_ecal_EMenergy[0];
-            defout->HMNT_ecal_length               = HMNT_ecal_length[0]; 
+            defout->HMNT_ecal_mippion		         = HMNT_ecal_mippion;	
+            defout->HMNT_ecal_EMenergy             = HMNT_ecal_EMenergy;
+            defout->HMNT_ecal_length               = HMNT_ecal_length; 
          
             defout->Fill();
             
