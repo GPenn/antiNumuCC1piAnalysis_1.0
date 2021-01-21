@@ -77,7 +77,13 @@ void defaultAntiNumuCC1pi::Loop()
                defout->HMNT_ecal_EoverL            = -1.0;
             }
          
-            defout->Fill();
+            //defout->Fill();
+         
+            if ( topology==1 && (evt%2)==0 ) {defout->Fill_SigTrain();} // Signal training
+            if ( topology==1 && (evt%2)!=0 ) {defout->Fill_SigTest();}  // Signal testing
+            if ( topology!=1 && (evt%2)==0 ) {defout->Fill_BkgTrain();} // Background training
+            if ( topology!=1 && (evt%2)!=0 ) {defout->Fill_BkgTest();}  // Background testing
+               
             
          
             // Code to keep track of completion percentage and estimate time remaining:
@@ -150,23 +156,86 @@ defaultOut::defaultOut(std::string outname) {
   
   fOutFile = new TFile(outname.c_str(), "RECREATE");
   fOutFile->cd();
-  fDefaultOut = new TTree("default", "");
+  
+  // ----------- Signal training tree -----------
+   
+  fDefaultOut_SigTrain = new TTree("SignalTraining", "");
 
-  foutb_evt 	                      = fDefaultOut->Branch("evt"                            , &evt 	                     , "evt/I");
-  foutb_topology 	                   = fDefaultOut->Branch("topology"                       , &topology 	                  , "topology/I");
-  foutb_particle 	                   = fDefaultOut->Branch("particle"                       , &particle 	                  , "particle/I");
+  foutb_evt_SigTrain 	                      = fDefaultOut_SigTrain->Branch("evt"                            , &evt 	                     , "evt/I");
+  foutb_topology_SigTrain 	                   = fDefaultOut_SigTrain->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_particle_SigTrain 	                   = fDefaultOut_SigTrain->Branch("particle"                       , &particle 	                  , "particle/I");
   
-  foutb_selmu_necals 	             = fDefaultOut->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
-  foutb_selmu_ecal_mippion 	       = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
-  foutb_selmu_ecal_EMenergy 	       = fDefaultOut->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
-  foutb_selmu_ecal_length  	       = fDefaultOut->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
-  foutb_selmu_ecal_EoverL  	       = fDefaultOut->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
+  foutb_selmu_necals_SigTrain 	             = fDefaultOut_SigTrain->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
+  foutb_selmu_ecal_mippion_SigTrain 	       = fDefaultOut_SigTrain->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
+  foutb_selmu_ecal_EMenergy_SigTrain 	       = fDefaultOut_SigTrain->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
+  foutb_selmu_ecal_length_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
+  foutb_selmu_ecal_EoverL_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
   
-  foutb_HMNT_NEcalSegments	          = fDefaultOut->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_mippion 	          = fDefaultOut->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
-  foutb_HMNT_ecal_EMenergy 	       = fDefaultOut->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
-  foutb_HMNT_ecal_length  	          = fDefaultOut->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
-  foutb_HMNT_ecal_EoverL  	          = fDefaultOut->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
+  foutb_HMNT_NEcalSegments_SigTrain	          = fDefaultOut_SigTrain->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
+  foutb_HMNT_ecal_mippion_SigTrain 	          = fDefaultOut_SigTrain->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
+  foutb_HMNT_ecal_EMenergy_SigTrain 	       = fDefaultOut_SigTrain->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
+  foutb_HMNT_ecal_length_SigTrain  	          = fDefaultOut_SigTrain->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
+  foutb_HMNT_ecal_EoverL_SigTrain  	          = fDefaultOut_SigTrain->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
+   
+  // ----------- Signal testing tree -----------
+   
+  fDefaultOut_SigTest = new TTree("SignalTesting", "");
+
+  foutb_evt_SigTest 	                         = fDefaultOut_SigTest->Branch("evt"                            , &evt 	                     , "evt/I");
+  foutb_topology_SigTest 	                   = fDefaultOut_SigTest->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_particle_SigTest 	                   = fDefaultOut_SigTest->Branch("particle"                       , &particle 	                  , "particle/I");
+  
+  foutb_selmu_necals_SigTest 	                = fDefaultOut_SigTest->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
+  foutb_selmu_ecal_mippion_SigTest 	          = fDefaultOut_SigTest->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
+  foutb_selmu_ecal_EMenergy_SigTest 	       = fDefaultOut_SigTest->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
+  foutb_selmu_ecal_length_SigTest  	          = fDefaultOut_SigTest->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
+  foutb_selmu_ecal_EoverL_SigTest  	          = fDefaultOut_SigTest->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
+  
+  foutb_HMNT_NEcalSegments_SigTest	          = fDefaultOut_SigTest->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
+  foutb_HMNT_ecal_mippion_SigTest 	          = fDefaultOut_SigTest->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
+  foutb_HMNT_ecal_EMenergy_SigTest 	          = fDefaultOut_SigTest->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
+  foutb_HMNT_ecal_length_SigTest  	          = fDefaultOut_SigTest->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
+  foutb_HMNT_ecal_EoverL_SigTest  	          = fDefaultOut_SigTest->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
+   
+  // ----------- Background training tree -----------
+   
+  fDefaultOut_BkgTrain = new TTree("BackgroundTraining", "");
+
+  foutb_evt_BkgTrain 	                      = fDefaultOut_BkgTrain->Branch("evt"                            , &evt 	                     , "evt/I");
+  foutb_topology_BkgTrain 	                   = fDefaultOut_BkgTrain->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_particle_BkgTrain 	                   = fDefaultOut_BkgTrain->Branch("particle"                       , &particle 	                  , "particle/I");
+  
+  foutb_selmu_necals_BkgTrain 	             = fDefaultOut_BkgTrain->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
+  foutb_selmu_ecal_mippion_BkgTrain 	       = fDefaultOut_BkgTrain->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
+  foutb_selmu_ecal_EMenergy_BkgTrain 	       = fDefaultOut_BkgTrain->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
+  foutb_selmu_ecal_length_BkgTrain  	       = fDefaultOut_BkgTrain->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
+  foutb_selmu_ecal_EoverL_BkgTrain  	       = fDefaultOut_BkgTrain->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
+  
+  foutb_HMNT_NEcalSegments_BkgTrain	          = fDefaultOut_BkgTrain->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
+  foutb_HMNT_ecal_mippion_BkgTrain 	          = fDefaultOut_BkgTrain->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
+  foutb_HMNT_ecal_EMenergy_BkgTrain 	       = fDefaultOut_BkgTrain->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
+  foutb_HMNT_ecal_length_BkgTrain  	          = fDefaultOut_BkgTrain->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
+  foutb_HMNT_ecal_EoverL_BkgTrain  	          = fDefaultOut_BkgTrain->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
+   
+  // ----------- Background testing tree -----------
+   
+  fDefaultOut_BkgTest = new TTree("BackgroundTesting", "");
+
+  foutb_evt_BkgTest 	                         = fDefaultOut_BkgTest->Branch("evt"                            , &evt 	                     , "evt/I");
+  foutb_topology_BkgTest 	                   = fDefaultOut_BkgTest->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_particle_BkgTest 	                   = fDefaultOut_BkgTest->Branch("particle"                       , &particle 	                  , "particle/I");
+  
+  foutb_selmu_necals_BkgTest 	                = fDefaultOut_BkgTest->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
+  foutb_selmu_ecal_mippion_BkgTest 	          = fDefaultOut_BkgTest->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
+  foutb_selmu_ecal_EMenergy_BkgTest 	       = fDefaultOut_BkgTest->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
+  foutb_selmu_ecal_length_BkgTest  	          = fDefaultOut_BkgTest->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
+  foutb_selmu_ecal_EoverL_BkgTest  	          = fDefaultOut_BkgTest->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
+  
+  foutb_HMNT_NEcalSegments_BkgTest	          = fDefaultOut_BkgTest->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
+  foutb_HMNT_ecal_mippion_BkgTest 	          = fDefaultOut_BkgTest->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
+  foutb_HMNT_ecal_EMenergy_BkgTest 	          = fDefaultOut_BkgTest->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
+  foutb_HMNT_ecal_length_BkgTest  	          = fDefaultOut_BkgTest->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
+  foutb_HMNT_ecal_EoverL_BkgTest  	          = fDefaultOut_BkgTest->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
    
   return;
 }
