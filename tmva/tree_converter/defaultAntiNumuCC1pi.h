@@ -20,8 +20,20 @@ class defaultOut {
 public :
   defaultOut(std::string outname);
 
-  void Fill() {fDefaultOut->Fill(); };
-  void Write(){fDefaultOut->Write(); fOutFile->Close();};
+  void Fill_SigTrain() {fDefaultOut_SigTrain->Fill(); };
+  void Fill_SigTest()  {fDefaultOut_SigTest->Fill(); };
+  void Fill_BkgTrain() {fDefaultOut_BkgTrain->Fill(); };
+  void Fill_BkgTest()  {fDefaultOut_BkgTest->Fill(); };
+  
+  void Write()
+  {
+    fDefaultOut_SigTrain->Write();
+    fDefaultOut_SigTest->Write(); 
+    fDefaultOut_BkgTrain->Write(); 
+    fDefaultOut_BkgTest->Write(); 
+    
+    fOutFile->Close();
+  }
 
    
   Int_t           evt;
