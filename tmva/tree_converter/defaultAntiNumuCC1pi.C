@@ -61,7 +61,7 @@ void defaultAntiNumuCC1pi::Loop()
             
             if (selmu_necals>0)
             {
-               defout->selmu_ecal_EoverL            = selmu_ecal_EMenergy / selmu_ecal_length;
+               defout->selmu_ecal_EoverL            = selmu_ecal_EMenergy[0] / selmu_ecal_length[0];
             }
             else
             {
