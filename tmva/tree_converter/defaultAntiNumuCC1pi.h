@@ -46,24 +46,84 @@ protected:
 
 private:
   TFile *fOutFile;
-  TTree *fDefaultOut;
+  //TTree *fDefaultOut;
+  TTree *fDefaultOut_SigTrain;
+  TTree *fDefaultOut_SigTest;
+  TTree *fDefaultOut_BkgTrain;
+  TTree *fDefaultOut_BkgTest;
   
-  TBranch        *foutb_evt;
-  TBranch        *foutb_topology;
-  TBranch        *foutb_particle;
+  // ----------- Signal training tree -----------
   
-  TBranch        *foutb_selmu_necals;
-  TBranch        *foutb_selmu_ecal_mippion;
-  TBranch        *foutb_selmu_ecal_EMenergy;
-  TBranch        *foutb_selmu_ecal_length;
-  TBranch        *foutb_selmu_ecal_EoverL;
+  TBranch        *foutb_evt_SigTrain;
+  TBranch        *foutb_topology_SigTrain;
+  TBranch        *foutb_particle_SigTrain;
   
-  TBranch        *foutb_HMNT_NEcalSegments;
-  TBranch        *foutb_HMNT_ecal_mippion;
-  TBranch        *foutb_HMNT_ecal_EMenergy;
-  TBranch        *foutb_HMNT_ecal_length;
-  TBranch        *foutb_HMNT_ecal_EoverL;
+  TBranch        *foutb_selmu_necals_SigTrain;
+  TBranch        *foutb_selmu_ecal_mippion_SigTrain;
+  TBranch        *foutb_selmu_ecal_EMenergy_SigTrain;
+  TBranch        *foutb_selmu_ecal_length_SigTrain;
+  TBranch        *foutb_selmu_ecal_EoverL_SigTrain;
+  
+  TBranch        *foutb_HMNT_NEcalSegments_SigTrain;
+  TBranch        *foutb_HMNT_ecal_mippion_SigTrain;
+  TBranch        *foutb_HMNT_ecal_EMenergy_SigTrain;
+  TBranch        *foutb_HMNT_ecal_length_SigTrain;
+  TBranch        *foutb_HMNT_ecal_EoverL_SigTrain;
+  
+  // ----------- Signal testing tree -----------
+  
+  TBranch        *foutb_evt_SigTest;
+  TBranch        *foutb_topology_SigTest;
+  TBranch        *foutb_particle_SigTest;
+  
+  TBranch        *foutb_selmu_necals_SigTest;
+  TBranch        *foutb_selmu_ecal_mippion_SigTest;
+  TBranch        *foutb_selmu_ecal_EMenergy_SigTest;
+  TBranch        *foutb_selmu_ecal_length_SigTest;
+  TBranch        *foutb_selmu_ecal_EoverL_SigTest;
+  
+  TBranch        *foutb_HMNT_NEcalSegments_SigTest;
+  TBranch        *foutb_HMNT_ecal_mippion_SigTest;
+  TBranch        *foutb_HMNT_ecal_EMenergy_SigTest;
+  TBranch        *foutb_HMNT_ecal_length_SigTest;
+  TBranch        *foutb_HMNT_ecal_EoverL_SigTest;
+  
+  // ----------- Background training tree -----------
+  
+  TBranch        *foutb_evt_BkgTrain;
+  TBranch        *foutb_topology_BkgTrain;
+  TBranch        *foutb_particle_BkgTrain;
+  
+  TBranch        *foutb_selmu_necals_BkgTrain;
+  TBranch        *foutb_selmu_ecal_mippion_BkgTrain;
+  TBranch        *foutb_selmu_ecal_EMenergy_BkgTrain;
+  TBranch        *foutb_selmu_ecal_length_BkgTrain;
+  TBranch        *foutb_selmu_ecal_EoverL_BkgTrain;
+  
+  TBranch        *foutb_HMNT_NEcalSegments_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_mippion_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_EMenergy_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_length_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_EoverL_BkgTrain;
  
+  // ----------- Background testing tree -----------
+  
+  TBranch        *foutb_evt_BkgTest;
+  TBranch        *foutb_topology_BkgTest;
+  TBranch        *foutb_particle_BkgTest;
+  
+  TBranch        *foutb_selmu_necals_BkgTest;
+  TBranch        *foutb_selmu_ecal_mippion_BkgTest;
+  TBranch        *foutb_selmu_ecal_EMenergy_BkgTest;
+  TBranch        *foutb_selmu_ecal_length_BkgTest;
+  TBranch        *foutb_selmu_ecal_EoverL_BkgTest;
+  
+  TBranch        *foutb_HMNT_NEcalSegments_BkgTest;
+  TBranch        *foutb_HMNT_ecal_mippion_BkgTest;
+  TBranch        *foutb_HMNT_ecal_EMenergy_BkgTest;
+  TBranch        *foutb_HMNT_ecal_length_BkgTest;
+  TBranch        *foutb_HMNT_ecal_EoverL_BkgTest;
+  
 };
 
 // Header file for the classes stored in the TTree if any.
