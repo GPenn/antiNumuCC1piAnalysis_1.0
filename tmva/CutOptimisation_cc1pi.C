@@ -188,7 +188,7 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
-   factory->AddVariable( "selmu_EoverL := selmu_ecal_EMenergy/selmu_ecal_length", "Muon candidate E/L",     "", 'F' );
+   factory->AddVariable( "selmu_EoverL",                                          "Muon candidate E/L",     "", 'F' );
    factory->AddVariable( "selmu_ecal_mippion",                                    "Muon candidate MipPion", "", 'F' );
    factory->AddVariable( "HMNT_ecal_EoverL",                                      "Pion candidate E/L",     "", 'F' );
    factory->AddVariable( "HMNT_ecal_mippion",                                     "Pion candidate MipPion", "", 'F' );
