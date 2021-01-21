@@ -45,17 +45,29 @@ void defaultAntiNumuCC1pi::Loop()
           // Cut on accum_level etc.
           if (accum_level[0][1] < 8) continue; // Set accum_level
      
+            defout->evt    		                  = evt;
             defout->topology		                  = topology;
             defout->particle		                  = particle;
          
+            defout->selmu_necals                   = selmu_necals;
             defout->selmu_ecal_mippion		         = selmu_ecal_mippion[0];	
             defout->selmu_ecal_EMenergy            = selmu_ecal_EMenergy[0];
             defout->selmu_ecal_length              = selmu_ecal_length[0]; 
-         
+            
+            defout->HMNT_NEcalSegments		         = HMNT_NEcalSegments;
             defout->HMNT_ecal_mippion		         = HMNT_ecal_mippion;	
             defout->HMNT_ecal_EMenergy             = HMNT_ecal_EMenergy;
             defout->HMNT_ecal_length               = HMNT_ecal_length; 
             
+            if (selmu_necals>0)
+            {
+               defout->selmu_ecal_EoverL            = selmu_ecal_EMenergy / selmu_ecal_length;
+            }
+            else
+            {
+               defout->selmu_ecal_EoverL            = -1.0;
+            }
+         
             if (HMNT_NEcalSegments>0)
             {
                defout->HMNT_ecal_EoverL            = HMNT_ecal_EMenergy / HMNT_ecal_length;
@@ -64,8 +76,6 @@ void defaultAntiNumuCC1pi::Loop()
             {
                defout->HMNT_ecal_EoverL            = -1.0;
             }
-         
-            
          
             defout->Fill();
             
@@ -142,17 +152,20 @@ defaultOut::defaultOut(std::string outname) {
   fOutFile->cd();
   fDefaultOut = new TTree("default", "");
 
+  foutb_evt 	                      = fDefaultOut->Branch("evt"                            , &evt 	                     , "evt/I");
   foutb_topology 	                   = fDefaultOut->Branch("topology"                       , &topology 	                  , "topology/I");
   foutb_particle 	                   = fDefaultOut->Branch("particle"                       , &particle 	                  , "particle/I");
-   
+  
+  foutb_selmu_necals 	             = fDefaultOut->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
   foutb_selmu_ecal_mippion 	       = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
   foutb_selmu_ecal_EMenergy 	       = fDefaultOut->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
   foutb_selmu_ecal_length  	       = fDefaultOut->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
-   
+  foutb_selmu_ecal_EoverL  	       = fDefaultOut->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
+  
+  foutb_HMNT_NEcalSegments	          = fDefaultOut->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
   foutb_HMNT_ecal_mippion 	          = fDefaultOut->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
   foutb_HMNT_ecal_EMenergy 	       = fDefaultOut->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
   foutb_HMNT_ecal_length  	          = fDefaultOut->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
-   
   foutb_HMNT_ecal_EoverL  	          = fDefaultOut->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
    
   return;
