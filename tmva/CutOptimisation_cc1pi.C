@@ -202,7 +202,7 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "tree_converter/output/mva_input_p6T_run7_all.root";
+   TString fname = "tree_converter/output/mva_input_p6T_allruns.root";
    
    TFile *input = TFile::Open( fname );
    
@@ -213,21 +213,30 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    //TTree *signal     = (TTree*)input->Get("TreeS");
    //TTree *background = (TTree*)input->Get("TreeB");
    
-   TTree *inputTree = (TTree*)input->Get("default");
+   //TTree *inputTree = (TTree*)input->Get("default");
+   
+   TTree* sigTreeTrain = (TTree*)sigSrc->Get( "SignalTraining" );
+   TTree* bkgTreeTrain = (TTree*)bkgSrc->Get( "BackgroundTraining" );
+   TTree* sigTreeTest = (TTree*)sigSrc->Get( "SignalTesting" );
+   TTree* bkgTreeTest = (TTree*)bkgSrc->Get( "BackgroundTesting" );
    
    TCut signalCut = "topology==1"; // how to identify signal events
    TCut backgrCut = "topology!=1"; // how to identify background events
    
-   
    // global event weights per tree (see below for setting event-wise weights)
-   //Double_t signalWeight     = 1.0;
-   //Double_t backgroundWeight = 1.0;
+   Double_t signalWeight     = 1.0;
+   Double_t backgroundWeight = 1.0;
    
    // You can add an arbitrary number of signal or background trees
    //factory->AddSignalTree    ( signal,     signalWeight     );
    //factory->AddBackgroundTree( background, backgroundWeight );
-   factory->SetInputTrees( inputTree, signalCut, backgrCut );
    
+   //factory->SetInputTrees( inputTree, signalCut, backgrCut );
+   
+   factory->AddSignalTree ( sigTreeTrain, signalWeight, TMVA::Types::kTraining);
+   factory->AddBackgroundTree( bkgTreeTrain, backgroundWeight, TMVA::Types::kTraining);
+   factory->AddSignalTree ( sigTreeTest, signalWeight, TMVA::Types::kTesting);
+   factory->AddBackgroundTree( bkgTreeTest, backgroundWeight, TMVA::Types::kTesting);
  
    // To give different trees for training and testing, do as follows:
    //    factory->AddSignalTree( signalTrainingTree, signalTrainWeight, "Training" );
@@ -274,8 +283,8 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    //factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
-   TCut mycuts = "HMNT_ecal_EoverL>0"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
-   TCut mycutb = "HMNT_ecal_EoverL>0"; // for example: TCut mycutb = "abs(var1)<0.5";
+   TCut mycuts = "(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
+   TCut mycutb = "(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycutb = "abs(var1)<0.5";
 
    // Tell the factory how to use the training and testing events
    //
@@ -285,8 +294,11 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    // To also specify the number of testing events, use:
    //    factory->PrepareTrainingAndTestTree( mycut,
    //                                         "NSigTrain=3000:NBkgTrain=3000:NSigTest=3000:NBkgTest=3000:SplitMode=Random:!V" );
+   //factory->PrepareTrainingAndTestTree( mycuts, mycutb,
+                                        //"nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
+   
    factory->PrepareTrainingAndTestTree( mycuts, mycutb,
-                                        "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
+                                        "nTrain_Signal=0:nTrain_Background=0:NormMode=None" );
 
    
    
