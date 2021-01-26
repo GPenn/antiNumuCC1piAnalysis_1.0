@@ -215,10 +215,10 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    
    //TTree *inputTree = (TTree*)input->Get("default");
    
-   TTree* sigTreeTrain = (TTree*)sigSrc->Get( "SignalTraining" );
-   TTree* bkgTreeTrain = (TTree*)bkgSrc->Get( "BackgroundTraining" );
-   TTree* sigTreeTest = (TTree*)sigSrc->Get( "SignalTesting" );
-   TTree* bkgTreeTest = (TTree*)bkgSrc->Get( "BackgroundTesting" );
+   TTree* sigTreeTrain = (TTree*)input->Get( "SignalTraining" );
+   TTree* bkgTreeTrain = (TTree*)input->Get( "BackgroundTraining" );
+   TTree* sigTreeTest = (TTree*)input->Get( "SignalTesting" );
+   TTree* bkgTreeTest = (TTree*)input->Get( "BackgroundTesting" );
    
    TCut signalCut = "topology==1"; // how to identify signal events
    TCut backgrCut = "topology!=1"; // how to identify background events
