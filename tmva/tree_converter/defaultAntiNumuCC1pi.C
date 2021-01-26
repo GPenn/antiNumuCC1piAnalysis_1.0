@@ -79,10 +79,10 @@ void defaultAntiNumuCC1pi::Loop()
          
             //defout->Fill();
          
-            if ( topology==1 && (evt%2)==0 ) {defout->Fill_SigTrain();} // Signal training
-            if ( topology==1 && (evt%2)!=0 ) {defout->Fill_SigTest();}  // Signal testing
-            if ( topology!=1 && (evt%2)==0 ) {defout->Fill_BkgTrain();} // Background training
-            if ( topology!=1 && (evt%2)!=0 ) {defout->Fill_BkgTest();}  // Background testing
+            if ( topology==1 && (entry%2)==0 ) {defout->Fill_SigTrain();} // Signal training
+            if ( topology==1 && (entry%2)!=0 ) {defout->Fill_SigTest();}  // Signal testing
+            if ( topology!=1 && (entry%2)==0 ) {defout->Fill_BkgTrain();} // Background training
+            if ( topology!=1 && (entry%2)!=0 ) {defout->Fill_BkgTest();}  // Background testing
                
             
          
