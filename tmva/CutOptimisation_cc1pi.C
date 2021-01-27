@@ -312,7 +312,7 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    // Cut optimisation
    if (Use["Cuts"])
       factory->BookMethod( TMVA::Types::kCuts, "Cuts",
-                           "!H:!V:FitMethod=MC:EffSel:SampleSize=200000:VarProp=FSmart" );
+                           "!H:!V:FitMethod=MC:EffSel:SampleSize=200000" );
 
    if (Use["CutsD"])
       factory->BookMethod( TMVA::Types::kCuts, "CutsD",
