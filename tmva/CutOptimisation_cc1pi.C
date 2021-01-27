@@ -312,7 +312,7 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    // Cut optimisation
    if (Use["Cuts"])
       factory->BookMethod( TMVA::Types::kCuts, "Cuts",
-                           "!H:!V:FitMethod=MC:EffSel:SampleSize=200000" );
+                           "!H:!V:FitMethod=MC:EffSel:SampleSize=200000:VarProp=FSmart" );
 
    if (Use["CutsD"])
       factory->BookMethod( TMVA::Types::kCuts, "CutsD",
@@ -324,7 +324,7 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
 
    if (Use["CutsGA"])
       factory->BookMethod( TMVA::Types::kCuts, "CutsGA",
-                           "H:!V:FitMethod=GA:EffSel:Steps=30:Cycles=3:PopSize=400:SC_steps=10:SC_rate=5:SC_factor=0.95" );
+                           "H:!V:FitMethod=GA:EffSel:Steps=30:Cycles=3:PopSize=400:SC_steps=10:SC_rate=5:SC_factor=0.95:VarProp=FSmart" );
 
    if (Use["CutsSA"])
       factory->BookMethod( TMVA::Types::kCuts, "CutsSA",
