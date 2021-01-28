@@ -47,7 +47,7 @@
 #include "TMVA/Tools.h"
 #endif
 
-void CutOptimisation_cc1pi( TString myMethodList = "" )
+void CutOptimisation_cc1pi_museg( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -160,7 +160,7 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/TMVA.root" );
+   TString outfileName( "output/CutOptimisation_cc1pi_museg.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -190,8 +190,8 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    
    factory->AddVariable( "selmu_ecal_EoverL",                                          "Muon candidate E/L",     "", 'F' );
    factory->AddVariable( "selmu_ecal_mippion",                                    "Muon candidate MipPion", "", 'F' );
-   factory->AddVariable( "HMNT_ecal_EoverL",                                      "Pion candidate E/L",     "", 'F' );
-   factory->AddVariable( "HMNT_ecal_mippion",                                     "Pion candidate MipPion", "", 'F' );
+   //factory->AddVariable( "HMNT_ecal_EoverL",                                      "Pion candidate E/L",     "", 'F' );
+   //factory->AddVariable( "HMNT_ecal_mippion",                                     "Pion candidate MipPion", "", 'F' );
    
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
@@ -283,8 +283,8 @@ void CutOptimisation_cc1pi( TString myMethodList = "" )
    //factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
-   TCut mycuts = "(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
-   TCut mycutb = "(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycutb = "abs(var1)<0.5";
+   TCut mycuts = "(selmu_necals>0)&&(HMNT_NEcalSegments<=0)"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
+   TCut mycutb = "(selmu_necals>0)&&(HMNT_NEcalSegments<=0)"; // for example: TCut mycutb = "abs(var1)<0.5";
 
    // Tell the factory how to use the training and testing events
    //
