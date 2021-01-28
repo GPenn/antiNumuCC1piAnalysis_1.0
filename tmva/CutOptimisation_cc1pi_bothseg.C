@@ -160,7 +160,7 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/TMVA.root" );
+   TString outfileName( "output/CutOptimisation_cc1pi_bothseg.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
