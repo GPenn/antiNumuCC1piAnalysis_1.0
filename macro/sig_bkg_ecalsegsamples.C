@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/output_p6T_run7_all.root");
-  DataSample mc("output/output_p6T_run7_all.root");
+  DrawingTools draw("output/output_p6T_allruns.root");
+  DataSample mc("output/output_p6T_allruns.root");
 
   draw.DumpPOT(mc);
   
