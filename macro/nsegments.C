@@ -16,6 +16,9 @@
   TCanvas selpi_necals_multiple;
   draw.Draw(default,"HMNT_NEcalSegments",5,0,5,"topology","accum_level[][1]>5&&HMNT_NEcalSegments>1");
   
-  TCanvas selmu_ecals_det;
+  TCanvas selmu_ecal_det_correlation;
   draw.Draw(default,"selmu_ecal_det[0]:selmu_ecal_det[1]",9,0,9,9,0,9,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  
+  TCanvas selmu_ecal_EMenergy_correlation;
+  draw.Draw(default,"selmu_ecal_EMenergy[0]:selmu_ecal_EMenergy[1]",50,0,2000,50,0,2000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
 }
