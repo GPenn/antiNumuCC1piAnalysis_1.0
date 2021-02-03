@@ -27,24 +27,29 @@
   draw.SetTitleY("selmu_ecal_EMenergy[0]");
   draw.Draw(default,"selmu_ecal_EMenergy[0]:selmu_ecal_EMenergy[1]",50,0,400,50,0,400,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
-  TCanvas selmu_ecal_endpos_correlation0;
+  TCanvas selmu_ecal_endpos_correlationX;
   draw.SetTitleX("selmu_ecal_showerendpos[1][0]");
   draw.SetTitleY("selmu_ecal_showerendpos[0][0]");
   draw.Draw(default,"selmu_ecal_showerendpos[0][0]:selmu_ecal_showerendpos[1][0]",50,-2000,2000,50,-2000,2000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
-  TCanvas selmu_ecal_endpos_correlation1;
+  TCanvas selmu_ecal_endpos_correlationY;
   draw.SetTitleX("selmu_ecal_showerendpos[1][1]");
   draw.SetTitleY("selmu_ecal_showerendpos[0][1]");
   draw.Draw(default,"selmu_ecal_showerendpos[0][1]:selmu_ecal_showerendpos[1][1]",50,500,2000,50,500,2000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
-  TCanvas selmu_ecal_endpos_correlation2;
+  TCanvas selmu_ecal_endpos_correlationZ;
   draw.SetTitleX("selmu_ecal_showerendpos[1][2]");
   draw.SetTitleY("selmu_ecal_showerendpos[0][2]");
   draw.Draw(default,"selmu_ecal_showerendpos[0][2]:selmu_ecal_showerendpos[1][2]",50,500,3500,50,500,3500,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
-  TCanvas selmu_ecal_endpos_correlation3;
+  /*TCanvas selmu_ecal_endpos_correlationT;
   draw.SetTitleX("selmu_ecal_showerendpos[1][3]");
   draw.SetTitleY("selmu_ecal_showerendpos[0][3]");
-  draw.Draw(default,"selmu_ecal_showerendpos[0][3]:selmu_ecal_showerendpos[1][3]",50,2000,8000,50,2000,8000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  draw.Draw(default,"selmu_ecal_showerendpos[0][3]:selmu_ecal_showerendpos[1][3]",50,2000,8000,50,2000,8000,"all","accum_level[][1]>5&&selmu_necals>1","colz");*/
+  
+  TCanvas selmu_ecal_endpos_correlationXZ;
+  draw.SetTitleX("selmu_ecal_showerendpos[0][0]");
+  draw.SetTitleY("selmu_ecal_showerendpos[0][2]");
+  draw.Draw(default,"selmu_ecal_showerendpos[0][2]:selmu_ecal_showerendpos[0][0]",50,-2000,2000,50,500,3500,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
 }
