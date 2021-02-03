@@ -29,10 +29,6 @@
   TCanvas selmu_ecal_endpos_correlation1;
   draw.SetTitleX("selmu_ecal_showerendpos[1][3]");
   draw.SetTitleY("selmu_ecal_showerendpos[0][3]");
-  draw.Draw(default,"selmu_ecal_showerendpos[0][3]:selmu_ecal_showerendpos[1][3]",50,-2000,4000,50,-2000,4000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  draw.Draw(default,"selmu_ecal_showerendpos[0][3]:selmu_ecal_showerendpos[1][3]",50,2000,6000,50,2000,6000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
-  TCanvas selmu_ecal_endpos_correlation2;
-  draw.SetTitleX("selmu_ecal_showerendpos[3][1]");
-  draw.SetTitleY("selmu_ecal_showerendpos[3][0]");
-  draw.Draw(default,"selmu_ecal_showerendpos[3][0]:selmu_ecal_showerendpos[3][1]",50,-2000,4000,50,-2000,4000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
 }
