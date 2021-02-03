@@ -4,7 +4,7 @@
 
   draw.DumpPOT(mc);
   
-  TCanvas selmu_necals;
+  /*TCanvas selmu_necals;
   draw.Draw(default,"selmu_necals",5,0,5,"topology","accum_level[][1]>5&&selmu_necals>0");
   
   TCanvas selmu_necals_multiple;
@@ -15,6 +15,7 @@
   
   TCanvas selpi_necals_multiple;
   draw.Draw(default,"HMNT_NEcalSegments",5,0,5,"topology","accum_level[][1]>5&&HMNT_NEcalSegments>1");
+  */
   
   TCanvas selmu_ecal_det_correlation;
   draw.SetTitleX("selmu_ecal_det[1]");
@@ -26,7 +27,22 @@
   draw.SetTitleY("selmu_ecal_EMenergy[0]");
   draw.Draw(default,"selmu_ecal_EMenergy[0]:selmu_ecal_EMenergy[1]",50,0,400,50,0,400,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
+  TCanvas selmu_ecal_endpos_correlation0;
+  draw.SetTitleX("selmu_ecal_showerendpos[1][0]");
+  draw.SetTitleY("selmu_ecal_showerendpos[0][0]");
+  draw.Draw(default,"selmu_ecal_showerendpos[0][0]:selmu_ecal_showerendpos[1][0]",50,-2000,8000,50,-2000,8000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  
   TCanvas selmu_ecal_endpos_correlation1;
+  draw.SetTitleX("selmu_ecal_showerendpos[1][1]");
+  draw.SetTitleY("selmu_ecal_showerendpos[0][1]");
+  draw.Draw(default,"selmu_ecal_showerendpos[0][1]:selmu_ecal_showerendpos[1][1]",50,-2000,8000,50,-2000,8000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  
+  TCanvas selmu_ecal_endpos_correlation2;
+  draw.SetTitleX("selmu_ecal_showerendpos[1][2]");
+  draw.SetTitleY("selmu_ecal_showerendpos[0][2]");
+  draw.Draw(default,"selmu_ecal_showerendpos[0][2]:selmu_ecal_showerendpos[1][2]",50,-2000,8000,50,-2000,8000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  
+  TCanvas selmu_ecal_endpos_correlation3;
   draw.SetTitleX("selmu_ecal_showerendpos[1][3]");
   draw.SetTitleY("selmu_ecal_showerendpos[0][3]");
   draw.Draw(default,"selmu_ecal_showerendpos[0][3]:selmu_ecal_showerendpos[1][3]",50,2000,8000,50,2000,8000,"all","accum_level[][1]>5&&selmu_necals>1","colz");
