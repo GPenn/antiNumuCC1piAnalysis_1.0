@@ -21,4 +21,7 @@
   
   TCanvas bothtracks_bkg;
   draw.Draw(default,"particle==-13&&HMNT_truepdg==-211",2,0,2,"topology","accum_level[][1]>8&&topology!=1&&HMNT_mom>0");
+  
+  TCanvas bothtracks_sig_hmntpdgcheck;
+  draw.Draw(default,"HMNT_truepdg",2000,-1000,1000,"topology","accum_level[][1]>8&&topology==1&&HMNT_mom>0&&(!(particle==-13&&HMNT_truepdg==-211))");
 }
