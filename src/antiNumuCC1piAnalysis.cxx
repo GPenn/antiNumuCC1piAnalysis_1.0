@@ -102,6 +102,25 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
   
+  // --- Muon candidate variables
+  
+  AddVarF(output(),selmu_tpc_like_mu, "");
+  AddVarF(output(),selmu_tpc_like_e, "");
+  AddVarF(output(),selmu_tpc_like_p, "");
+  AddVarF(output(),selmu_tpc_like_pi, "");
+  
+  AddVarF(output(),selmu_fgd1_pull_mu, "");
+  AddVarF(output(),selmu_fgd1_pull_e, "");
+  AddVarF(output(),selmu_fgd1_pull_p, "");
+  AddVarF(output(),selmu_fgd1_pull_pi, "");
+  AddVarF(output(),selmu_fgd1_pull_no, "");
+  
+  AddVarF(output(),selmu_fgd2_pull_mu, "");
+  AddVarF(output(),selmu_fgd2_pull_e, "");
+  AddVarF(output(),selmu_fgd2_pull_p, "");
+  AddVarF(output(),selmu_fgd2_pull_pi, "");
+  AddVarF(output(),selmu_fgd2_pull_no, "");
+  
   // --- Highest-momentum negative track variables
     
   AddVarF(output(),HMNT_mom, "");
