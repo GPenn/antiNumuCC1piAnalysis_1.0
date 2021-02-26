@@ -167,6 +167,17 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
+  // Fill muon candidate variables
+  if (mybox().MainTrack  ) 
+  {
+    output().FillVar(selmu_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0));
+    output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
+    output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
+    output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
+    
+    
+  }
+  
   // Fill HMNT variables
   if (mybox().HMNtrack  ) 
   {
