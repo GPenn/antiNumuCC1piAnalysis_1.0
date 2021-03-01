@@ -175,7 +175,16 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
     output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
     
-    
+    AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
+    if (FGD1Segment) 
+    {
+      output().FillVar(selmu_fgd1_pull_mu,     FGD1Segment->Pullmu);
+      output().FillVar(selmu_fgd1_pull_e,      FGD1Segment->Pulle);
+      output().FillVar(selmu_fgd1_pull_p,      FGD1Segment->Pullp);
+      output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
+      output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
+    }
+
   }
   
   // Fill HMNT variables
