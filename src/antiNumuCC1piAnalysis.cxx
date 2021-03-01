@@ -184,6 +184,16 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
       output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
     }
+    
+    AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(1)));
+    if (FGD2Segment) 
+    {
+      output().FillVar(selmu_fgd2_pull_mu,     FGD2Segment->Pullmu);
+      output().FillVar(selmu_fgd2_pull_e,      FGD2Segment->Pulle);
+      output().FillVar(selmu_fgd2_pull_p,      FGD2Segment->Pullp);
+      output().FillVar(selmu_fgd2_pull_pi,     FGD2Segment->Pullpi);
+      output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
+    }
 
   }
   
