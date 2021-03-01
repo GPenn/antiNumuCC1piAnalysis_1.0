@@ -22,6 +22,10 @@
   draw.SetTitleX("Muon candidate FGD1 pull - muon");
   draw.Draw(default,"selmu_fgd1_pull_mu",50,-10,40,"topology","accum_level[][1]>7");
   
+  TCanvas selmu_fgd1_pull_e;
+  draw.SetTitleX("Muon candidate FGD1 pull - electron");
+  draw.Draw(default,"selmu_fgd1_pull_e",50,-10,40,"topology","accum_level[][1]>7");
+  
   TCanvas selmu_fgd1_pull_p;
   draw.SetTitleX("Muon candidate FGD1 pull - proton");
   draw.Draw(default,"selmu_fgd1_pull_p",50,-10,40,"topology","accum_level[][1]>7");
