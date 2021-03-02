@@ -109,12 +109,14 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_tpc_like_p, "");
   AddVarF(output(),selmu_tpc_like_pi, "");
   
+  AddVarI(output(),selmu_has_fgd1seg, "");
   AddVarF(output(),selmu_fgd1_pull_mu, "");
   AddVarF(output(),selmu_fgd1_pull_e, "");
   AddVarF(output(),selmu_fgd1_pull_p, "");
   AddVarF(output(),selmu_fgd1_pull_pi, "");
   AddVarF(output(),selmu_fgd1_pull_no, "");
   
+  AddVarI(output(),selmu_has_fgd2seg, "");
   AddVarF(output(),selmu_fgd2_pull_mu, "");
   AddVarF(output(),selmu_fgd2_pull_e, "");
   AddVarF(output(),selmu_fgd2_pull_p, "");
@@ -133,7 +135,25 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_ecal_length, "");
   AddVarF(output(),HMNT_ecal_mippion, "");
   AddVarF(output(),HMNT_ecal_angle, "");
-
+ 
+  AddVarF(output(),HMNT_tpc_like_mu, "");
+  AddVarF(output(),HMNT_tpc_like_e, "");
+  AddVarF(output(),HMNT_tpc_like_p, "");
+  AddVarF(output(),HMNT_tpc_like_pi, "");
+  
+  AddVarI(output(),HMNT_has_fgd1seg, "");
+  AddVarF(output(),HMNT_fgd1_pull_mu, "");
+  AddVarF(output(),HMNT_fgd1_pull_e, "");
+  AddVarF(output(),HMNT_fgd1_pull_p, "");
+  AddVarF(output(),HMNT_fgd1_pull_pi, "");
+  AddVarF(output(),HMNT_fgd1_pull_no, "");
+  
+  AddVarI(output(),HMNT_has_fgd2seg, "");
+  AddVarF(output(),HMNT_fgd2_pull_mu, "");
+  AddVarF(output(),HMNT_fgd2_pull_e, "");
+  AddVarF(output(),HMNT_fgd2_pull_p, "");
+  AddVarF(output(),HMNT_fgd2_pull_pi, "");
+  AddVarF(output(),HMNT_fgd2_pull_no, "");
   
   baseTrackerAnalysis::AddEffCounters();
   
