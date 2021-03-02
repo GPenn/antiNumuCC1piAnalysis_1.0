@@ -198,21 +198,31 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
     {
+      output().FillVar(selmu_has_fgd1seg,      1);
       output().FillVar(selmu_fgd1_pull_mu,     FGD1Segment->Pullmu);
       output().FillVar(selmu_fgd1_pull_e,      FGD1Segment->Pulle);
       output().FillVar(selmu_fgd1_pull_p,      FGD1Segment->Pullp);
       output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
       output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
     }
+    else
+    {
+      output().FillVar(selmu_has_fgd1seg,      0);
+    }
     
     AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(1)));
     if (FGD2Segment) 
     {
+      output().FillVar(selmu_has_fgd2seg,      1);
       output().FillVar(selmu_fgd2_pull_mu,     FGD2Segment->Pullmu);
       output().FillVar(selmu_fgd2_pull_e,      FGD2Segment->Pulle);
       output().FillVar(selmu_fgd2_pull_p,      FGD2Segment->Pullp);
       output().FillVar(selmu_fgd2_pull_pi,     FGD2Segment->Pullpi);
       output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
+    }
+    else
+    {
+      output().FillVar(selmu_has_fgd2seg,      0);
     }
 
   }
@@ -237,6 +247,41 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_ecal_length,        ECalSeg->Length);
       output().FillVar(HMNT_ecal_mippion,       ECalSeg->PIDMipPion);
       //output().FillVar(HMNT_ecal_angle,         ECalSeg->PID_Angle);
+    }
+    
+    output().FillVar(HMNT_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),0));
+    output().FillVar(HMNT_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),1));
+    output().FillVar(HMNT_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),2));
+    output().FillVar(HMNT_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),3));
+    
+    AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(0)));
+    if (FGD1Segment) 
+    {
+      output().FillVar(HMNT_has_fgd1seg,      1);
+      output().FillVar(HMNT_fgd1_pull_mu,     FGD1Segment->Pullmu);
+      output().FillVar(HMNT_fgd1_pull_e,      FGD1Segment->Pulle);
+      output().FillVar(HMNT_fgd1_pull_p,      FGD1Segment->Pullp);
+      output().FillVar(HMNT_fgd1_pull_pi,     FGD1Segment->Pullpi);
+      output().FillVar(HMNT_fgd1_pull_no,     FGD1Segment->Pullno);
+    }
+    else
+    {
+      output().FillVar(HMNT_has_fgd1seg,      0);
+    }
+    
+    AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(1)));
+    if (FGD2Segment) 
+    {
+      output().FillVar(HMNT_has_fgd2seg,      1);
+      output().FillVar(HMNT_fgd2_pull_mu,     FGD2Segment->Pullmu);
+      output().FillVar(HMNT_fgd2_pull_e,      FGD2Segment->Pulle);
+      output().FillVar(HMNT_fgd2_pull_p,      FGD2Segment->Pullp);
+      output().FillVar(HMNT_fgd2_pull_pi,     FGD2Segment->Pullpi);
+      output().FillVar(HMNT_fgd2_pull_no,     FGD2Segment->Pullno);
+    }
+    else
+    {
+      output().FillVar(HMNT_has_fgd2seg,      0);
     }
     
   }
