@@ -49,12 +49,14 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     selmu_tpc_like_p,
     selmu_tpc_like_pi,
    
+    selmu_has_fgd1seg,
     selmu_fgd1_pull_mu,
     selmu_fgd1_pull_e,
     selmu_fgd1_pull_p,
     selmu_fgd1_pull_pi,
     selmu_fgd1_pull_no,
    
+    selmu_has_fgd2seg,
     selmu_fgd2_pull_mu,
     selmu_fgd2_pull_e,
     selmu_fgd2_pull_p,
@@ -70,6 +72,25 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     HMNT_ecal_length,
     HMNT_ecal_mippion,
     HMNT_ecal_angle,
+   
+    HMNT_tpc_like_mu,
+    HMNT_tpc_like_e,
+    HMNT_tpc_like_p,
+    HMNT_tpc_like_pi,
+   
+    HMNT_has_fgd1seg,
+    HMNT_fgd1_pull_mu,
+    HMNT_fgd1_pull_e,
+    HMNT_fgd1_pull_p,
+    HMNT_fgd1_pull_pi,
+    HMNT_fgd1_pull_no,
+   
+    HMNT_has_fgd1seg,
+    HMNT_fgd2_pull_mu,
+    HMNT_fgd2_pull_e,
+    HMNT_fgd2_pull_p,
+    HMNT_fgd2_pull_pi,
+    HMNT_fgd2_pull_no,
   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
