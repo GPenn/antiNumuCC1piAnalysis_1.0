@@ -85,7 +85,7 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     HMNT_fgd1_pull_pi,
     HMNT_fgd1_pull_no,
    
-    HMNT_has_fgd1seg,
+    HMNT_has_fgd2seg,
     HMNT_fgd2_pull_mu,
     HMNT_fgd2_pull_e,
     HMNT_fgd2_pull_p,
