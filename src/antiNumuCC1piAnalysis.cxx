@@ -139,8 +139,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_ecal_mippion, "");
   AddVarF(output(),HMNT_ecal_angle, "");
   
-  AddVarF(output(),selmu_ecal_avg_mippion, "");
-  AddVarF(output(),selmu_ecal_avg_EbyL, "");
+  AddVarF(output(),HMNT_ecal_avg_mippion, "");
+  AddVarF(output(),HMNT_ecal_avg_EbyL, "");
  
   AddVarF(output(),HMNT_tpc_like_mu, "");
   AddVarF(output(),HMNT_tpc_like_e, "");
