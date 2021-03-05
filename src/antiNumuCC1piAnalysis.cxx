@@ -284,6 +284,32 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       //output().FillVar(HMNT_ecal_angle,         ECalSeg->PID_Angle);
     }
     
+    Float_t HMNT_mean_mippion = -999.0;
+    Float_t HMNT_mean_EbyL = -999.0;
+    Int_t HMNT_mean_denom = 0;
+  
+    for (Int_t subdet = 0; subdet<9; subdet++) {
+      if (!SubDetId::GetDetectorUsed(mybox().HMNtrack->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
+
+      AnaECALParticle* ECALSegment = static_cast<AnaECALParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(subdet+6)));
+
+      if (!ECALSegment) continue;
+      
+      if (HMNT_mean_mippion==-999.0) HMNT_mean_mippion=0;
+      if (HMNT_mean_EbyL==-999.0) HMNT_mean_EbyL=0;
+    
+      HMNT_mean_mippion += ECALSegment->PIDMipPion;
+      HMNT_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      
+      HMNT_mean_denom++;
+    }
+    
+    HMNT_mean_mippion /= HMNT_mean_denom;
+    HMNT_mean_EbyL /= HMNT_mean_denom;
+    
+    output().FillVar(HMNT_ecal_avg_mippion,     HMNT_mean_mippion);
+    output().FillVar(HMNT_ecal_avg_EbyL,        HMNT_mean_EbyL);
+    
     output().FillVar(HMNT_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),0));
     output().FillVar(HMNT_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),1));
     output().FillVar(HMNT_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),2));
