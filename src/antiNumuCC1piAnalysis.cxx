@@ -230,8 +230,37 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     {
       output().FillVar(selmu_has_fgd2seg,      0);
     }
+    
+    Float_t selmu_mean_mippion = -999.0;
+    Float_t selmu_mean_EbyL = -999.0;
+    Int_t selmu_mean_denom = 0;
+  
+    for (Int_t subdet = 0; subdet<9; subdet++) {
+      if (!SubDetId::GetDetectorUsed(mybox().MainTrack->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
+
+      AnaECALParticle* ECALSegment = static_cast<AnaECALParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(subdet+6)));
+
+      if (!ECALSegment) continue;
+      
+      if (selmu_mean_mippion==-999.0) selmu_mean_mippion=0;
+      if (selmu_mean_EbyL==-999.0) selmu_mean_EbyL=0;
+    
+      selmu_mean_mippion += ECALSegment->PIDMipPion;
+      selmu_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      
+      selmu_mean_denom++;
+    }
+    
+    selmu_mean_mippion /= selmu_mean_denom;
+    selmu_mean_EbyL /= selmu_mean_denom;
+    
+    output().FillVar(selmu_ecal_avg_mippion,     selmu_mean_mippion);
+    output().FillVar(selmu_ecal_avg_EbyL,        selmu_mean_EbyL);
 
   }
+  
+  
+
   
   // Fill HMNT variables
   if (mybox().HMNtrack  ) 
