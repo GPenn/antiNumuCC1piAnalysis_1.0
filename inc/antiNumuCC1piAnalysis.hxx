@@ -63,6 +63,9 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     selmu_fgd2_pull_pi,
     selmu_fgd2_pull_no,
    
+    selmu_ecal_avg_mippion,
+    selmu_ecal_avg_EbyL,
+   
     HMNT_mom,
     HMNT_costheta,
     HMNT_pdg,
@@ -72,6 +75,8 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     HMNT_ecal_length,
     HMNT_ecal_mippion,
     HMNT_ecal_angle,
+    HMNT_ecal_avg_mippion,
+    HMNT_ecal_avg_EbyL,
    
     HMNT_tpc_like_mu,
     HMNT_tpc_like_e,
