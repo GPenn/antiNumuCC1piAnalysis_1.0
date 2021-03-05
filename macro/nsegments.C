@@ -55,18 +55,18 @@
   TCanvas selmu_ecal_mippion_correlation;
   draw.SetTitleX("selmu_ecal_mippion[1]");
   draw.SetTitleY("selmu_ecal_mippion[0]");
-  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>4&&selmu_necals>1","colz");
   TCanvas selmu_ecal_mippion_correlation_sig;
-  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1&&particle==-13","colz");
+  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>4&&selmu_necals>1&&particle==-13","colz");
   TCanvas selmu_ecal_mippion_correlation_bkg;
-  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1&&particle!=-13","colz");
+  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>4&&selmu_necals>1&&particle!=-13","colz");
   
   TCanvas selmu_ecal_EbyL_correlation;
   draw.SetTitleX("selmu_ecal_EMenergy[1]/selmu_ecal_length[1]");
   draw.SetTitleY("selmu_ecal_EMenergy[0]/selmu_ecal_length[0]");
-  draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]:selmu_ecal_EMenergy[1]/selmu_ecal_length[1]",50,0,4,50,0,4,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]:selmu_ecal_EMenergy[1]/selmu_ecal_length[1]",50,0,4,50,0,4,"all","accum_level[][1]>4&&selmu_necals>1","colz");
   TCanvas selmu_ecal_EbyL_correlation_sig;
-  draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]:selmu_ecal_EMenergy[1]/selmu_ecal_length[1]",50,0,4,50,0,4,"all","accum_level[][1]>5&&selmu_necals>1&&particle==-13","colz");
+  draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]:selmu_ecal_EMenergy[1]/selmu_ecal_length[1]",50,0,4,50,0,4,"all","accum_level[][1]>4&&selmu_necals>1&&particle==-13","colz");
   TCanvas selmu_ecal_EbyL_correlation_bkg;
-  draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]:selmu_ecal_EMenergy[1]/selmu_ecal_length[1]",50,0,4,50,0,4,"all","accum_level[][1]>5&&selmu_necals>1&&particle!=-13","colz");
+  draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]:selmu_ecal_EMenergy[1]/selmu_ecal_length[1]",50,0,4,50,0,4,"all","accum_level[][1]>4&&selmu_necals>1&&particle!=-13","colz");
 }
