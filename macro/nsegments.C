@@ -52,9 +52,12 @@
   draw.SetTitleY("selmu_ecal_showerendpos[0][2]");
   draw.Draw(default,"selmu_ecal_showerendpos[0][2]:selmu_ecal_showerendpos[0][0]",50,-2000,2000,50,500,3500,"all","accum_level[][1]>5&&selmu_necals>1","colz");*/
   
-  TCanvas selmu_ecal_EMenergy_correlation;
+  TCanvas selmu_ecal_mippion_correlation;
   draw.SetTitleX("selmu_ecal_mippion[1]");
   draw.SetTitleY("selmu_ecal_mippion[0]");
   draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1","colz");
-  
+  TCanvas selmu_ecal_mippion_correlation_sig;
+  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1&&particle==-13","colz");
+  TCanvas selmu_ecal_mippion_correlation_bkg;
+  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1&&particle!=-13","colz");
 }
