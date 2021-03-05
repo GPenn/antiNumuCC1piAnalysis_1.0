@@ -55,6 +55,6 @@
   TCanvas selmu_ecal_EMenergy_correlation;
   draw.SetTitleX("selmu_ecal_mippion[1]");
   draw.SetTitleY("selmu_ecal_mippion[0]");
-  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-50,50,50,-50,50,"all","accum_level[][1]>5&&selmu_necals>1","colz");
+  draw.Draw(default,"selmu_ecal_mippion[0]:selmu_ecal_mippion[1]",50,-20,30,50,-20,30,"all","accum_level[][1]>5&&selmu_necals>1","colz");
   
 }
