@@ -43,7 +43,7 @@ void defaultAntiNumuCC1pi::Loop()
           fChain->GetEntry(jentry);
 
           // Cut on accum_level etc.
-          if (accum_level[0][1] < 8) continue; // Set accum_level
+          if (accum_level[0][1] <= 4) continue; // Set accum_level
      
             defout->evt    		                  = evt;
             defout->topology		                  = topology;
