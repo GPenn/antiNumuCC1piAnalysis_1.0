@@ -39,20 +39,58 @@ public :
   Int_t           evt;
   Int_t           topology;
   Int_t           particle;
+  Int_t           ntpcposQualityFV;
+  Int_t           ntpcnegQualityFV;
   
   Int_t           selmu_necals;
   Float_t         selmu_ecal_mippion;
   Float_t         selmu_ecal_EMenergy;
   Float_t         selmu_ecal_length;
   Float_t         selmu_ecal_EoverL;
+  Float_t         selmu_ecal_avg_mippion;
+  Float_t         selmu_ecal_avg_EbyL;
+  
+  Float_t         selmu_tpc_like_mu;
+  Float_t         selmu_tpc_like_e;
+  Float_t         selmu_tpc_like_p;
+  Float_t         selmu_tpc_like_pi;
+  
+  Int_t           selmu_has_fgd1seg;
+  Float_t         selmu_fgd1_pull_mu;
+  Float_t         selmu_fgd1_pull_p;
+  Float_t         selmu_fgd1_pull_pi;
+  Float_t         selmu_fgd1_pull_no;
+  
+  Int_t           selmu_has_fgd2seg;
+  Float_t         selmu_fgd2_pull_mu;
+  Float_t         selmu_fgd2_pull_p;
+  Float_t         selmu_fgd2_pull_pi;
+  Float_t         selmu_fgd2_pull_no;
   
   Int_t           HMNT_NEcalSegments;
   Float_t         HMNT_ecal_mippion;
   Float_t         HMNT_ecal_EMenergy;
   Float_t         HMNT_ecal_length;
   Float_t         HMNT_ecal_EoverL;
- 
+  Float_t         HMNT_ecal_avg_mippion;
+  Float_t         HMNT_ecal_avg_EbyL;
   
+  Float_t         HMNT_tpc_like_mu;
+  Float_t         HMNT_tpc_like_e;
+  Float_t         HMNT_tpc_like_p;
+  Float_t         HMNT_tpc_like_pi;
+  
+  Int_t           HMNT_has_fgd1seg;
+  Float_t         HMNT_fgd1_pull_mu;
+  Float_t         HMNT_fgd1_pull_p;
+  Float_t         HMNT_fgd1_pull_pi;
+  Float_t         HMNT_fgd1_pull_no;
+  
+  Int_t           HMNT_has_fgd2seg;
+  Float_t         HMNT_fgd2_pull_mu;
+  Float_t         HMNT_fgd2_pull_p;
+  Float_t         HMNT_fgd2_pull_pi;
+  Float_t         HMNT_fgd2_pull_no;
 
 protected:
 
@@ -69,72 +107,232 @@ private:
   TBranch        *foutb_evt_SigTrain;
   TBranch        *foutb_topology_SigTrain;
   TBranch        *foutb_particle_SigTrain;
+  TBranch        *foutb_ntpcposQualityFV_SigTrain;
+  TBranch        *foutb_ntpcnegQualityFV_SigTrain;
   
   TBranch        *foutb_selmu_necals_SigTrain;
   TBranch        *foutb_selmu_ecal_mippion_SigTrain;
   TBranch        *foutb_selmu_ecal_EMenergy_SigTrain;
   TBranch        *foutb_selmu_ecal_length_SigTrain;
   TBranch        *foutb_selmu_ecal_EoverL_SigTrain;
+  TBranch        *foutb_selmu_ecal_avg_mippion_SigTrain;
+  TBranch        *foutb_selmu_ecal_avg_EbyL_SigTrain;
+  
+  TBranch        *foutb_selmu_tpc_like_mu_SigTrain;
+  TBranch        *foutb_selmu_tpc_like_e_SigTrain;
+  TBranch        *foutb_selmu_tpc_like_p_SigTrain;
+  TBranch        *foutb_selmu_tpc_like_pi_SigTrain;
+  
+  TBranch        *foutb_selmu_has_fgd1seg_SigTrain;
+  TBranch        *foutb_selmu_fgd1_pull_mu_SigTrain;
+  TBranch        *foutb_selmu_fgd1_pull_p_SigTrain;
+  TBranch        *foutb_selmu_fgd1_pull_pi_SigTrain;
+  TBranch        *foutb_selmu_fgd1_pull_no_SigTrain;
+  
+  TBranch        *foutb_selmu_has_fgd2seg_SigTrain;
+  TBranch        *foutb_selmu_fgd2_pull_mu_SigTrain;
+  TBranch        *foutb_selmu_fgd2_pull_p_SigTrain;
+  TBranch        *foutb_selmu_fgd2_pull_pi_SigTrain;
+  TBranch        *foutb_selmu_fgd2_pull_no_SigTrain;
   
   TBranch        *foutb_HMNT_NEcalSegments_SigTrain;
   TBranch        *foutb_HMNT_ecal_mippion_SigTrain;
   TBranch        *foutb_HMNT_ecal_EMenergy_SigTrain;
   TBranch        *foutb_HMNT_ecal_length_SigTrain;
   TBranch        *foutb_HMNT_ecal_EoverL_SigTrain;
+  TBranch        *foutb_HMNT_ecal_avg_mippion_SigTrain;
+  TBranch        *foutb_HMNT_ecal_avg_EbyL_SigTrain;
+  
+  TBranch        *foutb_HMNT_tpc_like_mu_SigTrain;
+  TBranch        *foutb_HMNT_tpc_like_e_SigTrain;
+  TBranch        *foutb_HMNT_tpc_like_p_SigTrain;
+  TBranch        *foutb_HMNT_tpc_like_pi_SigTrain;
+  
+  TBranch        *foutb_HMNT_has_fgd1seg_SigTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_mu_SigTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_p_SigTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_pi_SigTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_no_SigTrain;
+  
+  TBranch        *foutb_HMNT_has_fgd2seg_SigTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_mu_SigTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_p_SigTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_pi_SigTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_no_SigTrain;
   
   // ----------- Signal testing tree -----------
   
   TBranch        *foutb_evt_SigTest;
   TBranch        *foutb_topology_SigTest;
   TBranch        *foutb_particle_SigTest;
+  TBranch        *foutb_ntpcposQualityFV_SigTest;
+  TBranch        *foutb_ntpcnegQualityFV_SigTest;
   
   TBranch        *foutb_selmu_necals_SigTest;
   TBranch        *foutb_selmu_ecal_mippion_SigTest;
   TBranch        *foutb_selmu_ecal_EMenergy_SigTest;
   TBranch        *foutb_selmu_ecal_length_SigTest;
   TBranch        *foutb_selmu_ecal_EoverL_SigTest;
+  TBranch        *foutb_selmu_ecal_avg_mippion_SigTest;
+  TBranch        *foutb_selmu_ecal_avg_EbyL_SigTest;
+  
+  TBranch        *foutb_selmu_tpc_like_mu_SigTest;
+  TBranch        *foutb_selmu_tpc_like_e_SigTest;
+  TBranch        *foutb_selmu_tpc_like_p_SigTest;
+  TBranch        *foutb_selmu_tpc_like_pi_SigTest;
+  
+  TBranch        *foutb_selmu_has_fgd1seg_SigTest;
+  TBranch        *foutb_selmu_fgd1_pull_mu_SigTest;
+  TBranch        *foutb_selmu_fgd1_pull_p_SigTest;
+  TBranch        *foutb_selmu_fgd1_pull_pi_SigTest;
+  TBranch        *foutb_selmu_fgd1_pull_no_SigTest;
+  
+  TBranch        *foutb_selmu_has_fgd2seg_SigTest;
+  TBranch        *foutb_selmu_fgd2_pull_mu_SigTest;
+  TBranch        *foutb_selmu_fgd2_pull_p_SigTest;
+  TBranch        *foutb_selmu_fgd2_pull_pi_SigTest;
+  TBranch        *foutb_selmu_fgd2_pull_no_SigTest;
   
   TBranch        *foutb_HMNT_NEcalSegments_SigTest;
   TBranch        *foutb_HMNT_ecal_mippion_SigTest;
   TBranch        *foutb_HMNT_ecal_EMenergy_SigTest;
   TBranch        *foutb_HMNT_ecal_length_SigTest;
   TBranch        *foutb_HMNT_ecal_EoverL_SigTest;
+  TBranch        *foutb_HMNT_ecal_avg_mippion_SigTest;
+  TBranch        *foutb_HMNT_ecal_avg_EbyL_SigTest;
+  
+  TBranch        *foutb_HMNT_tpc_like_mu_SigTest;
+  TBranch        *foutb_HMNT_tpc_like_e_SigTest;
+  TBranch        *foutb_HMNT_tpc_like_p_SigTest;
+  TBranch        *foutb_HMNT_tpc_like_pi_SigTest;
+  
+  TBranch        *foutb_HMNT_has_fgd1seg_SigTest;
+  TBranch        *foutb_HMNT_fgd1_pull_mu_SigTest;
+  TBranch        *foutb_HMNT_fgd1_pull_p_SigTest;
+  TBranch        *foutb_HMNT_fgd1_pull_pi_SigTest;
+  TBranch        *foutb_HMNT_fgd1_pull_no_SigTest;
+  
+  TBranch        *foutb_HMNT_has_fgd2seg_SigTest;
+  TBranch        *foutb_HMNT_fgd2_pull_mu_SigTest;
+  TBranch        *foutb_HMNT_fgd2_pull_p_SigTest;
+  TBranch        *foutb_HMNT_fgd2_pull_pi_SigTest;
+  TBranch        *foutb_HMNT_fgd2_pull_no_SigTest;
   
   // ----------- Background training tree -----------
   
   TBranch        *foutb_evt_BkgTrain;
   TBranch        *foutb_topology_BkgTrain;
   TBranch        *foutb_particle_BkgTrain;
+  TBranch        *foutb_ntpcposQualityFV_BkgTrain;
+  TBranch        *foutb_ntpcnegQualityFV_BkgTrain;
   
   TBranch        *foutb_selmu_necals_BkgTrain;
   TBranch        *foutb_selmu_ecal_mippion_BkgTrain;
   TBranch        *foutb_selmu_ecal_EMenergy_BkgTrain;
   TBranch        *foutb_selmu_ecal_length_BkgTrain;
   TBranch        *foutb_selmu_ecal_EoverL_BkgTrain;
+  TBranch        *foutb_selmu_ecal_avg_mippion_BkgTrain;
+  TBranch        *foutb_selmu_ecal_avg_EbyL_BkgTrain;
+  
+  TBranch        *foutb_selmu_tpc_like_mu_BkgTrain;
+  TBranch        *foutb_selmu_tpc_like_e_BkgTrain;
+  TBranch        *foutb_selmu_tpc_like_p_BkgTrain;
+  TBranch        *foutb_selmu_tpc_like_pi_BkgTrain;
+  
+  TBranch        *foutb_selmu_has_fgd1seg_BkgTrain;
+  TBranch        *foutb_selmu_fgd1_pull_mu_BkgTrain;
+  TBranch        *foutb_selmu_fgd1_pull_p_BkgTrain;
+  TBranch        *foutb_selmu_fgd1_pull_pi_BkgTrain;
+  TBranch        *foutb_selmu_fgd1_pull_no_BkgTrain;
+  
+  TBranch        *foutb_selmu_has_fgd2seg_BkgTrain;
+  TBranch        *foutb_selmu_fgd2_pull_mu_BkgTrain;
+  TBranch        *foutb_selmu_fgd2_pull_p_BkgTrain;
+  TBranch        *foutb_selmu_fgd2_pull_pi_BkgTrain;
+  TBranch        *foutb_selmu_fgd2_pull_no_BkgTrain;
   
   TBranch        *foutb_HMNT_NEcalSegments_BkgTrain;
   TBranch        *foutb_HMNT_ecal_mippion_BkgTrain;
   TBranch        *foutb_HMNT_ecal_EMenergy_BkgTrain;
   TBranch        *foutb_HMNT_ecal_length_BkgTrain;
   TBranch        *foutb_HMNT_ecal_EoverL_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_avg_mippion_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_avg_EbyL_BkgTrain;
+  
+  TBranch        *foutb_HMNT_tpc_like_mu_BkgTrain;
+  TBranch        *foutb_HMNT_tpc_like_e_BkgTrain;
+  TBranch        *foutb_HMNT_tpc_like_p_BkgTrain;
+  TBranch        *foutb_HMNT_tpc_like_pi_BkgTrain;
+  
+  TBranch        *foutb_HMNT_has_fgd1seg_BkgTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_mu_BkgTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_p_BkgTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_pi_BkgTrain;
+  TBranch        *foutb_HMNT_fgd1_pull_no_BkgTrain;
+  
+  TBranch        *foutb_HMNT_has_fgd2seg_BkgTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_mu_BkgTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_p_BkgTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_pi_BkgTrain;
+  TBranch        *foutb_HMNT_fgd2_pull_no_BkgTrain;
  
   // ----------- Background testing tree -----------
   
   TBranch        *foutb_evt_BkgTest;
   TBranch        *foutb_topology_BkgTest;
   TBranch        *foutb_particle_BkgTest;
+  TBranch        *foutb_ntpcposQualityFV_BkgTest;
+  TBranch        *foutb_ntpcnegQualityFV_BkgTest;
   
   TBranch        *foutb_selmu_necals_BkgTest;
   TBranch        *foutb_selmu_ecal_mippion_BkgTest;
   TBranch        *foutb_selmu_ecal_EMenergy_BkgTest;
   TBranch        *foutb_selmu_ecal_length_BkgTest;
   TBranch        *foutb_selmu_ecal_EoverL_BkgTest;
+  TBranch        *foutb_selmu_ecal_avg_mippion_BkgTest;
+  TBranch        *foutb_selmu_ecal_avg_EbyL_BkgTest;
+  
+  TBranch        *foutb_selmu_tpc_like_mu_BkgTest;
+  TBranch        *foutb_selmu_tpc_like_e_BkgTest;
+  TBranch        *foutb_selmu_tpc_like_p_BkgTest;
+  TBranch        *foutb_selmu_tpc_like_pi_BkgTest;
+  
+  TBranch        *foutb_selmu_has_fgd1seg_BkgTest;
+  TBranch        *foutb_selmu_fgd1_pull_mu_BkgTest;
+  TBranch        *foutb_selmu_fgd1_pull_p_BkgTest;
+  TBranch        *foutb_selmu_fgd1_pull_pi_BkgTest;
+  TBranch        *foutb_selmu_fgd1_pull_no_BkgTest;
+  
+  TBranch        *foutb_selmu_has_fgd2seg_BkgTest;
+  TBranch        *foutb_selmu_fgd2_pull_mu_BkgTest;
+  TBranch        *foutb_selmu_fgd2_pull_p_BkgTest;
+  TBranch        *foutb_selmu_fgd2_pull_pi_BkgTest;
+  TBranch        *foutb_selmu_fgd2_pull_no_BkgTest;
   
   TBranch        *foutb_HMNT_NEcalSegments_BkgTest;
   TBranch        *foutb_HMNT_ecal_mippion_BkgTest;
   TBranch        *foutb_HMNT_ecal_EMenergy_BkgTest;
   TBranch        *foutb_HMNT_ecal_length_BkgTest;
   TBranch        *foutb_HMNT_ecal_EoverL_BkgTest;
+  TBranch        *foutb_HMNT_ecal_avg_mippion_BkgTest;
+  TBranch        *foutb_HMNT_ecal_avg_EbyL_BkgTest;
+  
+  TBranch        *foutb_HMNT_tpc_like_mu_BkgTest;
+  TBranch        *foutb_HMNT_tpc_like_e_BkgTest;
+  TBranch        *foutb_HMNT_tpc_like_p_BkgTest;
+  TBranch        *foutb_HMNT_tpc_like_pi_BkgTest;
+  
+  TBranch        *foutb_HMNT_has_fgd1seg_BkgTest;
+  TBranch        *foutb_HMNT_fgd1_pull_mu_BkgTest;
+  TBranch        *foutb_HMNT_fgd1_pull_p_BkgTest;
+  TBranch        *foutb_HMNT_fgd1_pull_pi_BkgTest;
+  TBranch        *foutb_HMNT_fgd1_pull_no_BkgTest;
+  
+  TBranch        *foutb_HMNT_has_fgd2seg_BkgTest;
+  TBranch        *foutb_HMNT_fgd2_pull_mu_BkgTest;
+  TBranch        *foutb_HMNT_fgd2_pull_p_BkgTest;
+  TBranch        *foutb_HMNT_fgd2_pull_pi_BkgTest;
+  TBranch        *foutb_HMNT_fgd2_pull_no_BkgTest;
   
 };
 
