@@ -123,8 +123,9 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_fgd2_pull_pi, "");
   AddVarF(output(),selmu_fgd2_pull_no, "");
   
-  AddVarF(output(),selmu_ecal_avg_mippion, "");
-  AddVarF(output(),selmu_ecal_avg_EbyL, "");
+  AddVarF(output(),selmu_ecal_bestseg_EMenergy, "");
+  AddVarF(output(),selmu_ecal_bestseg_mippion, "");
+  AddVarF(output(),selmu_ecal_bestseg_EbyL, "");
   
   // --- Highest-momentum negative track variables
     
@@ -139,8 +140,9 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_ecal_mippion, "");
   AddVarF(output(),HMNT_ecal_angle, "");
   
-  AddVarF(output(),HMNT_ecal_avg_mippion, "");
-  AddVarF(output(),HMNT_ecal_avg_EbyL, "");
+  AddVarF(output(),HMNT_ecal_bestseg_EMenergy, "");
+  AddVarF(output(),HMNT_ecal_bestseg_mippion, "");
+  AddVarF(output(),HMNT_ecal_bestseg_EbyL, "");
  
   AddVarF(output(),HMNT_tpc_like_mu, "");
   AddVarF(output(),HMNT_tpc_like_e, "");
@@ -231,9 +233,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_has_fgd2seg,      0);
     }
     
-    Float_t selmu_mean_mippion = -999.0;
-    Float_t selmu_mean_EbyL = -999.0;
-    Int_t selmu_mean_denom = 0;
+    Float_t selmu_max_EMenergy = -999.0;
+    Float_t selmu_best_mippion = -999.0;
+    Float_t selmu_best_EbyL = -999.0;
+    //Int_t selmu_mean_denom = 0;
   
     for (Int_t subdet = 0; subdet<9; subdet++) {
       if (!SubDetId::GetDetectorUsed(mybox().MainTrack->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
@@ -242,20 +245,26 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
 
       if (!ECALSegment) continue;
       
-      if (selmu_mean_mippion==-999.0) selmu_mean_mippion=0;
-      if (selmu_mean_EbyL==-999.0) selmu_mean_EbyL=0;
-    
-      selmu_mean_mippion += ECALSegment->PIDMipPion;
-      selmu_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      if (ECALSegment->EMEnergy > selmu_max_EMenergy) 
+      {
+        selmu_max_EMenergy = ECALSegment->EMEnergy;
+        selmu_best_mippion = ECALSegment->PIDMipPion;
+        selmu_best_EbyL    = (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      }
       
-      selmu_mean_denom++;
+      //if (selmu_mean_mippion==-999.0) selmu_mean_mippion=0;
+      //if (selmu_mean_EbyL==-999.0) selmu_mean_EbyL=0;
+      //selmu_mean_mippion += ECALSegment->PIDMipPion;
+      //selmu_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      //selmu_mean_denom++;
     }
     
-    selmu_mean_mippion /= selmu_mean_denom;
-    selmu_mean_EbyL /= selmu_mean_denom;
+    //selmu_mean_mippion /= selmu_mean_denom;
+    //selmu_mean_EbyL /= selmu_mean_denom;
     
-    output().FillVar(selmu_ecal_avg_mippion,     selmu_mean_mippion);
-    output().FillVar(selmu_ecal_avg_EbyL,        selmu_mean_EbyL);
+    output().FillVar(selmu_ecal_bestseg_EMenergy,    selmu_max_EMenergy);
+    output().FillVar(selmu_ecal_bestseg_mippion,     selmu_best_mippion);
+    output().FillVar(selmu_ecal_bestseg_EbyL,        selmu_best_EbyL);
 
   }
   
@@ -284,9 +293,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       //output().FillVar(HMNT_ecal_angle,         ECalSeg->PID_Angle);
     }
     
-    Float_t HMNT_mean_mippion = -999.0;
-    Float_t HMNT_mean_EbyL = -999.0;
-    Int_t HMNT_mean_denom = 0;
+    Float_t HMNT_max_EMenergy = -999.0;
+    Float_t HMNT_best_mippion = -999.0;
+    Float_t HMNT_best_EbyL = -999.0;
+    //Int_t HMNT_mean_denom = 0;
   
     for (Int_t subdet = 0; subdet<9; subdet++) {
       if (!SubDetId::GetDetectorUsed(mybox().HMNtrack->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
@@ -295,20 +305,26 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
 
       if (!ECALSegment) continue;
       
-      if (HMNT_mean_mippion==-999.0) HMNT_mean_mippion=0;
-      if (HMNT_mean_EbyL==-999.0) HMNT_mean_EbyL=0;
-    
-      HMNT_mean_mippion += ECALSegment->PIDMipPion;
-      HMNT_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      if (ECALSegment->EMEnergy > HMNT_max_EMenergy) 
+      {
+        HMNT_max_EMenergy = ECALSegment->EMEnergy;
+        HMNT_best_mippion = ECALSegment->PIDMipPion;
+        HMNT_best_EbyL    = (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      }
       
-      HMNT_mean_denom++;
+      //if (HMNT_mean_mippion==-999.0) HMNT_mean_mippion=0;
+      //if (HMNT_mean_EbyL==-999.0) HMNT_mean_EbyL=0;
+      //HMNT_mean_mippion += ECALSegment->PIDMipPion;
+      //HMNT_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
+      //HMNT_mean_denom++;
     }
     
-    HMNT_mean_mippion /= HMNT_mean_denom;
-    HMNT_mean_EbyL /= HMNT_mean_denom;
+    //HMNT_mean_mippion /= HMNT_mean_denom;
+    //HMNT_mean_EbyL /= HMNT_mean_denom;
     
-    output().FillVar(HMNT_ecal_avg_mippion,     HMNT_mean_mippion);
-    output().FillVar(HMNT_ecal_avg_EbyL,        HMNT_mean_EbyL);
+    output().FillVar(HMNT_ecal_bestseg_EMenergy,    HMNT_max_EMenergy);
+    output().FillVar(HMNT_ecal_bestseg_mippion,     HMNT_best_mippion);
+    output().FillVar(HMNT_ecal_bestseg_EbyL,        HMNT_best_EbyL);
     
     output().FillVar(HMNT_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),0));
     output().FillVar(HMNT_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),1));
