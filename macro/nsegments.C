@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/output_p6T_run5_ecalavgvartest.root");
-  DataSample mc("output/output_p6T_run5_ecalavgvartest.root");
+  DrawingTools draw("output/output_p6T_run5_ecalbestsegtest.root");
+  DataSample mc("output/output_p6T_run5_ecalbestsegtest.root");
 
   draw.DumpPOT(mc);
   
