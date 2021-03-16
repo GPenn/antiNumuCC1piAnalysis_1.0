@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Mon Mar  8 16:09:59 2021 by ROOT version 5.34/34
+// Tue Mar 16 11:29:38 2021 by ROOT version 5.34/34
 // from TTree default/20
-// found on file: ../../output/output_p6T_run5_ecalavgvartest.root
+// found on file: ../../output/output_p6T_run5_ecalbestsegtest.root
 //////////////////////////////////////////////////////////
 
 #ifndef defaultAntiNumuCC1pi_forupdate_h
@@ -354,8 +354,9 @@ public :
    Float_t         selmu_fgd2_pull_p;
    Float_t         selmu_fgd2_pull_pi;
    Float_t         selmu_fgd2_pull_no;
-   Float_t         selmu_ecal_avg_mippion;
-   Float_t         selmu_ecal_avg_EbyL;
+   Float_t         selmu_ecal_bestseg_EMenergy;
+   Float_t         selmu_ecal_bestseg_mippion;
+   Float_t         selmu_ecal_bestseg_EbyL;
    Float_t         HMNT_mom;
    Float_t         HMNT_costheta;
    Int_t           HMNT_pdg;
@@ -365,8 +366,9 @@ public :
    Float_t         HMNT_ecal_length;
    Float_t         HMNT_ecal_mippion;
    Float_t         HMNT_ecal_angle;
-   Float_t         HMNT_ecal_avg_mippion;
-   Float_t         HMNT_ecal_avg_EbyL;
+   Float_t         HMNT_ecal_bestseg_EMenergy;
+   Float_t         HMNT_ecal_bestseg_mippion;
+   Float_t         HMNT_ecal_bestseg_EbyL;
    Float_t         HMNT_tpc_like_mu;
    Float_t         HMNT_tpc_like_e;
    Float_t         HMNT_tpc_like_p;
@@ -717,8 +719,9 @@ public :
    TBranch        *b_selmu_fgd2_pull_p;   //!
    TBranch        *b_selmu_fgd2_pull_pi;   //!
    TBranch        *b_selmu_fgd2_pull_no;   //!
-   TBranch        *b_selmu_ecal_avg_mippion;   //!
-   TBranch        *b_selmu_ecal_avg_EbyL;   //!
+   TBranch        *b_selmu_ecal_bestseg_EMenergy;   //!
+   TBranch        *b_selmu_ecal_bestseg_mippion;   //!
+   TBranch        *b_selmu_ecal_bestseg_EbyL;   //!
    TBranch        *b_HMNT_mom;   //!
    TBranch        *b_HMNT_costheta;   //!
    TBranch        *b_HMNT_pdg;   //!
@@ -728,8 +731,9 @@ public :
    TBranch        *b_HMNT_ecal_length;   //!
    TBranch        *b_HMNT_ecal_mippion;   //!
    TBranch        *b_HMNT_ecal_angle;   //!
-   TBranch        *b_HMNT_ecal_avg_mippion;   //!
-   TBranch        *b_HMNT_ecal_avg_EbyL;   //!
+   TBranch        *b_HMNT_ecal_bestseg_EMenergy;   //!
+   TBranch        *b_HMNT_ecal_bestseg_mippion;   //!
+   TBranch        *b_HMNT_ecal_bestseg_EbyL;   //!
    TBranch        *b_HMNT_tpc_like_mu;   //!
    TBranch        *b_HMNT_tpc_like_e;   //!
    TBranch        *b_HMNT_tpc_like_p;   //!
@@ -766,9 +770,9 @@ defaultAntiNumuCC1pi_forupdate::defaultAntiNumuCC1pi_forupdate(TTree *tree) : fC
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/output_p6T_run5_ecalavgvartest.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/output_p6T_run5_ecalbestsegtest.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../../output/output_p6T_run5_ecalavgvartest.root");
+         f = new TFile("../../output/output_p6T_run5_ecalbestsegtest.root");
       }
       f->GetObject("default",tree);
 
@@ -1149,8 +1153,9 @@ void defaultAntiNumuCC1pi_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("selmu_fgd2_pull_p", &selmu_fgd2_pull_p, &b_selmu_fgd2_pull_p);
    fChain->SetBranchAddress("selmu_fgd2_pull_pi", &selmu_fgd2_pull_pi, &b_selmu_fgd2_pull_pi);
    fChain->SetBranchAddress("selmu_fgd2_pull_no", &selmu_fgd2_pull_no, &b_selmu_fgd2_pull_no);
-   fChain->SetBranchAddress("selmu_ecal_avg_mippion", &selmu_ecal_avg_mippion, &b_selmu_ecal_avg_mippion);
-   fChain->SetBranchAddress("selmu_ecal_avg_EbyL", &selmu_ecal_avg_EbyL, &b_selmu_ecal_avg_EbyL);
+   fChain->SetBranchAddress("selmu_ecal_bestseg_EMenergy", &selmu_ecal_bestseg_EMenergy, &b_selmu_ecal_bestseg_EMenergy);
+   fChain->SetBranchAddress("selmu_ecal_bestseg_mippion", &selmu_ecal_bestseg_mippion, &b_selmu_ecal_bestseg_mippion);
+   fChain->SetBranchAddress("selmu_ecal_bestseg_EbyL", &selmu_ecal_bestseg_EbyL, &b_selmu_ecal_bestseg_EbyL);
    fChain->SetBranchAddress("HMNT_mom", &HMNT_mom, &b_HMNT_mom);
    fChain->SetBranchAddress("HMNT_costheta", &HMNT_costheta, &b_HMNT_costheta);
    fChain->SetBranchAddress("HMNT_pdg", &HMNT_pdg, &b_HMNT_pdg);
@@ -1160,8 +1165,9 @@ void defaultAntiNumuCC1pi_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("HMNT_ecal_length", &HMNT_ecal_length, &b_HMNT_ecal_length);
    fChain->SetBranchAddress("HMNT_ecal_mippion", &HMNT_ecal_mippion, &b_HMNT_ecal_mippion);
    fChain->SetBranchAddress("HMNT_ecal_angle", &HMNT_ecal_angle, &b_HMNT_ecal_angle);
-   fChain->SetBranchAddress("HMNT_ecal_avg_mippion", &HMNT_ecal_avg_mippion, &b_HMNT_ecal_avg_mippion);
-   fChain->SetBranchAddress("HMNT_ecal_avg_EbyL", &HMNT_ecal_avg_EbyL, &b_HMNT_ecal_avg_EbyL);
+   fChain->SetBranchAddress("HMNT_ecal_bestseg_EMenergy", &HMNT_ecal_bestseg_EMenergy, &b_HMNT_ecal_bestseg_EMenergy);
+   fChain->SetBranchAddress("HMNT_ecal_bestseg_mippion", &HMNT_ecal_bestseg_mippion, &b_HMNT_ecal_bestseg_mippion);
+   fChain->SetBranchAddress("HMNT_ecal_bestseg_EbyL", &HMNT_ecal_bestseg_EbyL, &b_HMNT_ecal_bestseg_EbyL);
    fChain->SetBranchAddress("HMNT_tpc_like_mu", &HMNT_tpc_like_mu, &b_HMNT_tpc_like_mu);
    fChain->SetBranchAddress("HMNT_tpc_like_e", &HMNT_tpc_like_e, &b_HMNT_tpc_like_e);
    fChain->SetBranchAddress("HMNT_tpc_like_p", &HMNT_tpc_like_p, &b_HMNT_tpc_like_p);
