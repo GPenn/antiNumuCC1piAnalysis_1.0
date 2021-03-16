@@ -93,11 +93,11 @@
   draw.Draw(default,"selmu_ecal_bestseg_EbyL",50,0,4,"topology","accum_level[][1]>4&&selmu_necals>1");
   
   TCanvas HMNT_ecal_bestseg_EMenergy;
-  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,5000,"topology","accum_level[][1]>4&&selmu_necals>0");
+  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,5000,"topology","accum_level[][1]>4&&HMNT_NEcalSegments>0");
   TCanvas HMNT_ecal_bestseg_EMenergy_1ecal;
-  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,5000,"topology","accum_level[][1]>4&&selmu_necals==1");
+  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,5000,"topology","accum_level[][1]>4&&HMNT_NEcalSegments==1");
   TCanvas HMNT_ecal_bestseg_EMenergy_multiplecals;
-  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,5000,"topology","accum_level[][1]>4&&selmu_necals>1");
+  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,5000,"topology","accum_level[][1]>4&&HMNT_NEcalSegments>1");
   TCanvas HMNT_ecal_bestseg_mippion;
   draw.Draw(default,"HMNT_ecal_bestseg_mippion",50,-20,80,"topology","accum_level[][1]>4&&HMNT_NEcalSegments>0");
   TCanvas HMNT_ecal_bestseg_mippion_1ecal;
@@ -129,9 +129,9 @@
   draw.Draw(default,"selmu_ecal_EMenergy[0]/selmu_ecal_length[0]",50,0,4,"topology","accum_level[][1]>4&&selmu_necals==1");
   
   TCanvas HMNT_ecal_bestseg_EMenergy_1ecal;
-  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,4000,"topology","accum_level[][1]>4&&selmu_necals==1");
+  draw.Draw(default,"HMNT_ecal_bestseg_EMenergy",50,0,4000,"topology","accum_level[][1]>4&&HMNT_NEcalSegments==1");
   TCanvas HMNT_ecal_EMenergy_1ecal;
-  draw.Draw(default,"HMNT_ecal_EMenergy[0]",50,0,4000,"topology","accum_level[][1]>4&&selmu_necals==1");
+  draw.Draw(default,"HMNT_ecal_EMenergy[0]",50,0,4000,"topology","accum_level[][1]>4&&HMNT_NEcalSegments==1");
   
   TCanvas HMNT_ecal_bestseg_mippion_1ecal;
   draw.Draw(default,"HMNT_ecal_bestseg_mippion",50,-20,80,"topology","accum_level[][1]>4&&HMNT_NEcalSegments==1");
