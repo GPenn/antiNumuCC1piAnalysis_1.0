@@ -80,7 +80,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    Use["Cuts"]            = 0;
    Use["CutsD"]           = 0;
    Use["CutsPCA"]         = 0;
-   Use["CutsGA"]          = 1;
+   Use["CutsGA"]          = 0;
    Use["CutsSA"]          = 0;
    // 
    // --- 1-dimensional likelihood ("naive Bayes estimator")
