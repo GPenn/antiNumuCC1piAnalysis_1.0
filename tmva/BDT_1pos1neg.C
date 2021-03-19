@@ -199,7 +199,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    // Muon candidate ECal variables
    factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
    factory->AddVariable( "selmu_ecal_bestseg_EMenergy",             "Muon candidate ECal EM energy",         "", 'F' );
-   factory->AddVariable( "selmu_ecal_bestseg_EoverL",               "Muon candidate ECal E/L",               "", 'F' );
+   factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
    // Muon candidate TPC variables
    factory->AddVariable( "selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
@@ -221,7 +221,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    // Muon candidate ECal variables
    factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
    factory->AddVariable( "HMNT_ecal_bestseg_EMenergy",              "Pion candidate ECal EM energy",         "", 'F' );
-   factory->AddVariable( "HMNT_ecal_bestseg_EoverL",                "Pion candidate ECal E/L",               "", 'F' );
+   factory->AddVariable( "HMNT_ecal_bestseg_EbyL",                  "Pion candidate ECal E/L",               "", 'F' );
    factory->AddVariable( "HMNT_ecal_bestseg_mippion",               "Pion candidate ECal MipPion",           "", 'F' );
    // Pion candidate TPC variables
    factory->AddVariable( "HMNT_tpc_like_mu",                        "Pion candidate TPC muon likelihood",    "", 'F' );
