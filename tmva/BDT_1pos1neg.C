@@ -192,7 +192,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "NME",                                     "Number of Michel electrons",            "", 'I' );
    factory->AddVariable( "NFGDPi",                                  "Number of FGD pions",                   "", 'I' );
    factory->AddVariable( "NPi0El",                                  "Number of TPC pi0 electron tracks",     "", 'I' );
-   factory->AddVariable( "NPi0Pos",                                 "Number of TPC pi0 positron tracks",     "", 'I' );
+   //factory->AddVariable( "NPi0Pos",                                 "Number of TPC pi0 positron tracks",     "", 'I' );
    
    // Muon candidate global variables
    factory->AddVariable( "selmu_mom",                               "Muon candidate global momentum",        "", 'F' );
