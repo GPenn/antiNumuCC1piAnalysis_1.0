@@ -55,7 +55,7 @@ void defaultAntiNumuCC1pi::Loop()
             defout->NPi0El    		               = NPi0El;
             defout->NPi0Pos    		               = NPi0Pos;
          
-            defout->selmu_mom    		            = selmu_mom;
+            defout->selmu_mom    		            = selmu_mom[0];
          
             defout->selmu_necals                   = selmu_necals;
             defout->selmu_ecal_mippion		         = selmu_ecal_mippion[0];	
