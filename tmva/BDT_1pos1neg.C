@@ -189,7 +189,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
    // Global event variables
-   factory->AddVariable( "NME",                                     "Number of Michel electrons",            "", 'I' );
+   //factory->AddVariable( "NME",                                     "Number of Michel electrons",            "", 'I' );
    //factory->AddVariable( "NFGDPi",                                  "Number of FGD pions",                   "", 'I' );
    //factory->AddVariable( "NPi0El",                                  "Number of TPC pi0 electron tracks",     "", 'I' );
    //factory->AddVariable( "NPi0Pos",                                 "Number of TPC pi0 positron tracks",     "", 'I' );
