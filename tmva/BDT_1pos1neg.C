@@ -207,7 +207,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "selmu_tpc_like_p",                        "Muon candidate TPC proton likelihood",  "", 'F' );
    factory->AddVariable( "selmu_tpc_like_pi",                       "Muon candidate TPC pion likelihood",    "", 'F' );
    // Muon candidate FGD variables
-   factory->AddVariable( "selmu_has_fgd1seg",                       "Muon candidate has FGD1 segment",       "", 'I' );
+   //factory->AddVariable( "selmu_has_fgd1seg",                       "Muon candidate has FGD1 segment",       "", 'I' );
    factory->AddVariable( "selmu_fgd1_pull_mu",                      "Muon candidate FGD1 muon pull",         "", 'F' );
    factory->AddVariable( "selmu_fgd1_pull_pi",                      "Muon candidate FGD1 pion pull",         "", 'F' );
    factory->AddVariable( "selmu_fgd1_pull_p",                       "Muon candidate FGD1 proton pull",       "", 'F' );
