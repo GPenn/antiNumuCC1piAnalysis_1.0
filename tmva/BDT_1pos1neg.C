@@ -195,7 +195,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddVariable( "NPi0Pos",                                 "Number of TPC pi0 positron tracks",     "", 'I' );
    
    // Muon candidate global variables
-   factory->AddVariable( "selmu_mom",                               "Muon candidate global momentum",        "", 'F' );
+   //factory->AddVariable( "selmu_mom",                               "Muon candidate global momentum",        "", 'F' );
    // Muon candidate ECal variables
    factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
    //factory->AddVariable( "selmu_ecal_bestseg_EMenergy",             "Muon candidate ECal EM energy",         "", 'F' );
@@ -217,7 +217,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddVariable( "selmu_fgd2_pull_p",                       "Muon candidate FGD2 proton pull",       "", 'F' );
    
    // Pion candidate global variables
-   factory->AddVariable( "HMNT_mom",                                "Pion candidate global momentum",        "", 'F' );
+   //factory->AddVariable( "HMNT_mom",                                "Pion candidate global momentum",        "", 'F' );
    // Muon candidate ECal variables
    factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
    //factory->AddVariable( "HMNT_ecal_bestseg_EMenergy",              "Pion candidate ECal EM energy",         "", 'F' );
