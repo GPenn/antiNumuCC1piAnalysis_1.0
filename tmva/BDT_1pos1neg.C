@@ -47,7 +47,7 @@
 #include "TMVA/Tools.h"
 #endif
 
-void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
+void BDT_1pos1neg( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -77,10 +77,10 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
    std::map<std::string,int> Use;
 
    // --- Cut optimisation
-   Use["Cuts"]            = 1;
+   Use["Cuts"]            = 0;
    Use["CutsD"]           = 0;
    Use["CutsPCA"]         = 0;
-   Use["CutsGA"]          = 1;
+   Use["CutsGA"]          = 0;
    Use["CutsSA"]          = 0;
    // 
    // --- 1-dimensional likelihood ("naive Bayes estimator")
@@ -124,7 +124,7 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
    Use["SVM"]             = 0;
    // 
    // --- Boosted Decision Trees
-   Use["BDT"]             = 0; // uses Adaptive Boost
+   Use["BDT"]             = 1; // uses Adaptive Boost
    Use["BDTG"]            = 0; // uses Gradient Boost
    Use["BDTB"]            = 0; // uses Bagging
    Use["BDTD"]            = 0; // decorrelation + Adaptive Boost
@@ -160,7 +160,7 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/CutOptimisation_cc1pi_bothseg.root" );
+   TString outfileName( "output/BDT_1pos1neg.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -188,10 +188,55 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
-   factory->AddVariable( "selmu_ecal_EoverL",                                          "Muon candidate E/L",     "", 'F' );
-   factory->AddVariable( "selmu_ecal_mippion",                                    "Muon candidate MipPion", "", 'F' );
-   factory->AddVariable( "HMNT_ecal_EoverL",                                      "Pion candidate E/L",     "", 'F' );
-   factory->AddVariable( "HMNT_ecal_mippion",                                     "Pion candidate MipPion", "", 'F' );
+   // Global event variables
+   factory->AddVariable( "NME",                                     "Number of Michel electrons",            "", 'I' );
+   factory->AddVariable( "NFGDPi",                                  "Number of FGD pions",                   "", 'I' );
+   factory->AddVariable( "NPi0El",                                  "Number of TPC pi0 electron tracks",     "", 'I' );
+   factory->AddVariable( "NPi0Pos",                                 "Number of TPC pi0 positron tracks",     "", 'I' );
+   
+   // Muon candidate global variables
+   factory->AddVariable( "selmu_mom",                               "Muon candidate global momentum",        "", 'F' );
+   // Muon candidate ECal variables
+   factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
+   factory->AddVariable( "selmu_ecal_bestseg_EMenergy",             "Muon candidate ECal EM energy",         "", 'F' );
+   factory->AddVariable( "selmu_ecal_bestseg_EoverL",               "Muon candidate ECal E/L",               "", 'F' );
+   factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
+   // Muon candidate TPC variables
+   factory->AddVariable( "selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
+   factory->AddVariable( "selmu_tpc_like_e",                        "Muon candidate TPC electron likelihood","", 'F' );
+   factory->AddVariable( "selmu_tpc_like_p",                        "Muon candidate TPC proton likelihood",  "", 'F' );
+   factory->AddVariable( "selmu_tpc_like_pi",                       "Muon candidate TPC pion likelihood",    "", 'F' );
+   // Muon candidate FGD variables
+   factory->AddVariable( "selmu_has_fgd1seg",                       "Muon candidate has FGD1 segment",       "", 'I' );
+   factory->AddVariable( "selmu_fgd1_pull_mu",                      "Muon candidate FGD1 muon pull",         "", 'F' );
+   factory->AddVariable( "selmu_fgd1_pull_pi",                      "Muon candidate FGD1 pion pull",         "", 'F' );
+   factory->AddVariable( "selmu_fgd1_pull_p",                       "Muon candidate FGD1 proton pull",       "", 'F' );
+   factory->AddVariable( "selmu_has_fgd2seg",                       "Muon candidate has FGD2 segment",       "", 'I' );
+   factory->AddVariable( "selmu_fgd2_pull_mu",                      "Muon candidate FGD2 muon pull",         "", 'F' );
+   factory->AddVariable( "selmu_fgd2_pull_pi",                      "Muon candidate FGD2 pion pull",         "", 'F' );
+   factory->AddVariable( "selmu_fgd2_pull_p",                       "Muon candidate FGD2 proton pull",       "", 'F' );
+   
+   // Pion candidate global variables
+   factory->AddVariable( "HMNT_mom",                                "Pion candidate global momentum",        "", 'F' );
+   // Muon candidate ECal variables
+   factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
+   factory->AddVariable( "HMNT_ecal_bestseg_EMenergy",              "Pion candidate ECal EM energy",         "", 'F' );
+   factory->AddVariable( "HMNT_ecal_bestseg_EoverL",                "Pion candidate ECal E/L",               "", 'F' );
+   factory->AddVariable( "HMNT_ecal_bestseg_mippion",               "Pion candidate ECal MipPion",           "", 'F' );
+   // Pion candidate TPC variables
+   factory->AddVariable( "HMNT_tpc_like_mu",                        "Pion candidate TPC muon likelihood",    "", 'F' );
+   factory->AddVariable( "HMNT_tpc_like_e",                         "Pion candidate TPC electron likelihood","", 'F' );
+   factory->AddVariable( "HMNT_tpc_like_p",                         "Pion candidate TPC proton likelihood",  "", 'F' );
+   factory->AddVariable( "HMNT_tpc_like_pi",                        "Pion candidate TPC pion likelihood",    "", 'F' );
+   // Pion candidate FGD variables
+   factory->AddVariable( "HMNT_has_fgd1seg",                        "Pion candidate has FGD1 segment",       "", 'I' );
+   factory->AddVariable( "HMNT_fgd1_pull_mu",                       "Pion candidate FGD1 muon pull",         "", 'F' );
+   factory->AddVariable( "HMNT_fgd1_pull_pi",                       "Pion candidate FGD1 pion pull",         "", 'F' );
+   factory->AddVariable( "HMNT_fgd1_pull_p",                        "Pion candidate FGD1 proton pull",       "", 'F' );
+   factory->AddVariable( "HMNT_has_fgd2seg",                        "Pion candidate has FGD2 segment",       "", 'I' );
+   factory->AddVariable( "HMNT_fgd2_pull_mu",                       "Pion candidate FGD2 muon pull",         "", 'F' );
+   factory->AddVariable( "HMNT_fgd2_pull_pi",                       "Pion candidate FGD2 pion pull",         "", 'F' );
+   factory->AddVariable( "HMNT_fgd2_pull_p",                        "Pion candidate FGD2 proton pull",       "", 'F' );
    
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
@@ -202,7 +247,7 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "tree_converter/output/mva_input_p6T_allruns.root";
+   TString fname = "tree_converter/output/mva_input_p6T_allruns_8020_accum4.root";
    
    TFile *input = TFile::Open( fname );
    
@@ -283,8 +328,8 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
    //factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
-   TCut mycuts = "(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
-   TCut mycutb = "(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycutb = "abs(var1)<0.5";
+   TCut mycuts = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
+   TCut mycutb = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)"; // for example: TCut mycutb = "abs(var1)<0.5";
 
    // Tell the factory how to use the training and testing events
    //
@@ -460,7 +505,7 @@ void CutOptimisation_cc1pi_bothseg( TString myMethodList = "" )
 
    if (Use["BDT"])  // Adaptive Boost
       factory->BookMethod( TMVA::Types::kBDT, "BDT",
-                           "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
+                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
 
    if (Use["BDTB"]) // Bagging
       factory->BookMethod( TMVA::Types::kBDT, "BDTB",
