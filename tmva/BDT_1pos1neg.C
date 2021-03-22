@@ -220,9 +220,9 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddVariable( "HMNT_mom",                                "Pion candidate global momentum",        "", 'F' );
    // Muon candidate ECal variables
    //factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
-   //factory->AddVariable( "HMNT_ecal_bestseg_EMenergy",              "Pion candidate ECal EM energy",         "", 'F' );
-   //factory->AddVariable( "HMNT_ecal_bestseg_EbyL",                  "Pion candidate ECal E/L",               "", 'F' );
-   //factory->AddVariable( "HMNT_ecal_bestseg_mippion",               "Pion candidate ECal MipPion",           "", 'F' );
+   factory->AddVariable( "HMNT_ecal_bestseg_EMenergy",              "Pion candidate ECal EM energy",         "", 'F' );
+   factory->AddVariable( "HMNT_ecal_bestseg_EbyL",                  "Pion candidate ECal E/L",               "", 'F' );
+   factory->AddVariable( "HMNT_ecal_bestseg_mippion",               "Pion candidate ECal MipPion",           "", 'F' );
    // Pion candidate TPC variables
    //factory->AddVariable( "HMNT_tpc_like_mu",                        "Pion candidate TPC muon likelihood",    "", 'F' );
    //factory->AddVariable( "HMNT_tpc_like_e",                         "Pion candidate TPC electron likelihood","", 'F' );
