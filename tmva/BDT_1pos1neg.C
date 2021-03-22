@@ -208,7 +208,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "selmu_tpc_like_pi",                       "Muon candidate TPC pion likelihood",    "", 'F' );
    // Muon candidate FGD variables
    //factory->AddVariable( "selmu_has_fgd1seg",                       "Muon candidate has FGD1 segment",       "", 'I' );
-   factory->AddVariable( "selmu_fgd1_pull_mu",                      "Muon candidate FGD1 muon pull",         "", 'F' );
+   //factory->AddVariable( "selmu_fgd1_pull_mu",                      "Muon candidate FGD1 muon pull",         "", 'F' );
    //factory->AddVariable( "selmu_fgd1_pull_pi",                      "Muon candidate FGD1 pion pull",         "", 'F' );
    //factory->AddVariable( "selmu_fgd1_pull_p",                       "Muon candidate FGD1 proton pull",       "", 'F' );
    //factory->AddVariable( "selmu_has_fgd2seg",                       "Muon candidate has FGD2 segment",       "", 'I' );
@@ -230,7 +230,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "HMNT_tpc_like_pi",                        "Pion candidate TPC pion likelihood",    "", 'F' );
    // Pion candidate FGD variables
    //factory->AddVariable( "HMNT_has_fgd1seg",                        "Pion candidate has FGD1 segment",       "", 'I' );
-   factory->AddVariable( "HMNT_fgd1_pull_mu",                       "Pion candidate FGD1 muon pull",         "", 'F' );
+   //factory->AddVariable( "HMNT_fgd1_pull_mu",                       "Pion candidate FGD1 muon pull",         "", 'F' );
    //factory->AddVariable( "HMNT_fgd1_pull_pi",                       "Pion candidate FGD1 pion pull",         "", 'F' );
    //factory->AddVariable( "HMNT_fgd1_pull_p",                        "Pion candidate FGD1 proton pull",       "", 'F' );
    //factory->AddVariable( "HMNT_has_fgd2seg",                        "Pion candidate has FGD2 segment",       "", 'I' );
