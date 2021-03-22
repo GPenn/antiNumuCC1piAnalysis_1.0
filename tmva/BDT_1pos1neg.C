@@ -200,7 +200,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    // Muon candidate global variables
    factory->AddVariable( "selmu_mom",                               "Muon candidate global momentum",        "", 'F' );
    // Muon candidate ECal variables
-   //factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
+   factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
    factory->AddVariable( "selmu_ecal_bestseg_EMenergy",             "Muon candidate ECal EM energy",         "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
@@ -214,15 +214,15 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "selmu_fgd1_pull_mu",                      "Muon candidate FGD1 muon pull",         "", 'F' );
    factory->AddVariable( "selmu_fgd1_pull_pi",                      "Muon candidate FGD1 pion pull",         "", 'F' );
    factory->AddVariable( "selmu_fgd1_pull_p",                       "Muon candidate FGD1 proton pull",       "", 'F' );
-   //factory->AddVariable( "selmu_has_fgd2seg",                       "Muon candidate has FGD2 segment",       "", 'I' );
-   //factory->AddVariable( "selmu_fgd2_pull_mu",                      "Muon candidate FGD2 muon pull",         "", 'F' );
-   //factory->AddVariable( "selmu_fgd2_pull_pi",                      "Muon candidate FGD2 pion pull",         "", 'F' );
-   //factory->AddVariable( "selmu_fgd2_pull_p",                       "Muon candidate FGD2 proton pull",       "", 'F' );
+   factory->AddVariable( "selmu_has_fgd2seg",                       "Muon candidate has FGD2 segment",       "", 'I' );
+   factory->AddVariable( "selmu_fgd2_pull_mu",                      "Muon candidate FGD2 muon pull",         "", 'F' );
+   factory->AddVariable( "selmu_fgd2_pull_pi",                      "Muon candidate FGD2 pion pull",         "", 'F' );
+   factory->AddVariable( "selmu_fgd2_pull_p",                       "Muon candidate FGD2 proton pull",       "", 'F' );
    
    // Pion candidate global variables
    factory->AddVariable( "HMNT_mom",                                "Pion candidate global momentum",        "", 'F' );
    // Muon candidate ECal variables
-   //factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
+   factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
    factory->AddVariable( "HMNT_ecal_bestseg_EMenergy",              "Pion candidate ECal EM energy",         "", 'F' );
    factory->AddVariable( "HMNT_ecal_bestseg_EbyL",                  "Pion candidate ECal E/L",               "", 'F' );
    factory->AddVariable( "HMNT_ecal_bestseg_mippion",               "Pion candidate ECal MipPion",           "", 'F' );
@@ -236,10 +236,10 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "HMNT_fgd1_pull_mu",                       "Pion candidate FGD1 muon pull",         "", 'F' );
    factory->AddVariable( "HMNT_fgd1_pull_pi",                       "Pion candidate FGD1 pion pull",         "", 'F' );
    factory->AddVariable( "HMNT_fgd1_pull_p",                        "Pion candidate FGD1 proton pull",       "", 'F' );
-   //factory->AddVariable( "HMNT_has_fgd2seg",                        "Pion candidate has FGD2 segment",       "", 'I' );
-   //factory->AddVariable( "HMNT_fgd2_pull_mu",                       "Pion candidate FGD2 muon pull",         "", 'F' );
-   //factory->AddVariable( "HMNT_fgd2_pull_pi",                       "Pion candidate FGD2 pion pull",         "", 'F' );
-   //factory->AddVariable( "HMNT_fgd2_pull_p",                        "Pion candidate FGD2 proton pull",       "", 'F' );
+   factory->AddVariable( "HMNT_has_fgd2seg",                        "Pion candidate has FGD2 segment",       "", 'I' );
+   factory->AddVariable( "HMNT_fgd2_pull_mu",                       "Pion candidate FGD2 muon pull",         "", 'F' );
+   factory->AddVariable( "HMNT_fgd2_pull_pi",                       "Pion candidate FGD2 pion pull",         "", 'F' );
+   factory->AddVariable( "HMNT_fgd2_pull_p",                        "Pion candidate FGD2 proton pull",       "", 'F' );
    
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
