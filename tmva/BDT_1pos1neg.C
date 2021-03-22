@@ -331,8 +331,8 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
-   TCut mycuts = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
-   TCut mycutb = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(selmu_necals>0)&&(HMNT_NEcalSegments>0)"; // for example: TCut mycutb = "abs(var1)<0.5";
+   TCut tpc1pos1neg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)";
+   TCut tpc1pos1neg_ecalbothseg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(selmu_necals>0)&&(HMNT_NEcalSegments>0)";
 
    // Tell the factory how to use the training and testing events
    //
@@ -345,7 +345,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->PrepareTrainingAndTestTree( mycuts, mycutb,
                                         //"nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
    
-   factory->PrepareTrainingAndTestTree( mycuts, mycutb,
+   factory->PrepareTrainingAndTestTree( tpc1pos1neg, tpc1pos1neg,
                                         "nTrain_Signal=0:nTrain_Background=0:NormMode=None" );
 
    
