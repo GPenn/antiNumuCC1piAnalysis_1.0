@@ -345,7 +345,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->PrepareTrainingAndTestTree( mycuts, mycutb,
                                         //"nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
    
-   factory->PrepareTrainingAndTestTree( tpc1pos1neg, tpc1pos1neg,
+   factory->PrepareTrainingAndTestTree( tpc1pos1neg_ecalbothseg, tpc1pos1neg_ecalbothseg,
                                         "nTrain_Signal=0:nTrain_Background=0:NormMode=None" );
 
    
