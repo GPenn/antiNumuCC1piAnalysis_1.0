@@ -527,6 +527,13 @@ void BDT_1pos1neg( TString myMethodList = "" )
       factory->BookMethod( TMVA::Types::kRuleFit, "RuleFit",
                            "H:!V:RuleFitModule=RFTMVA:Model=ModRuleLinear:MinImp=0.001:RuleMinDist=0.001:NTrees=20:fEventsMin=0.01:fEventsMax=0.5:GDTau=-1.0:GDTauPrec=0.01:GDStep=0.01:GDNSteps=10000:GDErrScale=1.02" );
 
+   // ------------ CUSTOM ------------
+   
+   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini",
+                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
+   factory->BookMethod( TMVA::Types::kBDT, "BDT-StatSig",
+                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=SDivSqrtSPlusB:nCuts=20" );
+   
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
    // --------------------------------------------------------------------------------------------------
