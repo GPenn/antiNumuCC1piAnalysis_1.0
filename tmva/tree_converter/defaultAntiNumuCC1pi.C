@@ -44,7 +44,9 @@ void defaultAntiNumuCC1pi::Loop()
 
           // Cut on accum_level etc.
           if (accum_level[0][1] <= 4) continue; // Set accum_level
-     
+          if (selmu_mom[0] > 10000.0) continue;
+          if (HMNT_mom[0] > 10000.0) continue;
+             
             defout->evt    		                  = evt;
             defout->topology		                  = topology;
             defout->particle		                  = particle;
@@ -58,12 +60,20 @@ void defaultAntiNumuCC1pi::Loop()
             defout->selmu_mom    		            = selmu_mom[0];
          
             defout->selmu_necals                   = selmu_necals;
-            defout->selmu_ecal_mippion		         = selmu_ecal_mippion[0];	
-            defout->selmu_ecal_EMenergy            = selmu_ecal_EMenergy[0];
-            defout->selmu_ecal_length              = selmu_ecal_length[0]; 
-            defout->selmu_ecal_bestseg_EMenergy    = selmu_ecal_bestseg_EMenergy;
-            defout->selmu_ecal_bestseg_mippion     = selmu_ecal_bestseg_mippion;
-            defout->selmu_ecal_bestseg_EbyL        = selmu_ecal_bestseg_EbyL;
+            if (selmu_ecal_bestseg_EMenergy > 0.0)
+            {
+              defout->selmu_ecal_bestseg_EMenergy    = selmu_ecal_bestseg_EMenergy;
+              defout->selmu_ecal_bestseg_mippion     = selmu_ecal_bestseg_mippion;
+              defout->selmu_ecal_bestseg_EbyL        = selmu_ecal_bestseg_EbyL;
+              defout->selmu_ecal_bestseg_EbyP        = selmu_ecal_bestseg_EMenergy/selmu_mom;
+            }
+            else
+            {
+              defout->selmu_ecal_bestseg_EMenergy    = -100.0;
+              defout->selmu_ecal_bestseg_mippion     = -100.0;
+              defout->selmu_ecal_bestseg_EbyL        = -1.0;
+              defout->selmu_ecal_bestseg_EbyP        = -1.0;
+            }
          
             defout->selmu_tpc_like_mu              = selmu_tpc_like_mu;
             defout->selmu_tpc_like_e               = selmu_tpc_like_e;
@@ -85,12 +95,20 @@ void defaultAntiNumuCC1pi::Loop()
             defout->HMNT_mom      		            = HMNT_mom;
             
             defout->HMNT_NEcalSegments		         = HMNT_NEcalSegments;
-            defout->HMNT_ecal_mippion		         = HMNT_ecal_mippion;	
-            defout->HMNT_ecal_EMenergy             = HMNT_ecal_EMenergy;
-            defout->HMNT_ecal_length               = HMNT_ecal_length; 
-            defout->HMNT_ecal_bestseg_EMenergy     = HMNT_ecal_bestseg_EMenergy;
-            defout->HMNT_ecal_bestseg_mippion      = HMNT_ecal_bestseg_mippion;
-            defout->HMNT_ecal_bestseg_EbyL         = HMNT_ecal_bestseg_EbyL;
+            if (HMNT_ecal_bestseg_EMenergy > 0.0)
+            {
+              defout->HMNT_ecal_bestseg_EMenergy    = HMNT_ecal_bestseg_EMenergy;
+              defout->HMNT_ecal_bestseg_mippion     = HMNT_ecal_bestseg_mippion;
+              defout->HMNT_ecal_bestseg_EbyL        = HMNT_ecal_bestseg_EbyL;
+              defout->HMNT_ecal_bestseg_EbyP        = HMNT_ecal_bestseg_EMenergy/HMNT_mom;
+            }
+            else
+            {
+              defout->HMNT_ecal_bestseg_EMenergy    = -100.0;
+              defout->HMNT_ecal_bestseg_mippion     = -100.0;
+              defout->HMNT_ecal_bestseg_EbyL        = -1.0;
+              defout->HMNT_ecal_bestseg_EbyP        = -1.0;
+            }
          
             defout->HMNT_tpc_like_mu              = HMNT_tpc_like_mu;
             defout->HMNT_tpc_like_e               = HMNT_tpc_like_e;
@@ -108,24 +126,6 @@ void defaultAntiNumuCC1pi::Loop()
             defout->HMNT_fgd2_pull_p              = HMNT_fgd2_pull_p;
             defout->HMNT_fgd2_pull_pi             = HMNT_fgd2_pull_pi;
             defout->HMNT_fgd2_pull_no             = HMNT_fgd2_pull_no;
-            
-            if (selmu_necals>0)
-            {
-               defout->selmu_ecal_EoverL            = selmu_ecal_EMenergy[0] / selmu_ecal_length[0];
-            }
-            else
-            {
-               defout->selmu_ecal_EoverL            = -1.0;
-            }
-         
-            if (HMNT_NEcalSegments>0)
-            {
-               defout->HMNT_ecal_EoverL            = HMNT_ecal_EMenergy / HMNT_ecal_length;
-            }
-            else
-            {
-               defout->HMNT_ecal_EoverL            = -1.0;
-            }
          
             //defout->Fill();
          
@@ -224,13 +224,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_mom_SigTrain 	                = fDefaultOut_SigTrain->Branch("selmu_mom"                      , &selmu_mom 	               , "selmu_mom/F");
   
   foutb_selmu_necals_SigTrain 	             = fDefaultOut_SigTrain->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
-  foutb_selmu_ecal_mippion_SigTrain 	       = fDefaultOut_SigTrain->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion 	      , "selmu_ecal_mippion/F");
-  foutb_selmu_ecal_EMenergy_SigTrain 	       = fDefaultOut_SigTrain->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy	      , "selmu_ecal_EMenergy/F");
-  foutb_selmu_ecal_length_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_ecal_length"              , &selmu_ecal_length  	      , "selmu_ecal_length/F");
-  foutb_selmu_ecal_EoverL_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL  	      , "selmu_ecal_EoverL/F");
   foutb_selmu_ecal_bestseg_EMenergy_SigTrain  = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
   foutb_selmu_ecal_bestseg_mippion_SigTrain   = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
   foutb_selmu_ecal_bestseg_EbyL_SigTrain      = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
+  foutb_selmu_ecal_bestseg_EbyP_SigTrain      = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
    
   foutb_selmu_tpc_like_mu_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu  	      , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e_SigTrain  	          = fDefaultOut_SigTrain->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
@@ -252,13 +249,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_HMNT_mom_SigTrain 	                   = fDefaultOut_SigTrain->Branch("HMNT_mom"                       , &HMNT_mom 	                  , "HMNT_mom/F");
   
   foutb_HMNT_NEcalSegments_SigTrain	          = fDefaultOut_SigTrain->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_mippion_SigTrain 	          = fDefaultOut_SigTrain->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion 	         , "HMNT_ecal_mippion/F");
-  foutb_HMNT_ecal_EMenergy_SigTrain 	       = fDefaultOut_SigTrain->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy	         , "HMNT_ecal_EMenergy/F");
-  foutb_HMNT_ecal_length_SigTrain  	          = fDefaultOut_SigTrain->Branch("HMNT_ecal_length"               , &HMNT_ecal_length  	         , "HMNT_ecal_length/F");
-  foutb_HMNT_ecal_EoverL_SigTrain  	          = fDefaultOut_SigTrain->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL  	         , "HMNT_ecal_EoverL/F");
   foutb_HMNT_ecal_bestseg_EMenergy_SigTrain   = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
   foutb_HMNT_ecal_bestseg_mippion_SigTrain   = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
   foutb_HMNT_ecal_bestseg_EbyL_SigTrain      = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
+  foutb_HMNT_ecal_bestseg_EbyP_SigTrain      = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
    
   foutb_HMNT_tpc_like_mu_SigTrain               = fDefaultOut_SigTrain->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
   foutb_HMNT_tpc_like_e_SigTrain             = fDefaultOut_SigTrain->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
@@ -294,13 +288,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_mom_SigTest                  = fDefaultOut_SigTest->Branch("selmu_mom"                      , &selmu_mom                 , "selmu_mom/F");
   
   foutb_selmu_necals_SigTest                = fDefaultOut_SigTest->Branch("selmu_necals"                   , &selmu_necals              , "selmu_necals/I");
-  foutb_selmu_ecal_mippion_SigTest          = fDefaultOut_SigTest->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion        , "selmu_ecal_mippion/F");
-  foutb_selmu_ecal_EMenergy_SigTest         = fDefaultOut_SigTest->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy       , "selmu_ecal_EMenergy/F");
-  foutb_selmu_ecal_length_SigTest           = fDefaultOut_SigTest->Branch("selmu_ecal_length"              , &selmu_ecal_length         , "selmu_ecal_length/F");
-  foutb_selmu_ecal_EoverL_SigTest           = fDefaultOut_SigTest->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL         , "selmu_ecal_EoverL/F");
   foutb_selmu_ecal_bestseg_EMenergy_SigTest  = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
   foutb_selmu_ecal_bestseg_mippion_SigTest   = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
   foutb_selmu_ecal_bestseg_EbyL_SigTest      = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
+  foutb_selmu_ecal_bestseg_EbyP_SigTest      = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
    
   foutb_selmu_tpc_like_mu_SigTest           = fDefaultOut_SigTest->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu         , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e_SigTest             = fDefaultOut_SigTest->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e            , "selmu_tpc_like_e/F");
@@ -322,13 +313,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_HMNT_mom_SigTest                      = fDefaultOut_SigTest->Branch("HMNT_mom"                       , &HMNT_mom                    , "HMNT_mom/F");
   
   foutb_HMNT_NEcalSegments_SigTest           = fDefaultOut_SigTest->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments          , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_mippion_SigTest            = fDefaultOut_SigTest->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion           , "HMNT_ecal_mippion/F");
-  foutb_HMNT_ecal_EMenergy_SigTest          = fDefaultOut_SigTest->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy           , "HMNT_ecal_EMenergy/F");
-  foutb_HMNT_ecal_length_SigTest             = fDefaultOut_SigTest->Branch("HMNT_ecal_length"               , &HMNT_ecal_length            , "HMNT_ecal_length/F");
-  foutb_HMNT_ecal_EoverL_SigTest             = fDefaultOut_SigTest->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL            , "HMNT_ecal_EoverL/F");
   foutb_HMNT_ecal_bestseg_EMenergy_SigTest   = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
   foutb_HMNT_ecal_bestseg_mippion_SigTest   = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
   foutb_HMNT_ecal_bestseg_EbyL_SigTest      = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
+  foutb_HMNT_ecal_bestseg_EbyP_SigTest      = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
    
   foutb_HMNT_tpc_like_mu_SigTest               = fDefaultOut_SigTest->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
   foutb_HMNT_tpc_like_e_SigTest             = fDefaultOut_SigTest->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
@@ -364,13 +352,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_mom_BkgTrain                  = fDefaultOut_BkgTrain->Branch("selmu_mom"                      , &selmu_mom                 , "selmu_mom/F");
   
   foutb_selmu_necals_BkgTrain                = fDefaultOut_BkgTrain->Branch("selmu_necals"                   , &selmu_necals              , "selmu_necals/I");
-  foutb_selmu_ecal_mippion_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion        , "selmu_ecal_mippion/F");
-  foutb_selmu_ecal_EMenergy_BkgTrain         = fDefaultOut_BkgTrain->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy       , "selmu_ecal_EMenergy/F");
-  foutb_selmu_ecal_length_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_ecal_length"              , &selmu_ecal_length         , "selmu_ecal_length/F");
-  foutb_selmu_ecal_EoverL_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL         , "selmu_ecal_EoverL/F");
   foutb_selmu_ecal_bestseg_EMenergy_BkgTrain  = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
   foutb_selmu_ecal_bestseg_mippion_BkgTrain   = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
   foutb_selmu_ecal_bestseg_EbyL_BkgTrain      = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
+  foutb_selmu_ecal_bestseg_EbyP_BkgTrain      = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
    
   foutb_selmu_tpc_like_mu_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu         , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e_BkgTrain             = fDefaultOut_BkgTrain->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e            , "selmu_tpc_like_e/F");
@@ -392,13 +377,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_HMNT_mom_BkgTrain                      = fDefaultOut_BkgTrain->Branch("HMNT_mom"                       , &HMNT_mom                    , "HMNT_mom/F");
   
   foutb_HMNT_NEcalSegments_BkgTrain           = fDefaultOut_BkgTrain->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments          , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_mippion_BkgTrain            = fDefaultOut_BkgTrain->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion           , "HMNT_ecal_mippion/F");
-  foutb_HMNT_ecal_EMenergy_BkgTrain          = fDefaultOut_BkgTrain->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy           , "HMNT_ecal_EMenergy/F");
-  foutb_HMNT_ecal_length_BkgTrain             = fDefaultOut_BkgTrain->Branch("HMNT_ecal_length"               , &HMNT_ecal_length            , "HMNT_ecal_length/F");
-  foutb_HMNT_ecal_EoverL_BkgTrain             = fDefaultOut_BkgTrain->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL            , "HMNT_ecal_EoverL/F");
   foutb_HMNT_ecal_bestseg_EMenergy_BkgTrain   = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
   foutb_HMNT_ecal_bestseg_mippion_BkgTrain   = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
   foutb_HMNT_ecal_bestseg_EbyL_BkgTrain      = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
+  foutb_HMNT_ecal_bestseg_EbyP_BkgTrain      = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
    
   foutb_HMNT_tpc_like_mu_BkgTrain               = fDefaultOut_BkgTrain->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
   foutb_HMNT_tpc_like_e_BkgTrain             = fDefaultOut_BkgTrain->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
@@ -434,13 +416,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_mom_BkgTest                  = fDefaultOut_BkgTest->Branch("selmu_mom"                      , &selmu_mom                 , "selmu_mom/F");
   
   foutb_selmu_necals_BkgTest                = fDefaultOut_BkgTest->Branch("selmu_necals"                   , &selmu_necals              , "selmu_necals/I");
-  foutb_selmu_ecal_mippion_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion        , "selmu_ecal_mippion/F");
-  foutb_selmu_ecal_EMenergy_BkgTest         = fDefaultOut_BkgTest->Branch("selmu_ecal_EMenergy"            , &selmu_ecal_EMenergy       , "selmu_ecal_EMenergy/F");
-  foutb_selmu_ecal_length_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_ecal_length"              , &selmu_ecal_length         , "selmu_ecal_length/F");
-  foutb_selmu_ecal_EoverL_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_ecal_EoverL"              , &selmu_ecal_EoverL         , "selmu_ecal_EoverL/F");
   foutb_selmu_ecal_bestseg_EMenergy_BkgTest  = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
   foutb_selmu_ecal_bestseg_mippion_BkgTest   = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
   foutb_selmu_ecal_bestseg_EbyL_BkgTest      = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
+  foutb_selmu_ecal_bestseg_EbyP_BkgTest      = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
    
   foutb_selmu_tpc_like_mu_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu         , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e_BkgTest             = fDefaultOut_BkgTest->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e            , "selmu_tpc_like_e/F");
@@ -462,13 +441,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_HMNT_mom_BkgTest                      = fDefaultOut_BkgTest->Branch("HMNT_mom"                       , &HMNT_mom                    , "HMNT_mom/F");
   
   foutb_HMNT_NEcalSegments_BkgTest           = fDefaultOut_BkgTest->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments          , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_mippion_BkgTest            = fDefaultOut_BkgTest->Branch("HMNT_ecal_mippion"              , &HMNT_ecal_mippion           , "HMNT_ecal_mippion/F");
-  foutb_HMNT_ecal_EMenergy_BkgTest          = fDefaultOut_BkgTest->Branch("HMNT_ecal_EMenergy"             , &HMNT_ecal_EMenergy           , "HMNT_ecal_EMenergy/F");
-  foutb_HMNT_ecal_length_BkgTest             = fDefaultOut_BkgTest->Branch("HMNT_ecal_length"               , &HMNT_ecal_length            , "HMNT_ecal_length/F");
-  foutb_HMNT_ecal_EoverL_BkgTest             = fDefaultOut_BkgTest->Branch("HMNT_ecal_EoverL"               , &HMNT_ecal_EoverL            , "HMNT_ecal_EoverL/F");
   foutb_HMNT_ecal_bestseg_EMenergy_BkgTest   = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
   foutb_HMNT_ecal_bestseg_mippion_BkgTest   = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
   foutb_HMNT_ecal_bestseg_EbyL_BkgTest      = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
+  foutb_HMNT_ecal_bestseg_EbyP_BkgTest      = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
    
   foutb_HMNT_tpc_like_mu_BkgTest               = fDefaultOut_BkgTest->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
   foutb_HMNT_tpc_like_e_BkgTest             = fDefaultOut_BkgTest->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
