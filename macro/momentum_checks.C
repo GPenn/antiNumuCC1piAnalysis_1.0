@@ -1,7 +1,7 @@
 
 {
-  DrawingTools draw("output/output_p6T_run5_ecalbestsegtest.root");
-  DataSample mc("output/output_p6T_run5_ecalbestsegtest.root");
+  DrawingTools draw("output/output_p6T_allruns_ecalbestseg.root");
+  DataSample mc("output/output_p6T_allruns_ecalbestseg.root");
 
   draw.DumpPOT(mc);
   
