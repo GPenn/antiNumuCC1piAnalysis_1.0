@@ -5,10 +5,9 @@
 
   draw.DumpPOT(mc);
   
-  TCanvas selmu_mom_0;
+  TCanvas selmu_mom;
   draw.Draw(default,"selmu_mom[0]",50,0,5000,"topology","accum_level[][1]>4");
-  
-  TCanvas selmu_mom_1;
-  draw.Draw(default,"selmu_mom[1]",50,0,5000,"topology","accum_level[][1]>4");
-  
+ 
+  TCanvas HMNT_mom;
+  draw.Draw(default,"HMNT_mom[0]",50,0,5000,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)");
 }
