@@ -49,13 +49,10 @@ public :
   Float_t         selmu_mom;
   
   Int_t           selmu_necals;
-  Float_t         selmu_ecal_mippion;
-  Float_t         selmu_ecal_EMenergy;
-  Float_t         selmu_ecal_length;
-  Float_t         selmu_ecal_EoverL;
   Float_t         selmu_ecal_bestseg_EMenergy;
   Float_t         selmu_ecal_bestseg_mippion;
   Float_t         selmu_ecal_bestseg_EbyL;
+  Float_t         selmu_ecal_bestseg_EbyP;
   
   Float_t         selmu_tpc_like_mu;
   Float_t         selmu_tpc_like_e;
@@ -77,13 +74,10 @@ public :
   Float_t         HMNT_mom;
   
   Int_t           HMNT_NEcalSegments;
-  Float_t         HMNT_ecal_mippion;
-  Float_t         HMNT_ecal_EMenergy;
-  Float_t         HMNT_ecal_length;
-  Float_t         HMNT_ecal_EoverL;
   Float_t         HMNT_ecal_bestseg_EMenergy;
   Float_t         HMNT_ecal_bestseg_mippion;
   Float_t         HMNT_ecal_bestseg_EbyL;
+  Float_t         HMNT_ecal_bestseg_EbyP;
   
   Float_t         HMNT_tpc_like_mu;
   Float_t         HMNT_tpc_like_e;
@@ -127,13 +121,10 @@ private:
   TBranch        *foutb_selmu_mom_SigTrain;
   
   TBranch        *foutb_selmu_necals_SigTrain;
-  TBranch        *foutb_selmu_ecal_mippion_SigTrain;
-  TBranch        *foutb_selmu_ecal_EMenergy_SigTrain;
-  TBranch        *foutb_selmu_ecal_length_SigTrain;
-  TBranch        *foutb_selmu_ecal_EoverL_SigTrain;
   TBranch        *foutb_selmu_ecal_bestseg_EMenergy_SigTrain;
   TBranch        *foutb_selmu_ecal_bestseg_mippion_SigTrain;
   TBranch        *foutb_selmu_ecal_bestseg_EbyL_SigTrain;
+  TBranch        *foutb_selmu_ecal_bestseg_EbyP_SigTrain;
   
   TBranch        *foutb_selmu_tpc_like_mu_SigTrain;
   TBranch        *foutb_selmu_tpc_like_e_SigTrain;
@@ -155,13 +146,10 @@ private:
   TBranch        *foutb_HMNT_mom_SigTrain;
   
   TBranch        *foutb_HMNT_NEcalSegments_SigTrain;
-  TBranch        *foutb_HMNT_ecal_mippion_SigTrain;
-  TBranch        *foutb_HMNT_ecal_EMenergy_SigTrain;
-  TBranch        *foutb_HMNT_ecal_length_SigTrain;
-  TBranch        *foutb_HMNT_ecal_EoverL_SigTrain;
   TBranch        *foutb_HMNT_ecal_bestseg_EMenergy_SigTrain;
   TBranch        *foutb_HMNT_ecal_bestseg_mippion_SigTrain;
   TBranch        *foutb_HMNT_ecal_bestseg_EbyL_SigTrain;
+  TBranch        *foutb_HMNT_ecal_bestseg_EbyP_SigTrain;
   
   TBranch        *foutb_HMNT_tpc_like_mu_SigTrain;
   TBranch        *foutb_HMNT_tpc_like_e_SigTrain;
@@ -195,13 +183,10 @@ private:
   TBranch        *foutb_selmu_mom_SigTest;
   
   TBranch        *foutb_selmu_necals_SigTest;
-  TBranch        *foutb_selmu_ecal_mippion_SigTest;
-  TBranch        *foutb_selmu_ecal_EMenergy_SigTest;
-  TBranch        *foutb_selmu_ecal_length_SigTest;
-  TBranch        *foutb_selmu_ecal_EoverL_SigTest;
   TBranch        *foutb_selmu_ecal_bestseg_EMenergy_SigTest;
   TBranch        *foutb_selmu_ecal_bestseg_mippion_SigTest;
   TBranch        *foutb_selmu_ecal_bestseg_EbyL_SigTest;
+  TBranch        *foutb_selmu_ecal_bestseg_EbyP_SigTest;
   
   TBranch        *foutb_selmu_tpc_like_mu_SigTest;
   TBranch        *foutb_selmu_tpc_like_e_SigTest;
@@ -223,13 +208,10 @@ private:
   TBranch        *foutb_HMNT_mom_SigTest;
   
   TBranch        *foutb_HMNT_NEcalSegments_SigTest;
-  TBranch        *foutb_HMNT_ecal_mippion_SigTest;
-  TBranch        *foutb_HMNT_ecal_EMenergy_SigTest;
-  TBranch        *foutb_HMNT_ecal_length_SigTest;
-  TBranch        *foutb_HMNT_ecal_EoverL_SigTest;
   TBranch        *foutb_HMNT_ecal_bestseg_EMenergy_SigTest;
   TBranch        *foutb_HMNT_ecal_bestseg_mippion_SigTest;
   TBranch        *foutb_HMNT_ecal_bestseg_EbyL_SigTest;
+  TBranch        *foutb_HMNT_ecal_bestseg_EbyP_SigTest;
   
   TBranch        *foutb_HMNT_tpc_like_mu_SigTest;
   TBranch        *foutb_HMNT_tpc_like_e_SigTest;
@@ -263,13 +245,10 @@ private:
   TBranch        *foutb_selmu_mom_BkgTrain;
   
   TBranch        *foutb_selmu_necals_BkgTrain;
-  TBranch        *foutb_selmu_ecal_mippion_BkgTrain;
-  TBranch        *foutb_selmu_ecal_EMenergy_BkgTrain;
-  TBranch        *foutb_selmu_ecal_length_BkgTrain;
-  TBranch        *foutb_selmu_ecal_EoverL_BkgTrain;
   TBranch        *foutb_selmu_ecal_bestseg_EMenergy_BkgTrain;
   TBranch        *foutb_selmu_ecal_bestseg_mippion_BkgTrain;
   TBranch        *foutb_selmu_ecal_bestseg_EbyL_BkgTrain;
+  TBranch        *foutb_selmu_ecal_bestseg_EbyP_BkgTrain;
   
   TBranch        *foutb_selmu_tpc_like_mu_BkgTrain;
   TBranch        *foutb_selmu_tpc_like_e_BkgTrain;
@@ -291,13 +270,10 @@ private:
   TBranch        *foutb_HMNT_mom_BkgTrain;
   
   TBranch        *foutb_HMNT_NEcalSegments_BkgTrain;
-  TBranch        *foutb_HMNT_ecal_mippion_BkgTrain;
-  TBranch        *foutb_HMNT_ecal_EMenergy_BkgTrain;
-  TBranch        *foutb_HMNT_ecal_length_BkgTrain;
-  TBranch        *foutb_HMNT_ecal_EoverL_BkgTrain;
   TBranch        *foutb_HMNT_ecal_bestseg_EMenergy_BkgTrain;
   TBranch        *foutb_HMNT_ecal_bestseg_mippion_BkgTrain;
   TBranch        *foutb_HMNT_ecal_bestseg_EbyL_BkgTrain;
+  TBranch        *foutb_HMNT_ecal_bestseg_EbyP_BkgTrain;
   
   TBranch        *foutb_HMNT_tpc_like_mu_BkgTrain;
   TBranch        *foutb_HMNT_tpc_like_e_BkgTrain;
@@ -331,13 +307,10 @@ private:
   TBranch        *foutb_selmu_mom_BkgTest;
   
   TBranch        *foutb_selmu_necals_BkgTest;
-  TBranch        *foutb_selmu_ecal_mippion_BkgTest;
-  TBranch        *foutb_selmu_ecal_EMenergy_BkgTest;
-  TBranch        *foutb_selmu_ecal_length_BkgTest;
-  TBranch        *foutb_selmu_ecal_EoverL_BkgTest;
   TBranch        *foutb_selmu_ecal_bestseg_EMenergy_BkgTest;
   TBranch        *foutb_selmu_ecal_bestseg_mippion_BkgTest;
   TBranch        *foutb_selmu_ecal_bestseg_EbyL_BkgTest;
+  TBranch        *foutb_selmu_ecal_bestseg_EbyP_BkgTest;
   
   TBranch        *foutb_selmu_tpc_like_mu_BkgTest;
   TBranch        *foutb_selmu_tpc_like_e_BkgTest;
@@ -359,13 +332,10 @@ private:
   TBranch        *foutb_HMNT_mom_BkgTest;
   
   TBranch        *foutb_HMNT_NEcalSegments_BkgTest;
-  TBranch        *foutb_HMNT_ecal_mippion_BkgTest;
-  TBranch        *foutb_HMNT_ecal_EMenergy_BkgTest;
-  TBranch        *foutb_HMNT_ecal_length_BkgTest;
-  TBranch        *foutb_HMNT_ecal_EoverL_BkgTest;
   TBranch        *foutb_HMNT_ecal_bestseg_EMenergy_BkgTest;
   TBranch        *foutb_HMNT_ecal_bestseg_mippion_BkgTest;
   TBranch        *foutb_HMNT_ecal_bestseg_EbyL_BkgTest;
+  TBranch        *foutb_HMNT_ecal_bestseg_EbyP_BkgTest;
   
   TBranch        *foutb_HMNT_tpc_like_mu_BkgTest;
   TBranch        *foutb_HMNT_tpc_like_e_BkgTest;
