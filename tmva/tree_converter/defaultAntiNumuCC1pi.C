@@ -45,7 +45,7 @@ void defaultAntiNumuCC1pi::Loop()
           // Cut on accum_level etc.
           if (accum_level[0][1] <= 4) continue; // Set accum_level
           if (selmu_mom[0] > 10000.0) continue;
-          if (HMNT_mom[0] > 10000.0) continue;
+          if (HMNT_mom > 10000.0) continue;
              
             defout->evt    		                  = evt;
             defout->topology		                  = topology;
@@ -65,7 +65,7 @@ void defaultAntiNumuCC1pi::Loop()
               defout->selmu_ecal_bestseg_EMenergy    = selmu_ecal_bestseg_EMenergy;
               defout->selmu_ecal_bestseg_mippion     = selmu_ecal_bestseg_mippion;
               defout->selmu_ecal_bestseg_EbyL        = selmu_ecal_bestseg_EbyL;
-              defout->selmu_ecal_bestseg_EbyP        = selmu_ecal_bestseg_EMenergy/selmu_mom;
+              defout->selmu_ecal_bestseg_EbyP        = selmu_ecal_bestseg_EMenergy/selmu_mom[0];
             }
             else
             {
