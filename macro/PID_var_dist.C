@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/output_p6T_run5_PIDvartest.root");
-  DataSample mc("output/output_p6T_run5_PIDvartest.root");
+  DrawingTools draw("output/output_p6T_allruns_ecalbestseg.root");
+  DataSample mc("output/output_p6T_allruns_ecalbestseg.root");
   
   TCanvas selmu_tpc_like_mu;
   draw.SetTitleX("Muon candidate TPC likelihood - muon");
