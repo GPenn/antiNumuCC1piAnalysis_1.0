@@ -81,16 +81,25 @@ void defaultAntiNumuCC1pi::Loop()
             defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
          
             defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
-            defout->selmu_fgd1_pull_mu             = selmu_fgd1_pull_mu;
-            defout->selmu_fgd1_pull_p              = selmu_fgd1_pull_p;
-            defout->selmu_fgd1_pull_pi             = selmu_fgd1_pull_pi;
-            defout->selmu_fgd1_pull_no             = selmu_fgd1_pull_no;
+            if (selmu_fgd1_pull_mu > -30.0)  {defout->selmu_fgd1_pull_mu = selmu_fgd1_pull_mu;}
+            else                             {defout->selmu_fgd1_pull_mu = -30.0;}
+            if (selmu_fgd1_pull_p > -30.0)   {defout->selmu_fgd1_pull_p  = selmu_fgd1_pull_p;}
+            else                             {defout->selmu_fgd1_pull_p  = -30.0;}
+            if (selmu_fgd1_pull_pi > -30.0)  {defout->selmu_fgd1_pull_pi = selmu_fgd1_pull_pi;}
+            else                             {defout->selmu_fgd1_pull_pi = -30.0;}
+            if (selmu_fgd1_pull_no > -30.0)  {defout->selmu_fgd1_pull_no = selmu_fgd1_pull_no;}
+            else                             {defout->selmu_fgd1_pull_no = -30.0;}
+            
          
             defout->selmu_has_fgd2seg              = selmu_has_fgd2seg;
-            defout->selmu_fgd2_pull_mu             = selmu_fgd2_pull_mu;
-            defout->selmu_fgd2_pull_p              = selmu_fgd2_pull_p;
-            defout->selmu_fgd2_pull_pi             = selmu_fgd2_pull_pi;
-            defout->selmu_fgd2_pull_no             = selmu_fgd2_pull_no;
+            if (selmu_fgd2_pull_mu > -30.0)  {defout->selmu_fgd2_pull_mu = selmu_fgd2_pull_mu;}
+            else                             {defout->selmu_fgd2_pull_mu = -30.0;}
+            if (selmu_fgd2_pull_p > -30.0)   {defout->selmu_fgd2_pull_p  = selmu_fgd2_pull_p;}
+            else                             {defout->selmu_fgd1_pull_p  = -30.0;}
+            if (selmu_fgd2_pull_pi > -30.0)  {defout->selmu_fgd2_pull_pi = selmu_fgd2_pull_pi;}
+            else                             {defout->selmu_fgd1_pull_pi = -30.0;}
+            if (selmu_fgd2_pull_no > -30.0)  {defout->selmu_fgd2_pull_no = selmu_fgd2_pull_no;}
+            else                             {defout->selmu_fgd2_pull_no = -30.0;}
          
             defout->HMNT_mom      		            = HMNT_mom;
             
@@ -116,16 +125,24 @@ void defaultAntiNumuCC1pi::Loop()
             defout->HMNT_tpc_like_pi              = HMNT_tpc_like_pi;
          
             defout->HMNT_has_fgd1seg              = HMNT_has_fgd1seg;
-            defout->HMNT_fgd1_pull_mu             = HMNT_fgd1_pull_mu;
-            defout->HMNT_fgd1_pull_p              = HMNT_fgd1_pull_p;
-            defout->HMNT_fgd1_pull_pi             = HMNT_fgd1_pull_pi;
-            defout->HMNT_fgd1_pull_no             = HMNT_fgd1_pull_no;
+            if (HMNT_fgd1_pull_mu > -30.0)   {defout->HMNT_fgd1_pull_mu = HMNT_fgd1_pull_mu;}
+            else                             {defout->HMNT_fgd1_pull_mu = -30.0;}
+            if (HMNT_fgd1_pull_p > -30.0)    {defout->HMNT_fgd1_pull_p  = HMNT_fgd1_pull_p;}
+            else                             {defout->HMNT_fgd1_pull_p  = -30.0;}
+            if (HMNT_fgd1_pull_pi > -30.0)   {defout->HMNT_fgd1_pull_pi = HMNT_fgd1_pull_pi;}
+            else                             {defout->HMNT_fgd1_pull_pi = -30.0;}
+            if (HMNT_fgd1_pull_no > -30.0)   {defout->HMNT_fgd1_pull_no = HMNT_fgd1_pull_no;}
+            else                             {defout->HMNT_fgd1_pull_no = -30.0;}
          
             defout->HMNT_has_fgd2seg              = HMNT_has_fgd2seg;
-            defout->HMNT_fgd2_pull_mu             = HMNT_fgd2_pull_mu;
-            defout->HMNT_fgd2_pull_p              = HMNT_fgd2_pull_p;
-            defout->HMNT_fgd2_pull_pi             = HMNT_fgd2_pull_pi;
-            defout->HMNT_fgd2_pull_no             = HMNT_fgd2_pull_no;
+            if (HMNT_fgd2_pull_mu > -30.0)   {defout->HMNT_fgd2_pull_mu = HMNT_fgd2_pull_mu;}
+            else                             {defout->HMNT_fgd2_pull_mu = -30.0;}
+            if (HMNT_fgd2_pull_p > -30.0)    {defout->HMNT_fgd2_pull_p  = HMNT_fgd2_pull_p;}
+            else                             {defout->HMNT_fgd2_pull_p  = -30.0;}
+            if (HMNT_fgd2_pull_pi > -30.0)   {defout->HMNT_fgd2_pull_pi = HMNT_fgd2_pull_pi;}
+            else                             {defout->HMNT_fgd2_pull_pi = -30.0;}
+            if (HMNT_fgd2_pull_no > -30.0)   {defout->HMNT_fgd2_pull_no = HMNT_fgd2_pull_no;}
+            else                             {defout->HMNT_fgd2_pull_no = -30.0;}
          
             //defout->Fill();
          
