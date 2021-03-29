@@ -38,6 +38,10 @@
   draw.SetTitleX("Muon candidate FGD1 pull - pi");
   draw.Draw(default,"selmu_fgd1_pull_pi",50,-10,40,"topology","accum_level[][1]>4");
   
+  TCanvas selmu_fgd1_pull_no;
+  draw.SetTitleX("Muon candidate FGD1 pull - no");
+  draw.Draw(default,"selmu_fgd1_pull_no",50,-10,40,"topology","accum_level[][1]>4");
+  
   TCanvas selmu_has_fgd2seg;
   draw.SetTitleX("Muon candidate has FGD2 segment");
   draw.Draw(default,"selmu_has_fgd2seg",2,0,2,"topology","accum_level[][1]>4");
@@ -57,6 +61,10 @@
   TCanvas selmu_fgd2_pull_pi;
   draw.SetTitleX("Muon candidate FGD2 pull - pi");
   draw.Draw(default,"selmu_fgd2_pull_pi",50,-10,40,"topology","accum_level[][1]>4");
+  
+  TCanvas selmu_fgd2_pull_no;
+  draw.SetTitleX("Muon candidate FGD2 pull - no");
+  draw.Draw(default,"selmu_fgd2_pull_no",50,-10,40,"topology","accum_level[][1]>4");
   
   TCanvas HMNT_tpc_like_mu;
   draw.SetTitleX("HMNT TPC likelihood - muon");
