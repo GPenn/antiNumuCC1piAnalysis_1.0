@@ -525,8 +525,10 @@ void BDT_1pos1neg( TString myMethodList = "" )
 
    // ------------ CUSTOM ------------
    
-   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini",
+   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid20",
                            "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
+   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid100",
+                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=100" );
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-StatSig",
    //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=SDivSqrtSPlusB:nCuts=20" );
    
