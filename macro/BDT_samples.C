@@ -17,5 +17,26 @@
   draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology==1)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)");
   TCanvas tpc1pos1neg_bkg;
   draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology!=1)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)");
+  
+  TCanvas tpc1pos0neg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==0)&&(NME==1)");
+  TCanvas tpc1pos0neg_sig;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology==1)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==0)&&(NME==1)");
+  TCanvas tpc1pos0neg_bkg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology!=1)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==0)&&(NME==1)");
+  
+  TCanvas tpc2pos1neg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(ntpcposQualityFV==2)&&(ntpcnegQualityFV==1)");
+  TCanvas tpc2pos1neg_sig;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology==1)&&(ntpcposQualityFV==2)&&(ntpcnegQualityFV==1)");
+  TCanvas tpc2pos1neg_bkg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology!=1)&&(ntpcposQualityFV==2)&&(ntpcnegQualityFV==1)");
+  
+  TCanvas tpc2pos0neg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(ntpcposQualityFV==2)&&(ntpcnegQualityFV==0)&&(NME==1)");
+  TCanvas tpc2pos0neg_sig;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology==1)&&(ntpcposQualityFV==2)&&(ntpcnegQualityFV==0)&&(NME==1)");
+  TCanvas tpc2pos0neg_bkg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>4)&&(topology!=1)&&(ntpcposQualityFV==2)&&(ntpcnegQualityFV==0)&&(NME==1)");
 
 }
