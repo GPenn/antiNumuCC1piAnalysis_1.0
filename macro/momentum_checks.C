@@ -16,5 +16,5 @@
   draw.Draw(default,"HMNT_mom[0]",50,0,500,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)");
   
   TCanvas preselection_eff_selmu_mom;
-  draw.DrawRatio(default,"selmu_mom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(topology==1)","topology==1");
+  draw.DrawRatio(default,"selmu_truemom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(topology==1)","topology==1");
 }
