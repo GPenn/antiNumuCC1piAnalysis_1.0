@@ -25,7 +25,7 @@
   draw.DrawRatio(default,"selmu_truemom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(topology==1)","topology==1");
   
   TCanvas muon_eff_selmu_mom;
-  draw.DrawRatio(default,"selmu_truemom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(particle==-13)","particle==-13");
+  draw.DrawRatio(default,"selmu_truemom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
   TCanvas muon_eff_selmu_mom_low;
-  draw.DrawRatio(default,"selmu_truemom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(particle==-13)","particle==-13");
+  draw.DrawRatio(default,"selmu_truemom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
 }
