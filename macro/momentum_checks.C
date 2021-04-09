@@ -26,7 +26,7 @@
   
   TCanvas muon_eff_truelepton_mom;
   draw.DrawRatio(default,"truelepton_mom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
-  TCanvas muon_eff_truelepton_mom;
+  TCanvas muon_eff_truelepton_mom_low;
   draw.DrawRatio(default,"truelepton_mom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
   
   TCanvas pion_eff_truepi_mom;
