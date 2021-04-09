@@ -19,13 +19,18 @@
   TCanvas HMNT_mom_low_sig;
   draw.Draw(default,"HMNT_mom[0]",50,0,500,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)&&(topology==1)");
   
-  TCanvas preselection_eff_selmu_mom;
+  TCanvas preselection_eff_selmu_truemom;
   draw.DrawRatio(default,"selmu_truemom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(topology==1)","topology==1");
-  TCanvas preselection_eff_selmu_mom_low;
+  TCanvas preselection_eff_selmu_truemom_low;
   draw.DrawRatio(default,"selmu_truemom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(topology==1)","topology==1");
   
-  TCanvas muon_eff_selmu_mom;
-  draw.DrawRatio(default,"selmu_truemom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
-  TCanvas muon_eff_selmu_mom_low;
-  draw.DrawRatio(default,"selmu_truemom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
+  TCanvas muon_eff_truelepton_mom;
+  draw.DrawRatio(default,"truelepton_mom",50,0,5000,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
+  TCanvas muon_eff_truelepton_mom;
+  draw.DrawRatio(default,"truelepton_mom",50,0,500,"(accum_level[][1]>4)&&(ntpcposQualityFV==1)&&(particle==-13)","particle==-13");
+  
+  TCanvas pion_eff_truepi_mom;
+  draw.DrawRatio(default,"truepi_mom",50,0,5000,"(accum_level[][1]>4)&&(ntpcnegQualityFV==1)&&(HMNT_truepdg==-211)","HMNT_truepdg==-211");
+  TCanvas pion_eff_truepi_mom_low;
+  draw.DrawRatio(default,"truepi_mom",50,0,500,"(accum_level[][1]>4)&&(ntpcnegQualityFV==1)&&(HMNT_truepdg==-211)","HMNT_truepdg==-211");
 }
