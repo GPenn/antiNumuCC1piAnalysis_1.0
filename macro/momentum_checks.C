@@ -5,22 +5,21 @@
 
   draw.DumpPOT(mc);
   
-  draw.SetTitleX("Muon candidate reco momentum");
-  draw.SetTitleY("Events passing preselection");
+  draw.SetTitleX("True lepton true momentum");
   TCanvas selmu_mom;
-  draw.Draw(default,"selmu_mom[0]",50,0,15000,"topology","accum_level[][1]>4");
+  draw.Draw(default,"truelepton_mom",50,0,5000,"topology","accum_level[][1]>4");
   TCanvas selmu_mom_low;
-  draw.Draw(default,"selmu_mom[0]",50,0,500,"topology","accum_level[][1]>4");
+  draw.Draw(default,"truelepton_mom",50,0,500,"topology","accum_level[][1]>4");
   TCanvas selmu_mom_low_sig;
-  draw.Draw(default,"selmu_mom[0]",50,0,500,"topology","accum_level[][1]>4&&topology==1");
+  draw.Draw(default,"truelepton_mom",50,0,500,"topology","accum_level[][1]>4&&topology==1");
   
-  draw.SetTitleX("Pion candidate reco momentum");
+  draw.SetTitleX("True pion true momentum");
   TCanvas HMNT_mom;
-  draw.Draw(default,"HMNT_mom[0]",50,0,15000,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)");
+  draw.Draw(default,"truepi_mom",50,0,5000,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)");
   TCanvas HMNT_mom_low;
-  draw.Draw(default,"HMNT_mom[0]",50,0,500,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)");
+  draw.Draw(default,"truepi_mom",50,0,500,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)");
   TCanvas HMNT_mom_low_sig;
-  draw.Draw(default,"HMNT_mom[0]",50,0,500,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)&&(topology==1)");
+  draw.Draw(default,"truepi_mom",50,0,500,"topology","(accum_level[][1]>4)&&(ntpcnegQualityFV>0)&&(topology==1)");
   
   draw.SetTitleX("Muon candidate true momentum");
   draw.SetTitleY("Preselection CC1pi efficiency");
