@@ -536,3 +536,66 @@ bool PionECalEMEnergyLengthCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   return false;
 
 }
+
+//**************************************************
+bool OptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+ 
+  if (box.HMNtrack) && (box.HMNtrack->nECALSegments > 0) && (box.MainTrack->nECALSegments > 0) // Bothseg case
+  {
+    AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
+      
+    if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) > 1.1) return false;
+    if ( ECalSeg->PIDMipPion > 8.3)                   return false;
+  }
+    
+  else if (box.MainTrack->nECALSegments > 0) // Museg case
+  {
+    AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
+      
+    if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) > 1.6) return false;
+    if ( ECalSeg->PIDMipPion > 17.0)                  return false;
+  }
+  
+
+  return true;
+
+}
+
+//**************************************************
+bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  
+  if (box.HMNtrack)
+  {
+    if (box.HMNtrack->nECALSegments > 0) && (box.MainTrack->nECALSegments > 0) // Bothseg case
+    {
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
+      
+      if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) < 0.1) return false;
+      if ( ECalSeg->PIDMipPion < -6.0)                  return false;
+    }
+    
+    else if (box.HMNtrack->nECALSegments > 0) // Piseg case
+    {
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
+      
+      if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) < 0.28) return false;
+      if ( ECalSeg->PIDMipPion < -0.91)                  return false;
+    }
+  }
+
+  return true;
+
+}
