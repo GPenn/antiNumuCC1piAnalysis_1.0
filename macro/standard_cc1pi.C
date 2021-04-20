@@ -14,4 +14,7 @@
   TCanvas bkg;
   draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>8)&&(topology!=1)");
   
+  TCanvas true_sig;
+  draw.Draw(truth,"topology",10,0,10,"topology","(topology==1)");
+  
 }
