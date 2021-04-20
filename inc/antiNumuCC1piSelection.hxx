@@ -136,7 +136,14 @@ public:
   StepBase* MakeClone(){return new PionECalEMEnergyLengthCut();}
 };
 
-class OptimisedECalPIDCut: public StepBase{
+class OptimisedMuonECalPIDCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new OptimisedECalPIDCut();}
+};
+
+class OptimisedPionECalPIDCut: public StepBase{
 public:
   using StepBase::Apply;
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
