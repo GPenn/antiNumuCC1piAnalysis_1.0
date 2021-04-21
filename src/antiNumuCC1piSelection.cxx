@@ -549,7 +549,7 @@ bool OptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Cast the ToyBox to the appropriate type
   ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
  
-  if (box.HMNtrack) && (box.HMNtrack->nECALSegments > 0) && (box.MainTrack->nECALSegments > 0) // Bothseg case
+  if ((box.HMNtrack) && (box.HMNtrack->nECALSegments > 0) && (box.MainTrack->nECALSegments > 0)) // Bothseg case
   {
     AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
       
@@ -582,7 +582,7 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   
   if (box.HMNtrack)
   {
-    if (box.HMNtrack->nECALSegments > 0) && (box.MainTrack->nECALSegments > 0) // Bothseg case
+    if ((box.HMNtrack->nECALSegments > 0) && (box.MainTrack->nECALSegments > 0)) // Bothseg case
     {
       AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
       
