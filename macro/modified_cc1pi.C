@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/output_prod6T_allruns_modified_withoptimised.root");
-  DataSample mc("output/output_prod6T_allruns_modified_withoptimised.root");
+  DrawingTools draw("output/output_p6T_allruns_modified_withoptimised.root");
+  DataSample mc("output/output_p6T_allruns_modified_withoptimised.root");
   
   draw.SetTitleX("Event topology");
   
