@@ -140,14 +140,14 @@ class OptimisedMuonECalPIDCut: public StepBase{
 public:
   using StepBase::Apply;
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
-  StepBase* MakeClone(){return new OptimisedECalPIDCut();}
+  StepBase* MakeClone(){return new OptimisedMuonECalPIDCut();}
 };
 
 class OptimisedPionECalPIDCut: public StepBase{
 public:
   using StepBase::Apply;
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
-  StepBase* MakeClone(){return new OptimisedECalPIDCut();}
+  StepBase* MakeClone(){return new OptimisedPionECalPIDCut();}
 };
 
 #endif
