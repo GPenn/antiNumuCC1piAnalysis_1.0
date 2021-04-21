@@ -1,0 +1,20 @@
+{
+  DrawingTools draw("output/output_prod6T_allruns_modified_withoptimised.root");
+  DataSample mc("output/output_prod6T_allruns_modified_withoptimised.root");
+  
+  draw.SetTitleX("Event topology");
+  
+  TCanvas effpur;
+  draw.DrawEffPurVSCut(mc, 1, "topology==1");
+  
+  TCanvas events;
+  draw.Draw(default,"topology",10,0,10,"topology","accum_level[][1]>8");
+  TCanvas sig;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>8)&&(topology==1)");
+  TCanvas bkg;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>8)&&(topology!=1)");
+  
+  TCanvas true_sig;
+  draw.Draw(truth,"topology",10,0,10,"topology","(topology==1)");
+  
+}
