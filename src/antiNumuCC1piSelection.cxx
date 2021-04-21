@@ -44,6 +44,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   
   AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
@@ -64,13 +65,15 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   
+  AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
+  AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
+  
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
-  AddStep(1, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
-  
-  AddStep(1, StepBase::kCut, "ECal Muon E/L", new MuonECalEMEnergyLengthCut());
+  //AddStep(1, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
+  //AddStep(1, StepBase::kCut, "ECal Muon E/L", new MuonECalEMEnergyLengthCut());
   //AddStep(1, StepBase::kCut, "ECal Muon MipPion", new MuonECalMipPionCut());
-  AddStep(1, StepBase::kCut, "ECal Pion E/L", new PionECalEMEnergyLengthCut());
+  //AddStep(1, StepBase::kCut, "ECal Pion E/L", new PionECalEMEnergyLengthCut());
   
   //CC1pi without muon candidate ECal segment
   //AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
