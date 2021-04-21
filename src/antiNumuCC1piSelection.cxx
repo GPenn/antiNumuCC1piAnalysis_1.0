@@ -38,13 +38,13 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
   AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
   AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
-  //AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+  AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
   AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
   AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
-  //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   
   AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
