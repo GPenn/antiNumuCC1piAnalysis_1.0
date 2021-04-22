@@ -7,11 +7,18 @@
   TCanvas effpur;
   draw.DrawEffPurVSCut(mc, 1, "topology==1");
   
-  TCanvas events;
+  TCanvas events_preecal;
+  draw.Draw(default,"topology",10,0,10,"topology","accum_level[][1]>8");
+  TCanvas sig_preecal;
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>8)&&(topology==1)");
+  TCanvas bkg_preecal);
+  draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>8)&&(topology!=1)");
+  
+  TCanvas events_postecal;
   draw.Draw(default,"topology",10,0,10,"topology","accum_level[][1]>10");
-  TCanvas sig;
+  TCanvas sig_postecal;
   draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>10)&&(topology==1)");
-  TCanvas bkg;
+  TCanvas bkg_postecal);
   draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>10)&&(topology!=1)");
   
   TCanvas true_sig;
