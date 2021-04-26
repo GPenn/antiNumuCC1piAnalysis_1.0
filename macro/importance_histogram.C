@@ -1,6 +1,13 @@
 {
   TH1F h("h","Importance",10,0.,6.0e-02);
   
+  h.SetTitle(
+       ";"
+       "Importance (arb. units);"
+       "Input variables");
+  h.SetFillColor(kYellow);
+
+  
   h.Fill(5.706e-02);
   h.Fill(4.882e-02);
   h.Fill(4.657e-02);
