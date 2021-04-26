@@ -1,5 +1,5 @@
 {
-  TH1F h("h","Importance",10,0.,6.0e-02);
+  TH1F h("h","Importance",6,0.,6.0e-02);
   
   h.SetTitle(
        ";"
