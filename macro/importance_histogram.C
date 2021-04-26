@@ -5,7 +5,7 @@
        ";"
        "Importance (arb. units);"
        "Input variables in bin");
-  h.SetFillColor(kBlue);
+  h.SetFillColor(kYellow);
 
   
   h.Fill(5.706e-02);
