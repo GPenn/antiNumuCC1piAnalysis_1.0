@@ -16,11 +16,11 @@
   
   TCanvas momentum_preecal;
   draw.SetTitleX("Antimuon candidate true momentum (MeV/c)");
-  draw.Draw(default,"selmu_truemom",25,0,5000,"nutype","accum_level[][1]>8");
+  draw.Draw(default,"selmu_truemom",25,0,5000,"topology2","accum_level[][1]>8");
   
-  TCanvas momentum_preecal_bkg;
-  draw.SetTitleX("Antimuon candidate true momentum (MeV/c)");
-  draw.Draw(default,"selmu_truemom",25,0,5000,"nutype","(accum_level[][1]>8)&&(topology!=1)");
+  //TCanvas momentum_preecal_bkg;
+  //draw.SetTitleX("Antimuon candidate true momentum (MeV/c)");
+  //draw.Draw(default,"selmu_truemom",25,0,5000,"nutype","(accum_level[][1]>8)&&(topology!=1)");
   
   //TCanvas events_postecal;
   //draw.Draw(default,"topology",10,0,10,"topology","(accum_level[][1]>10)");
