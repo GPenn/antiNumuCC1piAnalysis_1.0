@@ -17,8 +17,8 @@
   //draw_mod.DrawEff(truth,"truelepton_mom",25,0,1000,"accum_level[][1]>9", "topology==1", "same", "", "Modified selection");
   
   TCanvas muon_vs_pionmom_ori;
-  draw_ori.Draw(default,"truelepton_mom:truepi_mom",60,0,6000,60,0,6000,"all","(accum_level[][1]>8)&&(topology==1)", "colz");
+  draw_ori.Draw(mc_ori,"truelepton_mom:truepi_mom",60,0,6000,60,0,6000,"all","(accum_level[][1]>8)&&(topology==1)", "colz");
   TCanvas muon_vs_pionmom_mod;
-  draw_mod.Draw(default,"truelepton_mom:truepi_mom",60,0,6000,60,0,6000,"all","(accum_level[][1]>9)&&(topology==1)", "colz");
+  draw_mod.Draw(mc_mod,"truelepton_mom:truepi_mom",60,0,6000,60,0,6000,"all","(accum_level[][1]>9)&&(topology==1)", "colz");
   
 }
