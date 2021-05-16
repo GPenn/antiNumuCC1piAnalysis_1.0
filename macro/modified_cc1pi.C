@@ -23,7 +23,7 @@
   
   TCanvas momentum_postecal;
   draw.SetTitleX("Antimuon candidate true momentum (MeV/c)");
-  draw.Draw(default,"selmu_truemom",25,0,5000,"nutype","accum_level[][1]>9");
+  draw.Draw(default,"selmu_truemom",30,0,6000,"nutype","accum_level[][1]>9");
   
   //TCanvas true_sig;
   //draw.Draw(truth,"topology",10,0,10,"topology","(topology==1)");
