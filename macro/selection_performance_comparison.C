@@ -10,13 +10,13 @@
   //draw_ori.Draw(default,"selmu_truemom",30,0,6000,"all","accum_level[][1]>8");
   //draw_mod.Draw(default,"selmu_truemom",30,0,6000,"all","accum_level[][1]>9", "same");
   
-  TCanvas efficiency_comparison;
-  draw_ori.SetTitleX("True lepton true momentum (MeV/c)");
-  draw_ori.SetTitleY("$\bar{\nu}_\mu$ CC1pi selection efficiency");
-  draw_ori.DrawEff(truth,"truelepton_mom",25,0,1000,"accum_level[][1]>8", "topology==1", "", "", "Original selection");
-  draw_mod.DrawEff(truth,"truelepton_mom",25,0,1000,"accum_level[][1]>9", "topology==1", "same", "", "Modified selection");
+  //TCanvas efficiency_comparison;
+  //draw_ori.SetTitleX("True lepton true momentum (MeV/c)");
+  //draw_ori.SetTitleY("antinumu CC1pi selection efficiency");
+  //draw_ori.DrawEff(truth,"truelepton_mom",25,0,1000,"accum_level[][1]>8", "topology==1", "", "", "Original selection");
+  //draw_mod.DrawEff(truth,"truelepton_mom",25,0,1000,"accum_level[][1]>9", "topology==1", "same", "", "Modified selection");
   
-  //TCanvas muon_vs_pionmom;
-  //draw_ori.Draw(default,"selmu_truemom:",30,0,6000,"all","accum_level[][1]>8");
+  TCanvas muon_vs_pionmom_ori;
+  draw_ori.Draw(default,"truelepton_mom:truepi_mom",30,0,6000,30,0,6000,"all","(accum_level[][1]>8)&&(topology==1)", "colz");
   
 }
