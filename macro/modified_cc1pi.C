@@ -4,8 +4,8 @@
   
   draw.SetTitleX("Event topology");
   
-  TCanvas effpur;
-  draw.DrawEffPurVSCut(mc, 1, "topology==1");
+  //TCanvas effpur;
+  //draw.DrawEffPurVSCut(mc, 1, "topology==1");
   
   //TCanvas events_preecal;
   //draw.Draw(default,"topology",10,0,10,"topology","accum_level[][1]>7");
