@@ -8,7 +8,7 @@
   TCanvas momentum_sig_comparison;
   
   draw_ori.SetTitleX("Antimuon candidate true momentum (MeV/c)");
-  draw_ori.Draw(default,"selmu_truemom",30,0,6000,"","accum_level[][1]>8");
-  draw_mod.Draw(default,"selmu_truemom",30,0,6000,"","accum_level[][1]>9", "same");
+  draw_ori.Draw(default,"selmu_truemom",30,0,6000,"all","accum_level[][1]>8");
+  draw_mod.Draw(default,"selmu_truemom",30,0,6000,"all","accum_level[][1]>9", "same");
   
 }
