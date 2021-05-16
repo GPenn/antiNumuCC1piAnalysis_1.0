@@ -2,6 +2,9 @@
   DrawingTools draw_mod("output/output_p6T_allruns_modified_withoptimised.root");
   DrawingTools draw_ori("output/output_p6T_allruns_standard_withoptimised.root");
   
+  DataSample mc_mod("output/output_p6T_allruns_modified_withoptimised.root");
+  DataSample mc_ori("output/output_p6T_allruns_standard_withoptimised.root");
+  
   TCanvas momentum_sig_comparison;
   
   draw_ori.SetTitleX("Antimuon candidate true momentum (MeV/c)");
