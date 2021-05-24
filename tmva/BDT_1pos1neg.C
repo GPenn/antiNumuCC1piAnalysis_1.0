@@ -243,6 +243,8 @@ void BDT_1pos1neg( TString myMethodList = "" )
    // input variables, the response values of all trained MVAs, and the spectator variables
    //factory->AddSpectator( "spec1 := var1*2",  "Spectator 1", "units", 'F' );
    //factory->AddSpectator( "spec2 := var1*3",  "Spectator 2", "units", 'F' );
+   factory->AddSpectator( "selmu_mom",                            "Muon candidate reco mom",          "", 'F' );
+   factory->AddSpectator( "HMNT_mom",                             "Pion candidate reco mom",          "", 'F' );
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
