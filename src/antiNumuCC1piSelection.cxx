@@ -32,7 +32,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   
   // Cuts must be added in the right order
   // last "true" means the step sequence is broken if cut is not passed (default is "false")
-  AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
+  //AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
   AddStep(StepBase::kCut,    "> 0 tracks ",        new TotalMultiplicityCut(),      true);  
   AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
   AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
