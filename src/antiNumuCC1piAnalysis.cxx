@@ -126,7 +126,7 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_ecal_bestseg_EMenergy, "");
   AddVarF(output(),selmu_ecal_bestseg_mippion, "");
   AddVarF(output(),selmu_ecal_bestseg_EbyL, "");
-  AddVarF(output(),selmu_ecal_bestseg_circularity, "");
+  //AddVarF(output(),selmu_ecal_bestseg_circularity, "");
   
   // --- Highest-momentum negative track variables
     
@@ -237,7 +237,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     Float_t selmu_max_EMenergy = -999.0;
     Float_t selmu_best_mippion = -999.0;
     Float_t selmu_best_EbyL = -999.0;
-    Float_t selmu_best_circularity = -999.0;
+    //Float_t selmu_best_circularity = -999.0;
     //Int_t selmu_mean_denom = 0;
   
     for (Int_t subdet = 0; subdet<9; subdet++) {
@@ -252,7 +252,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
         selmu_max_EMenergy     = ECALSegment->EMEnergy;
         selmu_best_mippion     = ECALSegment->PIDMipPion;
         selmu_best_EbyL        = (ECALSegment->EMEnergy)/(ECALSegment->Length);
-        selmu_best_circularity = ECALSegment->PID_Circularity;
+        //selmu_best_circularity = ECALSegment->PID_Circularity;
       }
       
       //if (selmu_mean_mippion==-999.0) selmu_mean_mippion=0;
@@ -268,7 +268,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_ecal_bestseg_EMenergy,    selmu_max_EMenergy);
     output().FillVar(selmu_ecal_bestseg_mippion,     selmu_best_mippion);
     output().FillVar(selmu_ecal_bestseg_EbyL,        selmu_best_EbyL);
-    output().FillVar(selmu_ecal_bestseg_circularity,        selmu_best_circularity);
+    //output().FillVar(selmu_ecal_bestseg_circularity,        selmu_best_circularity);
 
   }
   
