@@ -1,7 +1,7 @@
 
 {
-  DrawingTools draw("output/particle_gun/output_pg_antimu_06101046.root");
-  DataSample mc("output/particle_gun/output_pg_antimu_06101046.root");
+  DrawingTools draw("output/particle_gun/output_pg_antimu_06101546.root");
+  DataSample mc("output/particle_gun/output_pg_antimu_06101546.root");
   
   draw.SetTitleX("Antimuon reco momentum");
   TCanvas selmu_mom_accum4;
