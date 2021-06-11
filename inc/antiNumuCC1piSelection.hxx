@@ -3,11 +3,12 @@
 
 #include "SelectionBase.hxx"
 #include "antiNumuCCMultiPiSelection.hxx"
+#include "InputManager.hxx"
 
 
 class antiNumuCC1piSelection: public SelectionBase{
 public:
-  antiNumuCC1piSelection(bool forceBreak=true);
+  antiNumuCC1piSelection(bool forceBreak=true, InputManager *INPUT=NULL);
   virtual ~antiNumuCC1piSelection(){}
 
   //---- These are mandatory functions
@@ -43,6 +44,7 @@ protected:
   //antiNumuCCSelection _antiNumuCCSelection;
   //numuCCMultiPiSelection _numuCCMultiPiSelection;
   antiNumuCCMultiPiSelection _antiNumuCCMultiPiSelection;
+  InputManager* _input;
   
   Int_t _MuonPIDCutIndex;
   Int_t _FindPionsStepIndex; 
@@ -149,5 +151,18 @@ public:
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new OptimisedPionECalPIDCut();}
 };
+
+// GetAllTECALReconObjects from the AnaLocalReconBunch
+class GetAllTECALReconObjectsAction: public StepBase{
+public:
+  using StepBase::Apply;
+  GetAllTECALReconObjectsAction(InputManager *INPUT=NULL){
+    _input     = INPUT;
+  }
+  InputManager* _input;
+  bool      Apply    (AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new GetAllTECALReconObjectsAction(_input);}
+};
+
 
 #endif
