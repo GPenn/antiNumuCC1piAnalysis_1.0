@@ -5,6 +5,7 @@
 #include "antiNumuCCMultiPiSelection.hxx"
 #include "InputManager.hxx"
 
+typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
 
 class antiNumuCC1piSelection: public SelectionBase{
 public:
