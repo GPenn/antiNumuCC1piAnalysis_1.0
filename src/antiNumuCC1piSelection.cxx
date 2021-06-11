@@ -615,7 +615,7 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   //  std::cout<<this->Index()<<" GetAllTECALReconObjectsAction"<<std::endl;
 
   AnaEventB&           event      = *static_cast<AnaEventB*>(&eventC);
-  ToyBoxTracker*       toyBox     = *static_cast<ToyBoxTracker*>(&boxB);
+  ToyBoxTracker*       toyBox     = static_cast<ToyBoxTracker*>(&boxB);
   
   AnaLocalReconEvent*  localEvent =  static_cast<AnaLocalReconEvent*>(&event);  // Cast this event to the local variety
   AnaTECALReconObject* anaTECAL   =  NULL;
