@@ -4,6 +4,7 @@
 #include "SelectionBase.hxx"
 #include "antiNumuCCMultiPiSelection.hxx"
 #include "InputManager.hxx"
+#include "DataClasses.hxx"
 
 typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
 
