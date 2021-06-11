@@ -14,7 +14,8 @@
 
 
 //********************************************************************
-antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak): SelectionBase(forceBreak,EventBoxId::kEventBoxTracker) {
+antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* INPUT) : 
+  SelectionBase(forceBreak,EventBoxId::kEventBoxTracker), _input(INPUT) {
   //********************************************************************
   //_antiNumuCCSelection.Initialize();
   //_numuCCMultiPiSelection.Initialize(); 
@@ -43,6 +44,9 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
+  
+  AddStep(StepBase::kAction, "GetAllTECALReconObjects",		new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
+  
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   
