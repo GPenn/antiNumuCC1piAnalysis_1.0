@@ -56,7 +56,21 @@ class ToyBoxAntiCC1Pi: public ToyBoxAntiCCMultiPi{
 public:
   ToyBoxAntiCC1Pi(){}
 
-  virtual ~ToyBoxAntiCC1Pi(){}
+  virtual ~ToyBoxAntiCC1Pi(){
+    Reset();
+  }
+  
+  void Reset(){
+
+    ToyBoxCCMultiPi::Reset();
+  
+    TECALReconObjects.clear();
+  
+  }
+  
+  // These objects need to be read from the additional tecalRecon information in AnaLocalReconBunch
+  AnaTECALObjectVec TECALReconObjects;
+
 
 };
 
