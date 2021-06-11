@@ -180,5 +180,15 @@ public:
   StepBase* MakeClone(){return new GetAllTECALReconObjectsAction(_input);}
 };
 
+// Match to local reconstruction
+class MatchECalGlobalToLocalObjectsAction: public StepBase{
+public:
+  using StepBase::Apply;
+  MatchECalGlobalToLocalObjectsAction(){}
+  bool      Apply    (AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new MatchECalGlobalToLocalObjectsAction();}
+};
+
+
 
 #endif
