@@ -10,6 +10,7 @@
 #include "SystematicTuning.hxx"
 #include "DataClasses.hxx"
 #include "trackerSelectionUtils.hxx"
+#include "InputManager.hxx"
 
 
 
