@@ -51,16 +51,16 @@ protected:
   bool  _useECalPiZeroInfo;
 };
 
-/*class ToyBoxAntiCCMultiPi: public ToyBoxCCMultiPi{
+class ToyBoxAntiCC1Pi: public ToyBoxAntiCCMultiPi{
 
 public:
-  ToyBoxAntiCCMultiPi(){}
+  ToyBoxAntiCC1Pi(){}
 
-  virtual ~ToyBoxAntiCCMultiPi(){}
+  virtual ~ToyBoxAntiCC1Pi(){}
 
-};*/
+};
 
-inline ToyBoxB* antiNumuCC1piSelection::MakeToyBox(){return new ToyBoxAntiCCMultiPi();}
+inline ToyBoxB* antiNumuCC1piSelection::MakeToyBox(){return new ToyBoxAntiCC1Pi();}
 
 
 
