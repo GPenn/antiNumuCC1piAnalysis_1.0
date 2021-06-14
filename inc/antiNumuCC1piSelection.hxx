@@ -180,6 +180,7 @@ public:
   using StepBase::Apply;
   GetAllTECALReconObjectsAction(InputManager *INPUT=NULL){
     _input     = INPUT;
+    if (!INPUT) std::cout << "!!!" << std::endl << "DEBUG: NO INPUT MANAGER FOUND!" << std::endl << "!!!" << std::endl;
   }
   InputManager* _input;
   bool      Apply    (AnaEventC& event, ToyBoxB& box) const;
