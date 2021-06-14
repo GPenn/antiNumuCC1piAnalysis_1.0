@@ -625,13 +625,13 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   //  std::cout<<" Got "<<localEvent->TECALReconObjects.size()<<" TECALRecon objects from event "<< event.EventInfo.Event <<std::endl;
     
   // Loop over TECALReconObjects and print information
-  /*for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
+  for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
     anaTECAL = localEvent->TECALReconObjects[iObj];
-    toyBox->TECALReconObjects.push_back(anaTECAL);
+    //toyBox->TECALReconObjects.push_back(anaTECAL);
     //if (anaCCPi0Utils::utils().Verbosity())
     //  std::cout<<"Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
     
-  } // End of loop over TECALReconObjects*/
+  } // End of loop over TECALReconObjects
   
   return true;
 }
