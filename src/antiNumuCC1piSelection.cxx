@@ -614,15 +614,21 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
 
   //if (anaCCPi0Utils::utils().Verbosity())
   //  std::cout<<this->Index()<<" GetAllTECALReconObjectsAction"<<std::endl;
+	
+  std::cout << "DEBUG: Start GetAllTECALReconObjectsAction" <<std::endl;
 
+  std::cout << "DEBUG: Get event..." <<std::endl;
   AnaEventB&           event      = *static_cast<AnaEventB*>(&eventC);
+  std::cout << "DEBUG: Get toybox..." <<std::endl;
   ToyBoxAntiCC1Pi*     toyBox     = static_cast<ToyBoxAntiCC1Pi*>(&boxB);
   
+  std::cout << "DEBUG: Get local event..." <<std::endl;
   AnaLocalReconEvent*  localEvent =  static_cast<AnaLocalReconEvent*>(&event);  // Cast this event to the local variety
+  std::cout << "DEBUG: Declare local ECal object array..." <<std::endl;
   AnaTECALReconObject* anaTECAL   =  NULL;
 
 
-  std::cout<<" Got "<<localEvent->TECALReconObjects.size()<<" TECALRecon objects from event "<< event.EventInfo.Event <<std::endl;
+  std::cout << "DEBUG: Got " <<localEvent->TECALReconObjects.size() << " TECALRecon objects from event " << event.EventInfo.Event <<std::endl;
     
   // Loop over TECALReconObjects and print information
   for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
