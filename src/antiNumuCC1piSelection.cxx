@@ -45,7 +45,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   
-  AddStep(StepBase::kAction, "GetAllTECALReconObjects",		new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
+  AddStep(StepBase::kAction, "GetAllTECALReconObjects",		       new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
+  AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",    new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
@@ -634,3 +635,34 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   
   return true;
 }
+
+//********************************************************************
+bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
+//********************************************************************
+
+  //if (anaCCPi0Utils::utils().Verbosity())
+  //  std::cout << this->Index() << " MatchECalGlobalToLocalObjectsAction" <<std::endl;
+
+  AnaEventB&       event  = *static_cast<AnaEventB*>(&eventC);
+  ToyBoxAntiCC1Pi* toyBox =  static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+
+  if (toyBox->TECALReconObjects.empty() or toyBox->MainTrack->nECALSegments != 1){ // if there are no ECal objects or maintrack has no ECal segment, continue
+    //cout << "No ECal Objects" << std::endl; 
+	return true;}
+
+  // Pointers to derived types 
+  AnaTrackB*        ecalTrack     = NULL;  // the entire track
+  AnaECALParticleB* ecalComponent = NULL;  // the first segment (to match with AnaTECALReconObjects via UID)
+  
+  // Check each local ECal object against main track ECal segment:
+  ecalTrack     = static_cast<AnaTrackB*>(toyBox->MainTrack);
+  ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
+  
+  for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
+    if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
+      toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
+  }
+  
+  return true;
+}
+
