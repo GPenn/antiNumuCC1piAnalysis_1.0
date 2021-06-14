@@ -17,6 +17,7 @@
 antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* INPUT) : 
   SelectionBase(forceBreak,EventBoxId::kEventBoxTracker), _input(INPUT) {
   //********************************************************************
+  if (!INPUT) std::cout << "!!!" << std::endl << "DEBUG: NO INPUT MANAGER!" << std::endl << "!!!" << std::endl;
   //_antiNumuCCSelection.Initialize();
   //_numuCCMultiPiSelection.Initialize(); 
   _antiNumuCCMultiPiSelection.Initialize(); 
