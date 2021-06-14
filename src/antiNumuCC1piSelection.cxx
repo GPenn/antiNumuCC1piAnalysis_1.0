@@ -661,6 +661,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
     if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
       //toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
+      std::cout << "Local-global match confirmed for MainTrack." << std::endl;
   }
   
   return true;
