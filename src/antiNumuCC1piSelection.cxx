@@ -627,6 +627,11 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   std::cout << "DEBUG: Declare local ECal object array..." <<std::endl;
   AnaTECALReconObject* anaTECAL   =  NULL;
 
+  if (!(localEvent->TECALReconObjects))
+  {
+    std::cout << "DEBUG: No TECALReconObjects in local event." <<std::endl;
+    return true;
+  }
 
   std::cout << "DEBUG: Got " <<localEvent->TECALReconObjects.size() << " TECALRecon objects from event " << event.EventInfo.Event <<std::endl;
     
