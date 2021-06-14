@@ -621,8 +621,8 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   AnaLocalReconEvent*  localEvent =  static_cast<AnaLocalReconEvent*>(&event);  // Cast this event to the local variety
   AnaTECALReconObject* anaTECAL   =  NULL;
 
-  //if (anaCCPi0Utils::utils().Verbosity())
-  //  std::cout<<" Got "<<localEvent->TECALReconObjects.size()<<" TECALRecon objects from event "<< event.EventInfo.Event <<std::endl;
+
+  std::cout<<" Got "<<localEvent->TECALReconObjects.size()<<" TECALRecon objects from event "<< event.EventInfo.Event <<std::endl;
     
   // Loop over TECALReconObjects and print information
   for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
