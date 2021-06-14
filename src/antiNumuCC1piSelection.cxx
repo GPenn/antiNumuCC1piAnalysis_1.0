@@ -45,7 +45,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   
-  //AddStep(StepBase::kAction, "GetAllTECALReconObjects",		       new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
+  AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   //AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",    new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
@@ -612,9 +612,6 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
 //********************************************************************
 
-  //if (anaCCPi0Utils::utils().Verbosity())
-  //  std::cout<<this->Index()<<" GetAllTECALReconObjectsAction"<<std::endl;
-	
   std::cout << "DEBUG: Start GetAllTECALReconObjectsAction" <<std::endl;
 
   std::cout << "DEBUG: Get event..." <<std::endl;
@@ -659,7 +656,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
 
   if (toyBox->TECALReconObjects.empty() or toyBox->MainTrack->nECALSegments != 1){ // if there are no ECal objects or maintrack has no ECal segment, continue
     //cout << "No ECal Objects" << std::endl; 
-	return true;}
+    return true;}
 
   // Pointers to derived types 
   AnaTrackB*        ecalTrack     = NULL;  // the entire track
