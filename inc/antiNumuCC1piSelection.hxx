@@ -68,7 +68,7 @@ public:
   
     TECALReconObjects.clear();
     
-    MainTrackLocalECalSegment.clear();
+    MainTrackLocalECalSegment = NULL;
   
   }
   
@@ -76,7 +76,7 @@ public:
   AnaTECALObjectVec TECALReconObjects;
   
   // Local reco ECal segments matched to those of the main tracks:
-  AnaTECALReconObject MainTrackLocalECalSegment;
+  AnaTECALReconObject* MainTrackLocalECalSegment;
   //AnaTECALObject HMNTLocalECalSegment;
 
 
