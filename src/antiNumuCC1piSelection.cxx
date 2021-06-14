@@ -612,16 +612,16 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
 //********************************************************************
 
-  std::cout << "DEBUG: Start GetAllTECALReconObjectsAction" <<std::endl;
+  //std::cout << "DEBUG: Start GetAllTECALReconObjectsAction" <<std::endl;
 
-  std::cout << "DEBUG: Get event..." <<std::endl;
+  //std::cout << "DEBUG: Get event..." <<std::endl;
   AnaEventB&           event      = *static_cast<AnaEventB*>(&eventC);
-  std::cout << "DEBUG: Get toybox..." <<std::endl;
+  //std::cout << "DEBUG: Get toybox..." <<std::endl;
   ToyBoxAntiCC1Pi*     toyBox     = static_cast<ToyBoxAntiCC1Pi*>(&boxB);
   
-  std::cout << "DEBUG: Get local event..." <<std::endl;
+  //std::cout << "DEBUG: Get local event..." <<std::endl;
   AnaLocalReconEvent*  localEvent =  static_cast<AnaLocalReconEvent*>(&event);  // Cast this event to the local variety
-  std::cout << "DEBUG: Declare local ECal object array..." <<std::endl;
+  //std::cout << "DEBUG: Declare local ECal object array..." <<std::endl;
   AnaTECALReconObject* anaTECAL   =  NULL;
 
   //if (!(localEvent->TECALReconObjects))
