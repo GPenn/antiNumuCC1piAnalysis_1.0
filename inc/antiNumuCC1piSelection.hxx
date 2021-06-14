@@ -76,7 +76,7 @@ public:
   AnaTECALObjectVec TECALReconObjects;
   
   // Local reco ECal segments matched to those of the main tracks:
-  AnaTECALObject MainTrackLocalECalSegment;
+  AnaTECALReconObject MainTrackLocalECalSegment;
   //AnaTECALObject HMNTLocalECalSegment;
 
 
