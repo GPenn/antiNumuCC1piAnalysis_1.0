@@ -660,7 +660,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   
   for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
     if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
-      toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
+      //toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
   }
   
   return true;
