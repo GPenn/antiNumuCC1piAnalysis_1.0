@@ -45,7 +45,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   
-  AddStep(StepBase::kAction, "GetAllTECALReconObjects",		       new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
+  //AddStep(StepBase::kAction, "GetAllTECALReconObjects",		       new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   //AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",    new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
