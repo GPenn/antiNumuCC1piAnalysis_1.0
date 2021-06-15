@@ -46,7 +46,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
-  //AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",    new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
+  AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
@@ -631,7 +631,7 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   
   return true;
 }
-/*
+
 //********************************************************************
 bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
 //********************************************************************
@@ -656,10 +656,10 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   
   for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
     if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
-      //toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
+      toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
       std::cout << "Local-global match confirmed for MainTrack." << std::endl;
   }
   
   return true;
-}*/
+}
 
