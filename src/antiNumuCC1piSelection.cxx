@@ -612,23 +612,11 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
 //********************************************************************
 
-  //std::cout << "DEBUG: Start GetAllTECALReconObjectsAction" <<std::endl;
-
-  //std::cout << "DEBUG: Get event..." <<std::endl;
   AnaEventB&           event      = *static_cast<AnaEventB*>(&eventC);
-  //std::cout << "DEBUG: Get toybox..." <<std::endl;
   ToyBoxAntiCC1Pi*     toyBox     = static_cast<ToyBoxAntiCC1Pi*>(&boxB);
   
-  //std::cout << "DEBUG: Get local event..." <<std::endl;
   AnaLocalReconEvent*  localEvent =  static_cast<AnaLocalReconEvent*>(&event);  // Cast this event to the local variety
-  //std::cout << "DEBUG: Declare local ECal object array..." <<std::endl;
   AnaTECALReconObject* anaTECAL   =  NULL;
-
-  //if (!(localEvent->TECALReconObjects))
-  //{
-  //  std::cout << "DEBUG: No TECALReconObjects in local event." <<std::endl;
-  //  return true;
-  //}
 
   //std::cout << "DEBUG: Got " <<localEvent->TECALReconObjects.size() << " TECALRecon objects from event " << event.EventInfo.Event <<std::endl;
   //std::cout << "DEBUG: TECALReconObjects.empty() = " <<localEvent->TECALReconObjects.empty() <<std::endl;
@@ -637,8 +625,7 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
     anaTECAL = localEvent->TECALReconObjects[iObj];
     toyBox->TECALReconObjects.push_back(anaTECAL);
-    //if (anaCCPi0Utils::utils().Verbosity())
-    //  std::cout<<"Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
+    std::cout<<"INFO: Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
     
   } // End of loop over TECALReconObjects
   
