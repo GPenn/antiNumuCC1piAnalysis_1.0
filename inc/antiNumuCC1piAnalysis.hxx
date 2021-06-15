@@ -78,7 +78,7 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     selmu_ecal_bestseg_EMenergy,
     selmu_ecal_bestseg_mippion,
     selmu_ecal_bestseg_EbyL,
-    //selmu_ecal_bestseg_circularity,
+    selmu_ecal_bestseg_circularity,
    
     HMNT_mom,
     HMNT_costheta,
