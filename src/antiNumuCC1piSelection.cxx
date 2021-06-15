@@ -631,6 +631,7 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   //}
 
   std::cout << "DEBUG: Got " <<localEvent->TECALReconObjects.size() << " TECALRecon objects from event " << event.EventInfo.Event <<std::endl;
+  std::cout << "DEBUG: TECALReconObjects.empty() = " <<localEvent->TECALReconObjects.empty() <<std::endl;
     
   // Loop over TECALReconObjects and print information
   //for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
