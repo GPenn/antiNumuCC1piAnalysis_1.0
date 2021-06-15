@@ -4,5 +4,5 @@
   
   draw.SetTitleX("selmu_ecal_circularity");
   TCanvas selmu_ecal_circularity;
-  draw.Draw(default,"selmu_ecal_circularity",20,-10,10,"particle","accum_level[][0]>4");
+  draw.Draw(default,"selmu_ecal_circularity",20,0,1,"particle","accum_level[][0]>4");
 }
