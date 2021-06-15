@@ -15,6 +15,7 @@
 #define antiNumuCC1piAnalysis_h
 
 #include "antiNumuCCMultiPiAnalysis.hxx"
+#include "antiNumuCC1piSelection.hxx"
 
 class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
  public:
