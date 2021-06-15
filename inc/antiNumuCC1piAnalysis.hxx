@@ -39,6 +39,18 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
   bool Initialize();
   void FillCategories();
  
+  //Copied from numuCCPi0Analysis (necessary to get local event info):
+  virtual AnaEventC* MakeEvent(){
+    const AnaLocalReconBunch* localBunch = dynamic_cast<const AnaLocalReconBunch*>(&GetBunch());
+    if (localBunch)
+      return new AnaLocalReconEvent(*static_cast<const AnaSpill*>(&GetSpill()),*localBunch);
+    else{
+      std::cerr<<"Invalid local event, did you enable UseReconDirTrackerECal = 1 in highlandIO.parameters.dat?\n";
+      exit(1);
+    }
+  }
+
+ 
   const ToyBoxCCMultiPi& mybox(){return *static_cast<const ToyBoxCCMultiPi*>(&box());}
  
   enum enumStandardMicroTrees_antiNumuCC1piAnalysis{
