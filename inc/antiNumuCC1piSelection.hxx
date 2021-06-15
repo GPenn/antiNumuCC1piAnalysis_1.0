@@ -66,17 +66,17 @@ public:
 
     ToyBoxCCMultiPi::Reset();
   
-    //TECALReconObjects.clear();
+    TECALReconObjects.clear();
     
-    //MainTrackLocalECalSegment = NULL;
+    MainTrackLocalECalSegment = NULL;
   
   }
   
   // These objects need to be read from the additional tecalRecon information in AnaLocalReconBunch
-  //AnaTECALObjectVec TECALReconObjects;
+  AnaTECALObjectVec TECALReconObjects;
   
   // Local reco ECal segments matched to those of the main tracks:
-  //AnaTECALReconObject* MainTrackLocalECalSegment;
+  AnaTECALReconObject* MainTrackLocalECalSegment;
   //AnaTECALObject HMNTLocalECalSegment;
 
 
