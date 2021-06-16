@@ -126,7 +126,18 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_ecal_bestseg_EMenergy, "");
   AddVarF(output(),selmu_ecal_bestseg_mippion, "");
   AddVarF(output(),selmu_ecal_bestseg_EbyL, "");
+  
+  AddVarF(output(),selmu_ecal_amr, "");
+  AddVarF(output(),selmu_ecal_angle, "");
+  AddVarF(output(),selmu_ecal_asymmetry, "");
   AddVarF(output(),selmu_ecal_circularity, "");
+  AddVarF(output(),selmu_ecal_fbr, "");
+  AddVarF(output(),selmu_ecal_maxratio, "");
+  AddVarF(output(),selmu_ecal_meanpos, "");
+  AddVarF(output(),selmu_ecal_showerangle, "");
+  AddVarF(output(),selmu_ecal_showerwidth, "");
+  AddVarF(output(),selmu_ecal_tcr, "");
+  AddVarF(output(),selmu_ecal_tmr, "");
   
   // --- Highest-momentum negative track variables
     
@@ -272,7 +283,17 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     // Get variables from local reco ECal segment:
     if (mybox().MainTrackLocalECalSegment  )
     {
-      output().FillVar(selmu_ecal_circularity,        mybox().MainTrackLocalECalSegment->PIDCircularity);
+      output().FillVar(selmu_ecal_amr,            mybox().MainTrackLocalECalSegment->PIDAMR);
+      output().FillVar(selmu_ecal_angle,          mybox().MainTrackLocalECalSegment->PIDAngle);
+      output().FillVar(selmu_ecal_asymmetry,      mybox().MainTrackLocalECalSegment->PIDAsymmetry);
+      output().FillVar(selmu_ecal_circularity,    mybox().MainTrackLocalECalSegment->PIDCircularity);
+      output().FillVar(selmu_ecal_fbr,            mybox().MainTrackLocalECalSegment->PIDFBR);
+      output().FillVar(selmu_ecal_maxratio,       mybox().MainTrackLocalECalSegment->PIDMaxRatio);
+      output().FillVar(selmu_ecal_meanpos,        mybox().MainTrackLocalECalSegment->PIDMeanPos);
+      output().FillVar(selmu_ecal_showerangle,    mybox().MainTrackLocalECalSegment->PIDShowerAngle);
+      output().FillVar(selmu_ecal_showerwidth,    mybox().MainTrackLocalECalSegment->PIDShowerWidth);
+      output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
+      output().FillVar(selmu_ecal_tmr,            mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio);
     }
 
   }
