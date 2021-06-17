@@ -39,7 +39,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
   AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
   AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
-  AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+  //AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
   AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
   AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
