@@ -12,11 +12,11 @@
   
   draw.SetTitleX("selmu_ecal_asymmetry");
   TCanvas selmu_ecal_asymmetry;
-  draw.Draw(default,"selmu_ecal_asymmetry",20,-1,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  draw.Draw(default,"selmu_ecal_asymmetry",20,0,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
   
   draw.SetTitleX("selmu_ecal_circularity");
   TCanvas selmu_ecal_circularity;
-  draw.Draw(default,"selmu_ecal_circularity",20,-1,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  draw.Draw(default,"selmu_ecal_circularity",20,0,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
   
   draw.SetTitleX("selmu_ecal_fbr");
   TCanvas selmu_ecal_fbr;
@@ -32,17 +32,17 @@
  
   draw.SetTitleX("selmu_ecal_showerangle");
   TCanvas selmu_ecal_showerangle;
-  draw.Draw(default,"selmu_ecal_showerangle",20,-1,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  draw.Draw(default,"selmu_ecal_showerangle",20,0,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
   
   draw.SetTitleX("selmu_ecal_showerwidth");
   TCanvas selmu_ecal_showerwidth;
-  draw.Draw(default,"selmu_ecal_showerwidth",20,-1,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  draw.Draw(default,"selmu_ecal_showerwidth",20,0,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
   
   draw.SetTitleX("selmu_ecal_tcr");
   TCanvas selmu_ecal_tcr;
-  draw.Draw(default,"selmu_ecal_tcr",20,0,2,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  draw.Draw(default,"selmu_ecal_tcr",20,0,3,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
   
   draw.SetTitleX("selmu_ecal_tmr");
   TCanvas selmu_ecal_tmr;
-  draw.Draw(default,"selmu_ecal_tmr",20,-1,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  draw.Draw(default,"selmu_ecal_tmr",20,0,1,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
 }
