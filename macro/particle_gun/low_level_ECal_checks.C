@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/particle_gun/localglobaltest1.root");
-  DataSample mc("output/particle_gun/localglobaltest1.root");
+  DrawingTools draw("output/particle_gun/localglobaltest2.root");
+  DataSample mc("output/particle_gun/localglobaltest2.root");
   
   draw.SetTitleX("selmu_ecal_amr");
   TCanvas selmu_ecal_amr;
