@@ -47,6 +47,17 @@ public :
   Float_t         selmu_ecal_bestseg_mippion;
   Float_t         selmu_ecal_bestseg_EbyL;
   Float_t         selmu_ecal_bestseg_EbyP;
+  Float_t         selmu_ecal_amr;
+  Float_t         selmu_ecal_angle;
+  Float_t         selmu_ecal_asymmetry;
+  Float_t         selmu_ecal_circularity;
+  Float_t         selmu_ecal_fbr;
+  Float_t         selmu_ecal_maxratio;
+  Float_t         selmu_ecal_meanpos;
+  Float_t         selmu_ecal_showerangle;
+  Float_t         selmu_ecal_showerwidth;
+  Float_t         selmu_ecal_tcr;
+  Float_t         selmu_ecal_tmr;
   
   Float_t         selmu_tpc_like_mu;
   Float_t         selmu_tpc_like_e;
@@ -115,6 +126,17 @@ private:
   TBranch        *foutb_selmu_ecal_bestseg_mippion;
   TBranch        *foutb_selmu_ecal_bestseg_EbyL;
   TBranch        *foutb_selmu_ecal_bestseg_EbyP;
+  TBranch        *foutb_selmu_ecal_amr;
+  TBranch        *foutb_selmu_ecal_angle;
+  TBranch        *foutb_selmu_ecal_asymmetry;
+  TBranch        *foutb_selmu_ecal_circularity;
+  TBranch        *foutb_selmu_ecal_fbr;
+  TBranch        *foutb_selmu_ecal_maxratio;
+  TBranch        *foutb_selmu_ecal_meanpos;
+  TBranch        *foutb_selmu_ecal_showerangle;
+  TBranch        *foutb_selmu_ecal_showerwidth;
+  TBranch        *foutb_selmu_ecal_tcr;
+  TBranch        *foutb_selmu_ecal_tmr;
   
   TBranch        *foutb_selmu_tpc_like_mu;
   TBranch        *foutb_selmu_tpc_like_e;
