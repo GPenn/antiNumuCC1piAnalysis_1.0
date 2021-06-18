@@ -45,7 +45,7 @@ void defaultAntiNumuCC1pi::Loop()
           // Cut on accum_level etc.
           if (accum_level[0][1] <= 4) continue; // Set accum_level
           if (selmu_mom[0] > 10000.0) continue;
-          if (HMNT_mom > 10000.0) continue;
+          if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
              
             defout->evt    		                  = evt;
             defout->topology		                  = topology;
