@@ -66,6 +66,17 @@ void defaultAntiNumuCC1pi::Loop()
               defout->selmu_ecal_bestseg_mippion     = selmu_ecal_bestseg_mippion;
               defout->selmu_ecal_bestseg_EbyL        = selmu_ecal_bestseg_EbyL;
               defout->selmu_ecal_bestseg_EbyP        = selmu_ecal_bestseg_EMenergy/selmu_mom[0];
+              defout->selmu_ecal_amr                 = selmu_ecal_amr;
+              defout->selmu_ecal_angle               = selmu_ecal_angle;
+              defout->selmu_ecal_asymmetry           = selmu_ecal_asymmetry;
+              defout->selmu_ecal_circularity         = selmu_ecal_circularity;
+              defout->selmu_ecal_fbr                 = selmu_ecal_fbr;
+              defout->selmu_ecal_maxratio            = selmu_ecal_maxratio;
+              defout->selmu_ecal_meanpos             = selmu_ecal_meanpos;
+              defout->selmu_ecal_showerangle         = selmu_ecal_showerangle;
+              defout->selmu_ecal_showerwidth         = selmu_ecal_showerwidth;
+              defout->selmu_ecal_tcr                 = selmu_ecal_tcr;
+              defout->selmu_ecal_tmr                 = selmu_ecal_tmr;
             }
             else
             {
@@ -73,6 +84,17 @@ void defaultAntiNumuCC1pi::Loop()
               defout->selmu_ecal_bestseg_mippion     = -100.0;
               defout->selmu_ecal_bestseg_EbyL        = -1.0;
               defout->selmu_ecal_bestseg_EbyP        = -1.0;
+              defout->selmu_ecal_amr                 = -50.0;
+              defout->selmu_ecal_angle               = -20.0;
+              defout->selmu_ecal_asymmetry           = -0.5;
+              defout->selmu_ecal_circularity         = -0.5;
+              defout->selmu_ecal_fbr                 = -5.0;
+              defout->selmu_ecal_maxratio            = -50.0;
+              defout->selmu_ecal_meanpos             = -100.0;
+              defout->selmu_ecal_showerangle         = -0.1;
+              defout->selmu_ecal_showerwidth         = -0.1;
+              defout->selmu_ecal_tcr                 = -0.5;
+              defout->selmu_ecal_tmr                 = -0.2;
             }
          
             defout->selmu_tpc_like_mu              = selmu_tpc_like_mu;
@@ -238,6 +260,17 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_ecal_bestseg_mippion   = fDefaultOut->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
   foutb_selmu_ecal_bestseg_EbyL      = fDefaultOut->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
   foutb_selmu_ecal_bestseg_EbyP      = fDefaultOut->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
+  foutb_selmu_ecal_amr               = fDefaultOut->Branch("selmu_ecal_amr"                 , &selmu_ecal_amr              , "selmu_ecal_amr/F");
+  foutb_selmu_ecal_angle             = fDefaultOut->Branch("selmu_ecal_angle"               , &selmu_ecal_angle            , "selmu_ecal_angle/F");
+  foutb_selmu_ecal_asymmetry         = fDefaultOut->Branch("selmu_ecal_asymmetry"           , &selmu_ecal_asymmetry        , "selmu_ecal_asymmetry/F");
+  foutb_selmu_ecal_circularity       = fDefaultOut->Branch("selmu_ecal_circularity"         , &selmu_ecal_circularity      , "selmu_ecal_circularity/F");
+  foutb_selmu_ecal_fbr               = fDefaultOut->Branch("selmu_ecal_fbr"                 , &selmu_ecal_fbr              , "selmu_ecal_fbr/F");
+  foutb_selmu_ecal_maxratio          = fDefaultOut->Branch("selmu_ecal_maxratio"            , &selmu_ecal_maxratio         , "selmu_ecal_maxratio/F");
+  foutb_selmu_ecal_meanpos           = fDefaultOut->Branch("selmu_ecal_meanpos"             , &selmu_ecal_meanpos          , "selmu_ecal_meanpos/F");
+  foutb_selmu_ecal_showerangle       = fDefaultOut->Branch("selmu_ecal_showerangle"         , &selmu_ecal_showerangle      , "selmu_ecal_showerangle/F");
+  foutb_selmu_ecal_showerwidth       = fDefaultOut->Branch("selmu_ecal_showerwidth"         , &selmu_ecal_showerwidth      , "selmu_ecal_showerwidth/F");
+  foutb_selmu_ecal_tcr               = fDefaultOut->Branch("selmu_ecal_tcr"                 , &selmu_ecal_tcr              , "selmu_ecal_tcr/F");
+  foutb_selmu_ecal_tmr               = fDefaultOut->Branch("selmu_ecal_tmr"                 , &selmu_ecal_tmr              , "selmu_ecal_tmr/F");
    
   foutb_selmu_tpc_like_mu  	       = fDefaultOut->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu  	      , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
