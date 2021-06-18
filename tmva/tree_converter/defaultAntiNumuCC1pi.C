@@ -144,14 +144,7 @@ void defaultAntiNumuCC1pi::Loop()
             if (HMNT_fgd2_pull_no > -30.0)                              {defout->HMNT_fgd2_pull_no = HMNT_fgd2_pull_no;}
             else                                                        {defout->HMNT_fgd2_pull_no = -30.0;}
          
-            //defout->Fill();
-         
-            if ( topology==1 && (entry%5)<4 ) {defout->Fill_SigTrain();} // Signal training
-            if ( topology==1 && (entry%5)>=4 ) {defout->Fill_SigTest();}  // Signal testing
-            if ( topology!=1 && (entry%5)<4 ) {defout->Fill_BkgTrain();} // Background training
-            if ( topology!=1 && (entry%5)>=4 ) {defout->Fill_BkgTest();}  // Background testing
-               
-            
+            defout->Fill();
          
             // Code to keep track of completion percentage and estimate time remaining:
          
@@ -224,261 +217,69 @@ defaultOut::defaultOut(std::string outname) {
   fOutFile = new TFile(outname.c_str(), "RECREATE");
   fOutFile->cd();
   
-  // ----------- Signal training tree -----------
+  // ----------- Output tree -----------
    
-  fDefaultOut_SigTrain = new TTree("SignalTraining", "");
+  fDefaultOut = new TTree("default", "");
 
-  foutb_evt_SigTrain 	                      = fDefaultOut_SigTrain->Branch("evt"                            , &evt 	                     , "evt/I");
-  foutb_topology_SigTrain 	                   = fDefaultOut_SigTrain->Branch("topology"                       , &topology 	                  , "topology/I");
-  foutb_particle_SigTrain 	                   = fDefaultOut_SigTrain->Branch("particle"                       , &particle 	                  , "particle/I");
-  foutb_ntpcposQualityFV_SigTrain 	          = fDefaultOut_SigTrain->Branch("ntpcposQualityFV"               , &ntpcposQualityFV 	         , "ntpcposQualityFV/I");
-  foutb_ntpcnegQualityFV_SigTrain 	          = fDefaultOut_SigTrain->Branch("ntpcnegQualityFV"               , &ntpcnegQualityFV 	         , "ntpcnegQualityFV/I");
-  foutb_NME_SigTrain 	                      = fDefaultOut_SigTrain->Branch("NME"                            , &NME 	                     , "NME/I");
-  foutb_NFGDPi_SigTrain 	                   = fDefaultOut_SigTrain->Branch("NFGDPi"                         , &NFGDPi 	                  , "NFGDPi/I");
-  foutb_NPi0El_SigTrain 	                   = fDefaultOut_SigTrain->Branch("NPi0El"                         , &NPi0El 	                  , "NPi0El/I");
-  foutb_NPi0Pos_SigTrain 	                   = fDefaultOut_SigTrain->Branch("NPi0Pos"                        , &NPi0Pos 	                  , "NPi0Pos/I");
+  foutb_evt 	                      = fDefaultOut->Branch("evt"                            , &evt 	                     , "evt/I");
+  foutb_topology 	                   = fDefaultOut->Branch("topology"                       , &topology 	                  , "topology/I");
+  foutb_particle 	                   = fDefaultOut->Branch("particle"                       , &particle 	                  , "particle/I");
+  foutb_ntpcposQualityFV 	          = fDefaultOut->Branch("ntpcposQualityFV"               , &ntpcposQualityFV 	         , "ntpcposQualityFV/I");
+  foutb_ntpcnegQualityFV 	          = fDefaultOut->Branch("ntpcnegQualityFV"               , &ntpcnegQualityFV 	         , "ntpcnegQualityFV/I");
+  foutb_NME 	                      = fDefaultOut->Branch("NME"                            , &NME 	                     , "NME/I");
+  foutb_NFGDPi 	                   = fDefaultOut->Branch("NFGDPi"                         , &NFGDPi 	                  , "NFGDPi/I");
+  foutb_NPi0El 	                   = fDefaultOut->Branch("NPi0El"                         , &NPi0El 	                  , "NPi0El/I");
+  foutb_NPi0Pos 	                   = fDefaultOut->Branch("NPi0Pos"                        , &NPi0Pos 	                  , "NPi0Pos/I");
    
-  foutb_selmu_mom_SigTrain 	                = fDefaultOut_SigTrain->Branch("selmu_mom"                      , &selmu_mom 	               , "selmu_mom/F");
+  foutb_selmu_mom 	                = fDefaultOut->Branch("selmu_mom"                      , &selmu_mom 	               , "selmu_mom/F");
   
-  foutb_selmu_necals_SigTrain 	             = fDefaultOut_SigTrain->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
-  foutb_selmu_ecal_bestseg_EMenergy_SigTrain  = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
-  foutb_selmu_ecal_bestseg_mippion_SigTrain   = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
-  foutb_selmu_ecal_bestseg_EbyL_SigTrain      = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
-  foutb_selmu_ecal_bestseg_EbyP_SigTrain      = fDefaultOut_SigTrain->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
+  foutb_selmu_necals 	             = fDefaultOut->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
+  foutb_selmu_ecal_bestseg_EMenergy  = fDefaultOut->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
+  foutb_selmu_ecal_bestseg_mippion   = fDefaultOut->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
+  foutb_selmu_ecal_bestseg_EbyL      = fDefaultOut->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
+  foutb_selmu_ecal_bestseg_EbyP      = fDefaultOut->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
    
-  foutb_selmu_tpc_like_mu_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu  	      , "selmu_tpc_like_mu/F");
-  foutb_selmu_tpc_like_e_SigTrain  	          = fDefaultOut_SigTrain->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
-  foutb_selmu_tpc_like_p_SigTrain  	          = fDefaultOut_SigTrain->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p  	         , "selmu_tpc_like_p/F");
-  foutb_selmu_tpc_like_pi_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi  	      , "selmu_tpc_like_pi/F");
+  foutb_selmu_tpc_like_mu  	       = fDefaultOut->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu  	      , "selmu_tpc_like_mu/F");
+  foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
+  foutb_selmu_tpc_like_p  	          = fDefaultOut->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p  	         , "selmu_tpc_like_p/F");
+  foutb_selmu_tpc_like_pi  	       = fDefaultOut->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi  	      , "selmu_tpc_like_pi/F");
    
-  foutb_selmu_has_fgd1seg_SigTrain 	          = fDefaultOut_SigTrain->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg 	         , "selmu_has_fgd1seg/I");
-  foutb_selmu_fgd1_pull_mu_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu  	      , "selmu_fgd1_pull_mu/F");
-  foutb_selmu_fgd1_pull_p_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd1_pull_p"              , &selmu_fgd1_pull_p  	      , "selmu_fgd1_pull_p/F");
-  foutb_selmu_fgd1_pull_pi_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd1_pull_pi"             , &selmu_fgd1_pull_pi  	      , "selmu_fgd1_pull_pi/F");
-  foutb_selmu_fgd1_pull_no_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no  	      , "selmu_fgd1_pull_no/F");
+  foutb_selmu_has_fgd1seg 	          = fDefaultOut->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg 	         , "selmu_has_fgd1seg/I");
+  foutb_selmu_fgd1_pull_mu  	       = fDefaultOut->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu  	      , "selmu_fgd1_pull_mu/F");
+  foutb_selmu_fgd1_pull_p  	       = fDefaultOut->Branch("selmu_fgd1_pull_p"              , &selmu_fgd1_pull_p  	      , "selmu_fgd1_pull_p/F");
+  foutb_selmu_fgd1_pull_pi  	       = fDefaultOut->Branch("selmu_fgd1_pull_pi"             , &selmu_fgd1_pull_pi  	      , "selmu_fgd1_pull_pi/F");
+  foutb_selmu_fgd1_pull_no  	       = fDefaultOut->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no  	      , "selmu_fgd1_pull_no/F");
    
-  foutb_selmu_has_fgd2seg_SigTrain 	          = fDefaultOut_SigTrain->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg 	         , "selmu_has_fgd2seg/I");
-  foutb_selmu_fgd2_pull_mu_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu  	      , "selmu_fgd2_pull_mu/F");
-  foutb_selmu_fgd2_pull_p_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd2_pull_p"              , &selmu_fgd2_pull_p  	      , "selmu_fgd2_pull_p/F");
-  foutb_selmu_fgd2_pull_pi_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd2_pull_pi"             , &selmu_fgd2_pull_pi  	      , "selmu_fgd2_pull_pi/F");
-  foutb_selmu_fgd2_pull_no_SigTrain  	       = fDefaultOut_SigTrain->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no  	      , "selmu_fgd2_pull_no/F");
+  foutb_selmu_has_fgd2seg 	          = fDefaultOut->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg 	         , "selmu_has_fgd2seg/I");
+  foutb_selmu_fgd2_pull_mu  	       = fDefaultOut->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu  	      , "selmu_fgd2_pull_mu/F");
+  foutb_selmu_fgd2_pull_p  	       = fDefaultOut->Branch("selmu_fgd2_pull_p"              , &selmu_fgd2_pull_p  	      , "selmu_fgd2_pull_p/F");
+  foutb_selmu_fgd2_pull_pi  	       = fDefaultOut->Branch("selmu_fgd2_pull_pi"             , &selmu_fgd2_pull_pi  	      , "selmu_fgd2_pull_pi/F");
+  foutb_selmu_fgd2_pull_no  	       = fDefaultOut->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no  	      , "selmu_fgd2_pull_no/F");
    
-  foutb_HMNT_mom_SigTrain 	                   = fDefaultOut_SigTrain->Branch("HMNT_mom"                       , &HMNT_mom 	                  , "HMNT_mom/F");
+  foutb_HMNT_mom 	                   = fDefaultOut->Branch("HMNT_mom"                       , &HMNT_mom 	                  , "HMNT_mom/F");
   
-  foutb_HMNT_NEcalSegments_SigTrain	          = fDefaultOut_SigTrain->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_bestseg_EMenergy_SigTrain   = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
-  foutb_HMNT_ecal_bestseg_mippion_SigTrain   = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
-  foutb_HMNT_ecal_bestseg_EbyL_SigTrain      = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
-  foutb_HMNT_ecal_bestseg_EbyP_SigTrain      = fDefaultOut_SigTrain->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
+  foutb_HMNT_NEcalSegments	          = fDefaultOut->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments	         , "HMNT_NEcalsSegments/I");
+  foutb_HMNT_ecal_bestseg_EMenergy   = fDefaultOut->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
+  foutb_HMNT_ecal_bestseg_mippion   = fDefaultOut->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
+  foutb_HMNT_ecal_bestseg_EbyL      = fDefaultOut->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
+  foutb_HMNT_ecal_bestseg_EbyP      = fDefaultOut->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
    
-  foutb_HMNT_tpc_like_mu_SigTrain               = fDefaultOut_SigTrain->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
-  foutb_HMNT_tpc_like_e_SigTrain             = fDefaultOut_SigTrain->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
-  foutb_HMNT_tpc_like_p_SigTrain             = fDefaultOut_SigTrain->Branch("HMNT_tpc_like_p"               , &HMNT_tpc_like_p            , "HMNT_tpc_like_p/F");
-  foutb_HMNT_tpc_like_pi_SigTrain               = fDefaultOut_SigTrain->Branch("HMNT_tpc_like_pi"              , &HMNT_tpc_like_pi           , "HMNT_tpc_like_pi/F");
+  foutb_HMNT_tpc_like_mu               = fDefaultOut->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
+  foutb_HMNT_tpc_like_e             = fDefaultOut->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
+  foutb_HMNT_tpc_like_p             = fDefaultOut->Branch("HMNT_tpc_like_p"               , &HMNT_tpc_like_p            , "HMNT_tpc_like_p/F");
+  foutb_HMNT_tpc_like_pi               = fDefaultOut->Branch("HMNT_tpc_like_pi"              , &HMNT_tpc_like_pi           , "HMNT_tpc_like_pi/F");
    
-  foutb_HMNT_has_fgd1seg_SigTrain            = fDefaultOut_SigTrain->Branch("HMNT_has_fgd1seg"              , &HMNT_has_fgd1seg           , "HMNT_has_fgd1seg/I");
-  foutb_HMNT_fgd1_pull_mu_SigTrain              = fDefaultOut_SigTrain->Branch("HMNT_fgd1_pull_mu"             , &HMNT_fgd1_pull_mu          , "HMNT_fgd1_pull_mu/F");
-  foutb_HMNT_fgd1_pull_p_SigTrain               = fDefaultOut_SigTrain->Branch("HMNT_fgd1_pull_p"              , &HMNT_fgd1_pull_p           , "HMNT_fgd1_pull_p/F");
-  foutb_HMNT_fgd1_pull_pi_SigTrain              = fDefaultOut_SigTrain->Branch("HMNT_fgd1_pull_pi"             , &HMNT_fgd1_pull_pi          , "HMNT_fgd1_pull_pi/F");
-  foutb_HMNT_fgd1_pull_no_SigTrain              = fDefaultOut_SigTrain->Branch("HMNT_fgd1_pull_no"             , &HMNT_fgd1_pull_no          , "HMNT_fgd1_pull_no/F");
+  foutb_HMNT_has_fgd1seg            = fDefaultOut->Branch("HMNT_has_fgd1seg"              , &HMNT_has_fgd1seg           , "HMNT_has_fgd1seg/I");
+  foutb_HMNT_fgd1_pull_mu              = fDefaultOut->Branch("HMNT_fgd1_pull_mu"             , &HMNT_fgd1_pull_mu          , "HMNT_fgd1_pull_mu/F");
+  foutb_HMNT_fgd1_pull_p               = fDefaultOut->Branch("HMNT_fgd1_pull_p"              , &HMNT_fgd1_pull_p           , "HMNT_fgd1_pull_p/F");
+  foutb_HMNT_fgd1_pull_pi              = fDefaultOut->Branch("HMNT_fgd1_pull_pi"             , &HMNT_fgd1_pull_pi          , "HMNT_fgd1_pull_pi/F");
+  foutb_HMNT_fgd1_pull_no              = fDefaultOut->Branch("HMNT_fgd1_pull_no"             , &HMNT_fgd1_pull_no          , "HMNT_fgd1_pull_no/F");
    
-  foutb_HMNT_has_fgd2seg_SigTrain            = fDefaultOut_SigTrain->Branch("HMNT_has_fgd2seg"              , &HMNT_has_fgd2seg           , "HMNT_has_fgd2seg/I");
-  foutb_HMNT_fgd2_pull_mu_SigTrain              = fDefaultOut_SigTrain->Branch("HMNT_fgd2_pull_mu"             , &HMNT_fgd2_pull_mu          , "HMNT_fgd2_pull_mu/F");
-  foutb_HMNT_fgd2_pull_p_SigTrain               = fDefaultOut_SigTrain->Branch("HMNT_fgd2_pull_p"              , &HMNT_fgd2_pull_p           , "HMNT_fgd2_pull_p/F");
-  foutb_HMNT_fgd2_pull_pi_SigTrain              = fDefaultOut_SigTrain->Branch("HMNT_fgd2_pull_pi"             , &HMNT_fgd2_pull_pi          , "HMNT_fgd2_pull_pi/F");
-  foutb_HMNT_fgd2_pull_no_SigTrain              = fDefaultOut_SigTrain->Branch("HMNT_fgd2_pull_no"             , &HMNT_fgd2_pull_no          , "HMNT_fgd2_pull_no/F");
-   
-  // ----------- Signal testing tree -----------
-   
-  fDefaultOut_SigTest = new TTree("SignalTesting", "");
-
-  foutb_evt_SigTest                        = fDefaultOut_SigTest->Branch("evt"                            , &evt                       , "evt/I");
-  foutb_topology_SigTest                      = fDefaultOut_SigTest->Branch("topology"                       , &topology                    , "topology/I");
-  foutb_particle_SigTest                      = fDefaultOut_SigTest->Branch("particle"                       , &particle                    , "particle/I");
-  foutb_ntpcposQualityFV_SigTest             = fDefaultOut_SigTest->Branch("ntpcposQualityFV"               , &ntpcposQualityFV            , "ntpcposQualityFV/I");
-  foutb_ntpcnegQualityFV_SigTest             = fDefaultOut_SigTest->Branch("ntpcnegQualityFV"               , &ntpcnegQualityFV            , "ntpcnegQualityFV/I");
-  foutb_NME_SigTest                        = fDefaultOut_SigTest->Branch("NME"                            , &NME                       , "NME/I");
-  foutb_NFGDPi_SigTest                      = fDefaultOut_SigTest->Branch("NFGDPi"                         , &NFGDPi                    , "NFGDPi/I");
-  foutb_NPi0El_SigTest                      = fDefaultOut_SigTest->Branch("NPi0El"                         , &NPi0El                    , "NPi0El/I");
-  foutb_NPi0Pos_SigTest                     = fDefaultOut_SigTest->Branch("NPi0Pos"                        , &NPi0Pos                     , "NPi0Pos/I");
-   
-  foutb_selmu_mom_SigTest                  = fDefaultOut_SigTest->Branch("selmu_mom"                      , &selmu_mom                 , "selmu_mom/F");
-  
-  foutb_selmu_necals_SigTest                = fDefaultOut_SigTest->Branch("selmu_necals"                   , &selmu_necals              , "selmu_necals/I");
-  foutb_selmu_ecal_bestseg_EMenergy_SigTest  = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
-  foutb_selmu_ecal_bestseg_mippion_SigTest   = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
-  foutb_selmu_ecal_bestseg_EbyL_SigTest      = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
-  foutb_selmu_ecal_bestseg_EbyP_SigTest      = fDefaultOut_SigTest->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
-   
-  foutb_selmu_tpc_like_mu_SigTest           = fDefaultOut_SigTest->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu         , "selmu_tpc_like_mu/F");
-  foutb_selmu_tpc_like_e_SigTest             = fDefaultOut_SigTest->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e            , "selmu_tpc_like_e/F");
-  foutb_selmu_tpc_like_p_SigTest             = fDefaultOut_SigTest->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p            , "selmu_tpc_like_p/F");
-  foutb_selmu_tpc_like_pi_SigTest           = fDefaultOut_SigTest->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi         , "selmu_tpc_like_pi/F");
-   
-  foutb_selmu_has_fgd1seg_SigTest            = fDefaultOut_SigTest->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg           , "selmu_has_fgd1seg/I");
-  foutb_selmu_fgd1_pull_mu_SigTest          = fDefaultOut_SigTest->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu          , "selmu_fgd1_pull_mu/F");
-  foutb_selmu_fgd1_pull_p_SigTest           = fDefaultOut_SigTest->Branch("selmu_fgd1_pull_p"              , &selmu_fgd1_pull_p         , "selmu_fgd1_pull_p/F");
-  foutb_selmu_fgd1_pull_pi_SigTest          = fDefaultOut_SigTest->Branch("selmu_fgd1_pull_pi"             , &selmu_fgd1_pull_pi          , "selmu_fgd1_pull_pi/F");
-  foutb_selmu_fgd1_pull_no_SigTest          = fDefaultOut_SigTest->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no          , "selmu_fgd1_pull_no/F");
-   
-  foutb_selmu_has_fgd2seg_SigTest            = fDefaultOut_SigTest->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg           , "selmu_has_fgd2seg/I");
-  foutb_selmu_fgd2_pull_mu_SigTest          = fDefaultOut_SigTest->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu          , "selmu_fgd2_pull_mu/F");
-  foutb_selmu_fgd2_pull_p_SigTest           = fDefaultOut_SigTest->Branch("selmu_fgd2_pull_p"              , &selmu_fgd2_pull_p         , "selmu_fgd2_pull_p/F");
-  foutb_selmu_fgd2_pull_pi_SigTest          = fDefaultOut_SigTest->Branch("selmu_fgd2_pull_pi"             , &selmu_fgd2_pull_pi          , "selmu_fgd2_pull_pi/F");
-  foutb_selmu_fgd2_pull_no_SigTest          = fDefaultOut_SigTest->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no          , "selmu_fgd2_pull_no/F");
-   
-  foutb_HMNT_mom_SigTest                      = fDefaultOut_SigTest->Branch("HMNT_mom"                       , &HMNT_mom                    , "HMNT_mom/F");
-  
-  foutb_HMNT_NEcalSegments_SigTest           = fDefaultOut_SigTest->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments          , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_bestseg_EMenergy_SigTest   = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
-  foutb_HMNT_ecal_bestseg_mippion_SigTest   = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
-  foutb_HMNT_ecal_bestseg_EbyL_SigTest      = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
-  foutb_HMNT_ecal_bestseg_EbyP_SigTest      = fDefaultOut_SigTest->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
-   
-  foutb_HMNT_tpc_like_mu_SigTest               = fDefaultOut_SigTest->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
-  foutb_HMNT_tpc_like_e_SigTest             = fDefaultOut_SigTest->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
-  foutb_HMNT_tpc_like_p_SigTest             = fDefaultOut_SigTest->Branch("HMNT_tpc_like_p"               , &HMNT_tpc_like_p            , "HMNT_tpc_like_p/F");
-  foutb_HMNT_tpc_like_pi_SigTest               = fDefaultOut_SigTest->Branch("HMNT_tpc_like_pi"              , &HMNT_tpc_like_pi           , "HMNT_tpc_like_pi/F");
-   
-  foutb_HMNT_has_fgd1seg_SigTest            = fDefaultOut_SigTest->Branch("HMNT_has_fgd1seg"              , &HMNT_has_fgd1seg           , "HMNT_has_fgd1seg/I");
-  foutb_HMNT_fgd1_pull_mu_SigTest              = fDefaultOut_SigTest->Branch("HMNT_fgd1_pull_mu"             , &HMNT_fgd1_pull_mu          , "HMNT_fgd1_pull_mu/F");
-  foutb_HMNT_fgd1_pull_p_SigTest               = fDefaultOut_SigTest->Branch("HMNT_fgd1_pull_p"              , &HMNT_fgd1_pull_p           , "HMNT_fgd1_pull_p/F");
-  foutb_HMNT_fgd1_pull_pi_SigTest              = fDefaultOut_SigTest->Branch("HMNT_fgd1_pull_pi"             , &HMNT_fgd1_pull_pi          , "HMNT_fgd1_pull_pi/F");
-  foutb_HMNT_fgd1_pull_no_SigTest              = fDefaultOut_SigTest->Branch("HMNT_fgd1_pull_no"             , &HMNT_fgd1_pull_no          , "HMNT_fgd1_pull_no/F");
-   
-  foutb_HMNT_has_fgd2seg_SigTest            = fDefaultOut_SigTest->Branch("HMNT_has_fgd2seg"              , &HMNT_has_fgd2seg           , "HMNT_has_fgd2seg/I");
-  foutb_HMNT_fgd2_pull_mu_SigTest              = fDefaultOut_SigTest->Branch("HMNT_fgd2_pull_mu"             , &HMNT_fgd2_pull_mu          , "HMNT_fgd2_pull_mu/F");
-  foutb_HMNT_fgd2_pull_p_SigTest               = fDefaultOut_SigTest->Branch("HMNT_fgd2_pull_p"              , &HMNT_fgd2_pull_p           , "HMNT_fgd2_pull_p/F");
-  foutb_HMNT_fgd2_pull_pi_SigTest              = fDefaultOut_SigTest->Branch("HMNT_fgd2_pull_pi"             , &HMNT_fgd2_pull_pi          , "HMNT_fgd2_pull_pi/F");
-  foutb_HMNT_fgd2_pull_no_SigTest              = fDefaultOut_SigTest->Branch("HMNT_fgd2_pull_no"             , &HMNT_fgd2_pull_no          , "HMNT_fgd2_pull_no/F");
-   
-  // ----------- Background training tree -----------
-   
-  fDefaultOut_BkgTrain = new TTree("BackgroundTraining", "");
-
-  foutb_evt_BkgTrain                        = fDefaultOut_BkgTrain->Branch("evt"                            , &evt                       , "evt/I");
-  foutb_topology_BkgTrain                      = fDefaultOut_BkgTrain->Branch("topology"                       , &topology                    , "topology/I");
-  foutb_particle_BkgTrain                      = fDefaultOut_BkgTrain->Branch("particle"                       , &particle                    , "particle/I");
-  foutb_ntpcposQualityFV_BkgTrain             = fDefaultOut_BkgTrain->Branch("ntpcposQualityFV"               , &ntpcposQualityFV            , "ntpcposQualityFV/I");
-  foutb_ntpcnegQualityFV_BkgTrain             = fDefaultOut_BkgTrain->Branch("ntpcnegQualityFV"               , &ntpcnegQualityFV            , "ntpcnegQualityFV/I");
-  foutb_NME_BkgTrain                        = fDefaultOut_BkgTrain->Branch("NME"                            , &NME                       , "NME/I");
-  foutb_NFGDPi_BkgTrain                      = fDefaultOut_BkgTrain->Branch("NFGDPi"                         , &NFGDPi                    , "NFGDPi/I");
-  foutb_NPi0El_BkgTrain                      = fDefaultOut_BkgTrain->Branch("NPi0El"                         , &NPi0El                    , "NPi0El/I");
-  foutb_NPi0Pos_BkgTrain                     = fDefaultOut_BkgTrain->Branch("NPi0Pos"                        , &NPi0Pos                     , "NPi0Pos/I");
-   
-  foutb_selmu_mom_BkgTrain                  = fDefaultOut_BkgTrain->Branch("selmu_mom"                      , &selmu_mom                 , "selmu_mom/F");
-  
-  foutb_selmu_necals_BkgTrain                = fDefaultOut_BkgTrain->Branch("selmu_necals"                   , &selmu_necals              , "selmu_necals/I");
-  foutb_selmu_ecal_bestseg_EMenergy_BkgTrain  = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
-  foutb_selmu_ecal_bestseg_mippion_BkgTrain   = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
-  foutb_selmu_ecal_bestseg_EbyL_BkgTrain      = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
-  foutb_selmu_ecal_bestseg_EbyP_BkgTrain      = fDefaultOut_BkgTrain->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
-   
-  foutb_selmu_tpc_like_mu_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu         , "selmu_tpc_like_mu/F");
-  foutb_selmu_tpc_like_e_BkgTrain             = fDefaultOut_BkgTrain->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e            , "selmu_tpc_like_e/F");
-  foutb_selmu_tpc_like_p_BkgTrain             = fDefaultOut_BkgTrain->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p            , "selmu_tpc_like_p/F");
-  foutb_selmu_tpc_like_pi_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi         , "selmu_tpc_like_pi/F");
-   
-  foutb_selmu_has_fgd1seg_BkgTrain            = fDefaultOut_BkgTrain->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg           , "selmu_has_fgd1seg/I");
-  foutb_selmu_fgd1_pull_mu_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu          , "selmu_fgd1_pull_mu/F");
-  foutb_selmu_fgd1_pull_p_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_fgd1_pull_p"              , &selmu_fgd1_pull_p         , "selmu_fgd1_pull_p/F");
-  foutb_selmu_fgd1_pull_pi_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_fgd1_pull_pi"             , &selmu_fgd1_pull_pi          , "selmu_fgd1_pull_pi/F");
-  foutb_selmu_fgd1_pull_no_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no          , "selmu_fgd1_pull_no/F");
-   
-  foutb_selmu_has_fgd2seg_BkgTrain            = fDefaultOut_BkgTrain->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg           , "selmu_has_fgd2seg/I");
-  foutb_selmu_fgd2_pull_mu_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu          , "selmu_fgd2_pull_mu/F");
-  foutb_selmu_fgd2_pull_p_BkgTrain           = fDefaultOut_BkgTrain->Branch("selmu_fgd2_pull_p"              , &selmu_fgd2_pull_p         , "selmu_fgd2_pull_p/F");
-  foutb_selmu_fgd2_pull_pi_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_fgd2_pull_pi"             , &selmu_fgd2_pull_pi          , "selmu_fgd2_pull_pi/F");
-  foutb_selmu_fgd2_pull_no_BkgTrain          = fDefaultOut_BkgTrain->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no          , "selmu_fgd2_pull_no/F");
-   
-  foutb_HMNT_mom_BkgTrain                      = fDefaultOut_BkgTrain->Branch("HMNT_mom"                       , &HMNT_mom                    , "HMNT_mom/F");
-  
-  foutb_HMNT_NEcalSegments_BkgTrain           = fDefaultOut_BkgTrain->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments          , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_bestseg_EMenergy_BkgTrain   = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
-  foutb_HMNT_ecal_bestseg_mippion_BkgTrain   = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
-  foutb_HMNT_ecal_bestseg_EbyL_BkgTrain      = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
-  foutb_HMNT_ecal_bestseg_EbyP_BkgTrain      = fDefaultOut_BkgTrain->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
-   
-  foutb_HMNT_tpc_like_mu_BkgTrain               = fDefaultOut_BkgTrain->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
-  foutb_HMNT_tpc_like_e_BkgTrain             = fDefaultOut_BkgTrain->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
-  foutb_HMNT_tpc_like_p_BkgTrain             = fDefaultOut_BkgTrain->Branch("HMNT_tpc_like_p"               , &HMNT_tpc_like_p            , "HMNT_tpc_like_p/F");
-  foutb_HMNT_tpc_like_pi_BkgTrain               = fDefaultOut_BkgTrain->Branch("HMNT_tpc_like_pi"              , &HMNT_tpc_like_pi           , "HMNT_tpc_like_pi/F");
-   
-  foutb_HMNT_has_fgd1seg_BkgTrain            = fDefaultOut_BkgTrain->Branch("HMNT_has_fgd1seg"              , &HMNT_has_fgd1seg           , "HMNT_has_fgd1seg/I");
-  foutb_HMNT_fgd1_pull_mu_BkgTrain              = fDefaultOut_BkgTrain->Branch("HMNT_fgd1_pull_mu"             , &HMNT_fgd1_pull_mu          , "HMNT_fgd1_pull_mu/F");
-  foutb_HMNT_fgd1_pull_p_BkgTrain               = fDefaultOut_BkgTrain->Branch("HMNT_fgd1_pull_p"              , &HMNT_fgd1_pull_p           , "HMNT_fgd1_pull_p/F");
-  foutb_HMNT_fgd1_pull_pi_BkgTrain              = fDefaultOut_BkgTrain->Branch("HMNT_fgd1_pull_pi"             , &HMNT_fgd1_pull_pi          , "HMNT_fgd1_pull_pi/F");
-  foutb_HMNT_fgd1_pull_no_BkgTrain              = fDefaultOut_BkgTrain->Branch("HMNT_fgd1_pull_no"             , &HMNT_fgd1_pull_no          , "HMNT_fgd1_pull_no/F");
-   
-  foutb_HMNT_has_fgd2seg_BkgTrain            = fDefaultOut_BkgTrain->Branch("HMNT_has_fgd2seg"              , &HMNT_has_fgd2seg           , "HMNT_has_fgd2seg/I");
-  foutb_HMNT_fgd2_pull_mu_BkgTrain              = fDefaultOut_BkgTrain->Branch("HMNT_fgd2_pull_mu"             , &HMNT_fgd2_pull_mu          , "HMNT_fgd2_pull_mu/F");
-  foutb_HMNT_fgd2_pull_p_BkgTrain               = fDefaultOut_BkgTrain->Branch("HMNT_fgd2_pull_p"              , &HMNT_fgd2_pull_p           , "HMNT_fgd2_pull_p/F");
-  foutb_HMNT_fgd2_pull_pi_BkgTrain              = fDefaultOut_BkgTrain->Branch("HMNT_fgd2_pull_pi"             , &HMNT_fgd2_pull_pi          , "HMNT_fgd2_pull_pi/F");
-  foutb_HMNT_fgd2_pull_no_BkgTrain              = fDefaultOut_BkgTrain->Branch("HMNT_fgd2_pull_no"             , &HMNT_fgd2_pull_no          , "HMNT_fgd2_pull_no/F");
-   
-  // ----------- Background testing tree -----------
-   
-  fDefaultOut_BkgTest = new TTree("BackgroundTesting", "");
-
-  foutb_evt_BkgTest                        = fDefaultOut_BkgTest->Branch("evt"                            , &evt                       , "evt/I");
-  foutb_topology_BkgTest                      = fDefaultOut_BkgTest->Branch("topology"                       , &topology                    , "topology/I");
-  foutb_particle_BkgTest                      = fDefaultOut_BkgTest->Branch("particle"                       , &particle                    , "particle/I");
-  foutb_ntpcposQualityFV_BkgTest             = fDefaultOut_BkgTest->Branch("ntpcposQualityFV"               , &ntpcposQualityFV            , "ntpcposQualityFV/I");
-  foutb_ntpcnegQualityFV_BkgTest             = fDefaultOut_BkgTest->Branch("ntpcnegQualityFV"               , &ntpcnegQualityFV            , "ntpcnegQualityFV/I");
-  foutb_NME_BkgTest                        = fDefaultOut_BkgTest->Branch("NME"                            , &NME                       , "NME/I");
-  foutb_NFGDPi_BkgTest                      = fDefaultOut_BkgTest->Branch("NFGDPi"                         , &NFGDPi                    , "NFGDPi/I");
-  foutb_NPi0El_BkgTest                      = fDefaultOut_BkgTest->Branch("NPi0El"                         , &NPi0El                    , "NPi0El/I");
-  foutb_NPi0Pos_BkgTest                     = fDefaultOut_BkgTest->Branch("NPi0Pos"                        , &NPi0Pos                     , "NPi0Pos/I");
-   
-  foutb_selmu_mom_BkgTest                  = fDefaultOut_BkgTest->Branch("selmu_mom"                      , &selmu_mom                 , "selmu_mom/F");
-  
-  foutb_selmu_necals_BkgTest                = fDefaultOut_BkgTest->Branch("selmu_necals"                   , &selmu_necals              , "selmu_necals/I");
-  foutb_selmu_ecal_bestseg_EMenergy_BkgTest  = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
-  foutb_selmu_ecal_bestseg_mippion_BkgTest   = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_mippion"     , &selmu_ecal_bestseg_mippion  , "selmu_ecal_bestseg_mippion/F");
-  foutb_selmu_ecal_bestseg_EbyL_BkgTest      = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_EbyL"        , &selmu_ecal_bestseg_EbyL     , "selmu_ecal_bestseg_EbyL/F");
-  foutb_selmu_ecal_bestseg_EbyP_BkgTest      = fDefaultOut_BkgTest->Branch("selmu_ecal_bestseg_EbyP"        , &selmu_ecal_bestseg_EbyP     , "selmu_ecal_bestseg_EbyP/F");
-   
-  foutb_selmu_tpc_like_mu_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu         , "selmu_tpc_like_mu/F");
-  foutb_selmu_tpc_like_e_BkgTest             = fDefaultOut_BkgTest->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e            , "selmu_tpc_like_e/F");
-  foutb_selmu_tpc_like_p_BkgTest             = fDefaultOut_BkgTest->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p            , "selmu_tpc_like_p/F");
-  foutb_selmu_tpc_like_pi_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi         , "selmu_tpc_like_pi/F");
-   
-  foutb_selmu_has_fgd1seg_BkgTest            = fDefaultOut_BkgTest->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg           , "selmu_has_fgd1seg/I");
-  foutb_selmu_fgd1_pull_mu_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu          , "selmu_fgd1_pull_mu/F");
-  foutb_selmu_fgd1_pull_p_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_fgd1_pull_p"              , &selmu_fgd1_pull_p         , "selmu_fgd1_pull_p/F");
-  foutb_selmu_fgd1_pull_pi_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_fgd1_pull_pi"             , &selmu_fgd1_pull_pi          , "selmu_fgd1_pull_pi/F");
-  foutb_selmu_fgd1_pull_no_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no          , "selmu_fgd1_pull_no/F");
-   
-  foutb_selmu_has_fgd2seg_BkgTest            = fDefaultOut_BkgTest->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg           , "selmu_has_fgd2seg/I");
-  foutb_selmu_fgd2_pull_mu_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu          , "selmu_fgd2_pull_mu/F");
-  foutb_selmu_fgd2_pull_p_BkgTest           = fDefaultOut_BkgTest->Branch("selmu_fgd2_pull_p"              , &selmu_fgd2_pull_p         , "selmu_fgd2_pull_p/F");
-  foutb_selmu_fgd2_pull_pi_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_fgd2_pull_pi"             , &selmu_fgd2_pull_pi          , "selmu_fgd2_pull_pi/F");
-  foutb_selmu_fgd2_pull_no_BkgTest          = fDefaultOut_BkgTest->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no          , "selmu_fgd2_pull_no/F");
-   
-  foutb_HMNT_mom_BkgTest                      = fDefaultOut_BkgTest->Branch("HMNT_mom"                       , &HMNT_mom                    , "HMNT_mom/F");
-  
-  foutb_HMNT_NEcalSegments_BkgTest           = fDefaultOut_BkgTest->Branch("HMNT_NEcalSegments"             , &HMNT_NEcalSegments          , "HMNT_NEcalsSegments/I");
-  foutb_HMNT_ecal_bestseg_EMenergy_BkgTest   = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_EMenergy"     , &HMNT_ecal_bestseg_EMenergy  , "HMNT_ecal_bestseg_EMenergy/F");
-  foutb_HMNT_ecal_bestseg_mippion_BkgTest   = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_mippion"     , &HMNT_ecal_bestseg_mippion  , "HMNT_ecal_bestseg_mippion/F");
-  foutb_HMNT_ecal_bestseg_EbyL_BkgTest      = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_EbyL"        , &HMNT_ecal_bestseg_EbyL     , "HMNT_ecal_bestseg_EbyL/F");
-  foutb_HMNT_ecal_bestseg_EbyP_BkgTest      = fDefaultOut_BkgTest->Branch("HMNT_ecal_bestseg_EbyP"        , &HMNT_ecal_bestseg_EbyP     , "HMNT_ecal_bestseg_EbyP/F");
-   
-  foutb_HMNT_tpc_like_mu_BkgTest               = fDefaultOut_BkgTest->Branch("HMNT_tpc_like_mu"              , &HMNT_tpc_like_mu           , "HMNT_tpc_like_mu/F");
-  foutb_HMNT_tpc_like_e_BkgTest             = fDefaultOut_BkgTest->Branch("HMNT_tpc_like_e"               , &HMNT_tpc_like_e            , "HMNT_tpc_like_e/F");
-  foutb_HMNT_tpc_like_p_BkgTest             = fDefaultOut_BkgTest->Branch("HMNT_tpc_like_p"               , &HMNT_tpc_like_p            , "HMNT_tpc_like_p/F");
-  foutb_HMNT_tpc_like_pi_BkgTest               = fDefaultOut_BkgTest->Branch("HMNT_tpc_like_pi"              , &HMNT_tpc_like_pi           , "HMNT_tpc_like_pi/F");
-   
-  foutb_HMNT_has_fgd1seg_BkgTest            = fDefaultOut_BkgTest->Branch("HMNT_has_fgd1seg"              , &HMNT_has_fgd1seg           , "HMNT_has_fgd1seg/I");
-  foutb_HMNT_fgd1_pull_mu_BkgTest              = fDefaultOut_BkgTest->Branch("HMNT_fgd1_pull_mu"             , &HMNT_fgd1_pull_mu          , "HMNT_fgd1_pull_mu/F");
-  foutb_HMNT_fgd1_pull_p_BkgTest               = fDefaultOut_BkgTest->Branch("HMNT_fgd1_pull_p"              , &HMNT_fgd1_pull_p           , "HMNT_fgd1_pull_p/F");
-  foutb_HMNT_fgd1_pull_pi_BkgTest              = fDefaultOut_BkgTest->Branch("HMNT_fgd1_pull_pi"             , &HMNT_fgd1_pull_pi          , "HMNT_fgd1_pull_pi/F");
-  foutb_HMNT_fgd1_pull_no_BkgTest              = fDefaultOut_BkgTest->Branch("HMNT_fgd1_pull_no"             , &HMNT_fgd1_pull_no          , "HMNT_fgd1_pull_no/F");
-   
-  foutb_HMNT_has_fgd2seg_BkgTest            = fDefaultOut_BkgTest->Branch("HMNT_has_fgd2seg"              , &HMNT_has_fgd2seg           , "HMNT_has_fgd2seg/I");
-  foutb_HMNT_fgd2_pull_mu_BkgTest              = fDefaultOut_BkgTest->Branch("HMNT_fgd2_pull_mu"             , &HMNT_fgd2_pull_mu          , "HMNT_fgd2_pull_mu/F");
-  foutb_HMNT_fgd2_pull_p_BkgTest               = fDefaultOut_BkgTest->Branch("HMNT_fgd2_pull_p"              , &HMNT_fgd2_pull_p           , "HMNT_fgd2_pull_p/F");
-  foutb_HMNT_fgd2_pull_pi_BkgTest              = fDefaultOut_BkgTest->Branch("HMNT_fgd2_pull_pi"             , &HMNT_fgd2_pull_pi          , "HMNT_fgd2_pull_pi/F");
-  foutb_HMNT_fgd2_pull_no_BkgTest              = fDefaultOut_BkgTest->Branch("HMNT_fgd2_pull_no"             , &HMNT_fgd2_pull_no          , "HMNT_fgd2_pull_no/F");
+  foutb_HMNT_has_fgd2seg            = fDefaultOut->Branch("HMNT_has_fgd2seg"              , &HMNT_has_fgd2seg           , "HMNT_has_fgd2seg/I");
+  foutb_HMNT_fgd2_pull_mu              = fDefaultOut->Branch("HMNT_fgd2_pull_mu"             , &HMNT_fgd2_pull_mu          , "HMNT_fgd2_pull_mu/F");
+  foutb_HMNT_fgd2_pull_p               = fDefaultOut->Branch("HMNT_fgd2_pull_p"              , &HMNT_fgd2_pull_p           , "HMNT_fgd2_pull_p/F");
+  foutb_HMNT_fgd2_pull_pi              = fDefaultOut->Branch("HMNT_fgd2_pull_pi"             , &HMNT_fgd2_pull_pi          , "HMNT_fgd2_pull_pi/F");
+  foutb_HMNT_fgd2_pull_no              = fDefaultOut->Branch("HMNT_fgd2_pull_no"             , &HMNT_fgd2_pull_no          , "HMNT_fgd2_pull_no/F");
    
   return;
 }
