@@ -47,7 +47,7 @@
 #include "TMVA/Tools.h"
 #endif
 
-void BDT_antimu_vs_bkg( TString myMethodList = "" )
+void BDT_antimu_vs_piplus( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -160,7 +160,7 @@ void BDT_antimu_vs_bkg( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_antimu_vs_bkg.root" );
+   TString outfileName( "output/BDT_antimu_vs_piplus.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -251,7 +251,7 @@ void BDT_antimu_vs_bkg( TString myMethodList = "" )
    //TTree* bkgTreeTest = (TTree*)input->Get( "BackgroundTesting" );
    
    TCut signalCut = "particle==-13"; // how to identify signal events
-   TCut backgrCut = "particle!=-13"; // how to identify background events
+   TCut backgrCut = "particle==211"; // how to identify background events
    
    // global event weights per tree (see below for setting event-wise weights)
    Double_t signalWeight     = 1.0;
