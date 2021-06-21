@@ -60,12 +60,24 @@ void defaultAntiNumuCC1pi::Loop()
             defout->selmu_mom    		            = selmu_mom[0];
          
             defout->selmu_necals                   = selmu_necals;
+         
             if (selmu_ecal_bestseg_EMenergy > 0.0)
             {
               defout->selmu_ecal_bestseg_EMenergy    = selmu_ecal_bestseg_EMenergy;
               defout->selmu_ecal_bestseg_mippion     = selmu_ecal_bestseg_mippion;
               defout->selmu_ecal_bestseg_EbyL        = selmu_ecal_bestseg_EbyL;
               defout->selmu_ecal_bestseg_EbyP        = selmu_ecal_bestseg_EMenergy/selmu_mom[0];
+            }
+            else
+            {
+              defout->selmu_ecal_bestseg_EMenergy    = -100.0;
+              defout->selmu_ecal_bestseg_mippion     = -100.0;
+              defout->selmu_ecal_bestseg_EbyL        = -1.0;
+              defout->selmu_ecal_bestseg_EbyP        = -1.0;
+              
+         
+            if (selmu_ecal_asymmetry > 0.0)
+            {
               defout->selmu_ecal_amr                 = selmu_ecal_amr;
               defout->selmu_ecal_angle               = selmu_ecal_angle;
               defout->selmu_ecal_asymmetry           = selmu_ecal_asymmetry;
@@ -80,10 +92,6 @@ void defaultAntiNumuCC1pi::Loop()
             }
             else
             {
-              defout->selmu_ecal_bestseg_EMenergy    = -100.0;
-              defout->selmu_ecal_bestseg_mippion     = -100.0;
-              defout->selmu_ecal_bestseg_EbyL        = -1.0;
-              defout->selmu_ecal_bestseg_EbyP        = -1.0;
               defout->selmu_ecal_amr                 = -50.0;
               defout->selmu_ecal_angle               = -20.0;
               defout->selmu_ecal_asymmetry           = -0.5;
