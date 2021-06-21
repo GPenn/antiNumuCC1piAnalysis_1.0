@@ -160,7 +160,7 @@ void BDT_1pos1neg( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_1pos1neg.root" );
+   TString outfileName( "output/BDT_antimu_vs_bkg.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -191,17 +191,23 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
-   // Global event variables
-   factory->AddVariable( "NME",                                     "Number of Michel electrons",            "", 'I' );
-   factory->AddVariable( "NFGDPi",                                  "Number of FGD pions",                   "", 'I' );
-   //factory->AddVariable( "NPi0El",                                  "Number of TPC pi0 electron tracks",     "", 'I' );
-   //factory->AddVariable( "NPi0Pos",                                 "Number of TPC pi0 positron tracks",     "", 'I' );
    
    // Muon candidate ECal variables
-   factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
-   factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",         "", 'F' );
+   //factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
+   factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
+   factory->AddVariable( "selmu_ecal_amr",                          "Muon candidate ECal AMR",               "", 'F' );
+   factory->AddVariable( "selmu_ecal_angle",                        "Muon candidate ECal angle",             "", 'F' );
+   factory->AddVariable( "selmu_ecal_asymmetry",                    "Muon candidate ECal asymmetry",         "", 'F' );
+   factory->AddVariable( "selmu_ecal_circularity",                  "Muon candidate ECal circularity",       "", 'F' );
+   factory->AddVariable( "selmu_ecal_fbr",                          "Muon candidate ECal FBR",               "", 'F' );
+   factory->AddVariable( "selmu_ecal_maxratio",                     "Muon candidate ECal max ratio",         "", 'F' );
+   factory->AddVariable( "selmu_ecal_meanpos",                      "Muon candidate ECal mean position",     "", 'F' );
+   factory->AddVariable( "selmu_ecal_showerangle",                  "Muon candidate ECal shower angle",      "", 'F' );
+   factory->AddVariable( "selmu_ecal_showerwidth",                  "Muon candidate ECal shower width",      "", 'F' );
+   factory->AddVariable( "selmu_ecal_tcr",                          "Muon candidate ECal TCR",               "", 'F' );
+   factory->AddVariable( "selmu_ecal_tmr",                          "Muon candidate ECal TMR",               "", 'F' );
    // Muon candidate TPC variables
    factory->AddVariable( "selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
    factory->AddVariable( "selmu_tpc_like_e",                        "Muon candidate TPC electron likelihood","", 'F' );
@@ -216,27 +222,6 @@ void BDT_1pos1neg( TString myMethodList = "" )
    factory->AddVariable( "selmu_fgd2_pull_mu",                      "Muon candidate FGD2 muon pull",         "", 'F' );
    factory->AddVariable( "selmu_fgd2_pull_pi",                      "Muon candidate FGD2 pion pull",         "", 'F' );
    factory->AddVariable( "selmu_fgd2_pull_p",                       "Muon candidate FGD2 proton pull",       "", 'F' );
-   
-   // Muon candidate ECal variables
-   factory->AddVariable( "HMNT_NEcalSegments",                      "Pion candidate ECal segments",          "", 'I' );
-   factory->AddVariable( "HMNT_ecal_bestseg_EbyP",                  "Pion candidate ECal E/p",               "", 'F' );
-   factory->AddVariable( "HMNT_ecal_bestseg_EbyL",                  "Pion candidate ECal E/L",               "", 'F' );
-   factory->AddVariable( "HMNT_ecal_bestseg_mippion",               "Pion candidate ECal MipPion",           "", 'F' );
-   // Pion candidate TPC variables
-   factory->AddVariable( "HMNT_tpc_like_mu",                        "Pion candidate TPC muon likelihood",    "", 'F' );
-   factory->AddVariable( "HMNT_tpc_like_e",                         "Pion candidate TPC electron likelihood","", 'F' );
-   factory->AddVariable( "HMNT_tpc_like_p",                         "Pion candidate TPC proton likelihood",  "", 'F' );
-   factory->AddVariable( "HMNT_tpc_like_pi",                        "Pion candidate TPC pion likelihood",    "", 'F' );
-   // Pion candidate FGD variables
-   //factory->AddVariable( "HMNT_has_fgd1seg",                        "Pion candidate has FGD1 segment",       "", 'I' );
-   factory->AddVariable( "HMNT_fgd1_pull_mu",                       "Pion candidate FGD1 muon pull",         "", 'F' );
-   factory->AddVariable( "HMNT_fgd1_pull_pi",                       "Pion candidate FGD1 pion pull",         "", 'F' );
-   factory->AddVariable( "HMNT_fgd1_pull_p",                        "Pion candidate FGD1 proton pull",       "", 'F' );
-   //factory->AddVariable( "HMNT_has_fgd2seg",                        "Pion candidate has FGD2 segment",       "", 'I' );
-   factory->AddVariable( "HMNT_fgd2_pull_mu",                       "Pion candidate FGD2 muon pull",         "", 'F' );
-   factory->AddVariable( "HMNT_fgd2_pull_pi",                       "Pion candidate FGD2 pion pull",         "", 'F' );
-   factory->AddVariable( "HMNT_fgd2_pull_p",                        "Pion candidate FGD2 proton pull",       "", 'F' );
-   
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
    // but will appear in the final "TestTree" produced by TMVA. This TestTree will contain the
@@ -244,11 +229,10 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddSpectator( "spec1 := var1*2",  "Spectator 1", "units", 'F' );
    //factory->AddSpectator( "spec2 := var1*3",  "Spectator 2", "units", 'F' );
    factory->AddSpectator( "selmu_mom",                            "Muon candidate reco mom",          "", 'F' );
-   factory->AddSpectator( "HMNT_mom",                             "Pion candidate reco mom",          "", 'F' );
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "tree_converter/output/mva_input_p6T_allruns_8020_accum4.root";
+   TString fname = "tree_converter/output/particleguntest.root";
    
    TFile *input = TFile::Open( fname );
    
@@ -259,15 +243,15 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //TTree *signal     = (TTree*)input->Get("TreeS");
    //TTree *background = (TTree*)input->Get("TreeB");
    
-   //TTree *inputTree = (TTree*)input->Get("default");
+   TTree *inputTree = (TTree*)input->Get("default");
    
-   TTree* sigTreeTrain = (TTree*)input->Get( "SignalTraining" );
-   TTree* bkgTreeTrain = (TTree*)input->Get( "BackgroundTraining" );
-   TTree* sigTreeTest = (TTree*)input->Get( "SignalTesting" );
-   TTree* bkgTreeTest = (TTree*)input->Get( "BackgroundTesting" );
+   //TTree* sigTreeTrain = (TTree*)input->Get( "SignalTraining" );
+   //TTree* bkgTreeTrain = (TTree*)input->Get( "BackgroundTraining" );
+   //TTree* sigTreeTest = (TTree*)input->Get( "SignalTesting" );
+   //TTree* bkgTreeTest = (TTree*)input->Get( "BackgroundTesting" );
    
-   TCut signalCut = "topology==1"; // how to identify signal events
-   TCut backgrCut = "topology!=1"; // how to identify background events
+   TCut signalCut = "particle==-13"; // how to identify signal events
+   TCut backgrCut = "particle!=-13"; // how to identify background events
    
    // global event weights per tree (see below for setting event-wise weights)
    Double_t signalWeight     = 1.0;
@@ -277,12 +261,12 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->AddSignalTree    ( signal,     signalWeight     );
    //factory->AddBackgroundTree( background, backgroundWeight );
    
-   //factory->SetInputTrees( inputTree, signalCut, backgrCut );
+   factory->SetInputTrees( inputTree, signalCut, backgrCut );
    
-   factory->AddSignalTree ( sigTreeTrain, signalWeight, TMVA::Types::kTraining);
-   factory->AddBackgroundTree( bkgTreeTrain, backgroundWeight, TMVA::Types::kTraining);
-   factory->AddSignalTree ( sigTreeTest, signalWeight, TMVA::Types::kTesting);
-   factory->AddBackgroundTree( bkgTreeTest, backgroundWeight, TMVA::Types::kTesting);
+   //factory->AddSignalTree ( sigTreeTrain, signalWeight, TMVA::Types::kTraining);
+   //factory->AddBackgroundTree( bkgTreeTrain, backgroundWeight, TMVA::Types::kTraining);
+   //factory->AddSignalTree ( sigTreeTest, signalWeight, TMVA::Types::kTesting);
+   //factory->AddBackgroundTree( bkgTreeTest, backgroundWeight, TMVA::Types::kTesting);
  
    // To give different trees for training and testing, do as follows:
    //    factory->AddSignalTree( signalTrainingTree, signalTrainWeight, "Training" );
@@ -329,8 +313,8 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
-   TCut tpc1pos1neg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)";
-   TCut tpc1pos1neg_ecalbothseg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(selmu_necals>0)&&(HMNT_NEcalSegments>0)";
+   //TCut tpc1pos1neg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)";
+   //TCut tpc1pos1neg_ecalbothseg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(selmu_necals>0)&&(HMNT_NEcalSegments>0)";
 
    // Tell the factory how to use the training and testing events
    //
@@ -343,8 +327,8 @@ void BDT_1pos1neg( TString myMethodList = "" )
    //factory->PrepareTrainingAndTestTree( mycuts, mycutb,
                                         //"nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
    
-   factory->PrepareTrainingAndTestTree( tpc1pos1neg, tpc1pos1neg,
-                                        "nTrain_Signal=0:nTrain_Background=0:NormMode=None" );
+   factory->PrepareTrainingAndTestTree( "", "",
+                                        "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
 
    
    
@@ -527,12 +511,12 @@ void BDT_1pos1neg( TString myMethodList = "" )
 
    // ------------ CUSTOM ------------
    
-   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid20",
-                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
+   //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid20",
+                           //"!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
    factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid100",
                            "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=100" );
-   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-nogrid",
-                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=-1" );
+   //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-nogrid",
+   //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=-1" );
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-StatSig",
    //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=SDivSqrtSPlusB:nCuts=20" );
    
