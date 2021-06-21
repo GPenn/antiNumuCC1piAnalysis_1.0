@@ -47,7 +47,7 @@
 #include "TMVA/Tools.h"
 #endif
 
-void BDT_1pos1neg( TString myMethodList = "" )
+void BDT_antimu_vs_bkg( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
