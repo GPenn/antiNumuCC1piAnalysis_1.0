@@ -74,7 +74,7 @@ void defaultAntiNumuCC1pi::Loop()
               defout->selmu_ecal_bestseg_mippion     = -100.0;
               defout->selmu_ecal_bestseg_EbyL        = -1.0;
               defout->selmu_ecal_bestseg_EbyP        = -1.0;
-              
+            }
          
             if (selmu_ecal_asymmetry > 0.0)
             {
