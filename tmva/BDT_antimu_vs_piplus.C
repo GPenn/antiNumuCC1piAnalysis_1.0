@@ -232,7 +232,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "tree_converter/output/particleguntest.root";
+   TString fname = "tree_converter/output/particlegun_allpositive_flat.root";
    
    TFile *input = TFile::Open( fname );
    
