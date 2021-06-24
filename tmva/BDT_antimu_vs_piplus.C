@@ -191,7 +191,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
-   
+   factory->AddSpectator( "selmu_mom",                              "Muon candidate reco mom",               "", 'F' );
    // Muon candidate ECal variables
    //factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
@@ -228,7 +228,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    // input variables, the response values of all trained MVAs, and the spectator variables
    //factory->AddSpectator( "spec1 := var1*2",  "Spectator 1", "units", 'F' );
    //factory->AddSpectator( "spec2 := var1*3",  "Spectator 2", "units", 'F' );
-   factory->AddSpectator( "selmu_mom",                            "Muon candidate reco mom",          "", 'F' );
+   //factory->AddSpectator( "selmu_mom",                            "Muon candidate reco mom",          "", 'F' );
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
