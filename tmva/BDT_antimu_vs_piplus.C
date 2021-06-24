@@ -197,17 +197,17 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "", 'F' );
    factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
-   factory->AddVariable( "selmu_ecal_amr",                          "Muon candidate ECal AMR",               "", 'F' );
-   factory->AddVariable( "selmu_ecal_angle",                        "Muon candidate ECal angle",             "", 'F' );
-   factory->AddVariable( "selmu_ecal_asymmetry",                    "Muon candidate ECal asymmetry",         "", 'F' );
-   factory->AddVariable( "selmu_ecal_circularity",                  "Muon candidate ECal circularity",       "", 'F' );
-   factory->AddVariable( "selmu_ecal_fbr",                          "Muon candidate ECal FBR",               "", 'F' );
-   factory->AddVariable( "selmu_ecal_maxratio",                     "Muon candidate ECal max ratio",         "", 'F' );
-   factory->AddVariable( "selmu_ecal_meanpos",                      "Muon candidate ECal mean position",     "", 'F' );
-   factory->AddVariable( "selmu_ecal_showerangle",                  "Muon candidate ECal shower angle",      "", 'F' );
-   factory->AddVariable( "selmu_ecal_showerwidth",                  "Muon candidate ECal shower width",      "", 'F' );
-   factory->AddVariable( "selmu_ecal_tcr",                          "Muon candidate ECal TCR",               "", 'F' );
-   factory->AddVariable( "selmu_ecal_tmr",                          "Muon candidate ECal TMR",               "", 'F' );
+   //factory->AddVariable( "selmu_ecal_amr",                          "Muon candidate ECal AMR",               "", 'F' );
+   //factory->AddVariable( "selmu_ecal_angle",                        "Muon candidate ECal angle",             "", 'F' );
+   //factory->AddVariable( "selmu_ecal_asymmetry",                    "Muon candidate ECal asymmetry",         "", 'F' );
+   //factory->AddVariable( "selmu_ecal_circularity",                  "Muon candidate ECal circularity",       "", 'F' );
+   //factory->AddVariable( "selmu_ecal_fbr",                          "Muon candidate ECal FBR",               "", 'F' );
+   //factory->AddVariable( "selmu_ecal_maxratio",                     "Muon candidate ECal max ratio",         "", 'F' );
+   //factory->AddVariable( "selmu_ecal_meanpos",                      "Muon candidate ECal mean position",     "", 'F' );
+   //factory->AddVariable( "selmu_ecal_showerangle",                  "Muon candidate ECal shower angle",      "", 'F' );
+   //factory->AddVariable( "selmu_ecal_showerwidth",                  "Muon candidate ECal shower width",      "", 'F' );
+   //factory->AddVariable( "selmu_ecal_tcr",                          "Muon candidate ECal TCR",               "", 'F' );
+   //factory->AddVariable( "selmu_ecal_tmr",                          "Muon candidate ECal TMR",               "", 'F' );
    // Muon candidate TPC variables
    factory->AddVariable( "selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
    factory->AddVariable( "selmu_tpc_like_e",                        "Muon candidate TPC electron likelihood","", 'F' );
