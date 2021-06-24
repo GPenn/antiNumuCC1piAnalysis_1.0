@@ -191,7 +191,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
-   factory->AddSpectator( "selmu_mom",                              "Muon candidate reco mom",               "", 'F' );
+   factory->AddVariable( "selmu_mom",                               "Muon candidate reco mom",               "", 'F' );
    // Muon candidate ECal variables
    //factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
