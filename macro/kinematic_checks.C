@@ -28,7 +28,7 @@
     
   draw.SetTitleX("Antimuon reco costheta");
   TCanvas selmu_costheta_accum4;
-  draw.Draw(default,"selmu_costheta",20,-1,1,"particle","accum_level[][0]>4");
+  draw.Draw(default,"selmu_costheta",30,0,1.5,"particle","accum_level[][0]>4");
   draw.DrawCutLineVertical(0.4,true,"r");
   selmu_costheta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_costheta_accum4_evt.png");
 }
