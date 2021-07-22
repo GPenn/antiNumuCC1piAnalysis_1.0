@@ -31,4 +31,10 @@
   draw.Draw(default,"selmu_costheta",30,0,1.5,"particle","accum_level[][0]>4");
   draw.DrawCutLineVertical(0.4,true,"r");
   selmu_costheta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_costheta_accum4_evt.png");
+  
+  draw.SetTitleX("Antimuon reco theta");
+  TCanvas selmu_theta_accum4;
+  draw.Draw(default,"arccos(selmu_costheta)",30,0,90,"particle","accum_level[][0]>4");
+  draw.DrawCutLineVertical(arccos(0.4),true,"r");
+  //selmu_costheta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_theta_accum4_evt.png");
 }
