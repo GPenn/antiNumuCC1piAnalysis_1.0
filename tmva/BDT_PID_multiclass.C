@@ -196,7 +196,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // Kinematic variables
    factory->AddVariable( "selmu_mom",                               "Muon candidate reco mom",               "MeV/c", 'F' );
    factory->AddVariable( "selmu_theta",                             "Muon candidate reco angle",             "deg",   'F' );
-   factory->AddVariable( "selmu_ecal_EMenergy",                     "Muon candidate ECal EM energy",         "MeV",   'F' );
+   factory->AddVariable( "selmu_ecal_bestseg_EMenergy",             "Muon candidate ECal EM energy",         "MeV",   'F' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
    // Muon candidate ECal variables
    factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "MeV/mm", 'F' );
