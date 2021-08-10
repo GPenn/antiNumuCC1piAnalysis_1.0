@@ -58,6 +58,7 @@ void defaultAntiNumuCC1pi::Loop()
             defout->NPi0Pos    		               = NPi0Pos;
          
             defout->selmu_mom    		            = selmu_mom[0];
+            defout->selmu_theta    		            = TMath::ACos(selmu_costheta);
          
             defout->selmu_necals                   = selmu_necals;
          
@@ -262,6 +263,7 @@ defaultOut::defaultOut(std::string outname) {
   foutb_NPi0Pos 	                   = fDefaultOut->Branch("NPi0Pos"                        , &NPi0Pos 	                  , "NPi0Pos/I");
    
   foutb_selmu_mom 	                = fDefaultOut->Branch("selmu_mom"                      , &selmu_mom 	               , "selmu_mom/F");
+  foutb_selmu_theta 	                = fDefaultOut->Branch("selmu_theta"                    , &selmu_theta 	               , "selmu_theta/F");
   
   foutb_selmu_necals 	             = fDefaultOut->Branch("selmu_necals"                   , &selmu_necals       	      , "selmu_necals/I");
   foutb_selmu_ecal_bestseg_EMenergy  = fDefaultOut->Branch("selmu_ecal_bestseg_EMenergy"    , &selmu_ecal_bestseg_EMenergy , "selmu_ecal_bestseg_EMenergy/F");
