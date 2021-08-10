@@ -47,7 +47,9 @@
 #include "TMVA/Tools.h"
 #endif
 
-void BDT_antimu_vs_piplus( TString myMethodList = "" )
+using namespace TMVA;
+
+void BDT_PID_multiclass( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -135,7 +137,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    // ---------------------------------------------------------------
 
    std::cout << std::endl;
-   std::cout << "==> Start TMVAClassification" << std::endl;
+   std::cout << "==> Start BDT_PID_multiclass" << std::endl;
 
    // Select methods (don't look at this code - not of interest)
    if (myMethodList != "") {
@@ -160,7 +162,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_antimu_vs_piplus.root" );
+   TString outfileName( "output/BDT_PID_multiclass.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -176,8 +178,8 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    //TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
    //                                            "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
    
-   TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
-                                               "!V:!Silent:Color:DrawProgressBar:Transformations=I:AnalysisType=Classification" );
+   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass", outputFile,
+                                               "!V:!Silent:Color:DrawProgressBar:Transformations=I:AnalysisType=multiclass" );
 
    // If you wish to modify default settings
    // (please check "src/Config.h" to see all available global options)
@@ -191,23 +193,18 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
-   factory->AddVariable( "selmu_mom",                               "Muon candidate reco mom",               "", 'F' );
-   // Muon candidate ECal variables
-   //factory->AddVariable( "selmu_necals",                            "Muon candidate ECal segments",          "", 'I' );
+   // Kinematic variables
+   factory->AddVariable( "selmu_mom",                               "Muon candidate reco mom",               "MeV/c", 'F' );
+   factory->AddVariable( "selmu_theta",                             "Muon candidate reco angle",             "deg",   'F' );
+   factory->AddVariable( "selmu_ecal_EMenergy",                     "Muon candidate ECal EM energy",         "MeV",   'F' );
    factory->AddVariable( "selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
-   factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "", 'F' );
+   // Muon candidate ECal variables
+   factory->AddVariable( "selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "MeV/mm", 'F' );
    //factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
-   factory->AddVariable( "selmu_ecal_amr",                          "Muon candidate ECal AMR",               "", 'F' );
-   factory->AddVariable( "selmu_ecal_angle",                        "Muon candidate ECal angle",             "", 'F' );
-   factory->AddVariable( "selmu_ecal_asymmetry",                    "Muon candidate ECal asymmetry",         "", 'F' );
    factory->AddVariable( "selmu_ecal_circularity",                  "Muon candidate ECal circularity",       "", 'F' );
    factory->AddVariable( "selmu_ecal_fbr",                          "Muon candidate ECal FBR",               "", 'F' );
-   factory->AddVariable( "selmu_ecal_maxratio",                     "Muon candidate ECal max ratio",         "", 'F' );
-   factory->AddVariable( "selmu_ecal_meanpos",                      "Muon candidate ECal mean position",     "", 'F' );
-   factory->AddVariable( "selmu_ecal_showerangle",                  "Muon candidate ECal shower angle",      "", 'F' );
-   factory->AddVariable( "selmu_ecal_showerwidth",                  "Muon candidate ECal shower width",      "", 'F' );
-   factory->AddVariable( "selmu_ecal_tcr",                          "Muon candidate ECal TCR",               "", 'F' );
    factory->AddVariable( "selmu_ecal_tmr",                          "Muon candidate ECal TMR",               "", 'F' );
+   //factory->AddVariable( "selmu_ecal_qrms",                         "Muon candidate ECal QRMS",               "", 'F' );
    // Muon candidate TPC variables
    factory->AddVariable( "selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
    factory->AddVariable( "selmu_tpc_like_e",                        "Muon candidate TPC electron likelihood","", 'F' );
@@ -232,103 +229,36 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname = "tree_converter/output/particlegun_allpositive_flat.root";
+   TString fname_mu = "tree_converter/output/particlegun_mu.root";
+   TString fname_pi = "tree_converter/output/particlegun_pi.root";
+   TString fname_p  = "tree_converter/output/particlegun_p.root";
+   TString fname_e  = "tree_converter/output/particlegun_e.root";
    
-   TFile *input = TFile::Open( fname );
+   TFile *input_mu = TFile::Open( fname_mu );
+   TFile *input_pi = TFile::Open( fname_pi );
+   TFile *input_p  = TFile::Open( fname_p );
+   TFile *input_e  = TFile::Open( fname_e );
    
-   std::cout << "--- TMVAClassification       : Using input file: " << input->GetName() << std::endl;
+   std::cout << "--- BDT_PID_multiclass       : Using input files: " << std::endl 
+      << input_mu->GetName() << std::endl 
+      << input_pi->GetName() << std::endl 
+      << input_p->GetName() << std::endl 
+      << input_e->GetName() << std::endl;
    
-   // --- Register the training and test trees
-
-   //TTree *signal     = (TTree*)input->Get("TreeS");
-   //TTree *background = (TTree*)input->Get("TreeB");
+   // --- Register the input trees
    
-   TTree *inputTree = (TTree*)input->Get("default");
+   TTree *inputTree_mu = (TTree*)input_mu->Get("default");
+   TTree *inputTree_pi = (TTree*)input_pi->Get("default");
+   TTree *inputTree_p  = (TTree*)input_p->Get("default");
+   TTree *inputTree_e  = (TTree*)input_e->Get("default");
    
-   //TTree* sigTreeTrain = (TTree*)input->Get( "SignalTraining" );
-   //TTree* bkgTreeTrain = (TTree*)input->Get( "BackgroundTraining" );
-   //TTree* sigTreeTest = (TTree*)input->Get( "SignalTesting" );
-   //TTree* bkgTreeTest = (TTree*)input->Get( "BackgroundTesting" );
+   gROOT->cd( outfileName+TString(":/") );
+   factory->AddTree    (inputTree_mu,"Muon");
+   factory->AddTree    (inputTree_pi,"Pion");
+   factory->AddTree    (inputTree_p, "Proton");
+   factory->AddTree    (inputTree_e, "Electron");
    
-   TCut signalCut = "particle==-13"; // how to identify signal events
-   TCut backgrCut = "particle==211"; // how to identify background events
-   
-   // global event weights per tree (see below for setting event-wise weights)
-   Double_t signalWeight     = 1.0;
-   Double_t backgroundWeight = 1.0;
-   
-   // You can add an arbitrary number of signal or background trees
-   //factory->AddSignalTree    ( signal,     signalWeight     );
-   //factory->AddBackgroundTree( background, backgroundWeight );
-   
-   factory->SetInputTrees( inputTree, signalCut, backgrCut );
-   
-   //factory->AddSignalTree ( sigTreeTrain, signalWeight, TMVA::Types::kTraining);
-   //factory->AddBackgroundTree( bkgTreeTrain, backgroundWeight, TMVA::Types::kTraining);
-   //factory->AddSignalTree ( sigTreeTest, signalWeight, TMVA::Types::kTesting);
-   //factory->AddBackgroundTree( bkgTreeTest, backgroundWeight, TMVA::Types::kTesting);
- 
-   // To give different trees for training and testing, do as follows:
-   //    factory->AddSignalTree( signalTrainingTree, signalTrainWeight, "Training" );
-   //    factory->AddSignalTree( signalTestTree,     signalTestWeight,  "Test" );
-   
-   // Use the following code instead of the above two or four lines to add signal and background
-   // training and test events "by hand"
-   // NOTE that in this case one should not give expressions (such as "var1+var2") in the input
-   //      variable definition, but simply compute the expression before adding the event
-   //
-   //     // --- begin ----------------------------------------------------------
-   //     std::vector<Double_t> vars( 4 ); // vector has size of number of input variables
-   //     Float_t  treevars[4], weight;
-   //     
-   //     // Signal
-   //     for (UInt_t ivar=0; ivar<4; ivar++) signal->SetBranchAddress( Form( "var%i", ivar+1 ), &(treevars[ivar]) );
-   //     for (UInt_t i=0; i<signal->GetEntries(); i++) {
-   //        signal->GetEntry(i);
-   //        for (UInt_t ivar=0; ivar<4; ivar++) vars[ivar] = treevars[ivar];
-   //        // add training and test events; here: first half is training, second is testing
-   //        // note that the weight can also be event-wise
-   //        if (i < signal->GetEntries()/2.0) factory->AddSignalTrainingEvent( vars, signalWeight );
-   //        else                              factory->AddSignalTestEvent    ( vars, signalWeight );
-   //     }
-   //   
-   //     // Background (has event weights)
-   //     background->SetBranchAddress( "weight", &weight );
-   //     for (UInt_t ivar=0; ivar<4; ivar++) background->SetBranchAddress( Form( "var%i", ivar+1 ), &(treevars[ivar]) );
-   //     for (UInt_t i=0; i<background->GetEntries(); i++) {
-   //        background->GetEntry(i);
-   //        for (UInt_t ivar=0; ivar<4; ivar++) vars[ivar] = treevars[ivar];
-   //        // add training and test events; here: first half is training, second is testing
-   //        // note that the weight can also be event-wise
-   //        if (i < background->GetEntries()/2) factory->AddBackgroundTrainingEvent( vars, backgroundWeight*weight );
-   //        else                                factory->AddBackgroundTestEvent    ( vars, backgroundWeight*weight );
-   //     }
-         // --- end ------------------------------------------------------------
-   //
-   // --- end of tree registration 
-
-   // Set individual event weights (the variables must exist in the original TTree)
-   //    for signal    : factory->SetSignalWeightExpression    ("weight1*weight2");
-   //    for background: factory->SetBackgroundWeightExpression("weight1*weight2");
-   //factory->SetBackgroundWeightExpression( "weight" );
-
-   // Apply additional cuts on the signal and background samples (can be different)
-   //TCut tpc1pos1neg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)";
-   //TCut tpc1pos1neg_ecalbothseg = "(ntpcposQualityFV==1)&&(ntpcnegQualityFV==1)&&(selmu_necals>0)&&(HMNT_NEcalSegments>0)";
-
-   // Tell the factory how to use the training and testing events
-   //
-   // If no numbers of events are given, half of the events in the tree are used 
-   // for training, and the other half for testing:
-   //    factory->PrepareTrainingAndTestTree( mycut, "SplitMode=random:!V" );
-   // To also specify the number of testing events, use:
-   //    factory->PrepareTrainingAndTestTree( mycut,
-   //                                         "NSigTrain=3000:NBkgTrain=3000:NSigTest=3000:NBkgTest=3000:SplitMode=Random:!V" );
-   //factory->PrepareTrainingAndTestTree( mycuts, mycutb,
-                                        //"nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
-   
-   factory->PrepareTrainingAndTestTree( "", "",
-                                        "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
+   factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=NumEvents:!V" );
 
    
    
@@ -514,7 +444,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid20",
                            //"!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
    factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid100",
-                           "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=100" );
+                           "!H:!V:NTrees=1000:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=100" );
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-nogrid",
    //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=-1" );
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-StatSig",
@@ -549,7 +479,7 @@ void BDT_antimu_vs_piplus( TString myMethodList = "" )
    outputFile->Close();
 
    std::cout << "==> Wrote root file: " << outputFile->GetName() << std::endl;
-   std::cout << "==> TMVAClassification is done!" << std::endl;
+   std::cout << "==> BDT_PID_multiclass is done!" << std::endl;
    
    delete factory;
 
