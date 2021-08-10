@@ -1,0 +1,5 @@
+/bundle/data/T2K/users/gpenn/particle_gun/piminus/output/oa_pg_pim_00000728-1230_befly2nbbijz_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/piminus/output/oa_pg_pim_00000729-1434_anmpjax63xg3_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/piminus/output/oa_pg_pim_00000802-1116_7h6wxrgywdnw_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/piminus/output/oa_pg_pim_00000803-1046_2nm3xu2x46co_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/piminus/output/oa_pg_pim_00000804-1013_u56szmqv4com_anal_000_bsdv01_2.root

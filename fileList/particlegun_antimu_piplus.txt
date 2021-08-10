@@ -1,2 +1,0 @@
-/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000610-1546_b3v2gq46j23w_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/piplus/output/oa_pg_pip_00000617-1207_5oq5vvxopnlt_anal_000_bsdv01_2.root

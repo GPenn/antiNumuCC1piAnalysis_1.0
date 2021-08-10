@@ -1,0 +1,5 @@
+/bundle/data/T2K/users/gpenn/particle_gun/positron/output/oa_pg_ep_00000721-1055_ba7cdcmw7cuf_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/positron/output/oa_pg_ep_00000722-1050_64cbvdisbri5_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/positron/output/oa_pg_ep_00000723-1217_hszqmr6anrah_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/positron/output/oa_pg_ep_00000727-1153_njnca4yxqyg2_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/positron/output/oa_pg_ep_00000805-1038_pk2qtzje2taf_anal_000_bsdv01_2.root
