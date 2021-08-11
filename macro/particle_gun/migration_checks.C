@@ -50,12 +50,12 @@
   
   draw.SetTitleX("HMT reco angle (deg)");
   TCanvas selmu_theta_accum4_originals;
-  draw.Draw(default,"(TMath::ACos(selmu_costheta))*360/6.283",18,0,90,"particle","(accum_level[][0]>4)&&(parent==0)");
+  draw.Draw(default,"(TMath::ACos(selmu_costheta))*360/6.283",36,0,90,"particle","(accum_level[][0]>4)&&(parent==0)");
   draw.DrawCutLineVertical(65,true,"l");
   //selmu_theta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_theta_accum4_pg.png");
   
   TCanvas selmu_theta_accum4_migrated;
-  draw.Draw(default,"(TMath::ACos(selmu_costheta))*360/6.283",18,0,90,"particle","(accum_level[][0]>4)&&(parent!=0)");
+  draw.Draw(default,"(TMath::ACos(selmu_costheta))*360/6.283",36,0,90,"particle","(accum_level[][0]>4)&&(parent!=0)");
   draw.DrawCutLineVertical(65,true,"l");
   //selmu_theta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_theta_accum4_pg.png");
 }
