@@ -32,4 +32,10 @@
   draw.Draw(default,"selmu_costheta",20,-1,1,"particle","accum_level[][0]>4");
   draw.DrawCutLineVertical(0.4,true,"r");
   selmu_costheta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_costheta_accum4_pg.png");
+  
+  draw.SetTitleX("HMPT reco angle (deg)");
+  TCanvas selmu_theta_accum4;
+  draw.Draw(default,"(TMath::ACos(selmu_costheta))*360/6.283",30,0,90,"particle","accum_level[][0]>4");
+  draw.DrawCutLineVertical(65,true,"l");
+  selmu_theta_accum4->SaveAs("img/particlegun/kinematic_checks_selmu_theta_accum4_pg.png");
 }
