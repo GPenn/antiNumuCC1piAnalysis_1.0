@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/particle_gun/particlegun_allpositive.root");
-  DataSample mc("output/particle_gun/particlegun_allpositive.root");
+  DrawingTools draw("output/particle_gun/particlegun_protonenergytest.root");
+  DataSample mc("output/particle_gun/particlegun_protonenergytest.root");
   
   //draw.SetTitleX("HMT parent");
   //TCanvas selmu_mom_accum4_parent;
