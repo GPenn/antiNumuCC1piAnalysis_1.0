@@ -5,5 +5,5 @@
   TCanvas overall_mom;
   draw.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)");
   TCanvas trueantimu_mom;
-  draw.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(particle==-31)");
+  draw.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(particle==-13)");
 }
