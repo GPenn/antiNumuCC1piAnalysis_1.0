@@ -1,10 +1,4 @@
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000719-1551_pm5ud4gx4nqv_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000720-1427_2wwvxvtmsu2a_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000721-1051_my7w5awhhtt2_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000727-1152_fmymdhekptzb_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000728-1639_pboobhl2vch4_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000729-1435_cnd5yp5nzmhi_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000802-1113_pf3ipa34khzd_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000803-1043_233zdj4unwpq_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000804-1010_ocrqjtefei2a_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000805-1036_ypbx2ltmwhdn_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000813-1435_jcs5io6rckg3_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000814-1612_i26u4tdg3ti3_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000815-1711_j7bysgwmymap_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/proton/output/oa_pg_proton_00000816-1126_25qxb7fvptfc_anal_000_bsdv01_2.root

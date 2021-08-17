@@ -1,5 +1,4 @@
-/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000715-1438_bkft5fhr2h3n_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000721-1042_zmvv4spyfqlz_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000726-1625_szi4axf3ogqy_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000727-1150_ucd2wljswik7_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000805-1037_d5kwofwvlp2k_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000813-1437_eytjowjtdl62_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000814-1611_ht4rcfucd6ap_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000815-1710_xgx2pbfdapka_anal_000_bsdv01_2.root
+/bundle/data/T2K/users/gpenn/particle_gun/antimu/output/oa_pg_mup_00000816-1125_s6j5kz5qe7ph_anal_000_bsdv01_2.root
