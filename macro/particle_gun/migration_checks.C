@@ -1,15 +1,7 @@
 {
-  DrawingTools draw_amu("output/particle_gun/particlegun_antimu.root");
-  DataSample mc_amu("output/particle_gun/particlegun_antimu.root");
-  
-  DrawingTools draw_pip("output/particle_gun/particlegun_piplus.root");
-  DataSample mc_pip("output/particle_gun/particlegun_piplus.root");
-  
-  DrawingTools draw_pro("output/particle_gun/particlegun_proton.root");
-  DataSample mc_pro("output/particle_gun/particlegun_proton.root");
-  
-  DrawingTools draw_pos("output/particle_gun/particlegun_positron.root");
-  DataSample mc_pos("output/particle_gun/particlegun_positron.root");
+  DrawingTools draw("output/particle_gun/particlegun_antimu.root");
+  DataSample mc("output/particle_gun/particlegun_antimu.root");
+ 
   
   //draw.SetTitleX("HMT parent");
   //TCanvas selmu_mom_accum4_parent;
@@ -73,36 +65,36 @@
   // --------- Particle count checks --------------
   
   TCanvas antimu_all;
-  draw_amu.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
   TCanvas antimu_true;
-  draw_amu.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==-13)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==-13)");
   /*TCanvas antimu_originals;
   draw_amu.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent==0)&&(particle==-13)");
   TCanvas antimu_migrated;
   draw_amu.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent!=0)&&(particle==-13)");*/
   
   TCanvas piplus_all;
-  draw_pip.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
   TCanvas piplus_true;
-  draw_pip.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==211)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==211)");
   /*TCanvas piplus_originals;
   draw_pip.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent==0)&&(particle==211)");
   TCanvas piplus_migrated;
   draw_pip.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent!=0)&&(particle==211)");*/
   
   TCanvas proton_all;
-  draw_pro.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
   TCanvas proton_true;
-  draw_pro.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==2212)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==2212)");
   /*TCanvas proton_originals;
   draw_pro.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent==0)&&(particle==2212)");
   TCanvas proton_migrated;
   draw_pro.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent!=0)&&(particle==2212)");*/
   
   TCanvas positron_all;
-  draw_pos.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)");
   TCanvas positron_true;
-  draw_pos.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==-11)");
+  draw.Draw(default,"selmu_truemom",60,0,3000,"particle","(accum_level[][0]>4)&&(particle==-11)");
   /*TCanvas positron_originals;
   draw_pos.Draw(default,"selmu_truemom",50,0,5000,"particle","(accum_level[][0]>4)&&(parent==0)&&(particle==-11)");
   TCanvas positron_migrated;
