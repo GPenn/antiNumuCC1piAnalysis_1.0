@@ -7,22 +7,22 @@ export ND280_NJOBS=${ND280_NJOBS}
 function shout {
   echo "+=======================================+" 
  echo "+                                       +" 
- echo "   Build of package highlandIO_2.41 in  /hepstore/gpenn/nd280gitlab/12.31/highlandIO_2.41  FAILED          " 
+ echo "   Build of package highlandIO_2.45 in  /user/gpenn/nd280software/nd280release_12.31/highlandIO_2.45  FAILED          " 
  echo "+                                       +" 
  echo "+=======================================+" 
  exit 1 
  } 
  trap shout ERR 
-  echo "" ; echo " Building highlandIO_2.41  ( package number " 16 " out of " 24 " ) " ; echo "" 
+  echo "" ; echo " Building highlandIO_2.45  ( package number " 16 " out of " 24 " ) " ; echo "" 
    makeTarget=$1 
   if [ "$1" == "documentation" ] ; then makeTarget=highlandIO_$1 ; fi 
-   cd  /hepstore/gpenn/nd280gitlab/12.31/highlandIO_2.41 
+   cd  /user/gpenn/nd280software/nd280release_12.31/highlandIO_2.45 
  SYS_DIR=`nd280-system` 
   [ -d ${SYS_DIR} ] || mkdir ${SYS_DIR} 
   cd  ${SYS_DIR} 
   [ -d inc ] || mkdir inc 
   [ -d bin ] || mkdir bin 
   [ -d lib ] || mkdir lib 
-  cmake ../cmake 
+  cmake ../cmake $2 
  [ -f ../bin/setup.sh ] && . ../bin/setup.sh 
   make -j ${ND280_NJOBS}  ${makeTarget} ;

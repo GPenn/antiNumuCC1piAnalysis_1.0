@@ -7,22 +7,22 @@ export ND280_NJOBS=${ND280_NJOBS}
 function shout {
   echo "+=======================================+" 
  echo "+                                       +" 
- echo "   Build of package psycheSystematics_3.44 in  /hepstore/gpenn/nd280gitlab/12.31/psycheSystematics_3.44  FAILED          " 
+ echo "   Build of package psycheSystematics_3.54 in  /user/gpenn/nd280software/nd280release_12.31/psycheSystematics_3.54  FAILED          " 
  echo "+                                       +" 
  echo "+=======================================+" 
  exit 1 
  } 
  trap shout ERR 
-  echo "" ; echo " Building psycheSystematics_3.44  ( package number " 14 " out of " 24 " ) " ; echo "" 
+  echo "" ; echo " Building psycheSystematics_3.54  ( package number " 14 " out of " 24 " ) " ; echo "" 
    makeTarget=$1 
   if [ "$1" == "documentation" ] ; then makeTarget=psycheSystematics_$1 ; fi 
-   cd  /hepstore/gpenn/nd280gitlab/12.31/psycheSystematics_3.44 
+   cd  /user/gpenn/nd280software/nd280release_12.31/psycheSystematics_3.54 
  SYS_DIR=`nd280-system` 
   [ -d ${SYS_DIR} ] || mkdir ${SYS_DIR} 
   cd  ${SYS_DIR} 
   [ -d inc ] || mkdir inc 
   [ -d bin ] || mkdir bin 
   [ -d lib ] || mkdir lib 
-  cmake ../cmake 
+  cmake ../cmake $2 
  [ -f ../bin/setup.sh ] && . ../bin/setup.sh 
   make -j ${ND280_NJOBS}  ${makeTarget} ;

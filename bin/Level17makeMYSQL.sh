@@ -7,7 +7,7 @@ export ND280_NJOBS=${ND280_NJOBS}
 function shout {
   echo "+=======================================+" 
  echo "+                                       +" 
- echo "   Build of package MYSQL_5.6.20.01 in  /hepstore/gpenn/nd280gitlab/12.31/MYSQL_5.6.20.01  FAILED          " 
+ echo "   Build of package MYSQL_5.6.20.01 in  /user/gpenn/nd280software/nd280release_12.31/MYSQL_5.6.20.01  FAILED          " 
  echo "+                                       +" 
  echo "+=======================================+" 
  exit 1 
@@ -16,13 +16,13 @@ function shout {
   echo "" ; echo " Building MYSQL_5.6.20.01  ( package number " 1 " out of " 24 " ) " ; echo "" 
    makeTarget=$1 
   if [ "$1" == "documentation" ] ; then makeTarget=MYSQL_$1 ; fi 
-   cd  /hepstore/gpenn/nd280gitlab/12.31/MYSQL_5.6.20.01 
+   cd  /user/gpenn/nd280software/nd280release_12.31/MYSQL_5.6.20.01 
  SYS_DIR=`nd280-system` 
   [ -d ${SYS_DIR} ] || mkdir ${SYS_DIR} 
   cd  ${SYS_DIR} 
   [ -d inc ] || mkdir inc 
   [ -d bin ] || mkdir bin 
   [ -d lib ] || mkdir lib 
-  cmake ../cmake 
+  cmake ../cmake $2 
  [ -f ../bin/setup.sh ] && . ../bin/setup.sh 
   make -j ${ND280_NJOBS}  ${makeTarget} ;
