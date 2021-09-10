@@ -134,6 +134,7 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_ecal_fbr, "");
   AddVarF(output(),selmu_ecal_maxratio, "");
   AddVarF(output(),selmu_ecal_meanpos, "");
+  AddVarF(output(),selmu_ecal_qrms, "");
   AddVarF(output(),selmu_ecal_showerangle, "");
   AddVarF(output(),selmu_ecal_showerwidth, "");
   AddVarF(output(),selmu_ecal_tcr, "");
@@ -290,6 +291,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_ecal_fbr,            mybox().MainTrackLocalECalSegment->PIDFBR);
       output().FillVar(selmu_ecal_maxratio,       mybox().MainTrackLocalECalSegment->PIDMaxRatio);
       output().FillVar(selmu_ecal_meanpos,        mybox().MainTrackLocalECalSegment->PIDMeanPos);
+      output().FillVar(selmu_ecal_qrms,           mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS);
       output().FillVar(selmu_ecal_showerangle,    mybox().MainTrackLocalECalSegment->PIDShowerAngle);
       output().FillVar(selmu_ecal_showerwidth,    mybox().MainTrackLocalECalSegment->PIDShowerWidth);
       output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
