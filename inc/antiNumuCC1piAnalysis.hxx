@@ -87,6 +87,7 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     selmu_ecal_fbr,
     selmu_ecal_maxratio,
     selmu_ecal_meanpos,
+    selmu_ecal_qrms,
     selmu_ecal_showerangle,
     selmu_ecal_showerwidth,
     selmu_ecal_tcr,
