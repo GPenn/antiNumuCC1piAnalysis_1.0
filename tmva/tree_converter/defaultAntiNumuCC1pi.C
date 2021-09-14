@@ -83,8 +83,8 @@ void defaultAntiNumuCC1pi::Loop()
        // Calculate event weight based on reco mom histogram:
        Int_t weight_bin = selmu_mom[0]/10;
        Float_t inv_weight = recomom_hist->GetBinContent(weight_bin);
-       if (inv_weight > 0) {defout->selmu_mom_weight = 1/inv_weight};
-       else                {defout->selmu_mom_weight = 0};
+       if (inv_weight > 0) {defout->selmu_mom_weight = 1/inv_weight;}
+       else                {defout->selmu_mom_weight = 0;}
         
         
        defout->selmu_necals                   = selmu_necals;
