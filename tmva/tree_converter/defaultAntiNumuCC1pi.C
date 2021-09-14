@@ -3,6 +3,7 @@
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
+#include <TMath.h>
 #include <ctime> 
 
 void defaultAntiNumuCC1pi::Loop()
