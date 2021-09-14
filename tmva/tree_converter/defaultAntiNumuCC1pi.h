@@ -41,6 +41,7 @@ public :
   Int_t           NPi0Pos;
   
   Float_t         selmu_mom;
+  Float_t         selmu_mom_weight;
   Float_t         selmu_theta;
   
   Int_t           selmu_necals;
@@ -121,6 +122,7 @@ private:
   TBranch        *foutb_NPi0Pos;
   
   TBranch        *foutb_selmu_mom;
+  TBranch        *foutb_selmu_mom_weight;
   TBranch        *foutb_selmu_theta;
   
   TBranch        *foutb_selmu_necals;
