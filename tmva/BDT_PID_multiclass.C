@@ -229,10 +229,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname_mu = "tree_converter/output/particlegun_mu.root";
-   TString fname_pi = "tree_converter/output/particlegun_pi.root";
-   TString fname_p  = "tree_converter/output/particlegun_p.root";
-   TString fname_e  = "tree_converter/output/particlegun_e.root";
+   TString fname_mu = "tree_converter/output/particlegun_antimu.root";
+   TString fname_pi = "tree_converter/output/particlegun_piplus.root";
+   TString fname_p  = "tree_converter/output/particlegun_proton.root";
+   TString fname_e  = "tree_converter/output/particlegun_positron.root";
    
    TFile *input_mu = TFile::Open( fname_mu );
    TFile *input_pi = TFile::Open( fname_pi );
