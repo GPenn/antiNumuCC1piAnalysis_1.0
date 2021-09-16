@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/particle_gun/particlegun_antimu.root");
-  DataSample mc("output/particle_gun/particlegun_antimu.root");
+  DrawingTools draw("output/particle_gun/particlegun_positron.root");
+  DataSample mc("output/particle_gun/particlegun_positron.root");
   
   draw.SetTitleX("HMT reco momentum");
   TCanvas selmu_mom_accum4;
