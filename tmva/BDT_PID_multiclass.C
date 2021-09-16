@@ -443,12 +443,13 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid20",
                            //"!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=20" );
-   factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid100",
-                           "!H:!V:NTrees=1000:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=100" );
+   //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-grid100",
+                           //"!H:!V:NTrees=1000:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=100" );
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-Gini-nogrid",
    //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=GiniIndex:nCuts=-1" );
    //factory->BookMethod( TMVA::Types::kBDT, "BDT-StatSig",
    //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=SDivSqrtSPlusB:nCuts=20" );
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=20:MaxDepth=2");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
