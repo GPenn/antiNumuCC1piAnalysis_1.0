@@ -485,5 +485,6 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    delete factory;
 
    // Launch the GUI for the root macros
-   if (!gROOT->IsBatch()) TMVAGui( outfileName );
+   // Launch the GUI for the root macros
+   if (!gROOT->IsBatch()) TMVAMultiClassGui( outfileName );
 }
