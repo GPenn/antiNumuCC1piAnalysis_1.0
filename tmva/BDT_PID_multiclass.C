@@ -204,7 +204,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "circularity := selmu_ecal_circularity",                  "Muon candidate ECal circularity",       "", 'F' );
    factory->AddVariable( "fbr := selmu_ecal_fbr",                          "Muon candidate ECal FBR",               "", 'F' );
    factory->AddVariable( "tmr := selmu_ecal_tmr",                          "Muon candidate ECal TMR",               "", 'F' );
-   //factory->AddVariable( "qrms := selmu_ecal_qrms",                         "Muon candidate ECal QRMS",               "", 'F' );
+   factory->AddVariable( "qrms := selmu_ecal_qrms",                         "Muon candidate ECal QRMS",               "", 'F' );
    // Muon candidate TPC variables
    factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
    factory->AddVariable( "tpclikee := selmu_tpc_like_e",                        "Muon candidate TPC electron likelihood","", 'F' );
