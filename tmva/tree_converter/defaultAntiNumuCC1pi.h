@@ -56,6 +56,7 @@ public :
   Float_t         selmu_ecal_fbr;
   Float_t         selmu_ecal_maxratio;
   Float_t         selmu_ecal_meanpos;
+  Float_t         selmu_ecal_qrms;
   Float_t         selmu_ecal_showerangle;
   Float_t         selmu_ecal_showerwidth;
   Float_t         selmu_ecal_tcr;
@@ -137,6 +138,7 @@ private:
   TBranch        *foutb_selmu_ecal_fbr;
   TBranch        *foutb_selmu_ecal_maxratio;
   TBranch        *foutb_selmu_ecal_meanpos;
+  TBranch        *foutb_selmu_ecal_qrms;
   TBranch        *foutb_selmu_ecal_showerangle;
   TBranch        *foutb_selmu_ecal_showerwidth;
   TBranch        *foutb_selmu_ecal_tcr;
