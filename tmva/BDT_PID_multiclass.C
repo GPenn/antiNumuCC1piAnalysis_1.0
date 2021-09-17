@@ -226,6 +226,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddSpectator( "spec1 := var1*2",  "Spectator 1", "units", 'F' );
    //factory->AddSpectator( "spec2 := var1*3",  "Spectator 2", "units", 'F' );
    //factory->AddSpectator( "selmu_mom",                            "Muon candidate reco mom",          "", 'F' );
+   
+   factory->SetWeightExpression("selmu_mom_weight");
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
