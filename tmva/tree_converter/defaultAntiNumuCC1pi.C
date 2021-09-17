@@ -116,7 +116,7 @@ void defaultAntiNumuCC1pi::Loop()
           defout->selmu_ecal_fbr                 = selmu_ecal_fbr;
           defout->selmu_ecal_maxratio            = selmu_ecal_maxratio;
           defout->selmu_ecal_meanpos             = selmu_ecal_meanpos;
-          defout->selmu_ecal_wrms                = selmu_ecal_qrms;
+          defout->selmu_ecal_qrms                = selmu_ecal_qrms;
           defout->selmu_ecal_showerangle         = selmu_ecal_showerangle;
           defout->selmu_ecal_showerwidth         = selmu_ecal_showerwidth;
           defout->selmu_ecal_tcr                 = selmu_ecal_tcr;
