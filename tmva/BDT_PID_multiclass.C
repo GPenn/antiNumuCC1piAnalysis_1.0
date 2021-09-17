@@ -73,7 +73,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // to get access to the GUI and all tmva macros
    TString thisdir = gSystem->DirName(gInterpreter->GetCurrentMacroName());
    gROOT->SetMacroPath(thisdir + ":" + gROOT->GetMacroPath() + ":/hepstore/gpenn/nd280gitlab/12.31/ROOT_5.34.34.00/Linux-CentOS_7-gcc_4.8-x86_64/tmva/test/");
-   gROOT->ProcessLine(".L TMVAGui.C");
+   gROOT->ProcessLine(".L TMVAMultiClassGui.C");
 
    // Default MVA methods to be trained + tested
    std::map<std::string,int> Use;
