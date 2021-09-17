@@ -116,6 +116,7 @@ void defaultAntiNumuCC1pi::Loop()
           defout->selmu_ecal_fbr                 = selmu_ecal_fbr;
           defout->selmu_ecal_maxratio            = selmu_ecal_maxratio;
           defout->selmu_ecal_meanpos             = selmu_ecal_meanpos;
+          defout->selmu_ecal_wrms                = selmu_ecal_qrms;
           defout->selmu_ecal_showerangle         = selmu_ecal_showerangle;
           defout->selmu_ecal_showerwidth         = selmu_ecal_showerwidth;
           defout->selmu_ecal_tcr                 = selmu_ecal_tcr;
@@ -130,6 +131,7 @@ void defaultAntiNumuCC1pi::Loop()
           defout->selmu_ecal_fbr                 = -5.0;
           defout->selmu_ecal_maxratio            = -50.0;
           defout->selmu_ecal_meanpos             = -100.0;
+          defout->selmu_ecal_qrms                = -0.1;
           defout->selmu_ecal_showerangle         = -0.1;
           defout->selmu_ecal_showerwidth         = -0.1;
           defout->selmu_ecal_tcr                 = -0.5;
@@ -308,6 +310,7 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_ecal_fbr               = fDefaultOut->Branch("selmu_ecal_fbr"                 , &selmu_ecal_fbr              , "selmu_ecal_fbr/F");
   foutb_selmu_ecal_maxratio          = fDefaultOut->Branch("selmu_ecal_maxratio"            , &selmu_ecal_maxratio         , "selmu_ecal_maxratio/F");
   foutb_selmu_ecal_meanpos           = fDefaultOut->Branch("selmu_ecal_meanpos"             , &selmu_ecal_meanpos          , "selmu_ecal_meanpos/F");
+  foutb_selmu_ecal_qrms              = fDefaultOut->Branch("selmu_ecal_qrms"                , &selmu_ecal_qrms             , "selmu_ecal_qrms/F");
   foutb_selmu_ecal_showerangle       = fDefaultOut->Branch("selmu_ecal_showerangle"         , &selmu_ecal_showerangle      , "selmu_ecal_showerangle/F");
   foutb_selmu_ecal_showerwidth       = fDefaultOut->Branch("selmu_ecal_showerwidth"         , &selmu_ecal_showerwidth      , "selmu_ecal_showerwidth/F");
   foutb_selmu_ecal_tcr               = fDefaultOut->Branch("selmu_ecal_tcr"                 , &selmu_ecal_tcr              , "selmu_ecal_tcr/F");
