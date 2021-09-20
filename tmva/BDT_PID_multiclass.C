@@ -227,7 +227,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddSpectator( "spec2 := var1*3",  "Spectator 2", "units", 'F' );
    //factory->AddSpectator( "selmu_mom",                            "Muon candidate reco mom",          "", 'F' );
    
-   factory->SetWeightExpression("selmu_mom_weight");
+   
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
@@ -259,6 +259,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddTree    (inputTree_pi,"Pion");
    factory->AddTree    (inputTree_p, "Proton");
    factory->AddTree    (inputTree_e, "Electron");
+   
+   factory->SetWeightExpression("selmu_mom_weight");
    
    factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=NumEvents:!V" );
 
