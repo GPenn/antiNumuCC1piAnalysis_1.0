@@ -265,7 +265,13 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->SetWeightExpression("selmu_mom_weight", "Proton");
    factory->SetWeightExpression("selmu_mom_weight", "Electron");
    
-   factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=NumEvents:!V" );
+   /*Double_t desiredsamplesize = 50000;
+   Double_t weight_mu = inputTree_mu->GetEntries() / desiredsamplesize;
+   Double_t weight_pi = inputTree_pi->GetEntries() / desiredsamplesize;
+   Double_t weight_p  = inputTree_p->GetEntries() / desiredsamplesize;
+   Double_t weight_e  = inputTree_e->GetEntries() / desiredsamplesize;*/
+   
+   factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=EqualNumEvents:!V" );
 
    
    
