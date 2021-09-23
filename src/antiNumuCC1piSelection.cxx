@@ -1,5 +1,6 @@
 #include "antiNumuCC1piSelection.hxx"
 #include "antiNumuCCMultiPiSelection.hxx"
+#include "BDT_PID_multiclass_BDTG.class.C"
 #include "baseSelection.hxx"
 #include "CutUtils.hxx"
 #include "EventBoxUtils.hxx"
