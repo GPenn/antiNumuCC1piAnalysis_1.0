@@ -102,10 +102,10 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     selmu_ecal_tcr,
     selmu_ecal_tmr,
    
-    selmu_bdt_pid_mu;
-    selmu_bdt_pid_pi;
-    selmu_bdt_pid_p;
-    selmu_bdt_pid_e;
+    selmu_bdt_pid_mu,
+    selmu_bdt_pid_pi,
+    selmu_bdt_pid_p,
+    selmu_bdt_pid_e,
    
     HMNT_mom,
     HMNT_costheta,
