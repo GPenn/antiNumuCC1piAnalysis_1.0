@@ -322,6 +322,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
       output().FillVar(selmu_ecal_tmr,            mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio);
     }
+    
+    //std::vector<Float_t> BDT_PID_results = EvaluateMulticlass("BDTG");
 
   }
   
@@ -486,3 +488,28 @@ void antiNumuCC1piAnalysis::FillCategories(){
 
 }
 
+//********************************************************************
+void antiNumuCC1piAnalysis::ResetBDTInputVariables(){
+//********************************************************************
+
+  bdt_mom              = 0.0;
+  bdt_theta            = 0.0;
+  bdt_ecal_EMenergy    = -100.0;
+  bdt_ecal_EbyP        = -1.0;
+  bdt_ecal_EbyL        = -1.0; 
+  bdt_ecal_circularity = -0.5; 
+  bdt_ecal_fbr         = -5.0;
+  bdt_ecal_tmr         = -0.2;
+  bdt_ecal_qrms        = -0.1;
+  bdt_tpc_like_mu      = -1.0; 
+  bdt_tpc_like_e       = -1.0;
+  bdt_tpc_like_p       = -1.0; 
+  bdt_tpc_like_pi      = -1.0;
+  bdt_fgd1pullmu       = -30.0; 
+  bdt_fgd1pullp        = -30.0;
+  bdt_fgd1pullpi       = -30.0; 
+  bdt_fgd2pullmu       = -30.0; 
+  bdt_fgd2pullp        = -30.0;
+  bdt_fgd2pullpi       = -30.0;
+
+}
