@@ -244,8 +244,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   if (mybox().MainTrack  ) 
   {
     bdt_mom = mybox().MainTrack->Momentum;
-    TVector3 nuDirVec = anaUtils::GetNuDirRec(mybox().MainTrack->PositionStart);
-    TVector3 muDirVec = anaUtils::ArrayToTVector3(mybox().MainTrack->DirectionStart);
+    TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
+    TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
     double costheta_mu_nu = nuDirVec.Dot(muDirVec);
     bdt_theta = TMath::ACos(costheta_mu_nu);
     
@@ -334,7 +334,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     {
       bdt_ecal_EMenergy = selmu_max_EMenergy;
       bdt_ecal_EbyL = selmu_best_EbyL,
-      bdt_ecal_Ebyp = bdt_ecal_EMenergy/bdt_mom;
+      bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
     }
     
     // Get variables from local reco ECal segment:
