@@ -6,6 +6,9 @@
 #include "InputManager.hxx"
 #include "DataClasses.hxx"
 
+#include "TMVA/Tools.h"
+#include "TMVA/Reader.h"
+
 typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
 
 class antiNumuCC1piSelection: public SelectionBase{
@@ -13,7 +16,7 @@ public:
   antiNumuCC1piSelection(bool forceBreak=true, InputManager *INPUT=NULL);
   virtual ~antiNumuCC1piSelection(){}
   
-  Reader* tmvareader = new Reader( "Color" );
+  TMVA::Reader* tmvareader = new TMVA::Reader( "Color" );
 
   //---- These are mandatory functions
   void DefineSteps();
