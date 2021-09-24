@@ -5,6 +5,7 @@
 #include "antiNumuCCMultiPiSelection.hxx"
 #include "InputManager.hxx"
 #include "DataClasses.hxx"
+#include "TMVA/Reader.h"
 
 typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
 
