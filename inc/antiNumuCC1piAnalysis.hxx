@@ -19,6 +19,7 @@
 
 #include "antiNumuCCMultiPiAnalysis.hxx"
 #include "antiNumuCC1piSelection.hxx"
+#include "NuDirUtils.hxx"
 
 class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
  public:
