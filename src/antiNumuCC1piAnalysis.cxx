@@ -165,6 +165,11 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_ecal_tcr, "");
   AddVarF(output(),selmu_ecal_tmr, "");
   
+  AddVarF(output(),selmu_bdt_pid_mu, "");
+  AddVarF(output(),selmu_bdt_pid_pi, "");
+  AddVarF(output(),selmu_bdt_pid_p, "");
+  AddVarF(output(),selmu_bdt_pid_e, "");
+  
   // --- Highest-momentum negative track variables
     
   AddVarF(output(),HMNT_mom, "");
@@ -233,13 +238,25 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
+  ResetBDTInputVariables();
+  
   // Fill muon candidate variables
   if (mybox().MainTrack  ) 
   {
+    bdt_mom = mybox().MainTrack->Momentum;
+    TVector3 nuDirVec = anaUtils::GetNuDirRec(mybox().MainTrack->PositionStart);
+    TVector3 muDirVec = anaUtils::ArrayToTVector3(mybox().MainTrack->DirectionStart);
+    double costheta_mu_nu = nuDirVec.Dot(muDirVec);
+    bdt_theta = TMath::ACos(costheta_mu_nu);
+    
     output().FillVar(selmu_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0));
     output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
     output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
     output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
+    bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0);
+    bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1);
+    bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2);
+    bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3);
     
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
@@ -250,6 +267,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd1_pull_p,      FGD1Segment->Pullp);
       output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
       output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
+      
+      bdt_fgd1pullmu = FGD1Segment->Pullmu;
+      bdt_fgd1pullp  = FGD1Segment->Pullp;
+      bdt_fgd1pullpi = FGD1Segment->Pullpi;
     }
     else
     {
@@ -265,6 +286,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd2_pull_p,      FGD2Segment->Pullp);
       output().FillVar(selmu_fgd2_pull_pi,     FGD2Segment->Pullpi);
       output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
+      
+      bdt_fgd2pullmu = FGD2Segment->Pullmu;
+      bdt_fgd2pullp  = FGD2Segment->Pullp;
+      bdt_fgd2pullpi = FGD2Segment->Pullpi;
     }
     else
     {
@@ -304,7 +329,13 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_ecal_bestseg_EMenergy,    selmu_max_EMenergy);
     output().FillVar(selmu_ecal_bestseg_mippion,     selmu_best_mippion);
     output().FillVar(selmu_ecal_bestseg_EbyL,        selmu_best_EbyL);
-    //output().FillVar(selmu_ecal_bestseg_circularity,        selmu_best_circularity);
+    
+    if (selmu_max_EMenergy > 0)
+    {
+      bdt_ecal_EMenergy = selmu_max_EMenergy;
+      bdt_ecal_EbyL = selmu_best_EbyL,
+      bdt_ecal_Ebyp = bdt_ecal_EMenergy/bdt_mom;
+    }
     
     // Get variables from local reco ECal segment:
     if (mybox().MainTrackLocalECalSegment  )
@@ -321,9 +352,19 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_ecal_showerwidth,    mybox().MainTrackLocalECalSegment->PIDShowerWidth);
       output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
       output().FillVar(selmu_ecal_tmr,            mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio);
+      
+      bdt_ecal_circularity = mybox().MainTrackLocalECalSegment->PIDCircularity;
+      bdt_ecal_fbr = mybox().MainTrackLocalECalSegment->PIDFBR;
+      bdt_ecal_qrms = mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS;
+      bdt_ecal_tmr = mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio;
     }
     
-    //std::vector<Float_t> BDT_PID_results = EvaluateMulticlass("BDTG");
+    std::vector<Float_t> BDT_PID_results = tmvareader_ana->EvaluateMulticlass("BDTG");
+    
+    output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
+    output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
+    output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
+    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
 
   }
   
