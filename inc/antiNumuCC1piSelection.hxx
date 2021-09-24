@@ -18,7 +18,7 @@ public:
   antiNumuCC1piSelection(bool forceBreak=true, InputManager *INPUT=NULL);
   virtual ~antiNumuCC1piSelection(){}
   
-  TMVA::Reader* tmvareader = new TMVA::Reader( "Color" );
+  TMVA::Reader* tmvareader_sel = new TMVA::Reader( "Color" );
 
   //---- These are mandatory functions
   void DefineSteps();
