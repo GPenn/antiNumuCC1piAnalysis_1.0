@@ -1,13 +1,15 @@
 #ifndef antiNumuCC1piSelection_h
 #define antiNumuCC1piSelection_h
 
+#include "TMVA/Tools.h"
+#include "TMVA/Reader.h"
+
 #include "SelectionBase.hxx"
 #include "antiNumuCCMultiPiSelection.hxx"
 #include "InputManager.hxx"
 #include "DataClasses.hxx"
 
-#include "TMVA/Tools.h"
-#include "TMVA/Reader.h"
+
 
 typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
 
