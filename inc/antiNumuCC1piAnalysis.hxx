@@ -14,6 +14,9 @@
 #ifndef antiNumuCC1piAnalysis_h
 #define antiNumuCC1piAnalysis_h
 
+#include "TMVA/Tools.h"
+#include "TMVA/Reader.h"
+
 #include "antiNumuCCMultiPiAnalysis.hxx"
 #include "antiNumuCC1piSelection.hxx"
 
