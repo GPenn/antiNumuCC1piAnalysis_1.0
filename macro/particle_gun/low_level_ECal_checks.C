@@ -2,6 +2,10 @@
   DrawingTools draw("output/particle_gun/particlegun_allpositive.root");
   DataSample mc("output/particle_gun/particlegun_allpositive.root");
   
+  draw.SetTitleX("ECal QRMS");
+  TCanvas selmu_ecal_angle;
+  draw.Draw(default,"selmu_ecal_qrms",50,-1.0,4.0,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
+  
   draw.SetTitleX("ECal axis max ratio");
   TCanvas selmu_ecal_amr;
   draw.Draw(default,"selmu_ecal_amr",20,-10,400,"particle","(accum_level[][0]>4)&&(selmu_necals==1)");
