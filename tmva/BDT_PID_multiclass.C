@@ -261,10 +261,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddTree    (inputTree_e, "Electron");
    
    //Event-by-event weighting:
-   //factory->SetWeightExpression("selmu_mom_weight", "Muon");
-   //factory->SetWeightExpression("selmu_mom_weight", "Pion");
-   //factory->SetWeightExpression("selmu_mom_weight", "Proton");
-   //factory->SetWeightExpression("selmu_mom_weight", "Electron");
+   factory->SetWeightExpression("selmu_mom_weight", "Muon");
+   factory->SetWeightExpression("selmu_mom_weight", "Pion");
+   factory->SetWeightExpression("selmu_mom_weight", "Proton");
+   factory->SetWeightExpression("selmu_mom_weight", "Electron");
    
    /*Double_t desiredsamplesize = 50000;
    Double_t weight_mu = inputTree_mu->GetEntries() / desiredsamplesize;
