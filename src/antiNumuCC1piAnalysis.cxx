@@ -129,6 +129,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   
   // --- Muon candidate variables
   
+  AddVarF(output(),selmu_det_theta, "");
+  
   AddVarF(output(),selmu_tpc_like_mu, "");
   AddVarF(output(),selmu_tpc_like_e, "");
   AddVarF(output(),selmu_tpc_like_p, "");
@@ -248,6 +250,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
     double costheta_mu_nu = nuDirVec.Dot(muDirVec);
     bdt_theta = TMath::ACos(costheta_mu_nu);
+    
+    output().FillVar(selmu_det_theta,        TMath::ACos(muDirVec[2]));
     
     output().FillVar(selmu_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0));
     output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
