@@ -249,9 +249,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
     TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
     double costheta_mu_nu = nuDirVec.Dot(muDirVec);
+    Float_t selmu_theta_wrt_detector = TMath::ACos(muDirVec[2]);
     bdt_theta = TMath::ACos(costheta_mu_nu);
     
-    output().FillVar(selmu_det_theta,        TMath::ACos(muDirVec[2]));
+    output().FillVar(selmu_det_theta,        selmu_theta_wrt_detector);
     
     output().FillVar(selmu_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0));
     output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
