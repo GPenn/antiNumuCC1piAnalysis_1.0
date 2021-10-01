@@ -59,6 +59,11 @@
   //draw_p.Draw(default,"selmu_bdt_pid_pi:selmu_bdt_pid_mu",20,0.0,1.0,20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
   //p_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_proton_pg.png");
   
+  draw_p.SetTitleX("Proton reco momentum (MeV)");
+  draw_p.SetTitleY("Proton BDT output proton-like");
+  TCanvas p_bdtp_vs_recomom_accum4;
+  draw_p.Draw(default,"selmu_bdt_pid_p:selmu_mom", 40,150.0,1500.0, 40,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  
   DrawingTools draw_pos("output/particle_gun/particlegun_positron.root");
   DataSample mc_pos("output/particle_gun/particlegun_positron.root");
   
