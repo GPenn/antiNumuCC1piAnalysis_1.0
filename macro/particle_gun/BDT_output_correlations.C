@@ -11,12 +11,12 @@
   draw_amu.SetTitleX("Antimu reco momentum (MeV)");
   draw_amu.SetTitleY("Antimu BDT output mu-like");
   TCanvas amu_bdtmu_vs_recomom_accum4;
-  draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_mom", 20,150.0,1500.0, 20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_mom", 40,150.0,1500.0, 40,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
   
   draw_amu.SetTitleX("Antimu true momentum (MeV)");
   draw_amu.SetTitleY("Antimu BDT output mu-like");
-  TCanvas amu_bdtmu_vs_recomom_accum4;
-  draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_truemom", 20,150.0,1500.0, 20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  TCanvas amu_bdtmu_vs_truemom_accum4;
+  draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_truemom", 40,150.0,1500.0, 40,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
   
   /*
   DrawingTools draw_pi("output/particle_gun/particlegun_piplus.root");
