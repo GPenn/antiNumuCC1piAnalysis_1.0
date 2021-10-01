@@ -2,12 +2,23 @@
   DrawingTools draw_amu("output/particle_gun/particlegun_antimu.root");
   DataSample mc_amu("output/particle_gun/particlegun_antimu.root");
   
-  draw_amu.SetTitleX("Antimu BDT output mu-like");
-  draw_amu.SetTitleY("Antimu BDT output pi-like");
-  TCanvas amu_bdtmupi_accum4;
-  draw_amu.Draw(default,"selmu_bdt_pid_pi:selmu_bdt_pid_mu",20,0.0,1.0,20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  //draw_amu.SetTitleX("Antimu BDT output mu-like");
+  //draw_amu.SetTitleY("Antimu BDT output pi-like");
+  //TCanvas amu_bdtmupi_accum4;
+  //draw_amu.Draw(default,"selmu_bdt_pid_pi:selmu_bdt_pid_mu",20,0.0,1.0,20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
   //amu_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_antimu_pg.png");
   
+  draw_amu.SetTitleX("Antimu reco momentum (MeV)");
+  draw_amu.SetTitleY("Antimu BDT output mu-like");
+  TCanvas amu_bdtmu_vs_recomom_accum4;
+  draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_mom",20,0.0,1.0,20,150.0,1500.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  
+  draw_amu.SetTitleX("Antimu true momentum (MeV)");
+  draw_amu.SetTitleY("Antimu BDT output mu-like");
+  TCanvas amu_bdtmu_vs_recomom_accum4;
+  draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_truemom",20,0.0,1.0,20,150.0,1500.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  
+  /*
   DrawingTools draw_pi("output/particle_gun/particlegun_piplus.root");
   DataSample mc_pi("output/particle_gun/particlegun_piplus.root");
   
@@ -33,5 +44,5 @@
   draw_pos.SetTitleY("Positron BDT output pi-like");
   TCanvas pos_momcorr_accum4;
   draw_pos.Draw(default,"selmu_bdt_pid_pi:selmu_bdt_pid_mu",20,0.0,1.0,20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-11)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
-  //pos_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_positron_pg.png");
+  //pos_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_positron_pg.png");*/
 }
