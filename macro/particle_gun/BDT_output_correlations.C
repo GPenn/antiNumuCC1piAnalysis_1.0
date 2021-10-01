@@ -18,16 +18,28 @@
   TCanvas amu_bdtmu_vs_truemom_accum4;
   draw_amu.Draw(default,"selmu_bdt_pid_mu:selmu_truemom", 40,150.0,1500.0, 40,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
   
-  /*
+  
   DrawingTools draw_pi("output/particle_gun/particlegun_piplus.root");
   DataSample mc_pi("output/particle_gun/particlegun_piplus.root");
   
-  draw_pi.SetTitleX("Pi+ BDT output mu-like");
-  draw_pi.SetTitleY("Pi+ BDT output pi-like");
-  TCanvas pi_momcorr_accum4;
-  draw_pi.Draw(default,"selmu_bdt_pid_pi:selmu_bdt_pid_mu",20,0.0,1.0,20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==211)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  //draw_pi.SetTitleX("Pi+ BDT output mu-like");
+  //draw_pi.SetTitleY("Pi+ BDT output pi-like");
+  //TCanvas pi_momcorr_accum4;
+  //draw_pi.Draw(default,"selmu_bdt_pid_pi:selmu_bdt_pid_mu",20,0.0,1.0,20,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==211)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
   //pi_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_piplus_pg.png");
   
+  draw_pi.SetTitleX("Pi+ reco momentum (MeV)");
+  draw_pi.SetTitleY("Pi+ BDT output mu-like");
+  TCanvas pi_bdtmu_vs_recomom_accum4;
+  draw_pi.Draw(default,"selmu_bdt_pid_mu:selmu_mom", 40,150.0,1500.0, 40,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==211)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  
+  draw_pi.SetTitleX("Pi+ true momentum (MeV)");
+  draw_pi.SetTitleY("Pi+ BDT output mu-like");
+  TCanvas pi_bdtmu_vs_truemom_accum4;
+  draw_pi.Draw(default,"selmu_bdt_pid_mu:selmu_truemom", 40,150.0,1500.0, 40,0.0,1.0, "all", "(accum_level[][0]>4)&&(particle==211)&&(selmu_mom > 150.0)&&(selmu_mom < 1500.0)", "colz");
+  
+  
+  /*
   DrawingTools draw_p("output/particle_gun/particlegun_proton.root");
   DataSample mc_p("output/particle_gun/particlegun_proton.root");
   
