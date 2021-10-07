@@ -20,4 +20,8 @@
   draw.SetTitleX("BDT e-like value");
   TCanvas bdt_e_accum4;
   draw.Draw(default,"selmu_bdt_pid_e",20,0,1,"particle","(accum_level[][0]>4)");
+  
+  draw.SetTitleX("BDT outputs sum");
+  TCanvas bdt_sum_accum4;
+  draw.Draw(default,"selmu_bdt_pid_mu+selmu_bdt_pid_pi+selmu_bdt_pid_p+selmu_bdt_pid_e",20,0,1,"particle","(accum_level[][0]>4)");
 }
