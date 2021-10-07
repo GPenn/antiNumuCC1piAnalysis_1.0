@@ -18,7 +18,7 @@
 #include "TMVA/Reader.h"
 
 #include "antiNumuCCMultiPiAnalysis.hxx"
-#include "antiNumuCC1piSelection.hxx"
+#include "antiNumuCC1piAnalysis.hxx"
 #include "antiNumuBDTTestingSelection.hxx"
 #include "NuDirUtils.hxx"
 
