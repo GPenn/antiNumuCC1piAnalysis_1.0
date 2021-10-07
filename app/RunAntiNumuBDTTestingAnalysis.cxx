@@ -1,8 +1,8 @@
-#include "antiNumuCC1piAnalysis.hxx"
+#include "antiNumuBDTTestingAnalysis.hxx"
 #include "AnalysisLoop.hxx"
 
 int main(int argc, char *argv[]){
-  antiNumuCC1piAnalysis* ana = new antiNumuCC1piAnalysis();
+  antiNumuBDTTestingAnalysis* ana = new antiNumuBDTTestingAnalysis();
   AnalysisLoop loop(ana, argc, argv); 
   loop.Execute();
 }
