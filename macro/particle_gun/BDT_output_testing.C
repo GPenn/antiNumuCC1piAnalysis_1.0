@@ -2,6 +2,7 @@
   DrawingTools draw("output/particle_gun/particlegun_allpositive.root");
   DataSample mc("output/particle_gun/particlegun_allpositive.root");
   
+  draw.SetMinY(1);
   draw.SetLogY(true);
   
   draw.SetTitleX("BDT mu-like value");
