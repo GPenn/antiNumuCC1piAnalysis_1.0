@@ -11,20 +11,21 @@
  * 2. antiNumuCCMultiTrackSelection and antiNumuCCMultiTrackFGD2Selection.
  **************************************/
 
-#ifndef antiNumuCC1piAnalysis_h
-#define antiNumuCC1piAnalysis_h
+#ifndef antiNumuBDTTestingAnalysis_h
+#define antiNumuBDTTestingAnalysis_h
 
 #include "TMVA/Tools.h"
 #include "TMVA/Reader.h"
 
 #include "antiNumuCCMultiPiAnalysis.hxx"
 #include "antiNumuCC1piSelection.hxx"
+#include "antiNumuBDTTestingSelection.hxx"
 #include "NuDirUtils.hxx"
 
-class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
+class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
  public:
-  antiNumuCC1piAnalysis(AnalysisAlgorithm* ana=NULL);
-  virtual ~antiNumuCC1piAnalysis(){}
+  antiNumuBDTTestingAnalysis(AnalysisAlgorithm* ana=NULL);
+  virtual ~antiNumuBDTTestingAnalysis(){}
  
   TMVA::Reader* tmvareader_ana;
   Float_t bdt_mom, bdt_theta;
@@ -65,93 +66,12 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
 
  
   const ToyBoxAntiCC1Pi& mybox(){return *static_cast<const ToyBoxAntiCC1Pi*>(&box());}
- 
-  enum enumStandardMicroTrees_antiNumuCC1piAnalysis{
-    HM_pos= numuCCMultiPiAnalysis::enumStandardMicroTreesLast_numuCCMultiPiAnalysis + 1,
-   
-    selmu_det_theta,
-   
-    selmu_tpc_like_mu,
-    selmu_tpc_like_e,
-    selmu_tpc_like_p,
-    selmu_tpc_like_pi,
-   
-    selmu_has_fgd1seg,
-    selmu_fgd1_pull_mu,
-    selmu_fgd1_pull_e,
-    selmu_fgd1_pull_p,
-    selmu_fgd1_pull_pi,
-    selmu_fgd1_pull_no,
-   
-    selmu_has_fgd2seg,
-    selmu_fgd2_pull_mu,
-    selmu_fgd2_pull_e,
-    selmu_fgd2_pull_p,
-    selmu_fgd2_pull_pi,
-    selmu_fgd2_pull_no,
-   
-    selmu_ecal_bestseg_EMenergy,
-    selmu_ecal_bestseg_mippion,
-    selmu_ecal_bestseg_EbyL,
-   
-    selmu_ecal_amr,
-    selmu_ecal_angle,
-    selmu_ecal_asymmetry,
-    selmu_ecal_circularity,
-    selmu_ecal_fbr,
-    selmu_ecal_maxratio,
-    selmu_ecal_meanpos,
-    selmu_ecal_qrms,
-    selmu_ecal_showerangle,
-    selmu_ecal_showerwidth,
-    selmu_ecal_tcr,
-    selmu_ecal_tmr,
-   
-    selmu_bdt_pid_mu,
-    selmu_bdt_pid_pi,
-    selmu_bdt_pid_p,
-    selmu_bdt_pid_e,
-   
-    HMNT_mom,
-    HMNT_costheta,
-    HMNT_pdg,
-    HMNT_truepdg,
-    HMNT_NEcalSegments,
-    HMNT_ecal_EMenergy,
-    HMNT_ecal_length,
-    HMNT_ecal_mippion,
-    HMNT_ecal_angle,
-    HMNT_ecal_bestseg_EMenergy,
-    HMNT_ecal_bestseg_mippion,
-    HMNT_ecal_bestseg_EbyL,
-   
-    HMNT_tpc_like_mu,
-    HMNT_tpc_like_e,
-    HMNT_tpc_like_p,
-    HMNT_tpc_like_pi,
-   
-    HMNT_has_fgd1seg,
-    HMNT_fgd1_pull_mu,
-    HMNT_fgd1_pull_e,
-    HMNT_fgd1_pull_p,
-    HMNT_fgd1_pull_pi,
-    HMNT_fgd1_pull_no,
-   
-    HMNT_has_fgd2seg,
-    HMNT_fgd2_pull_mu,
-    HMNT_fgd2_pull_e,
-    HMNT_fgd2_pull_p,
-    HMNT_fgd2_pull_pi,
-    HMNT_fgd2_pull_no,
-  
-    enumStandardMicroTreesLast_antiNumuCC1piAnalysis
-  };
 
 protected:
   
   //antiNumuCCAnalysis*    _antiNumuCCAnalysis;
   //numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
- antiNumuCCMultiPiAnalysis* _antiNumuCCMultiPiAnalysis;
+ antiNumuCC1PiAnalysis* _antiNumuCC1PiAnalysis;
 
 private:
   Int_t _whichFGD; // 1 for FGD1 analysis, 2 for FGD2, 3 for both
