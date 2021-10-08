@@ -3,7 +3,7 @@
 
 //constructor
 //********************************************************************
-antiNumuBDTTestingSelection::antiNumuBDTTestingSelection(AnalysisAlgorithm* ana) : baseTrackerAnalysis(ana) {
+antiNumuBDTTestingAnalysis::antiNumuBDTTestingAnalysis(AnalysisAlgorithm* ana) : baseTrackerAnalysis(ana) {
 //********************************************************************
 
   // Add the package version
