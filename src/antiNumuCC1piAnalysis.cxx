@@ -525,7 +525,7 @@ void antiNumuCC1piAnalysis::FillCategories(){
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::ResetBDTInputVariables(){
+/*void antiNumuCC1piAnalysis::ResetBDTInputVariables(){
 //********************************************************************
 
   bdt_mom              = 0.0;
@@ -548,4 +548,4 @@ void antiNumuCC1piAnalysis::ResetBDTInputVariables(){
   bdt_fgd2pullp        = -30.0;
   bdt_fgd2pullpi       = -30.0;
 
-}
+}*/
