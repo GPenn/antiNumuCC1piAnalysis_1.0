@@ -5,7 +5,7 @@
 #include "TMVA/Reader.h"
 
 #include "SelectionBase.hxx"
-#include "antiNumuCC1PiSelection.hxx"
+#include "antiNumuCC1piSelection.hxx"
 #include "InputManager.hxx"
 #include "DataClasses.hxx"
 
@@ -44,7 +44,7 @@ public:
     // Set to the selection that are used
     //_antiNumuCCSelection.SetDetectorFV(det, ibranch); 
     //_numuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
-    _antiNumuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
+    _antiNumuCC1piSelection.SetDetectorFV(det, ibranch); 
   }
 
 
@@ -52,7 +52,7 @@ public:
 protected:
   //antiNumuCCSelection _antiNumuCCSelection;
   //numuCCMultiPiSelection _numuCCMultiPiSelection;
-  antiNumuCC1PiSelection _antiNumuCC1PiSelection;
+  antiNumuCC1piSelection _antiNumuCC1piSelection;
   InputManager* _input;
   
   Int_t _MuonPIDCutIndex;
