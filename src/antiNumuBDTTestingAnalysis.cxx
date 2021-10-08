@@ -1,9 +1,9 @@
-#include "antiNumuCC1piAnalysis.hxx"
-#include "antiNumuCC1piSelection.hxx"
+#include "antiNumuBDTTestingAnalysis.hxx"
+#include "antiNumuBDTTestingSelection.hxx"
 
 //constructor
 //********************************************************************
-antiNumuCC1piAnalysis::antiNumuCC1piAnalysis(AnalysisAlgorithm* ana) : baseTrackerAnalysis(ana) {
+antiNumuBDTTestingSelection::antiNumuBDTTestingSelection(AnalysisAlgorithm* ana) : baseTrackerAnalysis(ana) {
 //********************************************************************
 
   // Add the package version
@@ -16,16 +16,18 @@ antiNumuCC1piAnalysis::antiNumuCC1piAnalysis(AnalysisAlgorithm* ana) : baseTrack
   //_numuCCMultiPiAnalysis = new numuCCMultiPiAnalysis(this);
   
   // Create a antiNumuCCMultiPiAnalysis passing this analysis to the constructor. In that way the same managers are used
-  _antiNumuCCMultiPiAnalysis = new antiNumuCCMultiPiAnalysis(this);
+  //_antiNumuCCMultiPiAnalysis = new antiNumuCCMultiPiAnalysis(this);
 
+  _antiNumuCC1piAnalysis = new antiNumuCC1piAnalysis(this);
+  
   // Use the antiNumuCCAnalysis (in practice that means that the same box and event will be used for the antiNumuCCAnalysis as for this analysis)
   //UseAnalysis(_antiNumuCCAnalysis);
   //UseAnalysis(_numuCCMultiPiAnalysis);
-  UseAnalysis(_antiNumuCCMultiPiAnalysis);
+  UseAnalysis(_antiNumuCC1piAnalysis);
 }
 
 //********************************************************************
-bool antiNumuCC1piAnalysis::Initialize() {
+bool antiNumuBDTTestingAnalysis::Initialize() {
 //********************************************************************
 
   // Initialize the baseAnalysis instead of numuCCAnalysis
@@ -58,43 +60,18 @@ bool antiNumuCC1piAnalysis::Initialize() {
   // Note to self: figure out how best to integrate this
   //_numuCCMultiPiAnalysis->SetStoreAllTruePrimaryPions((bool)ND::params().GetParameterI("antiNumuCCMultiPiAnalysis.MicroTrees.StoreAllTruePrimaryPions"));
   
-  // Initialise TMVA Reader class
-  tmvareader_ana = new TMVA::Reader( "Color" );
-  
-  tmvareader_ana->AddVariable( "mom := selmu_mom",                               &bdt_mom);
-  tmvareader_ana->AddVariable( "theta := selmu_theta",                           &bdt_theta);
-  tmvareader_ana->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
-  tmvareader_ana->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
-  tmvareader_ana->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                &bdt_ecal_EbyL);
-  tmvareader_ana->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
-  tmvareader_ana->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
-  tmvareader_ana->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
-  tmvareader_ana->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
-  tmvareader_ana->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
-  tmvareader_ana->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
-  tmvareader_ana->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
-  tmvareader_ana->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  tmvareader_ana->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               &bdt_fgd1pullmu);
-  tmvareader_ana->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               &bdt_fgd1pullpi);
-  tmvareader_ana->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 &bdt_fgd1pullp);
-  tmvareader_ana->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               &bdt_fgd2pullmu);
-  tmvareader_ana->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               &bdt_fgd2pullpi);
-  tmvareader_ana->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 &bdt_fgd2pullp);
-  
-  tmvareader_ana->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights.xml" );
-  
   return true;
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::DefineSelections(){
+void antiNumuBDTTestingAnalysis::DefineSelections(){
 //********************************************************************
   
   // FGD1 antineutrino analysis:
   //if(_whichFGD==1 || _whichFGD==3){
     // ---- Inclusive CC ----
     //if(!_runMultiTrack)
-      sel().AddSelection("kTrackerAntiNumuCC1pi",    "antiNumu FGD1 CC 1 Pion selection",  new antiNumuCC1piSelection(false, &(input())));
+      sel().AddSelection("kTrackerAntiNumuBDTTesting",    "antiNumu FGD1 BDT testing",  new antiNumuBDTTestingSelection(false, &(input())));
     // ---- CC Multi Pion Samples ----
     //else
       //sel().AddSelection("kTrackerAntiNumuCCMultiTrack", "antiNumu FGD1 CC Multiple Track selection", new antiNumuCCMultiTrackSelection(false));
@@ -113,7 +90,7 @@ void antiNumuCC1piAnalysis::DefineSelections(){
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
+void antiNumuBDTTestingAnalysis::DefineMicroTrees(bool addBase){
 //********************************************************************
 
   // -------- Add variables to the analysis tree ----------------------
@@ -125,88 +102,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
     //_numuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
   //}
   
-  _antiNumuCCMultiPiAnalysis->DefineMicroTrees(addBase); 
+  _antiNumuCC1piAnalysis->DefineMicroTrees(addBase); 
   
-  // --- Muon candidate variables
-  
-  AddVarF(output(),selmu_det_theta, "");
-  
-  AddVarF(output(),selmu_tpc_like_mu, "");
-  AddVarF(output(),selmu_tpc_like_e, "");
-  AddVarF(output(),selmu_tpc_like_p, "");
-  AddVarF(output(),selmu_tpc_like_pi, "");
-  
-  AddVarI(output(),selmu_has_fgd1seg, "");
-  AddVarF(output(),selmu_fgd1_pull_mu, "");
-  AddVarF(output(),selmu_fgd1_pull_e, "");
-  AddVarF(output(),selmu_fgd1_pull_p, "");
-  AddVarF(output(),selmu_fgd1_pull_pi, "");
-  AddVarF(output(),selmu_fgd1_pull_no, "");
-  
-  AddVarI(output(),selmu_has_fgd2seg, "");
-  AddVarF(output(),selmu_fgd2_pull_mu, "");
-  AddVarF(output(),selmu_fgd2_pull_e, "");
-  AddVarF(output(),selmu_fgd2_pull_p, "");
-  AddVarF(output(),selmu_fgd2_pull_pi, "");
-  AddVarF(output(),selmu_fgd2_pull_no, "");
-  
-  AddVarF(output(),selmu_ecal_bestseg_EMenergy, "");
-  AddVarF(output(),selmu_ecal_bestseg_mippion, "");
-  AddVarF(output(),selmu_ecal_bestseg_EbyL, "");
-  
-  AddVarF(output(),selmu_ecal_amr, "");
-  AddVarF(output(),selmu_ecal_angle, "");
-  AddVarF(output(),selmu_ecal_asymmetry, "");
-  AddVarF(output(),selmu_ecal_circularity, "");
-  AddVarF(output(),selmu_ecal_fbr, "");
-  AddVarF(output(),selmu_ecal_maxratio, "");
-  AddVarF(output(),selmu_ecal_meanpos, "");
-  AddVarF(output(),selmu_ecal_qrms, "");
-  AddVarF(output(),selmu_ecal_showerangle, "");
-  AddVarF(output(),selmu_ecal_showerwidth, "");
-  AddVarF(output(),selmu_ecal_tcr, "");
-  AddVarF(output(),selmu_ecal_tmr, "");
-  
-  AddVarF(output(),selmu_bdt_pid_mu, "");
-  AddVarF(output(),selmu_bdt_pid_pi, "");
-  AddVarF(output(),selmu_bdt_pid_p, "");
-  AddVarF(output(),selmu_bdt_pid_e, "");
-  
-  // --- Highest-momentum negative track variables
-    
-  AddVarF(output(),HMNT_mom, "");
-  AddVarF(output(),HMNT_costheta, "");
-  AddVarI(output(),HMNT_pdg, "");
-  AddVarI(output(),HMNT_truepdg, "");
-  
-  AddVarI(output(),HMNT_NEcalSegments, "");
-  AddVarF(output(),HMNT_ecal_EMenergy, "");
-  AddVarF(output(),HMNT_ecal_length, "");
-  AddVarF(output(),HMNT_ecal_mippion, "");
-  AddVarF(output(),HMNT_ecal_angle, "");
-  
-  AddVarF(output(),HMNT_ecal_bestseg_EMenergy, "");
-  AddVarF(output(),HMNT_ecal_bestseg_mippion, "");
-  AddVarF(output(),HMNT_ecal_bestseg_EbyL, "");
- 
-  AddVarF(output(),HMNT_tpc_like_mu, "");
-  AddVarF(output(),HMNT_tpc_like_e, "");
-  AddVarF(output(),HMNT_tpc_like_p, "");
-  AddVarF(output(),HMNT_tpc_like_pi, "");
-  
-  AddVarI(output(),HMNT_has_fgd1seg, "");
-  AddVarF(output(),HMNT_fgd1_pull_mu, "");
-  AddVarF(output(),HMNT_fgd1_pull_e, "");
-  AddVarF(output(),HMNT_fgd1_pull_p, "");
-  AddVarF(output(),HMNT_fgd1_pull_pi, "");
-  AddVarF(output(),HMNT_fgd1_pull_no, "");
-  
-  AddVarI(output(),HMNT_has_fgd2seg, "");
-  AddVarF(output(),HMNT_fgd2_pull_mu, "");
-  AddVarF(output(),HMNT_fgd2_pull_e, "");
-  AddVarF(output(),HMNT_fgd2_pull_p, "");
-  AddVarF(output(),HMNT_fgd2_pull_pi, "");
-  AddVarF(output(),HMNT_fgd2_pull_no, "");
   
   baseTrackerAnalysis::AddEffCounters();
   
@@ -214,7 +111,7 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::DefineTruthTree(){
+void antiNumuBDTTestingAnalysis::DefineTruthTree(){
 //********************************************************************
 
   //if(_runMultiTrack){
@@ -224,11 +121,11 @@ void antiNumuCC1piAnalysis::DefineTruthTree(){
     //_numuCCMultiPiAnalysis->DefineTruthTree();
   //}
   
-  _antiNumuCCMultiPiAnalysis->DefineTruthTree();
+  _antiNumuCC1piAnalysis->DefineTruthTree();
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
+void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
 //********************************************************************
   
   //if(_runMultiTrack){
@@ -238,235 +135,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
    // _numuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   //}
   
-  _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
+  _antiNumuCC1piAnalysis->FillMicroTrees(addBase); 
   
-  ResetBDTInputVariables();
-  
-  // Fill muon candidate variables
-  if (mybox().MainTrack  ) 
-  {
-    bdt_mom = mybox().MainTrack->Momentum;
-    TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
-    TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
-    double costheta_mu_nu = nuDirVec.Dot(muDirVec);
-    Float_t selmu_theta_wrt_detector = TMath::ACos(muDirVec[2]);
-    bdt_theta = TMath::ACos(costheta_mu_nu);
-    
-    output().FillVar(selmu_det_theta,        selmu_theta_wrt_detector);
-    
-    output().FillVar(selmu_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0));
-    output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
-    output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
-    output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
-    bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0);
-    bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1);
-    bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2);
-    bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3);
-    
-    AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
-    if (FGD1Segment) 
-    {
-      output().FillVar(selmu_has_fgd1seg,      1);
-      output().FillVar(selmu_fgd1_pull_mu,     FGD1Segment->Pullmu);
-      output().FillVar(selmu_fgd1_pull_e,      FGD1Segment->Pulle);
-      output().FillVar(selmu_fgd1_pull_p,      FGD1Segment->Pullp);
-      output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
-      output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
-      
-      bdt_fgd1pullmu = FGD1Segment->Pullmu;
-      bdt_fgd1pullp  = FGD1Segment->Pullp;
-      bdt_fgd1pullpi = FGD1Segment->Pullpi;
-    }
-    else
-    {
-      output().FillVar(selmu_has_fgd1seg,      0);
-    }
-    
-    AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(1)));
-    if (FGD2Segment) 
-    {
-      output().FillVar(selmu_has_fgd2seg,      1);
-      output().FillVar(selmu_fgd2_pull_mu,     FGD2Segment->Pullmu);
-      output().FillVar(selmu_fgd2_pull_e,      FGD2Segment->Pulle);
-      output().FillVar(selmu_fgd2_pull_p,      FGD2Segment->Pullp);
-      output().FillVar(selmu_fgd2_pull_pi,     FGD2Segment->Pullpi);
-      output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
-      
-      bdt_fgd2pullmu = FGD2Segment->Pullmu;
-      bdt_fgd2pullp  = FGD2Segment->Pullp;
-      bdt_fgd2pullpi = FGD2Segment->Pullpi;
-    }
-    else
-    {
-      output().FillVar(selmu_has_fgd2seg,      0);
-    }
-    
-    Float_t selmu_max_EMenergy = -999.0;
-    Float_t selmu_best_mippion = -999.0;
-    Float_t selmu_best_EbyL = -999.0;
-    //Int_t selmu_mean_denom = 0;
-  
-    for (Int_t subdet = 0; subdet<9; subdet++) {
-      if (!SubDetId::GetDetectorUsed(mybox().MainTrack->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
-
-      AnaECALParticle* ECALSegment = static_cast<AnaECALParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(subdet+6)));
-
-      if (!ECALSegment) continue;
-      
-      if (ECALSegment->EMEnergy > selmu_max_EMenergy) 
-      {
-        selmu_max_EMenergy     = ECALSegment->EMEnergy;
-        selmu_best_mippion     = ECALSegment->PIDMipPion;
-        selmu_best_EbyL        = (ECALSegment->EMEnergy)/(ECALSegment->Length);
-        //selmu_best_circularity = ECALSegment->PID_Circularity;
-      }
-      
-      //if (selmu_mean_mippion==-999.0) selmu_mean_mippion=0;
-      //if (selmu_mean_EbyL==-999.0) selmu_mean_EbyL=0;
-      //selmu_mean_mippion += ECALSegment->PIDMipPion;
-      //selmu_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
-      //selmu_mean_denom++;
-    }
-    
-    //selmu_mean_mippion /= selmu_mean_denom;
-    //selmu_mean_EbyL /= selmu_mean_denom;
-    
-    output().FillVar(selmu_ecal_bestseg_EMenergy,    selmu_max_EMenergy);
-    output().FillVar(selmu_ecal_bestseg_mippion,     selmu_best_mippion);
-    output().FillVar(selmu_ecal_bestseg_EbyL,        selmu_best_EbyL);
-    
-    if (selmu_max_EMenergy > 0)
-    {
-      bdt_ecal_EMenergy = selmu_max_EMenergy;
-      bdt_ecal_EbyL = selmu_best_EbyL,
-      bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
-    }
-    
-    // Get variables from local reco ECal segment:
-    if (mybox().MainTrackLocalECalSegment  )
-    {
-      output().FillVar(selmu_ecal_amr,            mybox().MainTrackLocalECalSegment->PIDAMR);
-      output().FillVar(selmu_ecal_angle,          mybox().MainTrackLocalECalSegment->PIDAngle);
-      output().FillVar(selmu_ecal_asymmetry,      mybox().MainTrackLocalECalSegment->PIDAsymmetry);
-      output().FillVar(selmu_ecal_circularity,    mybox().MainTrackLocalECalSegment->PIDCircularity);
-      output().FillVar(selmu_ecal_fbr,            mybox().MainTrackLocalECalSegment->PIDFBR);
-      output().FillVar(selmu_ecal_maxratio,       mybox().MainTrackLocalECalSegment->PIDMaxRatio);
-      output().FillVar(selmu_ecal_meanpos,        mybox().MainTrackLocalECalSegment->PIDMeanPos);
-      output().FillVar(selmu_ecal_qrms,           mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS);
-      output().FillVar(selmu_ecal_showerangle,    mybox().MainTrackLocalECalSegment->PIDShowerAngle);
-      output().FillVar(selmu_ecal_showerwidth,    mybox().MainTrackLocalECalSegment->PIDShowerWidth);
-      output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
-      output().FillVar(selmu_ecal_tmr,            mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio);
-      
-      bdt_ecal_circularity = mybox().MainTrackLocalECalSegment->PIDCircularity;
-      bdt_ecal_fbr = mybox().MainTrackLocalECalSegment->PIDFBR;
-      bdt_ecal_qrms = mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS;
-      bdt_ecal_tmr = mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio;
-    }
-    
-    std::vector<Float_t> BDT_PID_results = tmvareader_ana->EvaluateMulticlass("BDTG");
-    
-    output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
-    output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
-    output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
-    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
-
-  }
-  
-  
-
-  
-  // Fill HMNT variables
-  if (mybox().HMNtrack  ) 
-  {
-    output().FillVar(HMNT_mom,      mybox().HMNtrack->Momentum);
-    //output().FillVar(HMNT_costheta, mybox().HMNtrack->Costheta);
-    if (mybox().HMNtrack->GetTrueParticle()  ) 
-    { 
-      output().FillVar(HMNT_truepdg, mybox().HMNtrack->GetTrueParticle()->PDG);
-    }
-    
-    output().FillVar(HMNT_NEcalSegments,      mybox().HMNtrack->nECALSegments);
-    
-    if (mybox().HMNtrack->nECALSegments > 0)
-    {
-      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( mybox().HMNtrack->ECALSegments[0] );
-      
-      output().FillVar(HMNT_ecal_EMenergy,      ECalSeg->EMEnergy);
-      output().FillVar(HMNT_ecal_length,        ECalSeg->Length);
-      output().FillVar(HMNT_ecal_mippion,       ECalSeg->PIDMipPion);
-      //output().FillVar(HMNT_ecal_angle,         ECalSeg->PID_Angle);
-    }
-    
-    Float_t HMNT_max_EMenergy = -999.0;
-    Float_t HMNT_best_mippion = -999.0;
-    Float_t HMNT_best_EbyL = -999.0;
-    //Int_t HMNT_mean_denom = 0;
-  
-    for (Int_t subdet = 0; subdet<9; subdet++) {
-      if (!SubDetId::GetDetectorUsed(mybox().HMNtrack->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
-
-      AnaECALParticle* ECALSegment = static_cast<AnaECALParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(subdet+6)));
-
-      if (!ECALSegment) continue;
-      
-      if (ECALSegment->EMEnergy > HMNT_max_EMenergy) 
-      {
-        HMNT_max_EMenergy = ECALSegment->EMEnergy;
-        HMNT_best_mippion = ECALSegment->PIDMipPion;
-        HMNT_best_EbyL    = (ECALSegment->EMEnergy)/(ECALSegment->Length);
-      }
-      
-      //if (HMNT_mean_mippion==-999.0) HMNT_mean_mippion=0;
-      //if (HMNT_mean_EbyL==-999.0) HMNT_mean_EbyL=0;
-      //HMNT_mean_mippion += ECALSegment->PIDMipPion;
-      //HMNT_mean_EbyL += (ECALSegment->EMEnergy)/(ECALSegment->Length);
-      //HMNT_mean_denom++;
-    }
-    
-    //HMNT_mean_mippion /= HMNT_mean_denom;
-    //HMNT_mean_EbyL /= HMNT_mean_denom;
-    
-    output().FillVar(HMNT_ecal_bestseg_EMenergy,    HMNT_max_EMenergy);
-    output().FillVar(HMNT_ecal_bestseg_mippion,     HMNT_best_mippion);
-    output().FillVar(HMNT_ecal_bestseg_EbyL,        HMNT_best_EbyL);
-    
-    output().FillVar(HMNT_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),0));
-    output().FillVar(HMNT_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),1));
-    output().FillVar(HMNT_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),2));
-    output().FillVar(HMNT_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),3));
-    
-    AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(0)));
-    if (FGD1Segment) 
-    {
-      output().FillVar(HMNT_has_fgd1seg,      1);
-      output().FillVar(HMNT_fgd1_pull_mu,     FGD1Segment->Pullmu);
-      output().FillVar(HMNT_fgd1_pull_e,      FGD1Segment->Pulle);
-      output().FillVar(HMNT_fgd1_pull_p,      FGD1Segment->Pullp);
-      output().FillVar(HMNT_fgd1_pull_pi,     FGD1Segment->Pullpi);
-      output().FillVar(HMNT_fgd1_pull_no,     FGD1Segment->Pullno);
-    }
-    else
-    {
-      output().FillVar(HMNT_has_fgd1seg,      0);
-    }
-    
-    AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(1)));
-    if (FGD2Segment) 
-    {
-      output().FillVar(HMNT_has_fgd2seg,      1);
-      output().FillVar(HMNT_fgd2_pull_mu,     FGD2Segment->Pullmu);
-      output().FillVar(HMNT_fgd2_pull_e,      FGD2Segment->Pulle);
-      output().FillVar(HMNT_fgd2_pull_p,      FGD2Segment->Pullp);
-      output().FillVar(HMNT_fgd2_pull_pi,     FGD2Segment->Pullpi);
-      output().FillVar(HMNT_fgd2_pull_no,     FGD2Segment->Pullno);
-    }
-    else
-    {
-      output().FillVar(HMNT_has_fgd2seg,      0);
-    }
-    
-  }
 
   
   baseTrackerAnalysis::FillEffCounters();
@@ -474,7 +144,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::FillToyVarsInMicroTrees(bool addBase){
+void antiNumuBDTTestingAnalysis::FillToyVarsInMicroTrees(bool addBase){
 //********************************************************************
  
   //if(_runMultiTrack){
@@ -484,12 +154,12 @@ void antiNumuCC1piAnalysis::FillToyVarsInMicroTrees(bool addBase){
     //_numuCCMultiPiAnalysis->FillToyVarsInMicroTrees(addBase); 
   //}
   
-  _antiNumuCCMultiPiAnalysis->FillToyVarsInMicroTrees(addBase); 
+  _antiNumuCC1piAnalysis->FillToyVarsInMicroTrees(addBase); 
   
 }
 
 //********************************************************************
-bool antiNumuCC1piAnalysis::CheckFillTruthTree(const AnaTrueVertex& vtx){
+bool antiNumuBDTTestingAnalysis::CheckFillTruthTree(const AnaTrueVertex& vtx){
 //********************************************************************
 
   SubDetId::SubDetEnum fgdID;
@@ -514,7 +184,7 @@ bool antiNumuCC1piAnalysis::CheckFillTruthTree(const AnaTrueVertex& vtx){
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
+void antiNumuBDTTestingAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
 //********************************************************************
 
   //_antiNumuCCAnalysis->FillTruthTree(vtx);
@@ -523,39 +193,13 @@ void antiNumuCC1piAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
     //_numuCCMultiPiAnalysis->FillTruePionInfo(vtx); 
   //}
   
-  _antiNumuCCMultiPiAnalysis->FillTruthTree(vtx);
+  _antiNumuCC1piAnalysis->FillTruthTree(vtx);
 }
 
 //********************************************************************
-void antiNumuCC1piAnalysis::FillCategories(){
+void antiNumuBDTTestingAnalysis::FillCategories(){
 //********************************************************************
 
-  _antiNumuCCMultiPiAnalysis->FillCategories();
-
-}
-
-//********************************************************************
-void antiNumuCC1piAnalysis::ResetBDTInputVariables(){
-//********************************************************************
-
-  bdt_mom              = 0.0;
-  bdt_theta            = 0.0;
-  bdt_ecal_EMenergy    = -100.0;
-  bdt_ecal_EbyP        = -1.0;
-  bdt_ecal_EbyL        = -1.0; 
-  bdt_ecal_circularity = -0.5; 
-  bdt_ecal_fbr         = -5.0;
-  bdt_ecal_tmr         = -0.2;
-  bdt_ecal_qrms        = -0.1;
-  bdt_tpc_like_mu      = -1.0; 
-  bdt_tpc_like_e       = -1.0;
-  bdt_tpc_like_p       = -1.0; 
-  bdt_tpc_like_pi      = -1.0;
-  bdt_fgd1pullmu       = -30.0; 
-  bdt_fgd1pullp        = -30.0;
-  bdt_fgd1pullpi       = -30.0; 
-  bdt_fgd2pullmu       = -30.0; 
-  bdt_fgd2pullp        = -30.0;
-  bdt_fgd2pullpi       = -30.0;
+  _antiNumuCC1piAnalysis->FillCategories();
 
 }
