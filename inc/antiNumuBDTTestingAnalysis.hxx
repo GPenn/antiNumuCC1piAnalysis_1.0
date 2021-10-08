@@ -21,6 +21,7 @@
 #include "antiNumuCC1piAnalysis.hxx"
 #include "antiNumuBDTTestingSelection.hxx"
 #include "NuDirUtils.hxx"
+#include "BDTPIDUtils.hxx"
 
 class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
  public:
@@ -60,6 +61,17 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
  
   const ToyBoxAntiCC1Pi& mybox(){return *static_cast<const ToyBoxAntiCC1Pi*>(&box());}
 
+  enum enumStandardMicroTrees_antiNumuBDTTestingAnalysis{
+    HM_pos= numuCCMultiPiAnalysis::enumStandardMicroTreesLast_numuCC1piAnalysis + 1,
+   
+    selmu_bdt_pid_mu,
+    selmu_bdt_pid_pi,
+    selmu_bdt_pid_p,
+    selmu_bdt_pid_e,
+   
+    enumStandardMicroTreesLast_antiNumuCC1piAnalysis
+  };
+ 
 protected:
   
   //antiNumuCCAnalysis*    _antiNumuCCAnalysis;
