@@ -64,7 +64,7 @@ protected:
   
   //antiNumuCCAnalysis*    _antiNumuCCAnalysis;
   //numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
- antiNumuCC1PiAnalysis* _antiNumuCC1PiAnalysis;
+ antiNumuCC1piAnalysis* _antiNumuCC1piAnalysis;
 
 private:
   Int_t _whichFGD; // 1 for FGD1 analysis, 2 for FGD2, 3 for both
