@@ -42,9 +42,9 @@ std::vector<Float_t> BDTPIDUtils::GetBDTPIDVars(const AnaTrackB& track, const An
   tmvareader->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights.xml" );
   
   // Fill kinematic variables:
-  bdt_mom = track.Momentum;
-  TVector3 DirVec = anaUtils::ArrayToTVector3(track.DirectionStart);
-  bdt_theta = TMath::ACos(DirVec[2]);
+  //bdt_mom = track.Momentum;
+  //TVector3 DirVec = anaUtils::ArrayToTVector3(track.DirectionStart);
+  //bdt_theta = TMath::ACos(DirVec[2]);
   
   // Fill TPC variables:
   //bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( track,0);
