@@ -4,6 +4,7 @@
 #include "DataClasses.hxx"
 #include "TMVA/Tools.h"
 #include "TMVA/Reader.h"
+#include "NuDirUtils.hxx"
 
 
 // Insert methods into a namespace.
