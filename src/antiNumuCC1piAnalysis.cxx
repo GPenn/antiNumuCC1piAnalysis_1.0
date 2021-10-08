@@ -59,29 +59,29 @@ bool antiNumuCC1piAnalysis::Initialize() {
   //_numuCCMultiPiAnalysis->SetStoreAllTruePrimaryPions((bool)ND::params().GetParameterI("antiNumuCCMultiPiAnalysis.MicroTrees.StoreAllTruePrimaryPions"));
   
   // Initialise TMVA Reader class
-  tmvareader_ana = new TMVA::Reader( "Color" );
+  //tmvareader_ana = new TMVA::Reader( "Color" );
   
-  tmvareader_ana->AddVariable( "mom := selmu_mom",                               &bdt_mom);
-  tmvareader_ana->AddVariable( "theta := selmu_theta",                           &bdt_theta);
-  tmvareader_ana->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
-  tmvareader_ana->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
-  tmvareader_ana->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                &bdt_ecal_EbyL);
-  tmvareader_ana->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
-  tmvareader_ana->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
-  tmvareader_ana->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
-  tmvareader_ana->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
-  tmvareader_ana->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
-  tmvareader_ana->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
-  tmvareader_ana->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
-  tmvareader_ana->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  tmvareader_ana->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               &bdt_fgd1pullmu);
-  tmvareader_ana->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               &bdt_fgd1pullpi);
-  tmvareader_ana->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 &bdt_fgd1pullp);
-  tmvareader_ana->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               &bdt_fgd2pullmu);
-  tmvareader_ana->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               &bdt_fgd2pullpi);
-  tmvareader_ana->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 &bdt_fgd2pullp);
+  //tmvareader_ana->AddVariable( "mom := selmu_mom",                               &bdt_mom);
+  //tmvareader_ana->AddVariable( "theta := selmu_theta",                           &bdt_theta);
+  //tmvareader_ana->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
+  //tmvareader_ana->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
+  //tmvareader_ana->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                &bdt_ecal_EbyL);
+  //tmvareader_ana->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
+  //tmvareader_ana->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
+  //tmvareader_ana->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
+  //tmvareader_ana->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
+  //tmvareader_ana->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
+  //tmvareader_ana->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
+  //tmvareader_ana->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
+  //tmvareader_ana->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
+  //tmvareader_ana->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               &bdt_fgd1pullmu);
+  //tmvareader_ana->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               &bdt_fgd1pullpi);
+  //tmvareader_ana->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 &bdt_fgd1pullp);
+  //tmvareader_ana->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               &bdt_fgd2pullmu);
+  //tmvareader_ana->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               &bdt_fgd2pullpi);
+  //tmvareader_ana->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 &bdt_fgd2pullp);
   
-  tmvareader_ana->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights.xml" );
+  //tmvareader_ana->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights.xml" );
   
   return true;
 }
@@ -235,17 +235,17 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
-  ResetBDTInputVariables();
+  //ResetBDTInputVariables();
   
   // Fill muon candidate variables
   if (mybox().MainTrack  ) 
   {
-    bdt_mom = mybox().MainTrack->Momentum;
+    //bdt_mom = mybox().MainTrack->Momentum;
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
     TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
-    double costheta_mu_nu = nuDirVec.Dot(muDirVec);
+    //double costheta_mu_nu = nuDirVec.Dot(muDirVec);
     Float_t selmu_theta_wrt_detector = TMath::ACos(muDirVec[2]);
-    bdt_theta = TMath::ACos(costheta_mu_nu);
+    //bdt_theta = TMath::ACos(costheta_mu_nu);
     
     output().FillVar(selmu_det_theta,        selmu_theta_wrt_detector);
     
@@ -253,10 +253,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
     output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
     output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
-    bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0);
-    bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1);
-    bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2);
-    bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3);
+    //bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0);
+    //bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1);
+    //bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2);
+    //bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3);
     
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
@@ -268,9 +268,9 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
       output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
       
-      bdt_fgd1pullmu = FGD1Segment->Pullmu;
-      bdt_fgd1pullp  = FGD1Segment->Pullp;
-      bdt_fgd1pullpi = FGD1Segment->Pullpi;
+      //bdt_fgd1pullmu = FGD1Segment->Pullmu;
+      //bdt_fgd1pullp  = FGD1Segment->Pullp;
+      //bdt_fgd1pullpi = FGD1Segment->Pullpi;
     }
     else
     {
@@ -287,9 +287,9 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd2_pull_pi,     FGD2Segment->Pullpi);
       output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
       
-      bdt_fgd2pullmu = FGD2Segment->Pullmu;
-      bdt_fgd2pullp  = FGD2Segment->Pullp;
-      bdt_fgd2pullpi = FGD2Segment->Pullpi;
+      //bdt_fgd2pullmu = FGD2Segment->Pullmu;
+      //bdt_fgd2pullp  = FGD2Segment->Pullp;
+      //bdt_fgd2pullpi = FGD2Segment->Pullpi;
     }
     else
     {
@@ -330,12 +330,12 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_ecal_bestseg_mippion,     selmu_best_mippion);
     output().FillVar(selmu_ecal_bestseg_EbyL,        selmu_best_EbyL);
     
-    if (selmu_max_EMenergy > 0)
+    /*if (selmu_max_EMenergy > 0)
     {
       bdt_ecal_EMenergy = selmu_max_EMenergy;
       bdt_ecal_EbyL = selmu_best_EbyL,
       bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
-    }
+    }*/
     
     // Get variables from local reco ECal segment:
     if (mybox().MainTrackLocalECalSegment  )
@@ -353,10 +353,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
       output().FillVar(selmu_ecal_tmr,            mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio);
       
-      bdt_ecal_circularity = mybox().MainTrackLocalECalSegment->PIDCircularity;
-      bdt_ecal_fbr = mybox().MainTrackLocalECalSegment->PIDFBR;
-      bdt_ecal_qrms = mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS;
-      bdt_ecal_tmr = mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio;
+      //bdt_ecal_circularity = mybox().MainTrackLocalECalSegment->PIDCircularity;
+      //bdt_ecal_fbr = mybox().MainTrackLocalECalSegment->PIDFBR;
+      //bdt_ecal_qrms = mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS;
+      //bdt_ecal_tmr = mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio;
     }
     
     
