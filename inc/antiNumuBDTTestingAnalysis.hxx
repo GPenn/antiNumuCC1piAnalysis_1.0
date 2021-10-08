@@ -30,7 +30,7 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
 
   //---- These are mandatory functions
   void DefineSelections();
-  void DefineCorrections(){_antiNumuCCMultiPiAnalysis->DefineCorrections();}
+  void DefineCorrections(){_antiNumuCC1piAnalysis->DefineCorrections();}
   void DefineMicroTrees(bool addBase=true);
   void DefineTruthTree();
 
