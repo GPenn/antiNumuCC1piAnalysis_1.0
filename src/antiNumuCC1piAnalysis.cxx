@@ -167,11 +167,6 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_ecal_tcr, "");
   AddVarF(output(),selmu_ecal_tmr, "");
   
-  AddVarF(output(),selmu_bdt_pid_mu, "");
-  AddVarF(output(),selmu_bdt_pid_pi, "");
-  AddVarF(output(),selmu_bdt_pid_p, "");
-  AddVarF(output(),selmu_bdt_pid_e, "");
-  
   // --- Highest-momentum negative track variables
     
   AddVarF(output(),HMNT_mom, "");
@@ -364,13 +359,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       bdt_ecal_tmr = mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio;
     }
     
-    //std::vector<Float_t> BDT_PID_results = tmvareader_ana->EvaluateMulticlass("BDTG");
-    std::vector<Float_t> BDT_PID_results = BDTPIDUtils::GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     
-    output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
-    output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
-    output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
-    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
 
   }
   
