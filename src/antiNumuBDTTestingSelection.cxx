@@ -115,7 +115,7 @@ bool antiNumuBDTTestingSelection::IsRelevantTrueObjectForSystematic(const AnaEve
 }
 
 //**************************************************
-bool antiNumuCC1piSelection::IsRelevantRecObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
+bool antiNumuBDTTestingSelection::IsRelevantRecObjectForSystematicInToy(const AnaEventC& event, const ToyBoxB& box, AnaRecObjectC* track, SystId_h systId, Int_t branch) const{
   //**************************************************
   
   return _antiNumuCC1piSelection.IsRelevantRecObjectForSystematicInToy(event,box,track,systId,branch);
