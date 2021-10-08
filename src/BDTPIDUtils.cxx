@@ -5,7 +5,7 @@ std::vector<Float_t> BDTPIDUtils::GetBDTPIDVars(const AnaTrackB& track, const An
   std::vector<Float_t> output = {-1, -1, -1, -1};
   
   // Sanity check:
-  if (!track) return output;
+  //if (!track) return output;
   //if (track->Momentum < 200) return output;
   
   TMVA::Reader* tmvareader;
@@ -43,7 +43,7 @@ std::vector<Float_t> BDTPIDUtils::GetBDTPIDVars(const AnaTrackB& track, const An
   
   // Fill kinematic variables:
   bdt_mom = track->Momentum;
-  TVector3 DirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
+  TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
   bdt_theta = TMath::ACos(DirVec[2]);
   
   // Fill TPC variables:
