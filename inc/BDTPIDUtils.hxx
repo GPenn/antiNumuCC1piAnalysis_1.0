@@ -4,6 +4,7 @@
 #include "DataClasses.hxx"
 #include "TMVA/Tools.h"
 #include "TMVA/Reader.h"
+#include "HighlandAnalysisUtils.hxx"
 #include "NuDirUtils.hxx"
 
 
