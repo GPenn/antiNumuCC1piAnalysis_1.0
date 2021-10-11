@@ -57,17 +57,43 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const 
   bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( track,3);
   
   // Fill FGD variables:
-  AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( track ,static_cast<SubDetId::SubDetEnum >(0)));
+  AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( track, static_cast<SubDetId::SubDetEnum >(0)));
   if (FGD1Segment) 
   {
     bdt_fgd1pullmu = FGD1Segment->Pullmu;
     bdt_fgd1pullp  = FGD1Segment->Pullp;
     bdt_fgd1pullpi = FGD1Segment->Pullpi;
   }
+  AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( track, static_cast<SubDetId::SubDetEnum >(1)));
+  if (FGD2Segment) 
+  {
+    bdt_fgd2pullmu = FGD2Segment->Pullmu;
+    bdt_fgd2pullp  = FGD2Segment->Pullp;
+    bdt_fgd2pullpi = FGD2Segment->Pullpi;
+  }
   
-  // ECal segment check:
-  //if (!localecalsegment) std::cout << "DEBUG: No ECal segment found." << std::endl;
-  //if (track->Momentum < 200) return output;
+  AnaECALParticle* ECALSegment;
+  Int_t ecalsegments = 0;
+  
+  for (Int_t subdet = 0; subdet<9; subdet++) {
+      if (!SubDetId::GetDetectorUsed(track->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
+        ECALSegment = static_cast<AnaECALParticle*>(anaUtils::GetSegmentInDet( track, static_cast<SubDetId::SubDetEnum >(subdet+6)));
+      if (!ECALSegment) continue;
+      
+      ecalsegments++;
+  }
+  
+  if (ECALSegment && (ecalsegments==1))
+  {
+    bdt_ecal_EMenergy = ECALSegment->EMEnergy;
+    bdt_ecal_EbyL = (ECALSegment->EMEnergy)/(ECALSegment->Length);
+    bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
+    
+    bdt_ecal_circularity = localecalsegment.PIDCircularity;
+    bdt_ecal_fbr = localecalsegment.PIDFBR;
+    bdt_ecal_qrms = localecalsegment.EMEnergyFitParaQRMS;
+    bdt_ecal_tmr = localecalsegment.PIDTruncatedMaxRatio;
+  }
   
   return output;
 }
