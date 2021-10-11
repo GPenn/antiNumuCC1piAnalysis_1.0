@@ -17,8 +17,7 @@ class antiNumuBDTTestingSelection: public SelectionBase{
 public:
   antiNumuBDTTestingSelection(bool forceBreak=true, InputManager *INPUT=NULL);
   virtual ~antiNumuBDTTestingSelection(){}
-  
-  TMVA::Reader* tmvareader_sel = new TMVA::Reader( "Color" );
+
 
   //---- These are mandatory functions
   void DefineSteps();
@@ -54,6 +53,7 @@ protected:
   //numuCCMultiPiSelection _numuCCMultiPiSelection;
   antiNumuCC1piSelection _antiNumuCC1piSelection;
   InputManager* _input;
+  BDTPIDmanager* myBDTPIDmanager;
   
   Int_t _MuonPIDCutIndex;
   Int_t _FindPionsStepIndex; 
