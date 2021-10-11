@@ -60,6 +60,8 @@ bool antiNumuBDTTestingAnalysis::Initialize() {
   // Note to self: figure out how best to integrate this
   //_numuCCMultiPiAnalysis->SetStoreAllTruePrimaryPions((bool)ND::params().GetParameterI("antiNumuCCMultiPiAnalysis.MicroTrees.StoreAllTruePrimaryPions"));
   
+  myBDTPIDmanager = new BDTPIDmanager();
+  
   return true;
 }
 
@@ -141,7 +143,7 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
   
   _antiNumuCC1piAnalysis->FillMicroTrees(addBase); 
   
-    std::vector<Float_t> BDT_PID_results = BDTPIDUtils::GetBDTPIDVars(*mybox().MainTrack, *mybox().MainTrackLocalECalSegment);
+    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager::GetBDTPIDVars(*mybox().MainTrack, *mybox().MainTrackLocalECalSegment);
     
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
