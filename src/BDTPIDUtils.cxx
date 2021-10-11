@@ -34,7 +34,7 @@ BDTPIDmanager::BDTPIDmanager() {
 }
 
 //--------------------------------------------------------------------------------------------------//
-BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment) {
+std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment) {
 //--------------------------------------------------------------------------------------------------//
   
   // Set variables to defaults:
