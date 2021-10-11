@@ -40,7 +40,25 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   
   // Set variables to defaults:
   std::vector<Float_t> output = {-1, -1, -1, -1};
-  
+  bdt_mom = -1.0;
+  bdt_theta = -1.0;
+  bdt_ecal_EMenergy = -100.0;
+  bdt_ecal_EbyP = -1.0;
+  bdt_ecal_EbyL = -1.0;
+  bdt_ecal_circularity = -0.5;
+  bdt_ecal_fbr = -5.0;
+  bdt_ecal_tmr = -0.2;
+  bdt_ecal_qrms = -0.1;
+  bdt_tpc_like_mu = -0.5;
+  bdt_tpc_like_e = -0.5;
+  bdt_tpc_like_p - -0.5;
+  bdt_tpc_like_pi = -0.5;
+  bdt_fgd1pullmu = -30.0;
+  bdt_fgd1pullpi = -30.0;
+  bdt_fgd1pullp = -30.0;
+  bdt_fgd2pullmu = -30.0;
+  bdt_fgd2pullpi = -30.0;
+  bdt_fgd2pullp = -30.0;
   
   // Sanity check:
   //if (!track) return output;
@@ -101,7 +119,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   }
   
   // Call BDT:
-  
+  output = tmvareader->EvaluateMVA( "BDTG" );
   
   return output;
 }
