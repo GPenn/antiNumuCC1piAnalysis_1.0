@@ -77,6 +77,8 @@ protected:
   //antiNumuCCAnalysis*    _antiNumuCCAnalysis;
   //numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
  antiNumuCC1piAnalysis* _antiNumuCC1piAnalysis;
+ 
+ BDTPIDmanager* myBDTPIDmanager;
 
 private:
   Int_t _whichFGD; // 1 for FGD1 analysis, 2 for FGD2, 3 for both
