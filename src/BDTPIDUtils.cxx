@@ -119,7 +119,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   }
   
   // Call BDT:
-  output = tmvareader->EvaluateMVA( "BDTG" );
+  output = tmvareader->EvaluateMulticlass( "BDTG" );
   
   return output;
 }
