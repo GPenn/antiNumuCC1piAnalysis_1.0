@@ -72,6 +72,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const 
     bdt_fgd2pullpi = FGD2Segment->Pullpi;
   }
   
+  // Fill ECal variables:
   AnaECALParticle* ECALSegment = NULL;
   Int_t ecalsegments = 0;
   
@@ -88,12 +89,18 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const 
     bdt_ecal_EMenergy = ECALSegment->EMEnergy;
     bdt_ecal_EbyL = (ECALSegment->EMEnergy)/(ECALSegment->Length);
     bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
-    
+  }
+  
+  if (localecalsegment)
+  {
     bdt_ecal_circularity = localecalsegment.PIDCircularity;
     bdt_ecal_fbr = localecalsegment.PIDFBR;
     bdt_ecal_qrms = localecalsegment.EMEnergyFitParaQRMS;
     bdt_ecal_tmr = localecalsegment.PIDTruncatedMaxRatio;
   }
+  
+  // Call BDT:
+  
   
   return output;
 }
