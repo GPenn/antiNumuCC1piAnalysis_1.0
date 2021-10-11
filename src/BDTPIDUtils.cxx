@@ -72,7 +72,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const 
     bdt_fgd2pullpi = FGD2Segment->Pullpi;
   }
   
-  AnaECALParticle* ECALSegment;
+  AnaECALParticle* ECALSegment = NULL;
   Int_t ecalsegments = 0;
   
   for (Int_t subdet = 0; subdet<9; subdet++) {
