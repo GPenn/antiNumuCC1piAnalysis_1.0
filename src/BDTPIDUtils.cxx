@@ -46,15 +46,28 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const 
   //if (track->Momentum < 200) return output;
   
   // Fill kinematic variables:
-  //bdt_mom = track.Momentum;
-  //TVector3 DirVec = anaUtils::ArrayToTVector3(track.DirectionStart);
-  //bdt_theta = TMath::ACos(DirVec[2]);
+  bdt_mom = track.Momentum;
+  TVector3 DirVec = anaUtils::ArrayToTVector3(track.DirectionStart);
+  bdt_theta = TMath::ACos(DirVec[2]);
   
   // Fill TPC variables:
-  //bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( track,0);
-  //bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( track,1);
-  //bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( track,2);
-  //bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( track,3);
+  bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( track,0);
+  bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( track,1);
+  bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( track,2);
+  bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( track,3);
+  
+  // Fill FGD variables:
+  AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
+  if (FGD1Segment) 
+  {
+    bdt_fgd1pullmu = FGD1Segment->Pullmu;
+    bdt_fgd1pullp  = FGD1Segment->Pullp;
+    bdt_fgd1pullpi = FGD1Segment->Pullpi;
+  }
+  
+  // ECal segment check:
+  if (!localecalsegment) std::cout << "DEBUG: No ECal segment found." << std::endl;
+  //if (track->Momentum < 200) return output;
   
   return output;
 }
