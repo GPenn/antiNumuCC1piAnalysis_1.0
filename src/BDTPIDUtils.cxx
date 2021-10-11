@@ -76,7 +76,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const 
   Int_t ecalsegments = 0;
   
   for (Int_t subdet = 0; subdet<9; subdet++) {
-      if (!SubDetId::GetDetectorUsed(track->Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
+      if (!SubDetId::GetDetectorUsed(track.Detector, static_cast<SubDetId::SubDetEnum >(subdet+6))) continue;
         ECALSegment = static_cast<AnaECALParticle*>(anaUtils::GetSegmentInDet( track, static_cast<SubDetId::SubDetEnum >(subdet+6)));
       if (!ECALSegment) continue;
       
