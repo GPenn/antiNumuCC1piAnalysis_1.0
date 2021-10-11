@@ -9,7 +9,7 @@
 
 class BDTPIDmanager{
   public:
-    BDTPIDmanager::BDTPIDmanager();
+    BDTPIDmanager();
     virtual ~BDTPIDmanager();
     
     std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
