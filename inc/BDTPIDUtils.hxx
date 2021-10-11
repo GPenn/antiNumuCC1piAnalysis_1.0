@@ -10,7 +10,7 @@
 class BDTPIDmanager{
   public:
     BDTPIDmanager();
-    virtual ~BDTPIDmanager();
+    virtual ~BDTPIDmanager(){delete tmvareader};
     
     std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
   
