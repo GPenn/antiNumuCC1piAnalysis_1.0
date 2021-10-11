@@ -146,7 +146,7 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
   if (mybox().MainTrack  ) 
   {
   
-    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(*mybox().MainTrack, *mybox().MainTrackLocalECalSegment);
+    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
