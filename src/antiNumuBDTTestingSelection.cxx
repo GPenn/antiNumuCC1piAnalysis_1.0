@@ -23,6 +23,8 @@ antiNumuBDTTestingSelection::antiNumuBDTTestingSelection(bool forceBreak, InputM
   _antiNumuCC1piSelection.Initialize(); 
   //_useECalPiZeroInfo = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
   //_numuCCMultiPiSelection.SetUseECalPiZeroInfo(_useECalPiZeroInfo);
+    
+  BDTPIDmanager_sel = new BDTPIDmanager();
 }
 
 //********************************************************************
