@@ -32,4 +32,11 @@ class BDTPIDmanager{
   
 //}
 
+class BDTPIDMuLikeCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new BDTPIDMuLikeCut();}
+};
+
 #endif
