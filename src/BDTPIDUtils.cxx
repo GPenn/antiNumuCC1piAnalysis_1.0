@@ -51,7 +51,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   bdt_ecal_qrms = -0.1;
   bdt_tpc_like_mu = -0.5;
   bdt_tpc_like_e = -0.5;
-  bdt_tpc_like_p - -0.5;
+  bdt_tpc_like_p = -0.5;
   bdt_tpc_like_pi = -0.5;
   bdt_fgd1pullmu = -30.0;
   bdt_fgd1pullpi = -30.0;
