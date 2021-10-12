@@ -35,8 +35,14 @@ class BDTPIDmanager{
 class BDTPIDMuLikeCut: public StepBase{
 public:
   using StepBase::Apply;
+  BDTPIDMuLikeCut(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new BDTPIDMuLikeCut();}
+  
+  BDTPIDmanager* _bdtpidmanager;
 };
 
 #endif
