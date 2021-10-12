@@ -195,7 +195,7 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Waive cut if muon candidate track has no ECal segments
   //if (!box.MainTrack) return true;
   
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box->MainTrack, box->MainTrackLocalECalSegment);
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
   Float_t mulike_bdtvalue = pidvars[0];
 
   if (mulike_bdtvalue > mulike_cutvalue) return true;
