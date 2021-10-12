@@ -124,23 +124,3 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   return output;
 }
 
-// ------------ CUTS ------------
-
-//**************************************************
-bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
-  
-  // Waive cut if muon candidate track has no ECal segments
-  //if (box.MainTrack->nECALSegments == 0) return true;
-  
-  //AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
-
-  //if (ECalSeg->PIDMipPion < 0.0) return true;
-
-  return false;
-}
