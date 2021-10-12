@@ -53,7 +53,8 @@ protected:
   //numuCCMultiPiSelection _numuCCMultiPiSelection;
   antiNumuCC1piSelection _antiNumuCC1piSelection;
   InputManager* _input;
-  //BDTPIDmanager* myBDTPIDmanager;
+  BDTPIDmanager* BDTPIDmanager_sel;
+  
   
   Int_t _MuonPIDCutIndex;
   Int_t _FindPionsStepIndex; 
