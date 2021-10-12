@@ -177,3 +177,30 @@ bool antiNumuBDTTestingSelection::CheckRedoSelection(const AnaEventC& event, con
 }
 
 
+
+
+// ------------ CUTS ------------
+
+//**************************************************
+bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t mulike_cutvalue;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box->MainTrack, box->MainTrackLocalECalSegment);
+  Float_t mulike_bdtvalue;
+
+  if (mulike_bdtvalue > mulike_cutvalue) return true;
+
+  return false;
+}
+
+
