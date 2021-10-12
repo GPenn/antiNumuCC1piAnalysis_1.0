@@ -187,7 +187,7 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 
   (void)event;
   
-  Float_t mulike_cutvalue;
+  Float_t mulike_cutvalue = 0.5;
 
   // Cast the ToyBox to the appropriate type
   ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
