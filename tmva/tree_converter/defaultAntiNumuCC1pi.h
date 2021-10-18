@@ -530,6 +530,7 @@ public :
    Int_t           nProtonsTPC;
    Float_t         TPCProtMom[2];   //[nProtonsTPC]
    Int_t           TPCProtonTId[2];   //[nProtonsTPC]
+   Float_t         selmu_det_theta;
    Float_t         selmu_tpc_like_mu;
    Float_t         selmu_tpc_like_e;
    Float_t         selmu_tpc_like_p;
@@ -923,6 +924,7 @@ public :
    TBranch        *b_nProtonsTPC;   //!
    TBranch        *b_TPCProtMom;   //!
    TBranch        *b_TPCProtonTId;   //!
+   TBranch        *b_selmu_det_theta;   //!
    TBranch        *b_selmu_tpc_like_mu;   //!
    TBranch        *b_selmu_tpc_like_e;   //!
    TBranch        *b_selmu_tpc_like_p;   //!
@@ -1389,6 +1391,7 @@ void defaultAntiNumuCC1pi::Init(TTree *tree)
    fChain->SetBranchAddress("nProtonsTPC", &nProtonsTPC, &b_nProtonsTPC);
    fChain->SetBranchAddress("TPCProtMom", TPCProtMom, &b_TPCProtMom);
    fChain->SetBranchAddress("TPCProtonTId", TPCProtonTId, &b_TPCProtonTId);
+   fChain->SetBranchAddress("selmu_det_theta", &selmu_det_theta, &b_selmu_det_theta);
    fChain->SetBranchAddress("selmu_tpc_like_mu", &selmu_tpc_like_mu, &b_selmu_tpc_like_mu);
    fChain->SetBranchAddress("selmu_tpc_like_e", &selmu_tpc_like_e, &b_selmu_tpc_like_e);
    fChain->SetBranchAddress("selmu_tpc_like_p", &selmu_tpc_like_p, &b_selmu_tpc_like_p);
