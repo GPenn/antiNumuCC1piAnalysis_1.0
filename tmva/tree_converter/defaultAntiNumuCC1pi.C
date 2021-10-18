@@ -218,10 +218,12 @@ void defaultAntiNumuCC1pi::Loop()
          
             Long64_t time_total_guess = time_sofar / completion;
             Long64_t time_left_guess = time_total_guess - time_sofar;
-         
-            std::cout << "Converted " << jentry << " of " << nentries << " entries (" << (Int_t)(completion*100) << "\%). " 
-               << "Time elapsed: " << time_sofar << "s. "
-               << "Estimated time remaining: " << time_left_guess << "s. \r";
+            
+            if (time_sofar >= 2) {
+                std::cout << "Converted " << jentry << " of " << nentries << " entries (" << (Int_t)(completion*100) << "\%). " 
+                   << "Time elapsed: " << time_sofar << "s. "
+                   << "Estimated time remaining: " << time_left_guess << "s. \r";
+            }
 
    }
    
