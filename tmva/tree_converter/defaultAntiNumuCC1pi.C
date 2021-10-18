@@ -50,7 +50,7 @@ void defaultAntiNumuCC1pi::Loop()
         // Cut on accum_level etc. N.B. make sure these cuts are the same as below
         if (accum_level[0][1] <= 4) continue; // Set accum_level
         if (selmu_mom[0] > 1500.0) continue;
-        if (selmu_mom[0] < 150.0) continue;
+        if (selmu_mom[0] < 200.0) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
         if (particle != -11) continue;
       
@@ -66,7 +66,7 @@ void defaultAntiNumuCC1pi::Loop()
        // Cut on accum_level etc.
        if (accum_level[0][1] <= 4) continue; // Set accum_level
        if (selmu_mom[0] > 1500.0) continue;
-       if (selmu_mom[0] < 150.0) continue;
+       if (selmu_mom[0] < 200.0) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
        if (particle != -11) continue;
              
