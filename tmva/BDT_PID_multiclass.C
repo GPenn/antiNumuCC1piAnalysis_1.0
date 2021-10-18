@@ -194,31 +194,28 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
    // Kinematic variables
-   factory->AddVariable( "mom := selmu_mom",                               "Muon candidate reco mom",               "MeV/c", 'F' );
-   factory->AddVariable( "theta := selmu_theta",                             "Muon candidate reco angle",             "rad",   'F' );
-   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",             "Muon candidate ECal EM energy",         "MeV",   'F' );
-   factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                 "Muon candidate ECal E/p",               "", 'F' );
+   factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
+   factory->AddVariable( "theta := selmu_det_theta",                       "Angle",             "rad",   'F' );
+   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
+   factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                "ECal E/p",          "", 'F' );
    // Muon candidate ECal variables
-   factory->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 "Muon candidate ECal E/L",               "MeV/mm", 'F' );
-   //factory->AddVariable( "selmu_ecal_bestseg_mippion",              "Muon candidate ECal MipPion",           "", 'F' );
-   factory->AddVariable( "circularity := selmu_ecal_circularity",                  "Muon candidate ECal circularity",       "", 'F' );
-   factory->AddVariable( "fbr := selmu_ecal_fbr",                          "Muon candidate ECal FBR",               "", 'F' );
-   factory->AddVariable( "tmr := selmu_ecal_tmr",                          "Muon candidate ECal TMR",               "", 'F' );
-   factory->AddVariable( "qrms := selmu_ecal_qrms",                         "Muon candidate ECal QRMS",               "", 'F' );
+   factory->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
+   factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
+   factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
+   factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
+   factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
    // Muon candidate TPC variables
-   factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                       "Muon candidate TPC muon likelihood",    "", 'F' );
-   factory->AddVariable( "tpclikee := selmu_tpc_like_e",                        "Muon candidate TPC electron likelihood","", 'F' );
-   factory->AddVariable( "tpclikep := selmu_tpc_like_p",                        "Muon candidate TPC proton likelihood",  "", 'F' );
-   factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                       "Muon candidate TPC pion likelihood",    "", 'F' );
+   factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC mu-like",    "", 'F' );
+   factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC e-like",     "", 'F' );
+   factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC p-like",     "", 'F' );
+   factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC pi-like",    "", 'F' );
    // Muon candidate FGD variables
-   //factory->AddVariable( "selmu_has_fgd1seg",                       "Muon candidate has FGD1 segment",       "", 'I' );
-   factory->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",                      "Muon candidate FGD1 muon pull",         "", 'F' );
-   factory->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",                      "Muon candidate FGD1 pion pull",         "", 'F' );
-   factory->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                       "Muon candidate FGD1 proton pull",       "", 'F' );
-   //factory->AddVariable( "selmu_has_fgd2seg",                       "Muon candidate has FGD2 segment",       "", 'I' );
-   factory->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",                      "Muon candidate FGD2 muon pull",         "", 'F' );
-   factory->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",                      "Muon candidate FGD2 pion pull",         "", 'F' );
-   factory->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                       "Muon candidate FGD2 proton pull",       "", 'F' );
+   factory->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               "FGD1 muon pull",         "", 'F' );
+   factory->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               "FGD1 pion pull",         "", 'F' );
+   factory->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 "FGD1 proton pull",       "", 'F' );
+   factory->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               "FGD2 muon pull",         "", 'F' );
+   factory->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               "FGD2 pion pull",         "", 'F' );
+   factory->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 "FGD2 proton pull",       "", 'F' );
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
    // but will appear in the final "TestTree" produced by TMVA. This TestTree will contain the
