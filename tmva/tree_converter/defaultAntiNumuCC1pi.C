@@ -81,7 +81,7 @@ void defaultAntiNumuCC1pi::Loop()
        defout->NPi0Pos    		               = NPi0Pos;
        
        defout->selmu_mom    		            = selmu_mom[0];
-       defout->selmu_theta    		            = TMath::ACos(selmu_costheta[0]);
+       defout->selmu_theta    		            = selmu_det_theta;
        
        // Calculate event weight based on reco mom histogram:
        Int_t weight_bin = selmu_mom[0]/10;
