@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Tue Sep 14 17:00:57 2021 by ROOT version 5.34/34
+// Mon Oct 18 15:40:31 2021 by ROOT version 5.34/34
 // from TTree default/20
 // found on file: ../../output/particle_gun/particlegun_antimu.root
 //////////////////////////////////////////////////////////
@@ -354,6 +354,7 @@ public :
    Int_t           nProtonsTPC;
    Float_t         TPCProtMom[2];   //[nProtonsTPC]
    Int_t           TPCProtonTId[2];   //[nProtonsTPC]
+   Float_t         selmu_det_theta;
    Float_t         selmu_tpc_like_mu;
    Float_t         selmu_tpc_like_e;
    Float_t         selmu_tpc_like_p;
@@ -747,6 +748,7 @@ public :
    TBranch        *b_nProtonsTPC;   //!
    TBranch        *b_TPCProtMom;   //!
    TBranch        *b_TPCProtonTId;   //!
+   TBranch        *b_selmu_det_theta;   //!
    TBranch        *b_selmu_tpc_like_mu;   //!
    TBranch        *b_selmu_tpc_like_e;   //!
    TBranch        *b_selmu_tpc_like_p;   //!
@@ -1209,6 +1211,7 @@ void defaultAntiNumuCC1pi_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("nProtonsTPC", &nProtonsTPC, &b_nProtonsTPC);
    fChain->SetBranchAddress("TPCProtMom", TPCProtMom, &b_TPCProtMom);
    fChain->SetBranchAddress("TPCProtonTId", TPCProtonTId, &b_TPCProtonTId);
+   fChain->SetBranchAddress("selmu_det_theta", &selmu_det_theta, &b_selmu_det_theta);
    fChain->SetBranchAddress("selmu_tpc_like_mu", &selmu_tpc_like_mu, &b_selmu_tpc_like_mu);
    fChain->SetBranchAddress("selmu_tpc_like_e", &selmu_tpc_like_e, &b_selmu_tpc_like_e);
    fChain->SetBranchAddress("selmu_tpc_like_p", &selmu_tpc_like_p, &b_selmu_tpc_like_p);
