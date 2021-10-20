@@ -197,7 +197,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
    factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
    factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
-   factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                "ECal E/p",          "", 'F' );
+   //factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                "ECal E/p",          "", 'F' );
    // Muon candidate ECal variables
    factory->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
    factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
