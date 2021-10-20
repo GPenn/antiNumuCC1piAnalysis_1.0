@@ -194,8 +194,11 @@ bool antiNumuBDTTestingAnalysis::CheckFillTruthTree(const AnaTrueVertex& vtx){
   // (nevertheless I didn't find any)
   int topo = anaUtils::GetTopology(vtx, fgdID, IsAntinu);
   bool topoCCinFV = (topo == 0 || topo == 1 || topo == 2);
+  
+  // When using particle gun input I want to save truth info for all events:
+  bool particleGunMode = true;
 
-  return (antiNumuCCinFV || topoCCinFV);  
+  return (antiNumuCCinFV || topoCCinFV || particleGunMode);  
 }
 
 //********************************************************************
