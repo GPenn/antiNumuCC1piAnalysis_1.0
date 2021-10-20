@@ -211,10 +211,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC pi-like",    "", 'F' );
    // Muon candidate FGD variables
    factory->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               "FGD1 muon pull",         "", 'F' );
-   factory->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               "FGD1 pion pull",         "", 'F' );
-   factory->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 "FGD1 proton pull",       "", 'F' );
-   factory->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               "FGD2 muon pull",         "", 'F' );
-   factory->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               "FGD2 pion pull",         "", 'F' );
+   //factory->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               "FGD1 pion pull",         "", 'F' );
+   //factory->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 "FGD1 proton pull",       "", 'F' );
+   //factory->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               "FGD2 muon pull",         "", 'F' );
+   //factory->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               "FGD2 pion pull",         "", 'F' );
    factory->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 "FGD2 proton pull",       "", 'F' );
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
