@@ -21,6 +21,10 @@
   //draw_pi.Draw(default,"selmu_mom:selmu_truemom",100,0,2500,120,0,3000, "all", "(accum_level[][0]>4)&&(particle==211)", "colz");
   //pi_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_piplus_pg.png");
   
+  draw_pi.SetTitleX("Pi+ reco momentum");
+  TCanvas pi_recomom_preselection;
+  draw_pi.Draw(default,"selmu_mom[0]", 50,200,1500, "particle", "(accum_level[][0]>4)&&(particle==211)");
+  
   DrawingTools draw_p("output/particle_gun/particlegun_proton.root");
   DataSample mc_p("output/particle_gun/particlegun_proton.root");
   
@@ -30,6 +34,10 @@
   //draw_p.Draw(default,"selmu_mom:selmu_truemom",100,0,2500,120,0,3000, "all", "(accum_level[][0]>4)&&(particle==2212)", "colz");
   //p_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_proton_pg.png");
   
+  draw_p.SetTitleX("Proton reco momentum");
+  TCanvas p_recomom_preselection;
+  draw_p.Draw(default,"selmu_mom[0]", 50,200,1500, "particle", "(accum_level[][0]>4)&&(particle==2212)");
+  
   DrawingTools draw_pos("output/particle_gun/particlegun_positron.root");
   DataSample mc_pos("output/particle_gun/particlegun_positron.root");
   
@@ -38,4 +46,8 @@
   //TCanvas pos_momcorr_accum4;
   //draw_pos.Draw(default,"selmu_mom:selmu_truemom",100,0,2500,120,0,3000, "all", "(accum_level[][0]>4)&&(particle==-11)", "colz");
   //pos_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_positron_pg.png");
+  
+  draw_pos.SetTitleX("Positron reco momentum");
+  TCanvas pos_recomom_preselection;
+  draw_pos.Draw(default,"selmu_mom[0]", 50,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-11)");
 }
