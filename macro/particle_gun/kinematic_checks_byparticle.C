@@ -47,7 +47,7 @@
   draw_p.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_det_theta<1.0472)");
   
   draw_p.SetTitleX("Proton true momentum");
-  TCanvas p_recomom_preselection;
+  TCanvas p_truemom_preselection;
   draw_p.Draw(default,"selmu_truemom", 30,0.0,2000, "particle", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
   
   DrawingTools draw_pos("output/particle_gun/particlegun_positron.root");
@@ -64,6 +64,6 @@
   draw_pos.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-11)&&(selmu_det_theta<1.0472)");
   
   draw_pos.SetTitleX("Positron true momentum");
-  TCanvas pos_recomom_preselection;
+  TCanvas pos_truemom_preselection;
   draw_pos.Draw(default,"selmu_truemom", 30,0.0,2000, "particle", "(accum_level[][0]>4)&&(particle==-11)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
 }
