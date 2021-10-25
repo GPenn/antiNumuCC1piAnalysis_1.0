@@ -51,6 +51,7 @@ void defaultAntiNumuCC1pi::Loop()
         if (accum_level[0][1] <= 4) continue; // Set accum_level
         if (selmu_mom[0] > 1500.0) continue;
         if (selmu_mom[0] < 200.0) continue;
+        if (selmu_det_theta > 1.0472) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
         if (particle != 211) continue;
       
@@ -67,6 +68,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (accum_level[0][1] <= 4) continue; // Set accum_level
        if (selmu_mom[0] > 1500.0) continue;
        if (selmu_mom[0] < 200.0) continue;
+       if (selmu_det_theta > 1.0472) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
        if (particle != 211) continue;
              
@@ -112,31 +114,45 @@ void defaultAntiNumuCC1pi::Loop()
           defout->selmu_ecal_amr                 = selmu_ecal_amr;
           defout->selmu_ecal_angle               = selmu_ecal_angle;
           defout->selmu_ecal_asymmetry           = selmu_ecal_asymmetry;
-          defout->selmu_ecal_circularity         = selmu_ecal_circularity;
-          defout->selmu_ecal_fbr                 = selmu_ecal_fbr;
+          //defout->selmu_ecal_circularity         = selmu_ecal_circularity;
+          //defout->selmu_ecal_fbr                 = selmu_ecal_fbr;
           defout->selmu_ecal_maxratio            = selmu_ecal_maxratio;
           defout->selmu_ecal_meanpos             = selmu_ecal_meanpos;
-          defout->selmu_ecal_qrms                = selmu_ecal_qrms;
+          //defout->selmu_ecal_qrms                = selmu_ecal_qrms;
           defout->selmu_ecal_showerangle         = selmu_ecal_showerangle;
           defout->selmu_ecal_showerwidth         = selmu_ecal_showerwidth;
           defout->selmu_ecal_tcr                 = selmu_ecal_tcr;
-          defout->selmu_ecal_tmr                 = selmu_ecal_tmr;
+          //defout->selmu_ecal_tmr                 = selmu_ecal_tmr;
        }
        else
        {
           defout->selmu_ecal_amr                 = -50.0;
           defout->selmu_ecal_angle               = -20.0;
           defout->selmu_ecal_asymmetry           = -0.5;
-          defout->selmu_ecal_circularity         = -0.5;
-          defout->selmu_ecal_fbr                 = -5.0;
+          //defout->selmu_ecal_circularity         = -0.5;
+          //defout->selmu_ecal_fbr                 = -5.0;
           defout->selmu_ecal_maxratio            = -50.0;
           defout->selmu_ecal_meanpos             = -100.0;
-          defout->selmu_ecal_qrms                = -0.1;
+          //defout->selmu_ecal_qrms                = -0.1;
           defout->selmu_ecal_showerangle         = -0.1;
           defout->selmu_ecal_showerwidth         = -0.1;
           defout->selmu_ecal_tcr                 = -0.5;
-          defout->selmu_ecal_tmr                 = -0.2;
+          //defout->selmu_ecal_tmr                 = -0.2;
        }
+        
+       if (selmu_ecal_fbr > 20.0)     {defout->selmu_ecal_fbr = 20.0;}
+       else if (selmu_ecal_fbr < 0.0) {defout->selmu_ecal_fbr = -5.0;}
+       else                           {defout->selmu_ecal_fbr = selmu_ecal_fbr;}
+        
+       if (selmu_ecal_circularity < 0.0) {defout->selmu_ecal_circularity = -0.5;}
+       else                              {defout->selmu_ecal_circularity = selmu_ecal_circularity;}
+        
+       if (selmu_ecal_tmr < 0.0) {defout->selmu_ecal_tmr = -0.2;}
+       else                      {defout->selmu_ecal_tmr = selmu_ecal_tmr;}
+        
+       if (selmu_ecal_qrms > 3.0)      {defout->selmu_ecal_qrms = 3.0;}
+       else if (selmu_ecal_qrms < 0.0) {defout->selmu_ecal_qrms = -0.1;}
+       else                            {defout->selmu_ecal_qrms = selmu_ecal_qrms;}
 
        defout->selmu_tpc_like_mu              = selmu_tpc_like_mu;
        defout->selmu_tpc_like_e               = selmu_tpc_like_e;
