@@ -269,7 +269,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    Double_t weight_p  = inputTree_p->GetEntries() / desiredsamplesize;
    Double_t weight_e  = inputTree_e->GetEntries() / desiredsamplesize;*/
    
-   factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=EqualNumEvents:!V" );
+   // Optional cut to require an ECal segment
+   TCut ecalsegcut = "selmu_necals==1";
+   
+   factory->PrepareTrainingAndTestTree( ecalsegcut, "SplitMode=Random:NormMode=EqualNumEvents:!V" );
 
    
    
