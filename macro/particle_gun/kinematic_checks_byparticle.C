@@ -10,7 +10,7 @@
   
   draw_amu.SetTitleX("mu+ reco momentum");
   TCanvas amu_recomom_preselection;
-  draw_amu.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-13)");
+  draw_amu.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_det_theta<1.0472)");
   
   DrawingTools draw_pi("output/particle_gun/particlegun_piplus.root");
   DataSample mc_pi("output/particle_gun/particlegun_piplus.root");
@@ -23,7 +23,7 @@
   
   draw_pi.SetTitleX("pi+ reco momentum");
   TCanvas pi_recomom_preselection;
-  draw_pi.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==211)");
+  draw_pi.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==211)&&(selmu_det_theta<1.0472)");
   
   DrawingTools draw_p("output/particle_gun/particlegun_proton.root");
   DataSample mc_p("output/particle_gun/particlegun_proton.root");
@@ -36,7 +36,7 @@
   
   draw_p.SetTitleX("Proton reco momentum");
   TCanvas p_recomom_preselection;
-  draw_p.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==2212)");
+  draw_p.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_det_theta<1.0472)");
   
   DrawingTools draw_pos("output/particle_gun/particlegun_positron.root");
   DataSample mc_pos("output/particle_gun/particlegun_positron.root");
@@ -49,5 +49,5 @@
   
   draw_pos.SetTitleX("Positron reco momentum");
   TCanvas pos_recomom_preselection;
-  draw_pos.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-11)");
+  draw_pos.Draw(default,"selmu_mom[0]", 30,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-11)&&(selmu_det_theta<1.0472)");
 }
