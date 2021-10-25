@@ -8,7 +8,7 @@
   //draw_amu.Draw(default,"selmu_mom:selmu_truemom",100,0,2500,120,0,3000, "all", "(accum_level[][0]>4)&&(particle==-13)", "colz");
   //amu_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_antimu_pg.png");
   
-  draw_amu.SetTitleX("$\mu^+$ reco momentum");
+  draw_amu.SetTitleX("Mu+ reco momentum");
   TCanvas amu_recomom_preselection;
   draw_amu.Draw(default,"selmu_mom[0]", 50,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-13)");
   
