@@ -8,7 +8,7 @@
   //draw_amu.Draw(default,"selmu_mom:selmu_truemom",100,0,2500,120,0,3000, "all", "(accum_level[][0]>4)&&(particle==-13)", "colz");
   //amu_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_antimu_pg.png");
   
-  draw_amu.SetTitleX("Mu+ reco momentum");
+  draw_amu.SetTitleX("mu+ reco momentum");
   TCanvas amu_recomom_preselection;
   draw_amu.Draw(default,"selmu_mom[0]", 50,200,1500, "particle", "(accum_level[][0]>4)&&(particle==-13)");
   
@@ -21,7 +21,7 @@
   //draw_pi.Draw(default,"selmu_mom:selmu_truemom",100,0,2500,120,0,3000, "all", "(accum_level[][0]>4)&&(particle==211)", "colz");
   //pi_momcorr_accum4->SaveAs("img/particlegun/reco_vs_true_mom_piplus_pg.png");
   
-  draw_pi.SetTitleX("Pi+ reco momentum");
+  draw_pi.SetTitleX("pi+ reco momentum");
   TCanvas pi_recomom_preselection;
   draw_pi.Draw(default,"selmu_mom[0]", 50,200,1500, "particle", "(accum_level[][0]>4)&&(particle==211)");
   
