@@ -272,7 +272,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // Optional cut to require an ECal segment
    TCut ecalsegcut = "selmu_necals==1";
    
-   factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=EqualNumEvents:!V" );
+   factory->PrepareTrainingAndTestTree( ecalsegcut, "SplitMode=Random:NormMode=EqualNumEvents:!V" );
 
    
    
