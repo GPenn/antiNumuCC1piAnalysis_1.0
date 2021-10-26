@@ -14,7 +14,7 @@
   
   draw_amu.SetTitleX("mu+ true momentum");
   TCanvas amu_truemom_preselection;
-  draw_amu.Draw(default,"selmu_truemom", 30,0.0,2000, "particle", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
+  draw_amu.Draw(default,"selmu_truemom", 30,0.0,2500, "particle", "(accum_level[][0]>4)&&(particle==-13)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
   
   DrawingTools draw_pi("output/particle_gun/particlegun_piplus.root");
   DataSample mc_pi("output/particle_gun/particlegun_piplus.root");
@@ -31,7 +31,7 @@
   
   draw_pi.SetTitleX("pi+ true momentum");
   TCanvas pi_truemom_preselection;
-  draw_pi.Draw(default,"selmu_truemom", 30,0.0,2000, "particle", "(accum_level[][0]>4)&&(particle==211)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
+  draw_pi.Draw(default,"selmu_truemom", 30,0.0,2500, "particle", "(accum_level[][0]>4)&&(particle==211)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
   
   DrawingTools draw_p("output/particle_gun/particlegun_proton.root");
   DataSample mc_p("output/particle_gun/particlegun_proton.root");
@@ -48,7 +48,7 @@
   
   draw_p.SetTitleX("Proton true momentum");
   TCanvas p_truemom_preselection;
-  draw_p.Draw(default,"selmu_truemom", 30,0.0,2000, "particle", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
+  draw_p.Draw(default,"selmu_truemom", 30,0.0,2500, "particle", "(accum_level[][0]>4)&&(particle==2212)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
   
   DrawingTools draw_pos("output/particle_gun/particlegun_positron.root");
   DataSample mc_pos("output/particle_gun/particlegun_positron.root");
@@ -65,5 +65,5 @@
   
   draw_pos.SetTitleX("Positron true momentum");
   TCanvas pos_truemom_preselection;
-  draw_pos.Draw(default,"selmu_truemom", 30,0.0,2000, "particle", "(accum_level[][0]>4)&&(particle==-11)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
+  draw_pos.Draw(default,"selmu_truemom", 30,0.0,2500, "particle", "(accum_level[][0]>4)&&(particle==-11)&&(selmu_det_theta<1.0472)&&(selmu_mom[0]>200.0)&&(selmu_mom[0]<1500.0)");
 }
