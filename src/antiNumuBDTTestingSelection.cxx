@@ -64,7 +64,7 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   SetBranchAlias(0,"Antimuon",  0);
 
   // By default the preselection correspond to cuts 0-2
-  SetPreSelectionAccumLevel(2);
+  SetPreSelectionAccumLevel(0);
 
   // Step and Cut numbers needed by CheckRedoSelection
   //_MuonPIDCutIndex     = GetCutNumber("Antimu PID loop");
