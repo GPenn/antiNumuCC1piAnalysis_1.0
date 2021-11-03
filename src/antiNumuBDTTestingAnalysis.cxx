@@ -111,6 +111,8 @@ void antiNumuBDTTestingAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_bdt_pid_p, "");
   AddVarF(output(),selmu_bdt_pid_e, "");
   
+  AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
@@ -128,6 +130,8 @@ void antiNumuBDTTestingAnalysis::DefineTruthTree(){
   //}
   
   _antiNumuCC1piAnalysis->DefineTruthTree();
+  
+  AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
 }
 
 //********************************************************************
@@ -152,6 +156,8 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
+    
+    output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
   }
   
   baseTrackerAnalysis::FillEffCounters();
@@ -212,6 +218,8 @@ void antiNumuBDTTestingAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
   //}
   
   _antiNumuCC1piAnalysis->FillTruthTree(vtx);
+  
+  output().FillVar(particle_pg, vtx.TrueParticles[0]->PDG);
 }
 
 //********************************************************************
