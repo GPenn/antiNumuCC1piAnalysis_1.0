@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/particle_gun/bdt_testing_selection_test.root");
-  DataSample mc("output/particle_gun/bdt_testing_selection_test.root");
+  DrawingTools draw("output/particle_gun/particlegun_antimu_bdttest.root");
+  DataSample mc("output/particle_gun/particlegun_antimu_bdttest.root");
   
   draw.DrawEffPurVSCut(mc,"particle_pg==-13");
 
