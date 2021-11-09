@@ -40,11 +40,11 @@
   
   draw.SetTitleX("TPC2 dE/dx");
   TCanvas tpc2dedx;
-  draw.Draw(default,"selmu_tpc_dedx[0]",50,0,1000,"particle","accum_level[][0]>5");
+  draw.Draw(default,"selmu_tpc_dedx[0]",50,0,2000,"particle","accum_level[][0]>5");
   
   draw.SetTitleX("TPC3 dE/dx");
   TCanvas tpc3dedx;
-  draw.Draw(default,"selmu_tpc_dedx[1]",50,0,1000,"particle","accum_level[][0]>5");
+  draw.Draw(default,"selmu_tpc_dedx[1]",50,0,2000,"particle","accum_level[][0]>5");
   
   draw.SetTitleX("TPC mu-like");
   TCanvas tpclikemu;
