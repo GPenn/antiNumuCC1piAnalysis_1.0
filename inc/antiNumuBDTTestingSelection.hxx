@@ -77,4 +77,12 @@ public:
   BDTPIDmanager* _bdtpidmanager;
 };
 
+// Apply BDT kinematics preselection cut
+class BDTPreselectionKinematicsCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new BDTPreselectionKinematicsCut();}
+};
+
 #endif
