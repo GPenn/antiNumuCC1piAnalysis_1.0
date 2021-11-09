@@ -4,7 +4,7 @@
   
   draw.SetTitleX("Reco momentum");
   TCanvas mom;
-  draw.Draw(default,"selmu_mom",50,0,1500,"particle","accum_level[][0]>5");
+  draw.Draw(default,"selmu_mom[0]",50,0,1500,"particle","accum_level[][0]>5");
   
   draw.SetTitleX("Theta");
   TCanvas theta;
