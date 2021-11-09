@@ -142,6 +142,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_fgd1_pull_p, "");
   AddVarF(output(),selmu_fgd1_pull_pi, "");
   AddVarF(output(),selmu_fgd1_pull_no, "");
+  AddVarF(output(),selmu_fgd1_energy, "");
+  AddVarF(output(),selmu_fgd1_length, "");
   
   AddVarI(output(),selmu_has_fgd2seg, "");
   AddVarF(output(),selmu_fgd2_pull_mu, "");
@@ -149,6 +151,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_fgd2_pull_p, "");
   AddVarF(output(),selmu_fgd2_pull_pi, "");
   AddVarF(output(),selmu_fgd2_pull_no, "");
+  AddVarF(output(),selmu_fgd2_energy, "");
+  AddVarF(output(),selmu_fgd2_length, "");
   
   AddVarF(output(),selmu_ecal_bestseg_EMenergy, "");
   AddVarF(output(),selmu_ecal_bestseg_mippion, "");
@@ -267,6 +271,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd1_pull_p,      FGD1Segment->Pullp);
       output().FillVar(selmu_fgd1_pull_pi,     FGD1Segment->Pullpi);
       output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
+      output().FillVar(selmu_fgd1_energy,      FGD1Segment->E);
+      output().FillVar(selmu_fgd1_length,      FGD1Segment->Length);
       
       //bdt_fgd1pullmu = FGD1Segment->Pullmu;
       //bdt_fgd1pullp  = FGD1Segment->Pullp;
@@ -286,6 +292,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd2_pull_p,      FGD2Segment->Pullp);
       output().FillVar(selmu_fgd2_pull_pi,     FGD2Segment->Pullpi);
       output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
+      output().FillVar(selmu_fgd2_energy,      FGD2Segment->E);
+      output().FillVar(selmu_fgd2_length,      FGD2Segment->Length);
       
       //bdt_fgd2pullmu = FGD2Segment->Pullmu;
       //bdt_fgd2pullp  = FGD2Segment->Pullp;
