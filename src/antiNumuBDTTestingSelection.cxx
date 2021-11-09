@@ -48,6 +48,8 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   
+  AddStep(StepBase::kCut,    "Kinematics for BDT",      new BDTPreselectionKinematicsCut());
+  
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
@@ -205,4 +207,23 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   return false;
 }
 
+
+//**************************************************
+bool BDTPreselectionKinematicsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+
+  if (box.MainTrack->Momentum < 200.0) return false;
+  if (box.MainTrack->Momentum > 1500.0) return false;
+  
+  TVector3 DirVec = anaUtils::ArrayToTVector3(box.MainTrack->DirectionStart);
+  if (TMath::ACos(DirVec[2]) > 1.0472) return false;
+
+  return true;
+
+}
 
