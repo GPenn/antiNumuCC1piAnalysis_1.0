@@ -38,17 +38,13 @@
   TCanvas qrms;
   draw.Draw(default,"selmu_ecal_qrms",50,0,3,"particle","accum_level[][0]>5");
   
-  draw.SetTitleX("TPC1 dE/dx");
-  TCanvas tpc1dedx;
-  draw.Draw(default,"selmu_tpc_dedx[0]",50,0,100,"particle","accum_level[][0]>5");
-  
   draw.SetTitleX("TPC2 dE/dx");
   TCanvas tpc2dedx;
-  draw.Draw(default,"selmu_tpc_dedx[1]",50,0,100,"particle","accum_level[][0]>5");
+  draw.Draw(default,"selmu_tpc_dedx[0]",50,0,1000,"particle","accum_level[][0]>5");
   
   draw.SetTitleX("TPC3 dE/dx");
-  TCanvas tpc3dedxu;
-  draw.Draw(default,"selmu_tpc_dedx[2]",50,0,100,"particle","accum_level[][0]>5");
+  TCanvas tpc3dedx;
+  draw.Draw(default,"selmu_tpc_dedx[1]",50,0,1000,"particle","accum_level[][0]>5");
   
   draw.SetTitleX("TPC mu-like");
   TCanvas tpclikemu;
