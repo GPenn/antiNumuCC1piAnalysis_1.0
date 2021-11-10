@@ -191,7 +191,7 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 
   (void)event;
   
-  Float_t mulike_cutvalue = 0.5;
+  Float_t mulike_cutvalue = 0.621;
 
   // Cast the ToyBox to the appropriate type
   ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
@@ -207,6 +207,71 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   return false;
 }
 
+//**************************************************
+bool BDTPIDPiLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t pilike_cutvalue = 0.490;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t pilike_bdtvalue = pidvars[1];
+
+  if (pilike_bdtvalue > pilike_cutvalue) return true;
+
+  return false;
+}
+
+//**************************************************
+bool BDTPIDProtonLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t plike_cutvalue = 0.648;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t plike_bdtvalue = pidvars[2];
+
+  if (plike_bdtvalue > plike_cutvalue) return true;
+
+  return false;
+}
+
+//**************************************************
+bool BDTPIDElectronLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t elike_cutvalue = 0.791;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t elike_bdtvalue = pidvars[3];
+
+  if (elike_bdtvalue > elike_cutvalue) return true;
+
+  return false;
+}
 
 //**************************************************
 bool BDTPreselectionKinematicsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
