@@ -77,6 +77,45 @@ public:
   BDTPIDmanager* _bdtpidmanager;
 };
 
+class BDTPIDPiLikeCut: public StepBase{
+public:
+  using StepBase::Apply;
+  BDTPIDPiLikeCut(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new BDTPIDPiLikeCut();}
+  
+  BDTPIDmanager* _bdtpidmanager;
+};
+
+class BDTPIDProtonLikeCut: public StepBase{
+public:
+  using StepBase::Apply;
+  BDTPIDProtonLikeCut(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new BDTPIDProtonLikeCut();}
+  
+  BDTPIDmanager* _bdtpidmanager;
+};
+
+class BDTPIDElectronLikeCut: public StepBase{
+public:
+  using StepBase::Apply;
+  BDTPIDElectronLikeCut(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new BDTPIDElectronLikeCut();}
+  
+  BDTPIDmanager* _bdtpidmanager;
+};
+
 // Apply BDT kinematics preselection cut
 class BDTPreselectionKinematicsCut: public StepBase{
 public:
