@@ -60,10 +60,25 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
   AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
   
-  AddStep(StepBase::kCut,    "BDT mu-like PID",      new BDTPIDMuLikeCut(BDTPIDmanager_sel));
+  AddSplit(4);
+  
+  // Mu-like branch
+  AddStep(0, StepBase::kCut,    "BDT mu-like PID",      new BDTPIDMuLikeCut(BDTPIDmanager_sel));
+  
+  // Pi-like branch
+  AddStep(1, StepBase::kCut,    "BDT pi-like PID",      new BDTPIDPiLikeCut(BDTPIDmanager_sel));
+  
+  // Proton-like branch
+  AddStep(2, StepBase::kCut,    "BDT p-like PID",       new BDTPIDProtonLikeCut(BDTPIDmanager_sel));
+  
+  // Electron-like branch
+  AddStep(3, StepBase::kCut,    "BDT e-like PID",       new BDTPIDElectronLikeCut(BDTPIDmanager_sel));
 
   // Set the branch aliases to the branches
-  SetBranchAlias(0,"Antimuon",  0);
+  SetBranchAlias(0, "Antimuon",  0);
+  SetBranchAlias(1, "Pi+",       1);
+  SetBranchAlias(2, "Proton",    2);
+  SetBranchAlias(3, "Electron",  3);
 
   // By default the preselection correspond to cuts 0-2
   SetPreSelectionAccumLevel(0);
