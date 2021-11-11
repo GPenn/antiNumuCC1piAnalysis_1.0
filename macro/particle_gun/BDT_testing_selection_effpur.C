@@ -34,23 +34,43 @@
   draw.SetTitleY("Positron selection purity");
   draw.DrawEff(default, "selmu_mom",50,200,1500,"particle_pg==-11","accum_level[][3]>6");
   
+  TCanvas pur_vs_recotheta_mu;
+  draw.SetTitleX("Reco theta");
+  draw.SetTitleY("Mu+ selection purity");
+  draw.DrawEff(default, "selmu_det_theta",50,0,1.2,"particle_pg==-13","accum_level[][0]>6");
+  
+  TCanvas pur_vs_recotheta_pi;
+  draw.SetTitleX("Reco theta");
+  draw.SetTitleY("Pi+ selection purity");
+  draw.DrawEff(default, "selmu_det_theta",50,0,1.2,"particle_pg==211","accum_level[][1]>6");
+  
+  TCanvas pur_vs_recotheta_p;
+  draw.SetTitleX("Reco theta");
+  draw.SetTitleY("Proton selection purity");
+  draw.DrawEff(default, "selmu_det_theta",50,0,1.2,"particle_pg==2212","accum_level[][2]>6");
+  
+  TCanvas pur_vs_recotheta_e;
+  draw.SetTitleX("Reco theta");
+  draw.SetTitleY("Positron selection purity");
+  draw.DrawEff(default, "selmu_det_theta",50,0,1.2,"particle_pg==-11","accum_level[][3]>6");
+  
   TCanvas eff_vs_recomom_mu;
-  draw.SetTitleX("Reco momentum");
+  draw.SetTitleX("True momentum");
   draw.SetTitleY("Mu+ PID efficiency");
   draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][0]>6","(particle_pg==-13)&&(accum_level[][0]>5)");
   
   TCanvas eff_vs_recomom_pi;
-  draw.SetTitleX("Reco momentum");
+  draw.SetTitleX("True momentum");
   draw.SetTitleY("Pi+ PID efficiency");
   draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][1]>6","(particle_pg==211)&&(accum_level[][1]>5)");
   
   TCanvas eff_vs_recomom_p;
-  draw.SetTitleX("Reco momentum");
+  draw.SetTitleX("True momentum");
   draw.SetTitleY("Proton PID efficiency");
   draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][2]>6","(particle_pg==2212)&&(accum_level[][2]>5)");
   
   TCanvas eff_vs_recomom_e;
-  draw.SetTitleX("Reco momentum");
+  draw.SetTitleX("True momentum");
   draw.SetTitleY("Positron PID efficiency");
   draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][3]>6","(particle_pg==-11)&&(accum_level[][3]>5)");
 
