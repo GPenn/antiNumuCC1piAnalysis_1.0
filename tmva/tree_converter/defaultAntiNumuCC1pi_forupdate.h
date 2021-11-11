@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Mon Oct 18 15:40:31 2021 by ROOT version 5.34/34
+// Thu Nov 11 10:56:44 2021 by ROOT version 5.34/34
 // from TTree default/20
 // found on file: ../../output/particle_gun/particlegun_antimu.root
 //////////////////////////////////////////////////////////
@@ -365,12 +365,16 @@ public :
    Float_t         selmu_fgd1_pull_p;
    Float_t         selmu_fgd1_pull_pi;
    Float_t         selmu_fgd1_pull_no;
+   Float_t         selmu_fgd1_energy;
+   Float_t         selmu_fgd1_length;
    Int_t           selmu_has_fgd2seg;
    Float_t         selmu_fgd2_pull_mu;
    Float_t         selmu_fgd2_pull_e;
    Float_t         selmu_fgd2_pull_p;
    Float_t         selmu_fgd2_pull_pi;
    Float_t         selmu_fgd2_pull_no;
+   Float_t         selmu_fgd2_energy;
+   Float_t         selmu_fgd2_length;
    Float_t         selmu_ecal_bestseg_EMenergy;
    Float_t         selmu_ecal_bestseg_mippion;
    Float_t         selmu_ecal_bestseg_EbyL;
@@ -759,12 +763,16 @@ public :
    TBranch        *b_selmu_fgd1_pull_p;   //!
    TBranch        *b_selmu_fgd1_pull_pi;   //!
    TBranch        *b_selmu_fgd1_pull_no;   //!
+   TBranch        *b_selmu_fgd1_energy;   //!
+   TBranch        *b_selmu_fgd1_length;   //!
    TBranch        *b_selmu_has_fgd2seg;   //!
    TBranch        *b_selmu_fgd2_pull_mu;   //!
    TBranch        *b_selmu_fgd2_pull_e;   //!
    TBranch        *b_selmu_fgd2_pull_p;   //!
    TBranch        *b_selmu_fgd2_pull_pi;   //!
    TBranch        *b_selmu_fgd2_pull_no;   //!
+   TBranch        *b_selmu_fgd2_energy;   //!
+   TBranch        *b_selmu_fgd2_length;   //!
    TBranch        *b_selmu_ecal_bestseg_EMenergy;   //!
    TBranch        *b_selmu_ecal_bestseg_mippion;   //!
    TBranch        *b_selmu_ecal_bestseg_EbyL;   //!
@@ -1222,12 +1230,16 @@ void defaultAntiNumuCC1pi_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("selmu_fgd1_pull_p", &selmu_fgd1_pull_p, &b_selmu_fgd1_pull_p);
    fChain->SetBranchAddress("selmu_fgd1_pull_pi", &selmu_fgd1_pull_pi, &b_selmu_fgd1_pull_pi);
    fChain->SetBranchAddress("selmu_fgd1_pull_no", &selmu_fgd1_pull_no, &b_selmu_fgd1_pull_no);
+   fChain->SetBranchAddress("selmu_fgd1_energy", &selmu_fgd1_energy, &b_selmu_fgd1_energy);
+   fChain->SetBranchAddress("selmu_fgd1_length", &selmu_fgd1_length, &b_selmu_fgd1_length);
    fChain->SetBranchAddress("selmu_has_fgd2seg", &selmu_has_fgd2seg, &b_selmu_has_fgd2seg);
    fChain->SetBranchAddress("selmu_fgd2_pull_mu", &selmu_fgd2_pull_mu, &b_selmu_fgd2_pull_mu);
    fChain->SetBranchAddress("selmu_fgd2_pull_e", &selmu_fgd2_pull_e, &b_selmu_fgd2_pull_e);
    fChain->SetBranchAddress("selmu_fgd2_pull_p", &selmu_fgd2_pull_p, &b_selmu_fgd2_pull_p);
    fChain->SetBranchAddress("selmu_fgd2_pull_pi", &selmu_fgd2_pull_pi, &b_selmu_fgd2_pull_pi);
    fChain->SetBranchAddress("selmu_fgd2_pull_no", &selmu_fgd2_pull_no, &b_selmu_fgd2_pull_no);
+   fChain->SetBranchAddress("selmu_fgd2_energy", &selmu_fgd2_energy, &b_selmu_fgd2_energy);
+   fChain->SetBranchAddress("selmu_fgd2_length", &selmu_fgd2_length, &b_selmu_fgd2_length);
    fChain->SetBranchAddress("selmu_ecal_bestseg_EMenergy", &selmu_ecal_bestseg_EMenergy, &b_selmu_ecal_bestseg_EMenergy);
    fChain->SetBranchAddress("selmu_ecal_bestseg_mippion", &selmu_ecal_bestseg_mippion, &b_selmu_ecal_bestseg_mippion);
    fChain->SetBranchAddress("selmu_ecal_bestseg_EbyL", &selmu_ecal_bestseg_EbyL, &b_selmu_ecal_bestseg_EbyL);
