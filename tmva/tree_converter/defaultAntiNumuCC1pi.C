@@ -158,8 +158,13 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_e               = selmu_tpc_like_e;
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
+        
+       if (selmu_tpc_dedx[0] > -30.0 && selmu_tpc_dedx[0] < 60.0)    {defout->selmu_tpc1_dedx = selmu_tpc_dedx[0];}
+       else                                                          {defout->selmu_tpc1_dedx = -30.0;}
+       if (selmu_tpc_dedx[1] > -30.0 && selmu_tpc_dedx[1] < 60.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[1];}
+       else                                                          {defout->selmu_tpc2_dedx = -30.0;}
          
-       defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
+            defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
             if (selmu_fgd1_pull_mu > -30.0 && selmu_fgd1_pull_mu < 60.0)  {defout->selmu_fgd1_pull_mu = selmu_fgd1_pull_mu;}
             else                                                          {defout->selmu_fgd1_pull_mu = -30.0;}
             if (selmu_fgd1_pull_p > -30.0  && selmu_fgd1_pull_p < 60.0)   {defout->selmu_fgd1_pull_p  = selmu_fgd1_pull_p;}
@@ -168,6 +173,10 @@ void defaultAntiNumuCC1pi::Loop()
             else                                                          {defout->selmu_fgd1_pull_pi = -30.0;}
             if (selmu_fgd1_pull_no > -30.0)                               {defout->selmu_fgd1_pull_no = selmu_fgd1_pull_no;}
             else                                                          {defout->selmu_fgd1_pull_no = -30.0;}
+            if (selmu_fgd1_energy > 0.0 && selmu_fgd1_energy < 300.0)     {defout->selmu_fgd1_energy = selmu_fgd1_energy;}
+            else                                                          {defout->selmu_fgd1_energy = -50.0;}
+            if (selmu_fgd1_length > 0.0 && selmu_fgd1_length < 700.0)     {defout->selmu_fgd1_length = selmu_fgd1_length;}
+            else                                                          {defout->selmu_fgd1_length = -100.0;}
             
          
             defout->selmu_has_fgd2seg              = selmu_has_fgd2seg;
@@ -179,6 +188,10 @@ void defaultAntiNumuCC1pi::Loop()
             else                                                          {defout->selmu_fgd2_pull_pi = -30.0;}
             if (selmu_fgd2_pull_no > -30.0)                               {defout->selmu_fgd2_pull_no = selmu_fgd2_pull_no;}
             else                                                          {defout->selmu_fgd2_pull_no = -30.0;}
+            if (selmu_fgd2_energy > 0.0 && selmu_fgd2_energy < 300.0)     {defout->selmu_fgd2_energy = selmu_fgd2_energy;}
+            else                                                          {defout->selmu_fgd2_energy = -50.0;}
+            if (selmu_fgd2_length > 0.0 && selmu_fgd2_length < 700.0)     {defout->selmu_fgd2_length = selmu_fgd2_length;}
+            else                                                          {defout->selmu_fgd2_length = -100.0;}
          
             defout->HMNT_mom      		            = HMNT_mom;
             
@@ -338,18 +351,24 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
   foutb_selmu_tpc_like_p  	          = fDefaultOut->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p  	         , "selmu_tpc_like_p/F");
   foutb_selmu_tpc_like_pi  	       = fDefaultOut->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi  	      , "selmu_tpc_like_pi/F");
+  foutb_selmu_tpc2_dedx 	       = fDefaultOut->Branch("selmu_tpc2_dedx"                , &selmu_tpc2_dedx  	          , "selmu_tpc2_dedx/F");
+  foutb_selmu_tpc3_dedx 	       = fDefaultOut->Branch("selmu_tpc3_dedx"                , &selmu_tpc3_dedx  	          , "selmu_tpc3_dedx/F");
    
   foutb_selmu_has_fgd1seg 	          = fDefaultOut->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg 	         , "selmu_has_fgd1seg/I");
   foutb_selmu_fgd1_pull_mu  	       = fDefaultOut->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu  	      , "selmu_fgd1_pull_mu/F");
   foutb_selmu_fgd1_pull_p  	       = fDefaultOut->Branch("selmu_fgd1_pull_p"              , &selmu_fgd1_pull_p  	      , "selmu_fgd1_pull_p/F");
   foutb_selmu_fgd1_pull_pi  	       = fDefaultOut->Branch("selmu_fgd1_pull_pi"             , &selmu_fgd1_pull_pi  	      , "selmu_fgd1_pull_pi/F");
   foutb_selmu_fgd1_pull_no  	       = fDefaultOut->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no  	      , "selmu_fgd1_pull_no/F");
+  foutb_selmu_fgd1_energy  	           = fDefaultOut->Branch("selmu_fgd1_energy"              , &selmu_fgd1_energy  	      , "selmu_fgd1_energy/F");
+  foutb_selmu_fgd1_length  	           = fDefaultOut->Branch("selmu_fgd1_length"              , &selmu_fgd1_length  	      , "selmu_fgd1_length/F");
    
   foutb_selmu_has_fgd2seg 	          = fDefaultOut->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg 	         , "selmu_has_fgd2seg/I");
   foutb_selmu_fgd2_pull_mu  	       = fDefaultOut->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu  	      , "selmu_fgd2_pull_mu/F");
   foutb_selmu_fgd2_pull_p  	       = fDefaultOut->Branch("selmu_fgd2_pull_p"              , &selmu_fgd2_pull_p  	      , "selmu_fgd2_pull_p/F");
   foutb_selmu_fgd2_pull_pi  	       = fDefaultOut->Branch("selmu_fgd2_pull_pi"             , &selmu_fgd2_pull_pi  	      , "selmu_fgd2_pull_pi/F");
   foutb_selmu_fgd2_pull_no  	       = fDefaultOut->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no  	      , "selmu_fgd2_pull_no/F");
+  foutb_selmu_fgd2_energy  	           = fDefaultOut->Branch("selmu_fgd2_energy"              , &selmu_fgd2_energy  	      , "selmu_fgd2_energy/F");
+  foutb_selmu_fgd2_length  	           = fDefaultOut->Branch("selmu_fgd2_length"              , &selmu_fgd2_length  	      , "selmu_fgd2_length/F");
    
   foutb_HMNT_mom 	                   = fDefaultOut->Branch("HMNT_mom"                       , &HMNT_mom 	                  , "HMNT_mom/F");
   
