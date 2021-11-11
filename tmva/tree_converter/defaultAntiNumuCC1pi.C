@@ -53,7 +53,7 @@ void defaultAntiNumuCC1pi::Loop()
         if (selmu_mom[0] < 200.0) continue;
         if (selmu_det_theta > 1.0472) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
-        if (particle != -13) continue;
+        if (particle != -11) continue;
       
         recomom_hist->Fill(selmu_mom[0]);
     }
@@ -70,7 +70,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_mom[0] < 200.0) continue;
        if (selmu_det_theta > 1.0472) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
-       if (particle != -13) continue;
+       if (particle != -11) continue;
              
        defout->evt    		                  = evt;
        defout->topology		                  = topology;
