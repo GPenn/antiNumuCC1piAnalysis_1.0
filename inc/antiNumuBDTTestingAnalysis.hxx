@@ -70,6 +70,8 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
     selmu_bdt_pid_e,
    
     particle_pg,
+    pg_trueparticle_mom,
+    pg_trueparticle_costheta,
    
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
