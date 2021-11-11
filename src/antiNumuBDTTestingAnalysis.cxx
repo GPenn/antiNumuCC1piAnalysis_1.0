@@ -223,7 +223,7 @@ void antiNumuBDTTestingAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
   
   output().FillVar(particle_pg, vtx.TrueParticles[0]->PDG);
   
-  TVector3 muDirVec = anaUtils::ArrayToTVector3(vtx.TrueParticles[0]->DirectionStart);
+  TVector3 muDirVec = anaUtils::ArrayToTVector3(vtx.TrueParticles[0]->Direction);
   
   output().FillVar(pg_trueparticle_mom, vtx.TrueParticles[0]->Momentum);
   output().FillVar(pg_trueparticle_costheta, muDirVec[2]);
