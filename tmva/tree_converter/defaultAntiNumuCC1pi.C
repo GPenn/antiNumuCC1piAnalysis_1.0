@@ -159,10 +159,10 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
         
-       if (selmu_tpc_dedx[0] > -30.0 && selmu_tpc_dedx[0] < 60.0)    {defout->selmu_tpc1_dedx = selmu_tpc_dedx[0];}
-       else                                                          {defout->selmu_tpc1_dedx = -30.0;}
-       if (selmu_tpc_dedx[1] > -30.0 && selmu_tpc_dedx[1] < 60.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[1];}
+       if (selmu_tpc_dedx[0] > -30.0 && selmu_tpc_dedx[0] < 60.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
        else                                                          {defout->selmu_tpc2_dedx = -30.0;}
+       if (selmu_tpc_dedx[1] > -30.0 && selmu_tpc_dedx[1] < 60.0)    {defout->selmu_tpc3_dedx = selmu_tpc_dedx[1];}
+       else                                                          {defout->selmu_tpc3_dedx = -30.0;}
          
             defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
             if (selmu_fgd1_pull_mu > -30.0 && selmu_fgd1_pull_mu < 60.0)  {defout->selmu_fgd1_pull_mu = selmu_fgd1_pull_mu;}
