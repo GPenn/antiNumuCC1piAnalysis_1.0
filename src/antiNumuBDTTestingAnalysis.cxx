@@ -132,6 +132,8 @@ void antiNumuBDTTestingAnalysis::DefineTruthTree(){
   _antiNumuCC1piAnalysis->DefineTruthTree();
   
   AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
+  AddVarF(output(), pg_trueparticle_mom, "particle gun true particle momentum");
+  AddVarF(output(), pg_trueparticle_costheta, "particle gun true particle costheta");
 }
 
 //********************************************************************
@@ -220,6 +222,12 @@ void antiNumuBDTTestingAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
   _antiNumuCC1piAnalysis->FillTruthTree(vtx);
   
   output().FillVar(particle_pg, vtx.TrueParticles[0]->PDG);
+  
+  TVector3 muDirVec = anaUtils::ArrayToTVector3(vtx.TrueParticles[0]->DirectionStart);
+  
+  output().FillVar(pg_trueparticle_mom, vtx.TrueParticles[0]->Momentum);
+  output().FillVar(pg_trueparticle_costheta, muDirVec[2]);
+  
 }
 
 //********************************************************************
