@@ -37,21 +37,21 @@
   TCanvas eff_vs_recomom_mu;
   draw.SetTitleX("Reco momentum");
   draw.SetTitleY("Mu+ PID efficiency");
-  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][0]>6","particle_pg==-13");
+  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][0]>6","(particle_pg==-13)&&(accum_level[][0]>5)");
   
   TCanvas eff_vs_recomom_pi;
   draw.SetTitleX("Reco momentum");
   draw.SetTitleY("Pi+ PID efficiency");
-  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][1]>6","particle_pg==211");
+  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][1]>6","(particle_pg==211)&&(accum_level[][0]>5)");
   
   TCanvas eff_vs_recomom_p;
   draw.SetTitleX("Reco momentum");
   draw.SetTitleY("Proton PID efficiency");
-  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][2]>6","particle_pg==2212");
+  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][2]>6","(particle_pg==2212)&&(accum_level[][0]>5)");
   
   TCanvas eff_vs_recomom_e;
   draw.SetTitleX("Reco momentum");
   draw.SetTitleY("Positron PID efficiency");
-  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][3]>6","particle_pg==-11");
+  draw.DrawEff(truth, "pg_trueparticle_mom",50,150,2000,"accum_level[][3]>6","(particle_pg==-11)&&(accum_level[][0]>5)");
 
 }
