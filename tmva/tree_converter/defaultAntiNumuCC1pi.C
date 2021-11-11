@@ -53,7 +53,7 @@ void defaultAntiNumuCC1pi::Loop()
         if (selmu_mom[0] < 200.0) continue;
         if (selmu_det_theta > 1.0472) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
-        if (particle != 211) continue;
+        if (particle != -13) continue;
       
         recomom_hist->Fill(selmu_mom[0]);
     }
@@ -70,7 +70,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_mom[0] < 200.0) continue;
        if (selmu_det_theta > 1.0472) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
-       if (particle != 211) continue;
+       if (particle != -13) continue;
              
        defout->evt    		                  = evt;
        defout->topology		                  = topology;
@@ -159,10 +159,10 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
         
-       if (selmu_tpc_dedx[0] > -30.0 && selmu_tpc_dedx[0] < 60.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
-       else                                                          {defout->selmu_tpc2_dedx = -30.0;}
-       if (selmu_tpc_dedx[1] > -30.0 && selmu_tpc_dedx[1] < 60.0)    {defout->selmu_tpc3_dedx = selmu_tpc_dedx[1];}
-       else                                                          {defout->selmu_tpc3_dedx = -30.0;}
+       if (selmu_tpc_dedx[0] > 0.0 && selmu_tpc_dedx[0] < 2000.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
+       else                                                          {defout->selmu_tpc2_dedx = -100.0;}
+       if (selmu_tpc_dedx[1] > 0.0 && selmu_tpc_dedx[1] < 2000.0)    {defout->selmu_tpc3_dedx = selmu_tpc_dedx[1];}
+       else                                                          {defout->selmu_tpc3_dedx = -100.0;}
          
             defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
             if (selmu_fgd1_pull_mu > -30.0 && selmu_fgd1_pull_mu < 60.0)  {defout->selmu_fgd1_pull_mu = selmu_fgd1_pull_mu;}
