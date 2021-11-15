@@ -136,12 +136,20 @@ void DefaultCustomPlotting::Loop()
       }
    }
    
+   std::cout << std::endl << std::endl;
+   
    // ============= Find optimal cuts =============
+   
+    std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
    
    for (Int_t cut=0; cut < optimisation_nbins; cut++)
    {
-      Int_t passed_sig=opt_mulike_sig->Integral(cut,optimisation_nbins);
-      Int_t passed_bkg=opt_mulike_bkg->Integral(cut,optimisation_nbins);
+      Int_t passed_sig = opt_mulike_sig->Integral(cut,optimisation_nbins-1);
+      Int_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins-1);
+      
+      Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      
+      std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
      
    }
    
