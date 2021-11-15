@@ -141,7 +141,10 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Find optimal cuts =============
    
-   std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
+   //std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
+   
+   Float_t optimal_signif = 0;
+   Float_t optimal_cut = 0;
    
    TCanvas *c1 = new TCanvas("c1","Significance",200,10,500,300);
    TGraph* gr = new TGraph();
@@ -153,12 +156,20 @@ void DefaultCustomPlotting::Loop()
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
       
-      std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
-                << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      if (significance > optimal_signif)
+      {
+         optimal_signif = significance;
+         optimal_cut = opt_mulike_sig->GetBinLowEdge(cut);
+      }
+      
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
       gr->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), significance);
      
    }
+   
+   std::cout << "Optimal significance = " << optimal_signif << " at cut value of " << optimal_cut << std::endl;
    
    
    gr->Draw("AC*");
