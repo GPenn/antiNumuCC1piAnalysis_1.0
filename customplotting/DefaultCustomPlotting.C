@@ -1,6 +1,7 @@
 #define DefaultCustomPlotting_cxx
 #include "DefaultCustomPlotting.h"
 #include <TH2.h>
+#include <TGraph.h>
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <ctime> 
