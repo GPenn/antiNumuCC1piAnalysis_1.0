@@ -846,7 +846,7 @@ public :
    TBranch        *b_selmu_bdt_pid_e;   //!
    TBranch        *b_particle_pg;   //!
 
-   DefaultCustomPlotting(TTree *tree=0);
+   DefaultCustomPlotting(TTree *tree=0, std::string outFileName="defaultTest.root");
    virtual ~DefaultCustomPlotting();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -862,7 +862,7 @@ public :
 #endif
 
 #ifdef DefaultCustomPlotting_cxx
-DefaultCustomPlotting::DefaultCustomPlotting(TTree *tree) : fChain(0) 
+DefaultCustomPlotting::DefaultCustomPlotting(TTree *tree, std::string outFileName) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
