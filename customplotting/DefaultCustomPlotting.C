@@ -38,10 +38,25 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
-   Int_t nAntimu = 0;
-   Int_t nPiplus = 0;
-   Int_t nProton = 0;
-   Int_t nPositron = 0;
+   Int_t musel_nAntimu = 0;
+   Int_t musel_nPiplus = 0;
+   Int_t musel_nProton = 0;
+   Int_t musel_nPositron = 0;
+   
+   Int_t pisel_nAntimu = 0;
+   Int_t pisel_nPiplus = 0;
+   Int_t pisel_nProton = 0;
+   Int_t pisel_nPositron = 0;
+   
+   Int_t psel_nAntimu = 0;
+   Int_t psel_nPiplus = 0;
+   Int_t psel_nProton = 0;
+   Int_t pisel_nPositron = 0;
+   
+   Int_t esel_nAntimu = 0;
+   Int_t esel_nPiplus = 0;
+   Int_t esel_nProton = 0;
+   Int_t esel_nPositron = 0;
 
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -52,10 +67,34 @@ void DefaultCustomPlotting::Loop()
       
       if (accum_level[0][0] > 6){
          
-         if (particle_pg == -13) nAntimu++;
-         if (particle_pg == 211) nPiplus++;
-         if (particle_pg == 2212) nProton++;
-         if (particle_pg == -11) nPositron++;
+         if (particle_pg == -13) musel_nAntimu++;
+         if (particle_pg == 211) musel_nPiplus++;
+         if (particle_pg == 2212) musel_nProton++;
+         if (particle_pg == -11) musel_nPositron++;
+      }
+      
+      if (accum_level[0][1] > 6){
+         
+         if (particle_pg == -13) pisel_nAntimu++;
+         if (particle_pg == 211) pisel_nPiplus++;
+         if (particle_pg == 2212) pisel_nProton++;
+         if (particle_pg == -11) pisel_nPositron++;
+      }
+      
+      if (accum_level[0][2] > 6){
+         
+         if (particle_pg == -13) psel_nAntimu++;
+         if (particle_pg == 211) psel_nPiplus++;
+         if (particle_pg == 2212) psel_nProton++;
+         if (particle_pg == -11) psel_nPositron++;
+      }
+      
+      if (accum_level[0][3] > 6){
+         
+         if (particle_pg == -13) esel_nAntimu++;
+         if (particle_pg == 211) esel_nPiplus++;
+         if (particle_pg == 2212) esel_nProton++;
+         if (particle_pg == -11) esel_nPositron++;
       }
       
       // Code to keep track of completion percentage and estimate time remaining:
@@ -75,15 +114,68 @@ void DefaultCustomPlotting::Loop()
       }
    }
    
-   std::cout << "True antimu in antimu selection: " << nAntimu << std::endl;
-   std::cout << "True piplus in antimu selection: " << nPiplus << std::endl;
-   std::cout << "True protons in antimu selection: " << nProton << std::endl;
-   std::cout << "True positrons in antimu selection: " << nPositron << std::endl;
-   std::cout << "Total signal: " << nAntimu << std::endl;
-   Int_t antimuBkg = nPiplus + nProton + nPositron;
-   std::cout << "Total background: " << antimuBkg << std::endl;
-   Float_t significance = nAntimu/sqrt(nAntimu+antimuBkg);
-   std::cout << "Significance: " << significance << std::endl;
+   std::cout << std::endl << std::endl;
+   
+   std::cout << "=========== Mu-like selection ===========" << std::endl << std::endl;
+   
+   std::cout << "True antimu:      " << musel_nAntimu << std::endl;
+   std::cout << "True piplus:      " << musel_nPiplus << std::endl;
+   std::cout << "True protons:     " << musel_nProton << std::endl;
+   std::cout << "True positrons:   " << musel_nPositron << std::endl;
+   Int_t musel_Sig = musel_nAntimu;
+   std::cout << "Total signal:     " << musel_Sig << std::endl;
+   Int_t musel_Bkg = musel_nPiplus + musel_nProton + musel_nPositron;
+   std::cout << "Total background: " << musel_Bkg << std::endl;
+   Float_t musel_SsqrtSB = musel_Sig/sqrt(musel_Sig+musel_Bkg);
+   std::cout << "Significance:     " << musel_SsqrtSB << std::endl;
+   
+   std::cout << std::endl << std::endl;
+   
+   std::cout << "=========== Pi-like selection ===========" << std::endl << std::endl;
+   
+   std::cout << "True antimu:      " << pisel_nAntimu << std::endl;
+   std::cout << "True piplus:      " << pisel_nPiplus << std::endl;
+   std::cout << "True protons:     " << pisel_nProton << std::endl;
+   std::cout << "True positrons:   " << pisel_nPositron << std::endl;
+   Int_t pisel_Sig = pisel_nPiplus;
+   std::cout << "Total signal:     " << pisel_Sig << std::endl;
+   Int_t pisel_Bkg = pisel_nAntimu + pisel_nProton + pisel_nPositron;
+   std::cout << "Total background: " << pisel_Bkg << std::endl;
+   Float_t pisel_SsqrtSB = pisel_Sig/sqrt(pisel_Sig+pisel_Bkg);
+   std::cout << "Significance:     " << pisel_SsqrtSB << std::endl;
+   
+   std::cout << std::endl << std::endl;
+   
+   std::cout << "=========== Proton-like selection ===========" << std::endl << std::endl;
+   
+   std::cout << "True antimu:      " << psel_nAntimu << std::endl;
+   std::cout << "True piplus:      " << psel_nPiplus << std::endl;
+   std::cout << "True protons:     " << psel_nProton << std::endl;
+   std::cout << "True positrons:   " << psel_nPositron << std::endl;
+   Int_t psel_Sig = psel_nProton;
+   std::cout << "Total signal:     " << psel_Sig << std::endl;
+   Int_t psel_Bkg = psel_nPiplus + psel_nAntimu + psel_nPositron;
+   std::cout << "Total background: " << psel_Bkg << std::endl;
+   Float_t psel_SsqrtSB = psel_Sig/sqrt(psel_Sig+psel_Bkg);
+   std::cout << "Significance:     " << psel_SsqrtSB << std::endl;
+   
+   std::cout << std::endl << std::endl;
+   
+   std::cout << "=========== Electron-like selection ===========" << std::endl << std::endl;
+   
+   std::cout << "True antimu:      " << esel_nAntimu << std::endl;
+   std::cout << "True piplus:      " << esel_nPiplus << std::endl;
+   std::cout << "True protons:     " << esel_nProton << std::endl;
+   std::cout << "True positrons:   " << esel_nPositron << std::endl;
+   Int_t psel_Sig = esel_nPositron;
+   std::cout << "Total signal:     " << esel_Sig << std::endl;
+   Int_t esel_Bkg = esel_nPiplus + esel_nAntimu + esel_nProton;
+   std::cout << "Total background: " << esel_Bkg << std::endl;
+   Float_t esel_SsqrtSB = esel_Sig/sqrt(esel_Sig+esel_Bkg);
+   std::cout << "Significance:     " << esel_SsqrtSB << std::endl;
+   
+   std::cout << std::endl << std::endl;
+      
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
