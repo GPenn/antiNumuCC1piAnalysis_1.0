@@ -143,6 +143,9 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
    
+   TCanvas *c1 = new TCanvas("c1","Significance",200,10,500,300);
+   TGraph* gr = new TGraph();
+   
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_mulike_sig->Integral(cut,optimisation_nbins);
@@ -152,17 +155,12 @@ void DefaultCustomPlotting::Loop()
       
       std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
                 << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      
+      gr->AddPoint(opt_mulike_sig->GetBinLowEdge(cut), significance);
      
    }
    
-   TCanvas *c1 = new TCanvas("c1","A Simple Graph Example",200,10,500,300);
-   Double_t x[100], y[100];
-   Int_t n = 20;
-   for (Int_t i=0;i<n;i++) {
-      x[i] = i*0.1;
-      y[i] = 10*sin(x[i]+0.2);
-   }
-   TGraph* gr = new TGraph(n,x,y);
+   
    gr->Draw("AC*");
    c1->Write();
    
