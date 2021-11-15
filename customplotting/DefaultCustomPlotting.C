@@ -142,7 +142,7 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
    
-   for (Int_t cut=0; cut < optimisation_nbins; cut++)
+   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_mulike_sig->Integral(cut,optimisation_nbins);
       Int_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins);
