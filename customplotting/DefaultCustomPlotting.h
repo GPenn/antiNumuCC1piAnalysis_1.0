@@ -18,7 +18,28 @@
 
 // Header file for the classes stored in the TTree if any.
 
-// Fixed size dimensions of array or collections stored in the TTree if any.
+class defaultOut {
+public :
+  defaultOut(std::string outname);
+
+  void Fill() {fDefaultOut->Fill(); };
+  
+  void Write()
+  {
+    fDefaultOut->Write();
+    
+    fOutFile->Close();
+  }
+
+   
+protected:
+
+private:
+  TFile *fOutFile;
+  TTree *fDefaultOut;
+  
+};
+
 
 class DefaultCustomPlotting {
 public :
