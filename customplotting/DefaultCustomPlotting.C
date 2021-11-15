@@ -127,6 +127,7 @@ void DefaultCustomPlotting::Loop()
    Int_t musel_Bkg = musel_nPiplus + musel_nProton + musel_nPositron;
    std::cout << "Total background: " << musel_Bkg << std::endl;
    Float_t musel_SsqrtSB = musel_Sig/sqrt(musel_Sig+musel_Bkg);
+   std::cout << "Purity:           " << musel_Sig/(musel_Sig+musel_Bkg) << std::endl;
    std::cout << "Significance:     " << musel_SsqrtSB << std::endl;
    
    std::cout << std::endl << std::endl;
@@ -142,6 +143,7 @@ void DefaultCustomPlotting::Loop()
    Int_t pisel_Bkg = pisel_nAntimu + pisel_nProton + pisel_nPositron;
    std::cout << "Total background: " << pisel_Bkg << std::endl;
    Float_t pisel_SsqrtSB = pisel_Sig/sqrt(pisel_Sig+pisel_Bkg);
+   std::cout << "Purity:           " << pisel_Sig/(pisel_Sig+pisel_Bkg) << std::endl;
    std::cout << "Significance:     " << pisel_SsqrtSB << std::endl;
    
    std::cout << std::endl << std::endl;
@@ -157,6 +159,7 @@ void DefaultCustomPlotting::Loop()
    Int_t psel_Bkg = psel_nPiplus + psel_nAntimu + psel_nPositron;
    std::cout << "Total background: " << psel_Bkg << std::endl;
    Float_t psel_SsqrtSB = psel_Sig/sqrt(psel_Sig+psel_Bkg);
+   std::cout << "Purity:           " << psel_Sig/(psel_Sig+psel_Bkg) << std::endl;
    std::cout << "Significance:     " << psel_SsqrtSB << std::endl;
    
    std::cout << std::endl << std::endl;
@@ -172,6 +175,7 @@ void DefaultCustomPlotting::Loop()
    Int_t esel_Bkg = esel_nPiplus + esel_nAntimu + esel_nProton;
    std::cout << "Total background: " << esel_Bkg << std::endl;
    Float_t esel_SsqrtSB = esel_Sig/sqrt(esel_Sig+esel_Bkg);
+   std::cout << "Purity:           " << esel_Sig/(esel_Sig+esel_Bkg) << std::endl;
    std::cout << "Significance:     " << esel_SsqrtSB << std::endl;
    
    std::cout << std::endl << std::endl;
