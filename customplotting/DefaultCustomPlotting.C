@@ -51,7 +51,7 @@ void DefaultCustomPlotting::Loop()
    Int_t psel_nAntimu = 0;
    Int_t psel_nPiplus = 0;
    Int_t psel_nProton = 0;
-   Int_t pisel_nPositron = 0;
+   Int_t psel_nPositron = 0;
    
    Int_t esel_nAntimu = 0;
    Int_t esel_nPiplus = 0;
@@ -167,7 +167,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "True piplus:      " << esel_nPiplus << std::endl;
    std::cout << "True protons:     " << esel_nProton << std::endl;
    std::cout << "True positrons:   " << esel_nPositron << std::endl;
-   Int_t psel_Sig = esel_nPositron;
+   Int_t esel_Sig = esel_nPositron;
    std::cout << "Total signal:     " << esel_Sig << std::endl;
    Int_t esel_Bkg = esel_nPiplus + esel_nAntimu + esel_nProton;
    std::cout << "Total background: " << esel_Bkg << std::endl;
