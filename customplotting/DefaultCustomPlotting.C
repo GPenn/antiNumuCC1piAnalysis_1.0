@@ -57,6 +57,11 @@ void DefaultCustomPlotting::Loop()
    Int_t esel_nPiplus = 0;
    Int_t esel_nProton = 0;
    Int_t esel_nPositron = 0;
+   
+   Int_t optimisation_nbins = 50;
+   
+   TH1F *opt_mulike_sig = new TH1F("opt_amu_mulike", "Mu-like (true antimu)", optimisation_ncuts, 0.0, 1.0);
+   TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_ncuts, 0.0, 1.0);
 
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -64,6 +69,23 @@ void DefaultCustomPlotting::Loop()
 
       // Cut on accum_level etc
       if (accum_level[0][0] <= 4) continue; // Set accum_level
+      
+      // ============= Fill histogram to find optimal cuts =============
+      
+      if (accum_level[0][0] > 5){
+         
+         if (particle_pg == -13)
+         {
+            opt_mulike_sig->Fill(selmu_bdt_pid_mu);
+         }
+         else
+         {
+            opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
+         }
+         
+      }
+      
+      // ============= Fill variables to test existing cuts =============
       
       if (accum_level[0][0] > 6){
          
@@ -113,6 +135,17 @@ void DefaultCustomPlotting::Loop()
                    << "Estimated time remaining: " << time_left_guess << "s. \r";
       }
    }
+   
+   // ============= Find optimal cuts =============
+   
+   for (Int_t cut=0; cut < optimisation_nbins; cut++)
+   {
+      Int_t passed_sig=opt_mulike_sig->Integral(cut,optimisation_nbins);
+      Int_t passed_bkg=opt_mulike_bkg->Integral(cut,optimisation_nbins);
+     
+   }
+   
+   // ============= Test existing cuts =============
    
    std::cout << std::endl << std::endl;
    
