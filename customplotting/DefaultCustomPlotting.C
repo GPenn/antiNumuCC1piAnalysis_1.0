@@ -156,7 +156,7 @@ void DefaultCustomPlotting::Loop()
       std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
                 << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
-      gr->AddPoint(opt_mulike_sig->GetBinLowEdge(cut), significance);
+      gr->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), significance);
      
    }
    
