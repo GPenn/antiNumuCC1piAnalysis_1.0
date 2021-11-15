@@ -60,8 +60,8 @@ void DefaultCustomPlotting::Loop()
    
    Int_t optimisation_nbins = 50;
    
-   TH1F *opt_mulike_sig = new TH1F("opt_amu_mulike", "Mu-like (true antimu)", optimisation_ncuts, 0.0, 1.0);
-   TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_ncuts, 0.0, 1.0);
+   TH1F *opt_mulike_sig = new TH1F("opt_amu_mulike", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
