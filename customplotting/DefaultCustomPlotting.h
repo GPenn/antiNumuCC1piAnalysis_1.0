@@ -855,6 +855,8 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+  
+   defaultOut  *defout;
 };
 
 #endif
@@ -873,6 +875,8 @@ DefaultCustomPlotting::DefaultCustomPlotting(TTree *tree) : fChain(0)
 
    }
    Init(tree);
+  
+   defout = new defaultOut(outFileName);
 }
 
 DefaultCustomPlotting::~DefaultCustomPlotting()
