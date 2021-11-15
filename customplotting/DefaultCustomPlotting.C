@@ -83,6 +83,67 @@ void DefaultCustomPlotting::Loop()
    Int_t antimuBkg = nPiplus + nProton + nPositron;
    std::cout << "Total background: " << antimuBkg << std::endl;
    Float_t significance = nAntimu/sqrt(nAntimu+antimuBkg);
-   std::cout << "Significance: " << significance << std::endl;
+   std::cout << "Significance: " << significance << std::endl;#
+      
+   std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
+   defout->Write();
+   
+}
+
+int main(int argc, char* argv[]) {
+
+  std::string outFileName;
+
+  // Check for command line options
+  for (;;) {
+    int c = getopt(argc, argv, "o:");
+    if (c<0) break;
+    switch (c) {
+    case 'o':
+      outFileName = optarg;
+      break;
+    }
+  } // Closes process options for loop 
+  
+  // Test for further command line arguments after options
+  if (argc<=optind) {
+    std::cout << "ERROR: No input file(s)" << std::endl << std::endl;
+    return 1;
+  }
+
+  // Create file TChain
+  TChain* rootFiles = new TChain("default");
+  std::cout<<"Number of files to read  = "<<argc-optind<<std::endl;
+
+  std::vector<std::string> files;
+  for(int i=optind; i<argc; i++){
+    char* f = argv[i];
+    files.push_back(f);
+    std::cout<<files[i-optind]<<std::endl;
+  }
+  
+  for(std::vector<std::string>::const_iterator f = files.begin(); f != files.end(); ++f){
+    // Add files to TChain
+    rootFiles->Add(f->c_str());
+    std::cout<<"Adding file "<<f->c_str()<<std::endl;
+  }
+  
+  DefaultCustomPlotting *deftree = new DefaultCustomPlotting(rootFiles, outFileName);
+  
+  deftree->Loop();
+
+  return 0;
+}
+
+defaultOut::defaultOut(std::string outname) {
+  
+  fOutFile = new TFile(outname.c_str(), "RECREATE");
+  fOutFile->cd();
+  
+  // ----------- Output tree -----------
+   
+  fDefaultOut = new TTree("default", "");
+
+  return;
 }
