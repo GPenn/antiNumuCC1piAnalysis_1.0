@@ -83,7 +83,7 @@ void DefaultCustomPlotting::Loop()
    Int_t antimuBkg = nPiplus + nProton + nPositron;
    std::cout << "Total background: " << antimuBkg << std::endl;
    Float_t significance = nAntimu/sqrt(nAntimu+antimuBkg);
-   std::cout << "Significance: " << significance << std::endl;#
+   std::cout << "Significance: " << significance << std::endl;
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
