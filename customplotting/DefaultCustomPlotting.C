@@ -176,10 +176,10 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_mu = 0;
    Float_t optimal_cut_mu = 0;
    
-   TCanvas* canvas_opt_mu = new TCanvas("c1","Significance (mu-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Significance (mu-like cut)",200,10,500,300);
    TGraph* graph_opt_mu = new TGraph();
    
-   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   for (Int_t cut=1; cut < optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_mulike_sig->Integral(cut,optimisation_nbins);
       Int_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins);
@@ -212,10 +212,10 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_pi = 0;
    Float_t optimal_cut_pi = 0;
    
-   TCanvas* canvas_opt_pi = new TCanvas("c1","Significance (pi-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Significance (pi-like cut)",200,10,500,300);
    TGraph* graph_opt_pi = new TGraph();
    
-   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   for (Int_t cut=1; cut < optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_pilike_sig->Integral(cut,optimisation_nbins);
       Int_t passed_bkg = opt_pilike_bkg->Integral(cut,optimisation_nbins);
@@ -248,10 +248,10 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_p = 0;
    Float_t optimal_cut_p = 0;
    
-   TCanvas* canvas_opt_p = new TCanvas("c1","Significance (p-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_p = new TCanvas("opt_plike","Significance (p-like cut)",200,10,500,300);
    TGraph* graph_opt_p = new TGraph();
    
-   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   for (Int_t cut=1; cut < optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_plike_sig->Integral(cut,optimisation_nbins);
       Int_t passed_bkg = opt_plike_bkg->Integral(cut,optimisation_nbins);
@@ -284,10 +284,10 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_e = 0;
    Float_t optimal_cut_e = 0;
    
-   TCanvas* canvas_opt_e = new TCanvas("c1","Significance (e-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_e = new TCanvas("opt_elike","Significance (e-like cut)",200,10,500,300);
    TGraph* graph_opt_e = new TGraph();
    
-   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   for (Int_t cut=1; cut < optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_elike_sig->Integral(cut,optimisation_nbins);
       Int_t passed_bkg = opt_elike_bkg->Integral(cut,optimisation_nbins);
