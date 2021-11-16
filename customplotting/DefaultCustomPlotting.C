@@ -185,6 +185,7 @@ void DefaultCustomPlotting::Loop()
       Int_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      if (passed_sig == 0) significance = 0;
       
       if (significance > optimal_signif_mu)
       {
@@ -215,12 +216,13 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Significance (pi-like cut)",200,10,500,300);
    TGraph* graph_opt_pi = new TGraph();
    
-   for (Int_t cut=1; cut <= optimisation_nbins-2; cut++)
+   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
       Int_t passed_sig = opt_pilike_sig->Integral(cut,optimisation_nbins);
       Int_t passed_bkg = opt_pilike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      if (passed_sig == 0) significance = 0;
       
       if (significance > optimal_signif_pi)
       {
@@ -257,6 +259,7 @@ void DefaultCustomPlotting::Loop()
       Int_t passed_bkg = opt_plike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      if (passed_sig == 0) significance = 0;
       
       if (significance > optimal_signif_p)
       {
@@ -293,6 +296,7 @@ void DefaultCustomPlotting::Loop()
       Int_t passed_bkg = opt_elike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      if (passed_sig == 0) significance = 0;
       
       if (significance > optimal_signif_e)
       {
