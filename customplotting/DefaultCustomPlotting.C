@@ -61,8 +61,17 @@ void DefaultCustomPlotting::Loop()
    
    Int_t optimisation_nbins = 50;
    
-   TH1F *opt_mulike_sig = new TH1F("opt_amu_mulike", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_plike_sig = new TH1F("opt_plike_sig", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg = new TH1F("opt_plike_bkg", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -71,19 +80,38 @@ void DefaultCustomPlotting::Loop()
       // Cut on accum_level etc
       if (accum_level[0][0] <= 4) continue; // Set accum_level
       
-      // ============= Fill histogram to find optimal cuts =============
+      // ============= Fill histograms to find optimal cuts =============
       
       if (accum_level[0][0] > 5){
          
          if (particle_pg == -13)
          {
             opt_mulike_sig->Fill(selmu_bdt_pid_mu);
+            opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
+            opt_plike_bkg->Fill(selmu_bdt_pid_p);
+            opt_elike_bkg->Fill(selmu_bdt_pid_e);
          }
-         else
+         else if (particle_pg == 211)
          {
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
+            opt_pilike_sig->Fill(selmu_bdt_pid_pi);
+            opt_plike_bkg->Fill(selmu_bdt_pid_p);
+            opt_elike_bkg->Fill(selmu_bdt_pid_e);
          }
-         
+         else if (particle_pg == 2212)
+         {
+            opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
+            opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
+            opt_plike_sig->Fill(selmu_bdt_pid_p);
+            opt_elike_bkg->Fill(selmu_bdt_pid_e);
+         }
+         else if (particle_pg == -11)
+         {
+            opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
+            opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
+            opt_plike_bkg->Fill(selmu_bdt_pid_p);
+            opt_elike_sig->Fill(selmu_bdt_pid_e);
+         }
       }
       
       // ============= Fill variables to test existing cuts =============
@@ -141,13 +169,15 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Find optimal cuts =============
    
+   std::cout << "=========== Mu-like optimisation ===========" << std::endl << std::endl;
+   
    //std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
    
-   Float_t optimal_signif = 0;
-   Float_t optimal_cut = 0;
+   Float_t optimal_signif_mu = 0;
+   Float_t optimal_cut_mu = 0;
    
-   TCanvas *c1 = new TCanvas("c1","Significance",200,10,500,300);
-   TGraph* gr = new TGraph();
+   TCanvas* canvas_opt_mu = new TCanvas("c1","Significance (mu-like cut)",200,10,500,300);
+   TGraph* graph_opt_mu = new TGraph();
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
@@ -156,24 +186,132 @@ void DefaultCustomPlotting::Loop()
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
       
-      if (significance > optimal_signif)
+      if (significance > optimal_signif_mu)
       {
-         optimal_signif = significance;
-         optimal_cut = opt_mulike_sig->GetBinLowEdge(cut);
+         optimal_signif_mu = significance;
+         optimal_cut_mu = opt_mulike_sig->GetBinLowEdge(cut);
       }
       
       //std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
       //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
-      gr->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), significance);
+      graph_opt_mu->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), significance);
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif << " at cut value of " << optimal_cut << std::endl;
+   std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl << std::endl;
    
    
-   gr->Draw("AC*");
-   c1->Write();
+   graph_opt_mu->Draw("AC*");
+   canvas_opt_mu->Write();
+   
+   std::cout << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
+   
+   //std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
+   
+   Float_t optimal_signif_pi = 0;
+   Float_t optimal_cut_pi = 0;
+   
+   TCanvas* canvas_opt_pi = new TCanvas("c1","Significance (pi-like cut)",200,10,500,300);
+   TGraph* graph_opt_pi = new TGraph();
+   
+   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   {
+      Int_t passed_sig = opt_pilike_sig->Integral(cut,optimisation_nbins);
+      Int_t passed_bkg = opt_pilike_bkg->Integral(cut,optimisation_nbins);
+      
+      Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      
+      if (significance > optimal_signif_pi)
+      {
+         optimal_signif_pi = significance;
+         optimal_cut_pi = opt_pilike_sig->GetBinLowEdge(cut);
+      }
+      
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      
+      graph_opt_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), significance);
+     
+   }
+   
+   std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl << std::endl;
+   
+   
+   graph_opt_pi->Draw("AC*");
+   canvas_opt_pi->Write();
+   
+   std::cout << "=========== Proton-like optimisation ===========" << std::endl << std::endl;
+   
+   //std::cout << "DEBUG: Total sig " << opt_plike_sig->GetEntries() << ", total bkg " << opt_plike_bkg->GetEntries() << std::endl;
+   
+   Float_t optimal_signif_p = 0;
+   Float_t optimal_cut_p = 0;
+   
+   TCanvas* canvas_opt_p = new TCanvas("c1","Significance (p-like cut)",200,10,500,300);
+   TGraph* graph_opt_p = new TGraph();
+   
+   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   {
+      Int_t passed_sig = opt_plike_sig->Integral(cut,optimisation_nbins);
+      Int_t passed_bkg = opt_plike_bkg->Integral(cut,optimisation_nbins);
+      
+      Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      
+      if (significance > optimal_signif_p)
+      {
+         optimal_signif_p = significance;
+         optimal_cut_p = opt_plike_sig->GetBinLowEdge(cut);
+      }
+      
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      
+      graph_opt_p->SetPoint(cut, opt_plike_sig->GetBinLowEdge(cut), significance);
+     
+   }
+   
+   std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl << std::endl;
+   
+   
+   graph_opt_p->Draw("AC*");
+   canvas_opt_p->Write();
+   
+   std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
+   
+   //std::cout << "DEBUG: Total sig " << opt_elike_sig->GetEntries() << ", total bkg " << opt_elike_bkg->GetEntries() << std::endl;
+   
+   Float_t optimal_signif_e = 0;
+   Float_t optimal_cut_e = 0;
+   
+   TCanvas* canvas_opt_e = new TCanvas("c1","Significance (e-like cut)",200,10,500,300);
+   TGraph* graph_opt_e = new TGraph();
+   
+   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   {
+      Int_t passed_sig = opt_elike_sig->Integral(cut,optimisation_nbins);
+      Int_t passed_bkg = opt_elike_bkg->Integral(cut,optimisation_nbins);
+      
+      Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      
+      if (significance > optimal_signif_e)
+      {
+         optimal_signif_e = significance;
+         optimal_cut_e = opt_elike_sig->GetBinLowEdge(cut);
+      }
+      
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      
+      graph_opt_e->SetPoint(cut, opt_elike_sig->GetBinLowEdge(cut), significance);
+     
+   }
+   
+   std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl << std::endl;
+   
+   
+   graph_opt_e->Draw("AC*");
+   canvas_opt_e->Write();
    
    // ============= Test existing cuts =============
    
