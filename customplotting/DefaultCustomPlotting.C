@@ -175,9 +175,13 @@ void DefaultCustomPlotting::Loop()
    
    Float_t optimal_signif_mu = 0;
    Float_t optimal_cut_mu = 0;
+   Float_t optimal_pur_mu = 0;
+   Float_t optimal_eff_mu = 0;
    
-   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Significance (mu-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation curves (mu-like)",200,10,500,300);
    TGraph* graph_opt_mu = new TGraph();
+   TGraph* graph_opt_pur_mu = new TGraph();
+   TGraph* graph_opt_eff_mu = new TGraph();
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
@@ -185,28 +189,36 @@ void DefaultCustomPlotting::Loop()
       Int_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-      if (passed_sig == 0) significance = 0;
+      Float_t purity = passed_sig/(passed_sig+passed_bkg);
+      Float_t efficiency = passed_sig/(opt_mulike_sig->GetEntries());
+      if (passed_sig == 0){ significance = 0; purity = 0;}
       
       if (significance > optimal_signif_mu)
       {
          optimal_signif_mu = significance;
          optimal_cut_mu = opt_mulike_sig->GetBinLowEdge(cut);
+         optimal_pur_mu = purity;
+         optimal_eff_mu = efficiency;
       }
       
       //std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
       //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
       graph_opt_mu->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), significance);
+      graph_opt_pur_mu->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), purity);
+      graph_opt_eff_mu->SetPoint(cut, opt_mulike_sig->GetBinLowEdge(cut), efficiency);
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl << std::endl;
-   
+   std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+   std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << std::endl;
    
    graph_opt_mu->Draw("AC*");
+   graph_opt_pur_mu->Draw("AC* same");
+   graph_opt_eff_mu->Draw("AC* same");
    canvas_opt_mu->Write();
    
-   std::cout << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
    
    //std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
    
