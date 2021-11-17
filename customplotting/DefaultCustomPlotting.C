@@ -164,9 +164,9 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][3] > 6){
          
          if (particle_pg == -13) {esel_nAntimu++; esel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 211) {esel_nPiplus++; psel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 2212) {esel_nProton++; psel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == -11) {esel_nPositron++; psel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 211) {esel_nPiplus++; esel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 2212) {esel_nProton++; esel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == -11) {esel_nPositron++; esel_sig_recomom->Fill(selmu_mom[0]);}
       }
       
       // Code to keep track of completion percentage and estimate time remaining:
