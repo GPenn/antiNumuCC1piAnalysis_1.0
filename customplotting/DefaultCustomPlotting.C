@@ -185,8 +185,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
-      Int_t passed_sig = opt_mulike_sig->Integral(cut,optimisation_nbins);
-      Int_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins);
+      Float_t passed_sig = opt_mulike_sig->Integral(cut,optimisation_nbins);
+      Float_t passed_bkg = opt_mulike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
       Float_t purity = passed_sig/(passed_sig+passed_bkg);
