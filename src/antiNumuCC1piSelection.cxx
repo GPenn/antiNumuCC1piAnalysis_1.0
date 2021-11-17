@@ -625,7 +625,7 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
     anaTECAL = localEvent->TECALReconObjects[iObj];
     toyBox->TECALReconObjects.push_back(anaTECAL);
-    std::cout<<"INFO: Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
+    //std::cout<<"INFO: Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
     
   } // End of loop over TECALReconObjects
   
@@ -653,11 +653,19 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   // Check each local ECal object against main track ECal segment:
   ecalTrack     = static_cast<AnaTrackB*>(toyBox->MainTrack);
   ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
-  
   for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
     if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
       toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
-      std::cout << "Local-global match confirmed for MainTrack." << std::endl;
+      //std::cout << "Local-global match confirmed for MainTrack." << std::endl;
+  }
+  
+  // Check each local ECal object against HMN track ECal segment:
+  ecalTrack     = static_cast<AnaTrackB*>(toyBox->HMNtrack);
+  ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
+  for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
+    if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
+      toyBox->HMNTLocalECalSegment = toyBox->TECALReconObjects[i];
+      //std::cout << "Local-global match confirmed for HMNT." << std::endl;
   }
   
   return true;
