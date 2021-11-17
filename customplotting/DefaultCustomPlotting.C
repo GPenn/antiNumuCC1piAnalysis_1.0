@@ -178,7 +178,7 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_pur_mu = 0;
    Float_t optimal_eff_mu = 0;
    
-   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation curves (mu-like)",200,10,500,300);
+   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,500,300);
    TGraph* graph_opt_mu = new TGraph();
    TGraph* graph_opt_pur_mu = new TGraph();
    TGraph* graph_opt_eff_mu = new TGraph();
@@ -191,7 +191,7 @@ void DefaultCustomPlotting::Loop()
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
       Float_t purity = passed_sig/(passed_sig+passed_bkg);
       Float_t efficiency = passed_sig/(opt_mulike_sig->GetEntries());
-      if (passed_sig == 0){ significance = 0; purity = 0;}
+      if (passed_sig == 0){significance = 0; purity = 0;}
       
       if (significance > optimal_signif_mu)
       {
@@ -214,9 +214,11 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << std::endl;
    
    graph_opt_mu->Draw("AC*");
-   graph_opt_pur_mu->Draw("C* same");
-   graph_opt_eff_mu->Draw("C* same");
    canvas_opt_mu->Write();
+   TCanvas* canvas_effpur_mu = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,500,300);
+   graph_opt_pur_mu->Draw("AC*");
+   graph_opt_eff_mu->Draw("C* same");
+   canvas_effpur_mu->Write();
    
    std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
    
