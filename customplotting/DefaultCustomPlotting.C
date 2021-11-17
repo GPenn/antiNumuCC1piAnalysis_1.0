@@ -39,10 +39,14 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
+   Int_t recomom_nbins = 50;
+   
    Int_t musel_nAntimu = 0;
    Int_t musel_nPiplus = 0;
    Int_t musel_nProton = 0;
    Int_t musel_nPositron = 0;
+   TH1F *musel_sig_recomom = new TH1F("musel_sig_recomom", "Mu-like selection signal vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   TH1F *musel_bkg_recomom = new TH1F("musel_bkg_recomom", "Mu-like selection bkg vs reco momentum", recomom_nbins, 200.0, 1500.0);
    
    Int_t pisel_nAntimu = 0;
    Int_t pisel_nPiplus = 0;
@@ -73,12 +77,20 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
+   
+   
+   
+   
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
 
       // Cut on accum_level etc
       if (accum_level[0][0] <= 4) continue; // Set accum_level
+      
+      
+      
       
       // ============= Fill histograms to find optimal cuts =============
       
@@ -114,14 +126,17 @@ void DefaultCustomPlotting::Loop()
          }
       }
       
+      
+      
+      
       // ============= Fill variables to test existing cuts =============
       
       if (accum_level[0][0] > 6){
          
-         if (particle_pg == -13) musel_nAntimu++;
-         if (particle_pg == 211) musel_nPiplus++;
-         if (particle_pg == 2212) musel_nProton++;
-         if (particle_pg == -11) musel_nPositron++;
+         if (particle_pg == -13) {musel_nAntimu++; musel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 211) {musel_nPiplus++; musel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 2212) {musel_nProton++; musel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == -11) {musel_nPositron++; musel_bkg_recomom->Fill(selmu_mom[0]);}
       }
       
       if (accum_level[0][1] > 6){
@@ -166,6 +181,13 @@ void DefaultCustomPlotting::Loop()
    }
    
    std::cout << std::endl << std::endl;
+   
+   
+   
+   
+   
+   
+   
    
    // ============= Find optimal cuts =============
    
@@ -334,6 +356,12 @@ void DefaultCustomPlotting::Loop()
    graph_opt_e->Draw("AC*");
    canvas_opt_e->Write();
    
+   
+   
+   
+   
+   
+   
    // ============= Test existing cuts =============
    
    std::cout << std::endl << std::endl;
@@ -351,6 +379,16 @@ void DefaultCustomPlotting::Loop()
    Float_t musel_SsqrtSB = musel_Sig/sqrt(musel_Sig+musel_Bkg);
    std::cout << "Purity:           " << musel_Sig/(musel_Sig+musel_Bkg) << std::endl;
    std::cout << "Significance:     " << musel_SsqrtSB << std::endl;
+   
+   TH1F *musel_significance_recomom = new TH1F("musel_significance_recomom", "Mu-like selection significance vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   for (Int_t bin=0; bin <= recomom_nbins; bin++)
+   {
+      Float_t signal = musel_sig_recomom->GetBinContent(bin);
+      Float_t background = musel_bkg_recomom->GetBinContent(bin);
+      Float_t significance = signal/sqrt(signal+background);
+      musel_significance_recomom->SetBinContent(bin, significance);
+   }
+   musel_significance_recomom->Write();
    
    std::cout << std::endl << std::endl;
    
