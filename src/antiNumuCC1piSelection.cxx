@@ -642,7 +642,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   AnaEventB&       event  = *static_cast<AnaEventB*>(&eventC);
   ToyBoxAntiCC1Pi* toyBox =  static_cast<ToyBoxAntiCC1Pi*>(&boxB);
 
-  if (toyBox->TECALReconObjects.empty() or toyBox->MainTrack->nECALSegments != 1){ // if there are no ECal objects or maintrack has no ECal segment, continue
+  if (toyBox->TECALReconObjects.empty()){ // if there are no ECal objects, continue
     //cout << "No ECal Objects" << std::endl; 
     return true;}
 
@@ -651,16 +651,19 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   AnaECALParticleB* ecalComponent = NULL;  // the first segment (to match with AnaTECALReconObjects via UID)
   
   // Check each local ECal object against main track ECal segment:
-  ecalTrack     = static_cast<AnaTrackB*>(toyBox->MainTrack);
-  ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
-  for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
-    if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
-      toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
-      //std::cout << "Local-global match confirmed for MainTrack." << std::endl;
+  if (toyBox->MainTrack->nECALSegments == 1)
+  {
+    ecalTrack     = static_cast<AnaTrackB*>(toyBox->MainTrack);
+    ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
+    for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
+      if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
+        toyBox->MainTrackLocalECalSegment = toyBox->TECALReconObjects[i];
+        //std::cout << "Local-global match confirmed for MainTrack." << std::endl;
+    }
   }
   
   // Check each local ECal object against HMN track ECal segment:
-  if (toyBox->HMNtrack)
+  if ((toyBox->HMNtrack)&&(toyBox->HMNtrack->nECALSegments == 1))
   {
     ecalTrack     = static_cast<AnaTrackB*>(toyBox->HMNtrack);
     ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
