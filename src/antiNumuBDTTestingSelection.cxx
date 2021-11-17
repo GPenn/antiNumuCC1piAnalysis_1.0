@@ -75,8 +75,8 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddStep(3, StepBase::kCut,    "BDT e-like PID",       new BDTPIDElectronLikeCut(BDTPIDmanager_sel));
   
   // CC1pi branch
-  AddStep(4, StepBase::kCut,    "HMNT kinematics for BDT",      new BDTPreselectionKinematicsPiCandCut());
   AddStep(4, StepBase::kCut,    "1pos1neg TPC tracks",          new TwoTrack1pos1negCut());
+  AddStep(4, StepBase::kCut,    "HMNT kinematics for BDT",      new BDTPreselectionKinematicsPiCandCut());
 
   // Set the branch aliases to the branches
   SetBranchAlias(0, "Antimuon",  0);
@@ -319,7 +319,9 @@ bool BDTPreselectionKinematicsPiCandCut::Apply(AnaEventC& event, ToyBoxB& boxB) 
 
   // Cast the ToyBox to the appropriate type
   ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
-
+  
+  if (!box.HMNtrack) return true;
+  
   if (box.HMNtrack->Momentum < 200.0) return false;
   if (box.HMNtrack->Momentum > 1500.0) return false;
   
