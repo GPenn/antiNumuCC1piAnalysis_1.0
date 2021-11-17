@@ -214,8 +214,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << std::endl;
    
    graph_opt_mu->Draw("AC*");
-   graph_opt_pur_mu->Draw("AC* same");
-   graph_opt_eff_mu->Draw("AC* same");
+   graph_opt_pur_mu->Draw("C* same");
+   graph_opt_eff_mu->Draw("C* same");
    canvas_opt_mu->Write();
    
    std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
