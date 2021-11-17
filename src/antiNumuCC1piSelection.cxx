@@ -660,12 +660,15 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   }
   
   // Check each local ECal object against HMN track ECal segment:
-  ecalTrack     = static_cast<AnaTrackB*>(toyBox->HMNtrack);
-  ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
-  for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
-    if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
-      toyBox->HMNTLocalECalSegment = toyBox->TECALReconObjects[i];
-      //std::cout << "Local-global match confirmed for HMNT." << std::endl;
+  if (toyBox->HMNtrack)
+  {
+    ecalTrack     = static_cast<AnaTrackB*>(toyBox->HMNtrack);
+    ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
+    for (unsigned int i = 0; i < toyBox->TECALReconObjects.size(); i++){
+      if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
+        toyBox->HMNTLocalECalSegment = toyBox->TECALReconObjects[i];
+        //std::cout << "Local-global match confirmed for HMNT." << std::endl;
+    }
   }
   
   return true;
