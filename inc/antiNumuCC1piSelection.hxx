@@ -85,7 +85,7 @@ public:
   
   // Local reco ECal segments matched to those of the main tracks:
   AnaTECALReconObject* MainTrackLocalECalSegment;
-  AnaTECALObject HMNTLocalECalSegment;
+  AnaTECALReconObject* HMNTLocalECalSegment;
 
 
 };
