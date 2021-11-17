@@ -113,6 +113,11 @@ void antiNumuBDTTestingAnalysis::DefineMicroTrees(bool addBase){
   
   AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
   
+  AddVarF(output(),hmnt_bdt_pid_mu, "");
+  AddVarF(output(),hmnt_bdt_pid_pi, "");
+  AddVarF(output(),hmnt_bdt_pid_p, "");
+  AddVarF(output(),hmnt_bdt_pid_e, "");
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
@@ -151,7 +156,6 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
   
   if (mybox().MainTrack  ) 
   {
-  
     std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
@@ -160,6 +164,16 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
     
     output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
+    
+    if (mybox().HMNtrack)
+    {
+      BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
+    
+      output().FillVar(hmnt_bdt_pid_mu, BDT_PID_results[0]);
+      output().FillVar(hmnt_bdt_pid_pi, BDT_PID_results[1]);
+      output().FillVar(hmnt_bdt_pid_p, BDT_PID_results[2]);
+      output().FillVar(hmnt_bdt_pid_e, BDT_PID_results[3]);
+    }
   }
   
   baseTrackerAnalysis::FillEffCounters();
