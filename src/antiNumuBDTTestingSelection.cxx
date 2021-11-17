@@ -48,7 +48,7 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
   AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
   
-  AddStep(StepBase::kCut,    "Kinematics for BDT",      new BDTPreselectionKinematicsCut());
+  AddStep(StepBase::kCut,    "Main track kinematics for BDT",      new BDTPreselectionKinematicsCut());
   
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
@@ -60,7 +60,7 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
   AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
   
-  AddSplit(4);
+  AddSplit(5);
   
   // Mu-like branch
   AddStep(0, StepBase::kCut,    "BDT mu-like PID",      new BDTPIDMuLikeCut(BDTPIDmanager_sel));
@@ -73,12 +73,17 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   
   // Electron-like branch
   AddStep(3, StepBase::kCut,    "BDT e-like PID",       new BDTPIDElectronLikeCut(BDTPIDmanager_sel));
+  
+  // CC1pi branch
+  AddStep(4, StepBase::kCut,    "HMNT kinematics for BDT",      new BDTPreselectionKinematicsPiCandCut());
+  AddStep(4, StepBase::kCut,    "1pos1neg TPC tracks",          new TwoTrack1pos1negCut());
 
   // Set the branch aliases to the branches
   SetBranchAlias(0, "Antimuon",  0);
   SetBranchAlias(1, "Pi+",       1);
   SetBranchAlias(2, "Proton",    2);
   SetBranchAlias(3, "Electron",  3);
+  SetBranchAlias(4, "CC1pi",     4);
 
   // By default the preselection correspond to cuts 0-2
   SetPreSelectionAccumLevel(0);
