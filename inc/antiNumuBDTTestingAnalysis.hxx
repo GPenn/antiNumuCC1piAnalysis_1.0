@@ -69,6 +69,11 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
     selmu_bdt_pid_p,
     selmu_bdt_pid_e,
    
+    hmnt_bdt_pid_mu,
+    hmnt_bdt_pid_pi,
+    hmnt_bdt_pid_p,
+    hmnt_bdt_pid_e,
+   
     particle_pg,
     pg_trueparticle_mom,
     pg_trueparticle_costheta,
