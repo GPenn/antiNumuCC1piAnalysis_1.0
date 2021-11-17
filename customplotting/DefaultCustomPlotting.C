@@ -102,28 +102,28 @@ void DefaultCustomPlotting::Loop()
       
       if (accum_level[0][0] > 5){
          
-         if (particle_pg == -13)
+         if (particle == -13)
          {
             opt_mulike_sig->Fill(selmu_bdt_pid_mu);
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
          }
-         else if (particle_pg == 211)
+         else if (particle == 211)
          {
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
             opt_pilike_sig->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
          }
-         else if (particle_pg == 2212)
+         else if (particle == 2212)
          {
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_sig->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
          }
-         else if (particle_pg == -11)
+         else if (particle == -11)
          {
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
@@ -139,34 +139,34 @@ void DefaultCustomPlotting::Loop()
       
       if (accum_level[0][0] > 6){
          
-         if (particle_pg == -13) {musel_nAntimu++; musel_sig_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 211) {musel_nPiplus++; musel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 2212) {musel_nProton++; musel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == -11) {musel_nPositron++; musel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == -13) {musel_nAntimu++; musel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle == 211) {musel_nPiplus++; musel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == 2212) {musel_nProton++; musel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == -11) {musel_nPositron++; musel_bkg_recomom->Fill(selmu_mom[0]);}
       }
       
       if (accum_level[0][1] > 6){
          
-         if (particle_pg == -13) {pisel_nAntimu++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 211) {pisel_nPiplus++; pisel_sig_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 2212) {pisel_nProton++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == -11) {pisel_nPositron++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == -13) {pisel_nAntimu++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == 211) {pisel_nPiplus++; pisel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle == 2212) {pisel_nProton++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == -11) {pisel_nPositron++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
       }
       
       if (accum_level[0][2] > 6){
          
-         if (particle_pg == -13) {psel_nAntimu++; psel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 211) {psel_nPiplus++; psel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 2212) {psel_nProton++; psel_sig_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == -11) {psel_nPositron++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == -13) {psel_nAntimu++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == 211) {psel_nPiplus++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == 2212) {psel_nProton++; psel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle == -11) {psel_nPositron++; psel_bkg_recomom->Fill(selmu_mom[0]);}
       }
       
       if (accum_level[0][3] > 6){
          
-         if (particle_pg == -13) {esel_nAntimu++; esel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 211) {esel_nPiplus++; esel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == 2212) {esel_nProton++; esel_bkg_recomom->Fill(selmu_mom[0]);}
-         if (particle_pg == -11) {esel_nPositron++; esel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle == -13) {esel_nAntimu++; esel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == 211) {esel_nPiplus++; esel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == 2212) {esel_nProton++; esel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle == -11) {esel_nPositron++; esel_sig_recomom->Fill(selmu_mom[0]);}
       }
       
       // Code to keep track of completion percentage and estimate time remaining:
