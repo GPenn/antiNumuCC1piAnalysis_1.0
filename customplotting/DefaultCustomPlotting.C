@@ -39,7 +39,7 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
-   Int_t recomom_nbins = 50;
+   Int_t recomom_nbins = 25;
    
    Int_t musel_nAntimu = 0;
    Int_t musel_nPiplus = 0;
@@ -52,16 +52,22 @@ void DefaultCustomPlotting::Loop()
    Int_t pisel_nPiplus = 0;
    Int_t pisel_nProton = 0;
    Int_t pisel_nPositron = 0;
+   TH1F *pisel_sig_recomom = new TH1F("pisel_sig_recomom", "Pi-like selection signal vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   TH1F *pisel_bkg_recomom = new TH1F("pisel_bkg_recomom", "Pi-like selection bkg vs reco momentum", recomom_nbins, 200.0, 1500.0);
    
    Int_t psel_nAntimu = 0;
    Int_t psel_nPiplus = 0;
    Int_t psel_nProton = 0;
    Int_t psel_nPositron = 0;
+   TH1F *psel_sig_recomom = new TH1F("psel_sig_recomom", "P-like selection signal vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   TH1F *psel_bkg_recomom = new TH1F("psel_bkg_recomom", "P-like selection bkg vs reco momentum", recomom_nbins, 200.0, 1500.0);
    
    Int_t esel_nAntimu = 0;
    Int_t esel_nPiplus = 0;
    Int_t esel_nProton = 0;
    Int_t esel_nPositron = 0;
+   TH1F *esel_sig_recomom = new TH1F("esel_sig_recomom", "E-like selection signal vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   TH1F *esel_bkg_recomom = new TH1F("esel_bkg_recomom", "E-like selection bkg vs reco momentum", recomom_nbins, 200.0, 1500.0);
    
    Int_t optimisation_nbins = 50;
    
@@ -141,26 +147,26 @@ void DefaultCustomPlotting::Loop()
       
       if (accum_level[0][1] > 6){
          
-         if (particle_pg == -13) pisel_nAntimu++;
-         if (particle_pg == 211) pisel_nPiplus++;
-         if (particle_pg == 2212) pisel_nProton++;
-         if (particle_pg == -11) pisel_nPositron++;
+         if (particle_pg == -13) {pisel_nAntimu++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 211) {pisel_nPiplus++; pisel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 2212) {pisel_nProton++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == -11) {pisel_nPositron++; pisel_bkg_recomom->Fill(selmu_mom[0]);}
       }
       
       if (accum_level[0][2] > 6){
          
-         if (particle_pg == -13) psel_nAntimu++;
-         if (particle_pg == 211) psel_nPiplus++;
-         if (particle_pg == 2212) psel_nProton++;
-         if (particle_pg == -11) psel_nPositron++;
+         if (particle_pg == -13) {psel_nAntimu++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 211) {psel_nPiplus++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 2212) {psel_nProton++; psel_sig_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == -11) {psel_nPositron++; psel_bkg_recomom->Fill(selmu_mom[0]);}
       }
       
       if (accum_level[0][3] > 6){
          
-         if (particle_pg == -13) esel_nAntimu++;
-         if (particle_pg == 211) esel_nPiplus++;
-         if (particle_pg == 2212) esel_nProton++;
-         if (particle_pg == -11) esel_nPositron++;
+         if (particle_pg == -13) {esel_nAntimu++; esel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 211) {esel_nPiplus++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == 2212) {esel_nProton++; psel_bkg_recomom->Fill(selmu_mom[0]);}
+         if (particle_pg == -11) {esel_nPositron++; psel_sig_recomom->Fill(selmu_mom[0]);}
       }
       
       // Code to keep track of completion percentage and estimate time remaining:
@@ -386,6 +392,7 @@ void DefaultCustomPlotting::Loop()
       Float_t signal = musel_sig_recomom->GetBinContent(bin);
       Float_t background = musel_bkg_recomom->GetBinContent(bin);
       Float_t significance = signal/sqrt(signal+background);
+      if (signal == 0) significance = 0;
       musel_significance_recomom->SetBinContent(bin, significance);
    }
    musel_significance_recomom->Write();
@@ -406,6 +413,17 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Purity:           " << pisel_Sig/(pisel_Sig+pisel_Bkg) << std::endl;
    std::cout << "Significance:     " << pisel_SsqrtSB << std::endl;
    
+   TH1F *pisel_significance_recomom = new TH1F("pisel_significance_recomom", "Pi-like selection significance vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   for (Int_t bin=0; bin <= recomom_nbins; bin++)
+   {
+      Float_t signal = pisel_sig_recomom->GetBinContent(bin);
+      Float_t background = pisel_bkg_recomom->GetBinContent(bin);
+      Float_t significance = signal/sqrt(signal+background);
+      if (signal == 0) significance = 0;
+      pisel_significance_recomom->SetBinContent(bin, significance);
+   }
+   pisel_significance_recomom->Write();
+   
    std::cout << std::endl << std::endl;
    
    std::cout << "=========== Proton-like selection ===========" << std::endl << std::endl;
@@ -422,6 +440,17 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Purity:           " << psel_Sig/(psel_Sig+psel_Bkg) << std::endl;
    std::cout << "Significance:     " << psel_SsqrtSB << std::endl;
    
+   TH1F *psel_significance_recomom = new TH1F("psel_significance_recomom", "P-like selection significance vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   for (Int_t bin=0; bin <= recomom_nbins; bin++)
+   {
+      Float_t signal = psel_sig_recomom->GetBinContent(bin);
+      Float_t background = psel_bkg_recomom->GetBinContent(bin);
+      Float_t significance = signal/sqrt(signal+background);
+      if (signal == 0) significance = 0;
+      psel_significance_recomom->SetBinContent(bin, significance);
+   }
+   psel_significance_recomom->Write();
+   
    std::cout << std::endl << std::endl;
    
    std::cout << "=========== Electron-like selection ===========" << std::endl << std::endl;
@@ -437,6 +466,17 @@ void DefaultCustomPlotting::Loop()
    Float_t esel_SsqrtSB = esel_Sig/sqrt(esel_Sig+esel_Bkg);
    std::cout << "Purity:           " << esel_Sig/(esel_Sig+esel_Bkg) << std::endl;
    std::cout << "Significance:     " << esel_SsqrtSB << std::endl;
+   
+   TH1F *esel_significance_recomom = new TH1F("esel_significance_recomom", "E-like selection significance vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   for (Int_t bin=0; bin <= recomom_nbins; bin++)
+   {
+      Float_t signal = esel_sig_recomom->GetBinContent(bin);
+      Float_t background = esel_bkg_recomom->GetBinContent(bin);
+      Float_t significance = signal/sqrt(signal+background);
+      if (signal == 0) significance = 0;
+      esel_significance_recomom->SetBinContent(bin, significance);
+   }
+   esel_significance_recomom->Write();
    
    std::cout << std::endl << std::endl;
       
