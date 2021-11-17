@@ -304,6 +304,38 @@ bool BDTPreselectionKinematicsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   if (TMath::ACos(DirVec[2]) > 1.0472) return false;
 
   return true;
+}
 
+//**************************************************
+bool BDTPreselectionKinematicsPiCandCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+
+  if (box.HMNtrack->Momentum < 200.0) return false;
+  if (box.HMNtrack->Momentum > 1500.0) return false;
+  
+  TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
+  if (TMath::ACos(DirVec[2]) > 1.0472) return false;
+
+  return true;
+}
+
+//**************************************************
+bool TwoTrack1pos1negCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+
+  if (box.nPositiveTPCtracks != 1) return false;
+  if (box.nNegativeTPCtracks != 1) return false;
+
+  return true;
 }
 
