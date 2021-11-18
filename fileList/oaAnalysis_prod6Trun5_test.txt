@@ -1,0 +1,10 @@
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0000_tzudfbupmz7u_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0001_ygyp37wzzxjg_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0002_3x3ilrfu57t5_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0003_niq6wkbhbw5d_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0004_2j3drmzceanv_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0005_pohiwr7fwgxg_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0006_cfzupsaef2ou_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0007_5xdhdfj744c4_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0008_dgn4sd67fpsh_anal_000_nu-bsdv01_2.root
+/bundle/data/T2K/users/gpenn/oaAnalysis/run5/oa_nt_beam_80510000-0009_ym4duvlezxru_anal_000_nu-bsdv01_2.root
