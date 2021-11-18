@@ -1,6 +1,6 @@
 --- Cut levels --------
 
- < antiNumuCC1piAnalysis.MinAccumLevelToSave = 0 >   // minimum accum level to save the event
+ < antiNumuCC1piAnalysis.MinAccumLevelToSave = 4 >   // minimum accum level to save the event
 
 ------ Selections ------------------------
 
