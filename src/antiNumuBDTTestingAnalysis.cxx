@@ -35,7 +35,7 @@ bool antiNumuBDTTestingAnalysis::Initialize() {
   if(!baseTrackerAnalysis::Initialize()) return false;
 
   // Minimum accum level to save event into the output tree
-  SetMinAccumCutLevelToSave(ND::params().GetParameterI("antiNumuCC1piAnalysis.MinAccumLevelToSave"));
+  SetMinAccumCutLevelToSave(4);
 
   // which analysis: FGD1, FGD2 or FGDs
   _whichFGD = ND::params().GetParameterI("antiNumuCC1piAnalysis.Selections.whichFGD");
