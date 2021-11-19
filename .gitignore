@@ -10,3 +10,6 @@
 /tmva/weights
 /customplotting/bin
 /customplotting/output
+/scripts/log
+/scripts/batch/run5
+/fileList/run5
