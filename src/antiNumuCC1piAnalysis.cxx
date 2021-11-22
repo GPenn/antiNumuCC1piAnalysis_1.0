@@ -194,6 +194,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   //AddVarF(output(),hmnt_bdt_pid_p, "");
   //AddVarF(output(),hmnt_bdt_pid_e, "");
   
+  AddVarF(output(),selmu_bdt_pid_mu_cc1pi, "");
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
@@ -231,12 +233,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   // Fill muon candidate variables
   if (mybox().MainTrack  ) 
   {
-    //bdt_mom = mybox().MainTrack->Momentum;
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
     TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
     //double costheta_mu_nu = nuDirVec.Dot(muDirVec);
     Float_t selmu_theta_wrt_detector = TMath::ACos(muDirVec[2]);
-    //bdt_theta = TMath::ACos(costheta_mu_nu);
     
     output().FillVar(selmu_det_theta,        selmu_theta_wrt_detector);
     
@@ -347,6 +347,9 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
+    
+    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(NULL, NULL);
+    output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
 
   }
   
