@@ -245,12 +245,12 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
     output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
     
-    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
+    //std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     
-    output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
-    output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
-    output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
-    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
+    //output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
+    //output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
+    //output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
+    //output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
     
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
