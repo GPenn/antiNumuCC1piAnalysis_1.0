@@ -68,6 +68,11 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
     pg_trueparticle_mom,
     pg_trueparticle_costheta,
    
+    selmu_bdt_pid_mu,
+    selmu_bdt_pid_pi,
+    selmu_bdt_pid_p,
+    selmu_bdt_pid_e,
+   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
  
@@ -77,7 +82,7 @@ protected:
   //numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
  antiNumuCC1piAnalysis* _antiNumuCC1piAnalysis;
  
- //BDTPIDmanager* myBDTPIDmanager;
+ BDTPIDmanager* myBDTPIDmanager;
 
 private:
   Int_t _whichFGD; // 1 for FGD1 analysis, 2 for FGD2, 3 for both
