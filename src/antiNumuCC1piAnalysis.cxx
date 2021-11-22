@@ -348,8 +348,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
     
-    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(NULL, NULL);
-    output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
+    //std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(NULL, NULL);
+    //output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
 
   }
   
