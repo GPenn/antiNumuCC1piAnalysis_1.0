@@ -207,6 +207,16 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_fgd2_pull_pi, "");
   AddVarF(output(),HMNT_fgd2_pull_no, "");
   
+  AddVarF(output(),selmu_bdt_pid_mu, "");
+  AddVarF(output(),selmu_bdt_pid_pi, "");
+  AddVarF(output(),selmu_bdt_pid_p, "");
+  AddVarF(output(),selmu_bdt_pid_e, "");
+  
+  AddVarF(output(),hmnt_bdt_pid_mu, "");
+  AddVarF(output(),hmnt_bdt_pid_pi, "");
+  AddVarF(output(),hmnt_bdt_pid_p, "");
+  AddVarF(output(),hmnt_bdt_pid_e, "");
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
