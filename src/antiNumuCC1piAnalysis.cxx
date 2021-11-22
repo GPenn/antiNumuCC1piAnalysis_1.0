@@ -245,13 +245,6 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
     output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
     
-    //std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
-    
-    //output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
-    //output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
-    //output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
-    //output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
-    
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
     {
@@ -264,9 +257,6 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd1_energy,      FGD1Segment->E);
       output().FillVar(selmu_fgd1_length,      FGD1Segment->Length);
       
-      //bdt_fgd1pullmu = FGD1Segment->Pullmu;
-      //bdt_fgd1pullp  = FGD1Segment->Pullp;
-      //bdt_fgd1pullpi = FGD1Segment->Pullpi;
     }
     else
     {
@@ -285,9 +275,6 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd2_energy,      FGD2Segment->E);
       output().FillVar(selmu_fgd2_length,      FGD2Segment->Length);
       
-      //bdt_fgd2pullmu = FGD2Segment->Pullmu;
-      //bdt_fgd2pullp  = FGD2Segment->Pullp;
-      //bdt_fgd2pullpi = FGD2Segment->Pullpi;
     }
     else
     {
@@ -311,7 +298,6 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
         selmu_max_EMenergy     = ECALSegment->EMEnergy;
         selmu_best_mippion     = ECALSegment->PIDMipPion;
         selmu_best_EbyL        = (ECALSegment->EMEnergy)/(ECALSegment->Length);
-        //selmu_best_circularity = ECALSegment->PID_Circularity;
       }
       
       //if (selmu_mean_mippion==-999.0) selmu_mean_mippion=0;
@@ -328,12 +314,6 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_ecal_bestseg_mippion,     selmu_best_mippion);
     output().FillVar(selmu_ecal_bestseg_EbyL,        selmu_best_EbyL);
     
-    /*if (selmu_max_EMenergy > 0)
-    {
-      bdt_ecal_EMenergy = selmu_max_EMenergy;
-      bdt_ecal_EbyL = selmu_best_EbyL,
-      bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
-    }*/
     
     // Get variables from local reco ECal segment:
     if (mybox().MainTrackLocalECalSegment  )
@@ -351,13 +331,14 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_ecal_tcr,            mybox().MainTrackLocalECalSegment->PIDTransverseChargeRatio);
       output().FillVar(selmu_ecal_tmr,            mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio);
       
-      //bdt_ecal_circularity = mybox().MainTrackLocalECalSegment->PIDCircularity;
-      //bdt_ecal_fbr = mybox().MainTrackLocalECalSegment->PIDFBR;
-      //bdt_ecal_qrms = mybox().MainTrackLocalECalSegment->EMEnergyFitParaQRMS;
-      //bdt_ecal_tmr = mybox().MainTrackLocalECalSegment->PIDTruncatedMaxRatio;
     }
     
+    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     
+    output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
+    output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
+    output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
+    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
 
   }
   
