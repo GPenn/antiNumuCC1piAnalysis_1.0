@@ -65,17 +65,20 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   //if (track->Momentum < 200) return output;
   
   // Fill kinematic variables:
+  std::cout << "DEBUG: Filling BDT kinematic variables..." << std::endl;
   bdt_mom = track->Momentum;
   TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
   bdt_theta = TMath::ACos(DirVec[2]);
   
   // Fill TPC variables:
+  std::cout << "DEBUG: Filling BDT TPC variables..." << std::endl;
   bdt_tpc_like_mu = anaUtils::GetPIDLikelihood( *track,0);
   bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *track,1);
   bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *track,2);
   bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *track,3);
   
   // Fill FGD variables:
+  std::cout << "DEBUG: Filling BDT FGD1 variables..." << std::endl;
   AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(0)));
   if (FGD1Segment) 
   {
@@ -83,6 +86,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
     bdt_fgd1pullp  = FGD1Segment->Pullp;
     bdt_fgd1pullpi = FGD1Segment->Pullpi;
   }
+  std::cout << "DEBUG: Filling BDT FGD2 variables..." << std::endl;
   AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(1)));
   if (FGD2Segment) 
   {
@@ -92,6 +96,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   }
   
   // Fill ECal variables:
+  std::cout << "DEBUG: Filling BDT ECal variables..." << std::endl;
   AnaECALParticle* ECALSegment = NULL;
   Int_t ecalsegments = 0;
   
@@ -109,7 +114,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
     bdt_ecal_EbyL = (ECALSegment->EMEnergy)/(ECALSegment->Length);
     bdt_ecal_EbyP = bdt_ecal_EMenergy/bdt_mom;
   }
-  
+  std::cout << "DEBUG: Filling BDT local ECal variables..." << std::endl;
   if (localecalsegment)
   {
     bdt_ecal_circularity = localecalsegment->PIDCircularity;
@@ -119,6 +124,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   }
   
   // Call BDT:
+  std::cout << "DEBUG: Evaluating BDT output..." << std::endl;
   output = tmvareader->EvaluateMulticlass( "BDTG" );
   
   return output;
