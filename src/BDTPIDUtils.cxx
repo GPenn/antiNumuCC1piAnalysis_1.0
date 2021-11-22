@@ -61,7 +61,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   bdt_fgd2pullp = -30.0;
   
   // Sanity check:
-  //if (!track) return output;
+  if (!track) return output;
   //if (track->Momentum < 200) return output;
   
   // Fill kinematic variables:
