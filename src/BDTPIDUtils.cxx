@@ -124,3 +124,129 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   return output;
 }
 
+//**************************************************
+bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t mulike_cutvalue = 0.621;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t mulike_bdtvalue = pidvars[0];
+
+  if (mulike_bdtvalue > mulike_cutvalue) return true;
+
+  return false;
+}
+
+//**************************************************
+bool BDTPIDPiLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t pilike_cutvalue = 0.490;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t pilike_bdtvalue = pidvars[1];
+
+  if (pilike_bdtvalue > pilike_cutvalue) return true;
+
+  return false;
+}
+
+//**************************************************
+bool BDTPIDProtonLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t plike_cutvalue = 0.648;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t plike_bdtvalue = pidvars[2];
+
+  if (plike_bdtvalue > plike_cutvalue) return true;
+
+  return false;
+}
+
+//**************************************************
+bool BDTPIDElectronLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+  
+  Float_t elike_cutvalue = 0.791;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Waive cut if muon candidate track has no ECal segments
+  //if (!box.MainTrack) return true;
+  
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  Float_t elike_bdtvalue = pidvars[3];
+
+  if (elike_bdtvalue > elike_cutvalue) return true;
+
+  return false;
+}
+
+//**************************************************
+bool BDTPreselectionKinematicsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+
+  if (box.MainTrack->Momentum < 200.0) return false;
+  if (box.MainTrack->Momentum > 1500.0) return false;
+  
+  TVector3 DirVec = anaUtils::ArrayToTVector3(box.MainTrack->DirectionStart);
+  if (TMath::ACos(DirVec[2]) > 1.0472) return false;
+
+  return true;
+}
+
+//**************************************************
+bool BDTPreselectionKinematicsPiCandCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
+  
+  if (!box.HMNtrack) return true;
+  
+  if (box.HMNtrack->Momentum < 200.0) return false;
+  if (box.HMNtrack->Momentum > 1500.0) return false;
+  
+  TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
+  if (TMath::ACos(DirVec[2]) > 1.0472) return false;
+
+  return true;
+}
+
