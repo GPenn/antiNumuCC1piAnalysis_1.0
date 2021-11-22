@@ -24,7 +24,7 @@ antiNumuBDTTestingSelection::antiNumuBDTTestingSelection(bool forceBreak, InputM
   //_useECalPiZeroInfo = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
   //_numuCCMultiPiSelection.SetUseECalPiZeroInfo(_useECalPiZeroInfo);
     
-  BDTPIDmanager_sel = new BDTPIDmanager();
+  //BDTPIDmanager_sel = new BDTPIDmanager();
 }
 
 //********************************************************************
@@ -63,16 +63,20 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddSplit(4);
   
   // Mu-like branch
-  AddStep(0, StepBase::kCut,    "BDT mu-like PID",      new BDTPIDMuLikeCut(BDTPIDmanager_sel));
+  //AddStep(0, StepBase::kCut,    "BDT mu-like PID",      new BDTPIDMuLikeCut(BDTPIDmanager_sel));
+  AddStep(0, StepBase::kCut,    "Main track kinematics for BDT (dummy)",      new BDTPreselectionKinematicsCut());
   
   // Pi-like branch
-  AddStep(1, StepBase::kCut,    "BDT pi-like PID",      new BDTPIDPiLikeCut(BDTPIDmanager_sel));
+  //AddStep(1, StepBase::kCut,    "BDT pi-like PID",      new BDTPIDPiLikeCut(BDTPIDmanager_sel));
+  AddStep(1, StepBase::kCut,    "Main track kinematics for BDT (dummy)",      new BDTPreselectionKinematicsCut());
   
   // Proton-like branch
-  AddStep(2, StepBase::kCut,    "BDT p-like PID",       new BDTPIDProtonLikeCut(BDTPIDmanager_sel));
+  //AddStep(2, StepBase::kCut,    "BDT p-like PID",       new BDTPIDProtonLikeCut(BDTPIDmanager_sel));
+  AddStep(2, StepBase::kCut,    "Main track kinematics for BDT (dummy)",      new BDTPreselectionKinematicsCut());
   
   // Electron-like branch
-  AddStep(3, StepBase::kCut,    "BDT e-like PID",       new BDTPIDElectronLikeCut(BDTPIDmanager_sel));
+  //AddStep(3, StepBase::kCut,    "BDT e-like PID",       new BDTPIDElectronLikeCut(BDTPIDmanager_sel));
+  AddStep(3, StepBase::kCut,    "Main track kinematics for BDT (dummy)",      new BDTPreselectionKinematicsCut());
   
   // CC1pi branch
   //AddStep(4, StepBase::kCut,    "1pos1neg TPC tracks",          new TwoTrack1pos1negCut());
