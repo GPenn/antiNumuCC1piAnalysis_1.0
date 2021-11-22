@@ -142,6 +142,16 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     HMNT_fgd2_pull_p,
     HMNT_fgd2_pull_pi,
     HMNT_fgd2_pull_no,
+   
+    selmu_bdt_pid_mu,
+    selmu_bdt_pid_pi,
+    selmu_bdt_pid_p,
+    selmu_bdt_pid_e,
+   
+    hmnt_bdt_pid_mu,
+    hmnt_bdt_pid_pi,
+    hmnt_bdt_pid_p,
+    hmnt_bdt_pid_e,
   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
