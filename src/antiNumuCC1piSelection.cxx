@@ -49,7 +49,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
-  AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   
   AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
@@ -59,19 +59,22 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddSplit(3);
 
   //First branch is for CC-0pi
+  AddStep(0, StepBase::kCut, "Antimu PID",         new AntiMuonPIDCut());
   AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
   AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   
   //AddStep(0, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
   AddStep(0, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
   AddStep(0, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
+  
 
   //Second branch is for CC-1pi
-  AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
-  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   
-  AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
+  // --------------- old version ---------------
+  //AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
+  //AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+  //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
+  //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
   
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
@@ -83,7 +86,14 @@ void antiNumuCC1piSelection::DefineSteps(){
   //CC1pi without muon candidate ECal segment
   //AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
   
+  // --------------- BDT testing version ---------------
+  
+  AddStep(1, StepBase::kCut, "Main track kinematics for BDT",      new BDTPreselectionKinematicsCut());
+  AddStep(1, StepBase::kCut, "1pos1neg TPC tracks",                new TwoTrack1pos1negCut());
+  AddStep(1, StepBase::kCut, "HMNT kinematics for BDT",            new BDTPreselectionKinematicsPiCandCut());
+  
   //Third branch is for CC-Other
+  AddStep(2, StepBase::kCut, "Antimu PID", new AntiMuonPIDCut());
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
   
   //AddStep(2, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
