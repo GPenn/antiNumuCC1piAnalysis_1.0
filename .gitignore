@@ -10,6 +10,10 @@
 /tmva/weights
 /customplotting/bin
 /customplotting/output
+/customplotting/particle_gun/bin
+/customplotting/particle_gun/output
+/customplotting/cc1pi/bin
+/customplotting/cc1pi/output
 /scripts/log
 /scripts/batch/run5
 /fileList/run5

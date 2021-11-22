@@ -4,12 +4,12 @@
 #SBATCH -p compute
 #SBATCH -o log/run5-%j.out
 #SBATCH -e log/run5-%j.err
-#SBATCH -J run5bdt
+#SBATCH -J run5cc1pi
 #SBATCH -t 24:00:00
 
 #run the application:
 source ~/highlandsetup.sh
-rm output/oaAnalysis_prod6Trun5_all_bdttesting.root
+rm output/oaAnalysis_prod6Trun5_all_cc1pi.root
 date
-RunAntiNumuBDTTestingAnalysis.exe fileList/oaAnalysis_prod6Trun5_all.txt -o output/oaAnalysis_prod6Trun5_bdttesting.root
+RunAntiNumuCC1piAnalysis.exe fileList/oaAnalysis_prod6Trun5_all.txt -o output/oaAnalysis_prod6Trun5_cc1pi.root
 date
