@@ -105,18 +105,9 @@ void antiNumuBDTTestingAnalysis::DefineMicroTrees(bool addBase){
   //}
   
   _antiNumuCC1piAnalysis->DefineMicroTrees(addBase); 
-  
-  AddVarF(output(),selmu_bdt_pid_mu, "");
-  AddVarF(output(),selmu_bdt_pid_pi, "");
-  AddVarF(output(),selmu_bdt_pid_p, "");
-  AddVarF(output(),selmu_bdt_pid_e, "");
+
   
   AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
-  
-  AddVarF(output(),hmnt_bdt_pid_mu, "");
-  AddVarF(output(),hmnt_bdt_pid_pi, "");
-  AddVarF(output(),hmnt_bdt_pid_p, "");
-  AddVarF(output(),hmnt_bdt_pid_e, "");
   
   baseTrackerAnalysis::AddEffCounters();
   
