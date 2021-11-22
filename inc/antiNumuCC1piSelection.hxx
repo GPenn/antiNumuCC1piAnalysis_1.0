@@ -8,7 +8,7 @@
 #include "antiNumuCCMultiPiSelection.hxx"
 #include "InputManager.hxx"
 #include "DataClasses.hxx"
-
+#include "BDTPIDUtils.hxx"
 
 
 typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
