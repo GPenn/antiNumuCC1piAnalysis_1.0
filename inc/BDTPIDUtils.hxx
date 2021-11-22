@@ -6,6 +6,7 @@
 #include "TMVA/Reader.h"
 #include "HighlandAnalysisUtils.hxx"
 #include "NuDirUtils.hxx"
+#include "ToyBoxTracker.hxx"
 
 class BDTPIDmanager{
   public:
