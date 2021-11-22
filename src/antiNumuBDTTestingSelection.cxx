@@ -205,18 +205,5 @@ bool antiNumuBDTTestingSelection::CheckRedoSelection(const AnaEventC& event, con
 
 // ------------ CUTS ------------
 
-//**************************************************
-bool TwoTrack1pos1negCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
 
-  (void)event;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB); 
-
-  if (box.nPositiveTPCtracks != 1) return false;
-  if (box.nNegativeTPCtracks != 1) return false;
-
-  return true;
-}
 
