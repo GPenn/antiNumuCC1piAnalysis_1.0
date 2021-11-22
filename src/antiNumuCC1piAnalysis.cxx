@@ -338,7 +338,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     else std::cout << "DEBUG: Main track DOES NOT EXIST." << std::endl;
     if (mybox().MainTrackLocalECalSegment) std::cout << "DEBUG: Main track local ECal segment exists." << std::endl;
     else std::cout << "DEBUG: Main track local ECal segment DOES NOT EXIST." << std::endl;
-    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
+    AnaTrackB& track_for_bdt = *static_cast<AnaTrackB*>(&mybox().MainTrack);
+    AnaTECALReconObject& localseg_for_bdt = NULL;
+    //std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
+    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(track_for_bdt, localseg_for_bdt);
     
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
