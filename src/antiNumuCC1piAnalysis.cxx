@@ -184,15 +184,15 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_fgd2_pull_pi, "");
   AddVarF(output(),HMNT_fgd2_pull_no, "");
   
-  AddVarF(output(),selmu_bdt_pid_mu, "");
-  AddVarF(output(),selmu_bdt_pid_pi, "");
-  AddVarF(output(),selmu_bdt_pid_p, "");
-  AddVarF(output(),selmu_bdt_pid_e, "");
+  //AddVarF(output(),selmu_bdt_pid_mu, "");
+  //AddVarF(output(),selmu_bdt_pid_pi, "");
+  //AddVarF(output(),selmu_bdt_pid_p, "");
+  //AddVarF(output(),selmu_bdt_pid_e, "");
   
-  AddVarF(output(),hmnt_bdt_pid_mu, "");
-  AddVarF(output(),hmnt_bdt_pid_pi, "");
-  AddVarF(output(),hmnt_bdt_pid_p, "");
-  AddVarF(output(),hmnt_bdt_pid_e, "");
+  //AddVarF(output(),hmnt_bdt_pid_mu, "");
+  //AddVarF(output(),hmnt_bdt_pid_pi, "");
+  //AddVarF(output(),hmnt_bdt_pid_p, "");
+  //AddVarF(output(),hmnt_bdt_pid_e, "");
   
   baseTrackerAnalysis::AddEffCounters();
   
@@ -333,7 +333,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       
     }
     
-    std::cout << "DEBUG: Evaluating BDT output..." << std::endl;
+    /*std::cout << "DEBUG: Evaluating BDT output..." << std::endl;
     if (mybox().MainTrack) std::cout << "DEBUG: Main track exists." << std::endl;
     else std::cout << "DEBUG: Main track DOES NOT EXIST." << std::endl;
     if (mybox().MainTrackLocalECalSegment) std::cout << "DEBUG: Main track local ECal segment exists." << std::endl;
@@ -346,7 +346,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
-    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
+    output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
 
   }
   
@@ -443,12 +443,12 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_has_fgd2seg,      0);
     }
     
-      std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
+      /*std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
     
       output().FillVar(hmnt_bdt_pid_mu, BDT_PID_results[0]);
       output().FillVar(hmnt_bdt_pid_pi, BDT_PID_results[1]);
       output().FillVar(hmnt_bdt_pid_p, BDT_PID_results[2]);
-      output().FillVar(hmnt_bdt_pid_e, BDT_PID_results[3]);
+      output().FillVar(hmnt_bdt_pid_e, BDT_PID_results[3]);*/
     
   }
 
