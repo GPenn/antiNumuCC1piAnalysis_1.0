@@ -58,7 +58,7 @@ bool antiNumuCC1piAnalysis::Initialize() {
   // Note to self: figure out how best to integrate this
   //_numuCCMultiPiAnalysis->SetStoreAllTruePrimaryPions((bool)ND::params().GetParameterI("antiNumuCCMultiPiAnalysis.MicroTrees.StoreAllTruePrimaryPions"));
   
-  myBDTPIDmanager = new BDTPIDmanager();
+  myBDTPIDmanagerCC1pi = new BDTPIDmanager();
   
   return true;
 }
