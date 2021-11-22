@@ -256,4 +256,12 @@ public:
   BDTPIDmanager* _bdtpidmanager;
 };
 
+// Two-track cut for antinumu CC1pi
+class TwoTrack1pos1negCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new TwoTrack1pos1negCut();}
+};
+
 #endif
