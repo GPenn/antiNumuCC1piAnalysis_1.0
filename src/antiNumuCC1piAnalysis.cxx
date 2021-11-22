@@ -333,6 +333,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       
     }
     
+    std::cout << "DEBUG: Evaluating BDT output..." << std::endl;
     std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
