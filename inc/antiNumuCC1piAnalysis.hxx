@@ -161,6 +161,8 @@ protected:
   //antiNumuCCAnalysis*    _antiNumuCCAnalysis;
   //numuCCMultiPiAnalysis* _numuCCMultiPiAnalysis;
  antiNumuCCMultiPiAnalysis* _antiNumuCCMultiPiAnalysis;
+ 
+ BDTPIDmanager* myBDTPIDmanager;
 
 private:
   Int_t _whichFGD; // 1 for FGD1 analysis, 2 for FGD2, 3 for both
