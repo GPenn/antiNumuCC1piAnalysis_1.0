@@ -1,156 +1,38 @@
 import random
 
-launchscriptfile = open("submit_batch_jobs.sh", 'w')
+launchscriptfile = open("/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/run5/submit_batch_jobs_run5.sh", 'w')
 
-run = "0822"
-subrun = 1209
+print "Generating job scripts..."
 
-print "Generating antimu config files and job scripts..."
+launchscriptfile.write("cd /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0\n")
 
-launchscriptfile.write("cd antimu/output\n")
+listsfile = open('/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/fileList/run5/lists.txt', 'r')
+lists = listsfile.readlines()
 
-for i in range(0, 1):
-    cfgname = "antimu/cfg/antimu" + str(i) + ".cfg"
-    subrun += 1
-    seed = random.randrange(10000000, 100000000, 1)
-    elecseed = random.randrange(10000000, 100000000, 1)
-    cfgfile = open(cfgname, 'w')
-    cfgfile.write("[software]\ncmtpath = environment\ncmtroot = environment\n\n")
-    cfgfile.write("[configuration]\nmodule_list = nd280MC elecSim oaCalibMC oaRecon oaAnalysis\n\n")
-    cfgfile.write("[filenaming]\nrun_number = " + run + "\nsubrun = " + str(subrun) + "\n\n")
-    cfgfile.write("[nd280mc]\nnum_events = 10000\nmc_type = ParticleGun\nmc_particle = mu+\nmc_position = Subdetector FGD1\nmc_energy = uniform 77.81 1897.76\nmc_direction = cone +z 0 65\nrandom_seed = " + str(seed) + "\n\n")
-    cfgfile.write("[geometry]\nbaseline = Full\n\n")
-    cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
-    cfgfile.close()
+count = 0
 
-    shname = "antimu/scripts/antimu_job" + str(i) + ".sh"
+for list in lists:
+    count += 1
+    shname = "/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/run5/submit_run5_" + str(count) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
     shfile.write("#SBATCH -c 1\n")
     shfile.write("#SBATCH -p compute\n")
-    shfile.write("#SBATCH -o slurm-%j.out\n")
-    shfile.write("#SBATCH -e slurm-%j.err\n")
-    shfile.write("#SBATCH -J pg_amu" + str(i) + "\n")
-    shfile.write("#SBATCH -t 18:00:00\n\n")
+    shfile.write("#SBATCH -o /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/log/run5-%j.out\n")
+    shfile.write("#SBATCH -e /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/log/run5-%j.err\n")
+    shfile.write("#SBATCH -J run5_" + str(count) + "\n")
+    shfile.write("#SBATCH -t 24:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source ~/highlandsetup.sh\n")
+    shfile.write("\n")
+    shfile.write("RunAntiNumuCC1piAnalysis.exe " + list + " -o output/run5/oaAnalysis_prod6Trun5_" + str(count) + ".root\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
-print "Generating proton config files and job scripts..."
 
-launchscriptfile.write("cd ../../proton/output\n")
-
-for i in range(0, 0):
-    cfgname = "proton/cfg/proton" + str(i) + ".cfg"
-    subrun += 1
-    seed = random.randrange(10000000, 100000000, 1)
-    elecseed = random.randrange(10000000, 100000000, 1)
-    cfgfile = open(cfgname, 'w')
-    cfgfile.write("[software]\ncmtpath = environment\ncmtroot = environment\n\n")
-    cfgfile.write("[configuration]\nmodule_list = nd280MC elecSim oaCalibMC oaRecon oaAnalysis\n\n")
-    cfgfile.write("[filenaming]\nrun_number = " + run + "\nsubrun = " + str(subrun) + "\n\n")
-    cfgfile.write("[nd280mc]\nnum_events = 10000\nmc_type = ParticleGun\nmc_particle = proton\nmc_position = Subdetector FGD1\nmc_energy = uniform 11.92 1271\nmc_direction = cone +z 0 65\nrandom_seed = " + str(seed) + "\n\n")
-    cfgfile.write("[geometry]\nbaseline = Full\n\n")
-    cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
-    cfgfile.close()
-
-    shname = "proton/scripts/proton_job" + str(i) + ".sh"
-    shfile = open(shname, 'w')
-    shfile.write("#!/bin/bash\n")
-    shfile.write("#SBATCH -N 1\n")
-    shfile.write("#SBATCH -c 1\n")
-    shfile.write("#SBATCH -p compute\n")
-    shfile.write("#SBATCH -o slurm-%j.out\n")
-    shfile.write("#SBATCH -e slurm-%j.err\n")
-    shfile.write("#SBATCH -J pg_pro" + str(i) + "\n")
-    shfile.write("#SBATCH -t 18:00:00\n\n")
-    shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
-    shfile.close()
-
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
-
-print "Generating piplus config files and job scripts..."
-
-launchscriptfile.write("cd ../../piplus/output\n")
-
-for i in range(0, 0):
-    cfgname = "piplus/cfg/piplus" + str(i) + ".cfg"
-    subrun += 1
-    seed = random.randrange(10000000, 100000000, 1)
-    elecseed = random.randrange(10000000, 100000000, 1)
-    cfgfile = open(cfgname, 'w')
-    cfgfile.write("[software]\ncmtpath = environment\ncmtroot = environment\n\n")
-    cfgfile.write("[configuration]\nmodule_list = nd280MC elecSim oaCalibMC oaRecon oaAnalysis\n\n")
-    cfgfile.write("[filenaming]\nrun_number = " + run + "\nsubrun = " + str(subrun) + "\n\n")
-    cfgfile.write("[nd280mc]\nnum_events = 10000\nmc_type = ParticleGun\nmc_particle = pi+\nmc_position = Subdetector FGD1\nmc_energy = uniform 65.33 1865.55\nmc_direction = cone +z 0 65\nrandom_seed = " + str(seed) + "\n\n")
-    cfgfile.write("[geometry]\nbaseline = Full\n\n")
-    cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
-    cfgfile.close()
-
-    shname = "piplus/scripts/piplus_job" + str(i) + ".sh"
-    shfile = open(shname, 'w')
-    shfile.write("#!/bin/bash\n")
-    shfile.write("#SBATCH -N 1\n")
-    shfile.write("#SBATCH -c 1\n")
-    shfile.write("#SBATCH -p compute\n")
-    shfile.write("#SBATCH -o slurm-%j.out\n")
-    shfile.write("#SBATCH -e slurm-%j.err\n")
-    shfile.write("#SBATCH -J pg_pip" + str(i) + "\n")
-    shfile.write("#SBATCH -t 18:00:00\n\n")
-    shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
-    shfile.close()
-
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
-
-print "Generating positron config files and job scripts..."
-
-launchscriptfile.write("cd ../../positron/output\n")
-
-for i in range(0, 0):
-    cfgname = "positron/cfg/positron" + str(i) + ".cfg"
-    subrun += 1
-    seed = random.randrange(10000000, 100000000, 1)
-    elecseed = random.randrange(10000000, 100000000, 1)
-    cfgfile = open(cfgname, 'w')
-    cfgfile.write("[software]\ncmtpath = environment\ncmtroot = environment\n\n")
-    cfgfile.write("[configuration]\nmodule_list = nd280MC elecSim oaCalibMC oaRecon oaAnalysis\n\n")
-    cfgfile.write("[filenaming]\nrun_number = " + run + "\nsubrun = " + str(subrun) + "\n\n")
-    cfgfile.write("[nd280mc]\nnum_events = 10000\nmc_type = ParticleGun\nmc_particle = e+\nmc_position = Subdetector FGD1\nmc_energy = uniform 149.50 1999.61\nmc_direction = cone +z 0 65\nrandom_seed = " + str(seed) + "\n\n")
-    cfgfile.write("[geometry]\nbaseline = Full\n\n")
-    cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
-    cfgfile.close()
-
-    shname = "positron/scripts/positron_job" + str(i) + ".sh"
-    shfile = open(shname, 'w')
-    shfile.write("#!/bin/bash\n")
-    shfile.write("#SBATCH -N 1\n")
-    shfile.write("#SBATCH -c 1\n")
-    shfile.write("#SBATCH -p compute\n")
-    shfile.write("#SBATCH -o slurm-%j.out\n")
-    shfile.write("#SBATCH -e slurm-%j.err\n")
-    shfile.write("#SBATCH -J pg_pos" + str(i) + "\n")
-    shfile.write("#SBATCH -t 30:00:00\n\n")
-    shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
-    shfile.close()
-
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
-
-launchscriptfile.write("cd ../..\n")
-
+launchscriptfile.write("\n echo \"All jobs submitted.\"\n")
 launchscriptfile.close()
 
 print "Done.\n"
