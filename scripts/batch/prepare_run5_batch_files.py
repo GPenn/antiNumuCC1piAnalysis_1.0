@@ -25,8 +25,7 @@ for list in lists:
     shfile.write("#SBATCH -t 24:00:00\n\n")
     shfile.write("#run the application:\n")
     shfile.write("source ~/highlandsetup.sh\n")
-    shfile.write("\n")
-    shfile.write("RunAntiNumuCC1piAnalysis.exe " + list + " -o output/run5/oaAnalysis_prod6Trun5_" + str(count) + ".root\n")
+    shfile.write("RunAntiNumuCC1piAnalysis.exe " + list.strip() + " -o output/run5/oaAnalysis_prod6Trun5_" + str(count) + ".root\n")
     shfile.close()
 
     launchscriptfile.write("sbatch " + shname + "\n")
