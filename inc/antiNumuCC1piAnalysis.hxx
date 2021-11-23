@@ -148,7 +148,7 @@ class antiNumuCC1piAnalysis: public baseTrackerAnalysis {
     //hmnt_bdt_pid_e,
    
     selmu_bdt_pid_mu_cc1pi,
-    //hmnt_bdt_pid_pi_cc1pi,
+    hmnt_bdt_pid_pi_cc1pi,
   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
