@@ -195,6 +195,7 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   //AddVarF(output(),hmnt_bdt_pid_e, "");
   
   AddVarF(output(),selmu_bdt_pid_mu_cc1pi, "");
+  AddVarF(output(),hmnt_bdt_pid_pi_cc1pi, "");
   
   baseTrackerAnalysis::AddEffCounters();
   
@@ -348,8 +349,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
     
-    //std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(NULL, NULL);
-    //output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
+    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
+    output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
 
   }
   
@@ -452,6 +453,9 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(hmnt_bdt_pid_pi, BDT_PID_results[1]);
       output().FillVar(hmnt_bdt_pid_p, BDT_PID_results[2]);
       output().FillVar(hmnt_bdt_pid_e, BDT_PID_results[3]);*/
+    
+    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanager->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
+    output().FillVar(hmnt_bdt_pid_pi_cc1pi, BDT_PID_results_vector[1]);
     
   }
 
