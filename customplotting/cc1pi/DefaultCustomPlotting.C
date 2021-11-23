@@ -66,7 +66,7 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms to find optimal cuts =============
       
-      if (accum_level[0][1] > 8){
+      if (accum_level[0][1] > 7){
          
          if (particle == -13)
          {
