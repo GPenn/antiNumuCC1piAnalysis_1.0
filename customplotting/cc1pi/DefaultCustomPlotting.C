@@ -132,6 +132,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,500,300);
    TGraph* graph_opt_mu = new TGraph();
+   graph_opt_mu->SetTitle(" ;Cut on BDT mu-like output;Antimuon selection significance;");
    TGraph* graph_opt_pur_mu = new TGraph();
    TGraph* graph_opt_eff_mu = new TGraph();
    TGraph* graph_opt_effpur_mu = new TGraph();
