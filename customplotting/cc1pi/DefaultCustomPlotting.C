@@ -46,8 +46,8 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
    
-   //TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
-   //TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
    
    
@@ -75,6 +75,15 @@ void DefaultCustomPlotting::Loop()
          else
          {
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu_cc1pi);
+         }
+         
+         if (HMNT_pdg == -211)
+         {
+            opt_pilike_sig->Fill(hmnt_bdt_pid_pi_cc1pi);
+         }
+         else
+         {
+            opt_pilike_bkg->Fill(hmnt_bdt_pid_pi_cc1pi);
          }
 
       }
@@ -161,6 +170,62 @@ void DefaultCustomPlotting::Loop()
    graph_opt_eff_mu->Draw("C* same");
    graph_opt_effpur_mu->Draw("C* same");
    canvas_effpur_mu->Write();
+   
+   
+   
+   std::cout << "=========== Pion candidate pi-like optimisation ===========" << std::endl << std::endl;
+   
+   std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
+   
+   Float_t optimal_signif_pi = 0;
+   Float_t optimal_cut_pi = 0;
+   Float_t optimal_pur_pi = 0;
+   Float_t optimal_eff_pi = 0;
+   
+   TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Optimisation signifiance curve (pi-like)",200,10,500,300);
+   TGraph* graph_opt_pi = new TGraph();
+   TGraph* graph_opt_pur_pi = new TGraph();
+   TGraph* graph_opt_eff_pi = new TGraph();
+   TGraph* graph_opt_effpur_pi = new TGraph();
+   
+   for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+   {
+      Float_t passed_sig = opt_pilike_sig->Integral(cut,optimisation_nbins);
+      Float_t passed_bkg = opt_pilike_bkg->Integral(cut,optimisation_nbins);
+      
+      Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      Float_t purity = passed_sig/(passed_sig+passed_bkg);
+      Float_t efficiency = passed_sig/(opt_pilike_sig->GetEntries());
+      if (passed_sig == 0){significance = 0; purity = 0;}
+      
+      if (significance > optimal_signif_pi)
+      {
+         optimal_signif_pi = significance;
+         optimal_cut_pi = opt_mulike_sig->GetBinLowEdge(cut);
+         optimal_pur_pi = purity;
+         optimal_eff_pi = efficiency;
+      }
+      
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_mulike_sig->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      
+      graph_opt_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), significance);
+      graph_opt_pur_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), purity);
+      graph_opt_eff_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), efficiency);
+      graph_opt_effpur_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), efficiency*purity);
+     
+   }
+   
+   std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+   std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+   
+   graph_opt_pi->Draw("AC*");
+   canvas_opt_pi->Write();
+   TCanvas* canvas_effpur_pi = new TCanvas("effpur_pilike","Optimisation efficiency and purity curves (pi-like)",200,10,500,300);
+   graph_opt_pur_pi->Draw("AC*");
+   graph_opt_eff_pi->Draw("C* same");
+   graph_opt_effpur_pi->Draw("C* same");
+   canvas_effpur_pi->Write();
       
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
