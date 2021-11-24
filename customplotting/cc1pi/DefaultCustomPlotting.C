@@ -50,6 +50,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
    
    TH1F *debug_hmnt_pdg = new TH1F("debug_hmnt_pdg", "Pi-like (true pi-)", 1000, -1000, 0);
+   TH1F *debug_hmnt_pid = new TH1F("debug_hmnt_pid", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
 
 
    
@@ -87,6 +88,7 @@ void DefaultCustomPlotting::Loop()
          }
          
          debug_hmnt_pdg->Fill(HMNT_pdg);
+         debug_hmnt_pid->Fill(hmnt_bdt_pid_pi_cc1pi);
 
       }
       
@@ -231,6 +233,7 @@ void DefaultCustomPlotting::Loop()
    
    
    debug_hmnt_pdg->Write();
+   debug_hmnt_pid->Write();
       
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
