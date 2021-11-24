@@ -48,10 +48,10 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *debug_hmnt_pdg = new TH1F("debug_hmnt_pdg", "Pi-like (true pi-)", 1000, -1000, 0);
 
-   
-   
-   
+
    
    
    Long64_t nbytes = 0, nb = 0;
@@ -85,6 +85,8 @@ void DefaultCustomPlotting::Loop()
          {
             opt_pilike_bkg->Fill(hmnt_bdt_pid_pi_cc1pi);
          }
+         
+         debug_hmnt_pdg->Fill(HMNT_pdg);
 
       }
       
@@ -226,6 +228,9 @@ void DefaultCustomPlotting::Loop()
    graph_opt_eff_pi->Draw("C* same");
    graph_opt_effpur_pi->Draw("C* same");
    canvas_effpur_pi->Write();
+   
+   
+   debug_hmnt_pdg->Write();
       
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
