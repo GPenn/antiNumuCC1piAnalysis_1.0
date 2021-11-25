@@ -172,9 +172,9 @@ void DefaultCustomPlotting::Loop()
    graph_opt_mu->Draw("AC");
    canvas_opt_mu_cc1pi->Write();
    TCanvas* canvas_effpur_mu_cc1pi = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,1000,600);
-   graph_opt_pur_mu->Draw("AC");
+   //graph_opt_pur_mu->Draw("AC");
    //graph_opt_eff_mu->Draw("C* same");
-   //graph_opt_effpur_mu->Draw("C* same");
+   graph_opt_effpur_mu->Draw("AC");
    canvas_effpur_mu_cc1pi->Write();
    
    
@@ -230,9 +230,9 @@ void DefaultCustomPlotting::Loop()
    graph_opt_pi->Draw("AC");
    canvas_opt_pi_cc1pi->Write();
    TCanvas* canvas_effpur_pi_cc1pi = new TCanvas("effpur_pilike","Optimisation efficiency and purity curves (pi-like)",200,10,1000,600);
-   graph_opt_pur_pi->Draw("AC");
+   //graph_opt_pur_pi->Draw("AC");
    //graph_opt_eff_pi->Draw("C* same");
-   //graph_opt_effpur_pi->Draw("C* same");
+   graph_opt_effpur_pi->Draw("AC");
    canvas_effpur_pi_cc1pi->Write();
    
    
