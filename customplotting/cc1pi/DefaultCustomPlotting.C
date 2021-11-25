@@ -130,11 +130,11 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_pur_mu = 0;
    Float_t optimal_eff_mu = 0;
    
-   TCanvas* canvas_opt_mu_cc1pi = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,500,300);
+   TCanvas* canvas_opt_mu_cc1pi = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,1000,600);
    TGraph* graph_opt_mu = new TGraph();
    graph_opt_mu->SetTitle(" ;Cut on BDT mu-like output;Antimuon selection significance;");
    TGraph* graph_opt_pur_mu = new TGraph();
-   graph_opt_pur_mu->SetTitle(" ;Cut on BDT mu-like output; ;");
+   graph_opt_pur_mu->SetTitle(" ;Cut on BDT mu-like output; Antimuon selection efficiency*purity;");
    TGraph* graph_opt_eff_mu = new TGraph();
    TGraph* graph_opt_effpur_mu = new TGraph();
    
@@ -169,12 +169,12 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
    std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
    
-   graph_opt_mu->Draw("AC*");
+   graph_opt_mu->Draw("AC");
    canvas_opt_mu_cc1pi->Write();
-   TCanvas* canvas_effpur_mu_cc1pi = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,500,300);
-   graph_opt_pur_mu->Draw("AC*");
-   graph_opt_eff_mu->Draw("C* same");
-   graph_opt_effpur_mu->Draw("C* same");
+   TCanvas* canvas_effpur_mu_cc1pi = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,1000,600);
+   graph_opt_pur_mu->Draw("AC");
+   //graph_opt_eff_mu->Draw("C* same");
+   //graph_opt_effpur_mu->Draw("C* same");
    canvas_effpur_mu_cc1pi->Write();
    
    
@@ -188,11 +188,11 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_pur_pi = 0;
    Float_t optimal_eff_pi = 0;
    
-   TCanvas* canvas_opt_pi_cc1pi = new TCanvas("opt_pilike","Optimisation signifiance curve (pi-like)",200,10,500,300);
+   TCanvas* canvas_opt_pi_cc1pi = new TCanvas("opt_pilike","Optimisation signifiance curve (pi-like)",200,10,1000,600);
    TGraph* graph_opt_pi = new TGraph();
    graph_opt_pi->SetTitle(" ;Cut on BDT pi-like output;Pi- selection significance;");
    TGraph* graph_opt_pur_pi = new TGraph();
-   graph_opt_pur_pi->SetTitle(" ;Cut on BDT pi-like output; ;");
+   graph_opt_pur_pi->SetTitle(" ;Cut on BDT pi-like output;Pi- selection efficiency*purity;");
    TGraph* graph_opt_eff_pi = new TGraph();
    TGraph* graph_opt_effpur_pi = new TGraph();
    
@@ -229,10 +229,10 @@ void DefaultCustomPlotting::Loop()
    
    graph_opt_pi->Draw("AC");
    canvas_opt_pi_cc1pi->Write();
-   TCanvas* canvas_effpur_pi_cc1pi = new TCanvas("effpur_pilike","Optimisation efficiency and purity curves (pi-like)",200,10,500,300);
-   graph_opt_pur_pi->Draw("AC*");
-   graph_opt_eff_pi->Draw("C* same");
-   graph_opt_effpur_pi->Draw("C* same");
+   TCanvas* canvas_effpur_pi_cc1pi = new TCanvas("effpur_pilike","Optimisation efficiency and purity curves (pi-like)",200,10,1000,600);
+   graph_opt_pur_pi->Draw("AC");
+   //graph_opt_eff_pi->Draw("C* same");
+   //graph_opt_effpur_pi->Draw("C* same");
    canvas_effpur_pi_cc1pi->Write();
    
    
