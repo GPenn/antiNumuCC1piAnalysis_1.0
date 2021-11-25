@@ -134,6 +134,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* graph_opt_mu = new TGraph();
    graph_opt_mu->SetTitle(" ;Cut on BDT mu-like output;Antimuon selection significance;");
    TGraph* graph_opt_pur_mu = new TGraph();
+   graph_opt_pur_mu->SetTitle(" ;Cut on BDT mu-like output; ;");
    TGraph* graph_opt_eff_mu = new TGraph();
    TGraph* graph_opt_effpur_mu = new TGraph();
    
@@ -189,7 +190,9 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Optimisation signifiance curve (pi-like)",200,10,500,300);
    TGraph* graph_opt_pi = new TGraph();
+   graph_opt_pi->SetTitle(" ;Cut on BDT pi-like output;Pi- selection significance;");
    TGraph* graph_opt_pur_pi = new TGraph();
+   graph_opt_pur_pi->SetTitle(" ;Cut on BDT pi-like output; ;");
    TGraph* graph_opt_eff_pi = new TGraph();
    TGraph* graph_opt_effpur_pi = new TGraph();
    
