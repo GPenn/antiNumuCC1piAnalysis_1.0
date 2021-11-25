@@ -208,9 +208,11 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,1000,600);
    TGraph* graph_opt_mu = new TGraph();
+   graph_opt_mu->SetTitle(" ;Cut on BDT mu-like output;Antimuon selection significance;");
    TGraph* graph_opt_pur_mu = new TGraph();
    TGraph* graph_opt_eff_mu = new TGraph();
    TGraph* graph_opt_effpur_mu = new TGraph();
+   graph_opt_effpur_mu->SetTitle(" ;Cut on BDT mu-like output;Antimuon selection efficiency*purity;");
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
@@ -246,9 +248,9 @@ void DefaultCustomPlotting::Loop()
    graph_opt_mu->Draw("AC");
    canvas_opt_mu->Write();
    TCanvas* canvas_effpur_mu = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,1000,600);
-   graph_opt_pur_mu->Draw("AC*");
+   //graph_opt_pur_mu->Draw("AC");
    //graph_opt_eff_mu->Draw("C* same");
-   //graph_opt_effpur_mu->Draw("C* same");
+   graph_opt_effpur_mu->Draw("AC");
    canvas_effpur_mu->Write();
    
    std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
