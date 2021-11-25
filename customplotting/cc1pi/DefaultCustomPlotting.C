@@ -227,7 +227,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
    std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
    
-   graph_opt_pi->Draw("AC*");
+   graph_opt_pi->Draw("AC");
    canvas_opt_pi_cc1pi->Write();
    TCanvas* canvas_effpur_pi_cc1pi = new TCanvas("effpur_pilike","Optimisation efficiency and purity curves (pi-like)",200,10,500,300);
    graph_opt_pur_pi->Draw("AC*");
