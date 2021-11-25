@@ -82,6 +82,10 @@
   TCanvas fgd1length;
   draw.Draw(default,"selmu_fgd1_length",50,0,1000,"particle","accum_level[][0]>5");
   
+  draw.SetTitleX("FGD1 energy/length");
+  TCanvas fgd1EbyL;
+  draw.Draw(default,"selmu_fgd1_energy/selmu_fgd1_length",50,0,5,"particle","accum_level[][0]>5");
+  
   draw.SetTitleX("FGD2 mu pull");
   TCanvas fgd2pullmu;
   draw.Draw(default,"selmu_fgd2_pull_mu",50,-30,60,"particle","accum_level[][0]>5");
@@ -101,4 +105,8 @@
   draw.SetTitleX("FGD2 length");
   TCanvas fgd2length;
   draw.Draw(default,"selmu_fgd2_length",50,0,1000,"particle","accum_level[][0]>5");
+  
+  draw.SetTitleX("FGD2 energy/length");
+  TCanvas fgd2EbyL;
+  draw.Draw(default,"selmu_fgd2_energy/selmu_fgd2_length",50,0,5,"particle","accum_level[][0]>5");
 }
