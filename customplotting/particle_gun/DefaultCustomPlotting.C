@@ -253,42 +253,61 @@ void DefaultCustomPlotting::Loop()
    graph_opt_effpur_mu->Draw("AC");
    canvas_effpur_mu->Write();
    
-   std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
+   std::cout << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
    
    //std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
    
    Float_t optimal_signif_pi = 0;
    Float_t optimal_cut_pi = 0;
+   Float_t optimal_pur_pi = 0;
+   Float_t optimal_eff_pi = 0;
    
-   TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Significance (pi-like cut)",200,10,1000,600);
+   TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Optimisation signifiance curve (pi-like)",200,10,1000,600);
    TGraph* graph_opt_pi = new TGraph();
+   graph_opt_pi->SetTitle(" ;Cut on BDT pi-like output;Pi+ selection significance;");
+   TGraph* graph_opt_pur_pi = new TGraph();
+   TGraph* graph_opt_eff_pi = new TGraph();
+   TGraph* graph_opt_effpur_pi = new TGraph();
+   graph_opt_effpur_pi->SetTitle(" ;Cut on BDT pi-like output;Pi+ selection efficiency*purity;");
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
-      Int_t passed_sig = opt_pilike_sig->Integral(cut,optimisation_nbins);
-      Int_t passed_bkg = opt_pilike_bkg->Integral(cut,optimisation_nbins);
+      Float_t passed_sig = opt_pilike_sig->Integral(cut,optimisation_nbins);
+      Float_t passed_bkg = opt_pilike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-      if (passed_sig == 0) significance = 0;
+      Float_t purity = passed_sig/(passed_sig+passed_bkg);
+      Float_t efficiency = passed_sig/(opt_pilike_sig->GetEntries());
+      if (passed_sig == 0){significance = 0; purity = 0;}
       
       if (significance > optimal_signif_pi)
       {
          optimal_signif_pi = significance;
          optimal_cut_pi = opt_pilike_sig->GetBinLowEdge(cut);
+         optimal_pur_pi = purity;
+         optimal_eff_pi = efficiency;
       }
       
-      std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
-                << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
       graph_opt_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), significance);
+      graph_opt_pur_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), purity);
+      graph_opt_eff_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), efficiency);
+      graph_opt_effpur_pi->SetPoint(cut, opt_pilike_sig->GetBinLowEdge(cut), efficiency*purity);
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl << std::endl;
-   
+   std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+   std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
    
    graph_opt_pi->Draw("AC");
    canvas_opt_pi->Write();
+   TCanvas* canvas_effpur_pi = new TCanvas("effpur_pilike","Optimisation efficiency and purity curves (pi-like)",200,10,1000,600);
+   //graph_opt_pur_pi->Draw("AC");
+   //graph_opt_eff_pi->Draw("C* same");
+   graph_opt_effpur_pi->Draw("AC");
+   canvas_effpur_pi->Write();
    
    std::cout << "=========== Proton-like optimisation ===========" << std::endl << std::endl;
    
@@ -296,36 +315,55 @@ void DefaultCustomPlotting::Loop()
    
    Float_t optimal_signif_p = 0;
    Float_t optimal_cut_p = 0;
+   Float_t optimal_pur_p = 0;
+   Float_t optimal_eff_p = 0;
    
-   TCanvas* canvas_opt_p = new TCanvas("opt_plike","Significance (p-like cut)",200,10,1000,600);
+   TCanvas* canvas_opt_p = new TCanvas("opt_plike","Optimisation signifiance curve (p-like)",200,10,1000,600);
    TGraph* graph_opt_p = new TGraph();
+   graph_opt_p->SetTitle(" ;Cut on BDT p-like output;Proton selection significance;");
+   TGraph* graph_opt_pur_p = new TGraph();
+   TGraph* graph_opt_eff_p = new TGraph();
+   TGraph* graph_opt_effpur_p = new TGraph();
+   graph_opt_effpur_p->SetTitle(" ;Cut on BDT p-like output;Proton selection efficiency*purity;");
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
-      Int_t passed_sig = opt_plike_sig->Integral(cut,optimisation_nbins);
-      Int_t passed_bkg = opt_plike_bkg->Integral(cut,optimisation_nbins);
+      Float_t passed_sig = opt_plike_sig->Integral(cut,optimisation_nbins);
+      Float_t passed_bkg = opt_plike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-      if (passed_sig == 0) significance = 0;
+      Float_t purity = passed_sig/(passed_sig+passed_bkg);
+      Float_t efficiency = passed_sig/(opt_plike_sig->GetEntries());
+      if (passed_sig == 0){significance = 0; purity = 0;}
       
       if (significance > optimal_signif_p)
       {
          optimal_signif_p = significance;
          optimal_cut_p = opt_plike_sig->GetBinLowEdge(cut);
+         optimal_pur_p = purity;
+         optimal_eff_p = efficiency;
       }
       
-      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_plike_sig->GetBinLowEdge(cut) 
       //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
       graph_opt_p->SetPoint(cut, opt_plike_sig->GetBinLowEdge(cut), significance);
+      graph_opt_pur_p->SetPoint(cut, opt_plike_sig->GetBinLowEdge(cut), purity);
+      graph_opt_eff_p->SetPoint(cut, opt_plike_sig->GetBinLowEdge(cut), efficiency);
+      graph_opt_effpur_p->SetPoint(cut, opt_plike_sig->GetBinLowEdge(cut), efficiency*purity);
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl << std::endl;
-   
+   std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
+   std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
    
    graph_opt_p->Draw("AC");
    canvas_opt_p->Write();
+   TCanvas* canvas_effpur_p = new TCanvas("effpur_plike","Optimisation efficiency and purity curves (p-like)",200,10,1000,600);
+   //graph_opt_pur_p->Draw("AC");
+   //graph_opt_eff_p->Draw("C* same");
+   graph_opt_effpur_p->Draw("AC");
+   canvas_effpur_p->Write();
    
    std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
    
@@ -333,36 +371,55 @@ void DefaultCustomPlotting::Loop()
    
    Float_t optimal_signif_e = 0;
    Float_t optimal_cut_e = 0;
+   Float_t optimal_pur_e = 0;
+   Float_t optimal_eff_e = 0;
    
-   TCanvas* canvas_opt_e = new TCanvas("opt_elike","Significance (e-like cut)",200,10,1000,600);
+   TCanvas* canvas_opt_e = new TCanvas("opt_elike","Optimisation signifiance curve (e-like)",200,10,1000,600);
    TGraph* graph_opt_e = new TGraph();
+   graph_opt_e->SetTitle(" ;Cut on BDT e-like output;Positron selection significance;");
+   TGraph* graph_opt_pur_e = new TGraph();
+   TGraph* graph_opt_eff_e = new TGraph();
+   TGraph* graph_opt_effpur_e = new TGraph();
+   graph_opt_effpur_e->SetTitle(" ;Cut on BDT e-like output;Positron selection efficiency*purity;");
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
-      Int_t passed_sig = opt_elike_sig->Integral(cut,optimisation_nbins);
-      Int_t passed_bkg = opt_elike_bkg->Integral(cut,optimisation_nbins);
+      Float_t passed_sig = opt_elike_sig->Integral(cut,optimisation_nbins);
+      Float_t passed_bkg = opt_elike_bkg->Integral(cut,optimisation_nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-      if (passed_sig == 0) significance = 0;
+      Float_t purity = passed_sig/(passed_sig+passed_bkg);
+      Float_t efficiency = passed_sig/(opt_elike_sig->GetEntries());
+      if (passed_sig == 0){significance = 0; purity = 0;}
       
       if (significance > optimal_signif_e)
       {
          optimal_signif_e = significance;
          optimal_cut_e = opt_elike_sig->GetBinLowEdge(cut);
+         optimal_pur_e = purity;
+         optimal_eff_e = efficiency;
       }
       
-      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_pilike_sig->GetBinLowEdge(cut) 
+      //std::cout << "DEBUG: Cut #" << cut << " at " << opt_elike_sig->GetBinLowEdge(cut) 
       //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
       
       graph_opt_e->SetPoint(cut, opt_elike_sig->GetBinLowEdge(cut), significance);
+      graph_opt_pur_e->SetPoint(cut, opt_elike_sig->GetBinLowEdge(cut), purity);
+      graph_opt_eff_e->SetPoint(cut, opt_elike_sig->GetBinLowEdge(cut), efficiency);
+      graph_opt_effpur_e->SetPoint(cut, opt_elike_sig->GetBinLowEdge(cut), efficiency*purity);
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl << std::endl;
-   
+   std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
+   std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
    
    graph_opt_e->Draw("AC");
    canvas_opt_e->Write();
+   TCanvas* canvas_effpur_e = new TCanvas("effpur_elike","Optimisation efficiency and purity curves (e-like)",200,10,1000,600);
+   //graph_opt_pur_e->Draw("AC");
+   //graph_opt_eff_e->Draw("C* same");
+   graph_opt_effpur_e->Draw("AC");
+   canvas_effpur_e->Write();
    
    
    
