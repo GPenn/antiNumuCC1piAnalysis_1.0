@@ -206,7 +206,7 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_pur_mu = 0;
    Float_t optimal_eff_mu = 0;
    
-   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,500,300);
+   TCanvas* canvas_opt_mu = new TCanvas("opt_mulike","Optimisation signifiance curve (mu-like)",200,10,1000,600);
    TGraph* graph_opt_mu = new TGraph();
    TGraph* graph_opt_pur_mu = new TGraph();
    TGraph* graph_opt_eff_mu = new TGraph();
@@ -243,12 +243,12 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
    std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
    
-   graph_opt_mu->Draw("AC*");
+   graph_opt_mu->Draw("AC");
    canvas_opt_mu->Write();
-   TCanvas* canvas_effpur_mu = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,500,300);
+   TCanvas* canvas_effpur_mu = new TCanvas("effpur_mulike","Optimisation efficiency and purity curves (mu-like)",200,10,1000,600);
    graph_opt_pur_mu->Draw("AC*");
-   graph_opt_eff_mu->Draw("C* same");
-   graph_opt_effpur_mu->Draw("C* same");
+   //graph_opt_eff_mu->Draw("C* same");
+   //graph_opt_effpur_mu->Draw("C* same");
    canvas_effpur_mu->Write();
    
    std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
@@ -258,7 +258,7 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_pi = 0;
    Float_t optimal_cut_pi = 0;
    
-   TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Significance (pi-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_pi = new TCanvas("opt_pilike","Significance (pi-like cut)",200,10,1000,600);
    TGraph* graph_opt_pi = new TGraph();
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
@@ -285,7 +285,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl << std::endl;
    
    
-   graph_opt_pi->Draw("AC*");
+   graph_opt_pi->Draw("AC");
    canvas_opt_pi->Write();
    
    std::cout << "=========== Proton-like optimisation ===========" << std::endl << std::endl;
@@ -295,7 +295,7 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_p = 0;
    Float_t optimal_cut_p = 0;
    
-   TCanvas* canvas_opt_p = new TCanvas("opt_plike","Significance (p-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_p = new TCanvas("opt_plike","Significance (p-like cut)",200,10,1000,600);
    TGraph* graph_opt_p = new TGraph();
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
@@ -322,7 +322,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl << std::endl;
    
    
-   graph_opt_p->Draw("AC*");
+   graph_opt_p->Draw("AC");
    canvas_opt_p->Write();
    
    std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
@@ -332,7 +332,7 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif_e = 0;
    Float_t optimal_cut_e = 0;
    
-   TCanvas* canvas_opt_e = new TCanvas("opt_elike","Significance (e-like cut)",200,10,500,300);
+   TCanvas* canvas_opt_e = new TCanvas("opt_elike","Significance (e-like cut)",200,10,1000,600);
    TGraph* graph_opt_e = new TGraph();
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
@@ -359,7 +359,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl << std::endl;
    
    
-   graph_opt_e->Draw("AC*");
+   graph_opt_e->Draw("AC");
    canvas_opt_e->Write();
    
    
