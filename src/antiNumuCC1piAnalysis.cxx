@@ -121,6 +121,7 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_fgd1_pull_no, "");
   AddVarF(output(),selmu_fgd1_energy, "");
   AddVarF(output(),selmu_fgd1_length, "");
+  AddVarF(output(),selmu_fgd1_EbyL, "");
   
   AddVarI(output(),selmu_has_fgd2seg, "");
   AddVarF(output(),selmu_fgd2_pull_mu, "");
@@ -130,6 +131,7 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_fgd2_pull_no, "");
   AddVarF(output(),selmu_fgd2_energy, "");
   AddVarF(output(),selmu_fgd2_length, "");
+  AddVarF(output(),selmu_fgd2_EbyL, "");
   
   AddVarF(output(),selmu_ecal_bestseg_EMenergy, "");
   AddVarF(output(),selmu_ecal_bestseg_mippion, "");
@@ -257,7 +259,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd1_pull_no,     FGD1Segment->Pullno);
       output().FillVar(selmu_fgd1_energy,      FGD1Segment->E);
       output().FillVar(selmu_fgd1_length,      FGD1Segment->Length);
-      
+      if ((FGD1Segment->E > 0)&&(FGD1Segment->Length > 0))
+      {
+          output().FillVar(selmu_fgd1_EbyL,        FGD1Segment->E/FGD1Segment->Length);
+      }
     }
     else
     {
@@ -275,6 +280,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_fgd2_pull_no,     FGD2Segment->Pullno);
       output().FillVar(selmu_fgd2_energy,      FGD2Segment->E);
       output().FillVar(selmu_fgd2_length,      FGD2Segment->Length);
+      if ((FGD2Segment->E > 0)&&(FGD2Segment->Length > 0))
+      {
+          output().FillVar(selmu_fgd2_EbyL,        FGD2Segment->E/FGD2Segment->Length);
+      }
       
     }
     else
