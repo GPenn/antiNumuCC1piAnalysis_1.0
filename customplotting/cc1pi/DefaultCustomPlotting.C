@@ -134,9 +134,9 @@ void DefaultCustomPlotting::Loop()
    TGraph* graph_opt_mu = new TGraph();
    graph_opt_mu->SetTitle(" ;Cut on BDT mu-like output;Antimuon selection significance;");
    TGraph* graph_opt_pur_mu = new TGraph();
-   graph_opt_pur_mu->SetTitle(" ;Cut on BDT mu-like output; Antimuon selection efficiency*purity;");
    TGraph* graph_opt_eff_mu = new TGraph();
    TGraph* graph_opt_effpur_mu = new TGraph();
+   graph_opt_effpur_mu->SetTitle(" ;Cut on BDT mu-like output; Antimuon selection efficiency*purity;");
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
@@ -192,9 +192,9 @@ void DefaultCustomPlotting::Loop()
    TGraph* graph_opt_pi = new TGraph();
    graph_opt_pi->SetTitle(" ;Cut on BDT pi-like output;Pi- selection significance;");
    TGraph* graph_opt_pur_pi = new TGraph();
-   graph_opt_pur_pi->SetTitle(" ;Cut on BDT pi-like output;Pi- selection efficiency*purity;");
    TGraph* graph_opt_eff_pi = new TGraph();
    TGraph* graph_opt_effpur_pi = new TGraph();
+   graph_opt_effpur_pi->SetTitle(" ;Cut on BDT pi-like output;Pi- selection efficiency*purity;");
    
    for (Int_t cut=1; cut <= optimisation_nbins; cut++)
    {
