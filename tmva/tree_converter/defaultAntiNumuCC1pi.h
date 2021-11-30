@@ -61,6 +61,9 @@ public :
   Float_t         selmu_ecal_showerwidth;
   Float_t         selmu_ecal_tcr;
   Float_t         selmu_ecal_tmr;
+  Float_t         selmu_ecal_mipem;
+  Float_t         selmu_ecal_emhip;
+  Float_t         selmu_ecal_mippion;
   
   Float_t         selmu_tpc_like_mu;
   Float_t         selmu_tpc_like_e;
@@ -76,6 +79,7 @@ public :
   Float_t         selmu_fgd1_pull_no;
   Float_t         selmu_fgd1_energy;
   Float_t         selmu_fgd1_length;
+  Float_t         selmu_fgd1_EbyL;
   
   Int_t           selmu_has_fgd2seg;
   Float_t         selmu_fgd2_pull_mu;
@@ -84,6 +88,9 @@ public :
   Float_t         selmu_fgd2_pull_no;
   Float_t         selmu_fgd2_energy;
   Float_t         selmu_fgd2_length;
+  Float_t         selmu_fgd2_EbyL;
+  
+  Int_t           selmu_nsmrds;
   
   Float_t         HMNT_mom;
   
@@ -149,6 +156,9 @@ private:
   TBranch        *foutb_selmu_ecal_showerwidth;
   TBranch        *foutb_selmu_ecal_tcr;
   TBranch        *foutb_selmu_ecal_tmr;
+  TBranch        *foutb_selmu_ecal_mipem;
+  TBranch        *foutb_selmu_ecal_emhip;
+  TBranch        *foutb_selmu_ecal_mippion;
   
   TBranch        *foutb_selmu_tpc_like_mu;
   TBranch        *foutb_selmu_tpc_like_e;
@@ -164,6 +174,7 @@ private:
   TBranch        *foutb_selmu_fgd1_pull_no;
   TBranch        *foutb_selmu_fgd1_energy;
   TBranch        *foutb_selmu_fgd1_length;
+  TBranch        *foutb_selmu_fgd1_EbyL;
   
   TBranch        *foutb_selmu_has_fgd2seg;
   TBranch        *foutb_selmu_fgd2_pull_mu;
@@ -172,6 +183,9 @@ private:
   TBranch        *foutb_selmu_fgd2_pull_no;
   TBranch        *foutb_selmu_fgd2_energy;
   TBranch        *foutb_selmu_fgd2_length;
+  TBranch        *foutb_selmu_fgd2_EbyL;
+   
+  TBranch        *foutb_nsmrds;
   
   TBranch        *foutb_HMNT_mom;
   
