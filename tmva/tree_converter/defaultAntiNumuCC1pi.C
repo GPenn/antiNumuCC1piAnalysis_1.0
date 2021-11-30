@@ -31,6 +31,10 @@ void defaultAntiNumuCC1pi::Loop()
 // METHOD2: replace line
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
+    
+    int desiredPDG = -13;
+    
+    
     if (fChain == 0) return;
 
     Long64_t nentries = fChain->GetEntries();
@@ -42,6 +46,7 @@ void defaultAntiNumuCC1pi::Loop()
     std::cout << "Generating weight histogram... ";
    
     TH1F *recomom_hist = new TH1F("recomom_hist", "Reco momentum", 150, 0, 1500);
+    
    
     for (Long64_t jentry=0; jentry<nentries;jentry++) {
    
@@ -53,7 +58,7 @@ void defaultAntiNumuCC1pi::Loop()
         if (selmu_mom[0] < 200.0) continue;
         if (selmu_det_theta > 1.0472) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
-        if (particle != 2212) continue;
+        if (particle != desiredPDG) continue;
         if (selmu_necals > 1) continue;
       
         recomom_hist->Fill(selmu_mom[0]);
@@ -71,7 +76,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_mom[0] < 200.0) continue;
        if (selmu_det_theta > 1.0472) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
-       if (particle != 2212) continue;
+       if (particle != desiredPDG) continue;
        if (selmu_necals > 1) continue;
              
        defout->evt    		                  = evt;
