@@ -185,7 +185,7 @@ private:
   TBranch        *foutb_selmu_fgd2_length;
   TBranch        *foutb_selmu_fgd2_EbyL;
    
-  TBranch        *foutb_nsmrds;
+  TBranch        *foutb_selmu_nsmrds;
   
   TBranch        *foutb_HMNT_mom;
   
