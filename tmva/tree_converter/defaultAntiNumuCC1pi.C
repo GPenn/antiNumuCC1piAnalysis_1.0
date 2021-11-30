@@ -54,6 +54,7 @@ void defaultAntiNumuCC1pi::Loop()
         if (selmu_det_theta > 1.0472) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
         if (particle != 2212) continue;
+        if (selmu_necals > 1) continue;
       
         recomom_hist->Fill(selmu_mom[0]);
     }
@@ -71,6 +72,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_det_theta > 1.0472) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
        if (particle != 2212) continue;
+       if (selmu_necals > 1) continue;
              
        defout->evt    		                  = evt;
        defout->topology		                  = topology;
@@ -153,6 +155,15 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_ecal_qrms > 3.0)      {defout->selmu_ecal_qrms = 3.0;}
        else if (selmu_ecal_qrms < 0.0) {defout->selmu_ecal_qrms = -0.1;}
        else                            {defout->selmu_ecal_qrms = selmu_ecal_qrms;}
+        
+       if (selmu_ecal_mipem[0] < -100.0) {defout->selmu_ecal_mipem = -100.0;}
+       else                              {defout->selmu_ecal_mipem = selmu_ecal_mipem[0];}
+        
+       if (selmu_ecal_emhip[0] < -100.0) {defout->selmu_ecal_emhip = -100.0;}
+       else                              {defout->selmu_ecal_emhip = selmu_ecal_emhip[0];}
+        
+       if (selmu_ecal_mippion[0] < -100.0) {defout->selmu_ecal_mippion = -100.0;}
+       else                                {defout->selmu_ecal_mippion = selmu_ecal_mippion[0];}
 
        defout->selmu_tpc_like_mu              = selmu_tpc_like_mu;
        defout->selmu_tpc_like_e               = selmu_tpc_like_e;
@@ -177,6 +188,8 @@ void defaultAntiNumuCC1pi::Loop()
             else                                                          {defout->selmu_fgd1_energy = -50.0;}
             if (selmu_fgd1_length > 0.0 && selmu_fgd1_length < 700.0)     {defout->selmu_fgd1_length = selmu_fgd1_length;}
             else                                                          {defout->selmu_fgd1_length = -100.0;}
+            if (selmu_fgd1_EbyL > 0.0 && selmu_fgd1_EbyL < 2.0)           {defout->selmu_fgd1_EbyL = selmu_fgd1_EbyL;}
+            else                                                          {defout->selmu_fgd1_EbyL = -1.0;}
             
          
             defout->selmu_has_fgd2seg              = selmu_has_fgd2seg;
@@ -192,7 +205,11 @@ void defaultAntiNumuCC1pi::Loop()
             else                                                          {defout->selmu_fgd2_energy = -50.0;}
             if (selmu_fgd2_length > 0.0 && selmu_fgd2_length < 700.0)     {defout->selmu_fgd2_length = selmu_fgd2_length;}
             else                                                          {defout->selmu_fgd2_length = -100.0;}
+            if (selmu_fgd2_EbyL > 0.0 && selmu_fgd2_EbyL < 2.0)           {defout->selmu_fgd2_EbyL = selmu_fgd2_EbyL;}
+            else                                                          {defout->selmu_fgd2_EbyL = -1.0;}
          
+            defout->selmu_nsmrds              = selmu_nsmrds;
+        
             defout->HMNT_mom      		            = HMNT_mom;
             
             defout->HMNT_NEcalSegments		         = HMNT_NEcalSegments;
@@ -346,6 +363,9 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_ecal_showerwidth       = fDefaultOut->Branch("selmu_ecal_showerwidth"         , &selmu_ecal_showerwidth      , "selmu_ecal_showerwidth/F");
   foutb_selmu_ecal_tcr               = fDefaultOut->Branch("selmu_ecal_tcr"                 , &selmu_ecal_tcr              , "selmu_ecal_tcr/F");
   foutb_selmu_ecal_tmr               = fDefaultOut->Branch("selmu_ecal_tmr"                 , &selmu_ecal_tmr              , "selmu_ecal_tmr/F");
+  foutb_selmu_ecal_mipem             = fDefaultOut->Branch("selmu_ecal_mipem"               , &selmu_ecal_mipem            , "selmu_ecal_mipem/F");
+  foutb_selmu_ecal_emhip             = fDefaultOut->Branch("selmu_ecal_emhip"               , &selmu_ecal_emhip            , "selmu_ecal_emhip/F");
+  foutb_selmu_ecal_mippion           = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion          , "selmu_ecal_mippion/F");
    
   foutb_selmu_tpc_like_mu  	       = fDefaultOut->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu  	      , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
@@ -361,6 +381,7 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_fgd1_pull_no  	       = fDefaultOut->Branch("selmu_fgd1_pull_no"             , &selmu_fgd1_pull_no  	      , "selmu_fgd1_pull_no/F");
   foutb_selmu_fgd1_energy  	           = fDefaultOut->Branch("selmu_fgd1_energy"              , &selmu_fgd1_energy  	      , "selmu_fgd1_energy/F");
   foutb_selmu_fgd1_length  	           = fDefaultOut->Branch("selmu_fgd1_length"              , &selmu_fgd1_length  	      , "selmu_fgd1_length/F");
+  foutb_selmu_fgd1_EbyL  	           = fDefaultOut->Branch("selmu_fgd1_EbyL"                , &selmu_fgd1_EbyL     	      , "selmu_fgd1_EbyL/F");
    
   foutb_selmu_has_fgd2seg 	          = fDefaultOut->Branch("selmu_has_fgd2seg"              , &selmu_has_fgd2seg 	         , "selmu_has_fgd2seg/I");
   foutb_selmu_fgd2_pull_mu  	       = fDefaultOut->Branch("selmu_fgd2_pull_mu"             , &selmu_fgd2_pull_mu  	      , "selmu_fgd2_pull_mu/F");
@@ -369,6 +390,9 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_fgd2_pull_no  	       = fDefaultOut->Branch("selmu_fgd2_pull_no"             , &selmu_fgd2_pull_no  	      , "selmu_fgd2_pull_no/F");
   foutb_selmu_fgd2_energy  	           = fDefaultOut->Branch("selmu_fgd2_energy"              , &selmu_fgd2_energy  	      , "selmu_fgd2_energy/F");
   foutb_selmu_fgd2_length  	           = fDefaultOut->Branch("selmu_fgd2_length"              , &selmu_fgd2_length  	      , "selmu_fgd2_length/F");
+  foutb_selmu_fgd2_EbyL  	           = fDefaultOut->Branch("selmu_fgd2_EbyL"                , &selmu_fgd2_EbyL     	      , "selmu_fgd2_EbyL/F");
+  
+  foutb_selmu_nsmrds 	               = fDefaultOut->Branch("selmu_nsmrds"                   , &selmu_nsmrds     	          , "selmu_nsmrds/I");
    
   foutb_HMNT_mom 	                   = fDefaultOut->Branch("HMNT_mom"                       , &HMNT_mom 	                  , "HMNT_mom/F");
   
