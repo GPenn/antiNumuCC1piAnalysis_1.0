@@ -376,82 +376,82 @@ public :
    Float_t         selmu_ecal_containment[2];   //[selmu_necals]
    Int_t           selmu_ecal_mostupstreamlayerhit[2];   //[selmu_necals]
    Int_t           selmu_nsmrds;
-   Int_t           selmu_smrd_det[2];   //[selmu_nsmrds]
-   Int_t           selmu_smrd_nhits[2];   //[selmu_nsmrds]
-   Int_t           selmu_smrd_nnodes[2];   //[selmu_nsmrds]
-   Float_t         selmu_smrd_dir[2][3];   //[selmu_nsmrds]
-   Float_t         selmu_smrd_enddir[2][3];   //[selmu_nsmrds]
-   Float_t         selmu_smrd_edeposit[2];   //[selmu_nsmrds]
+   Int_t           selmu_smrd_det[1];   //[selmu_nsmrds]
+   Int_t           selmu_smrd_nhits[1];   //[selmu_nsmrds]
+   Int_t           selmu_smrd_nnodes[1];   //[selmu_nsmrds]
+   Float_t         selmu_smrd_dir[1][3];   //[selmu_nsmrds]
+   Float_t         selmu_smrd_enddir[1][3];   //[selmu_nsmrds]
+   Float_t         selmu_smrd_edeposit[1];   //[selmu_nsmrds]
    Int_t           truevtx_mass_component[1];   //[NTOYS]
    Int_t           MuonVertexId;
    Int_t           MuonIndex;
    Float_t         NegPionMom[1][450];   //[NTOYS]
    Float_t         NegPionTheta[1][450];   //[NTOYS]
    Int_t           NNegPion;
-   Float_t         NegPionPidLik[1];   //[NNegPion]
-   Float_t         NegPionMipPidLik[1];   //[NNegPion]
-   Int_t           NegPionTId[1];   //[NNegPion]
-   Int_t           NegPionIndex[1];   //[NNegPion]
-   Int_t           NegPionParentTId[1];   //[NNegPion]
-   Int_t           NegPionGParentTId[1];   //[NNegPion]
-   Float_t         NegPionTrueMom[1];   //[NNegPion]
-   Float_t         NegPionTrueStartDir[1][3];   //[NNegPion]
-   Int_t           NegPionVId[1];   //[NNegPion]
-   Float_t         NegPionDir[1][3];   //[NNegPion]
-   Float_t         NegPionPosStart[1][3];   //[NNegPion]
-   Float_t         NegPionPosEnd[1][3];   //[NNegPion]
+   Float_t         NegPionPidLik[3];   //[NNegPion]
+   Float_t         NegPionMipPidLik[3];   //[NNegPion]
+   Int_t           NegPionTId[3];   //[NNegPion]
+   Int_t           NegPionIndex[3];   //[NNegPion]
+   Int_t           NegPionParentTId[3];   //[NNegPion]
+   Int_t           NegPionGParentTId[3];   //[NNegPion]
+   Float_t         NegPionTrueMom[3];   //[NNegPion]
+   Float_t         NegPionTrueStartDir[3][3];   //[NNegPion]
+   Int_t           NegPionVId[3];   //[NNegPion]
+   Float_t         NegPionDir[3][3];   //[NNegPion]
+   Float_t         NegPionPosStart[3][3];   //[NNegPion]
+   Float_t         NegPionPosEnd[3][3];   //[NNegPion]
    Float_t         PosPionMom[1][465];   //[NTOYS]
    Float_t         PosPionTheta[1][465];   //[NTOYS]
    Int_t           NPosPion;
-   Float_t         PosPionPidLik[1];   //[NPosPion]
-   Float_t         PosPionMipPidLik[1];   //[NPosPion]
-   Int_t           PosPionTId[1];   //[NPosPion]
-   Int_t           PosPionIndex[1];   //[NPosPion]
-   Int_t           PosPionParentTId[1];   //[NPosPion]
-   Int_t           PosPionGParentTId[1];   //[NPosPion]
-   Float_t         PosPionTrueMom[1];   //[NPosPion]
-   Float_t         PosPionTrueStartDir[1][3];   //[NPosPion]
-   Int_t           PosPionVId[1];   //[NPosPion]
-   Float_t         PosPionDir[1][3];   //[NPosPion]
-   Float_t         PosPionPosStart[1][3];   //[NPosPion]
-   Float_t         PosPionPosEnd[1][3];   //[NPosPion]
+   Float_t         PosPionPidLik[2];   //[NPosPion]
+   Float_t         PosPionMipPidLik[2];   //[NPosPion]
+   Int_t           PosPionTId[2];   //[NPosPion]
+   Int_t           PosPionIndex[2];   //[NPosPion]
+   Int_t           PosPionParentTId[2];   //[NPosPion]
+   Int_t           PosPionGParentTId[2];   //[NPosPion]
+   Float_t         PosPionTrueMom[2];   //[NPosPion]
+   Float_t         PosPionTrueStartDir[2][3];   //[NPosPion]
+   Int_t           PosPionVId[2];   //[NPosPion]
+   Float_t         PosPionDir[2][3];   //[NPosPion]
+   Float_t         PosPionPosStart[2][3];   //[NPosPion]
+   Float_t         PosPionPosEnd[2][3];   //[NPosPion]
    Int_t           NPi0El;
-   Float_t         Pi0ElMom[3];   //[NPi0El]
-   Float_t         Pi0ElPull[3];   //[NPi0El]
-   Int_t           Pi0ElTId[3];   //[NPi0El]
-   Int_t           Pi0ElIndex[3];   //[NPi0El]
-   Int_t           Pi0ElParentTId[3];   //[NPi0El]
-   Int_t           Pi0ElGParentTId[3];   //[NPi0El]
-   Int_t           Pi0ElVId[3];   //[NPi0El]
-   Float_t         Pi0ElDir[3][3];   //[NPi0El]
-   Float_t         Pi0ElPosStart[3][3];   //[NPi0El]
-   Float_t         Pi0ElPosEnd[3][3];   //[NPi0El]
+   Float_t         Pi0ElMom[5];   //[NPi0El]
+   Float_t         Pi0ElPull[5];   //[NPi0El]
+   Int_t           Pi0ElTId[5];   //[NPi0El]
+   Int_t           Pi0ElIndex[5];   //[NPi0El]
+   Int_t           Pi0ElParentTId[5];   //[NPi0El]
+   Int_t           Pi0ElGParentTId[5];   //[NPi0El]
+   Int_t           Pi0ElVId[5];   //[NPi0El]
+   Float_t         Pi0ElDir[5][3];   //[NPi0El]
+   Float_t         Pi0ElPosStart[5][3];   //[NPi0El]
+   Float_t         Pi0ElPosEnd[5][3];   //[NPi0El]
    Int_t           NPi0Pos;
-   Float_t         Pi0PosMom[1];   //[NPi0Pos]
-   Float_t         Pi0PosPull[1];   //[NPi0Pos]
-   Int_t           Pi0PosTId[1];   //[NPi0Pos]
-   Int_t           Pi0PosIndex[1];   //[NPi0Pos]
-   Int_t           Pi0PosParentTId[1];   //[NPi0Pos]
-   Int_t           Pi0PosGParentTId[1];   //[NPi0Pos]
-   Int_t           Pi0PosVId[1];   //[NPi0Pos]
-   Float_t         Pi0PosDir[1][3];   //[NPi0Pos]
-   Float_t         Pi0PosPosStart[1][3];   //[NPi0Pos]
-   Float_t         Pi0PosPosEnd[1][3];   //[NPi0Pos]
+   Float_t         Pi0PosMom[2];   //[NPi0Pos]
+   Float_t         Pi0PosPull[2];   //[NPi0Pos]
+   Int_t           Pi0PosTId[2];   //[NPi0Pos]
+   Int_t           Pi0PosIndex[2];   //[NPi0Pos]
+   Int_t           Pi0PosParentTId[2];   //[NPi0Pos]
+   Int_t           Pi0PosGParentTId[2];   //[NPi0Pos]
+   Int_t           Pi0PosVId[2];   //[NPi0Pos]
+   Float_t         Pi0PosDir[2][3];   //[NPi0Pos]
+   Float_t         Pi0PosPosStart[2][3];   //[NPi0Pos]
+   Float_t         Pi0PosPosEnd[2][3];   //[NPi0Pos]
    Int_t           NTPCSec;
-   Float_t         TPCSecMom[4];   //[NTPCSec]
-   Float_t         TPCSecMuPidLik[4];   //[NTPCSec]
-   Float_t         TPCSecPiPidLik[4];   //[NTPCSec]
-   Float_t         TPCSecPrPidLik[4];   //[NTPCSec]
-   Float_t         TPCSecElPidLik[4];   //[NTPCSec]
-   Int_t           TPCSecDetectors[4];   //[NTPCSec]
-   Int_t           TPCSecQ[4];   //[NTPCSec]
-   Int_t           TPCSecTId[4];   //[NTPCSec]
-   Int_t           TPCSecIndex[4];   //[NTPCSec]
-   Int_t           TPCSecParentTId[4];   //[NTPCSec]
-   Int_t           TPCSecGParentTId[4];   //[NTPCSec]
-   Float_t         TPCSecDir[4][3];   //[NTPCSec]
-   Float_t         TPCSecPosStart[4][3];   //[NTPCSec]
-   Float_t         TPCSecPosEnd[4][3];   //[NTPCSec]
+   Float_t         TPCSecMom[8];   //[NTPCSec]
+   Float_t         TPCSecMuPidLik[8];   //[NTPCSec]
+   Float_t         TPCSecPiPidLik[8];   //[NTPCSec]
+   Float_t         TPCSecPrPidLik[8];   //[NTPCSec]
+   Float_t         TPCSecElPidLik[8];   //[NTPCSec]
+   Int_t           TPCSecDetectors[8];   //[NTPCSec]
+   Int_t           TPCSecQ[8];   //[NTPCSec]
+   Int_t           TPCSecTId[8];   //[NTPCSec]
+   Int_t           TPCSecIndex[8];   //[NTPCSec]
+   Int_t           TPCSecParentTId[8];   //[NTPCSec]
+   Int_t           TPCSecGParentTId[8];   //[NTPCSec]
+   Float_t         TPCSecDir[8][3];   //[NTPCSec]
+   Float_t         TPCSecPosStart[8][3];   //[NTPCSec]
+   Float_t         TPCSecPosEnd[8][3];   //[NTPCSec]
    Int_t           NFGDPi;
    Float_t         FGDPiLength[1];   //[NFGDPi]
    Float_t         FGDPiPiPull[1];   //[NFGDPi]
@@ -513,15 +513,15 @@ public :
    Float_t         MEMinTime[1];   //[NME]
    Float_t         MEMaxTime[1];   //[NME]
    Int_t           NTPC1Track;
-   Float_t         TPC1TrackMom[5];   //[NTPC1Track]
-   Float_t         TPC1TrackCosTheta[5];   //[NTPC1Track]
-   Float_t         TPC1TrackPhi[5];   //[NTPC1Track]
-   Int_t           TPC1TrackVId[5];   //[NTPC1Track]
-   Int_t           TPC1TrackTId[5];   //[NTPC1Track]
-   Int_t           TPC1TrackParentTId[5];   //[NTPC1Track]
-   Int_t           TPC1TrackGParentTId[5];   //[NTPC1Track]
-   Float_t         TPC1TrackPosStart[5][3];   //[NTPC1Track]
-   Float_t         TPC1TrackPosEnd[5][3];   //[NTPC1Track]
+   Float_t         TPC1TrackMom[9];   //[NTPC1Track]
+   Float_t         TPC1TrackCosTheta[9];   //[NTPC1Track]
+   Float_t         TPC1TrackPhi[9];   //[NTPC1Track]
+   Int_t           TPC1TrackVId[9];   //[NTPC1Track]
+   Int_t           TPC1TrackTId[9];   //[NTPC1Track]
+   Int_t           TPC1TrackParentTId[9];   //[NTPC1Track]
+   Int_t           TPC1TrackGParentTId[9];   //[NTPC1Track]
+   Float_t         TPC1TrackPosStart[9][3];   //[NTPC1Track]
+   Float_t         TPC1TrackPosEnd[9][3];   //[NTPC1Track]
    Float_t         truepi_mom;
    Float_t         truepi_costheta;
    Float_t         truepi_dir[3];
@@ -537,11 +537,11 @@ public :
    Int_t           ECalPhotonDetector[1];   //[NECalIsoObjects]
    Int_t           true_nprotons;
    Int_t           nProtonsFGD;
-   Float_t         FGDProtMom[1];   //[nProtonsFGD]
-   Int_t           FGDProtonTId[1];   //[nProtonsFGD]
+   Float_t         FGDProtMom[2];   //[nProtonsFGD]
+   Int_t           FGDProtonTId[2];   //[nProtonsFGD]
    Int_t           nProtonsTPC;
-   Float_t         TPCProtMom[2];   //[nProtonsTPC]
-   Int_t           TPCProtonTId[2];   //[nProtonsTPC]
+   Float_t         TPCProtMom[3];   //[nProtonsTPC]
+   Int_t           TPCProtonTId[3];   //[nProtonsTPC]
    Float_t         selmu_det_theta;
    Float_t         selmu_tpc_like_mu;
    Float_t         selmu_tpc_like_e;
@@ -555,6 +555,7 @@ public :
    Float_t         selmu_fgd1_pull_no;
    Float_t         selmu_fgd1_energy;
    Float_t         selmu_fgd1_length;
+   Float_t         selmu_fgd1_EbyL;
    Int_t           selmu_has_fgd2seg;
    Float_t         selmu_fgd2_pull_mu;
    Float_t         selmu_fgd2_pull_e;
@@ -563,6 +564,7 @@ public :
    Float_t         selmu_fgd2_pull_no;
    Float_t         selmu_fgd2_energy;
    Float_t         selmu_fgd2_length;
+   Float_t         selmu_fgd2_EbyL;
    Float_t         selmu_ecal_bestseg_EMenergy;
    Float_t         selmu_ecal_bestseg_mippion;
    Float_t         selmu_ecal_bestseg_EbyL;
@@ -606,6 +608,8 @@ public :
    Float_t         HMNT_fgd2_pull_p;
    Float_t         HMNT_fgd2_pull_pi;
    Float_t         HMNT_fgd2_pull_no;
+   Float_t         selmu_bdt_pid_mu_cc1pi;
+   Float_t         hmnt_bdt_pid_pi_cc1pi;
 
    // List of branches
    TBranch        *b_NTOYS;   //!
@@ -953,6 +957,7 @@ public :
    TBranch        *b_selmu_fgd1_pull_no;   //!
    TBranch        *b_selmu_fgd1_energy;   //!
    TBranch        *b_selmu_fgd1_length;   //!
+   TBranch        *b_selmu_fgd1_EbyL;   //!
    TBranch        *b_selmu_has_fgd2seg;   //!
    TBranch        *b_selmu_fgd2_pull_mu;   //!
    TBranch        *b_selmu_fgd2_pull_e;   //!
@@ -961,6 +966,7 @@ public :
    TBranch        *b_selmu_fgd2_pull_no;   //!
    TBranch        *b_selmu_fgd2_energy;   //!
    TBranch        *b_selmu_fgd2_length;   //!
+   TBranch        *b_selmu_fgd2_EbyL;   //!
    TBranch        *b_selmu_ecal_bestseg_EMenergy;   //!
    TBranch        *b_selmu_ecal_bestseg_mippion;   //!
    TBranch        *b_selmu_ecal_bestseg_EbyL;   //!
@@ -1004,6 +1010,9 @@ public :
    TBranch        *b_HMNT_fgd2_pull_p;   //!
    TBranch        *b_HMNT_fgd2_pull_pi;   //!
    TBranch        *b_HMNT_fgd2_pull_no;   //!
+   TBranch        *b_selmu_bdt_pid_mu_cc1pi;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_cc1pi;   //!
+
   
    defaultAntiNumuCC1pi(TTree *tree=0, std::string outFileName="defaultTest.root");
    virtual ~defaultAntiNumuCC1pi();
@@ -1424,6 +1433,7 @@ void defaultAntiNumuCC1pi::Init(TTree *tree)
    fChain->SetBranchAddress("selmu_fgd1_pull_no", &selmu_fgd1_pull_no, &b_selmu_fgd1_pull_no);
    fChain->SetBranchAddress("selmu_fgd1_energy", &selmu_fgd1_energy, &b_selmu_fgd1_energy);
    fChain->SetBranchAddress("selmu_fgd1_length", &selmu_fgd1_length, &b_selmu_fgd1_length);
+   fChain->SetBranchAddress("selmu_fgd1_EbyL", &selmu_fgd1_EbyL, &b_selmu_fgd1_EbyL);
    fChain->SetBranchAddress("selmu_has_fgd2seg", &selmu_has_fgd2seg, &b_selmu_has_fgd2seg);
    fChain->SetBranchAddress("selmu_fgd2_pull_mu", &selmu_fgd2_pull_mu, &b_selmu_fgd2_pull_mu);
    fChain->SetBranchAddress("selmu_fgd2_pull_e", &selmu_fgd2_pull_e, &b_selmu_fgd2_pull_e);
@@ -1432,6 +1442,7 @@ void defaultAntiNumuCC1pi::Init(TTree *tree)
    fChain->SetBranchAddress("selmu_fgd2_pull_no", &selmu_fgd2_pull_no, &b_selmu_fgd2_pull_no);
    fChain->SetBranchAddress("selmu_fgd2_energy", &selmu_fgd2_energy, &b_selmu_fgd2_energy);
    fChain->SetBranchAddress("selmu_fgd2_length", &selmu_fgd2_length, &b_selmu_fgd2_length);
+   fChain->SetBranchAddress("selmu_fgd2_EbyL", &selmu_fgd2_EbyL, &b_selmu_fgd2_EbyL);
    fChain->SetBranchAddress("selmu_ecal_bestseg_EMenergy", &selmu_ecal_bestseg_EMenergy, &b_selmu_ecal_bestseg_EMenergy);
    fChain->SetBranchAddress("selmu_ecal_bestseg_mippion", &selmu_ecal_bestseg_mippion, &b_selmu_ecal_bestseg_mippion);
    fChain->SetBranchAddress("selmu_ecal_bestseg_EbyL", &selmu_ecal_bestseg_EbyL, &b_selmu_ecal_bestseg_EbyL);
@@ -1475,6 +1486,8 @@ void defaultAntiNumuCC1pi::Init(TTree *tree)
    fChain->SetBranchAddress("HMNT_fgd2_pull_p", &HMNT_fgd2_pull_p, &b_HMNT_fgd2_pull_p);
    fChain->SetBranchAddress("HMNT_fgd2_pull_pi", &HMNT_fgd2_pull_pi, &b_HMNT_fgd2_pull_pi);
    fChain->SetBranchAddress("HMNT_fgd2_pull_no", &HMNT_fgd2_pull_no, &b_HMNT_fgd2_pull_no);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_cc1pi", &selmu_bdt_pid_mu_cc1pi, &b_selmu_bdt_pid_mu_cc1pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_cc1pi", &hmnt_bdt_pid_pi_cc1pi, &b_hmnt_bdt_pid_pi_cc1pi);
    Notify();
 }
 
