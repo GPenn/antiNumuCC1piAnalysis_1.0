@@ -233,7 +233,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "MipPion := selmu_ecal_mippion",                  "ECal MipPion",             "", 'F' );
    
    // Muon candidate SMRD variables
-   //factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
+   factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
    
    
 
