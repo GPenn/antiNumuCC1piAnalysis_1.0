@@ -199,31 +199,43 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
    //factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                "ECal E/p",          "", 'F' );
    
-   // Muon candidate ECal variables
-   factory->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
-   factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
-   factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
-   factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
-   factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
+   // Muon candidate FGD variables
+   //factory->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               "FGD1 muon pull",         "", 'F' );
+   //factory->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               "FGD1 pion pull",         "", 'F' );
+   //factory->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 "FGD1 proton pull",       "", 'F' );
+   //factory->AddVariable( "fgd1energy := selmu_fgd1_energy",                  "FGD1 energy",            "", 'F' );
+   //factory->AddVariable( "fgd1length := selmu_fgd1_length",                  "FGD1 length",            "", 'F' );
+   factory->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      "FGD1 E/L",               "", 'F' );
+   
+   //factory->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               "FGD2 muon pull",         "", 'F' );
+   //factory->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               "FGD2 pion pull",         "", 'F' );
+   //factory->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 "FGD2 proton pull",       "", 'F' );
+   //factory->AddVariable( "fgd2energy := selmu_fgd2_energy",                  "FGD2 energy",            "", 'F' );
+   //factory->AddVariable( "fgd2length := selmu_fgd2_length",                  "FGD2 length",            "", 'F' );
+   factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
    
    // Muon candidate TPC variables
    factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC mu-like",    "", 'F' );
    factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC e-like",     "", 'F' );
    factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC p-like",     "", 'F' );
    factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC pi-like",    "", 'F' );
+   //factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
+   //factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
    
-   // Muon candidate FGD variables
-   //factory->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               "FGD1 muon pull",         "", 'F' );
-   //factory->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               "FGD1 pion pull",         "", 'F' );
-   //factory->AddVariable( "fgd1pullp := selmu_fgd1_pull_p",                 "FGD1 proton pull",       "", 'F' );
-   factory->AddVariable( "fgd1energy := selmu_fgd1_energy",                  "FGD1 energy",            "", 'F' );
-   factory->AddVariable( "fgd1length := selmu_fgd1_length",                  "FGD1 length",            "", 'F' );
+   // Muon candidate ECal variables
+   factory->AddVariable( "ecalEbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
+   //factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
+   //factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
+   //factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
+   //factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
+   factory->AddVariable( "MipEm := selmu_ecal_mipem",                      "ECal MipEm",               "", 'F' );
+   factory->AddVariable( "EmHip := selmu_ecal_emhip",                      "ECal EmHip",               "", 'F' );
+   factory->AddVariable( "MipPion := selmu_ecal_mippion",                  "ECal MipPion",             "", 'F' );
    
-   //factory->AddVariable( "fgd2pullmu := selmu_fgd2_pull_mu",               "FGD2 muon pull",         "", 'F' );
-   //factory->AddVariable( "fgd2pullpi := selmu_fgd2_pull_pi",               "FGD2 pion pull",         "", 'F' );
-   //factory->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 "FGD2 proton pull",       "", 'F' );
-   factory->AddVariable( "fgd2energy := selmu_fgd2_energy",                  "FGD2 energy",            "", 'F' );
-   factory->AddVariable( "fgd2length := selmu_fgd2_length",                  "FGD2 length",            "", 'F' );
+   // Muon candidate SMRD variables
+   //factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
+   
+   
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
    // but will appear in the final "TestTree" produced by TMVA. This TestTree will contain the
