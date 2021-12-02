@@ -40,7 +40,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
   // Book the BDT
-  tmvareader->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights_default_tree3.xml" );
+  tmvareader->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights_default.xml" );
   
 }
 
