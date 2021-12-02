@@ -121,7 +121,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
     bdt_fgd2pullmu = FGD2Segment->Pullmu;
     bdt_fgd2pullp  = FGD2Segment->Pullp;
     bdt_fgd2pullpi = FGD2Segment->Pullpi;
-    bdt_fgd2_EbyL = = FGD2Segment->E / FGD2Segment->Length;
+    bdt_fgd2_EbyL = FGD2Segment->E / FGD2Segment->Length;
   }
   
   // Fill ECal variables:
@@ -155,7 +155,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
     bdt_ecal_tmr = localecalsegment->PIDTruncatedMaxRatio;
   }
   
-  bdt_snmrds = track->nSMRDSegments;
+  bdt_nsmrds = track->nSMRDSegments;
   
   // Call BDT:
   //std::cout << "DEBUG: Evaluating BDT output..." << std::endl;
