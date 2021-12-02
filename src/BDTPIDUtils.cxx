@@ -37,7 +37,7 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "EmHip := selmu_ecal_emhip",                       &bdt_ecal_emhip);
   tmvareader->AddVariable( "MipPion := selmu_ecal_mippion",                   &bdt_ecal_mippion);
   
-  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
+  //tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
   // Book the BDT
   tmvareader->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights_default.xml" );
