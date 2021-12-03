@@ -45,10 +45,10 @@ void DefaultCustomPlotting::Loop()
    
    Int_t variable_bins = 50;
    
-   TH1F *recomom_antimu = new TH1F("recomom_antimu", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
-   TH1F *recomom_piplus = new TH1F("recomom_piplus", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
-   TH1F *recomom_proton = new TH1F("recomom_proton", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
-   TH1F *recomom_positron = new TH1F("recomom_positron", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_antimu = new TH1F("recomom_antimu", "Antimuon;Reconstructed momentum (MeV/c);Entries/50 MeV/c", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_piplus = new TH1F("recomom_piplus", "Pi+", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", variable_bins, 0.0, 2000.0);
    
    
    Int_t recomom_nbins = 25;
