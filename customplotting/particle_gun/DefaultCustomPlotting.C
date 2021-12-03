@@ -4,6 +4,7 @@
 #include <TGraph.h>
 #include <TStyle.h>
 #include <TCanvas.h>
+#include <TLegend.h>
 #include <ctime> 
 
 void DefaultCustomPlotting::Loop()
