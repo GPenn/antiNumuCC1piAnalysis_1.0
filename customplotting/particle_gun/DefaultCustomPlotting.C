@@ -34,6 +34,8 @@ void DefaultCustomPlotting::Loop()
 //by  b_branchname->GetEntry(ientry); //read only this branch
    
    gStyle->SetOptStat(0);
+   gStyle->SetTitleYOffset(1.2);
+   gStyle->SetTitleXOffset(1.2);
    
    if (fChain == 0) return;
 
@@ -228,20 +230,21 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Plot input variables =============
    
-   TCanvas* canvas_recomom = new TCanvas("","Reconstructed momentum (MeV/c)",200,10,1000,600);
-   TLegend* legend_recomom = new TLegend(.1,.7,.3,.9,"True particle");
+   TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
+
+   //recomom_antimu->SetTitleOffset(1.2, "X");
+   //recomom_antimu->SetTitleOffset(1.2, "X");
    
-   legend_recomom->AddEntry(recomom_antimu,"Antimuons");
-   
+   recomom_antimu->SetLineColor( kBlue);
    recomom_piplus->SetLineColor( kRed);
-   legend_recomom->AddEntry(recomom_piplus,"Pi+");
+   recomom_proton->SetLineColor( kGreen);
+   recomom_positron->SetLineColor( kPurple);
    
    
    recomom_antimu->Draw();
    recomom_piplus->Draw("same");
    recomom_proton->Draw("same");
    recomom_positron->Draw("same");
-   //legend_recomom->Draw("same");
    canvas_recomom->BuildLegend();
           
    canvas_recomom->Write();
