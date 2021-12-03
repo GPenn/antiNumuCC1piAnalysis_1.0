@@ -231,11 +231,12 @@ void DefaultCustomPlotting::Loop()
    // ============= Plot input variables =============
    
    TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
-
-   //recomom_antimu->SetTitleOffset(1.2, "X");
-   //recomom_antimu->SetTitleOffset(1.2, "X");
+   
+   recomom_antimu->GetYaxis()->SetRangeUser(0.0, 4500.0);
    
    recomom_antimu->SetLineColor( kBlue);
+   recomom_antimu->SetFillColor( kBlue);
+   recomom_antimu->SetFillStyle( 3006);
    recomom_piplus->SetLineColor( kRed);
    recomom_proton->SetLineColor( kGreen);
    recomom_positron->SetLineColor( kMagenta);
