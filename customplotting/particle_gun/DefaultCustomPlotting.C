@@ -39,6 +39,14 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
+   Int_t variable_bins = 50;
+   
+   TH1F *recomom_antimu = new TH1F("recomom_antimu", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_piplus = new TH1F("recomom_piplus", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_proton = new TH1F("recomom_proton", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_positron = new TH1F("recomom_positron", "Reconstructed momentum (MeV/c)", variable_bins, 0.0, 2000.0);
+   
+   
    Int_t recomom_nbins = 25;
    
    Int_t musel_nAntimu = 0;
@@ -96,6 +104,27 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][0] <= 4) continue; // Set accum_level
       
       
+      // ============= Fill histograms for input variable plotting =============
+      
+      if ((accum_level[0][0] > 5) && (selmu_necals < 2){
+         
+         if ((particle == -13)&&(particle_pg == -13))
+         {
+            recomom_antimu->Fill(selmu_mom[0]);
+         }
+         else if ((particle == 211)&&(particle_pg == 211))
+         {
+            recomom_piplus->Fill(selmu_mom[0]);
+         }
+         else if ((particle == 2212)&&(particle_pg == 2212))
+         {
+            recomom_proton->Fill(selmu_mom[0]);
+         }
+         else if ((particle == -11)&&(particle_pg == -11))
+         {
+            recomom_positron->Fill(selmu_mom[0]);
+         }
+      }
       
       
       // ============= Fill histograms to find optimal cuts =============
@@ -189,11 +218,16 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << std::endl;
    
    
+   // ============= Plot input variables =============
    
+   TCanvas* canvas_recomom = new TCanvas("recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
    
-   
-   
-   
+   recomom_antimu->Draw();
+   recomom_piplus->Draw("same");
+   recomom_proton->Draw("same");
+   recomom_positron->Draw("same");
+          
+   canvas_recomom->Write();
    
    // ============= Find optimal cuts =============
    
