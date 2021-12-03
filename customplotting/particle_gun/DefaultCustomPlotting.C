@@ -36,7 +36,6 @@ void DefaultCustomPlotting::Loop()
    gStyle->SetOptStat(0);
    gStyle->SetTitleYOffset(1.2);
    gStyle->SetTitleXOffset(1.2);
-   gStyle->SetLineWidth(2);
    
    if (fChain == 0) return;
 
@@ -236,17 +235,21 @@ void DefaultCustomPlotting::Loop()
    recomom_antimu->GetYaxis()->SetRangeUser(0.0, 4500.0);
    
    recomom_antimu->SetLineColor( kBlue);
-   recomom_antimu->SetFillColorAlpha(kBlue-7, 0.35);
+   recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
    //recomom_antimu->SetFillStyle( 3006);
+   recomom_antimu->SetLineWidth(2)
    recomom_piplus->SetLineColor( kRed);
    recomom_piplus->SetFillColorAlpha(kRed, 0.35);
    recomom_piplus->SetFillStyle( 3003);
+   recomom_piplus->SetLineWidth(2)
    recomom_proton->SetLineColor( kGreen);
    recomom_proton->SetFillColorAlpha(kGreen, 0.35);
    recomom_proton->SetFillStyle( 3354);
+   recomom_proton->SetLineWidth(2)
    recomom_positron->SetLineColor( kMagenta);
    recomom_positron->SetFillColorAlpha(kMagenta, 0.35);
    recomom_positron->SetFillStyle( 3345);
+   recomom_positron->SetLineWidth(2)
    
    
    recomom_antimu->Draw();
