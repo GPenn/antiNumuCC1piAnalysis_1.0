@@ -32,6 +32,9 @@ void DefaultCustomPlotting::Loop()
 // METHOD2: replace line
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
+   
+   gStyle->SetOptStat(0);
+   
    if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntries();
@@ -221,12 +224,12 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Plot input variables =============
    
-   TCanvas* canvas_recomom = new TCanvas("recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
-   TLegend* legend_recomom = new TLegend(.1,.7,.3,.9,"Test");
+   TCanvas* canvas_recomom = new TCanvas("","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   TLegend* legend_recomom = new TLegend(.1,.7,.3,.9,"True particle");
    
    legend_recomom->AddEntry(recomom_antimu,"Antimuons");
    
-   recomom_piplus->SetFillColor( kRed);
+   recomom_piplus->SetLineColor( kRed);
    legend_recomom->AddEntry(recomom_piplus,"Pi+");
    
    
@@ -237,6 +240,11 @@ void DefaultCustomPlotting::Loop()
    legend_recomom->Draw("same");
           
    canvas_recomom->Write();
+   
+   
+   
+   
+   
    
    // ============= Find optimal cuts =============
    
