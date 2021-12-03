@@ -238,7 +238,7 @@ void DefaultCustomPlotting::Loop()
    recomom_antimu->SetLineColor( kBlue);
    recomom_piplus->SetLineColor( kRed);
    recomom_proton->SetLineColor( kGreen);
-   recomom_positron->SetLineColor( kPurple);
+   recomom_positron->SetLineColor( kMagenta);
    
    
    recomom_antimu->Draw();
