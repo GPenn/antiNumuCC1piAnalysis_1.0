@@ -106,7 +106,7 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms for input variable plotting =============
       
-      if ((accum_level[0][0] > 5) && (selmu_necals < 2){
+      if ((accum_level[0][0] > 5) && (selmu_necals < 2)){
          
          if ((particle == -13)&&(particle_pg == -13))
          {
