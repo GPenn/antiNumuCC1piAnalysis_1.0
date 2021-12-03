@@ -221,11 +221,19 @@ void DefaultCustomPlotting::Loop()
    // ============= Plot input variables =============
    
    TCanvas* canvas_recomom = new TCanvas("recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   TLegend* legend_recomom = new TLegend(.1,.7,.3,.9,"Test");
+   
+   legend_recomom->AddEntry(recomom_antimu,"Antimuons");
+   
+   recomom_piplus->SetFillColor( kRed);
+   legend_recomom->AddEntry(recomom_piplus,"Pi+");
+   
    
    recomom_antimu->Draw();
    recomom_piplus->Draw("same");
    recomom_proton->Draw("same");
    recomom_positron->Draw("same");
+   legend_recomom->Draw("same");
           
    canvas_recomom->Write();
    
