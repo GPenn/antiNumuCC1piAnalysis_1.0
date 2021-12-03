@@ -222,6 +222,10 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << std::endl;
    
    
+   
+   
+   
+   
    // ============= Plot input variables =============
    
    TCanvas* canvas_recomom = new TCanvas("","Reconstructed momentum (MeV/c)",200,10,1000,600);
@@ -237,7 +241,8 @@ void DefaultCustomPlotting::Loop()
    recomom_piplus->Draw("same");
    recomom_proton->Draw("same");
    recomom_positron->Draw("same");
-   legend_recomom->Draw("same");
+   //legend_recomom->Draw("same");
+   canvas_recomom->BuildLegend();
           
    canvas_recomom->Write();
    
