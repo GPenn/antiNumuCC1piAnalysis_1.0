@@ -236,11 +236,11 @@ void DefaultCustomPlotting::Loop()
    recomom_antimu->GetYaxis()->SetRangeUser(0.0, 4500.0);
    
    recomom_antimu->SetLineColor( kBlue);
-   recomom_antimu->SetFillColorAlpha(kBlue, 0.35);
-   recomom_antimu->SetFillStyle( 3006);
+   recomom_antimu->SetFillColorAlpha(kBlue-7, 0.35);
+   //recomom_antimu->SetFillStyle( 3006);
    recomom_piplus->SetLineColor( kRed);
    recomom_piplus->SetFillColorAlpha(kRed, 0.35);
-   recomom_piplus->SetFillStyle( 3007);
+   recomom_piplus->SetFillStyle( 3003);
    recomom_proton->SetLineColor( kGreen);
    recomom_proton->SetFillColorAlpha(kGreen, 0.35);
    recomom_proton->SetFillStyle( 3354);
