@@ -11,19 +11,16 @@ void DefaultCustomPlotting::Loop()
 {
 
    
-   TStyle *base_style = new TStyle("base_style","Base style");
-   base_style->SetOptStat(0);
-   base_style->SetTitleYOffset(1.2);
-   base_style->SetTitleXOffset(1.2);
-   base_style->cd();
+   gStyle->SetOptStat(0);
+   gStyle->SetTitleYOffset(1.2);
+   gStyle->SetTitleXOffset(1.2);
+
    
-   TStyle *antimu_style = new TStyle("antimu_style","Antimu style");
-   antimu_style->SetLineColor( kBlue);
-   antimu_style->SetFillColorAlpha(kBlue-10, 0.35);
+   //TStyle *antimu_style = new TStyle("antimu_style","Antimu style");
+   //antimu_style->SetLineColor( kBlue);
+   //antimu_style->SetFillColorAlpha(kBlue-10, 0.35);
    //antimu_style->SetFillStyle( 3006);
-   antimu_style->SetLineWidth(2);
-   
-   base_style->cd();
+   //antimu_style->SetLineWidth(2);
    
    
    if (fChain == 0) return;
@@ -219,14 +216,16 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Plot input variables =============
    
+   // Reco momentum
+   
    TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
    
-   recomom_antimu->GetYaxis()->SetRangeUser(0.0, 4500.0);
+   recomom_antimu->GetYaxis()->SetRangeUser(0.0, 5000.0);
    
-   //recomom_antimu->SetLineColor( kBlue);
-   //recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
+   recomom_antimu->SetLineColor( kBlue);
+   recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
    //recomom_antimu->SetFillStyle( 3006);
-   //recomom_antimu->SetLineWidth(2);
+   recomom_antimu->SetLineWidth(2);
    antimu_style->cd();
    recomom_antimu->UseCurrentStyle();
    recomom_piplus->SetLineColor( kRed);
@@ -241,7 +240,6 @@ void DefaultCustomPlotting::Loop()
    recomom_positron->SetFillColorAlpha(kMagenta, 0.35);
    recomom_positron->SetFillStyle( 3345);
    recomom_positron->SetLineWidth(2);
-   
    
    recomom_antimu->Draw();
    recomom_piplus->Draw("same");
