@@ -30,6 +30,8 @@ public :
     
     fOutFile->Close();
   }
+  
+  void SetHistParticleStyle(TH1F* hist, std::string particle);
 
    
 protected:
