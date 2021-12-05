@@ -30,8 +30,6 @@ public :
     
     fOutFile->Close();
   }
-  
-  void SetHistParticleStyle(TH1F* hist, std::string particle);
 
    
 protected:
@@ -860,6 +858,8 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+  
+   void SetHistParticleStyle(TH1F* hist, std::string particle);
   
    defaultOut  *defout;
 };
