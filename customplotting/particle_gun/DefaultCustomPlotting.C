@@ -12,6 +12,7 @@ void DefaultCustomPlotting::Loop()
 
    
    gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
    gStyle->SetTitleYOffset(1.2);
    gStyle->SetTitleXOffset(1.2);
 
@@ -38,7 +39,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", 32, 0.0, 1600.0);
    TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", 32, 0.0, 1600.0);
    
-   TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.5 rad", 24, 0.0, 1.2);
+   TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.05 rad", 24, 0.0, 1.2);
    TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 24, 0.0, 1.2);
    TH1F *theta_proton = new TH1F("theta_proton", "Proton", 24, 0.0, 1.2);
    TH1F *theta_positron = new TH1F("theta_positron", "Positron", 24, 0.0, 1.2);
@@ -247,7 +248,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
    
-   //recomom_theta->GetYaxis()->SetRangeUser(0.0, 5000.0);
+   theta_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
   
    SetHistParticleStyle(theta_antimu, "antimu");
    SetHistParticleStyle(theta_piplus, "piplus");
