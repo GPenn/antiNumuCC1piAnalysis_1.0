@@ -222,10 +222,11 @@ void DefaultCustomPlotting::Loop()
    
    recomom_antimu->GetYaxis()->SetRangeUser(0.0, 5000.0);
    
-   recomom_antimu->SetLineColor( kBlue);
-   recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
+   //recomom_antimu->SetLineColor( kBlue);
+   //recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
    //recomom_antimu->SetFillStyle( 3006);
-   recomom_antimu->SetLineWidth(2);
+   //recomom_antimu->SetLineWidth(2);
+   SetHistParticleStyle(recomom_antimu, "antimu");
    recomom_piplus->SetLineColor( kRed);
    recomom_piplus->SetFillColorAlpha(kRed, 0.35);
    recomom_piplus->SetFillStyle( 3354);
@@ -658,4 +659,18 @@ defaultOut::defaultOut(std::string outname) {
   fDefaultOut = new TTree("default", "");
 
   return;
+}
+
+DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
+   
+   hist->SetLineWidth(2);
+   
+   if (particle == "antimu")
+   {
+      hist->SetLineColor( kBlue);
+      hist->SetFillColorAlpha(kBlue-10, 0.35);
+      //hist->SetFillStyle( 3006);
+   }
+   
+   return;
 }
