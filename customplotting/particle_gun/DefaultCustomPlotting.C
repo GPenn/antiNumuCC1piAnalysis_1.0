@@ -38,10 +38,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", 32, 0.0, 1600.0);
    TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", 32, 0.0, 1600.0);
    
-   TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (degrees);Entries", 33, 0.0, 66.0);
-   TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 33, 0.0, 66.0);
-   TH1F *theta_proton = new TH1F("theta_proton", "Proton", 33, 0.0, 66.0);
-   TH1F *theta_positron = new TH1F("theta_positron", "Positron", 33, 0.0, 66.0);
+   TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.5 rad", 24, 0.0, 1.2);
+   TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 24, 0.0, 1.2.0);
+   TH1F *theta_proton = new TH1F("theta_proton", "Proton", 24, 0.0, 1.2.0);
+   TH1F *theta_positron = new TH1F("theta_positron", "Positron", 24, 0.0, 1.2.0);
    
    
    Int_t recomom_nbins = 25;
@@ -229,7 +229,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
    
-   recomom_antimu->GetYaxis()->SetRangeUser(0.0, 5000.0);
+   recomom_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
   
    SetHistParticleStyle(recomom_antimu, "antimu");
    SetHistParticleStyle(recomom_piplus, "piplus");
@@ -245,7 +245,7 @@ void DefaultCustomPlotting::Loop()
    
    // Reco theta
    
-   TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (degrees)",200,10,1000,600);
+   TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
    
    //recomom_theta->GetYaxis()->SetRangeUser(0.0, 5000.0);
   
