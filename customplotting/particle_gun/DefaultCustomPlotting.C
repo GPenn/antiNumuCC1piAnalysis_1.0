@@ -15,13 +15,7 @@ void DefaultCustomPlotting::Loop()
    gStyle->SetOptTitle(0);
    gStyle->SetTitleYOffset(1.2);
    gStyle->SetTitleXOffset(1.2);
-
    
-   //TStyle *antimu_style = new TStyle("antimu_style","Antimu style");
-   //antimu_style->SetLineColor( kBlue);
-   //antimu_style->SetFillColorAlpha(kBlue-10, 0.35);
-   //antimu_style->SetFillStyle( 3006);
-   //antimu_style->SetLineWidth(2);
    
    
    if (fChain == 0) return;
@@ -248,7 +242,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
    
-   theta_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   theta_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
    SetHistParticleStyle(theta_antimu, "antimu");
    SetHistParticleStyle(theta_piplus, "piplus");
