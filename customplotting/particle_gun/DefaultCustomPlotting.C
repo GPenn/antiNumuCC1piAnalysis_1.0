@@ -661,7 +661,7 @@ defaultOut::defaultOut(std::string outname) {
   return;
 }
 
-DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
+void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
    
    hist->SetLineWidth(2);
    
