@@ -226,8 +226,6 @@ void DefaultCustomPlotting::Loop()
    recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
    //recomom_antimu->SetFillStyle( 3006);
    recomom_antimu->SetLineWidth(2);
-   antimu_style->cd();
-   recomom_antimu->UseCurrentStyle();
    recomom_piplus->SetLineColor( kRed);
    recomom_piplus->SetFillColorAlpha(kRed, 0.35);
    recomom_piplus->SetFillStyle( 3354);
