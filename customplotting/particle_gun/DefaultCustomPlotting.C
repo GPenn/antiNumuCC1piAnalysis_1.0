@@ -33,10 +33,15 @@ void DefaultCustomPlotting::Loop()
    
    Int_t variable_bins = 50;
    
-   TH1F *recomom_antimu = new TH1F("recomom_antimu", "Antimuon;Reconstructed momentum (MeV/c);Entries/50 MeV/c", variable_bins, 0.0, 2000.0);
-   TH1F *recomom_piplus = new TH1F("recomom_piplus", "Pi+", variable_bins, 0.0, 2000.0);
-   TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", variable_bins, 0.0, 2000.0);
-   TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", variable_bins, 0.0, 2000.0);
+   TH1F *recomom_antimu = new TH1F("recomom_antimu", "Antimuon;Reconstructed momentum (MeV/c);Entries/50 MeV/c", 32, 0.0, 1600.0);
+   TH1F *recomom_piplus = new TH1F("recomom_piplus", "Pi+", 32, 0.0, 1600.0);
+   TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", 32, 0.0, 1600.0);
+   TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", 32, 0.0, 1600.0);
+   
+   TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (degrees);Entries", 33, 0.0, 66.0);
+   TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 33, 0.0, 66.0);
+   TH1F *theta_proton = new TH1F("theta_proton", "Proton", 33, 0.0, 66.0);
+   TH1F *theta_positron = new TH1F("theta_positron", "Positron", 33, 0.0, 66.0);
    
    
    Int_t recomom_nbins = 25;
@@ -103,18 +108,22 @@ void DefaultCustomPlotting::Loop()
          if ((particle == -13)&&(particle_pg == -13))
          {
             recomom_antimu->Fill(selmu_mom[0]);
+            theta_antimu->Fill(selmu_det_theta);
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
             recomom_piplus->Fill(selmu_mom[0]);
+            theta_piplus->Fill(selmu_det_theta);
          }
          else if ((particle == 2212)&&(particle_pg == 2212))
          {
             recomom_proton->Fill(selmu_mom[0]);
+            theta_proton->Fill(selmu_det_theta);
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
             recomom_positron->Fill(selmu_mom[0]);
+            theta_positron->Fill(selmu_det_theta);
          }
       }
       
@@ -221,26 +230,10 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
    
    recomom_antimu->GetYaxis()->SetRangeUser(0.0, 5000.0);
-   
-   //recomom_antimu->SetLineColor( kBlue);
-   //recomom_antimu->SetFillColorAlpha(kBlue-10, 0.35);
-   //recomom_antimu->SetFillStyle( 3006);
-   //recomom_antimu->SetLineWidth(2);
+  
    SetHistParticleStyle(recomom_antimu, "antimu");
-   //recomom_piplus->SetLineColor( kRed);
-   //recomom_piplus->SetFillColorAlpha(kRed, 0.35);
-   //recomom_piplus->SetFillStyle( 3354);
-   //recomom_piplus->SetLineWidth(2);
    SetHistParticleStyle(recomom_piplus, "piplus");
-   //recomom_proton->SetLineColor( kGreen);
-   //recomom_proton->SetFillColorAlpha(kGreen, 0.35);
-   //recomom_proton->SetFillStyle( 3003);
-   //recomom_proton->SetLineWidth(2);
    SetHistParticleStyle(recomom_proton, "proton");
-   //recomom_positron->SetLineColor( kMagenta);
-   //recomom_positron->SetFillColorAlpha(kMagenta, 0.35);
-   //recomom_positron->SetFillStyle( 3345);
-   //recomom_positron->SetLineWidth(2);
    SetHistParticleStyle(recomom_positron, "positron");
    
    recomom_antimu->Draw();
@@ -248,8 +241,25 @@ void DefaultCustomPlotting::Loop()
    recomom_proton->Draw("same");
    recomom_positron->Draw("same");
    canvas_recomom->BuildLegend();
-          
    canvas_recomom->Write();
+   
+   // Reco theta
+   
+   TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (degrees)",200,10,1000,600);
+   
+   //recomom_theta->GetYaxis()->SetRangeUser(0.0, 5000.0);
+  
+   SetHistParticleStyle(theta_antimu, "antimu");
+   SetHistParticleStyle(theta_piplus, "piplus");
+   SetHistParticleStyle(theta_proton, "proton");
+   SetHistParticleStyle(theta_positron, "positron");
+   
+   theta_antimu->Draw();
+   theta_piplus->Draw("same");
+   theta_proton->Draw("same");
+   theta_positron->Draw("same");
+   canvas_theta->BuildLegend();
+   canvas_theta->Write();
    
    
    
