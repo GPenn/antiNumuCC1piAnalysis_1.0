@@ -1,6 +1,6 @@
 {
-  DrawingTools draw("output/particle_gun/particlegun_allpositive_bdttest.root");
-  DataSample mc("output/particle_gun/particlegun_allpositive_bdttest.root");
+  DrawingTools draw("/bundle/data/T2K/users/gpenn/highlandBDTtests/default/particlegun/particlegun_allpositive.root");
+  DataSample mc("/bundle/data/T2K/users/gpenn/highlandBDTtests/default/particlegun/particlegun_allpositive.root");
   
   draw.SetTitleX("Reco momentum");
   TCanvas mom;
