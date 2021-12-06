@@ -38,6 +38,81 @@ void DefaultCustomPlotting::Loop()
    TH1F *theta_proton = new TH1F("theta_proton", "Proton", 24, 0.0, 1.2);
    TH1F *theta_positron = new TH1F("theta_positron", "Positron", 24, 0.0, 1.2);
    
+   TH1F *EMEnergy_antimu = new TH1F("EMEnergy_antimu", "Antimuon;Reconstructed ECal EM energy (MeV);Entries/50 MeV", 50, 0.0, 2500);
+   TH1F *EMEnergy_piplus = new TH1F("EMEnergy_piplus", "Pi+", 50, 0.0, 2500);
+   TH1F *EMEnergy_proton = new TH1F("EMEnergy_proton", "Proton", 50, 0.0, 2500);
+   TH1F *EMEnergy_positron = new TH1F("EMEnergy_positron", "Positron", 50, 0.0, 2500);
+   
+   TH1F *EbyL_antimu = new TH1F("EbyL_antimu", "Antimuon;ECal EM energy/ECal segment length (MeV/mm);Entries/10 MeV/mm", 40, 0.0, 4);
+   TH1F *EbyL_piplus = new TH1F("EbyL_piplus", "Pi+", 40, 0.0, 4);
+   TH1F *EbyL_proton = new TH1F("EbyL_proton", "Proton", 40, 0.0, 4);
+   TH1F *EbyL_positron = new TH1F("EbyL_positron", "Positron", 40, 0.0, 4);
+   
+   TH1F *circularity_antimu = new TH1F("circularity_antimu", "Antimuon;ECal circularity variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *circularity_piplus = new TH1F("circularity_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *circularity_proton = new TH1F("circularity_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *circularity_positron = new TH1F("circularity_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *fbr_antimu = new TH1F("fbr_antimu", "Antimuon;ECal FrontBackRatio variable (dimensionless);Entries", 50, 0.0, 10.0);
+   TH1F *fbr_piplus = new TH1F("fbr_piplus", "Pi+", 50, 0.0, 10.0);
+   TH1F *fbr_proton = new TH1F("fbr_proton", "Proton", 50, 0.0, 10.0);
+   TH1F *fbr_positron = new TH1F("fbr_positron", "Positron", 50, 0.0, 10.0);
+   
+   TH1F *tmr_antimu = new TH1F("tmr_antimu", "Antimuon;ECal TransverseMaxRatio variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *tmr_piplus = new TH1F("tmr_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *tmr_proton = new TH1F("tmr_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *tmr_positron = new TH1F("tmr_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *qrms_antimu = new TH1F("qrms_antimu", "Antimuon;ECal QRMS variable ();Entries/", 30, 0.0, 3.0);
+   TH1F *qrms_piplus = new TH1F("qrms_piplus", "Pi+", 30, 0.0, 3.0);
+   TH1F *qrms_proton = new TH1F("qrms_proton", "Proton", 30, 0.0, 3.0);
+   TH1F *qrms_positron = new TH1F("qrms_positron", "Positron", 30, 0.0, 3.0);
+   
+   TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "Antimuon;TPC2 dE/dx truncated mean ();Entries/", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_piplus = new TH1F("tpc2dedx_piplus", "Pi+", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_proton = new TH1F("tpc2dedx_proton", "Proton", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_positron = new TH1F("tpc2dedx_positron", "Positron", 50, 0.0, 2000.0);
+   
+   TH1F *tpc3dedx_antimu = new TH1F("tpc3dedx_antimu", "Antimuon;TPC3 dE/dx truncated mean ();Entries/", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_piplus = new TH1F("tpc3dedx_piplus", "Pi+", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_proton = new TH1F("tpc3dedx_proton", "Proton", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_positron = new TH1F("tpc3dedx_positron", "Positron", 50, 0.0, 2000.0);
+   
+   TH1F *tpclikemu_antimu = new TH1F("tpclikemu_antimu", "Antimuon;TPC muon likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikemu_piplus = new TH1F("tpclikemu_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikemu_proton = new TH1F("tpclikemu_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikemu_positron = new TH1F("tpclikemu_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpclikepi_antimu = new TH1F("tpclikepi_antimu", "Antimuon;TPC charged pion likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikepi_piplus = new TH1F("tpclikepi_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikepi_proton = new TH1F("tpclikepi_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikepi_positron = new TH1F("tpclikepi_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpclikep_antimu = new TH1F("tpclikep_antimu", "Antimuon;TPC proton likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikep_piplus = new TH1F("tpclikep_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikep_proton = new TH1F("tpclikep_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikep_positron = new TH1F("tpclikep_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpclikee_antimu = new TH1F("tpclikee_antimu", "Antimuon;TPC electron likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikee_piplus = new TH1F("tpclikee_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikee_proton = new TH1F("tpclikee_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikee_positron = new TH1F("tpclikee_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "Antimuon;FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_proton = new TH1F("fgd1EbyL_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_positron = new TH1F("fgd1EbyL_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *fgd2EbyL_antimu = new TH1F("fgd2EbyL_antimu", "Antimuon;FGD2 energy/length (MeV/mm);Entries", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_piplus = new TH1F("fgd2EbyL_piplus", "Pi+", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_proton = new TH1F("fgd2EbyL_proton", "Proton", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_positron = new TH1F("fgd2EbyL_positron", "Positron", 30, 0.0, 0.6);
+   
+   TH1F *nsmrds_antimu = new TH1F("nsmrds_antimu", "Antimuon;Number of SMRD segments;Entries", 3, -0.5, 2.5);
+   TH1F *nsmrds_piplus = new TH1F("nsmrds_piplus", "Pi+", 3, -0.5, 2.5);
+   TH1F *nsmrds_proton = new TH1F("nsmrds_proton", "Proton", 3, -0.5, 2.5);
+   TH1F *nsmrds_positron = new TH1F("nsmrds_positron", "Positron", 3, -0.5, 2.5);
+   
    
    Int_t recomom_nbins = 25;
    
@@ -104,21 +179,81 @@ void DefaultCustomPlotting::Loop()
          {
             recomom_antimu->Fill(selmu_mom[0]);
             theta_antimu->Fill(selmu_det_theta);
+            EMEnergy_antimu->Fill(selmu_ecal_bestseg_EMenergy);
+            EbyL_antimu->Fill(selmu_ecal_bestseg_EbyL);
+            circularity_antimu->Fill(selmu_ecal_circularity);
+            fbr_antimu->Fill(selmu_ecal_fbr);
+            tmr_antimu->Fill(selmu_ecal_tmr);
+            qrms_antimu->Fill(selmu_ecal_qrms);
+            tpc2dedx_antimu->Fill(selmu_tpc_dedx[0]);
+            tpc3dedx_antimu->Fill(selmu_tpc_dedx[1]);
+            tpclikemu_antimu->Fill(selmu_tpc_like_mu);
+            tpclikepi_antimu->Fill(selmu_tpc_like_pi);
+            tpclikep_antimu->Fill(selmu_tpc_like_p);
+            tpclikee_antimu->Fill(selmu_tpc_like_e);
+            fgd1EbyL_antimu->Fill(selmu_fgd1_EbyL);
+            fgd2EbyL_antimu->Fill(selmu_fgd2_EbyL);
+            nsmrds_antimu->Fill(selmu_nsmrds);
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
             recomom_piplus->Fill(selmu_mom[0]);
             theta_piplus->Fill(selmu_det_theta);
+            EMEnergy_piplus->Fill(selmu_ecal_bestseg_EMenergy);
+            EbyL_piplus->Fill(selmu_ecal_bestseg_EbyL);
+            circularity_piplus->Fill(selmu_ecal_circularity);
+            fbr_piplus->Fill(selmu_ecal_fbr);
+            tmr_piplus->Fill(selmu_ecal_tmr);
+            qrms_piplus->Fill(selmu_ecal_qrms);
+            tpc2dedx_piplus->Fill(selmu_tpc_dedx[0]);
+            tpc3dedx_piplus->Fill(selmu_tpc_dedx[1]);
+            tpclikemu_piplus->Fill(selmu_tpc_like_mu);
+            tpclikepi_piplus->Fill(selmu_tpc_like_pi);
+            tpclikep_piplus->Fill(selmu_tpc_like_p);
+            tpclikee_piplus->Fill(selmu_tpc_like_e);
+            fgd1EbyL_piplus->Fill(selmu_fgd1_EbyL);
+            fgd2EbyL_piplus->Fill(selmu_fgd2_EbyL);
+            nsmrds_piplus->Fill(selmu_nsmrds);
          }
          else if ((particle == 2212)&&(particle_pg == 2212))
          {
             recomom_proton->Fill(selmu_mom[0]);
             theta_proton->Fill(selmu_det_theta);
+            EMEnergy_proton->Fill(selmu_ecal_bestseg_EMenergy);
+            EbyL_proton->Fill(selmu_ecal_bestseg_EbyL);
+            circularity_proton->Fill(selmu_ecal_circularity);
+            fbr_proton->Fill(selmu_ecal_fbr);
+            tmr_proton->Fill(selmu_ecal_tmr);
+            qrms_proton->Fill(selmu_ecal_qrms);
+            tpc2dedx_proton->Fill(selmu_tpc_dedx[0]);
+            tpc3dedx_proton->Fill(selmu_tpc_dedx[1]);
+            tpclikemu_proton->Fill(selmu_tpc_like_mu);
+            tpclikepi_proton->Fill(selmu_tpc_like_pi);
+            tpclikep_proton->Fill(selmu_tpc_like_p);
+            tpclikee_proton->Fill(selmu_tpc_like_e);
+            fgd1EbyL_proton->Fill(selmu_fgd1_EbyL);
+            fgd2EbyL_proton->Fill(selmu_fgd2_EbyL);
+            nsmrds_proton->Fill(selmu_nsmrds);
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
             recomom_positron->Fill(selmu_mom[0]);
             theta_positron->Fill(selmu_det_theta);
+            EMEnergy_positron->Fill(selmu_ecal_bestseg_EMenergy);
+            EbyL_positron->Fill(selmu_ecal_bestseg_EbyL);
+            circularity_positron->Fill(selmu_ecal_circularity);
+            fbr_positron->Fill(selmu_ecal_fbr);
+            tmr_positron->Fill(selmu_ecal_tmr);
+            qrms_positron->Fill(selmu_ecal_qrms);
+            tpc2dedx_positron->Fill(selmu_tpc_dedx[0]);
+            tpc3dedx_positron->Fill(selmu_tpc_dedx[1]);
+            tpclikemu_positron->Fill(selmu_tpc_like_mu);
+            tpclikepi_positron->Fill(selmu_tpc_like_pi);
+            tpclikep_positron->Fill(selmu_tpc_like_p);
+            tpclikee_positron->Fill(selmu_tpc_like_e);
+            fgd1EbyL_positron->Fill(selmu_fgd1_EbyL);
+            fgd2EbyL_positron->Fill(selmu_fgd2_EbyL);
+            nsmrds_positron->Fill(selmu_nsmrds);
          }
       }
       
