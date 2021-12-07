@@ -807,6 +807,7 @@ defaultOut::defaultOut(std::string outname) {
 void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
    
    hist->SetLineWidth(2);
+   hist->SetOptTitle(0);
    
    if (particle == "antimu")
    {
