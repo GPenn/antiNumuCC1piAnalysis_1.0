@@ -58,7 +58,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *fbr_proton = new TH1F("fbr_proton", "Proton", 50, 0.0, 10.0);
    TH1F *fbr_positron = new TH1F("fbr_positron", "Positron", 50, 0.0, 10.0);
    
-   TH1F *tmr_antimu = new TH1F("tmr_antimu", "Antimuon;ECal TransverseMaxRatio variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *tmr_antimu = new TH1F("tmr_antimu", "Antimuon;ECal TruncatedMaxRatio variable (dimensionless);Entries", 50, 0.0, 1.0);
    TH1F *tmr_piplus = new TH1F("tmr_piplus", "Pi+", 50, 0.0, 1.0);
    TH1F *tmr_proton = new TH1F("tmr_proton", "Proton", 50, 0.0, 1.0);
    TH1F *tmr_positron = new TH1F("tmr_positron", "Positron", 50, 0.0, 1.0);
