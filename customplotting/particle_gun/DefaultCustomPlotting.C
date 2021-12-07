@@ -620,7 +620,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
    
-   //tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 10000.0);
   
    SetHistParticleStyle(tpclikemu_antimu, "antimu");
    SetHistParticleStyle(tpclikemu_piplus, "piplus");
@@ -638,7 +638,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_tpclikepi = new TCanvas("canvas_tpclikepi","",200,10,1000,600);
    
-   //tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 10000.0);
   
    SetHistParticleStyle(tpclikepi_antimu, "antimu");
    SetHistParticleStyle(tpclikepi_piplus, "piplus");
@@ -728,7 +728,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,1000,600);
    
-   //nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 50000.0);
   
    SetHistParticleStyle(nsmrds_antimu, "antimu");
    SetHistParticleStyle(nsmrds_piplus, "piplus");
