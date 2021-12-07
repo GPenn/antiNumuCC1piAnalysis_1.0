@@ -68,6 +68,21 @@ void DefaultCustomPlotting::Loop()
    TH1F *qrms_proton = new TH1F("qrms_proton", "Proton", 30, 0.0, 3.0);
    TH1F *qrms_positron = new TH1F("qrms_positron", "Positron", 30, 0.0, 3.0);
    
+   TH1F *mipem_antimu = new TH1F("mipem_antimu", "Antimuon;ECal MipEm variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *mipem_piplus = new TH1F("mipem_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *mipem_proton = new TH1F("mipem_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *mipem_positron = new TH1F("mipem_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *emhip_antimu = new TH1F("emhip_antimu", "Antimuon;ECal EmHip variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *emhip_piplus = new TH1F("emhip_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *emhip_proton = new TH1F("emhip_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *emhip_positron = new TH1F("emhip_positron", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *mippion_antimu = new TH1F("mippion_antimu", "Antimuon;ECal MipPion variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *mippion_piplus = new TH1F("mippion_piplus", "Pi+", 50, 0.0, 1.0);
+   TH1F *mippion_proton = new TH1F("mippion_proton", "Proton", 50, 0.0, 1.0);
+   TH1F *mippion_positron = new TH1F("mippion_positron", "Positron", 50, 0.0, 1.0);
+   
    TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "Antimuon;TPC2 dE/dx truncated mean ();Entries/", 50, 0.0, 2000.0);
    TH1F *tpc2dedx_piplus = new TH1F("tpc2dedx_piplus", "Pi+", 50, 0.0, 2000.0);
    TH1F *tpc2dedx_proton = new TH1F("tpc2dedx_proton", "Proton", 50, 0.0, 2000.0);
@@ -185,6 +200,9 @@ void DefaultCustomPlotting::Loop()
             fbr_antimu->Fill(selmu_ecal_fbr);
             tmr_antimu->Fill(selmu_ecal_tmr);
             qrms_antimu->Fill(selmu_ecal_qrms);
+            mipem_antimu->Fill(selmu_ecal_mipem);
+            emhip_antimu->Fill(selmu_ecal_emhip);
+            mippion_antimu->Fill(selmu_ecal_mippion);
             tpc2dedx_antimu->Fill(selmu_tpc_dedx[0]);
             tpc3dedx_antimu->Fill(selmu_tpc_dedx[1]);
             tpclikemu_antimu->Fill(selmu_tpc_like_mu);
@@ -205,6 +223,9 @@ void DefaultCustomPlotting::Loop()
             fbr_piplus->Fill(selmu_ecal_fbr);
             tmr_piplus->Fill(selmu_ecal_tmr);
             qrms_piplus->Fill(selmu_ecal_qrms);
+            mipem_piplus->Fill(selmu_ecal_mipem);
+            emhip_piplus->Fill(selmu_ecal_emhip);
+            mippion_piplus->Fill(selmu_ecal_mippion);
             tpc2dedx_piplus->Fill(selmu_tpc_dedx[0]);
             tpc3dedx_piplus->Fill(selmu_tpc_dedx[1]);
             tpclikemu_piplus->Fill(selmu_tpc_like_mu);
@@ -225,6 +246,9 @@ void DefaultCustomPlotting::Loop()
             fbr_proton->Fill(selmu_ecal_fbr);
             tmr_proton->Fill(selmu_ecal_tmr);
             qrms_proton->Fill(selmu_ecal_qrms);
+            mipem_proton->Fill(selmu_ecal_mipem);
+            emhip_proton->Fill(selmu_ecal_emhip);
+            mippion_proton->Fill(selmu_ecal_mippion);
             tpc2dedx_proton->Fill(selmu_tpc_dedx[0]);
             tpc3dedx_proton->Fill(selmu_tpc_dedx[1]);
             tpclikemu_proton->Fill(selmu_tpc_like_mu);
@@ -245,6 +269,9 @@ void DefaultCustomPlotting::Loop()
             fbr_positron->Fill(selmu_ecal_fbr);
             tmr_positron->Fill(selmu_ecal_tmr);
             qrms_positron->Fill(selmu_ecal_qrms);
+            mipem_positron->Fill(selmu_ecal_mipem);
+            emhip_positron->Fill(selmu_ecal_emhip);
+            mippion_positron->Fill(selmu_ecal_mippion);
             tpc2dedx_positron->Fill(selmu_tpc_dedx[0]);
             tpc3dedx_positron->Fill(selmu_tpc_dedx[1]);
             tpclikemu_positron->Fill(selmu_tpc_like_mu);
@@ -391,6 +418,329 @@ void DefaultCustomPlotting::Loop()
    canvas_theta->BuildLegend();
    canvas_theta->Write();
    
+   // ECal EM energy
+   
+   TCanvas* canvas_EMEnergy = new TCanvas("canvas_EMEnergy","",200,10,1000,600);
+   
+   //EMEnergy_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(EMEnergy_antimu, "antimu");
+   SetHistParticleStyle(EMEnergy_piplus, "piplus");
+   SetHistParticleStyle(EMEnergy_proton, "proton");
+   SetHistParticleStyle(EMEnergy_positron, "positron");
+   
+   EMEnergy_antimu->Draw();
+   EMEnergy_piplus->Draw("same");
+   EMEnergy_proton->Draw("same");
+   EMEnergy_positron->Draw("same");
+   canvas_EMEnergy->BuildLegend();
+   canvas_EMEnergy->Write();
+   
+   // ECal E/L
+   
+   TCanvas* canvas_EbyL = new TCanvas("canvas_EbyL","",200,10,1000,600);
+   
+   //EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(EbyL_antimu, "antimu");
+   SetHistParticleStyle(EbyL_piplus, "piplus");
+   SetHistParticleStyle(EbyL_proton, "proton");
+   SetHistParticleStyle(EbyL_positron, "positron");
+   
+   EbyL_antimu->Draw();
+   EbyL_piplus->Draw("same");
+   EbyL_proton->Draw("same");
+   EbyL_positron->Draw("same");
+   canvas_EbyL->BuildLegend();
+   canvas_EbyL->Write();
+   
+   // ECal circularity
+   
+   TCanvas* canvas_circularity = new TCanvas("canvas_circularity","",200,10,1000,600);
+   
+   //circularity_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(circularity_antimu, "antimu");
+   SetHistParticleStyle(circularity_piplus, "piplus");
+   SetHistParticleStyle(circularity_proton, "proton");
+   SetHistParticleStyle(circularity_positron, "positron");
+   
+   circularity_antimu->Draw();
+   circularity_piplus->Draw("same");
+   circularity_proton->Draw("same");
+   circularity_positron->Draw("same");
+   canvas_circularity->BuildLegend();
+   canvas_circularity->Write();
+   
+   // ECal FBR
+   
+   TCanvas* canvas_fbr = new TCanvas("canvas_fbr","",200,10,1000,600);
+   
+   //fbr_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(fbr_antimu, "antimu");
+   SetHistParticleStyle(fbr_piplus, "piplus");
+   SetHistParticleStyle(fbr_proton, "proton");
+   SetHistParticleStyle(fbr_positron, "positron");
+   
+   fbr_antimu->Draw();
+   fbr_piplus->Draw("same");
+   fbr_proton->Draw("same");
+   fbr_positron->Draw("same");
+   canvas_fbr->BuildLegend();
+   canvas_fbr->Write();
+   
+   // ECal TMR
+   
+   TCanvas* canvas_tmr = new TCanvas("canvas_tmr","",200,10,1000,600);
+   
+   //tmr_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tmr_antimu, "antimu");
+   SetHistParticleStyle(tmr_piplus, "piplus");
+   SetHistParticleStyle(tmr_proton, "proton");
+   SetHistParticleStyle(tmr_positron, "positron");
+   
+   tmr_antimu->Draw();
+   tmr_piplus->Draw("same");
+   tmr_proton->Draw("same");
+   tmr_positron->Draw("same");
+   canvas_tmr->BuildLegend();
+   canvas_tmr->Write();
+   
+   // ECal QRMS
+   
+   TCanvas* canvas_qrms = new TCanvas("canvas_qrms","",200,10,1000,600);
+   
+   //qrms_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(qrms_antimu, "antimu");
+   SetHistParticleStyle(qrms_piplus, "piplus");
+   SetHistParticleStyle(qrms_proton, "proton");
+   SetHistParticleStyle(qrms_positron, "positron");
+   
+   qrms_antimu->Draw();
+   qrms_piplus->Draw("same");
+   qrms_proton->Draw("same");
+   qrms_positron->Draw("same");
+   canvas_qrms->BuildLegend();
+   canvas_qrms->Write();
+   
+   // ECal MipEm
+   
+   TCanvas* canvas_mipem = new TCanvas("canvas_mipem","",200,10,1000,600);
+   
+   //mipem_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(mipem_antimu, "antimu");
+   SetHistParticleStyle(mipem_piplus, "piplus");
+   SetHistParticleStyle(mipem_proton, "proton");
+   SetHistParticleStyle(mipem_positron, "positron");
+   
+   mipem_antimu->Draw();
+   mipem_piplus->Draw("same");
+   mipem_proton->Draw("same");
+   mipem_positron->Draw("same");
+   canvas_mipem->BuildLegend();
+   canvas_mipem->Write();
+   
+   // ECal EmHip
+   
+   TCanvas* canvas_emhip = new TCanvas("canvas_emhip","",200,10,1000,600);
+   
+   //emhip_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(emhip_antimu, "antimu");
+   SetHistParticleStyle(emhip_piplus, "piplus");
+   SetHistParticleStyle(emhip_proton, "proton");
+   SetHistParticleStyle(emhip_positron, "positron");
+   
+   emhip_antimu->Draw();
+   emhip_piplus->Draw("same");
+   emhip_proton->Draw("same");
+   emhip_positron->Draw("same");
+   canvas_emhip->BuildLegend();
+   canvas_emhip->Write();
+   
+   // ECal MipPion
+   
+   TCanvas* canvas_mippion = new TCanvas("canvas_mippion","",200,10,1000,600);
+   
+   //mippion_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(mippion_antimu, "antimu");
+   SetHistParticleStyle(mippion_piplus, "piplus");
+   SetHistParticleStyle(mippion_proton, "proton");
+   SetHistParticleStyle(mippion_positron, "positron");
+   
+   mippion_antimu->Draw();
+   mippion_piplus->Draw("same");
+   mippion_proton->Draw("same");
+   mippion_positron->Draw("same");
+   canvas_mippion->BuildLegend();
+   canvas_mippion->Write();
+   
+   // TPC2 dE/dx
+   
+   TCanvas* canvas_tpc2dedx = new TCanvas("canvas_tpc2dedx","",200,10,1000,600);
+   
+   //tpc2dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpc2dedx_antimu, "antimu");
+   SetHistParticleStyle(tpc2dedx_piplus, "piplus");
+   SetHistParticleStyle(tpc2dedx_proton, "proton");
+   SetHistParticleStyle(tpc2dedx_positron, "positron");
+   
+   tpc2dedx_antimu->Draw();
+   tpc2dedx_piplus->Draw("same");
+   tpc2dedx_proton->Draw("same");
+   tpc2dedx_positron->Draw("same");
+   canvas_tpc2dedx->BuildLegend();
+   canvas_tpc2dedx->Write();
+   
+   // TPC3 dE/dx
+   
+   TCanvas* canvas_tpc3dedx = new TCanvas("canvas_tpc3dedx","",200,10,1000,600);
+   
+   //tpc3dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpc3dedx_antimu, "antimu");
+   SetHistParticleStyle(tpc3dedx_piplus, "piplus");
+   SetHistParticleStyle(tpc3dedx_proton, "proton");
+   SetHistParticleStyle(tpc3dedx_positron, "positron");
+   
+   tpc3dedx_antimu->Draw();
+   tpc3dedx_piplus->Draw("same");
+   tpc3dedx_proton->Draw("same");
+   tpc3dedx_positron->Draw("same");
+   canvas_tpc3dedx->BuildLegend();
+   canvas_tpc3dedx->Write();
+   
+   // TPC mu-like
+   
+   TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
+   
+   //tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpclikemu_antimu, "antimu");
+   SetHistParticleStyle(tpclikemu_piplus, "piplus");
+   SetHistParticleStyle(tpclikemu_proton, "proton");
+   SetHistParticleStyle(tpclikemu_positron, "positron");
+   
+   tpclikemu_antimu->Draw();
+   tpclikemu_piplus->Draw("same");
+   tpclikemu_proton->Draw("same");
+   tpclikemu_positron->Draw("same");
+   canvas_tpclikemu->BuildLegend();
+   canvas_tpclikemu->Write();
+   
+   // TPC pi-like
+   
+   TCanvas* canvas_tpclikepi = new TCanvas("canvas_tpclikepi","",200,10,1000,600);
+   
+   //tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpclikepi_antimu, "antimu");
+   SetHistParticleStyle(tpclikepi_piplus, "piplus");
+   SetHistParticleStyle(tpclikepi_proton, "proton");
+   SetHistParticleStyle(tpclikepi_positron, "positron");
+   
+   tpclikepi_antimu->Draw();
+   tpclikepi_piplus->Draw("same");
+   tpclikepi_proton->Draw("same");
+   tpclikepi_positron->Draw("same");
+   canvas_tpclikepi->BuildLegend();
+   canvas_tpclikepi->Write();
+   
+   // TPC p-like
+   
+   TCanvas* canvas_tpclikep = new TCanvas("canvas_tpclikep","",200,10,1000,600);
+   
+   //tpclikep_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpclikep_antimu, "antimu");
+   SetHistParticleStyle(tpclikep_piplus, "piplus");
+   SetHistParticleStyle(tpclikep_proton, "proton");
+   SetHistParticleStyle(tpclikep_positron, "positron");
+   
+   tpclikep_antimu->Draw();
+   tpclikep_piplus->Draw("same");
+   tpclikep_proton->Draw("same");
+   tpclikep_positron->Draw("same");
+   canvas_tpclikep->BuildLegend();
+   canvas_tpclikep->Write();
+   
+   // TPC e-like
+   
+   TCanvas* canvas_tpclikee = new TCanvas("canvas_tpclikee","",200,10,1000,600);
+   
+   //tpclikee_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpclikee_antimu, "antimu");
+   SetHistParticleStyle(tpclikee_piplus, "piplus");
+   SetHistParticleStyle(tpclikee_proton, "proton");
+   SetHistParticleStyle(tpclikee_positron, "positron");
+   
+   tpclikee_antimu->Draw();
+   tpclikee_piplus->Draw("same");
+   tpclikee_proton->Draw("same");
+   tpclikee_positron->Draw("same");
+   canvas_tpclikee->BuildLegend();
+   canvas_tpclikee->Write();
+   
+   // FGD1 E/L
+   
+   TCanvas* canvas_fgd1EbyL = new TCanvas("canvas_fgd1EbyL","",200,10,1000,600);
+   
+   //fgd1EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(fgd1EbyL_antimu, "antimu");
+   SetHistParticleStyle(fgd1EbyL_piplus, "piplus");
+   SetHistParticleStyle(fgd1EbyL_proton, "proton");
+   SetHistParticleStyle(fgd1EbyL_positron, "positron");
+   
+   fgd1EbyL_antimu->Draw();
+   fgd1EbyL_piplus->Draw("same");
+   fgd1EbyL_proton->Draw("same");
+   fgd1EbyL_positron->Draw("same");
+   canvas_fgd1EbyL->BuildLegend();
+   canvas_fgd1EbyL->Write();
+   
+   // FGD2 E/L
+   
+   TCanvas* canvas_fgd2EbyL = new TCanvas("canvas_fgd2EbyL","",200,10,1000,600);
+   
+   //fgd2EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(fgd2EbyL_antimu, "antimu");
+   SetHistParticleStyle(fgd2EbyL_piplus, "piplus");
+   SetHistParticleStyle(fgd2EbyL_proton, "proton");
+   SetHistParticleStyle(fgd2EbyL_positron, "positron");
+   
+   fgd2EbyL_antimu->Draw();
+   fgd2EbyL_piplus->Draw("same");
+   fgd2EbyL_proton->Draw("same");
+   fgd2EbyL_positron->Draw("same");
+   canvas_fgd2EbyL->BuildLegend();
+   canvas_fgd2EbyL->Write();
+   
+   // nSMRDs
+   
+   TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,1000,600);
+   
+   //nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(nsmrds_antimu, "antimu");
+   SetHistParticleStyle(nsmrds_piplus, "piplus");
+   SetHistParticleStyle(nsmrds_proton, "proton");
+   SetHistParticleStyle(nsmrds_positron, "positron");
+   
+   nsmrds_antimu->Draw();
+   nsmrds_piplus->Draw("same");
+   nsmrds_proton->Draw("same");
+   nsmrds_positron->Draw("same");
+   canvas_nsmrds->BuildLegend();
+   canvas_nsmrds->Write();
    
    
    
