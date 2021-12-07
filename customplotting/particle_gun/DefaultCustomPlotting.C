@@ -811,29 +811,29 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    if (particle == "antimu")
    {
       hist->SetLineColor( kBlue);
-      hist->SetFillColorAlpha(kBlue-10, 0.35);
+      //hist->SetFillColorAlpha(kBlue-10, 0.35);
       //hist->SetFillStyle( 3006);
    }
    
    else if (particle == "piplus")
    {
       hist->SetLineColor( kRed);
-      hist->SetFillColorAlpha(kRed, 0.35);
-      hist->SetFillStyle( 3354);
+      //hist->SetFillColorAlpha(kRed, 0.35);
+      //hist->SetFillStyle( 3354);
    }
    
    else if (particle == "proton")
    {
       hist->SetLineColor( kGreen);
-      hist->SetFillColorAlpha(kGreen, 0.35);
-      hist->SetFillStyle( 3003);
+      //hist->SetFillColorAlpha(kGreen, 0.35);
+      //hist->SetFillStyle( 3003);
    }
    
    else if (particle == "positron")
    {
       hist->SetLineColor( kMagenta);
-      hist->SetFillColorAlpha(kMagenta, 0.35);
-      hist->SetFillStyle( 3345);
+      //hist->SetFillColorAlpha(kMagenta, 0.35);
+      //hist->SetFillStyle( 3345);
    }
    
    else std::cout << "Error in SetHistParticleStyle: particle type not recognised." << std::endl;
