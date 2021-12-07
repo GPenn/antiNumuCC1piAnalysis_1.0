@@ -68,20 +68,20 @@ void DefaultCustomPlotting::Loop()
    TH1F *qrms_proton = new TH1F("qrms_proton", "Proton", 30, 0.0, 3.0);
    TH1F *qrms_positron = new TH1F("qrms_positron", "Positron", 30, 0.0, 3.0);
    
-   TH1F *mipem_antimu = new TH1F("mipem_antimu", "Antimuon;ECal MipEm variable (dimensionless);Entries", 50, 50.0, 50.0);
-   TH1F *mipem_piplus = new TH1F("mipem_piplus", "Pi+", 50, 50.0, 50.0);
-   TH1F *mipem_proton = new TH1F("mipem_proton", "Proton", 50, 50.0, 50.0);
-   TH1F *mipem_positron = new TH1F("mipem_positron", "Positron", 50, 50.0, 50.0);
+   TH1F *mipem_antimu = new TH1F("mipem_antimu", "Antimuon;ECal MipEm variable (dimensionless);Entries", 50, -50.0, 50.0);
+   TH1F *mipem_piplus = new TH1F("mipem_piplus", "Pi+", 50, -50.0, 50.0);
+   TH1F *mipem_proton = new TH1F("mipem_proton", "Proton", 50, -50.0, 50.0);
+   TH1F *mipem_positron = new TH1F("mipem_positron", "Positron", 50, -50.0, 50.0);
    
-   TH1F *emhip_antimu = new TH1F("emhip_antimu", "Antimuon;ECal EmHip variable (dimensionless);Entries", 50, 50.0, 50.0);
-   TH1F *emhip_piplus = new TH1F("emhip_piplus", "Pi+", 50, 50.0, 50.0);
-   TH1F *emhip_proton = new TH1F("emhip_proton", "Proton", 50, 50.0, 50.0);
-   TH1F *emhip_positron = new TH1F("emhip_positron", "Positron", 50, 50.0, 50.0);
+   TH1F *emhip_antimu = new TH1F("emhip_antimu", "Antimuon;ECal EmHip variable (dimensionless);Entries", 50, -50.0, 50.0);
+   TH1F *emhip_piplus = new TH1F("emhip_piplus", "Pi+", 50, -50.0, 50.0);
+   TH1F *emhip_proton = new TH1F("emhip_proton", "Proton", 50, -50.0, 50.0);
+   TH1F *emhip_positron = new TH1F("emhip_positron", "Positron", 50, -50.0, 50.0);
    
-   TH1F *mippion_antimu = new TH1F("mippion_antimu", "Antimuon;ECal MipPion variable (dimensionless);Entries", 50, 50.0, 50.0);
-   TH1F *mippion_piplus = new TH1F("mippion_piplus", "Pi+", 50, 50.0, 50.0);
-   TH1F *mippion_proton = new TH1F("mippion_proton", "Proton", 50, 50.0, 50.0);
-   TH1F *mippion_positron = new TH1F("mippion_positron", "Positron", 50, 50.0, 50.0);
+   TH1F *mippion_antimu = new TH1F("mippion_antimu", "Antimuon;ECal MipPion variable (dimensionless);Entries", 50, -50.0, 50.0);
+   TH1F *mippion_piplus = new TH1F("mippion_piplus", "Pi+", 50, -50.0, 50.0);
+   TH1F *mippion_proton = new TH1F("mippion_proton", "Proton", 50, -50.0, 50.0);
+   TH1F *mippion_positron = new TH1F("mippion_positron", "Positron", 50, -50.0, 50.0);
    
    TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "Antimuon;TPC2 dE/dx truncated mean ();Entries/", 50, 0.0, 2000.0);
    TH1F *tpc2dedx_piplus = new TH1F("tpc2dedx_piplus", "Pi+", 50, 0.0, 2000.0);
@@ -494,7 +494,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_tmr = new TCanvas("canvas_tmr","",200,10,1000,600);
    
-   tmr_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   tmr_antimu->GetYaxis()->SetRangeUser(0.0, 8000.0);
   
    SetHistParticleStyle(tmr_antimu, "antimu");
    SetHistParticleStyle(tmr_piplus, "piplus");
@@ -620,7 +620,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
    
-   tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 10000.0);
+   tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 45000.0);
   
    SetHistParticleStyle(tpclikemu_antimu, "antimu");
    SetHistParticleStyle(tpclikemu_piplus, "piplus");
@@ -638,7 +638,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_tpclikepi = new TCanvas("canvas_tpclikepi","",200,10,1000,600);
    
-   tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 10000.0);
+   tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 45000.0);
   
    SetHistParticleStyle(tpclikepi_antimu, "antimu");
    SetHistParticleStyle(tpclikepi_piplus, "piplus");
@@ -728,7 +728,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,1000,600);
    
-   nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 50000.0);
+   nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 100000.0);
   
    SetHistParticleStyle(nsmrds_antimu, "antimu");
    SetHistParticleStyle(nsmrds_piplus, "piplus");
