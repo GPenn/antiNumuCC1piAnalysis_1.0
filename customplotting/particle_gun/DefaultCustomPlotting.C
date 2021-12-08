@@ -63,7 +63,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *tmr_proton = new TH1F("tmr_proton", "Proton", 50, 0.0, 1.0);
    TH1F *tmr_positron = new TH1F("tmr_positron", "Positron", 50, 0.0, 1.0);
    
-   TH1F *qrms_antimu = new TH1F("qrms_antimu", "Antimuon;ECal QRMS variable ();Entries/", 30, 0.0, 3.0);
+   TH1F *qrms_antimu = new TH1F("qrms_antimu", "Antimuon;ECal QRMS variable (dimensionless);Entries/", 30, 0.0, 3.0);
    TH1F *qrms_piplus = new TH1F("qrms_piplus", "Pi+", 30, 0.0, 3.0);
    TH1F *qrms_proton = new TH1F("qrms_proton", "Proton", 30, 0.0, 3.0);
    TH1F *qrms_positron = new TH1F("qrms_positron", "Positron", 30, 0.0, 3.0);
