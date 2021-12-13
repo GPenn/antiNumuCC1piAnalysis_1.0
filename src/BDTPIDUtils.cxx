@@ -37,16 +37,17 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "EmHip := selmu_ecal_emhip",                       &bdt_ecal_emhip);
   tmvareader->AddVariable( "MipPion := selmu_ecal_mippion",                   &bdt_ecal_mippion);
   
-  //tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
+  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
   // Book the BDT
-  tmvareader->BookMVA( "BDTG", "parameters/BDT_PID_multiclass_BDTG.weights_default_tree3.xml" );
+  tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tree3_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tree3_noweights.weights.xml" );
   
 }
 
 //--------------------------------------------------------------------------------------------------//
 //std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment) {
-std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReconObject* localecalsegment) {
+std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname) {
 //--------------------------------------------------------------------------------------------------//
   
   // Set variables to defaults:
@@ -159,7 +160,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVars(AnaTrackB* track, AnaTECALReco
   
   // Call BDT:
   //std::cout << "DEBUG: Evaluating BDT output..." << std::endl;
-  output = tmvareader->EvaluateMulticlass( "BDTG" );
+  output = tmvareader->EvaluateMulticlass( BDTname );
   
   return output;
 }
