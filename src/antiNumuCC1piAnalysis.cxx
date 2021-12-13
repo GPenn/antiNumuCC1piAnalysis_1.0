@@ -199,6 +199,9 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_bdt_pid_mu_cc1pi, "");
   AddVarF(output(),hmnt_bdt_pid_pi_cc1pi, "");
   
+  AddVarF(output(),selmu_bdt_pid_unweighted_mu_cc1pi, "");
+  AddVarF(output(),hmnt_bdt_pid_unweighted_pi_cc1pi, "");
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
@@ -358,8 +361,11 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
     
-    //std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
-    //output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
+    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
+    output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
+    
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3_noweights");
+    output().FillVar(selmu_bdt_pid_unweighted_mu_cc1pi, BDT_PID_results_vector[0]);
 
   }
   
@@ -463,8 +469,11 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(hmnt_bdt_pid_p, BDT_PID_results[2]);
       output().FillVar(hmnt_bdt_pid_e, BDT_PID_results[3]);*/
     
-    //std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
-    //output().FillVar(hmnt_bdt_pid_pi_cc1pi, BDT_PID_results_vector[1]);
+    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3");
+    output().FillVar(hmnt_bdt_pid_pi_cc1pi, BDT_PID_results_vector[1]);
+    
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3_noweights");
+    output().FillVar(hmnt_bdt_pid_unweighted_pi_cc1pi, BDT_PID_results_vector[1]);
     
   }
 
