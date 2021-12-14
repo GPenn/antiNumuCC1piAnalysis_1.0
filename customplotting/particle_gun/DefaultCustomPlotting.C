@@ -176,8 +176,9 @@ void DefaultCustomPlotting::Loop()
    Int_t correlation_nbins = 20;
    
    TH2F *corr_weighting_mulike = new TH2F("corr_weighting_mulike", "Correlation: mom weighted vs unweighted, mu-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
-   
-   
+   TH2F *corr_weighting_pilike = new TH2F("corr_weighting_pilike", "Correlation: mom weighted vs unweighted, pi-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
+   TH2F *corr_weighting_plike = new TH2F("corr_weighting_plike", "Correlation: mom weighted vs unweighted, proton-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
+   TH2F *corr_weighting_elike = new TH2F("corr_weighting_elike", "Correlation: mom weighted vs unweighted, e-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -321,6 +322,9 @@ void DefaultCustomPlotting::Loop()
          }
          
          corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
+         corr_weighting_pilike->Fill(selmu_bdt_pid_pi, selmu_bdt_pid_unweighted_pi);
+         corr_weighting_plike->Fill(selmu_bdt_pid_p, selmu_bdt_pid_unweighted_p);
+         corr_weighting_elike->Fill(selmu_bdt_pid_e, selmu_bdt_pid_unweighted_e);
       }
       
       
@@ -982,10 +986,13 @@ void DefaultCustomPlotting::Loop()
    // ============= Correlation plots =============
    
    
-   TCanvas* canvas_corr_weighting_mulike = new TCanvas("canvas_corr_weighting_mulike","",200,10,1000,1000);
-   corr_weighting_mulike->Draw("colz");
-   canvas_corr_weighting_mulike->Write();
-   
+   //TCanvas* canvas_corr_weighting_mulike = new TCanvas("canvas_corr_weighting_mulike","",200,10,1000,1000);
+   //corr_weighting_mulike->Draw("colz");
+   //canvas_corr_weighting_mulike->Write();
+   corr_weighting_mulike->Write();
+   corr_weighting_pilike->Write();
+   corr_weighting_plike->Write();
+   corr_weighting_elike->Write();
       
       
    
