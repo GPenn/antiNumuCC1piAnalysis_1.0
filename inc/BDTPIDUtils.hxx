@@ -14,7 +14,7 @@ class BDTPIDmanager{
     virtual ~BDTPIDmanager(){delete tmvareader;}
     
     //std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
-  std::vector<Float_t> GetBDTPIDVars(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname);
+  std::vector<Float_t> GetBDTPIDVars(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname="BDTG_tree3");
   
   protected:
     TMVA::Reader* tmvareader;
