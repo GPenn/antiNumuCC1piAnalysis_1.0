@@ -173,8 +173,9 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
+   Int_t correlation_nbins = 20;
    
-   
+   TH2F *corr_weighting_mulike = new TH2F("corr_weighting_mulike", "Correlation: mom weighted vs unweighted, mu-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    
    
    
@@ -295,6 +296,7 @@ void DefaultCustomPlotting::Loop()
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
+            
          }
          else if (particle == 211)
          {
@@ -317,6 +319,8 @@ void DefaultCustomPlotting::Loop()
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_sig->Fill(selmu_bdt_pid_e);
          }
+         
+         corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
       }
       
       
@@ -975,8 +979,13 @@ void DefaultCustomPlotting::Loop()
    
    
    
+   // ============= Correlation plots =============
+   
+   corr_weighting_mulike->Write();
    
    
+      
+      
    
    // ============= Test existing cuts =============
    
