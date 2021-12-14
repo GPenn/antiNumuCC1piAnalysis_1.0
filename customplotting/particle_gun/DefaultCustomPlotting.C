@@ -981,8 +981,10 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Correlation plots =============
    
-   corr_weighting_mulike->Write();
    
+   TCanvas* canvas_corr_weighting_mulike = new TCanvas("canvas_corr_weighting_mulike","",200,10,1000,1000);
+   corr_weighting_mulike->Draw("colz");
+   canvas_corr_weighting_mulike->Write();
    
       
       
