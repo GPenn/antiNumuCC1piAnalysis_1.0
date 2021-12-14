@@ -73,6 +73,11 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
     selmu_bdt_pid_p,
     selmu_bdt_pid_e,
    
+    selmu_bdt_pid_unweighted_mu,
+    selmu_bdt_pid_unweighted_pi,
+    selmu_bdt_pid_unweighted_p,
+    selmu_bdt_pid_unweighted_e,
+   
     enumStandardMicroTreesLast_antiNumuCC1piAnalysis
   };
  
