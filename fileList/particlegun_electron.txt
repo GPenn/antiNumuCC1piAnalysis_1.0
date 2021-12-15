@@ -1,5 +1,0 @@
-/bundle/data/T2K/users/gpenn/particle_gun/electron/output/oa_pg_em_00000728-1232_bnecesydfipc_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/electron/output/oa_pg_em_00000729-1433_bj653pxhwwpk_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/electron/output/oa_pg_em_00000802-1114_ytxom22kavig_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/electron/output/oa_pg_em_00000803-1045_cijqds7q7duc_anal_000_bsdv01_2.root
-/bundle/data/T2K/users/gpenn/particle_gun/electron/output/oa_pg_em_00000804-1011_2wsg2rlquqzu_anal_000_bsdv01_2.root
