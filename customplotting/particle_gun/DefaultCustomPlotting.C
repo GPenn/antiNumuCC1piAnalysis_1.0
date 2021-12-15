@@ -175,18 +175,30 @@ void DefaultCustomPlotting::Loop()
 
    Int_t correlation_nbins = 40;
    
-   TH2F *corr_weighting_mulike = new TH2F("corr_weighting_mulike", "Correlation: mom weighted vs unweighted, mu-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
-   TH2F *corr_weighting_pilike = new TH2F("corr_weighting_pilike", "Correlation: mom weighted vs unweighted, pi-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
-   TH2F *corr_weighting_plike = new TH2F("corr_weighting_plike", "Correlation: mom weighted vs unweighted, proton-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
-   TH2F *corr_weighting_elike = new TH2F("corr_weighting_elike", "Correlation: mom weighted vs unweighted, e-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
+   TH2F *corr_weighting_mulike = new TH2F("corr_weighting_mulike", 
+                                          "Correlation: mom weighted vs unweighted, mu-like;Mom-weighted BDT mu-like output;Unweighted BDT mu-like output", 
+                                          correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
+   TH2F *corr_weighting_pilike = new TH2F("corr_weighting_pilike", 
+                                          "Correlation: mom weighted vs unweighted, pi-like;Mom-weighted BDT pi-like output;Unweighted BDT pi-like output",
+                                          correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
+   TH2F *corr_weighting_plike = new TH2F("corr_weighting_plike", 
+                                         "Correlation: mom weighted vs unweighted, proton-like;Mom-weighted BDT p-like output;Unweighted BDT p-like output", 
+                                         correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
+   TH2F *corr_weighting_elike = new TH2F("corr_weighting_elike", 
+                                         "Correlation: mom weighted vs unweighted, e-like;Mom-weighted BDT e-like output;Unweighted BDT e-like output", 
+                                         correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    
-   TH2F *corr_mulikediff_recomom = new TH2F("corr_mulikediff_recomom", "Correlation: mu-like disagreement vs reco mom ", 
+   TH2F *corr_mulikediff_recomom = new TH2F("corr_mulikediff_recomom", 
+                                            "Correlation: mu-like disagreement vs reco mom;Reco momentum;BDT mu-like disagreement (weighted - unweighted)", 
                                             correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
-   TH2F *corr_pilikediff_recomom = new TH2F("corr_pilikediff_recomom", "Correlation: pi-like disagreement vs reco mom ", 
+   TH2F *corr_pilikediff_recomom = new TH2F("corr_pilikediff_recomom", 
+                                            "Correlation: pi-like disagreement vs reco mom;Reco momentum;BDT pi-like disagreement (weighted - unweighted)", 
                                             correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
-   TH2F *corr_plikediff_recomom = new TH2F("corr_plikediff_recomom", "Correlation: proton-like disagreement vs reco mom ", 
+   TH2F *corr_plikediff_recomom = new TH2F("corr_plikediff_recomom", 
+                                           "Correlation: proton-like disagreement vs reco mom;Reco momentum;BDT p-like disagreement (weighted - unweighted)", 
                                             correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
-   TH2F *corr_elikediff_recomom = new TH2F("corr_elikediff_recomom", "Correlation: e-like disagreement vs reco mom ", 
+   TH2F *corr_elikediff_recomom = new TH2F("corr_elikediff_recomom", 
+                                           "Correlation: e-like disagreement vs reco mom;Reco momentum;BDT e-like disagreement (weighted - unweighted)", 
                                             correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
    
    Long64_t nbytes = 0, nb = 0;
