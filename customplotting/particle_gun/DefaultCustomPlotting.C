@@ -173,14 +173,21 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
-   Int_t correlation_nbins = 20;
+   Int_t correlation_nbins = 40;
    
    TH2F *corr_weighting_mulike = new TH2F("corr_weighting_mulike", "Correlation: mom weighted vs unweighted, mu-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    TH2F *corr_weighting_pilike = new TH2F("corr_weighting_pilike", "Correlation: mom weighted vs unweighted, pi-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    TH2F *corr_weighting_plike = new TH2F("corr_weighting_plike", "Correlation: mom weighted vs unweighted, proton-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    TH2F *corr_weighting_elike = new TH2F("corr_weighting_elike", "Correlation: mom weighted vs unweighted, e-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    
-   TH2F *corr_mulikediff_recomom = new TH2F("corr_mulikediff_recomom", "Correlation: mu-like disagreement vs reco mom ", correlation_nbins, -1.0, 1.0, correlation_nbins, 200.0, 1500.0);
+   TH2F *corr_mulikediff_recomom = new TH2F("corr_mulikediff_recomom", "Correlation: mu-like disagreement vs reco mom ", 
+                                            correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
+   TH2F *corr_pilikediff_recomom = new TH2F("corr_pilikediff_recomom", "Correlation: pi-like disagreement vs reco mom ", 
+                                            correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
+   TH2F *corr_plikediff_recomom = new TH2F("corr_plikediff_recomom", "Correlation: proton-like disagreement vs reco mom ", 
+                                            correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
+   TH2F *corr_elikediff_recomom = new TH2F("corr_elikediff_recomom", "Correlation: e-like disagreement vs reco mom ", 
+                                            correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -328,7 +335,10 @@ void DefaultCustomPlotting::Loop()
          corr_weighting_plike->Fill(selmu_bdt_pid_p, selmu_bdt_pid_unweighted_p);
          corr_weighting_elike->Fill(selmu_bdt_pid_e, selmu_bdt_pid_unweighted_e);
          
-         corr_mulikediff_recomom->Fill(selmu_bdt_pid_mu-selmu_bdt_pid_unweighted_mu, selmu_mom[0]);
+         corr_mulikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_mu-selmu_bdt_pid_unweighted_mu);
+         corr_pilikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_pi-selmu_bdt_pid_unweighted_pi);
+         corr_plikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_p-selmu_bdt_pid_unweighted_p);
+         corr_elikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_e-selmu_bdt_pid_unweighted_e);
       }
       
       
@@ -999,6 +1009,9 @@ void DefaultCustomPlotting::Loop()
    corr_weighting_elike->Write();
    
    corr_mulikediff_recomom->Write();
+   corr_pilikediff_recomom->Write();
+   corr_plikediff_recomom->Write();
+   corr_elikediff_recomom->Write();
       
       
    
