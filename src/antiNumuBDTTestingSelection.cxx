@@ -42,7 +42,7 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction()); 
   AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
   //AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
-  AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction());  
+  AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_numuCC());  
   AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
   //AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
   AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
