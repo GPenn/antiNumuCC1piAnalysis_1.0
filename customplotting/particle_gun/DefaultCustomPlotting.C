@@ -180,7 +180,7 @@ void DefaultCustomPlotting::Loop()
    TH2F *corr_weighting_plike = new TH2F("corr_weighting_plike", "Correlation: mom weighted vs unweighted, proton-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    TH2F *corr_weighting_elike = new TH2F("corr_weighting_elike", "Correlation: mom weighted vs unweighted, e-like", correlation_nbins, 0.0, 1.0, correlation_nbins, 0.0, 1.0);
    
-   TH2F *corr_mulikediff_recomom = new TH2F("corr_mulikediff_recomom", "Correlation: mu-like disagreement vs reco mom ", correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
+   TH2F *corr_mulikediff_recomom = new TH2F("corr_mulikediff_recomom", "Correlation: mu-like disagreement vs reco mom ", correlation_nbins, -1.0, 1.0, correlation_nbins, 200.0, 1500.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
