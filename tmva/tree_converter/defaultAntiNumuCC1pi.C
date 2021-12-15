@@ -32,7 +32,7 @@ void defaultAntiNumuCC1pi::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
     
-    int desiredPDG = -11;
+    int desiredPDG = 13;
     
     
     if (fChain == 0) return;
