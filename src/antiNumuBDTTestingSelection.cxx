@@ -38,9 +38,11 @@ void antiNumuBDTTestingSelection::DefineSteps(){
   // last "true" means the step sequence is broken if cut is not passed (default is "false")
   AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
   AddStep(StepBase::kCut,    "> 0 tracks ",        new TotalMultiplicityCut(),      true);  
-  AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
+  //AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
+  AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction()); 
   AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
-  AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
+  //AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
+  AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction());  
   AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
   //AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
   AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
