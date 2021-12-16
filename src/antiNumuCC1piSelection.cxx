@@ -701,7 +701,7 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Waive cut if muon candidate track has no ECal segments
   //if (!box.MainTrack) return true;
   
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
   Float_t mulike_bdtvalue = pidvars[0];
 
   if (mulike_bdtvalue > mulike_cutvalue) return true;
@@ -723,7 +723,7 @@ bool BDTPIDPiLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Waive cut if muon candidate track has no ECal segments
   //if (!box.MainTrack) return true;
   
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
   Float_t pilike_bdtvalue = pidvars[1];
 
   if (pilike_bdtvalue > pilike_cutvalue) return true;
@@ -745,7 +745,7 @@ bool BDTPIDProtonLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Waive cut if muon candidate track has no ECal segments
   //if (!box.MainTrack) return true;
   
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
   Float_t plike_bdtvalue = pidvars[2];
 
   if (plike_bdtvalue > plike_cutvalue) return true;
@@ -767,7 +767,7 @@ bool BDTPIDElectronLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Waive cut if muon candidate track has no ECal segments
   //if (!box.MainTrack) return true;
   
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVars(box.MainTrack, box.MainTrackLocalECalSegment);
+  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
   Float_t elike_bdtvalue = pidvars[3];
 
   if (elike_bdtvalue > elike_cutvalue) return true;
