@@ -49,7 +49,7 @@
 
 using namespace TMVA;
 
-void BDT_PID_multiclass( TString myMethodList = "" )
+void BDT_PID_multiclass_negative( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -137,7 +137,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // ---------------------------------------------------------------
 
    std::cout << std::endl;
-   std::cout << "==> Start BDT_PID_multiclass" << std::endl;
+   std::cout << "==> Start BDT_PID_multiclass_negative" << std::endl;
 
    // Select methods (don't look at this code - not of interest)
    if (myMethodList != "") {
@@ -162,7 +162,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_PID_multiclass.root" );
+   TString outfileName( "output/BDT_PID_multiclass_negative.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -178,7 +178,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
    //                                            "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
    
-   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass", outputFile,
+   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass_negative", outputFile,
                                                "!V:!Silent:Color:DrawProgressBar:Transformations=I:AnalysisType=multiclass" );
 
    // If you wish to modify default settings
@@ -248,39 +248,33 @@ void BDT_PID_multiclass( TString myMethodList = "" )
 
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString fname_mu = "tree_converter/output/particlegun_antimu.root";
-   TString fname_pi = "tree_converter/output/particlegun_piplus.root";
-   TString fname_p  = "tree_converter/output/particlegun_proton.root";
-   TString fname_e  = "tree_converter/output/particlegun_positron.root";
+   TString fname_mu = "tree_converter/output/particlegun_mu.root";
+   TString fname_pi = "tree_converter/output/particlegun_piminus.root";
+   TString fname_e  = "tree_converter/output/particlegun_electron.root";
    
    TFile *input_mu = TFile::Open( fname_mu );
    TFile *input_pi = TFile::Open( fname_pi );
-   TFile *input_p  = TFile::Open( fname_p );
    TFile *input_e  = TFile::Open( fname_e );
    
    std::cout << "--- BDT_PID_multiclass       : Using input files: " << std::endl 
       << input_mu->GetName() << std::endl 
       << input_pi->GetName() << std::endl 
-      << input_p->GetName() << std::endl 
       << input_e->GetName() << std::endl;
    
    // --- Register the input trees
    
    TTree *inputTree_mu = (TTree*)input_mu->Get("default");
    TTree *inputTree_pi = (TTree*)input_pi->Get("default");
-   TTree *inputTree_p  = (TTree*)input_p->Get("default");
    TTree *inputTree_e  = (TTree*)input_e->Get("default");
    
    gROOT->cd( outfileName+TString(":/") );
    factory->AddTree    (inputTree_mu,"Muon");
    factory->AddTree    (inputTree_pi,"Pion");
-   factory->AddTree    (inputTree_p, "Proton");
    factory->AddTree    (inputTree_e, "Electron");
    
    //Event-by-event weighting:
    factory->SetWeightExpression("selmu_mom_weight", "Muon");
    factory->SetWeightExpression("selmu_mom_weight", "Pion");
-   factory->SetWeightExpression("selmu_mom_weight", "Proton");
    factory->SetWeightExpression("selmu_mom_weight", "Electron");
    
    /*Double_t desiredsamplesize = 50000;
@@ -485,7 +479,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //                        "!H:!V:NTrees=800:MinNodeSize=5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.6:SeparationType=SDivSqrtSPlusB:nCuts=20" );
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree2", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=2");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=4");
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_500trees", "!H:!V:NTrees=500:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
@@ -499,9 +493,9 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.30:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.40:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.5", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.50:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.6", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.60:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.8", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.80:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage1.0", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.00:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.6", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.60:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.8", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.80:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage1.0", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.00:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2500:MaxDepth=3");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
@@ -532,7 +526,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    outputFile->Close();
 
    std::cout << "==> Wrote root file: " << outputFile->GetName() << std::endl;
-   std::cout << "==> BDT_PID_multiclass is done!" << std::endl;
+   std::cout << "==> BDT_PID_multiclass_negative is done!" << std::endl;
    
    delete factory;
 
