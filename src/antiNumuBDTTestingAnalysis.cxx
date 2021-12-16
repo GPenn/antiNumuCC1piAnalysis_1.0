@@ -159,14 +159,14 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
   {
     output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
     
-    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
+    std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVarsPos(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
     
     output().FillVar(selmu_bdt_pid_mu, BDT_PID_results[0]);
     output().FillVar(selmu_bdt_pid_pi, BDT_PID_results[1]);
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);
     
-    BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3_noweights");
+    BDT_PID_results = myBDTPIDmanager->GetBDTPIDVarsPos(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3_noweights");
     
     output().FillVar(selmu_bdt_pid_unweighted_mu, BDT_PID_results[0]);
     output().FillVar(selmu_bdt_pid_unweighted_pi, BDT_PID_results[1]);
