@@ -653,7 +653,7 @@ void DefaultCustomPlotting::Loop()
    // TPC mu-like
    
    TCanvas* canvas_tpclikelihoods = new TCanvas("canvas_tpclikelihoods","",200,10,1000,600);
-   canvas_tpclikelihoods->Divide(2,2);
+   canvas_tpclikelihoods->Divide(2,2,0.0,0.0);
    canvas_tpclikelihoods->cd(1);
    
    //TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
