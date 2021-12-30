@@ -652,7 +652,11 @@ void DefaultCustomPlotting::Loop()
    
    // TPC mu-like
    
-   TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
+   TCanvas* canvas_tpclikelihoods = new TCanvas("canvas_tpclikelihoods","",200,10,1000,600);
+   canvas_tpclikelihoods->Divide(2,2);
+   canvas_tpclikelihoods->cd(1);
+   
+   //TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
    
    tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
   
@@ -665,12 +669,13 @@ void DefaultCustomPlotting::Loop()
    tpclikemu_piplus->Draw("same");
    tpclikemu_proton->Draw("same");
    tpclikemu_positron->Draw("same");
-   canvas_tpclikemu->BuildLegend();
-   canvas_tpclikemu->Write();
+   //canvas_tpclikemu->BuildLegend();
+   //canvas_tpclikemu->Write();
    
    // TPC pi-like
    
-   TCanvas* canvas_tpclikepi = new TCanvas("canvas_tpclikepi","",200,10,1000,600);
+   //TCanvas* canvas_tpclikepi = new TCanvas("canvas_tpclikepi","",200,10,1000,600);
+   canvas_tpclikelihoods->cd(2);
    
    tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
   
@@ -683,12 +688,13 @@ void DefaultCustomPlotting::Loop()
    tpclikepi_piplus->Draw("same");
    tpclikepi_proton->Draw("same");
    tpclikepi_positron->Draw("same");
-   canvas_tpclikepi->BuildLegend();
-   canvas_tpclikepi->Write();
+   //canvas_tpclikepi->BuildLegend();
+   //canvas_tpclikepi->Write();
    
    // TPC p-like
    
-   TCanvas* canvas_tpclikep = new TCanvas("canvas_tpclikep","",200,10,1000,600);
+   //TCanvas* canvas_tpclikep = new TCanvas("canvas_tpclikep","",200,10,1000,600);
+   canvas_tpclikelihoods->cd(3);
    
    //tpclikep_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -701,12 +707,13 @@ void DefaultCustomPlotting::Loop()
    tpclikep_piplus->Draw("same");
    tpclikep_proton->Draw("same");
    tpclikep_positron->Draw("same");
-   canvas_tpclikep->BuildLegend();
-   canvas_tpclikep->Write();
+   //canvas_tpclikep->BuildLegend();
+   //canvas_tpclikep->Write();
    
    // TPC e-like
    
-   TCanvas* canvas_tpclikee = new TCanvas("canvas_tpclikee","",200,10,1000,600);
+   //TCanvas* canvas_tpclikee = new TCanvas("canvas_tpclikee","",200,10,1000,600);
+   canvas_tpclikelihoods->cd(4);
    
    //tpclikee_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -719,8 +726,11 @@ void DefaultCustomPlotting::Loop()
    tpclikee_piplus->Draw("same");
    tpclikee_proton->Draw("same");
    tpclikee_positron->Draw("same");
-   canvas_tpclikee->BuildLegend();
-   canvas_tpclikee->Write();
+   //canvas_tpclikee->BuildLegend();
+   //canvas_tpclikee->Write();
+   
+   canvas_tpclikelihoods->BuildLegend();
+   canvas_tpclikelihoods->Write();
    
    // FGD1 E/L
    
