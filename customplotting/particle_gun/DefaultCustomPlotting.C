@@ -729,7 +729,7 @@ void DefaultCustomPlotting::Loop()
    //canvas_tpclikee->BuildLegend();
    //canvas_tpclikee->Write();
    
-   canvas_tpclikelihoods->BuildLegend();
+   canvas_tpclikelihoods->cd(1)->BuildLegend();
    canvas_tpclikelihoods->Write();
    
    // FGD1 E/L
