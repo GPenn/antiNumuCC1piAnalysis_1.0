@@ -755,7 +755,7 @@ void DefaultCustomPlotting::Loop()
    tpclikep_piplus->Draw("same");
    tpclikep_proton->Draw("same");
    tpclikep_positron->Draw("same");
-   canvas_tpclikelihoods->cd(3)->SetLogY();
+   canvas_tpclikelihoods->cd(3)->SetLogy();
    //canvas_tpclikep->BuildLegend();
    //canvas_tpclikep->Write();
    
@@ -776,7 +776,7 @@ void DefaultCustomPlotting::Loop()
    tpclikee_piplus->Draw("same");
    tpclikee_proton->Draw("same");
    tpclikee_positron->Draw("same");
-   canvas_tpclikelihoods->cd(4)->SetLogY();
+   canvas_tpclikelihoods->cd(4)->SetLogy();
    //canvas_tpclikee->BuildLegend();
    //canvas_tpclikee->Write();
    
