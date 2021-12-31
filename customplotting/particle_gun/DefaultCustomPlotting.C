@@ -701,7 +701,8 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
    
-   tpclikemu_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
+   tpclikemu_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpclikemu_antimu->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikemu_antimu, "antimu");
    SetHistParticleStyle(tpclikemu_piplus, "piplus");
@@ -712,6 +713,7 @@ void DefaultCustomPlotting::Loop()
    tpclikemu_piplus->Draw("same");
    tpclikemu_proton->Draw("same");
    tpclikemu_positron->Draw("same");
+   canvas_tpclikelihoods->cd(1)->SetLogy();
    //canvas_tpclikemu->BuildLegend();
    //canvas_tpclikemu->Write();
    
@@ -720,7 +722,8 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_tpclikepi = new TCanvas("canvas_tpclikepi","",200,10,1000,600);
    canvas_tpclikelihoods->cd(2);
    
-   tpclikepi_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
+   tpclikepi_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpclikepi_antimu->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikepi_antimu, "antimu");
    SetHistParticleStyle(tpclikepi_piplus, "piplus");
@@ -731,6 +734,7 @@ void DefaultCustomPlotting::Loop()
    tpclikepi_piplus->Draw("same");
    tpclikepi_proton->Draw("same");
    tpclikepi_positron->Draw("same");
+   canvas_tpclikelihoods->cd(2)->SetLogy();
    //canvas_tpclikepi->BuildLegend();
    //canvas_tpclikepi->Write();
    
@@ -739,7 +743,8 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_tpclikep = new TCanvas("canvas_tpclikep","",200,10,1000,600);
    canvas_tpclikelihoods->cd(3);
    
-   //tpclikep_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   tpclikep_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpclikep_antimu->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikep_antimu, "antimu");
    SetHistParticleStyle(tpclikep_piplus, "piplus");
@@ -750,6 +755,7 @@ void DefaultCustomPlotting::Loop()
    tpclikep_piplus->Draw("same");
    tpclikep_proton->Draw("same");
    tpclikep_positron->Draw("same");
+   canvas_tpclikelihoods->cd(3)->SetLogY();
    //canvas_tpclikep->BuildLegend();
    //canvas_tpclikep->Write();
    
@@ -758,7 +764,8 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_tpclikee = new TCanvas("canvas_tpclikee","",200,10,1000,600);
    canvas_tpclikelihoods->cd(4);
    
-   //tpclikee_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   tpclikee_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpclikee_antimu->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikee_antimu, "antimu");
    SetHistParticleStyle(tpclikee_piplus, "piplus");
@@ -769,6 +776,7 @@ void DefaultCustomPlotting::Loop()
    tpclikee_piplus->Draw("same");
    tpclikee_proton->Draw("same");
    tpclikee_positron->Draw("same");
+   canvas_tpclikelihoods->cd(4)->SetLogY();
    //canvas_tpclikee->BuildLegend();
    //canvas_tpclikee->Write();
    
