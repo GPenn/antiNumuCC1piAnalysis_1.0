@@ -83,12 +83,12 @@ void DefaultCustomPlotting::Loop()
    TH1F *mippion_proton = new TH1F("mippion_proton", "Proton", 50, -30.0, 70.0);
    TH1F *mippion_positron = new TH1F("mippion_positron", "Positron", 50, -30.0, 70.0);
    
-   TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "Antimuon;TPC2 dE/dx truncated mean ();Entries/", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "Antimuon;TPC2 dE/dx truncated mean (arb. units);Entries/", 50, 0.0, 2000.0);
    TH1F *tpc2dedx_piplus = new TH1F("tpc2dedx_piplus", "Pi+", 50, 0.0, 2000.0);
    TH1F *tpc2dedx_proton = new TH1F("tpc2dedx_proton", "Proton", 50, 0.0, 2000.0);
    TH1F *tpc2dedx_positron = new TH1F("tpc2dedx_positron", "Positron", 50, 0.0, 2000.0);
    
-   TH1F *tpc3dedx_antimu = new TH1F("tpc3dedx_antimu", "Antimuon;TPC3 dE/dx truncated mean ();Entries/", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_antimu = new TH1F("tpc3dedx_antimu", "Antimuon;TPC3 dE/dx truncated mean (arb. units);Entries/", 50, 0.0, 2000.0);
    TH1F *tpc3dedx_piplus = new TH1F("tpc3dedx_piplus", "Pi+", 50, 0.0, 2000.0);
    TH1F *tpc3dedx_proton = new TH1F("tpc3dedx_proton", "Proton", 50, 0.0, 2000.0);
    TH1F *tpc3dedx_positron = new TH1F("tpc3dedx_positron", "Positron", 50, 0.0, 2000.0);
