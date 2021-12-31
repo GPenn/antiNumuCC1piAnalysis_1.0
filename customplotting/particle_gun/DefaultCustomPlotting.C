@@ -418,7 +418,11 @@ void DefaultCustomPlotting::Loop()
    
    // Reco momentum
    
-   TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   //TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   
+   TCanvas* canvas_ptheta = new TCanvas("canvas_ptheta","",200,10,1000,300);
+   canvas_ptheta->Divide(2,1,0.0,0.0);
+   canvas_ptheta->cd(1);
    
    recomom_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
   
@@ -431,12 +435,14 @@ void DefaultCustomPlotting::Loop()
    recomom_piplus->Draw("same");
    recomom_proton->Draw("same");
    recomom_positron->Draw("same");
-   canvas_recomom->BuildLegend();
-   canvas_recomom->Write();
+   //canvas_recomom->BuildLegend();
+   //canvas_recomom->Write();
+   canvas_ptheta->cd(1)->BuildLegend();
    
    // Reco theta
    
-   TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
+   //TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
+   canvas_ptheta->cd(2);
    
    theta_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -449,12 +455,17 @@ void DefaultCustomPlotting::Loop()
    theta_piplus->Draw("same");
    theta_proton->Draw("same");
    theta_positron->Draw("same");
-   canvas_theta->BuildLegend();
-   canvas_theta->Write();
+   //canvas_theta->BuildLegend();
+   //canvas_theta->Write();
+   canvas_ptheta->Write();
    
    // ECal EM energy
    
-   TCanvas* canvas_EMEnergy = new TCanvas("canvas_EMEnergy","",200,10,1000,600);
+   //TCanvas* canvas_EMEnergy = new TCanvas("canvas_EMEnergy","",200,10,1000,600);
+   
+   TCanvas* canvas_EandEbyL = new TCanvas("canvas_EandEbyL","",200,10,1000,300);
+   canvas_EandEbyL->Divide(2,1,0.0,0.0);
+   canvas_EandEbyL->cd(1);
    
    //EMEnergy_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -467,12 +478,14 @@ void DefaultCustomPlotting::Loop()
    EMEnergy_piplus->Draw("same");
    EMEnergy_proton->Draw("same");
    EMEnergy_positron->Draw("same");
-   canvas_EMEnergy->BuildLegend();
-   canvas_EMEnergy->Write();
+   //canvas_EMEnergy->BuildLegend();
+   //canvas_EMEnergy->Write();
+   canvas_EandEbyL->cd(1)->BuildLegend();
    
    // ECal E/L
    
-   TCanvas* canvas_EbyL = new TCanvas("canvas_EbyL","",200,10,1000,600);
+   //TCanvas* canvas_EbyL = new TCanvas("canvas_EbyL","",200,10,1000,600);
+   canvas_EandEbyL->cd(2);
    
    //EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -485,12 +498,17 @@ void DefaultCustomPlotting::Loop()
    EbyL_piplus->Draw("same");
    EbyL_proton->Draw("same");
    EbyL_positron->Draw("same");
-   canvas_EbyL->BuildLegend();
-   canvas_EbyL->Write();
+   //canvas_EbyL->BuildLegend();
+   //canvas_EbyL->Write();
+   canvas_EandEbyL->Write();
    
    // ECal circularity
    
-   TCanvas* canvas_circularity = new TCanvas("canvas_circularity","",200,10,1000,600);
+   //TCanvas* canvas_circularity = new TCanvas("canvas_circularity","",200,10,1000,600);
+   
+   TCanvas* canvas_ecallowlevel = new TCanvas("canvas_ecallowlevel","",200,10,1000,600);
+   canvas_ecallowlevel->Divide(2,2,0.0,0.0);
+   canvas_ecallowlevel->cd(1);
    
    //circularity_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -503,12 +521,14 @@ void DefaultCustomPlotting::Loop()
    circularity_piplus->Draw("same");
    circularity_proton->Draw("same");
    circularity_positron->Draw("same");
-   canvas_circularity->BuildLegend();
-   canvas_circularity->Write();
+   //canvas_circularity->BuildLegend();
+   //canvas_circularity->Write();
+   canvas_ecallowlevel->cd(1)->BuildLegend();
    
    // ECal FBR
    
-   TCanvas* canvas_fbr = new TCanvas("canvas_fbr","",200,10,1000,600);
+   //TCanvas* canvas_fbr = new TCanvas("canvas_fbr","",200,10,1000,600);
+   canvas_ecallowlevel->cd(2);
    
    fbr_antimu->GetYaxis()->SetRangeUser(0.0, 20000.0);
   
@@ -521,12 +541,14 @@ void DefaultCustomPlotting::Loop()
    fbr_piplus->Draw("same");
    fbr_proton->Draw("same");
    fbr_positron->Draw("same");
-   canvas_fbr->BuildLegend();
-   canvas_fbr->Write();
+   //canvas_fbr->BuildLegend();
+   //canvas_fbr->Write();
    
    // ECal TMR
    
-   TCanvas* canvas_tmr = new TCanvas("canvas_tmr","",200,10,1000,600);
+   //TCanvas* canvas_tmr = new TCanvas("canvas_tmr","",200,10,1000,600);
+   
+   canvas_ecallowlevel->cd(3);
    
    tmr_antimu->GetYaxis()->SetRangeUser(0.0, 8000.0);
   
@@ -539,12 +561,14 @@ void DefaultCustomPlotting::Loop()
    tmr_piplus->Draw("same");
    tmr_proton->Draw("same");
    tmr_positron->Draw("same");
-   canvas_tmr->BuildLegend();
-   canvas_tmr->Write();
+   //canvas_tmr->BuildLegend();
+   //canvas_tmr->Write();
    
    // ECal QRMS
    
-   TCanvas* canvas_qrms = new TCanvas("canvas_qrms","",200,10,1000,600);
+   //TCanvas* canvas_qrms = new TCanvas("canvas_qrms","",200,10,1000,600);
+   
+   canvas_ecallowlevel->cd(4);
    
    //qrms_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -557,12 +581,17 @@ void DefaultCustomPlotting::Loop()
    qrms_piplus->Draw("same");
    qrms_proton->Draw("same");
    qrms_positron->Draw("same");
-   canvas_qrms->BuildLegend();
-   canvas_qrms->Write();
+   //canvas_qrms->BuildLegend();
+   //canvas_qrms->Write();
+   canvas_ecallowlevel->Write();
    
    // ECal MipEm
    
-   TCanvas* canvas_mipem = new TCanvas("canvas_mipem","",200,10,1000,600);
+   //TCanvas* canvas_mipem = new TCanvas("canvas_mipem","",200,10,1000,600);
+   
+   TCanvas* canvas_ecalhighlevel = new TCanvas("canvas_ecalhighlevel","",200,10,1000,600);
+   canvas_ecalhighlevel->Divide(2,2,0.0,0.0);
+   canvas_ecalhighlevel->cd(1);
    
    //mipem_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -575,12 +604,15 @@ void DefaultCustomPlotting::Loop()
    mipem_piplus->Draw("same");
    mipem_proton->Draw("same");
    mipem_positron->Draw("same");
-   canvas_mipem->BuildLegend();
-   canvas_mipem->Write();
+   //canvas_mipem->BuildLegend();
+   //canvas_mipem->Write();
+   canvas_ecalhighlevel->cd(1)->BuildLegend();
    
    // ECal EmHip
    
-   TCanvas* canvas_emhip = new TCanvas("canvas_emhip","",200,10,1000,600);
+   //TCanvas* canvas_emhip = new TCanvas("canvas_emhip","",200,10,1000,600);
+   
+   canvas_ecalhighlevel->cd(2);
    
    //emhip_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -593,12 +625,14 @@ void DefaultCustomPlotting::Loop()
    emhip_piplus->Draw("same");
    emhip_proton->Draw("same");
    emhip_positron->Draw("same");
-   canvas_emhip->BuildLegend();
-   canvas_emhip->Write();
+   //canvas_emhip->BuildLegend();
+   //canvas_emhip->Write();
    
    // ECal MipPion
    
-   TCanvas* canvas_mippion = new TCanvas("canvas_mippion","",200,10,1000,600);
+   //TCanvas* canvas_mippion = new TCanvas("canvas_mippion","",200,10,1000,600);
+   
+   canvas_ecalhighlevel->cd(3);
    
    //mippion_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -611,12 +645,18 @@ void DefaultCustomPlotting::Loop()
    mippion_piplus->Draw("same");
    mippion_proton->Draw("same");
    mippion_positron->Draw("same");
-   canvas_mippion->BuildLegend();
-   canvas_mippion->Write();
+   //canvas_mippion->BuildLegend();
+   //canvas_mippion->Write();
+   
+   canvas_ecalhighlevel->Write();
    
    // TPC2 dE/dx
    
-   TCanvas* canvas_tpc2dedx = new TCanvas("canvas_tpc2dedx","",200,10,1000,600);
+   //TCanvas* canvas_tpc2dedx = new TCanvas("canvas_tpc2dedx","",200,10,1000,600);
+   
+   TCanvas* canvas_tpcdedx = new TCanvas("canvas_tpcdedx","",200,10,1000,300);
+   canvas_tpcdedx->Divide(2,1,0.0,0.0);
+   canvas_tpcdedx->cd(1);
    
    //tpc2dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -629,12 +669,14 @@ void DefaultCustomPlotting::Loop()
    tpc2dedx_piplus->Draw("same");
    tpc2dedx_proton->Draw("same");
    tpc2dedx_positron->Draw("same");
-   canvas_tpc2dedx->BuildLegend();
-   canvas_tpc2dedx->Write();
+   //canvas_tpc2dedx->BuildLegend();
+   //canvas_tpc2dedx->Write();
+   canvas_tpcdedx->cd(1)->BuildLegend();
    
    // TPC3 dE/dx
    
-   TCanvas* canvas_tpc3dedx = new TCanvas("canvas_tpc3dedx","",200,10,1000,600);
+   //TCanvas* canvas_tpc3dedx = new TCanvas("canvas_tpc3dedx","",200,10,1000,600);
+   canvas_tpcdedx->cd(2);
    
    //tpc3dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -647,8 +689,9 @@ void DefaultCustomPlotting::Loop()
    tpc3dedx_piplus->Draw("same");
    tpc3dedx_proton->Draw("same");
    tpc3dedx_positron->Draw("same");
-   canvas_tpc3dedx->BuildLegend();
-   canvas_tpc3dedx->Write();
+   //canvas_tpc3dedx->BuildLegend();
+   //canvas_tpc3dedx->Write();
+   canvas_tpcdedx->Write();
    
    // TPC mu-like
    
@@ -734,7 +777,10 @@ void DefaultCustomPlotting::Loop()
    
    // FGD1 E/L
    
-   TCanvas* canvas_fgd1EbyL = new TCanvas("canvas_fgd1EbyL","",200,10,1000,600);
+   //TCanvas* canvas_fgd1EbyL = new TCanvas("canvas_fgd1EbyL","",200,10,1000,600);
+   TCanvas* canvas_fgdEbyLs = new TCanvas("canvas_fgdEbyLs","",200,10,1000,300);
+   canvas_fgdEbyLs->Divide(2,1,0.0,0.0);
+   canvas_fgdEbyLs->cd(1);
    
    //fgd1EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -747,12 +793,14 @@ void DefaultCustomPlotting::Loop()
    fgd1EbyL_piplus->Draw("same");
    fgd1EbyL_proton->Draw("same");
    fgd1EbyL_positron->Draw("same");
-   canvas_fgd1EbyL->BuildLegend();
-   canvas_fgd1EbyL->Write();
+   //canvas_fgd1EbyL->BuildLegend();
+   //canvas_fgd1EbyL->Write();
+   canvas_fgdEbyLs->cd(1)->BuildLegend();
    
    // FGD2 E/L
    
-   TCanvas* canvas_fgd2EbyL = new TCanvas("canvas_fgd2EbyL","",200,10,1000,600);
+   //TCanvas* canvas_fgd2EbyL = new TCanvas("canvas_fgd2EbyL","",200,10,1000,600);
+   canvas_fgdEbyLs->cd(2);
    
    //fgd2EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
   
@@ -765,8 +813,9 @@ void DefaultCustomPlotting::Loop()
    fgd2EbyL_piplus->Draw("same");
    fgd2EbyL_proton->Draw("same");
    fgd2EbyL_positron->Draw("same");
-   canvas_fgd2EbyL->BuildLegend();
-   canvas_fgd2EbyL->Write();
+   //canvas_fgd2EbyL->BuildLegend();
+   //canvas_fgd2EbyL->Write();
+   canvas_fgdEbyLs->Write();
    
    // nSMRDs
    
