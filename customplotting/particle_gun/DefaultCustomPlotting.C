@@ -819,7 +819,7 @@ void DefaultCustomPlotting::Loop()
    
    // nSMRDs
    
-   TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,500,400);
+   TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,500,300);
    
    nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
   
