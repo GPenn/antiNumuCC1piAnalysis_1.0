@@ -421,7 +421,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
    
    TCanvas* canvas_ptheta = new TCanvas("canvas_ptheta","",200,10,1000,300);
-   canvas_ptheta->Divide(2,1,0.0,0.0);
+   canvas_ptheta->Divide(2,1,0.005,0.005);
    canvas_ptheta->cd(1);
    
    recomom_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
@@ -464,7 +464,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_EMEnergy = new TCanvas("canvas_EMEnergy","",200,10,1000,600);
    
    TCanvas* canvas_EandEbyL = new TCanvas("canvas_EandEbyL","",200,10,1000,300);
-   canvas_EandEbyL->Divide(2,1,0.0,0.0);
+   canvas_EandEbyL->Divide(2,1,0.005,0.005);
    canvas_EandEbyL->cd(1);
    
    //EMEnergy_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -507,7 +507,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_circularity = new TCanvas("canvas_circularity","",200,10,1000,600);
    
    TCanvas* canvas_ecallowlevel = new TCanvas("canvas_ecallowlevel","",200,10,1000,600);
-   canvas_ecallowlevel->Divide(2,2,0.0,0.0);
+   canvas_ecallowlevel->Divide(2,2,0.005,0.005);
    canvas_ecallowlevel->cd(1);
    
    //circularity_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -590,7 +590,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_mipem = new TCanvas("canvas_mipem","",200,10,1000,600);
    
    TCanvas* canvas_ecalhighlevel = new TCanvas("canvas_ecalhighlevel","",200,10,1000,600);
-   canvas_ecalhighlevel->Divide(2,2,0.0,0.0);
+   canvas_ecalhighlevel->Divide(2,2,0.005,0.005);
    canvas_ecalhighlevel->cd(1);
    
    //mipem_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -655,7 +655,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_tpc2dedx = new TCanvas("canvas_tpc2dedx","",200,10,1000,600);
    
    TCanvas* canvas_tpcdedx = new TCanvas("canvas_tpcdedx","",200,10,1000,300);
-   canvas_tpcdedx->Divide(2,1,0.0,0.0);
+   canvas_tpcdedx->Divide(2,1,0.005,0.005);
    canvas_tpcdedx->cd(1);
    
    //tpc2dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -696,7 +696,7 @@ void DefaultCustomPlotting::Loop()
    // TPC mu-like
    
    TCanvas* canvas_tpclikelihoods = new TCanvas("canvas_tpclikelihoods","",200,10,1000,600);
-   canvas_tpclikelihoods->Divide(2,2,0.0,0.0);
+   canvas_tpclikelihoods->Divide(2,2,0.005,0.005);
    canvas_tpclikelihoods->cd(1);
    
    //TCanvas* canvas_tpclikemu = new TCanvas("canvas_tpclikemu","",200,10,1000,600);
@@ -779,7 +779,7 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_fgd1EbyL = new TCanvas("canvas_fgd1EbyL","",200,10,1000,600);
    TCanvas* canvas_fgdEbyLs = new TCanvas("canvas_fgdEbyLs","",200,10,1000,300);
-   canvas_fgdEbyLs->Divide(2,1,0.0,0.0);
+   canvas_fgdEbyLs->Divide(2,1,0.005,0.005);
    canvas_fgdEbyLs->cd(1);
    
    //fgd1EbyL_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
