@@ -13,7 +13,7 @@ void DefaultCustomPlotting::Loop()
    
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
-   gStyle->SetTitleYOffset(1.5);
+   gStyle->SetTitleYOffset(1.6);
    gStyle->SetTitleXOffset(1.2);
    
    
