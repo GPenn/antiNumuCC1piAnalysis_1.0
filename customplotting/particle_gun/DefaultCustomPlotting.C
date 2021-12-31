@@ -63,7 +63,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *tmr_proton = new TH1F("tmr_proton", "Proton", 50, 0.0, 1.0);
    TH1F *tmr_positron = new TH1F("tmr_positron", "Positron", 50, 0.0, 1.0);
    
-   TH1F *qrms_antimu = new TH1F("qrms_antimu", "Antimuon;ECal QRMS variable (dimensionless);Entries/", 30, 0.0, 3.0);
+   TH1F *qrms_antimu = new TH1F("qrms_antimu", "Antimuon;ECal QRMS variable (dimensionless);Entries", 30, 0.0, 3.0);
    TH1F *qrms_piplus = new TH1F("qrms_piplus", "Pi+", 30, 0.0, 3.0);
    TH1F *qrms_proton = new TH1F("qrms_proton", "Proton", 30, 0.0, 3.0);
    TH1F *qrms_positron = new TH1F("qrms_positron", "Positron", 30, 0.0, 3.0);
@@ -444,7 +444,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_theta = new TCanvas("canvas_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
    canvas_ptheta->cd(2);
    
-   theta_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   theta_antimu->GetYaxis()->SetRangeUser(0.0, 5000.0);
   
    SetHistParticleStyle(theta_antimu, "antimu");
    SetHistParticleStyle(theta_piplus, "piplus");
@@ -550,7 +550,7 @@ void DefaultCustomPlotting::Loop()
    
    canvas_ecallowlevel->cd(3);
    
-   tmr_antimu->GetYaxis()->SetRangeUser(0.0, 8000.0);
+   tmr_antimu->GetYaxis()->SetRangeUser(0.0, 6500.0);
   
    SetHistParticleStyle(tmr_antimu, "antimu");
    SetHistParticleStyle(tmr_piplus, "piplus");
