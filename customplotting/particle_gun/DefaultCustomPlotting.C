@@ -13,7 +13,7 @@ void DefaultCustomPlotting::Loop()
    
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
-   gStyle->SetTitleYOffset(1.2);
+   gStyle->SetTitleYOffset(1.5);
    gStyle->SetTitleXOffset(1.2);
    
    
@@ -819,7 +819,7 @@ void DefaultCustomPlotting::Loop()
    
    // nSMRDs
    
-   TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,500,300);
+   TCanvas* canvas_nsmrds = new TCanvas("canvas_nsmrds","",200,10,500,400);
    
    nsmrds_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
   
