@@ -64,9 +64,9 @@ class antiNumuBDTTestingAnalysis: public baseTrackerAnalysis {
   enum enumStandardMicroTrees_antiNumuBDTTestingAnalysis{
     HM_pos= antiNumuCC1piAnalysis::enumStandardMicroTreesLast_antiNumuCC1piAnalysis + 1,
    
-    particle_pg,
-    pg_trueparticle_mom,
-    pg_trueparticle_costheta,
+    //particle_pg,
+    //pg_trueparticle_mom,
+    //pg_trueparticle_costheta,
    
     selmu_bdt_pid_mu,
     selmu_bdt_pid_pi,
