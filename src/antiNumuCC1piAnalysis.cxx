@@ -202,6 +202,8 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),selmu_bdt_pid_unweighted_mu_cc1pi, "");
   AddVarF(output(),hmnt_bdt_pid_unweighted_pi_cc1pi, "");
   
+  AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
+  
   baseTrackerAnalysis::AddEffCounters();
   
   
@@ -219,6 +221,10 @@ void antiNumuCC1piAnalysis::DefineTruthTree(){
   //}
   
   _antiNumuCCMultiPiAnalysis->DefineTruthTree();
+  
+  AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
+  AddVarF(output(), pg_trueparticle_mom, "particle gun true particle momentum");
+  AddVarF(output(), pg_trueparticle_costheta, "particle gun true particle costheta");
 }
 
 //********************************************************************
@@ -239,6 +245,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   // Fill muon candidate variables
   if (mybox().MainTrack  ) 
   {
+    output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
+    
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
     TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
     //double costheta_mu_nu = nuDirVec.Dot(muDirVec);
@@ -533,6 +541,14 @@ void antiNumuCC1piAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
   //}
   
   _antiNumuCCMultiPiAnalysis->FillTruthTree(vtx);
+  
+  output().FillVar(particle_pg, vtx.TrueParticles[0]->PDG);
+  
+  TVector3 muDirVec = anaUtils::ArrayToTVector3(vtx.TrueParticles[0]->Direction);
+  Float_t muDirCostheta = muDirVec[2];
+  
+  output().FillVar(pg_trueparticle_mom, vtx.TrueParticles[0]->Momentum);
+  output().FillVar(pg_trueparticle_costheta, muDirCostheta);
 }
 
 //********************************************************************
