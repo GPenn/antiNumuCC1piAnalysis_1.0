@@ -107,7 +107,7 @@ void antiNumuBDTTestingAnalysis::DefineMicroTrees(bool addBase){
   _antiNumuCC1piAnalysis->DefineMicroTrees(addBase); 
 
   
-  AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
+  //AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
   
   AddVarF(output(),selmu_bdt_pid_mu, "");
   AddVarF(output(),selmu_bdt_pid_pi, "");
@@ -137,9 +137,9 @@ void antiNumuBDTTestingAnalysis::DefineTruthTree(){
   
   _antiNumuCC1piAnalysis->DefineTruthTree();
   
-  AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
-  AddVarF(output(), pg_trueparticle_mom, "particle gun true particle momentum");
-  AddVarF(output(), pg_trueparticle_costheta, "particle gun true particle costheta");
+  //AddVarI(output(), particle_pg, "particle gun compatible main track PDG");
+  //AddVarF(output(), pg_trueparticle_mom, "particle gun true particle momentum");
+  //AddVarF(output(), pg_trueparticle_costheta, "particle gun true particle costheta");
 }
 
 //********************************************************************
@@ -157,7 +157,7 @@ void antiNumuBDTTestingAnalysis::FillMicroTrees(bool addBase){
   
   if (mybox().MainTrack  ) 
   {
-    output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
+    //output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
     
     std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVarsPos(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
     
@@ -233,13 +233,13 @@ void antiNumuBDTTestingAnalysis::FillTruthTree(const AnaTrueVertex& vtx){
   
   _antiNumuCC1piAnalysis->FillTruthTree(vtx);
   
-  output().FillVar(particle_pg, vtx.TrueParticles[0]->PDG);
+  //output().FillVar(particle_pg, vtx.TrueParticles[0]->PDG);
   
-  TVector3 muDirVec = anaUtils::ArrayToTVector3(vtx.TrueParticles[0]->Direction);
-  Float_t muDirCostheta = muDirVec[2];
+  //TVector3 muDirVec = anaUtils::ArrayToTVector3(vtx.TrueParticles[0]->Direction);
+  //Float_t muDirCostheta = muDirVec[2];
   
-  output().FillVar(pg_trueparticle_mom, vtx.TrueParticles[0]->Momentum);
-  output().FillVar(pg_trueparticle_costheta, muDirCostheta);
+  //output().FillVar(pg_trueparticle_mom, vtx.TrueParticles[0]->Momentum);
+  //output().FillVar(pg_trueparticle_costheta, muDirCostheta);
   
 }
 
