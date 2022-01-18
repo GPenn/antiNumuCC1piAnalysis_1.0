@@ -1,14 +1,14 @@
-#define DefaultCustomPLotting_forupdate_cxx
-#include "DefaultCustomPLotting_forupdate.h"
+#define DefaultCustomPlotting_forupdate_cxx
+#include "DefaultCustomPlotting_forupdate.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
 
-void DefaultCustomPLotting_forupdate::Loop()
+void DefaultCustomPlotting_forupdate::Loop()
 {
 //   In a ROOT session, you can do:
-//      Root > .L DefaultCustomPLotting_forupdate.C
-//      Root > DefaultCustomPLotting_forupdate t
+//      Root > .L DefaultCustomPlotting_forupdate.C
+//      Root > DefaultCustomPlotting_forupdate t
 //      Root > t.GetEntry(12); // Fill t data members with entry number 12
 //      Root > t.Show();       // Show values of entry 12
 //      Root > t.Show(16);     // Read and show values of entry 16

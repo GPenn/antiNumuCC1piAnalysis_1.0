@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Tue Nov 23 17:51:29 2021 by ROOT version 5.34/34
+// Tue Jan 18 16:38:23 2022 by ROOT version 5.34/34
 // from TTree default/20
-// found on file: ../../output/run5/oaAnalysis_prod6Trun5_1.root
+// found on file: /bundle/data/T2K/users/gpenn/highlandBDTtests/treedepth/cc1pi/oaAnalysis_prod6Trun5_1.root
 //////////////////////////////////////////////////////////
 
-#ifndef DefaultCustomPLotting_forupdate_h
-#define DefaultCustomPLotting_forupdate_h
+#ifndef DefaultCustomPlotting_forupdate_h
+#define DefaultCustomPlotting_forupdate_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -16,7 +16,7 @@
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
-class DefaultCustomPLotting_forupdate {
+class DefaultCustomPlotting_forupdate {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -367,6 +367,7 @@ public :
    Float_t         selmu_fgd1_pull_no;
    Float_t         selmu_fgd1_energy;
    Float_t         selmu_fgd1_length;
+   Float_t         selmu_fgd1_EbyL;
    Int_t           selmu_has_fgd2seg;
    Float_t         selmu_fgd2_pull_mu;
    Float_t         selmu_fgd2_pull_e;
@@ -375,6 +376,7 @@ public :
    Float_t         selmu_fgd2_pull_no;
    Float_t         selmu_fgd2_energy;
    Float_t         selmu_fgd2_length;
+   Float_t         selmu_fgd2_EbyL;
    Float_t         selmu_ecal_bestseg_EMenergy;
    Float_t         selmu_ecal_bestseg_mippion;
    Float_t         selmu_ecal_bestseg_EbyL;
@@ -418,8 +420,42 @@ public :
    Float_t         HMNT_fgd2_pull_p;
    Float_t         HMNT_fgd2_pull_pi;
    Float_t         HMNT_fgd2_pull_no;
-   Float_t         selmu_bdt_pid_mu_cc1pi;
-   Float_t         hmnt_bdt_pid_pi_cc1pi;
+   Float_t         selmu_bdt_pid_mu;
+   Float_t         selmu_bdt_pid_pi;
+   Float_t         selmu_bdt_pid_p;
+   Float_t         selmu_bdt_pid_e;
+   Float_t         hmnt_bdt_pid_mu;
+   Float_t         hmnt_bdt_pid_pi;
+   Float_t         hmnt_bdt_pid_p;
+   Float_t         hmnt_bdt_pid_e;
+   Float_t         selmu_bdt_pid_mu_test1;
+   Float_t         selmu_bdt_pid_pi_test1;
+   Float_t         selmu_bdt_pid_p_test1;
+   Float_t         selmu_bdt_pid_e_test1;
+   Float_t         hmnt_bdt_pid_pi_test1;
+   Float_t         selmu_bdt_pid_mu_test2;
+   Float_t         selmu_bdt_pid_pi_test2;
+   Float_t         selmu_bdt_pid_p_test2;
+   Float_t         selmu_bdt_pid_e_test2;
+   Float_t         hmnt_bdt_pid_pi_test2;
+   Float_t         selmu_bdt_pid_mu_test3;
+   Float_t         selmu_bdt_pid_pi_test3;
+   Float_t         selmu_bdt_pid_p_test3;
+   Float_t         selmu_bdt_pid_e_test3;
+   Float_t         hmnt_bdt_pid_pi_test3;
+   Float_t         selmu_bdt_pid_mu_test4;
+   Float_t         selmu_bdt_pid_pi_test4;
+   Float_t         selmu_bdt_pid_p_test4;
+   Float_t         selmu_bdt_pid_e_test4;
+   Float_t         hmnt_bdt_pid_pi_test4;
+   Float_t         selmu_bdt_pid_mu_test5;
+   Float_t         selmu_bdt_pid_pi_test5;
+   Float_t         selmu_bdt_pid_p_test5;
+   Float_t         selmu_bdt_pid_e_test5;
+   Float_t         hmnt_bdt_pid_pi_test5;
+   Float_t         selmu_bdt_pid_unweighted_mu_cc1pi;
+   Float_t         hmnt_bdt_pid_unweighted_pi_cc1pi;
+   Int_t           particle_pg;
 
    // List of branches
    TBranch        *b_NTOYS;   //!
@@ -767,6 +803,7 @@ public :
    TBranch        *b_selmu_fgd1_pull_no;   //!
    TBranch        *b_selmu_fgd1_energy;   //!
    TBranch        *b_selmu_fgd1_length;   //!
+   TBranch        *b_selmu_fgd1_EbyL;   //!
    TBranch        *b_selmu_has_fgd2seg;   //!
    TBranch        *b_selmu_fgd2_pull_mu;   //!
    TBranch        *b_selmu_fgd2_pull_e;   //!
@@ -775,6 +812,7 @@ public :
    TBranch        *b_selmu_fgd2_pull_no;   //!
    TBranch        *b_selmu_fgd2_energy;   //!
    TBranch        *b_selmu_fgd2_length;   //!
+   TBranch        *b_selmu_fgd2_EbyL;   //!
    TBranch        *b_selmu_ecal_bestseg_EMenergy;   //!
    TBranch        *b_selmu_ecal_bestseg_mippion;   //!
    TBranch        *b_selmu_ecal_bestseg_EbyL;   //!
@@ -818,11 +856,45 @@ public :
    TBranch        *b_HMNT_fgd2_pull_p;   //!
    TBranch        *b_HMNT_fgd2_pull_pi;   //!
    TBranch        *b_HMNT_fgd2_pull_no;   //!
-   TBranch        *b_selmu_bdt_pid_mu_cc1pi;   //!
-   TBranch        *b_hmnt_bdt_pid_pi_cc1pi;   //!
+   TBranch        *b_selmu_bdt_pid_mu;   //!
+   TBranch        *b_selmu_bdt_pid_pi;   //!
+   TBranch        *b_selmu_bdt_pid_p;   //!
+   TBranch        *b_selmu_bdt_pid_e;   //!
+   TBranch        *b_hmnt_bdt_pid_mu;   //!
+   TBranch        *b_hmnt_bdt_pid_pi;   //!
+   TBranch        *b_hmnt_bdt_pid_p;   //!
+   TBranch        *b_hmnt_bdt_pid_e;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test1;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test1;   //!
+   TBranch        *b_selmu_bdt_pid_p_test1;   //!
+   TBranch        *b_selmu_bdt_pid_e_test1;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test1;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test2;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test2;   //!
+   TBranch        *b_selmu_bdt_pid_p_test2;   //!
+   TBranch        *b_selmu_bdt_pid_e_test2;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test2;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test3;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test3;   //!
+   TBranch        *b_selmu_bdt_pid_p_test3;   //!
+   TBranch        *b_selmu_bdt_pid_e_test3;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test3;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test4;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test4;   //!
+   TBranch        *b_selmu_bdt_pid_p_test4;   //!
+   TBranch        *b_selmu_bdt_pid_e_test4;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test4;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test5;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test5;   //!
+   TBranch        *b_selmu_bdt_pid_p_test5;   //!
+   TBranch        *b_selmu_bdt_pid_e_test5;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test5;   //!
+   TBranch        *b_selmu_bdt_pid_unweighted_mu_cc1pi;   //!
+   TBranch        *b_hmnt_bdt_pid_unweighted_pi_cc1pi;   //!
+   TBranch        *b_particle_pg;   //!
 
-   DefaultCustomPLotting_forupdate(TTree *tree=0);
-   virtual ~DefaultCustomPLotting_forupdate();
+   DefaultCustomPlotting_forupdate(TTree *tree=0);
+   virtual ~DefaultCustomPlotting_forupdate();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -834,15 +906,15 @@ public :
 
 #endif
 
-#ifdef DefaultCustomPLotting_forupdate_cxx
-DefaultCustomPLotting_forupdate::DefaultCustomPLotting_forupdate(TTree *tree) : fChain(0) 
+#ifdef DefaultCustomPlotting_forupdate_cxx
+DefaultCustomPlotting_forupdate::DefaultCustomPlotting_forupdate(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/run5/oaAnalysis_prod6Trun5_1.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/bundle/data/T2K/users/gpenn/highlandBDTtests/treedepth/cc1pi/oaAnalysis_prod6Trun5_1.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../../output/run5/oaAnalysis_prod6Trun5_1.root");
+         f = new TFile("/bundle/data/T2K/users/gpenn/highlandBDTtests/treedepth/cc1pi/oaAnalysis_prod6Trun5_1.root");
       }
       f->GetObject("default",tree);
 
@@ -850,19 +922,19 @@ DefaultCustomPLotting_forupdate::DefaultCustomPLotting_forupdate(TTree *tree) : 
    Init(tree);
 }
 
-DefaultCustomPLotting_forupdate::~DefaultCustomPLotting_forupdate()
+DefaultCustomPlotting_forupdate::~DefaultCustomPlotting_forupdate()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t DefaultCustomPLotting_forupdate::GetEntry(Long64_t entry)
+Int_t DefaultCustomPlotting_forupdate::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t DefaultCustomPLotting_forupdate::LoadTree(Long64_t entry)
+Long64_t DefaultCustomPlotting_forupdate::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -875,7 +947,7 @@ Long64_t DefaultCustomPLotting_forupdate::LoadTree(Long64_t entry)
    return centry;
 }
 
-void DefaultCustomPLotting_forupdate::Init(TTree *tree)
+void DefaultCustomPlotting_forupdate::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -1236,6 +1308,7 @@ void DefaultCustomPLotting_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("selmu_fgd1_pull_no", &selmu_fgd1_pull_no, &b_selmu_fgd1_pull_no);
    fChain->SetBranchAddress("selmu_fgd1_energy", &selmu_fgd1_energy, &b_selmu_fgd1_energy);
    fChain->SetBranchAddress("selmu_fgd1_length", &selmu_fgd1_length, &b_selmu_fgd1_length);
+   fChain->SetBranchAddress("selmu_fgd1_EbyL", &selmu_fgd1_EbyL, &b_selmu_fgd1_EbyL);
    fChain->SetBranchAddress("selmu_has_fgd2seg", &selmu_has_fgd2seg, &b_selmu_has_fgd2seg);
    fChain->SetBranchAddress("selmu_fgd2_pull_mu", &selmu_fgd2_pull_mu, &b_selmu_fgd2_pull_mu);
    fChain->SetBranchAddress("selmu_fgd2_pull_e", &selmu_fgd2_pull_e, &b_selmu_fgd2_pull_e);
@@ -1244,6 +1317,7 @@ void DefaultCustomPLotting_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("selmu_fgd2_pull_no", &selmu_fgd2_pull_no, &b_selmu_fgd2_pull_no);
    fChain->SetBranchAddress("selmu_fgd2_energy", &selmu_fgd2_energy, &b_selmu_fgd2_energy);
    fChain->SetBranchAddress("selmu_fgd2_length", &selmu_fgd2_length, &b_selmu_fgd2_length);
+   fChain->SetBranchAddress("selmu_fgd2_EbyL", &selmu_fgd2_EbyL, &b_selmu_fgd2_EbyL);
    fChain->SetBranchAddress("selmu_ecal_bestseg_EMenergy", &selmu_ecal_bestseg_EMenergy, &b_selmu_ecal_bestseg_EMenergy);
    fChain->SetBranchAddress("selmu_ecal_bestseg_mippion", &selmu_ecal_bestseg_mippion, &b_selmu_ecal_bestseg_mippion);
    fChain->SetBranchAddress("selmu_ecal_bestseg_EbyL", &selmu_ecal_bestseg_EbyL, &b_selmu_ecal_bestseg_EbyL);
@@ -1287,12 +1361,46 @@ void DefaultCustomPLotting_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("HMNT_fgd2_pull_p", &HMNT_fgd2_pull_p, &b_HMNT_fgd2_pull_p);
    fChain->SetBranchAddress("HMNT_fgd2_pull_pi", &HMNT_fgd2_pull_pi, &b_HMNT_fgd2_pull_pi);
    fChain->SetBranchAddress("HMNT_fgd2_pull_no", &HMNT_fgd2_pull_no, &b_HMNT_fgd2_pull_no);
-   fChain->SetBranchAddress("selmu_bdt_pid_mu_cc1pi", &selmu_bdt_pid_mu_cc1pi, &b_selmu_bdt_pid_mu_cc1pi);
-   fChain->SetBranchAddress("hmnt_bdt_pid_pi_cc1pi", &hmnt_bdt_pid_pi_cc1pi, &b_hmnt_bdt_pid_pi_cc1pi);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu", &selmu_bdt_pid_mu, &b_selmu_bdt_pid_mu);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi", &selmu_bdt_pid_pi, &b_selmu_bdt_pid_pi);
+   fChain->SetBranchAddress("selmu_bdt_pid_p", &selmu_bdt_pid_p, &b_selmu_bdt_pid_p);
+   fChain->SetBranchAddress("selmu_bdt_pid_e", &selmu_bdt_pid_e, &b_selmu_bdt_pid_e);
+   fChain->SetBranchAddress("hmnt_bdt_pid_mu", &hmnt_bdt_pid_mu, &b_hmnt_bdt_pid_mu);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi", &hmnt_bdt_pid_pi, &b_hmnt_bdt_pid_pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_p", &hmnt_bdt_pid_p, &b_hmnt_bdt_pid_p);
+   fChain->SetBranchAddress("hmnt_bdt_pid_e", &hmnt_bdt_pid_e, &b_hmnt_bdt_pid_e);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test1", &selmu_bdt_pid_mu_test1, &b_selmu_bdt_pid_mu_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test1", &selmu_bdt_pid_pi_test1, &b_selmu_bdt_pid_pi_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test1", &selmu_bdt_pid_p_test1, &b_selmu_bdt_pid_p_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test1", &selmu_bdt_pid_e_test1, &b_selmu_bdt_pid_e_test1);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test1", &hmnt_bdt_pid_pi_test1, &b_hmnt_bdt_pid_pi_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test2", &selmu_bdt_pid_mu_test2, &b_selmu_bdt_pid_mu_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test2", &selmu_bdt_pid_pi_test2, &b_selmu_bdt_pid_pi_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test2", &selmu_bdt_pid_p_test2, &b_selmu_bdt_pid_p_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test2", &selmu_bdt_pid_e_test2, &b_selmu_bdt_pid_e_test2);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test2", &hmnt_bdt_pid_pi_test2, &b_hmnt_bdt_pid_pi_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test3", &selmu_bdt_pid_mu_test3, &b_selmu_bdt_pid_mu_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test3", &selmu_bdt_pid_pi_test3, &b_selmu_bdt_pid_pi_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test3", &selmu_bdt_pid_p_test3, &b_selmu_bdt_pid_p_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test3", &selmu_bdt_pid_e_test3, &b_selmu_bdt_pid_e_test3);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test3", &hmnt_bdt_pid_pi_test3, &b_hmnt_bdt_pid_pi_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test4", &selmu_bdt_pid_mu_test4, &b_selmu_bdt_pid_mu_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test4", &selmu_bdt_pid_pi_test4, &b_selmu_bdt_pid_pi_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test4", &selmu_bdt_pid_p_test4, &b_selmu_bdt_pid_p_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test4", &selmu_bdt_pid_e_test4, &b_selmu_bdt_pid_e_test4);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test4", &hmnt_bdt_pid_pi_test4, &b_hmnt_bdt_pid_pi_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test5", &selmu_bdt_pid_mu_test5, &b_selmu_bdt_pid_mu_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test5", &selmu_bdt_pid_pi_test5, &b_selmu_bdt_pid_pi_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test5", &selmu_bdt_pid_p_test5, &b_selmu_bdt_pid_p_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test5", &selmu_bdt_pid_e_test5, &b_selmu_bdt_pid_e_test5);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test5", &hmnt_bdt_pid_pi_test5, &b_hmnt_bdt_pid_pi_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_mu_cc1pi", &selmu_bdt_pid_unweighted_mu_cc1pi, &b_selmu_bdt_pid_unweighted_mu_cc1pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_unweighted_pi_cc1pi", &hmnt_bdt_pid_unweighted_pi_cc1pi, &b_hmnt_bdt_pid_unweighted_pi_cc1pi);
+   fChain->SetBranchAddress("particle_pg", &particle_pg, &b_particle_pg);
    Notify();
 }
 
-Bool_t DefaultCustomPLotting_forupdate::Notify()
+Bool_t DefaultCustomPlotting_forupdate::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -1303,18 +1411,18 @@ Bool_t DefaultCustomPLotting_forupdate::Notify()
    return kTRUE;
 }
 
-void DefaultCustomPLotting_forupdate::Show(Long64_t entry)
+void DefaultCustomPlotting_forupdate::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t DefaultCustomPLotting_forupdate::Cut(Long64_t entry)
+Int_t DefaultCustomPlotting_forupdate::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef DefaultCustomPLotting_forupdate_cxx
+#endif // #ifdef DefaultCustomPlotting_forupdate_cxx
