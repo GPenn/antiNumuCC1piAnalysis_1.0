@@ -9,4 +9,4 @@
 
 #run the application:
 source ~/highlandsetup.sh
-RunAntiNumuCC1piAnalysis.exe /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/fileList/particle_gun/particlegun_allpositive_testing.txt -o output/particlegun_allpositive_testing.root
+RunAntiNumuCC1piAnalysis.exe /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/fileList/particlegun_allpositive_testing.txt -o output/particle_gun/particlegun_allpositive_testing.root
