@@ -528,7 +528,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_has_fgd2seg,      0);
     }
     
-      std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanager->GetBDTPIDVarsPos(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3");
+      std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVarsPos(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3");
     
       output().FillVar(hmnt_bdt_pid_mu, BDT_PID_results_vector[0]);
       output().FillVar(hmnt_bdt_pid_pi, BDT_PID_results_vector[1]);
