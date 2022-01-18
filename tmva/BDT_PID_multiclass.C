@@ -508,11 +508,11 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree5", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=5");
    
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_500trees", "!H:!V:NTrees=500:BoostType=Grad:Shrinkage=0.10:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_1000trees", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_1500trees", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=0.10:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_2000trees", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.10:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_2500trees", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=0.10:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_500trees", "!H:!V:NTrees=500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_1000trees", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_1500trees", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_2000trees", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_2500trees", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
