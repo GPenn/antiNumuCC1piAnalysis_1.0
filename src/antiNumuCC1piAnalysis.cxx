@@ -186,18 +186,48 @@ void antiNumuCC1piAnalysis::DefineMicroTrees(bool addBase){
   AddVarF(output(),HMNT_fgd2_pull_pi, "");
   AddVarF(output(),HMNT_fgd2_pull_no, "");
   
-  //AddVarF(output(),selmu_bdt_pid_mu, "");
-  //AddVarF(output(),selmu_bdt_pid_pi, "");
-  //AddVarF(output(),selmu_bdt_pid_p, "");
-  //AddVarF(output(),selmu_bdt_pid_e, "");
+  AddVarF(output(),selmu_bdt_pid_mu, "");
+  AddVarF(output(),selmu_bdt_pid_pi, "");
+  AddVarF(output(),selmu_bdt_pid_p, "");
+  AddVarF(output(),selmu_bdt_pid_e, "");
   
-  //AddVarF(output(),hmnt_bdt_pid_mu, "");
-  //AddVarF(output(),hmnt_bdt_pid_pi, "");
-  //AddVarF(output(),hmnt_bdt_pid_p, "");
-  //AddVarF(output(),hmnt_bdt_pid_e, "");
+  AddVarF(output(),hmnt_bdt_pid_mu, "");
+  AddVarF(output(),hmnt_bdt_pid_pi, "");
+  AddVarF(output(),hmnt_bdt_pid_p, "");
+  AddVarF(output(),hmnt_bdt_pid_e, "");
   
-  AddVarF(output(),selmu_bdt_pid_mu_cc1pi, "");
-  AddVarF(output(),hmnt_bdt_pid_pi_cc1pi, "");
+  //AddVarF(output(),selmu_bdt_pid_mu_cc1pi, "");
+  //AddVarF(output(),hmnt_bdt_pid_pi_cc1pi, "");
+  
+  AddVarF(output(),selmu_bdt_pid_mu_test1, "");
+  AddVarF(output(),selmu_bdt_pid_pi_test1, "");
+  AddVarF(output(),selmu_bdt_pid_p_test1, "");
+  AddVarF(output(),selmu_bdt_pid_e_test1, "");
+  AddVarF(output(),hmnt_bdt_pid_pi_test1, "");
+  
+  AddVarF(output(),selmu_bdt_pid_mu_test2, "");
+  AddVarF(output(),selmu_bdt_pid_pi_test2, "");
+  AddVarF(output(),selmu_bdt_pid_p_test2, "");
+  AddVarF(output(),selmu_bdt_pid_e_test2, "");
+  AddVarF(output(),hmnt_bdt_pid_pi_test2, "");
+  
+  AddVarF(output(),selmu_bdt_pid_mu_test3, "");
+  AddVarF(output(),selmu_bdt_pid_pi_test3, "");
+  AddVarF(output(),selmu_bdt_pid_p_test3, "");
+  AddVarF(output(),selmu_bdt_pid_e_test3, "");
+  AddVarF(output(),hmnt_bdt_pid_pi_test3, "");
+  
+  AddVarF(output(),selmu_bdt_pid_mu_test4, "");
+  AddVarF(output(),selmu_bdt_pid_pi_test4, "");
+  AddVarF(output(),selmu_bdt_pid_p_test4, "");
+  AddVarF(output(),selmu_bdt_pid_e_test4, "");
+  AddVarF(output(),hmnt_bdt_pid_pi_test4, "");
+  
+  AddVarF(output(),selmu_bdt_pid_mu_test5, "");
+  AddVarF(output(),selmu_bdt_pid_pi_test5, "");
+  AddVarF(output(),selmu_bdt_pid_p_test5, "");
+  AddVarF(output(),selmu_bdt_pid_e_test5, "");
+  AddVarF(output(),hmnt_bdt_pid_pi_test5, "");
   
   AddVarF(output(),selmu_bdt_pid_unweighted_mu_cc1pi, "");
   AddVarF(output(),hmnt_bdt_pid_unweighted_pi_cc1pi, "");
@@ -369,11 +399,39 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
     
-    /*std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
-    output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
+    std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
+    //output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
+    output().FillVar(selmu_bdt_pid_mu, BDT_PID_results_vector[0]);
+    output().FillVar(selmu_bdt_pid_pi, BDT_PID_results_vector[1]);
+    output().FillVar(selmu_bdt_pid_p, BDT_PID_results_vector[2]);
+    output().FillVar(selmu_bdt_pid_e, BDT_PID_results_vector[3]);
     
-    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3_noweights");
-    output().FillVar(selmu_bdt_pid_unweighted_mu_cc1pi, BDT_PID_results_vector[0]);*/
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree2");
+    output().FillVar(selmu_bdt_pid_mu_test1, BDT_PID_results_vector[0]);
+    output().FillVar(selmu_bdt_pid_pi_test1, BDT_PID_results_vector[1]);
+    output().FillVar(selmu_bdt_pid_p_test1, BDT_PID_results_vector[2]);
+    output().FillVar(selmu_bdt_pid_e_test1, BDT_PID_results_vector[3]);
+    
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3");
+    output().FillVar(selmu_bdt_pid_mu_test2, BDT_PID_results_vector[0]);
+    output().FillVar(selmu_bdt_pid_pi_test2, BDT_PID_results_vector[1]);
+    output().FillVar(selmu_bdt_pid_p_test2, BDT_PID_results_vector[2]);
+    output().FillVar(selmu_bdt_pid_e_test2, BDT_PID_results_vector[3]);
+    
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree4");
+    output().FillVar(selmu_bdt_pid_mu_test3, BDT_PID_results_vector[0]);
+    output().FillVar(selmu_bdt_pid_pi_test3, BDT_PID_results_vector[1]);
+    output().FillVar(selmu_bdt_pid_p_test3, BDT_PID_results_vector[2]);
+    output().FillVar(selmu_bdt_pid_e_test3, BDT_PID_results_vector[3]);
+    
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree5");
+    output().FillVar(selmu_bdt_pid_mu_test4, BDT_PID_results_vector[0]);
+    output().FillVar(selmu_bdt_pid_pi_test4, BDT_PID_results_vector[1]);
+    output().FillVar(selmu_bdt_pid_p_test4, BDT_PID_results_vector[2]);
+    output().FillVar(selmu_bdt_pid_e_test4, BDT_PID_results_vector[3]);
+    
+    //BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3_noweights");
+    //output().FillVar(selmu_bdt_pid_unweighted_mu_cc1pi, BDT_PID_results_vector[0]);
 
   }
   
@@ -470,18 +528,30 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_has_fgd2seg,      0);
     }
     
-      /*std::vector<Float_t> BDT_PID_results = myBDTPIDmanager->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
+      std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanager->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3");
     
-      output().FillVar(hmnt_bdt_pid_mu, BDT_PID_results[0]);
-      output().FillVar(hmnt_bdt_pid_pi, BDT_PID_results[1]);
-      output().FillVar(hmnt_bdt_pid_p, BDT_PID_results[2]);
-      output().FillVar(hmnt_bdt_pid_e, BDT_PID_results[3]);*/
+      output().FillVar(hmnt_bdt_pid_mu, BDT_PID_results_vector[0]);
+      output().FillVar(hmnt_bdt_pid_pi, BDT_PID_results_vector[1]);
+      output().FillVar(hmnt_bdt_pid_p, BDT_PID_results_vector[2]);
+      output().FillVar(hmnt_bdt_pid_e, BDT_PID_results_vector[3]);
     
-    /*std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3");
-    output().FillVar(hmnt_bdt_pid_pi_cc1pi, BDT_PID_results_vector[1]);
+      //output().FillVar(hmnt_bdt_pid_pi_cc1pi, BDT_PID_results_vector[1]);
     
-    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3_noweights");
-    output().FillVar(hmnt_bdt_pid_unweighted_pi_cc1pi, BDT_PID_results_vector[1]);*/
+      BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree2");
+      output().FillVar(hmnt_bdt_pid_pi_test1, BDT_PID_results_vector[1]);
+    
+      BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3");
+      output().FillVar(hmnt_bdt_pid_pi_test2, BDT_PID_results_vector[1]);
+    
+      BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree4");
+      output().FillVar(hmnt_bdt_pid_pi_test3, BDT_PID_results_vector[1]);
+    
+      BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree5");
+      output().FillVar(hmnt_bdt_pid_pi_test4, BDT_PID_results_vector[1]);
+      
+    
+      //BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3_noweights");
+      //output().FillVar(hmnt_bdt_pid_unweighted_pi_cc1pi, BDT_PID_results_vector[1]);
     
   }
 
