@@ -31,6 +31,10 @@ void DefaultCustomPlotting::Loop()
 // METHOD2: replace line
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
+   
+   TString parameter = "treedepth";
+   
+   
    if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntries();
@@ -51,7 +55,33 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *debug_hmnt_pdg = new TH1F("debug_hmnt_pdg", "Pi-like (true pi-)", 1000, -1000, 0);
    TH1F *debug_hmnt_pid = new TH1F("debug_hmnt_pid", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   
+   
+   
+   TH1F *opt_mulike_sig_test1 = new TH1F("opt_mulike_sig_test1", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test1 = new TH1F("opt_mulike_bkg_test1", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test1 = new TH1F("opt_pilike_sig_test1", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test1 = new TH1F("opt_pilike_bkg_test1", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test2 = new TH1F("opt_mulike_sig_test2", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test2 = new TH1F("opt_mulike_bkg_test2", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test2 = new TH1F("opt_pilike_sig_test2", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test2 = new TH1F("opt_pilike_bkg_test2", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
+   TH1F *opt_mulike_sig_test3 = new TH1F("opt_mulike_sig_test3", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test3 = new TH1F("opt_mulike_bkg_test3", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test3 = new TH1F("opt_pilike_sig_test3", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test3 = new TH1F("opt_pilike_bkg_test3", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test4 = new TH1F("opt_mulike_sig_test4", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test4 = new TH1F("opt_mulike_bkg_test4", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test4 = new TH1F("opt_pilike_sig_test4", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test4 = new TH1F("opt_pilike_bkg_test4", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test5 = new TH1F("opt_mulike_sig_test5", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test5 = new TH1F("opt_mulike_bkg_test5", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test5 = new TH1F("opt_pilike_sig_test5", "Pi-like (true pi-)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test5 = new TH1F("opt_pilike_bkg_test5", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
    
    
@@ -72,19 +102,43 @@ void DefaultCustomPlotting::Loop()
          if (particle == -13)
          {
             opt_mulike_sig->Fill(selmu_bdt_pid_mu);
+            
+            opt_mulike_sig_test1->Fill(selmu_bdt_pid_mu_test1);
+            opt_mulike_sig_test2->Fill(selmu_bdt_pid_mu_test2);
+            opt_mulike_sig_test3->Fill(selmu_bdt_pid_mu_test3);
+            opt_mulike_sig_test4->Fill(selmu_bdt_pid_mu_test4);
+            opt_mulike_sig_test5->Fill(selmu_bdt_pid_mu_test5);
          }
          else
          {
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
+            
+            opt_mulike_bkg_test1->Fill(selmu_bdt_pid_mu_test1);
+            opt_mulike_bkg_test2->Fill(selmu_bdt_pid_mu_test2);
+            opt_mulike_bkg_test3->Fill(selmu_bdt_pid_mu_test3);
+            opt_mulike_bkg_test4->Fill(selmu_bdt_pid_mu_test4);
+            opt_mulike_bkg_test5->Fill(selmu_bdt_pid_mu_test5);
          }
          
          if (HMNT_truepdg == -211)
          {
             opt_pilike_sig->Fill(hmnt_bdt_pid_pi);
+            
+            opt_pilike_sig_test1->Fill(hmnt_bdt_pid_pi_test1);
+            opt_pilike_sig_test2->Fill(hmnt_bdt_pid_pi_test2);
+            opt_pilike_sig_test3->Fill(hmnt_bdt_pid_pi_test3);
+            opt_pilike_sig_test4->Fill(hmnt_bdt_pid_pi_test4);
+            opt_pilike_sig_test5->Fill(hmnt_bdt_pid_pi_test5);
          }
          else
          {
             opt_pilike_bkg->Fill(hmnt_bdt_pid_pi);
+            
+            opt_pilike_bkg_test1->Fill(hmnt_bdt_pid_pi_test1);
+            opt_pilike_bkg_test2->Fill(hmnt_bdt_pid_pi_test2);
+            opt_pilike_bkg_test3->Fill(hmnt_bdt_pid_pi_test3);
+            opt_pilike_bkg_test4->Fill(hmnt_bdt_pid_pi_test4);
+            opt_pilike_bkg_test5->Fill(hmnt_bdt_pid_pi_test5);
          }
          
          debug_hmnt_pdg->Fill(HMNT_truepdg);
@@ -176,6 +230,134 @@ void DefaultCustomPlotting::Loop()
    //graph_opt_eff_mu->Draw("C* same");
    graph_opt_effpur_mu->Draw("AC");
    canvas_effpur_mu_cc1pi->Write();
+   
+   
+   // =============== Parameter testing ===============
+   
+   if (parameter) {
+   
+      // Point 1
+   
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test1->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test1->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test1->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test1->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 2:" << std::endl;
+      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 2
+   
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test2->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test2->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test2->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test2->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 3:" << std::endl;
+      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 3
+      
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 4:" << std::endl;
+      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 4
+      
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test4->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test4->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test4->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test4->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 5:" << std::endl;
+      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 5
+      
+      if (parameter != "treedepth")
+      {
+
+         optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+         {
+            Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
+            Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+            Float_t purity = passed_sig/(passed_sig+passed_bkg);
+            Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+            if (passed_sig == 0){significance = 0; purity = 0;}
+            if (significance > optimal_signif_mu)
+            {
+               optimal_signif_mu = significance;
+               optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+               optimal_pur_mu = purity;
+               optimal_eff_mu = efficiency;
+            }
+         }
+         if (parameter == "treedepth") std::cout << "Tree depth 6:" << std::endl; // to be removed
+         std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+         std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      }
+         
+         
+      
+   }
    
    
    
