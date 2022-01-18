@@ -6,5 +6,5 @@
     treedepth_cc1pi_mu->SetPoint(2, 4.0, 34.0363);
     treedepth_cc1pi_mu->SetPoint(3, 5.0, 34.2227);
     TCanvas* canvas_treedepth = new TCanvas("treedepth","",200,10,1000,600);
-    treedepth_cc1pi_mu->Draw("AC*");
+    treedepth_cc1pi_mu->Draw("AL*");
 }
