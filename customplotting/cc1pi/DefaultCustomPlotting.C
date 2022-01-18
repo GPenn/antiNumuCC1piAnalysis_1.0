@@ -71,24 +71,24 @@ void DefaultCustomPlotting::Loop()
          
          if (particle == -13)
          {
-            opt_mulike_sig->Fill(selmu_bdt_pid_mu_cc1pi);
+            opt_mulike_sig->Fill(selmu_bdt_pid_mu);
          }
          else
          {
-            opt_mulike_bkg->Fill(selmu_bdt_pid_mu_cc1pi);
+            opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
          }
          
          if (HMNT_truepdg == -211)
          {
-            opt_pilike_sig->Fill(hmnt_bdt_pid_pi_cc1pi);
+            opt_pilike_sig->Fill(hmnt_bdt_pid_pi);
          }
          else
          {
-            opt_pilike_bkg->Fill(hmnt_bdt_pid_pi_cc1pi);
+            opt_pilike_bkg->Fill(hmnt_bdt_pid_pi);
          }
          
          debug_hmnt_pdg->Fill(HMNT_truepdg);
-         debug_hmnt_pid->Fill(hmnt_bdt_pid_pi_cc1pi);
+         debug_hmnt_pid->Fill(hmnt_bdt_pid_pi);
 
       }
       
