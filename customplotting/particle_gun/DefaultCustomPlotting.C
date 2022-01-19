@@ -17,6 +17,8 @@ void DefaultCustomPlotting::Loop()
    gStyle->SetTitleXOffset(1.2);
    
    
+   TString parameter = "treedepth";
+   
    
    if (fChain == 0) return;
 
@@ -172,8 +174,55 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   
+   
+   TH1F *opt_mulike_sig_test1 = new TH1F("opt_mulike_sig_test1", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test1 = new TH1F("opt_mulike_bkg_test1", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test1 = new TH1F("opt_pilike_sig_test1", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test1 = new TH1F("opt_pilike_bkg_test1", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_sig_test1 = new TH1F("opt_plike_sig_test1", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg_test1 = new TH1F("opt_plike_bkg_test1", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_sig_test1 = new TH1F("opt_elike_sig_test1", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg_test1 = new TH1F("opt_elike_bkg_test1", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test2 = new TH1F("opt_mulike_sig_test2", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test2 = new TH1F("opt_mulike_bkg_test2", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test2 = new TH1F("opt_pilike_sig_test2", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test2 = new TH1F("opt_pilike_bkg_test2", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_sig_test2 = new TH1F("opt_plike_sig_test2", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg_test2 = new TH1F("opt_plike_bkg_test2", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_sig_test2 = new TH1F("opt_elike_sig_test2", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg_test2 = new TH1F("opt_elike_bkg_test2", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test3 = new TH1F("opt_mulike_sig_test3", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test3 = new TH1F("opt_mulike_bkg_test3", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test3 = new TH1F("opt_pilike_sig_test3", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test3 = new TH1F("opt_pilike_bkg_test3", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_sig_test3 = new TH1F("opt_plike_sig_test3", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg_test3 = new TH1F("opt_plike_bkg_test3", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_sig_test3 = new TH1F("opt_elike_sig_test3", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg_test3 = new TH1F("opt_elike_bkg_test3", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test4 = new TH1F("opt_mulike_sig_test4", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test4 = new TH1F("opt_mulike_bkg_test4", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test4 = new TH1F("opt_pilike_sig_test4", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test4 = new TH1F("opt_pilike_bkg_test4", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_sig_test4 = new TH1F("opt_plike_sig_test4", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg_test4 = new TH1F("opt_plike_bkg_test4", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_sig_test4 = new TH1F("opt_elike_sig_test4", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg_test4 = new TH1F("opt_elike_bkg_test4", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_mulike_sig_test5 = new TH1F("opt_mulike_sig_test5", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg_test5 = new TH1F("opt_mulike_bkg_test5", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_sig_test5 = new TH1F("opt_pilike_sig_test5", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg_test5 = new TH1F("opt_pilike_bkg_test5", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_sig_test5 = new TH1F("opt_plike_sig_test5", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg_test5 = new TH1F("opt_plike_bkg_test5", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_sig_test5 = new TH1F("opt_elike_sig_test5", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg_test5 = new TH1F("opt_elike_bkg_test5", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
 
-   Int_t correlation_nbins = 40;
+   /*Int_t correlation_nbins = 40;
    
    TH2F *corr_weighting_mulike = new TH2F("corr_weighting_mulike", 
                                           "Correlation: mom weighted vs unweighted, mu-like;Mom-weighted BDT mu-like output;Unweighted BDT mu-like output", 
@@ -199,7 +248,7 @@ void DefaultCustomPlotting::Loop()
                                             correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
    TH2F *corr_elikediff_recomom = new TH2F("corr_elikediff_recomom", 
                                            "Correlation: e-like disagreement vs reco mom;Reco momentum;BDT e-like disagreement (weighted - unweighted)", 
-                                            correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);
+                                            correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);*/
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -319,6 +368,31 @@ void DefaultCustomPlotting::Loop()
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
             
+            opt_mulike_sig_test1->Fill(selmu_bdt_pid_mu_test1);
+            opt_pilike_bkg_test1->Fill(selmu_bdt_pid_pi_test1);
+            opt_plike_bkg_test1->Fill(selmu_bdt_pid_p_test1);
+            opt_elike_bkg_test1->Fill(selmu_bdt_pid_e_test1);
+            
+            opt_mulike_sig_test2->Fill(selmu_bdt_pid_mu_test2);
+            opt_pilike_bkg_test2->Fill(selmu_bdt_pid_pi_test2);
+            opt_plike_bkg_test2->Fill(selmu_bdt_pid_p_test2);
+            opt_elike_bkg_test2->Fill(selmu_bdt_pid_e_test2);
+            
+            opt_mulike_sig_test3->Fill(selmu_bdt_pid_mu_test3);
+            opt_pilike_bkg_test3->Fill(selmu_bdt_pid_pi_test3);
+            opt_plike_bkg_test3->Fill(selmu_bdt_pid_p_test3);
+            opt_elike_bkg_test3->Fill(selmu_bdt_pid_e_test3);
+            
+            opt_mulike_sig_test4->Fill(selmu_bdt_pid_mu_test4);
+            opt_pilike_bkg_test4->Fill(selmu_bdt_pid_pi_test4);
+            opt_plike_bkg_test4->Fill(selmu_bdt_pid_p_test4);
+            opt_elike_bkg_test4->Fill(selmu_bdt_pid_e_test4);
+            
+            opt_mulike_sig_test5->Fill(selmu_bdt_pid_mu_test5);
+            opt_pilike_bkg_test5->Fill(selmu_bdt_pid_pi_test5);
+            opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
+            opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
+            
          }
          else if (particle == 211)
          {
@@ -326,6 +400,31 @@ void DefaultCustomPlotting::Loop()
             opt_pilike_sig->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
+            
+            opt_mulike_bkg_test1->Fill(selmu_bdt_pid_mu_test1);
+            opt_pilike_sig_test1->Fill(selmu_bdt_pid_pi_test1);
+            opt_plike_bkg_test1->Fill(selmu_bdt_pid_p_test1);
+            opt_elike_bkg_test1->Fill(selmu_bdt_pid_e_test1);
+            
+            opt_mulike_bkg_test2->Fill(selmu_bdt_pid_mu_test2);
+            opt_pilike_sig_test2->Fill(selmu_bdt_pid_pi_test2);
+            opt_plike_bkg_test2->Fill(selmu_bdt_pid_p_test2);
+            opt_elike_bkg_test2->Fill(selmu_bdt_pid_e_test2);
+            
+            opt_mulike_bkg_test3->Fill(selmu_bdt_pid_mu_test3);
+            opt_pilike_sig_test3->Fill(selmu_bdt_pid_pi_test3);
+            opt_plike_bkg_test3->Fill(selmu_bdt_pid_p_test3);
+            opt_elike_bkg_test3->Fill(selmu_bdt_pid_e_test3);
+            
+            opt_mulike_bkg_test4->Fill(selmu_bdt_pid_mu_test4);
+            opt_pilike_sig_test4->Fill(selmu_bdt_pid_pi_test4);
+            opt_plike_bkg_test4->Fill(selmu_bdt_pid_p_test4);
+            opt_elike_bkg_test4->Fill(selmu_bdt_pid_e_test4);
+            
+            opt_mulike_bkg_test5->Fill(selmu_bdt_pid_mu_test5);
+            opt_pilike_sig_test5->Fill(selmu_bdt_pid_pi_test5);
+            opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
+            opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
          }
          else if (particle == 2212)
          {
@@ -333,6 +432,33 @@ void DefaultCustomPlotting::Loop()
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_sig->Fill(selmu_bdt_pid_p);
             opt_elike_bkg->Fill(selmu_bdt_pid_e);
+            
+            opt_mulike_bkg_test1->Fill(selmu_bdt_pid_mu_test1);
+            opt_pilike_bkg_test1->Fill(selmu_bdt_pid_pi_test1);
+            opt_plike_sig_test1->Fill(selmu_bdt_pid_p_test1);
+            opt_elike_bkg_test1->Fill(selmu_bdt_pid_e_test1);
+            
+            opt_mulike_bkg_test2->Fill(selmu_bdt_pid_mu_test2);
+            opt_pilike_bkg_test2->Fill(selmu_bdt_pid_pi_test2);
+            opt_plike_sig_test2->Fill(selmu_bdt_pid_p_test2);
+            opt_elike_bkg_test2->Fill(selmu_bdt_pid_e_test2);
+            
+            opt_mulike_bkg_test3->Fill(selmu_bdt_pid_mu_test3);
+            opt_pilike_bkg_test3->Fill(selmu_bdt_pid_pi_test3);
+            opt_plike_sig_test3->Fill(selmu_bdt_pid_p_test3);
+            opt_elike_bkg_test3->Fill(selmu_bdt_pid_e_test3);
+            
+            opt_mulike_bkg_test4->Fill(selmu_bdt_pid_mu_test4);
+            opt_pilike_bkg_test4->Fill(selmu_bdt_pid_pi_test4);
+            opt_plike_sig_test4->Fill(selmu_bdt_pid_p_test4);
+            opt_elike_bkg_test4->Fill(selmu_bdt_pid_e_test4);
+            
+            opt_mulike_bkg_test5->Fill(selmu_bdt_pid_mu_test5);
+            opt_pilike_bkg_test5->Fill(selmu_bdt_pid_pi_test5);
+            opt_plike_sig_test5->Fill(selmu_bdt_pid_p_test5);
+            opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
+
+
          }
          else if (particle == -11)
          {
@@ -340,6 +466,33 @@ void DefaultCustomPlotting::Loop()
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
             opt_elike_sig->Fill(selmu_bdt_pid_e);
+            
+            opt_mulike_bkg_test1->Fill(selmu_bdt_pid_mu_test1);
+            opt_pilike_bkg_test1->Fill(selmu_bdt_pid_pi_test1);
+            opt_plike_bkg_test1->Fill(selmu_bdt_pid_p_test1);
+            opt_elike_sig_test1->Fill(selmu_bdt_pid_e_test1);
+            
+            opt_mulike_bkg_test2->Fill(selmu_bdt_pid_mu_test2);
+            opt_pilike_bkg_test2->Fill(selmu_bdt_pid_pi_test2);
+            opt_plike_bkg_test2->Fill(selmu_bdt_pid_p_test2);
+            opt_elike_sig_test2->Fill(selmu_bdt_pid_e_test2);
+            
+            opt_mulike_bkg_test3->Fill(selmu_bdt_pid_mu_test3);
+            opt_pilike_bkg_test3->Fill(selmu_bdt_pid_pi_test3);
+            opt_plike_bkg_test3->Fill(selmu_bdt_pid_p_test3);
+            opt_elike_sig_test3->Fill(selmu_bdt_pid_e_test3);
+            
+            opt_mulike_bkg_test4->Fill(selmu_bdt_pid_mu_test4);
+            opt_pilike_bkg_test4->Fill(selmu_bdt_pid_pi_test4);
+            opt_plike_bkg_test4->Fill(selmu_bdt_pid_p_test4);
+            opt_elike_sig_test4->Fill(selmu_bdt_pid_e_test4);
+            
+            opt_mulike_bkg_test5->Fill(selmu_bdt_pid_mu_test5);
+            opt_pilike_bkg_test5->Fill(selmu_bdt_pid_pi_test5);
+            opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
+            opt_elike_sig_test5->Fill(selmu_bdt_pid_e_test5);
+            
+            
          }
          
          //corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
@@ -1075,6 +1228,137 @@ void DefaultCustomPlotting::Loop()
    
    
    
+   // =============== Parameter testing ===============
+   
+   std::cout << "=========== Parameter testing ===========" << std::endl << std::endl;
+   
+   if (parameter) {
+   
+      // Point 1
+   
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test1->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test1->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test1->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test1->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 2:" << std::endl;
+      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 2
+   
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test2->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test2->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test2->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test2->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 3:" << std::endl;
+      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 3
+      
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 4:" << std::endl;
+      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 4
+      
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test4->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test4->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test4->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test4->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 5:" << std::endl;
+      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      
+      // Point 5
+      
+      if (parameter != "treedepth")
+      {
+
+         optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+         {
+            Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
+            Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+            Float_t purity = passed_sig/(passed_sig+passed_bkg);
+            Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+            if (passed_sig == 0){significance = 0; purity = 0;}
+            if (significance > optimal_signif_mu)
+            {
+               optimal_signif_mu = significance;
+               optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+               optimal_pur_mu = purity;
+               optimal_eff_mu = efficiency;
+            }
+         }
+         if (parameter == "treedepth") std::cout << "Tree depth 6:" << std::endl; // to be removed
+         std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+         std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      }
+         
+         
+      
+   }
+   
+   
+   
    
    // ============= Correlation plots =============
    /*
@@ -1207,6 +1491,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << std::endl;
       
    */
+   
+   
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
