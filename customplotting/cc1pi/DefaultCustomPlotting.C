@@ -232,135 +232,6 @@ void DefaultCustomPlotting::Loop()
    canvas_effpur_mu_cc1pi->Write();
    
    
-   // =============== Parameter testing ===============
-   
-   if (parameter) {
-   
-      // Point 1
-   
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
-      {
-         Float_t passed_sig = opt_mulike_sig_test1->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test1->Integral(cut,optimisation_nbins);
-         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-         Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test1->GetEntries());
-         if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
-         {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test1->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
-         }
-      }
-      if (parameter == "treedepth") std::cout << "Tree depth 2:" << std::endl;
-      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
-      
-      // Point 2
-   
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
-      {
-         Float_t passed_sig = opt_mulike_sig_test2->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test2->Integral(cut,optimisation_nbins);
-         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-         Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test2->GetEntries());
-         if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
-         {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test2->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
-         }
-      }
-      if (parameter == "treedepth") std::cout << "Tree depth 3:" << std::endl;
-      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
-      
-      // Point 3
-      
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
-      {
-         Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
-         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-         Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
-         if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
-         {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
-         }
-      }
-      if (parameter == "treedepth") std::cout << "Tree depth 4:" << std::endl;
-      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
-      
-      // Point 4
-      
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
-      {
-         Float_t passed_sig = opt_mulike_sig_test4->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test4->Integral(cut,optimisation_nbins);
-         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-         Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test4->GetEntries());
-         if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
-         {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test4->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
-         }
-      }
-      if (parameter == "treedepth") std::cout << "Tree depth 5:" << std::endl;
-      std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
-      
-      // Point 5
-      
-      if (parameter != "treedepth")
-      {
-
-         optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
-         {
-            Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
-            Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
-            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-            Float_t purity = passed_sig/(passed_sig+passed_bkg);
-            Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
-            if (passed_sig == 0){significance = 0; purity = 0;}
-            if (significance > optimal_signif_mu)
-            {
-               optimal_signif_mu = significance;
-               optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
-               optimal_pur_mu = purity;
-               optimal_eff_mu = efficiency;
-            }
-         }
-         if (parameter == "treedepth") std::cout << "Tree depth 6:" << std::endl; // to be removed
-         std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
-         std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
-      }
-         
-         
-      
-   }
-   
-   
-   
    std::cout << "=========== Pion candidate pi-like optimisation ===========" << std::endl << std::endl;
    
    std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
@@ -417,9 +288,234 @@ void DefaultCustomPlotting::Loop()
    graph_opt_effpur_pi->Draw("AC");
    canvas_effpur_pi_cc1pi->Write();
    
-   
    debug_hmnt_pdg->Write();
    debug_hmnt_pid->Write();
+   
+   
+   // =============== Parameter testing ===============
+   
+   std::cout << "=========== Parameter testing ===========" << std::endl << std::endl;
+   
+   if (parameter) {
+   
+      // Point 1
+   
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test1->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test1->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test1->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test1->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_pilike_sig_test1->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_pilike_bkg_test1->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_pilike_sig_test1->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_pi)
+         {
+            optimal_signif_pi = significance;
+            optimal_cut_pi = opt_pilike_sig_test1->GetBinLowEdge(cut);
+            optimal_pur_pi = purity;
+            optimal_eff_pi = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 2:" << std::endl;
+      std::cout << "Optimal muon candidate significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      std::cout << "Optimal pion candidate significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+      
+      // Point 2
+   
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test2->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test2->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test2->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test2->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_pilike_sig_test2->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_pilike_bkg_test2->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_pilike_sig_test2->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_pi)
+         {
+            optimal_signif_pi = significance;
+            optimal_cut_pi = opt_pilike_sig_test2->GetBinLowEdge(cut);
+            optimal_pur_pi = purity;
+            optimal_eff_pi = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 3:" << std::endl;
+      std::cout << "Optimal muon candidate significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      std::cout << "Optimal pion candidate significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+      
+      // Point 3
+      
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_pilike_sig_test3->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_pilike_bkg_test3->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_pilike_sig_test3->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_pi)
+         {
+            optimal_signif_pi = significance;
+            optimal_cut_pi = opt_pilike_sig_test3->GetBinLowEdge(cut);
+            optimal_pur_pi = purity;
+            optimal_eff_pi = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 4:" << std::endl;
+      std::cout << "Optimal muon candidate significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      std::cout << "Optimal pion candidate significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+      
+      // Point 4
+      
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test4->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test4->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test4->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
+         {
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test4->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
+         }
+      }
+      optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_pilike_sig_test4->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_pilike_bkg_test4->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_pilike_sig_test4->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_pi)
+         {
+            optimal_signif_pi = significance;
+            optimal_cut_pi = opt_pilike_sig_test4->GetBinLowEdge(cut);
+            optimal_pur_pi = purity;
+            optimal_eff_pi = efficiency;
+         }
+      }
+      if (parameter == "treedepth") std::cout << "Tree depth 5:" << std::endl;
+      std::cout << "Optimal muon candidate significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+      std::cout << "Optimal pion candidate significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+      
+      // Point 5
+      
+      if (parameter != "treedepth")
+      {
+
+         optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+         {
+            Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
+            Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+            Float_t purity = passed_sig/(passed_sig+passed_bkg);
+            Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+            if (passed_sig == 0){significance = 0; purity = 0;}
+            if (significance > optimal_signif_mu)
+            {
+               optimal_signif_mu = significance;
+               optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+               optimal_pur_mu = purity;
+               optimal_eff_mu = efficiency;
+            }
+         }
+         optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
+         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+         {
+            Float_t passed_sig = opt_pilike_sig_test5->Integral(cut,optimisation_nbins);
+            Float_t passed_bkg = opt_pilike_bkg_test5->Integral(cut,optimisation_nbins);
+            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+            Float_t purity = passed_sig/(passed_sig+passed_bkg);
+            Float_t efficiency = passed_sig/(opt_pilike_sig_test5->GetEntries());
+            if (passed_sig == 0){significance = 0; purity = 0;}
+            if (significance > optimal_signif_pi)
+            {
+               optimal_signif_pi = significance;
+               optimal_cut_pi = opt_pilike_sig_test5->GetBinLowEdge(cut);
+               optimal_pur_pi = purity;
+               optimal_eff_pi = efficiency;
+            }
+         }
+         if (parameter == "treedepth") std::cout << "Tree depth 6:" << std::endl; // to be removed
+         std::cout << "Optimal muon candidate significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+         std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+         std::cout << "Optimal pion candidate significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+         std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+      }
+         
+         
+      
+   }
+   
       
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
