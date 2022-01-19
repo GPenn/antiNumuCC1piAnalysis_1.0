@@ -206,12 +206,12 @@ void DefaultCustomPlotting::Loop()
       fChain->GetEntry(jentry);
 
       // Cut on accum_level etc
-      if (accum_level[0][0] <= 4) continue; // Set accum_level
+      if (accum_level[0][1] <= 4) continue; // Set accum_level
       
       
       // ============= Fill histograms for input variable plotting =============
       
-      if ((accum_level[0][0] > 5) && (selmu_necals < 2)){
+      if ((accum_level[0][1] > 5) && (selmu_necals < 2)){
          
          if ((particle == -13)&&(particle_pg == -13))
          {
@@ -310,7 +310,7 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms to find optimal cuts =============
       
-      if (accum_level[0][0] > 5){
+      if (accum_level[0][1] > 5){
          
          if (particle == -13)
          {
