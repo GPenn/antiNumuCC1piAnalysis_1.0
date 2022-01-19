@@ -92,14 +92,17 @@ public :
    Int_t           topology_no1pi;
    Int_t           topology_withpi0;
    Int_t           redo[1];   //[NTOYS]
-   Int_t           accum_level[1][4];   //[NTOYS]
-   Int_t           cut0[1][4];   //[NTOYS]
-   Int_t           cut1[1][4];   //[NTOYS]
-   Int_t           cut2[1][4];   //[NTOYS]
-   Int_t           cut3[1][4];   //[NTOYS]
-   Int_t           cut4[1][4];   //[NTOYS]
-   Int_t           cut5[1][4];   //[NTOYS]
-   Int_t           cut6[1][4];   //[NTOYS]
+   Int_t           accum_level[1][3];   //[NTOYS]
+   Int_t           cut0[1][3];   //[NTOYS]
+   Int_t           cut1[1][3];   //[NTOYS]
+   Int_t           cut2[1][3];   //[NTOYS]
+   Int_t           cut3[1][3];   //[NTOYS]
+   Int_t           cut4[1][3];   //[NTOYS]
+   Int_t           cut5[1][3];   //[NTOYS]
+   Int_t           cut6[1][3];   //[NTOYS]
+   Int_t           cut7[1][3];   //[NTOYS]
+   Int_t           cut8[1][3];   //[NTOYS]
+   Int_t           cut9[1][3];   //[NTOYS]
    Float_t         weight_syst;
    Float_t         weight_syst_total;
    Float_t         weight_corr;
@@ -443,19 +446,42 @@ public :
    Float_t         HMNT_fgd2_pull_p;
    Float_t         HMNT_fgd2_pull_pi;
    Float_t         HMNT_fgd2_pull_no;
-   Float_t         selmu_bdt_pid_mu_cc1pi;
-   Float_t         hmnt_bdt_pid_pi_cc1pi;
-   Float_t         selmu_bdt_pid_unweighted_mu_cc1pi;
-   Float_t         hmnt_bdt_pid_unweighted_pi_cc1pi;
-   Int_t           particle_pg;
    Float_t         selmu_bdt_pid_mu;
    Float_t         selmu_bdt_pid_pi;
    Float_t         selmu_bdt_pid_p;
    Float_t         selmu_bdt_pid_e;
-   Float_t         selmu_bdt_pid_unweighted_mu;
-   Float_t         selmu_bdt_pid_unweighted_pi;
-   Float_t         selmu_bdt_pid_unweighted_p;
-   Float_t         selmu_bdt_pid_unweighted_e;
+   Float_t         hmnt_bdt_pid_mu;
+   Float_t         hmnt_bdt_pid_pi;
+   Float_t         hmnt_bdt_pid_p;
+   Float_t         hmnt_bdt_pid_e;
+   Float_t         selmu_bdt_pid_mu_test1;
+   Float_t         selmu_bdt_pid_pi_test1;
+   Float_t         selmu_bdt_pid_p_test1;
+   Float_t         selmu_bdt_pid_e_test1;
+   Float_t         hmnt_bdt_pid_pi_test1;
+   Float_t         selmu_bdt_pid_mu_test2;
+   Float_t         selmu_bdt_pid_pi_test2;
+   Float_t         selmu_bdt_pid_p_test2;
+   Float_t         selmu_bdt_pid_e_test2;
+   Float_t         hmnt_bdt_pid_pi_test2;
+   Float_t         selmu_bdt_pid_mu_test3;
+   Float_t         selmu_bdt_pid_pi_test3;
+   Float_t         selmu_bdt_pid_p_test3;
+   Float_t         selmu_bdt_pid_e_test3;
+   Float_t         hmnt_bdt_pid_pi_test3;
+   Float_t         selmu_bdt_pid_mu_test4;
+   Float_t         selmu_bdt_pid_pi_test4;
+   Float_t         selmu_bdt_pid_p_test4;
+   Float_t         selmu_bdt_pid_e_test4;
+   Float_t         hmnt_bdt_pid_pi_test4;
+   Float_t         selmu_bdt_pid_mu_test5;
+   Float_t         selmu_bdt_pid_pi_test5;
+   Float_t         selmu_bdt_pid_p_test5;
+   Float_t         selmu_bdt_pid_e_test5;
+   Float_t         hmnt_bdt_pid_pi_test5;
+   Float_t         selmu_bdt_pid_unweighted_mu_cc1pi;
+   Float_t         hmnt_bdt_pid_unweighted_pi_cc1pi;
+   Int_t           particle_pg;
 
    // List of branches
    TBranch        *b_NTOYS;   //!
@@ -510,6 +536,9 @@ public :
    TBranch        *b_cut4;   //!
    TBranch        *b_cut5;   //!
    TBranch        *b_cut6;   //!
+   TBranch        *b_cut7;   //!
+   TBranch        *b_cut8;   //!
+   TBranch        *b_cut9;   //!
    TBranch        *b_weight_syst;   //!
    TBranch        *b_weight_syst_total;   //!
    TBranch        *b_weight_corr;   //!
@@ -853,19 +882,42 @@ public :
    TBranch        *b_HMNT_fgd2_pull_p;   //!
    TBranch        *b_HMNT_fgd2_pull_pi;   //!
    TBranch        *b_HMNT_fgd2_pull_no;   //!
-   TBranch        *b_selmu_bdt_pid_mu_cc1pi;   //!
-   TBranch        *b_hmnt_bdt_pid_pi_cc1pi;   //!
-   TBranch        *b_selmu_bdt_pid_unweighted_mu_cc1pi;   //!
-   TBranch        *b_hmnt_bdt_pid_unweighted_pi_cc1pi;   //!
-   TBranch        *b_particle_pg;   //!
    TBranch        *b_selmu_bdt_pid_mu;   //!
    TBranch        *b_selmu_bdt_pid_pi;   //!
    TBranch        *b_selmu_bdt_pid_p;   //!
    TBranch        *b_selmu_bdt_pid_e;   //!
-   TBranch        *b_selmu_bdt_pid_unweighted_mu;   //!
-   TBranch        *b_selmu_bdt_pid_unweighted_pi;   //!
-   TBranch        *b_selmu_bdt_pid_unweighted_p;   //!
-   TBranch        *b_selmu_bdt_pid_unweighted_e;   //!
+   TBranch        *b_hmnt_bdt_pid_mu;   //!
+   TBranch        *b_hmnt_bdt_pid_pi;   //!
+   TBranch        *b_hmnt_bdt_pid_p;   //!
+   TBranch        *b_hmnt_bdt_pid_e;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test1;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test1;   //!
+   TBranch        *b_selmu_bdt_pid_p_test1;   //!
+   TBranch        *b_selmu_bdt_pid_e_test1;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test1;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test2;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test2;   //!
+   TBranch        *b_selmu_bdt_pid_p_test2;   //!
+   TBranch        *b_selmu_bdt_pid_e_test2;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test2;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test3;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test3;   //!
+   TBranch        *b_selmu_bdt_pid_p_test3;   //!
+   TBranch        *b_selmu_bdt_pid_e_test3;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test3;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test4;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test4;   //!
+   TBranch        *b_selmu_bdt_pid_p_test4;   //!
+   TBranch        *b_selmu_bdt_pid_e_test4;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test4;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test5;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test5;   //!
+   TBranch        *b_selmu_bdt_pid_p_test5;   //!
+   TBranch        *b_selmu_bdt_pid_e_test5;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test5;   //!
+   TBranch        *b_selmu_bdt_pid_unweighted_mu_cc1pi;   //!
+   TBranch        *b_hmnt_bdt_pid_unweighted_pi_cc1pi;   //!
+   TBranch        *b_particle_pg;   //!
 
 
    DefaultCustomPlotting(TTree *tree=0, std::string outFileName="defaultTest.root");
@@ -996,6 +1048,9 @@ void DefaultCustomPlotting::Init(TTree *tree)
    fChain->SetBranchAddress("cut4", cut4, &b_cut4);
    fChain->SetBranchAddress("cut5", cut5, &b_cut5);
    fChain->SetBranchAddress("cut6", cut6, &b_cut6);
+   fChain->SetBranchAddress("cut7", cut7, &b_cut7);
+   fChain->SetBranchAddress("cut8", cut8, &b_cut8);
+   fChain->SetBranchAddress("cut9", cut9, &b_cut9);
    fChain->SetBranchAddress("weight_syst", &weight_syst, &b_weight_syst);
    fChain->SetBranchAddress("weight_syst_total", &weight_syst_total, &b_weight_syst_total);
    fChain->SetBranchAddress("weight_corr", &weight_corr, &b_weight_corr);
@@ -1339,19 +1394,42 @@ void DefaultCustomPlotting::Init(TTree *tree)
    fChain->SetBranchAddress("HMNT_fgd2_pull_p", &HMNT_fgd2_pull_p, &b_HMNT_fgd2_pull_p);
    fChain->SetBranchAddress("HMNT_fgd2_pull_pi", &HMNT_fgd2_pull_pi, &b_HMNT_fgd2_pull_pi);
    fChain->SetBranchAddress("HMNT_fgd2_pull_no", &HMNT_fgd2_pull_no, &b_HMNT_fgd2_pull_no);
-   fChain->SetBranchAddress("selmu_bdt_pid_mu_cc1pi", &selmu_bdt_pid_mu_cc1pi, &b_selmu_bdt_pid_mu_cc1pi);
-   fChain->SetBranchAddress("hmnt_bdt_pid_pi_cc1pi", &hmnt_bdt_pid_pi_cc1pi, &b_hmnt_bdt_pid_pi_cc1pi);
-   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_mu_cc1pi", &selmu_bdt_pid_unweighted_mu_cc1pi, &b_selmu_bdt_pid_unweighted_mu_cc1pi);
-   fChain->SetBranchAddress("hmnt_bdt_pid_unweighted_pi_cc1pi", &hmnt_bdt_pid_unweighted_pi_cc1pi, &b_hmnt_bdt_pid_unweighted_pi_cc1pi);
-   fChain->SetBranchAddress("particle_pg", &particle_pg, &b_particle_pg);
    fChain->SetBranchAddress("selmu_bdt_pid_mu", &selmu_bdt_pid_mu, &b_selmu_bdt_pid_mu);
    fChain->SetBranchAddress("selmu_bdt_pid_pi", &selmu_bdt_pid_pi, &b_selmu_bdt_pid_pi);
    fChain->SetBranchAddress("selmu_bdt_pid_p", &selmu_bdt_pid_p, &b_selmu_bdt_pid_p);
    fChain->SetBranchAddress("selmu_bdt_pid_e", &selmu_bdt_pid_e, &b_selmu_bdt_pid_e);
-   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_mu", &selmu_bdt_pid_unweighted_mu, &b_selmu_bdt_pid_unweighted_mu);
-   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_pi", &selmu_bdt_pid_unweighted_pi, &b_selmu_bdt_pid_unweighted_pi);
-   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_p", &selmu_bdt_pid_unweighted_p, &b_selmu_bdt_pid_unweighted_p);
-   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_e", &selmu_bdt_pid_unweighted_e, &b_selmu_bdt_pid_unweighted_e);
+   fChain->SetBranchAddress("hmnt_bdt_pid_mu", &hmnt_bdt_pid_mu, &b_hmnt_bdt_pid_mu);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi", &hmnt_bdt_pid_pi, &b_hmnt_bdt_pid_pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_p", &hmnt_bdt_pid_p, &b_hmnt_bdt_pid_p);
+   fChain->SetBranchAddress("hmnt_bdt_pid_e", &hmnt_bdt_pid_e, &b_hmnt_bdt_pid_e);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test1", &selmu_bdt_pid_mu_test1, &b_selmu_bdt_pid_mu_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test1", &selmu_bdt_pid_pi_test1, &b_selmu_bdt_pid_pi_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test1", &selmu_bdt_pid_p_test1, &b_selmu_bdt_pid_p_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test1", &selmu_bdt_pid_e_test1, &b_selmu_bdt_pid_e_test1);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test1", &hmnt_bdt_pid_pi_test1, &b_hmnt_bdt_pid_pi_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test2", &selmu_bdt_pid_mu_test2, &b_selmu_bdt_pid_mu_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test2", &selmu_bdt_pid_pi_test2, &b_selmu_bdt_pid_pi_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test2", &selmu_bdt_pid_p_test2, &b_selmu_bdt_pid_p_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test2", &selmu_bdt_pid_e_test2, &b_selmu_bdt_pid_e_test2);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test2", &hmnt_bdt_pid_pi_test2, &b_hmnt_bdt_pid_pi_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test3", &selmu_bdt_pid_mu_test3, &b_selmu_bdt_pid_mu_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test3", &selmu_bdt_pid_pi_test3, &b_selmu_bdt_pid_pi_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test3", &selmu_bdt_pid_p_test3, &b_selmu_bdt_pid_p_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test3", &selmu_bdt_pid_e_test3, &b_selmu_bdt_pid_e_test3);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test3", &hmnt_bdt_pid_pi_test3, &b_hmnt_bdt_pid_pi_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test4", &selmu_bdt_pid_mu_test4, &b_selmu_bdt_pid_mu_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test4", &selmu_bdt_pid_pi_test4, &b_selmu_bdt_pid_pi_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test4", &selmu_bdt_pid_p_test4, &b_selmu_bdt_pid_p_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test4", &selmu_bdt_pid_e_test4, &b_selmu_bdt_pid_e_test4);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test4", &hmnt_bdt_pid_pi_test4, &b_hmnt_bdt_pid_pi_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test5", &selmu_bdt_pid_mu_test5, &b_selmu_bdt_pid_mu_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test5", &selmu_bdt_pid_pi_test5, &b_selmu_bdt_pid_pi_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test5", &selmu_bdt_pid_p_test5, &b_selmu_bdt_pid_p_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test5", &selmu_bdt_pid_e_test5, &b_selmu_bdt_pid_e_test5);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test5", &hmnt_bdt_pid_pi_test5, &b_hmnt_bdt_pid_pi_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_mu_cc1pi", &selmu_bdt_pid_unweighted_mu_cc1pi, &b_selmu_bdt_pid_unweighted_mu_cc1pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_unweighted_pi_cc1pi", &hmnt_bdt_pid_unweighted_pi_cc1pi, &b_hmnt_bdt_pid_unweighted_pi_cc1pi);
+   fChain->SetBranchAddress("particle_pg", &particle_pg, &b_particle_pg);
    Notify();
 }
 
