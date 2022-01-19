@@ -478,16 +478,16 @@ void DefaultCustomPlotting::Loop()
          optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
          for (Int_t cut=1; cut <= optimisation_nbins; cut++)
          {
-            Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
-            Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+            Float_t passed_sig = opt_mulike_sig_test5->Integral(cut,optimisation_nbins);
+            Float_t passed_bkg = opt_mulike_bkg_test5->Integral(cut,optimisation_nbins);
             Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
             Float_t purity = passed_sig/(passed_sig+passed_bkg);
-            Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+            Float_t efficiency = passed_sig/(opt_mulike_sig_test5->GetEntries());
             if (passed_sig == 0){significance = 0; purity = 0;}
             if (significance > optimal_signif_mu)
             {
                optimal_signif_mu = significance;
-               optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
+               optimal_cut_mu = opt_mulike_sig_test5->GetBinLowEdge(cut);
                optimal_pur_mu = purity;
                optimal_eff_mu = efficiency;
             }
