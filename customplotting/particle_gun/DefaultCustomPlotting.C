@@ -342,15 +342,15 @@ void DefaultCustomPlotting::Loop()
             opt_elike_sig->Fill(selmu_bdt_pid_e);
          }
          
-         corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
-         corr_weighting_pilike->Fill(selmu_bdt_pid_pi, selmu_bdt_pid_unweighted_pi);
-         corr_weighting_plike->Fill(selmu_bdt_pid_p, selmu_bdt_pid_unweighted_p);
-         corr_weighting_elike->Fill(selmu_bdt_pid_e, selmu_bdt_pid_unweighted_e);
+         //corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
+         //corr_weighting_pilike->Fill(selmu_bdt_pid_pi, selmu_bdt_pid_unweighted_pi);
+         //corr_weighting_plike->Fill(selmu_bdt_pid_p, selmu_bdt_pid_unweighted_p);
+         //corr_weighting_elike->Fill(selmu_bdt_pid_e, selmu_bdt_pid_unweighted_e);
          
-         corr_mulikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_mu-selmu_bdt_pid_unweighted_mu);
-         corr_pilikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_pi-selmu_bdt_pid_unweighted_pi);
-         corr_plikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_p-selmu_bdt_pid_unweighted_p);
-         corr_elikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_e-selmu_bdt_pid_unweighted_e);
+         //corr_mulikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_mu-selmu_bdt_pid_unweighted_mu);
+         //corr_pilikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_pi-selmu_bdt_pid_unweighted_pi);
+         //corr_plikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_p-selmu_bdt_pid_unweighted_p);
+         //corr_elikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_e-selmu_bdt_pid_unweighted_e);
       }
       
       
@@ -358,7 +358,7 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill variables to test existing cuts =============
       
-      if (accum_level[0][0] > 6){
+      /*if (accum_level[0][0] > 6){
          
          if (particle == -13) {musel_nAntimu++; musel_sig_recomom->Fill(selmu_mom[0]);}
          if (particle == 211) {musel_nPiplus++; musel_bkg_recomom->Fill(selmu_mom[0]);}
@@ -388,7 +388,7 @@ void DefaultCustomPlotting::Loop()
          if (particle == 211) {esel_nPiplus++; esel_bkg_recomom->Fill(selmu_mom[0]);}
          if (particle == 2212) {esel_nProton++; esel_bkg_recomom->Fill(selmu_mom[0]);}
          if (particle == -11) {esel_nPositron++; esel_sig_recomom->Fill(selmu_mom[0]);}
-      }
+      }*/
       
       // Code to keep track of completion percentage and estimate time remaining:
          
@@ -1077,7 +1077,7 @@ void DefaultCustomPlotting::Loop()
    
    
    // ============= Correlation plots =============
-   
+   /*
    
    //TCanvas* canvas_corr_weighting_mulike = new TCanvas("canvas_corr_weighting_mulike","",200,10,1000,1000);
    //corr_weighting_mulike->Draw("colz");
@@ -1092,10 +1092,10 @@ void DefaultCustomPlotting::Loop()
    corr_plikediff_recomom->Write();
    corr_elikediff_recomom->Write();
       
-      
+    */
    
    // ============= Test existing cuts =============
-   
+   /*
    std::cout << std::endl << std::endl;
    
    std::cout << "=========== Mu-like selection ===========" << std::endl << std::endl;
@@ -1206,6 +1206,7 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << std::endl;
       
+   */
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
