@@ -43,10 +43,6 @@
     treedepth_pg_e->SetPoint(2, 4.0, 189.719);
     treedepth_pg_e->SetPoint(3, 5.0, 189.99);
     
-    TCanvas* canvas_treedepth = new TCanvas("treedepth","",200,10,1000,600);
-    treedepth_cc1pi_mu->Draw("AL*");
-    treedepth_cc1pi_pi->Draw("L* same");
-    
     TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,400);
     canvas_treedepth->Divide(2,1,0.005,0.005);
     canvas_treedepth->cd(1);
@@ -61,5 +57,38 @@
     treedepth_pg_pi->Draw("L* same");
     treedepth_pg_p->Draw("L* same");
     treedepth_pg_e->Draw("L* same");
+    
+    // =============== Tree number ===============
+    
+    TGraph* treenumber_cc1pi_mu = new TGraph();
+    treenumber_cc1pi_mu->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_cc1pi_mu->SetPoint(0, 500.0, 31.882);
+    treenumber_cc1pi_mu->SetPoint(1, 1000.0, 31.5975);
+    treenumber_cc1pi_mu->SetPoint(2, 1500.0, 31.4073);
+    treenumber_cc1pi_mu->SetPoint(3, 2000.0, 31.2578);
+    treenumber_cc1pi_mu->SetPoint(4, 2500.0, 31.1631);
+    
+    TGraph* treenumber_cc1pi_pi = new TGraph();
+    treenumber_cc1pi_pi->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_cc1pi_pi->SetPoint(0, 500.0, 34.7918);
+    treenumber_cc1pi_pi->SetPoint(1, 1000.0, 34.8224);
+    treenumber_cc1pi_pi->SetPoint(2, 1500.0, 35.0421);
+    treenumber_cc1pi_pi->SetPoint(3, 2000.0, 35.0117);
+    treenumber_cc1pi_pi->SetPoint(4, 2500.0, 35.0931);
+    
+    TCanvas* canvas_treenumber = new TCanvas("canvas_treenumber","",200,10,1000,400);
+    canvas_treenumber->Divide(2,1,0.005,0.005);
+    canvas_treenumber->cd(1);
+    
+    treenumber_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 40.0);
+    treenumber_cc1pi_mu->Draw("AL*");
+    treenumber_cc1pi_pi->Draw("L* same");
+    
+    //canvas_treenumber->cd(2);
+    //treenumber_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
+    //treenumber_pg_mu->Draw("AL*");
+    //treenumber_pg_pi->Draw("L* same");
+    //treenumber_pg_p->Draw("L* same");
+    //treenumber_pg_e->Draw("L* same");
     
 }
