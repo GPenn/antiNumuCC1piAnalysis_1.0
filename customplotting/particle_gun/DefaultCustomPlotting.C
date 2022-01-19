@@ -1270,21 +1270,21 @@ void DefaultCustomPlotting::Loop()
             optimal_eff_pi = efficiency;
          }
       }
-      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_p = 0; optimal_eff_p = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
-         Float_t passed_sig = opt_mulike_sig_test1->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test1->Integral(cut,optimisation_nbins);
+         Float_t passed_sig = opt_plike_sig_test1->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_plike_bkg_test1->Integral(cut,optimisation_nbins);
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test1->GetEntries());
+         Float_t efficiency = passed_sig/(opt_plike_sig_test1->GetEntries());
          if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
+         if (significance > optimal_signif_p)
          {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test1->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
+            optimal_signif_p = significance;
+            optimal_cut_p = opt_plike_sig_test1->GetBinLowEdge(cut);
+            optimal_pur_p = purity;
+            optimal_eff_p = efficiency;
          }
       }
       optimal_signif_e = 0; optimal_cut_e = 0; optimal_pur_e = 0; optimal_eff_e = 0;
@@ -1351,21 +1351,21 @@ void DefaultCustomPlotting::Loop()
             optimal_eff_pi = efficiency;
          }
       }
-      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_p = 0; optimal_eff_p = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
-         Float_t passed_sig = opt_mulike_sig_test2->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test2->Integral(cut,optimisation_nbins);
+         Float_t passed_sig = opt_plike_sig_test2->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_plike_bkg_test2->Integral(cut,optimisation_nbins);
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test2->GetEntries());
+         Float_t efficiency = passed_sig/(opt_plike_sig_test2->GetEntries());
          if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
+         if (significance > optimal_signif_p)
          {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test2->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
+            optimal_signif_p = significance;
+            optimal_cut_p = opt_plike_sig_test2->GetBinLowEdge(cut);
+            optimal_pur_p = purity;
+            optimal_eff_p = efficiency;
          }
       }
       optimal_signif_e = 0; optimal_cut_e = 0; optimal_pur_e = 0; optimal_eff_e = 0;
@@ -1431,21 +1431,21 @@ void DefaultCustomPlotting::Loop()
             optimal_eff_pi = efficiency;
          }
       }
-      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_p = 0; optimal_eff_p = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
-         Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test3->Integral(cut,optimisation_nbins);
+         Float_t passed_sig = opt_plike_sig_test3->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_plike_bkg_test3->Integral(cut,optimisation_nbins);
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test3->GetEntries());
+         Float_t efficiency = passed_sig/(opt_plike_sig_test3->GetEntries());
          if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
+         if (significance > optimal_signif_p)
          {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test3->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
+            optimal_signif_p = significance;
+            optimal_cut_p = opt_plike_sig_test3->GetBinLowEdge(cut);
+            optimal_pur_p = purity;
+            optimal_eff_p = efficiency;
          }
       }
       optimal_signif_e = 0; optimal_cut_e = 0; optimal_pur_e = 0; optimal_eff_e = 0;
@@ -1511,21 +1511,21 @@ void DefaultCustomPlotting::Loop()
             optimal_eff_pi = efficiency;
          }
       }
-      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_p = 0; optimal_eff_p = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
-         Float_t passed_sig = opt_mulike_sig_test4->Integral(cut,optimisation_nbins);
-         Float_t passed_bkg = opt_mulike_bkg_test4->Integral(cut,optimisation_nbins);
+         Float_t passed_sig = opt_plike_sig_test4->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_plike_bkg_test4->Integral(cut,optimisation_nbins);
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         Float_t efficiency = passed_sig/(opt_mulike_sig_test4->GetEntries());
+         Float_t efficiency = passed_sig/(opt_plike_sig_test4->GetEntries());
          if (passed_sig == 0){significance = 0; purity = 0;}
-         if (significance > optimal_signif_mu)
+         if (significance > optimal_signif_p)
          {
-            optimal_signif_mu = significance;
-            optimal_cut_mu = opt_mulike_sig_test4->GetBinLowEdge(cut);
-            optimal_pur_mu = purity;
-            optimal_eff_mu = efficiency;
+            optimal_signif_p = significance;
+            optimal_cut_p = opt_plike_sig_test4->GetBinLowEdge(cut);
+            optimal_pur_p = purity;
+            optimal_eff_p = efficiency;
          }
       }
       optimal_signif_e = 0; optimal_cut_e = 0; optimal_pur_e = 0; optimal_eff_e = 0;
@@ -1560,74 +1560,74 @@ void DefaultCustomPlotting::Loop()
       if (parameter != "treedepth")
       {
 
-         optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_mulike_sig_test5->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_mulike_bkg_test5->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_mulike_sig_test5->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_mu)
          {
-            Float_t passed_sig = opt_mulike_sig_test5->Integral(cut,optimisation_nbins);
-            Float_t passed_bkg = opt_mulike_bkg_test5->Integral(cut,optimisation_nbins);
-            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-            Float_t purity = passed_sig/(passed_sig+passed_bkg);
-            Float_t efficiency = passed_sig/(opt_mulike_sig_test5->GetEntries());
-            if (passed_sig == 0){significance = 0; purity = 0;}
-            if (significance > optimal_signif_mu)
-            {
-               optimal_signif_mu = significance;
-               optimal_cut_mu = opt_mulike_sig_test5->GetBinLowEdge(cut);
-               optimal_pur_mu = purity;
-               optimal_eff_mu = efficiency;
-            }
+            optimal_signif_mu = significance;
+            optimal_cut_mu = opt_mulike_sig_test5->GetBinLowEdge(cut);
+            optimal_pur_mu = purity;
+            optimal_eff_mu = efficiency;
          }
-         optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
-         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      }
+      optimal_signif_pi = 0; optimal_cut_pi = 0; optimal_pur_pi = 0; optimal_eff_pi = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_pilike_sig_test5->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_pilike_bkg_test5->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_pilike_sig_test5->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_pi)
          {
-            Float_t passed_sig = opt_pilike_sig_test5->Integral(cut,optimisation_nbins);
-            Float_t passed_bkg = opt_pilike_bkg_test5->Integral(cut,optimisation_nbins);
-            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-            Float_t purity = passed_sig/(passed_sig+passed_bkg);
-            Float_t efficiency = passed_sig/(opt_pilike_sig_test5->GetEntries());
-            if (passed_sig == 0){significance = 0; purity = 0;}
-            if (significance > optimal_signif_pi)
-            {
-               optimal_signif_pi = significance;
-               optimal_cut_pi = opt_pilike_sig_test5->GetBinLowEdge(cut);
-               optimal_pur_pi = purity;
-               optimal_eff_pi = efficiency;
-            }
+            optimal_signif_pi = significance;
+            optimal_cut_pi = opt_pilike_sig_test5->GetBinLowEdge(cut);
+            optimal_pur_pi = purity;
+            optimal_eff_pi = efficiency;
          }
-         optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
-         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      }
+      optimal_signif_p = 0; optimal_cut_p = 0; optimal_pur_p = 0; optimal_eff_p = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_plike_sig_test5->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_plike_bkg_test5->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_plike_sig_test5->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_p)
          {
-            Float_t passed_sig = opt_mulike_sig_test5->Integral(cut,optimisation_nbins);
-            Float_t passed_bkg = opt_mulike_bkg_test5->Integral(cut,optimisation_nbins);
-            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-            Float_t purity = passed_sig/(passed_sig+passed_bkg);
-            Float_t efficiency = passed_sig/(opt_mulike_sig_test5->GetEntries());
-            if (passed_sig == 0){significance = 0; purity = 0;}
-            if (significance > optimal_signif_mu)
-            {
-               optimal_signif_mu = significance;
-               optimal_cut_mu = opt_mulike_sig_test5->GetBinLowEdge(cut);
-               optimal_pur_mu = purity;
-               optimal_eff_mu = efficiency;
-            }
+            optimal_signif_p = significance;
+            optimal_cut_p = opt_plike_sig_test5->GetBinLowEdge(cut);
+            optimal_pur_p = purity;
+            optimal_eff_p = efficiency;
          }
-         optimal_signif_e = 0; optimal_cut_e = 0; optimal_pur_e = 0; optimal_eff_e = 0;
-         for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      }
+      optimal_signif_e = 0; optimal_cut_e = 0; optimal_pur_e = 0; optimal_eff_e = 0;
+      for (Int_t cut=1; cut <= optimisation_nbins; cut++)
+      {
+         Float_t passed_sig = opt_elike_sig_test5->Integral(cut,optimisation_nbins);
+         Float_t passed_bkg = opt_elike_bkg_test5->Integral(cut,optimisation_nbins);
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(opt_elike_sig_test5->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+         if (significance > optimal_signif_e)
          {
-            Float_t passed_sig = opt_elike_sig_test5->Integral(cut,optimisation_nbins);
-            Float_t passed_bkg = opt_elike_bkg_test5->Integral(cut,optimisation_nbins);
-            Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
-            Float_t purity = passed_sig/(passed_sig+passed_bkg);
-            Float_t efficiency = passed_sig/(opt_elike_sig_test5->GetEntries());
-            if (passed_sig == 0){significance = 0; purity = 0;}
-            if (significance > optimal_signif_e)
-            {
-               optimal_signif_e = significance;
-               optimal_cut_e = opt_elike_sig_test5->GetBinLowEdge(cut);
-               optimal_pur_e = purity;
-               optimal_eff_e = efficiency;
-            }
+            optimal_signif_e = significance;
+            optimal_cut_e = opt_elike_sig_test5->GetBinLowEdge(cut);
+            optimal_pur_e = purity;
+            optimal_eff_e = efficiency;
          }
+      }
          if (parameter == "treedepth") std::cout << "Tree depth 6:" << std::endl; // to be removed
          std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
          std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
