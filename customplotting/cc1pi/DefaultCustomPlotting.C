@@ -175,7 +175,7 @@ void DefaultCustomPlotting::Loop()
    
    // ============= Find optimal cuts =============
    
-   std::cout << std::endl << << std::endl << "=========== Muon candidate mu-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << std::endl << "=========== Muon candidate mu-like optimisation ===========" << std::endl << std::endl;
    
    std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
    
@@ -232,7 +232,7 @@ void DefaultCustomPlotting::Loop()
    canvas_effpur_mu_cc1pi->Write();
    
    
-   std::cout << std::endl << << std::endl << "=========== Pion candidate pi-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << std::endl << "=========== Pion candidate pi-like optimisation ===========" << std::endl << std::endl;
    
    std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
    
@@ -294,7 +294,7 @@ void DefaultCustomPlotting::Loop()
    
    // =============== Parameter testing ===============
    
-   std::cout << std::endl << << std::endl << "=========== Parameter testing ===========" << std::endl << std::endl;
+   std::cout << std::endl << std::endl << "=========== Parameter testing ===========" << std::endl << std::endl;
    
    if (parameter) {
    
