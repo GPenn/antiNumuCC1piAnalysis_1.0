@@ -50,7 +50,7 @@
     treedepth_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 40.0);
     treedepth_cc1pi_mu->Draw("AL*");
     treedepth_cc1pi_pi->SetLineColor( kRed); treedepth_cc1pi_pi->SetMarkerColor( kRed); treedepth_cc1pi_pi->Draw("L* same");
-    canvas_treedepth->cd(1);->cd(1)->BuildLegend();
+    canvas_treedepth->cd(1)->BuildLegend();
     
     canvas_treedepth->cd(2);
     treedepth_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
