@@ -42,7 +42,7 @@
     treedepth_pg_p->SetLineColor( kGreen); treedepth_pg_p->SetMarkerColor( kGreen); treedepth_pg_p->SetFillColor( kWhite); 
     
     TGraph* treedepth_pg_e = new TGraph();
-    treedepth_pg_e->SetTitle("#e^{+} selection e-like cut");
+    treedepth_pg_e->SetTitle("e^{+} selection e-like cut");
     treedepth_pg_e->SetPoint(0, 2.0, 219.126);
     treedepth_pg_e->SetPoint(1, 3.0, 188.998);
     treedepth_pg_e->SetPoint(2, 4.0, 189.719);
@@ -72,67 +72,78 @@
     // =============== Tree number ===============
     
     TGraph* treenumber_cc1pi_mu = new TGraph();
-    treenumber_cc1pi_mu->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
     treenumber_cc1pi_mu->SetPoint(0, 500.0, 31.882);
     treenumber_cc1pi_mu->SetPoint(1, 1000.0, 31.5975);
     treenumber_cc1pi_mu->SetPoint(2, 1500.0, 31.4073);
     treenumber_cc1pi_mu->SetPoint(3, 2000.0, 31.2578);
     treenumber_cc1pi_mu->SetPoint(4, 2500.0, 31.1631);
+    treenumber_cc1pi_mu->SetLineColor( kBlue); treenumber_cc1pi_mu->SetMarkerColor( kBlue); treenumber_cc1pi_mu->SetFillColor( kWhite); 
     
     TGraph* treenumber_cc1pi_pi = new TGraph();
-    treenumber_cc1pi_pi->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_cc1pi_pi->SetTitle("#pi^{-} selection pi-like cut");
     treenumber_cc1pi_pi->SetPoint(0, 500.0, 34.7918);
     treenumber_cc1pi_pi->SetPoint(1, 1000.0, 34.8224);
     treenumber_cc1pi_pi->SetPoint(2, 1500.0, 35.0421);
     treenumber_cc1pi_pi->SetPoint(3, 2000.0, 35.0117);
     treenumber_cc1pi_pi->SetPoint(4, 2500.0, 35.0931);
+    treenumber_cc1pi_pi->SetLineColor( kRed); treenumber_cc1pi_pi->SetMarkerColor( kRed); treenumber_cc1pi_pi->SetFillColor( kWhite); 
     
     TGraph* treenumber_pg_mu = new TGraph();
-    treenumber_pg_mu->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
     treenumber_pg_mu->SetPoint(0, 500.0, 216.416);
     treenumber_pg_mu->SetPoint(1, 1000.0, 216.102);
     treenumber_pg_mu->SetPoint(2, 1500.0, 215.37);
     treenumber_pg_mu->SetPoint(3, 2000.0, 214.997);
     treenumber_pg_mu->SetPoint(4, 2500.0, 214.842);
+    treenumber_pg_mu->SetLineColor( kBlue); treenumber_pg_mu->SetMarkerColor( kBlue); treenumber_pg_mu->SetFillColor( kWhite);
     
     TGraph* treenumber_pg_pi = new TGraph();
-    treenumber_pg_pi->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
     treenumber_pg_pi->SetPoint(0, 500.0, 153.701);
     treenumber_pg_pi->SetPoint(1, 1000.0, 151.511);
     treenumber_pg_pi->SetPoint(2, 1500.0, 150.081);
     treenumber_pg_pi->SetPoint(3, 2000.0, 149.145);
     treenumber_pg_pi->SetPoint(4, 2500.0, 149.125);
+    treenumber_pg_pi->SetLineColor( kRed); treenumber_pg_pi->SetMarkerColor( kRed); treenumber_pg_pi->SetFillColor( kWhite);
     
     TGraph* treenumber_pg_p = new TGraph();
-    treenumber_pg_p->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_pg_p->SetTitle("p selection p-like cut");
     treenumber_pg_p->SetPoint(0, 500.0, 198.702);
     treenumber_pg_p->SetPoint(1, 1000.0, 202.493);
     treenumber_pg_p->SetPoint(2, 1500.0, 204.717);
     treenumber_pg_p->SetPoint(3, 2000.0, 206.116);
     treenumber_pg_p->SetPoint(4, 2500.0, 206.554);
+    treenumber_pg_p->SetLineColor( kGreen); treenumber_pg_p->SetMarkerColor( kGreen); treenumber_pg_p->SetFillColor( kWhite); 
     
     TGraph* treenumber_pg_e = new TGraph();
-    treenumber_pg_e->SetTitle(" ;Tree number;Optimal selection significance;");
+    treenumber_pg_e->SetTitle("e^{+} selection e-like cut");
     treenumber_pg_e->SetPoint(0, 500.0, 219.786);
     treenumber_pg_e->SetPoint(1, 1000.0, 188.988);
     treenumber_pg_e->SetPoint(2, 1500.0, 189.329);
     treenumber_pg_e->SetPoint(3, 2000.0, 189.509);
     treenumber_pg_e->SetPoint(4, 2500.0, 189.788);
+    treenumber_pg_e->SetLineColor( kMagenta); treenumber_pg_e->SetMarkerColor( kMagenta); treenumber_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_treenumber = new TCanvas("canvas_treenumber","",200,10,1000,400);
     canvas_treenumber->Divide(2,1,0.005,0.005);
     canvas_treenumber->cd(1);
     
     treenumber_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 36.0);
+    treenumber_cc1pi_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
+    
     treenumber_cc1pi_mu->Draw("AL*");
     treenumber_cc1pi_pi->Draw("L* same");
+    canvas_treenumber->cd(1)->BuildLegend();
     
     canvas_treenumber->cd(2);
     treenumber_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
+    treenumber_pg_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     treenumber_pg_mu->Draw("AL*");
     treenumber_pg_pi->Draw("L* same");
     treenumber_pg_p->Draw("L* same");
     treenumber_pg_e->Draw("L* same");
+    canvas_treenumber->cd(2)->BuildLegend();
     
     
     
