@@ -49,7 +49,7 @@
     
     treedepth_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 40.0);
     treedepth_cc1pi_mu->Draw("AL*");
-    treedepth_cc1pi_pi->Draw("L* same");
+    treedepth_cc1pi_pi->SetLineColor( kRed); treedepth_cc1pi_pi->Draw("L* same");
     
     canvas_treedepth->cd(2);
     treedepth_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
@@ -122,5 +122,7 @@
     treenumber_pg_pi->Draw("L* same");
     treenumber_pg_p->Draw("L* same");
     treenumber_pg_e->Draw("L* same");
+    
+    
     
 }
