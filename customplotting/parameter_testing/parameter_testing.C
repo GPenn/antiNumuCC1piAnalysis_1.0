@@ -145,6 +145,80 @@
     treenumber_pg_e->Draw("L* same");
     canvas_treenumber->cd(2)->BuildLegend();
     
+    // =============== Shrinkage ===============
     
+    TGraph* shrinkage_cc1pi_mu = new TGraph();
+    shrinkage_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
+    shrinkage_cc1pi_mu->SetPoint(0, 0.1, 31.29);
+    shrinkage_cc1pi_mu->SetPoint(1, 0.3, 31.5275);
+    shrinkage_cc1pi_mu->SetPoint(2, 0.5, 31.6751);
+    shrinkage_cc1pi_mu->SetPoint(3, 0.7, 31.5224);
+    shrinkage_cc1pi_mu->SetPoint(4, 0.9, 31.5727);
+    shrinkage_cc1pi_mu->SetLineColor( kBlue); shrinkage_cc1pi_mu->SetMarkerColor( kBlue); shrinkage_cc1pi_mu->SetFillColor( kWhite); 
+    
+    TGraph* shrinkage_cc1pi_pi = new TGraph();
+    shrinkage_cc1pi_pi->SetTitle("#pi^{-} selection pi-like cut");
+    shrinkage_cc1pi_pi->SetPoint(0, 0.1, 34.0015);
+    shrinkage_cc1pi_pi->SetPoint(1, 0.3, 34.1212);
+    shrinkage_cc1pi_pi->SetPoint(2, 0.5, 34.2785);
+    shrinkage_cc1pi_pi->SetPoint(3, 0.7, 34.5959);
+    shrinkage_cc1pi_pi->SetPoint(4, 0.9, 34.2874);
+    shrinkage_cc1pi_pi->SetLineColor( kRed); shrinkage_cc1pi_pi->SetMarkerColor( kRed); shrinkage_cc1pi_pi->SetFillColor( kWhite); 
+    
+    TGraph* shrinkage_pg_mu = new TGraph();
+    shrinkage_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
+    shrinkage_pg_mu->SetPoint(0, 500.0, 214.753);
+    shrinkage_pg_mu->SetPoint(1, 1000.0, 215.118);
+    shrinkage_pg_mu->SetPoint(2, 1500.0, 216.193);
+    shrinkage_pg_mu->SetPoint(3, 2000.0, 215.175);
+    shrinkage_pg_mu->SetPoint(4, 2500.0, 215.394);
+    shrinkage_pg_mu->SetLineColor( kBlue); shrinkage_pg_mu->SetMarkerColor( kBlue); shrinkage_pg_mu->SetFillColor( kWhite);
+    
+    TGraph* shrinkage_pg_pi = new TGraph();
+    shrinkage_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
+    shrinkage_pg_pi->SetPoint(0, 0.1, 156.525);
+    shrinkage_pg_pi->SetPoint(1, 0.3, 151.953);
+    shrinkage_pg_pi->SetPoint(2, 0.5, 153.455);
+    shrinkage_pg_pi->SetPoint(3, 0.7, 150.447);
+    shrinkage_pg_pi->SetPoint(4, 0.9, 150.671);
+    shrinkage_pg_pi->SetLineColor( kRed); shrinkage_pg_pi->SetMarkerColor( kRed); shrinkage_pg_pi->SetFillColor( kWhite);
+    
+    TGraph* shrinkage_pg_p = new TGraph();
+    shrinkage_pg_p->SetTitle("p selection p-like cut");
+    shrinkage_pg_p->SetPoint(0, 0.1, 192.499);
+    shrinkage_pg_p->SetPoint(1, 0.3, 200.318);
+    shrinkage_pg_p->SetPoint(2, 0.5, 198.885);
+    shrinkage_pg_p->SetPoint(3, 0.7, 202.08);
+    shrinkage_pg_p->SetPoint(4, 0.9, 203.232);
+    shrinkage_pg_p->SetLineColor( kGreen); shrinkage_pg_p->SetMarkerColor( kGreen); shrinkage_pg_p->SetFillColor( kWhite); 
+    
+    TGraph* shrinkage_pg_e = new TGraph();
+    shrinkage_pg_e->SetTitle("e^{+} selection e-like cut");
+    shrinkage_pg_e->SetPoint(0, 0.1, 217.285);
+    shrinkage_pg_e->SetPoint(1, 0.3, 230.162);
+    shrinkage_pg_e->SetPoint(2, 0.5, 217.9);
+    shrinkage_pg_e->SetPoint(3, 0.7, 211.18);
+    shrinkage_pg_e->SetPoint(4, 0.9, 200.639);
+    shrinkage_pg_e->SetLineColor( kMagenta); shrinkage_pg_e->SetMarkerColor( kMagenta); shrinkage_pg_e->SetFillColor( kWhite); 
+    
+    TCanvas* canvas_shrinkage = new TCanvas("canvas_shrinkage","",200,10,1000,400);
+    canvas_shrinkage->Divide(2,1,0.005,0.005);
+    canvas_shrinkage->cd(1);
+    
+    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 36.0);
+    shrinkage_cc1pi_mu->GetXaxis()->SetTitle("Number of trees"); shrinkage_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
+    
+    shrinkage_cc1pi_mu->Draw("AL*");
+    shrinkage_cc1pi_pi->Draw("L* same");
+    canvas_shrinkage->cd(1)->BuildLegend();
+    
+    canvas_shrinkage->cd(2);
+    shrinkage_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
+    shrinkage_pg_mu->GetXaxis()->SetTitle("Number of trees"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
+    shrinkage_pg_mu->Draw("AL*");
+    shrinkage_pg_pi->Draw("L* same");
+    shrinkage_pg_p->Draw("L* same");
+    shrinkage_pg_e->Draw("L* same");
+    canvas_shrinkage->cd(2)->BuildLegend();
     
 }
