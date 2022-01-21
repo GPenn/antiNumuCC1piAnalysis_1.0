@@ -213,7 +213,7 @@
     canvas_shrinkage->cd(1)->BuildLegend();
     
     canvas_shrinkage->cd(2);
-    shrinkage_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
+    shrinkage_pg_mu->GetYaxis()->SetRangeUser(140.0, 240.0);
     shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
