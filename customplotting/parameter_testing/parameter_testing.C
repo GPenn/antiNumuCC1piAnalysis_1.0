@@ -167,11 +167,11 @@
     
     TGraph* shrinkage_pg_mu = new TGraph();
     shrinkage_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
-    shrinkage_pg_mu->SetPoint(0, 500.0, 214.753);
-    shrinkage_pg_mu->SetPoint(1, 1000.0, 215.118);
-    shrinkage_pg_mu->SetPoint(2, 1500.0, 216.193);
-    shrinkage_pg_mu->SetPoint(3, 2000.0, 215.175);
-    shrinkage_pg_mu->SetPoint(4, 2500.0, 215.394);
+    shrinkage_pg_mu->SetPoint(0, 0.1, 214.753);
+    shrinkage_pg_mu->SetPoint(1, 0.3, 215.118);
+    shrinkage_pg_mu->SetPoint(2, 0.5, 216.193);
+    shrinkage_pg_mu->SetPoint(3, 0.7, 215.175);
+    shrinkage_pg_mu->SetPoint(4, 0.9, 215.394);
     shrinkage_pg_mu->SetLineColor( kBlue); shrinkage_pg_mu->SetMarkerColor( kBlue); shrinkage_pg_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_pi = new TGraph();
@@ -206,7 +206,7 @@
     canvas_shrinkage->cd(1);
     
     shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 36.0);
-    shrinkage_cc1pi_mu->GetXaxis()->SetTitle("Number of trees"); shrinkage_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
+    shrinkage_cc1pi_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     shrinkage_cc1pi_mu->Draw("AL*");
     shrinkage_cc1pi_pi->Draw("L* same");
@@ -214,7 +214,7 @@
     
     canvas_shrinkage->cd(2);
     shrinkage_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
-    shrinkage_pg_mu->GetXaxis()->SetTitle("Number of trees"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
+    shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
     shrinkage_pg_p->Draw("L* same");
