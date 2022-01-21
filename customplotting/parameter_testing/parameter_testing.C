@@ -313,8 +313,8 @@
     randomforests_cc1pi_pi->SetPoint(0, 4, 35.5932);
     randomforests_cc1pi_pi->SetPoint(1, 6, 35.1679);
     randomforests_cc1pi_pi->SetPoint(2, 8, 34.8337);
-    randomforests_cc1pi_pi->SetPoint(3, 0.7, 34.6818);
-    randomforests_cc1pi_pi->SetPoint(4, 0.9, 35.2115);
+    randomforests_cc1pi_pi->SetPoint(3, 10, 34.6818);
+    randomforests_cc1pi_pi->SetPoint(4, 12, 35.2115);
     randomforests_cc1pi_pi->SetLineColor( kRed); randomforests_cc1pi_pi->SetMarkerColor( kRed); randomforests_cc1pi_pi->SetFillColor( kWhite); 
     
     TGraph* randomforests_pg_mu = new TGraph();
