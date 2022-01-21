@@ -17,7 +17,7 @@ void DefaultCustomPlotting::Loop()
    gStyle->SetTitleXOffset(1.2);
    
    
-   TString parameter = "treenumber";
+   TString parameter = "shrinkage";
    
    
    if (fChain == 0) return;
@@ -1307,6 +1307,7 @@ void DefaultCustomPlotting::Loop()
       
       if (parameter == "treedepth") std::cout << "Tree depth 2:" << std::endl;
       if (parameter == "treenumber") std::cout << "500 trees:" << std::endl;
+      if (parameter == "shrinkage") std::cout << "Shrinkage 0.1:" << std::endl;
       std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
@@ -1388,6 +1389,7 @@ void DefaultCustomPlotting::Loop()
       }
       if (parameter == "treedepth") std::cout << "Tree depth 3:" << std::endl;
       if (parameter == "treenumber") std::cout << "1000 trees:" << std::endl;
+      if (parameter == "shrinkage") std::cout << "Shrinkage 0.3:" << std::endl;
       std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
@@ -1469,6 +1471,7 @@ void DefaultCustomPlotting::Loop()
       }
       if (parameter == "treedepth") std::cout << "Tree depth 4:" << std::endl;
       if (parameter == "treenumber") std::cout << "1500 trees:" << std::endl;
+      if (parameter == "shrinkage") std::cout << "Shrinkage 0.5:" << std::endl;
       std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
@@ -1550,6 +1553,7 @@ void DefaultCustomPlotting::Loop()
       }
       if (parameter == "treedepth") std::cout << "Tree depth 5:" << std::endl;
       if (parameter == "treenumber") std::cout << "2000 trees:" << std::endl;
+      if (parameter == "shrinkage") std::cout << "Shrinkage 0.7:" << std::endl;
       std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
@@ -1633,6 +1637,7 @@ void DefaultCustomPlotting::Loop()
          }
       }
          if (parameter == "treenumber") std::cout << "2500 trees:" << std::endl;
+         if (parameter == "shrinkage") std::cout << "Shrinkage 0.9:" << std::endl;
          std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
          std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
          std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
