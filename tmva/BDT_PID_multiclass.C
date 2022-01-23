@@ -503,10 +503,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.8", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=0.80:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage1.0", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=1.00:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
    
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree2", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=2");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree5", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=5");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree2", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=2");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree5", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=5");
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_500trees", "!H:!V:NTrees=500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1000trees", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
@@ -526,11 +526,11 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_0.3bagged", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseBaggedBoost:BaggedSampleFraction=0.30:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_0.1bagged", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseBaggedBoost:BaggedSampleFraction=0.10:nCuts=2000:MaxDepth=3");
    
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_4vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=4:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_6vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=6:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_8vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=8:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_10vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=10:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_12vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=12:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_4vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=4:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_6vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=6:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_8vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=8:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_10vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=10:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_12vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=12:nCuts=2000:MaxDepth=3");
 
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
