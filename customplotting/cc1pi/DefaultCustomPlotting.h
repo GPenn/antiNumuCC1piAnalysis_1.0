@@ -917,6 +917,8 @@ public :
    TBranch        *b_selmu_bdt_pid_unweighted_mu_cc1pi;   //!
    TBranch        *b_hmnt_bdt_pid_unweighted_pi_cc1pi;   //!
    TBranch        *b_particle_pg;   //!
+  
+   Float_t GetOptSignificanceValues(TH1F* hist_sig, TH1F* hist_bkg, Int_t nbins);
 
    DefaultCustomPlotting(TTree *tree=0, std::string outFileName="defaultTest.root");
    virtual ~DefaultCustomPlotting();
