@@ -1898,3 +1898,36 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    
    return;
 }
+
+Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist, Int_t nbins) {
+   
+   Float_t optimal_signif = 0;
+   Float_t optimal_cut = 0;
+   Float_t optimal_pur = 0;
+   Float_t optimal_eff = 0;
+   
+   for (Int_t cut=1; cut <= nbins; cut++)
+   {
+      Float_t passed_sig = hist->Integral(cut,nbins);
+      Float_t passed_bkg = hist->Integral(cut,nbins);
+      
+      Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+      Float_t purity = passed_sig/(passed_sig+passed_bkg);
+      Float_t efficiency = passed_sig/(hist->GetEntries());
+      if (passed_sig == 0){significance = 0; purity = 0;}
+      
+      if (significance > optimal_signif)
+      {
+         optimal_signif = significance;
+         optimal_cut = hist->GetBinLowEdge(cut);
+         optimal_pur = purity;
+         optimal_eff = efficiency;
+      }
+      
+      //std::cout << "DEBUG: Cut #" << cut << " at " << hist->GetBinLowEdge(cut) 
+      //          << " has " << passed_sig << " sig, " << passed_bkg <<" bgk -> significance = " << significance << std::endl;
+     
+   }
+   
+   return optimal_signif;
+}
