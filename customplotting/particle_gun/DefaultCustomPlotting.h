@@ -932,7 +932,7 @@ public :
   
    void SetHistParticleStyle(TH1F* hist, std::string particle);
   
-   Float_t GetOptSignificanceValues(TH1F* hist, Int_t nbins);
+   Float_t GetOptSignificanceValues(TH1F* hist_sig, TH1F* hist_bkg, Int_t nbins);
   
    defaultOut  *defout;
 };
