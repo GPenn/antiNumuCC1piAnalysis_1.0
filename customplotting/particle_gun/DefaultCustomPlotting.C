@@ -1235,8 +1235,8 @@ void DefaultCustomPlotting::Loop()
    if (parameter) {
    
       // Point 1
-   
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      
+      /*optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
          Float_t passed_sig = opt_mulike_sig_test1->Integral(cut,optimisation_nbins);
@@ -1303,25 +1303,30 @@ void DefaultCustomPlotting::Loop()
             optimal_pur_e = purity;
             optimal_eff_e = efficiency;
          }
-      }
+      }*/
       
       if (parameter == "treedepth") std::cout << "Tree depth 2:" << std::endl;
       if (parameter == "treenumber") std::cout << "500 trees:" << std::endl;
       if (parameter == "shrinkage") std::cout << "Shrinkage 0.1:" << std::endl;
       if (parameter == "bagged") std::cout << "Bagged 0.1:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 4:" << std::endl;
-      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      /*std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
       std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
       std::cout << "Optimal p-like significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
       std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
       std::cout << "Optimal e-like significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;*/
+      
+      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test1, opt_mulike_bkg_test1, optimisation_nbins) << std::endl;
+      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test1, opt_pilike_bkg_test1, optimisation_nbins) << std::endl;
+      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test1, opt_plike_bkg_test1, optimisation_nbins) << std::endl;
+      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test1, opt_elike_bkg_test1, optimisation_nbins) << std::endl;
       
       // Point 2
    
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      /*optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
          Float_t passed_sig = opt_mulike_sig_test2->Integral(cut,optimisation_nbins);
@@ -1388,24 +1393,29 @@ void DefaultCustomPlotting::Loop()
             optimal_pur_e = purity;
             optimal_eff_e = efficiency;
          }
-      }
+      }*/
       if (parameter == "treedepth") std::cout << "Tree depth 3:" << std::endl;
       if (parameter == "treenumber") std::cout << "1000 trees:" << std::endl;
       if (parameter == "shrinkage") std::cout << "Shrinkage 0.3:" << std::endl;
       if (parameter == "bagged") std::cout << "Bagged 0.3:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 6:" << std::endl;
-      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      /*std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
       std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
       std::cout << "Optimal p-like significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
       std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
       std::cout << "Optimal e-like significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;*/
+      
+      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test2, opt_mulike_bkg_test2, optimisation_nbins) << std::endl;
+      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test2, opt_pilike_bkg_test2, optimisation_nbins) << std::endl;
+      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test2, opt_plike_bkg_test2, optimisation_nbins) << std::endl;
+      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test2, opt_elike_bkg_test2, optimisation_nbins) << std::endl;
       
       // Point 3
       
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      /*optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
          Float_t passed_sig = opt_mulike_sig_test3->Integral(cut,optimisation_nbins);
@@ -1472,24 +1482,29 @@ void DefaultCustomPlotting::Loop()
             optimal_pur_e = purity;
             optimal_eff_e = efficiency;
          }
-      }
+      }*/
       if (parameter == "treedepth") std::cout << "Tree depth 4:" << std::endl;
       if (parameter == "treenumber") std::cout << "1500 trees:" << std::endl;
       if (parameter == "shrinkage") std::cout << "Shrinkage 0.5:" << std::endl;
       if (parameter == "bagged") std::cout << "Bagged 0.5:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 8:" << std::endl;
-      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      /*std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
       std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
       std::cout << "Optimal p-like significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
       std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
       std::cout << "Optimal e-like significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;*/
+      
+      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test3, opt_mulike_bkg_test3, optimisation_nbins) << std::endl;
+      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test3, opt_pilike_bkg_test3, optimisation_nbins) << std::endl;
+      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test3, opt_plike_bkg_test3, optimisation_nbins) << std::endl;
+      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test3, opt_elike_bkg_test3, optimisation_nbins) << std::endl;
       
       // Point 4
       
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      /*optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
          Float_t passed_sig = opt_mulike_sig_test4->Integral(cut,optimisation_nbins);
@@ -1556,27 +1571,32 @@ void DefaultCustomPlotting::Loop()
             optimal_pur_e = purity;
             optimal_eff_e = efficiency;
          }
-      }
+      }*/
       if (parameter == "treedepth") std::cout << "Tree depth 5:" << std::endl;
       if (parameter == "treenumber") std::cout << "2000 trees:" << std::endl;
       if (parameter == "shrinkage") std::cout << "Shrinkage 0.7:" << std::endl;
       if (parameter == "bagged") std::cout << "Bagged 0.7:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 10:" << std::endl;
-      std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+      /*std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
       std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
       std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
       std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
       std::cout << "Optimal p-like significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
       std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
       std::cout << "Optimal e-like significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
-      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+      std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;*/
+      
+      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test4, opt_mulike_bkg_test4, optimisation_nbins) << std::endl;
+      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test4, opt_pilike_bkg_test4, optimisation_nbins) << std::endl;
+      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test4, opt_plike_bkg_test4, optimisation_nbins) << std::endl;
+      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test4, opt_elike_bkg_test4, optimisation_nbins) << std::endl;
       
       // Point 5
       
       if (parameter != "treedepth")
       {
 
-      optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
+      /*optimal_signif_mu = 0; optimal_cut_mu = 0; optimal_pur_mu = 0; optimal_eff_mu = 0;
       for (Int_t cut=1; cut <= optimisation_nbins; cut++)
       {
          Float_t passed_sig = opt_mulike_sig_test5->Integral(cut,optimisation_nbins);
@@ -1643,19 +1663,24 @@ void DefaultCustomPlotting::Loop()
             optimal_pur_e = purity;
             optimal_eff_e = efficiency;
          }
-      }
+      }*/
          if (parameter == "treenumber") std::cout << "2500 trees:" << std::endl;
          if (parameter == "shrinkage") std::cout << "Shrinkage 0.9:" << std::endl;
          if (parameter == "bagged") std::cout << "Bagged 0.9:" << std::endl;
          if (parameter == "randomforests") std::cout << "NVars 12:" << std::endl;
-         std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+         /*std::cout << "Optimal mu-like significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
          std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
          std::cout << "Optimal pi-like significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
          std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
          std::cout << "Optimal p-like significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
          std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
          std::cout << "Optimal e-like significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
-         std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+         std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;*/
+         
+         std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test5, opt_mulike_bkg_test5, optimisation_nbins) << std::endl;
+         std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test5, opt_pilike_bkg_test5, optimisation_nbins) << std::endl;
+         std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test5, opt_plike_bkg_test5, optimisation_nbins) << std::endl;
+         std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test5, opt_elike_bkg_test5, optimisation_nbins) << std::endl;
       }
          
          
@@ -1899,7 +1924,7 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    return;
 }
 
-Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist, Int_t nbins) {
+Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist_sig, TH1F* hist_bkg, Int_t nbins) {
    
    Float_t optimal_signif = 0;
    Float_t optimal_cut = 0;
@@ -1908,18 +1933,18 @@ Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist, Int_t nbins)
    
    for (Int_t cut=1; cut <= nbins; cut++)
    {
-      Float_t passed_sig = hist->Integral(cut,nbins);
-      Float_t passed_bkg = hist->Integral(cut,nbins);
+      Float_t passed_sig = hist_sig->Integral(cut,nbins);
+      Float_t passed_bkg = hist_bkg->Integral(cut,nbins);
       
       Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
       Float_t purity = passed_sig/(passed_sig+passed_bkg);
-      Float_t efficiency = passed_sig/(hist->GetEntries());
+      Float_t efficiency = passed_sig/(hist_sig->GetEntries());
       if (passed_sig == 0){significance = 0; purity = 0;}
       
       if (significance > optimal_signif)
       {
          optimal_signif = significance;
-         optimal_cut = hist->GetBinLowEdge(cut);
+         optimal_cut = hist_sig->GetBinLowEdge(cut);
          optimal_pur = purity;
          optimal_eff = efficiency;
       }
