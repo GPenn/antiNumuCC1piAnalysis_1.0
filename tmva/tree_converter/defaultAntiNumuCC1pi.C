@@ -175,6 +175,11 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
         
+       defout->selmu_tpc_pullmu               = selmu_tpc_pullmu[0];
+       defout->selmu_tpc_pullele              = selmu_tpc_pullele[0];
+       defout->selmu_tpc_pullp                = selmu_tpc_pullp[0];
+       defout->selmu_tpc_pullpi               = selmu_tpc_pullpi[0];
+        
        if (selmu_tpc_dedx[0] > 0.0 && selmu_tpc_dedx[0] < 2000.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
        else                                                          {defout->selmu_tpc2_dedx = -100.0;}
        if (selmu_tpc_dedx[1] > 0.0 && selmu_tpc_dedx[1] < 2000.0)    {defout->selmu_tpc3_dedx = selmu_tpc_dedx[1];}
@@ -376,6 +381,10 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
   foutb_selmu_tpc_like_p  	          = fDefaultOut->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p  	         , "selmu_tpc_like_p/F");
   foutb_selmu_tpc_like_pi  	       = fDefaultOut->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi  	      , "selmu_tpc_like_pi/F");
+  foutb_selmu_tpc_pullmu  	       = fDefaultOut->Branch("selmu_tpc_pullmu"              , &selmu_tpc_pullmu  	      , "selmu_tpc_pullmu/F");
+  foutb_selmu_tpc_pullele  	       = fDefaultOut->Branch("selmu_tpc_pullele"              , &selmu_tpc_pullele  	      , "selmu_tpc_pullele/F");
+  foutb_selmu_tpc_pullp  	       = fDefaultOut->Branch("selmu_tpc_pullp"               , &selmu_tpc_pullp  	      , "selmu_tpc_pullp/F");
+  foutb_selmu_tpc_pullpi  	       = fDefaultOut->Branch("selmu_tpc_pullpi"              , &selmu_tpc_pullpi  	      , "selmu_tpc_pullpi/F");
   foutb_selmu_tpc2_dedx 	       = fDefaultOut->Branch("selmu_tpc2_dedx"                , &selmu_tpc2_dedx  	          , "selmu_tpc2_dedx/F");
   foutb_selmu_tpc3_dedx 	       = fDefaultOut->Branch("selmu_tpc3_dedx"                , &selmu_tpc3_dedx  	          , "selmu_tpc3_dedx/F");
    
