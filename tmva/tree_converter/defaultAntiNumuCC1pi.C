@@ -68,7 +68,7 @@ void defaultAntiNumuCC1pi::Loop()
     // Weight histogram debugging:
     for (Int_t bin=0; bin<recomom_hist->GetNbinsX(); bin++)
     {
-        std::cout << "Bin " << bin << ", center " << recomom_hist->GetBinLowEdge(bin) << ", content " << recomom_hist->GetBinContent(bin) << std::endl;
+        std::cout << "Bin " << bin << ", low edge " << recomom_hist->GetBinLowEdge(bin) << ", content " << recomom_hist->GetBinContent(bin) << std::endl;
     }
    
     std::cout << "Done." << std::endl << std::endl;
@@ -100,7 +100,7 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_theta    		            = selmu_det_theta;
        
        // Calculate event weight based on reco mom histogram:
-       Int_t weight_bin = floor(selmu_mom[0]/10);
+       Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
        Float_t inv_weight = recomom_hist->GetBinContent(weight_bin);
        if (inv_weight > 0) {defout->selmu_mom_weight = 1/inv_weight;}
        else                {defout->selmu_mom_weight = 0;}
