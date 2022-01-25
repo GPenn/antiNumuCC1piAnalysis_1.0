@@ -215,10 +215,14 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
    
    // Muon candidate TPC variables
-   factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC mu-like",    "", 'F' );
-   factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC e-like",     "", 'F' );
-   factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC p-like",     "", 'F' );
-   factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC pi-like",    "", 'F' );
+   factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC2 mu-like",    "", 'F' );
+   factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC2 e-like",     "", 'F' );
+   factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC2 p-like",     "", 'F' );
+   factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC2 pi-like",    "", 'F' );
+   //factory->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                  "TPC2 mu pull",    "", 'F' );
+   //factory->AddVariable( "tpcpulle := selmu_tpc_pullele",                  "TPC2 e pull",     "", 'F' );
+   //factory->AddVariable( "tpcpullp := selmu_tpc_pullp",                    "TPC2 p pull",     "", 'F' );
+   //factory->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                  "TPC2 pi pull",    "", 'F' );
    //factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
    //factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
    
