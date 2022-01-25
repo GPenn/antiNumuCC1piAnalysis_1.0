@@ -64,6 +64,12 @@ void defaultAntiNumuCC1pi::Loop()
       
         recomom_hist->Fill(selmu_mom[0]);
     }
+    
+    // Weight histogram debugging:
+    for (Int_t bin=0; bin<recomom_hist->GetNbinsX(); bin++)
+    {
+        std::cout << "Bin " << bin << ", center " << recomom_hist->GetBinLowEdge(bin) << ", content " << recomom_hist->GetBinContent(bin) << std::endl;
+    }
    
     std::cout << "Done." << std::endl << std::endl;
       
