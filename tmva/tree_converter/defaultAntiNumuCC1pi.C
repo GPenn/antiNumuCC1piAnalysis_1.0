@@ -32,7 +32,7 @@ void defaultAntiNumuCC1pi::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
     
-    int desiredPDG = 211;
+    int desiredPDG = 2212;
     
     
     if (fChain == 0) return;
@@ -57,6 +57,7 @@ void defaultAntiNumuCC1pi::Loop()
         if (accum_level[0][1] <= 4) continue; // Set accum_level
         if (selmu_mom[0] > 1500.0) continue;
         if (selmu_mom[0] < 200.0) continue;
+        if ((desiredPDG == 2212) && (selmu_mom[0] < 300.0)) continue;
         if (selmu_det_theta > 1.0472) continue;
         if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
         if (particle != desiredPDG) continue;
@@ -81,6 +82,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (accum_level[0][1] <= 4) continue; // Set accum_level
        if (selmu_mom[0] > 1500.0) continue;
        if (selmu_mom[0] < 200.0) continue;
+       if ((desiredPDG == 2212) && (selmu_mom[0] < 300.0)) continue;
        if (selmu_det_theta > 1.0472) continue;
        if ((defout->ntpcnegQualityFV)&&(HMNT_mom > 10000.0)) continue;
        if (particle != desiredPDG) continue;
