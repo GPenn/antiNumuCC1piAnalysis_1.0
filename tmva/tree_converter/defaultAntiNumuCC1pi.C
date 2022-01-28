@@ -45,8 +45,8 @@ void defaultAntiNumuCC1pi::Loop()
    
     std::cout << "Generating weight histogram... ";
    
-    TH1F *recomom_hist = new TH1F("recomom_hist", "Reco momentum", 30, 0, 1500);
-    //TH1F *recomom_hist = new TH1F("recomom_hist", "Reco momentum", 150, 0, 1500);
+    //TH1F *recomom_hist = new TH1F("recomom_hist", "Reco momentum", 30, 0, 1500);
+    TH1F *recomom_hist = new TH1F("recomom_hist", "Reco momentum", 150, 0, 1500);
     
    
     for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -102,8 +102,8 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_theta    		            = selmu_det_theta;
        
        // Calculate event weight based on reco mom histogram:
-       //Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
-       Int_t weight_bin = floor(selmu_mom[0]/50) + 1;
+       Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
+       //Int_t weight_bin = floor(selmu_mom[0]/50) + 1;
        Float_t inv_weight = recomom_hist->GetBinContent(weight_bin);
        if (inv_weight > 0) {defout->selmu_mom_weight = 1/inv_weight;}
        else                {defout->selmu_mom_weight = 0;}
