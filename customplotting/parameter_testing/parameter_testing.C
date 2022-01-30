@@ -176,7 +176,7 @@
     TGraph* shrinkage_pg_mu = new TGraph();
     shrinkage_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
     shrinkage_pg_mu->SetPoint(0, 0.1, 214.515/refvalue_pg_mu);
-    shrinkage_pg_mu->SetPoint(1, 0.3, 214,925/refvalue_pg_mu);
+    shrinkage_pg_mu->SetPoint(1, 0.3, 214.925/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(2, 0.5, 214.935/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(3, 0.7, 213.648/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(4, 0.9, 214.2/refvalue_pg_mu);
