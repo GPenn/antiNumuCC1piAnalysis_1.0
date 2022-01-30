@@ -61,7 +61,7 @@
     canvas_treedepth->Divide(2,1,0.005,0.005);
     canvas_treedepth->cd(1);
     
-    treedepth_cc1pi_mu->GetYaxis()->SetRangeUser(0.99, 1.06);
+    treedepth_cc1pi_mu->GetYaxis()->SetRangeUser(0.97, 1.02);
     treedepth_cc1pi_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     treedepth_cc1pi_mu->Draw("AL*");
@@ -137,7 +137,7 @@
     canvas_treenumber->Divide(2,1,0.005,0.005);
     canvas_treenumber->cd(1);
     
-    //treenumber_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 36.0);
+    treenumber_cc1pi_mu->GetYaxis()->SetRangeUser(0.99, 1.02);
     treenumber_cc1pi_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     treenumber_cc1pi_mu->Draw("AL*");
@@ -145,7 +145,7 @@
     canvas_treenumber->cd(1)->BuildLegend();
     
     canvas_treenumber->cd(2);
-    //treenumber_pg_mu->GetYaxis()->SetRangeUser(140.0, 230.0);
+    treenumber_pg_mu->GetYaxis()->SetRangeUser(0.98, 1.02);
     treenumber_pg_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     treenumber_pg_mu->Draw("AL*");
     treenumber_pg_pi->Draw("L* same");
