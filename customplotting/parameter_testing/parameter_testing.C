@@ -309,63 +309,63 @@
     
     TGraph* randomforests_cc1pi_mu = new TGraph();
     randomforests_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
-    randomforests_cc1pi_mu->SetPoint(0, 4, 31.7349);
-    randomforests_cc1pi_mu->SetPoint(1, 6, 31.4449);
-    randomforests_cc1pi_mu->SetPoint(2, 8, 31.5028);
-    randomforests_cc1pi_mu->SetPoint(3, 10, 31.3693);
-    randomforests_cc1pi_mu->SetPoint(4, 12, 31.4114);
+    randomforests_cc1pi_mu->SetPoint(0, 4, 34.1248/refvalue_cc1pi_mu);
+    randomforests_cc1pi_mu->SetPoint(1, 6, 33.6847/refvalue_cc1pi_mu);
+    randomforests_cc1pi_mu->SetPoint(2, 8, 33.6481/refvalue_cc1pi_mu);
+    randomforests_cc1pi_mu->SetPoint(3, 10, 33.9779/refvalue_cc1pi_mu);
+    randomforests_cc1pi_mu->SetPoint(4, 12, 33.941/refvalue_cc1pi_mu);
     randomforests_cc1pi_mu->SetLineColor( kBlue); randomforests_cc1pi_mu->SetMarkerColor( kBlue); randomforests_cc1pi_mu->SetFillColor( kWhite); 
     
     TGraph* randomforests_cc1pi_pi = new TGraph();
     randomforests_cc1pi_pi->SetTitle("#pi^{-} selection pi-like cut");
-    randomforests_cc1pi_pi->SetPoint(0, 4, 35.5932);
-    randomforests_cc1pi_pi->SetPoint(1, 6, 35.1679);
-    randomforests_cc1pi_pi->SetPoint(2, 8, 34.8337);
-    randomforests_cc1pi_pi->SetPoint(3, 10, 34.6818);
-    randomforests_cc1pi_pi->SetPoint(4, 12, 35.2115);
+    randomforests_cc1pi_pi->SetPoint(0, 4, 38.1458/refvalue_cc1pi_pi);
+    randomforests_cc1pi_pi->SetPoint(1, 6, 38.2231/refvalue_cc1pi_pi);
+    randomforests_cc1pi_pi->SetPoint(2, 8, 37.4376/refvalue_cc1pi_pi);
+    randomforests_cc1pi_pi->SetPoint(3, 10, 38.1163/refvalue_cc1pi_pi);
+    randomforests_cc1pi_pi->SetPoint(4, 12, 37.6063/refvalue_cc1pi_pi);
     randomforests_cc1pi_pi->SetLineColor( kRed); randomforests_cc1pi_pi->SetMarkerColor( kRed); randomforests_cc1pi_pi->SetFillColor( kWhite); 
     
     TGraph* randomforests_pg_mu = new TGraph();
     randomforests_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
-    randomforests_pg_mu->SetPoint(0, 4, 216.438);
-    randomforests_pg_mu->SetPoint(1, 6, 214.792);
-    randomforests_pg_mu->SetPoint(2, 8, 215.376);
-    randomforests_pg_mu->SetPoint(3, 10, 214.695);
-    randomforests_pg_mu->SetPoint(4, 12, 214.212);
+    randomforests_pg_mu->SetPoint(0, 4, 216.212/refvalue_pg_mu);
+    randomforests_pg_mu->SetPoint(1, 6, 212.49/refvalue_pg_mu);
+    randomforests_pg_mu->SetPoint(2, 8, 214.048/refvalue_pg_mu);
+    randomforests_pg_mu->SetPoint(3, 10, 215.163/refvalue_pg_mu);
+    randomforests_pg_mu->SetPoint(4, 12, 214.458/refvalue_pg_mu);
     randomforests_pg_mu->SetLineColor( kBlue); randomforests_pg_mu->SetMarkerColor( kBlue); randomforests_pg_mu->SetFillColor( kWhite);
     
     TGraph* randomforests_pg_pi = new TGraph();
     randomforests_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
-    randomforests_pg_pi->SetPoint(0, 4, 152.548);
-    randomforests_pg_pi->SetPoint(1, 6, 153.389);
-    randomforests_pg_pi->SetPoint(2, 8, 150.509);
-    randomforests_pg_pi->SetPoint(3, 10, 151.431);
-    randomforests_pg_pi->SetPoint(4, 12, 151.773);
+    randomforests_pg_pi->SetPoint(0, 4, 151.775/refvalue_pg_pi);
+    randomforests_pg_pi->SetPoint(1, 6, 155.36/refvalue_pg_pi);
+    randomforests_pg_pi->SetPoint(2, 8, 151.529/refvalue_pg_pi);
+    randomforests_pg_pi->SetPoint(3, 10, 152.472/refvalue_pg_pi);
+    randomforests_pg_pi->SetPoint(4, 12, 149.771/refvalue_pg_pi);
     randomforests_pg_pi->SetLineColor( kRed); randomforests_pg_pi->SetMarkerColor( kRed); randomforests_pg_pi->SetFillColor( kWhite);
     
     TGraph* randomforests_pg_p = new TGraph();
     randomforests_pg_p->SetTitle("p selection p-like cut");
-    randomforests_pg_p->SetPoint(0, 4, 200.419);
-    randomforests_pg_p->SetPoint(1, 6, 202.775);
-    randomforests_pg_p->SetPoint(2, 8, 204.349);
-    randomforests_pg_p->SetPoint(3, 10, 200.328);
-    randomforests_pg_p->SetPoint(4, 12, 200.547);
+    randomforests_pg_p->SetPoint(0, 4, 208.424/refvalue_pg_p);
+    randomforests_pg_p->SetPoint(1, 6, 202.563/refvalue_pg_p);
+    randomforests_pg_p->SetPoint(2, 8, 204.814/refvalue_pg_p);
+    randomforests_pg_p->SetPoint(3, 10, 201.384/refvalue_pg_p);
+    randomforests_pg_p->SetPoint(4, 12, 205.496/refvalue_pg_p);
     randomforests_pg_p->SetLineColor( kGreen); randomforests_pg_p->SetMarkerColor( kGreen); randomforests_pg_p->SetFillColor( kWhite); 
     
     TGraph* randomforests_pg_e = new TGraph();
     randomforests_pg_e->SetTitle("e^{+} selection e-like cut");
-    randomforests_pg_e->SetPoint(0, 4, 204.334);
-    randomforests_pg_e->SetPoint(1, 6, 223.064);
-    randomforests_pg_e->SetPoint(2, 8, 200.124);
-    randomforests_pg_e->SetPoint(3, 10, 198.827);
-    randomforests_pg_e->SetPoint(4, 12, 189.298);
+    randomforests_pg_e->SetPoint(0, 4, 190.772/refvalue_pg_e);
+    randomforests_pg_e->SetPoint(1, 6, 190.411/refvalue_pg_e);
+    randomforests_pg_e->SetPoint(2, 8, 190.36/refvalue_pg_e);
+    randomforests_pg_e->SetPoint(3, 10, 190.32/refvalue_pg_e);
+    randomforests_pg_e->SetPoint(4, 12, 190.345/refvalue_pg_e);
     randomforests_pg_e->SetLineColor( kMagenta); randomforests_pg_e->SetMarkerColor( kMagenta); randomforests_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_randomforests = new TCanvas("canvas_randomforests","",200,10,1000,400);
     canvas_randomforests->Divide(2,1,0.005,0.005);
     canvas_randomforests->cd(1);
     
-    randomforests_cc1pi_mu->GetYaxis()->SetRangeUser(20.0, 36.0);
+    randomforests_cc1pi_mu->GetYaxis()->SetRangeUser(0.9, 1.1);
     randomforests_cc1pi_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     randomforests_cc1pi_mu->Draw("AL*");
@@ -373,7 +373,7 @@
     canvas_randomforests->cd(1)->BuildLegend();
     
     canvas_randomforests->cd(2);
-    randomforests_pg_mu->GetYaxis()->SetRangeUser(30.0, 240.0);
+    randomforests_pg_mu->GetYaxis()->SetRangeUser(0.9, 1.1);
     randomforests_pg_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     randomforests_pg_mu->Draw("AL*");
     randomforests_pg_pi->Draw("L* same");
