@@ -233,63 +233,63 @@
     
     TGraph* bagged_cc1pi_mu = new TGraph();
     bagged_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
-    bagged_cc1pi_mu->SetPoint(0, 0.1, 22.5832);
-    bagged_cc1pi_mu->SetPoint(1, 0.3, 27.6244);
-    bagged_cc1pi_mu->SetPoint(2, 0.5, 31.1143);
-    bagged_cc1pi_mu->SetPoint(3, 0.7, 31.3501);
-    bagged_cc1pi_mu->SetPoint(4, 0.9, 31.0307);
+    bagged_cc1pi_mu->SetPoint(0, 0.1, 3.84728/refvalue_cc1pi_mu);
+    bagged_cc1pi_mu->SetPoint(1, 0.3, 33.6713/refvalue_cc1pi_mu);
+    bagged_cc1pi_mu->SetPoint(2, 0.5, 33.9727/refvalue_cc1pi_mu);
+    bagged_cc1pi_mu->SetPoint(3, 0.7, 34.0087/refvalue_cc1pi_mu);
+    bagged_cc1pi_mu->SetPoint(4, 0.9, 33.9844/refvalue_cc1pi_mu);
     bagged_cc1pi_mu->SetLineColor( kBlue); bagged_cc1pi_mu->SetMarkerColor( kBlue); bagged_cc1pi_mu->SetFillColor( kWhite); 
     
     TGraph* bagged_cc1pi_pi = new TGraph();
     bagged_cc1pi_pi->SetTitle("#pi^{-} selection pi-like cut");
-    bagged_cc1pi_pi->SetPoint(0, 0.1, 25.9107);
-    bagged_cc1pi_pi->SetPoint(1, 0.3, 28.8149);
-    bagged_cc1pi_pi->SetPoint(2, 0.5, 34.402);
-    bagged_cc1pi_pi->SetPoint(3, 0.7, 35.1219);
-    bagged_cc1pi_pi->SetPoint(4, 0.9, 34.3025);
+    bagged_cc1pi_pi->SetPoint(0, 0.1, 20.8977/refvalue_cc1pi_pi);
+    bagged_cc1pi_pi->SetPoint(1, 0.3, 38.0971/refvalue_cc1pi_pi);
+    bagged_cc1pi_pi->SetPoint(2, 0.5, 39.0355/refvalue_cc1pi_pi);
+    bagged_cc1pi_pi->SetPoint(3, 0.7, 38.0736/refvalue_cc1pi_pi);
+    bagged_cc1pi_pi->SetPoint(4, 0.9, 37.5323/refvalue_cc1pi_pi);
     bagged_cc1pi_pi->SetLineColor( kRed); bagged_cc1pi_pi->SetMarkerColor( kRed); bagged_cc1pi_pi->SetFillColor( kWhite); 
     
     TGraph* bagged_pg_mu = new TGraph();
     bagged_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
-    bagged_pg_mu->SetPoint(0, 0.1, 156.171);
-    bagged_pg_mu->SetPoint(1, 0.3, 196.069);
-    bagged_pg_mu->SetPoint(2, 0.5, 213.241);
-    bagged_pg_mu->SetPoint(3, 0.7, 214.974);
-    bagged_pg_mu->SetPoint(4, 0.9, 213.777);
+    bagged_pg_mu->SetPoint(0, 0.1, 17.2556/refvalue_pg_mu);
+    bagged_pg_mu->SetPoint(1, 0.3, 212.734/refvalue_pg_mu);
+    bagged_pg_mu->SetPoint(2, 0.5, 215.361/refvalue_pg_mu);
+    bagged_pg_mu->SetPoint(3, 0.7, 213.182/refvalue_pg_mu);
+    bagged_pg_mu->SetPoint(4, 0.9, 213.343/refvalue_pg_mu);
     bagged_pg_mu->SetLineColor( kBlue); bagged_pg_mu->SetMarkerColor( kBlue); bagged_pg_mu->SetFillColor( kWhite);
     
     TGraph* bagged_pg_pi = new TGraph();
     bagged_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
-    bagged_pg_pi->SetPoint(0, 0.1, 119.081);
-    bagged_pg_pi->SetPoint(1, 0.3, 114.072);
-    bagged_pg_pi->SetPoint(2, 0.5, 149.798);
-    bagged_pg_pi->SetPoint(3, 0.7, 150.126);
-    bagged_pg_pi->SetPoint(4, 0.9, 150.175);
+    bagged_pg_pi->SetPoint(0, 0.1, 78.4228/refvalue_pg_pi);
+    bagged_pg_pi->SetPoint(1, 0.3, 150.307/refvalue_pg_pi);
+    bagged_pg_pi->SetPoint(2, 0.5, 151.027/refvalue_pg_pi);
+    bagged_pg_pi->SetPoint(3, 0.7, 152.723/refvalue_pg_pi);
+    bagged_pg_pi->SetPoint(4, 0.9, 152.474/refvalue_pg_pi);
     bagged_pg_pi->SetLineColor( kRed); bagged_pg_pi->SetMarkerColor( kRed); bagged_pg_pi->SetFillColor( kWhite);
     
     TGraph* bagged_pg_p = new TGraph();
     bagged_pg_p->SetTitle("p selection p-like cut");
-    bagged_pg_p->SetPoint(0, 0.1, 34.3667);
-    bagged_pg_p->SetPoint(1, 0.3, 122.973);
-    bagged_pg_p->SetPoint(2, 0.5, 202.662);
-    bagged_pg_p->SetPoint(3, 0.7, 203.904);
-    bagged_pg_p->SetPoint(4, 0.9, 202.83);
+    bagged_pg_p->SetPoint(0, 0.1, 21.5663/refvalue_pg_p);
+    bagged_pg_p->SetPoint(1, 0.3, 201.232/refvalue_pg_p);
+    bagged_pg_p->SetPoint(2, 0.5, 203.881/refvalue_pg_p);
+    bagged_pg_p->SetPoint(3, 0.7, 201.34/refvalue_pg_p);
+    bagged_pg_p->SetPoint(4, 0.9, 200.998/refvalue_pg_p);
     bagged_pg_p->SetLineColor( kGreen); bagged_pg_p->SetMarkerColor( kGreen); bagged_pg_p->SetFillColor( kWhite); 
     
     TGraph* bagged_pg_e = new TGraph();
     bagged_pg_e->SetTitle("e^{+} selection e-like cut");
-    bagged_pg_e->SetPoint(0, 0.1, 42.9093);
-    bagged_pg_e->SetPoint(1, 0.3, 188.561);
-    bagged_pg_e->SetPoint(2, 0.5, 188.965);
-    bagged_pg_e->SetPoint(3, 0.7, 188.728);
-    bagged_pg_e->SetPoint(4, 0.9, 197.86);
+    bagged_pg_e->SetPoint(0, 0.1, 70.5179/refvalue_pg_e);
+    bagged_pg_e->SetPoint(1, 0.3, 189.74/refvalue_pg_e);
+    bagged_pg_e->SetPoint(2, 0.5, 189.412/refvalue_pg_e);
+    bagged_pg_e->SetPoint(3, 0.7, 189.534/refvalue_pg_e);
+    bagged_pg_e->SetPoint(4, 0.9, 189.716/refvalue_pg_e);
     bagged_pg_e->SetLineColor( kMagenta); bagged_pg_e->SetMarkerColor( kMagenta); bagged_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_bagged = new TCanvas("canvas_bagged","",200,10,1000,400);
     canvas_bagged->Divide(2,1,0.005,0.005);
     canvas_bagged->cd(1);
     
-    bagged_cc1pi_mu->GetYaxis()->SetRangeUser(20.0, 36.0);
+    bagged_cc1pi_mu->GetYaxis()->SetRangeUser(0.0, 1.1);
     bagged_cc1pi_mu->GetXaxis()->SetTitle("BaggedSampleFraction"); bagged_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     bagged_cc1pi_mu->Draw("AL*");
@@ -297,7 +297,7 @@
     canvas_bagged->cd(1)->BuildLegend();
     
     canvas_bagged->cd(2);
-    bagged_pg_mu->GetYaxis()->SetRangeUser(30.0, 240.0);
+    bagged_pg_mu->GetYaxis()->SetRangeUser(0.0, 1.1);
     bagged_pg_mu->GetXaxis()->SetTitle("BaggedSampleFraction"); bagged_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     bagged_pg_mu->Draw("AL*");
     bagged_pg_pi->Draw("L* same");
