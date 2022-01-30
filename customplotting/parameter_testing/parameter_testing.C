@@ -4,7 +4,7 @@
     // =============== Tree depth ===============
     
     refvalue_cc1pi_mu = 33.4749;
-    refvalue_cc1pi_pi = 35.4578
+    refvalue_cc1pi_pi = 35.4578;
     
     TGraph* treedepth_cc1pi_mu = new TGraph();
     treedepth_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
