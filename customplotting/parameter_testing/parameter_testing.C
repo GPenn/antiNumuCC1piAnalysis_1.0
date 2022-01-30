@@ -157,63 +157,63 @@
     
     TGraph* shrinkage_cc1pi_mu = new TGraph();
     shrinkage_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
-    shrinkage_cc1pi_mu->SetPoint(0, 0.1, 31.29);
-    shrinkage_cc1pi_mu->SetPoint(1, 0.3, 31.5275);
-    shrinkage_cc1pi_mu->SetPoint(2, 0.5, 31.6751);
-    shrinkage_cc1pi_mu->SetPoint(3, 0.7, 31.5224);
-    shrinkage_cc1pi_mu->SetPoint(4, 0.9, 31.5727);
+    shrinkage_cc1pi_mu->SetPoint(0, 0.1, 33.9103/refvalue_cc1pi_mu);
+    shrinkage_cc1pi_mu->SetPoint(1, 0.3, 33.9083/refvalue_cc1pi_mu);
+    shrinkage_cc1pi_mu->SetPoint(2, 0.5, 34.1139/refvalue_cc1pi_mu);
+    shrinkage_cc1pi_mu->SetPoint(3, 0.7, 33.8571/refvalue_cc1pi_mu);
+    shrinkage_cc1pi_mu->SetPoint(4, 0.9, 33.7009/refvalue_cc1pi_mu);
     shrinkage_cc1pi_mu->SetLineColor( kBlue); shrinkage_cc1pi_mu->SetMarkerColor( kBlue); shrinkage_cc1pi_mu->SetFillColor( kWhite); 
     
     TGraph* shrinkage_cc1pi_pi = new TGraph();
     shrinkage_cc1pi_pi->SetTitle("#pi^{-} selection pi-like cut");
-    shrinkage_cc1pi_pi->SetPoint(0, 0.1, 34.0015);
-    shrinkage_cc1pi_pi->SetPoint(1, 0.3, 34.1212);
-    shrinkage_cc1pi_pi->SetPoint(2, 0.5, 34.2785);
-    shrinkage_cc1pi_pi->SetPoint(3, 0.7, 34.5959);
-    shrinkage_cc1pi_pi->SetPoint(4, 0.9, 34.2874);
+    shrinkage_cc1pi_pi->SetPoint(0, 0.1, 37.2625/refvalue_cc1pi_pi);
+    shrinkage_cc1pi_pi->SetPoint(1, 0.3, 36.8078/refvalue_cc1pi_pi);
+    shrinkage_cc1pi_pi->SetPoint(2, 0.5, 37.2966/refvalue_cc1pi_pi);
+    shrinkage_cc1pi_pi->SetPoint(3, 0.7, 37.4721/refvalue_cc1pi_pi);
+    shrinkage_cc1pi_pi->SetPoint(4, 0.9, 37.7535/refvalue_cc1pi_pi);
     shrinkage_cc1pi_pi->SetLineColor( kRed); shrinkage_cc1pi_pi->SetMarkerColor( kRed); shrinkage_cc1pi_pi->SetFillColor( kWhite); 
     
     TGraph* shrinkage_pg_mu = new TGraph();
     shrinkage_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
-    shrinkage_pg_mu->SetPoint(0, 0.1, 214.753);
-    shrinkage_pg_mu->SetPoint(1, 0.3, 215.118);
-    shrinkage_pg_mu->SetPoint(2, 0.5, 216.193);
-    shrinkage_pg_mu->SetPoint(3, 0.7, 215.175);
-    shrinkage_pg_mu->SetPoint(4, 0.9, 215.394);
+    shrinkage_pg_mu->SetPoint(0, 0.1, 214.515/refvalue_pg_mu);
+    shrinkage_pg_mu->SetPoint(1, 0.3, 214,925/refvalue_pg_mu);
+    shrinkage_pg_mu->SetPoint(2, 0.5, 214.935/refvalue_pg_mu);
+    shrinkage_pg_mu->SetPoint(3, 0.7, 213.648/refvalue_pg_mu);
+    shrinkage_pg_mu->SetPoint(4, 0.9, 214.2/refvalue_pg_mu);
     shrinkage_pg_mu->SetLineColor( kBlue); shrinkage_pg_mu->SetMarkerColor( kBlue); shrinkage_pg_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_pi = new TGraph();
     shrinkage_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
-    shrinkage_pg_pi->SetPoint(0, 0.1, 156.525);
-    shrinkage_pg_pi->SetPoint(1, 0.3, 151.953);
-    shrinkage_pg_pi->SetPoint(2, 0.5, 153.455);
-    shrinkage_pg_pi->SetPoint(3, 0.7, 150.447);
-    shrinkage_pg_pi->SetPoint(4, 0.9, 150.671);
+    shrinkage_pg_pi->SetPoint(0, 0.1, 160.788/refvalue_pg_pi);
+    shrinkage_pg_pi->SetPoint(1, 0.3, 151.696/refvalue_pg_pi);
+    shrinkage_pg_pi->SetPoint(2, 0.5, 150.355/refvalue_pg_pi);
+    shrinkage_pg_pi->SetPoint(3, 0.7, 152.226/refvalue_pg_pi);
+    shrinkage_pg_pi->SetPoint(4, 0.9, 149.946/refvalue_pg_pi);
     shrinkage_pg_pi->SetLineColor( kRed); shrinkage_pg_pi->SetMarkerColor( kRed); shrinkage_pg_pi->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_p = new TGraph();
     shrinkage_pg_p->SetTitle("p selection p-like cut");
-    shrinkage_pg_p->SetPoint(0, 0.1, 192.499);
-    shrinkage_pg_p->SetPoint(1, 0.3, 200.318);
-    shrinkage_pg_p->SetPoint(2, 0.5, 198.885);
-    shrinkage_pg_p->SetPoint(3, 0.7, 202.08);
-    shrinkage_pg_p->SetPoint(4, 0.9, 203.232);
+    shrinkage_pg_p->SetPoint(0, 0.1, 194.072/refvalue_pg_p);
+    shrinkage_pg_p->SetPoint(1, 0.3, 200.638/refvalue_pg_p);
+    shrinkage_pg_p->SetPoint(2, 0.5, 202.898/refvalue_pg_p);
+    shrinkage_pg_p->SetPoint(3, 0.7, 201.552/refvalue_pg_p);
+    shrinkage_pg_p->SetPoint(4, 0.9, 204.437/refvalue_pg_p);
     shrinkage_pg_p->SetLineColor( kGreen); shrinkage_pg_p->SetMarkerColor( kGreen); shrinkage_pg_p->SetFillColor( kWhite); 
     
     TGraph* shrinkage_pg_e = new TGraph();
     shrinkage_pg_e->SetTitle("e^{+} selection e-like cut");
-    shrinkage_pg_e->SetPoint(0, 0.1, 217.285);
-    shrinkage_pg_e->SetPoint(1, 0.3, 230.162);
-    shrinkage_pg_e->SetPoint(2, 0.5, 217.9);
-    shrinkage_pg_e->SetPoint(3, 0.7, 211.18);
-    shrinkage_pg_e->SetPoint(4, 0.9, 200.639);
+    shrinkage_pg_e->SetPoint(0, 0.1, 226.61/refvalue_pg_e);
+    shrinkage_pg_e->SetPoint(1, 0.3, 204.121/refvalue_pg_e);
+    shrinkage_pg_e->SetPoint(2, 0.5, 189.983/refvalue_pg_e);
+    shrinkage_pg_e->SetPoint(3, 0.7, 190.093/refvalue_pg_e);
+    shrinkage_pg_e->SetPoint(4, 0.9, 190.258/refvalue_pg_e);
     shrinkage_pg_e->SetLineColor( kMagenta); shrinkage_pg_e->SetMarkerColor( kMagenta); shrinkage_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_shrinkage = new TCanvas("canvas_shrinkage","",200,10,1000,400);
     canvas_shrinkage->Divide(2,1,0.005,0.005);
     canvas_shrinkage->cd(1);
     
-    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(30.0, 36.0);
+    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(0.9, 1.1);
     shrinkage_cc1pi_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     shrinkage_cc1pi_mu->Draw("AL*");
@@ -221,7 +221,7 @@
     canvas_shrinkage->cd(1)->BuildLegend();
     
     canvas_shrinkage->cd(2);
-    shrinkage_pg_mu->GetYaxis()->SetRangeUser(140.0, 240.0);
+    shrinkage_pg_mu->GetYaxis()->SetRangeUser(0.9, 1.1);
     shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
