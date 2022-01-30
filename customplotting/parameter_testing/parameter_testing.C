@@ -51,10 +51,10 @@
     refvalue_pg_e = 190.245;
     TGraph* treedepth_pg_e = new TGraph();
     treedepth_pg_e->SetTitle("e^{+} selection e-like cut");
-    treedepth_pg_e->SetPoint(0, 2.0, 189.429);
-    treedepth_pg_e->SetPoint(1, 3.0, 190.245);
-    treedepth_pg_e->SetPoint(2, 4.0, 190.529);
-    treedepth_pg_e->SetPoint(3, 5.0, 190.811);
+    treedepth_pg_e->SetPoint(0, 2.0, 189.429/refvalue_pg_e);
+    treedepth_pg_e->SetPoint(1, 3.0, 190.245/refvalue_pg_e);
+    treedepth_pg_e->SetPoint(2, 4.0, 190.529/refvalue_pg_e);
+    treedepth_pg_e->SetPoint(3, 5.0, 190.811/refvalue_pg_e);
     treedepth_pg_e->SetLineColor( kMagenta); treedepth_pg_e->SetMarkerColor( kMagenta); treedepth_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,400);
