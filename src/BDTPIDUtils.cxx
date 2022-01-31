@@ -46,7 +46,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_tree3_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tree3_noweights.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_tree2", "parameters/weights/BDT_PID_multiclass_BDTG_tree2.weights.xml" );
-  tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tree4", "parameters/weights/BDT_PID_multiclass_BDTG_tree4.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tree5", "parameters/weights/BDT_PID_multiclass_BDTG_tree5.weights.xml" );
   
@@ -62,11 +62,11 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_0.7shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.7shrinkage.weights.xml" );
   //tmvareader->BookMVA( "BDTG_0.9shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.9shrinkage.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_0.01shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.01shrinkage.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.02shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.02shrinkage.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.04shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.04shrinkage.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.06shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.06shrinkage.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.08shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.08shrinkage.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_0.01shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.01shrinkage.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_0.02shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.02shrinkage.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_0.04shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.04shrinkage.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_0.06shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.06shrinkage.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_0.08shrinkage", "parameters/weights/BDT_PID_multiclass_BDTG_0.08shrinkage.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_0.1bagged", "parameters/weights/BDT_PID_multiclass_BDTG_0.1bagged.weights.xml" );
   //tmvareader->BookMVA( "BDTG_0.3bagged", "parameters/weights/BDT_PID_multiclass_BDTG_0.3bagged.weights.xml" );
@@ -81,6 +81,9 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_12vars", "parameters/weights/BDT_PID_multiclass_BDTG_12vars.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_neg_tree3", "parameters/weights/BDT_PID_multiclass_negative_BDTG_tree3.weights.xml" );
+  
+  tmvareader->BookMVA( "BDTG_default", "parameters/weights/BDT_PID_multiclass_BDTG_default.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
