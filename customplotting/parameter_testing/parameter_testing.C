@@ -1,5 +1,5 @@
 {
-    gStyle->SetTitleYOffset(1.6);
+    gStyle->SetTitleYOffset(1.5);
     
     Float_t refvalue_cc1pi_mu, refvalue_cc1pi_pi, refvalue_pg_mu, refvalue_pg_pi, refvalue_pg_p, refvalue_pg_e;
     
@@ -397,7 +397,7 @@
     canvas_randomforests->Divide(2,1,0.005,0.005);
     canvas_randomforests->cd(1);
     
-    randomforests_cc1pi_mu->GetYaxis()->SetRangeUser(0.98, 1.05);
+    randomforests_cc1pi_mu->GetYaxis()->SetRangeUser(0.98, 1.04);
     randomforests_cc1pi_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     randomforests_cc1pi_mu->Draw("AL*");
@@ -405,7 +405,7 @@
     canvas_randomforests->cd(1)->BuildLegend();
     
     canvas_randomforests->cd(2);
-    randomforests_pg_mu->GetYaxis()->SetRangeUser(0.98, 1.05);
+    randomforests_pg_mu->GetYaxis()->SetRangeUser(0.98, 1.04);
     randomforests_pg_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     randomforests_pg_mu->Draw("AL*");
     randomforests_pg_pi->Draw("L* same");
