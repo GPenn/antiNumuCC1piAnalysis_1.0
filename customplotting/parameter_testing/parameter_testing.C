@@ -189,7 +189,7 @@
     shrinkage_pg_mu->SetPoint(1, 0.02, 212.464/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(2, 0.04, 214.211/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(3, 0.06, 214.38/refvalue_pg_mu);
-    shrinkage_pg_mu->SetPoint(4, 0.08, 214.699refvalue_pg_mu);
+    shrinkage_pg_mu->SetPoint(4, 0.08, 214.699/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(5, 0.1, 214.515/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(6, 0.3, 214.925/refvalue_pg_mu);
     shrinkage_pg_mu->SetPoint(7, 0.5, 214.935/refvalue_pg_mu);
