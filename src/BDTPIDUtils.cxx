@@ -149,12 +149,12 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *track,1);
   bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *track,2);
   bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *track,3);
-  AnaTPCParticle* TPC2Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *box().MainTrack,static_cast<SubDetId::SubDetEnum >(3)));
+  AnaTPCParticle* TPC2Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(3)));
   if (TPC2Segment)
   {
     //bdt_tpc2_dedx = TPC2Segment->dEdxMeas;
   }
-  AnaTPCParticle* TPC3Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *box().MainTrack,static_cast<SubDetId::SubDetEnum >(4)));
+  AnaTPCParticle* TPC3Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(4)));
   if (TPC3Segment)
   {
     bdt_tpc3_dedx = TPC3Segment->dEdxMeas;
