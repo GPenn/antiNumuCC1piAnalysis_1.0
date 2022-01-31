@@ -550,7 +550,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_default",     "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedparams", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_pulls", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tpcpulls", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
