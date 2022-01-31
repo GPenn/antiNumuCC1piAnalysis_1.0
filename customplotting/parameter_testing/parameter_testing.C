@@ -69,7 +69,7 @@
     canvas_treedepth->cd(1)->BuildLegend();
     
     canvas_treedepth->cd(2);
-    treedepth_pg_mu->GetYaxis()->SetRangeUser(0.99, 1.02);
+    treedepth_pg_mu->GetYaxis()->SetRangeUser(0.97, 1.02);
     treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     treedepth_pg_mu->Draw("AL*");
     treedepth_pg_pi->Draw("L* same");
@@ -137,7 +137,7 @@
     canvas_treenumber->Divide(2,1,0.005,0.005);
     canvas_treenumber->cd(1);
     
-    treenumber_cc1pi_mu->GetYaxis()->SetRangeUser(0.99, 1.02);
+    treenumber_cc1pi_mu->GetYaxis()->SetRangeUser(0.98, 1.02);
     treenumber_cc1pi_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     treenumber_cc1pi_mu->Draw("AL*");
@@ -243,7 +243,7 @@
     canvas_shrinkage->Divide(2,1,0.005,0.005);
     canvas_shrinkage->cd(1);
     
-    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(0.97, 1.01);
+    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(0.90, 1.2);
     shrinkage_cc1pi_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     shrinkage_cc1pi_mu->Draw("AL*");
@@ -251,7 +251,7 @@
     canvas_shrinkage->cd(1)->BuildLegend();
     
     canvas_shrinkage->cd(2);
-    shrinkage_pg_mu->GetYaxis()->SetRangeUser(0.94, 1.2);
+    shrinkage_pg_mu->GetYaxis()->SetRangeUser(0.90, 1.2);
     shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
@@ -395,7 +395,7 @@
     canvas_randomforests->Divide(2,1,0.005,0.005);
     canvas_randomforests->cd(1);
     
-    randomforests_cc1pi_mu->GetYaxis()->SetRangeUser(0.9, 1.1);
+    randomforests_cc1pi_mu->GetYaxis()->SetRangeUser(0.98, 1.06);
     randomforests_cc1pi_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     randomforests_cc1pi_mu->Draw("AL*");
@@ -403,7 +403,7 @@
     canvas_randomforests->cd(1)->BuildLegend();
     
     canvas_randomforests->cd(2);
-    randomforests_pg_mu->GetYaxis()->SetRangeUser(0.9, 1.1);
+    randomforests_pg_mu->GetYaxis()->SetRangeUser(0.98, 1.06);
     randomforests_pg_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     randomforests_pg_mu->Draw("AL*");
     randomforests_pg_pi->Draw("L* same");
