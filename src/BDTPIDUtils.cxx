@@ -30,6 +30,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
   //tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
   //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
+  tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
   
   //tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
   tmvareader->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 &bdt_ecal_EbyL);
@@ -148,9 +149,16 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_tpc_like_e  = anaUtils::GetPIDLikelihood( *track,1);
   bdt_tpc_like_p  = anaUtils::GetPIDLikelihood( *track,2);
   bdt_tpc_like_pi = anaUtils::GetPIDLikelihood( *track,3);
-  //bdt_tpc2_dedx = 
-  //bdt_tpc3_dedx = 
-  
+  AnaTPCParticle* TPC2Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *box().MainTrack,static_cast<SubDetId::SubDetEnum >(3)));
+  if (TPC2Segment)
+  {
+    //bdt_tpc2_dedx = TPC2Segment->dEdxMeas;
+  }
+  AnaTPCParticle* TPC3Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *box().MainTrack,static_cast<SubDetId::SubDetEnum >(4)));
+  if (TPC3Segment)
+  {
+    bdt_tpc3_dedx = TPC3Segment->dEdxMeas;
+  }
   // Fill FGD variables:
   //std::cout << "DEBUG: Filling BDT FGD1 variables..." << std::endl;
   AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(0)));
