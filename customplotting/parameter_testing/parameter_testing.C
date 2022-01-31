@@ -245,7 +245,7 @@
     canvas_shrinkage->Divide(2,1,0.005,0.005);
     canvas_shrinkage->cd(1);
     
-    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(0.90, 1.2);
+    shrinkage_cc1pi_mu->GetYaxis()->SetRangeUser(0.80, 1.2);
     shrinkage_cc1pi_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
     
     shrinkage_cc1pi_mu->Draw("AL*");
@@ -253,7 +253,7 @@
     canvas_shrinkage->cd(1)->BuildLegend();
     
     canvas_shrinkage->cd(2);
-    shrinkage_pg_mu->GetYaxis()->SetRangeUser(0.90, 1.2);
+    shrinkage_pg_mu->GetYaxis()->SetRangeUser(0.80, 1.2);
     shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
