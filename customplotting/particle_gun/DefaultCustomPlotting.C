@@ -116,22 +116,22 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpclikee_positron = new TH1F("tpclikee_positron", "Positron", 50, 0.0, 1.0);
    
    TH1F *tpcpullmu_antimu = new TH1F("tpcpullmu_antimu", "Antimuon;TPC2 muon pull;Entries", 50, -100.0, 100.0);
-   TH1F *tpcpullmu_piplus = new TH1F("tpcpullmu_piplus", "Pi+", 50, -100.0, 100.0);
+   TH1F *tpcpullmu_piplus = new TH1F("tpcpullmu_piplus", "Pi+", 50, -30.0, 70.0);
    TH1F *tpcpullmu_proton = new TH1F("tpcpullmu_proton", "Proton", 50, -100.0, 100.0);
    TH1F *tpcpullmu_positron = new TH1F("tpcpullmu_positron", "Positron", 50, -100.0, 100.0);
    
    TH1F *tpcpullpi_antimu = new TH1F("tpcpullpi_antimu", "Antimuon;TPC2 charged pion pull;Entries", 50, -100.0, 100.0);
-   TH1F *tpcpullpi_piplus = new TH1F("tpcpullpi_piplus", "Pi+", 50, -100.0, 100.0);
+   TH1F *tpcpullpi_piplus = new TH1F("tpcpullpi_piplus", "Pi+", 50, -30.0, 70.0);
    TH1F *tpcpullpi_proton = new TH1F("tpcpullpi_proton", "Proton", 50, -100.0, 100.0);
    TH1F *tpcpullpi_positron = new TH1F("tpcpullpi_positron", "Positron", 50, -100.0, 100.0);
    
    TH1F *tpcpullp_antimu = new TH1F("tpcpullp_antimu", "Antimuon;TPC2 proton pull;Entries", 50, -100.0, 100.0);
-   TH1F *tpcpullp_piplus = new TH1F("tpcpullp_piplus", "Pi+", 50, -100.0, 100.0);
+   TH1F *tpcpullp_piplus = new TH1F("tpcpullp_piplus", "Pi+", 50, -100.0, 40.0);
    TH1F *tpcpullp_proton = new TH1F("tpcpullp_proton", "Proton", 50, -100.0, 100.0);
    TH1F *tpcpullp_positron = new TH1F("tpcpullp_positron", "Positron", 50, -100.0, 100.0);
    
    TH1F *tpcpulle_antimu = new TH1F("tpcpulle_antimu", "Antimuon;TPC2 electron pull;Entries", 50, -100.0, 100.0);
-   TH1F *tpcpulle_piplus = new TH1F("tpcpulle_piplus", "Pi+", 50, -100.0, 100.0);
+   TH1F *tpcpulle_piplus = new TH1F("tpcpulle_piplus", "Pi+", 50, -30.0, 170.0);
    TH1F *tpcpulle_proton = new TH1F("tpcpulle_proton", "Proton", 50, -100.0, 100.0);
    TH1F *tpcpulle_positron = new TH1F("tpcpulle_positron", "Positron", 50, -100.0, 100.0);
    
@@ -1028,7 +1028,7 @@ void DefaultCustomPlotting::Loop()
    tpcpullp_piplus->Draw("same");
    tpcpullp_proton->Draw("same");
    tpcpullp_positron->Draw("same");
-   canvas_tpcpulls->cd(3)->SetLogy();
+   //canvas_tpcpulls->cd(3)->SetLogy();
    
    // TPC e pull
    
@@ -1046,7 +1046,7 @@ void DefaultCustomPlotting::Loop()
    tpcpulle_piplus->Draw("same");
    tpcpulle_proton->Draw("same");
    tpcpulle_positron->Draw("same");
-   canvas_tpcpulls->cd(4)->SetLogy();
+   //canvas_tpcpulls->cd(4)->SetLogy();
    
    canvas_tpcpulls->cd(1)->BuildLegend();
    canvas_tpcpulls->Write();
