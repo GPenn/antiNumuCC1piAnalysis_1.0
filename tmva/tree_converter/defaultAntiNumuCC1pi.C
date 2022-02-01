@@ -32,7 +32,7 @@ void defaultAntiNumuCC1pi::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
     
-    int desiredPDG = -11;
+    int desiredPDG = -13;
     
     
     if (fChain == 0) return;
@@ -189,6 +189,19 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_pullele              = selmu_tpc_pullele[0];
        defout->selmu_tpc_pullp                = selmu_tpc_pullp[0];
        defout->selmu_tpc_pullpi               = selmu_tpc_pullpi[0];
+        
+       if (selmu_tpc_pullmu < -10.0)        {defout->selmu_tpc_pullmu = -10.0;}
+       else if (selmu_tpc_pullmu > 40.0)    {defout->selmu_tpc_pullmu = 40.0;}
+       else                                 {defout->selmu_tpc_pullmu = selmu_tpc_pullmu[0];}
+       if (selmu_tpc_pullele < -20.0)       {defout->selmu_tpc_pullele = -20.0;}
+       else if (selmu_tpc_pullele > 30.0)   {defout->selmu_tpc_pullele = 30.0;}
+       else                                 {defout->selmu_tpc_pullele = selmu_tpc_pullele[0];}
+       if (selmu_tpc_pullp < -40.0)         {defout->selmu_tpc_pullp = -40.0;}
+       else if (selmu_tpc_pullp > 20.0)     {defout->selmu_tpc_pullp = 20.0;}
+       else                                 {defout->selmu_tpc_pullp = selmu_tpc_pullp[0];}
+       if (selmu_tpc_pullpi < -10.0)        {defout->selmu_tpc_pullpi = -10.0;}
+       else if (selmu_tpc_pullpi > 40.0)    {defout->selmu_tpc_pullpi = 40.0;}
+       else                                 {defout->selmu_tpc_pullpi = selmu_tpc_pullpi[0];}
         
        if (selmu_tpc_dedx[0] > 0.0 && selmu_tpc_dedx[0] < 2000.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
        else                                                          {defout->selmu_tpc2_dedx = -100.0;}
