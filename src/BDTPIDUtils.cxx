@@ -27,7 +27,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
   //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
   tmvareader->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                 &bdt_tpc_pull_mu);
-  tmvareader->AddVariable( "tpcpulle := selmu_tpc_pulle",                   &bdt_tpc_pull_e);
+  tmvareader->AddVariable( "tpcpulle := selmu_tpc_pullele",                   &bdt_tpc_pull_e);
   tmvareader->AddVariable( "tpcpullp := selmu_tpc_pullp",                   &bdt_tpc_pull_p);
   tmvareader->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                 &bdt_tpc_pull_pi);
   tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
@@ -120,6 +120,10 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_tpc_like_e = -0.5;
   bdt_tpc_like_p = -0.5;
   bdt_tpc_like_pi = -0.5;
+  bdt_tpc_pullmu = -10.0;
+  bdt_tpc_pullpi = -10.0;
+  bdt_tpc_pullp = -40.0;
+  bdt_tpc_pullele = -20.0;
   bdt_tpc2_dedx = -100.0;
   bdt_tpc3_dedx = -100.0;
   
@@ -154,7 +158,11 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   AnaTPCParticle* TPC2Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(3)));
   if (TPC2Segment)
   {
-    //bdt_tpc2_dedx = TPC2Segment->dEdxMeas;
+    bdt_tpc2_dedx = TPC2Segment->dEdxMeas;
+    bdt_tpc_pullmu = TPC2Segment->Pullmu;
+    bdt_tpc_pullpi = TPC2Segment->Pullpi;
+    bdt_tpc_pullp = TPC2Segment->Pullp;
+    bdt_tpc_pulle = TPC2Segment->Pullele;
   }
   AnaTPCParticle* TPC3Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(4)));
   if (TPC3Segment)
