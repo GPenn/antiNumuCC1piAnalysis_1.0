@@ -219,11 +219,11 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC2 e-like",     "", 'F' );
    //factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC2 p-like",     "", 'F' );
    //factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC2 pi-like",    "", 'F' );
-   factory->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                  "TPC2 mu pull",    "", 'F' );
-   factory->AddVariable( "tpcpulle := selmu_tpc_pullele",                  "TPC2 e pull",     "", 'F' );
-   factory->AddVariable( "tpcpullp := selmu_tpc_pullp",                    "TPC2 p pull",     "", 'F' );
-   factory->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                  "TPC2 pi pull",    "", 'F' );
-   //factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
+   //factory->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                  "TPC2 mu pull",    "", 'F' );
+   //factory->AddVariable( "tpcpulle := selmu_tpc_pullele",                  "TPC2 e pull",     "", 'F' );
+   //factory->AddVariable( "tpcpullp := selmu_tpc_pullp",                    "TPC2 p pull",     "", 'F' );
+   //factory->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                  "TPC2 pi pull",    "", 'F' );
+   factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
    factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
    
    // Muon candidate ECal variables
@@ -550,7 +550,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_default",     "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedparams", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tpcpulls", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tpcpulls", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tpcdedx", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
