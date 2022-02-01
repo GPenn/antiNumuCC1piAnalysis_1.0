@@ -123,7 +123,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_tpc_pullmu = -10.0;
   bdt_tpc_pullpi = -10.0;
   bdt_tpc_pullp = -40.0;
-  bdt_tpc_pullele = -20.0;
+  bdt_tpc_pulle = -20.0;
   bdt_tpc2_dedx = -100.0;
   bdt_tpc3_dedx = -100.0;
   
