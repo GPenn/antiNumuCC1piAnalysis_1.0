@@ -26,10 +26,11 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
   //tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
   //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  tmvareader->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                 &bdt_tpc_pullmu);
-  tmvareader->AddVariable( "tpcpulle := selmu_tpc_pullele",                   &bdt_tpc_pulle);
-  tmvareader->AddVariable( "tpcpullp := selmu_tpc_pullp",                   &bdt_tpc_pullp);
-  tmvareader->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                 &bdt_tpc_pullpi);
+  //tmvareader->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                 &bdt_tpc_pullmu);
+  //tmvareader->AddVariable( "tpcpulle := selmu_tpc_pullele",                   &bdt_tpc_pulle);
+  //tmvareader->AddVariable( "tpcpullp := selmu_tpc_pullp",                   &bdt_tpc_pullp);
+  //tmvareader->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                 &bdt_tpc_pullpi);
+  tmvareader->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                 &bdt_tpc2_dedx);
   tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
   
   //tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
@@ -91,7 +92,8 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_tpclikelihoods", "parameters/weights/BDT_PID_multiclass_BDTG_tpclikelihoods.weights.xml" );
-  tmvareader->BookMVA( "BDTG_tpcpulls", "parameters/weights/BDT_PID_multiclass_BDTG_tpcpulls.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_tpcpulls", "parameters/weights/BDT_PID_multiclass_BDTG_tpcpulls.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tpcdedx", "parameters/weights/BDT_PID_multiclass_BDTG_tpcdedx.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
