@@ -304,7 +304,7 @@ void DefaultCustomPlotting::Loop()
             tpcpullmu_antimu->Fill(selmu_tpc_pullmu[0]);
             tpcpullpi_antimu->Fill(selmu_tpc_pullpi[0]);
             tpcpullp_antimu->Fill(selmu_tpc_pullp[0]);
-            tpcpulle_antimu->Fill(selmu_tpc_pulle[0]);
+            tpcpulle_antimu->Fill(selmu_tpc_pullele[0]);
             fgd1EbyL_antimu->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_antimu->Fill(selmu_fgd2_EbyL);
             nsmrds_antimu->Fill(selmu_nsmrds);
@@ -331,7 +331,7 @@ void DefaultCustomPlotting::Loop()
             tpcpullmu_piplus->Fill(selmu_tpc_pullmu[0]);
             tpcpullpi_piplus->Fill(selmu_tpc_pullpi[0]);
             tpcpullp_piplus->Fill(selmu_tpc_pullp[0]);
-            tpcpulle_piplus->Fill(selmu_tpc_pulle[0]);
+            tpcpulle_piplus->Fill(selmu_tpc_pullele[0]);
             fgd1EbyL_piplus->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_piplus->Fill(selmu_fgd2_EbyL);
             nsmrds_piplus->Fill(selmu_nsmrds);
@@ -358,7 +358,7 @@ void DefaultCustomPlotting::Loop()
             tpcpullmu_proton->Fill(selmu_tpc_pullmu[0]);
             tpcpullpi_proton->Fill(selmu_tpc_pullpi[0]);
             tpcpullp_proton->Fill(selmu_tpc_pullp[0]);
-            tpcpulle_proton->Fill(selmu_tpc_pulle[0]);
+            tpcpulle_proton->Fill(selmu_tpc_pullele[0]);
             fgd1EbyL_proton->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_proton->Fill(selmu_fgd2_EbyL);
             nsmrds_proton->Fill(selmu_nsmrds);
@@ -385,7 +385,7 @@ void DefaultCustomPlotting::Loop()
             tpcpullmu_positron->Fill(selmu_tpc_pullmu[0]);
             tpcpullpi_positron->Fill(selmu_tpc_pullpi[0]);
             tpcpullp_positron->Fill(selmu_tpc_pullp[0]);
-            tpcpulle_positron->Fill(selmu_tpc_pulle[0]);
+            tpcpulle_positron->Fill(selmu_tpc_pullele[0]);
             fgd1EbyL_positron->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_positron->Fill(selmu_fgd2_EbyL);
             nsmrds_positron->Fill(selmu_nsmrds);
