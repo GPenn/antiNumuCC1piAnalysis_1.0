@@ -115,25 +115,25 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpclikee_proton = new TH1F("tpclikee_proton", "Proton", 50, 0.0, 1.0);
    TH1F *tpclikee_positron = new TH1F("tpclikee_positron", "Positron", 50, 0.0, 1.0);
    
-   TH1F *tpcpullmu_antimu = new TH1F("tpcpullmu_antimu", "Antimuon;TPC2 muon pull;Entries", 50, -30.0, 70.0);
-   TH1F *tpcpullmu_piplus = new TH1F("tpcpullmu_piplus", "Pi+", 50, -30.0, 70.0);
-   TH1F *tpcpullmu_proton = new TH1F("tpcpullmu_proton", "Proton", 50, -30.0, 70.0);
-   TH1F *tpcpullmu_positron = new TH1F("tpcpullmu_positron", "Positron", 50, -30.0, 70.0);
+   TH1F *tpcpullmu_antimu = new TH1F("tpcpullmu_antimu", "Antimuon;TPC2 muon pull;Entries", 50, -10.0, 40.0);
+   TH1F *tpcpullmu_piplus = new TH1F("tpcpullmu_piplus", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpcpullmu_proton = new TH1F("tpcpullmu_proton", "Proton", 50, -10.0, 40.0);
+   TH1F *tpcpullmu_positron = new TH1F("tpcpullmu_positron", "Positron", 50, -10.0, 40.0);
    
-   TH1F *tpcpullpi_antimu = new TH1F("tpcpullpi_antimu", "Antimuon;TPC2 charged pion pull;Entries", 50, -30.0, 70.0);
-   TH1F *tpcpullpi_piplus = new TH1F("tpcpullpi_piplus", "Pi+", 50, -30.0, 70.0);
-   TH1F *tpcpullpi_proton = new TH1F("tpcpullpi_proton", "Proton", 50, -30.0, 70.0);
-   TH1F *tpcpullpi_positron = new TH1F("tpcpullpi_positron", "Positron", 50, -30.0, 70.0);
+   TH1F *tpcpullpi_antimu = new TH1F("tpcpullpi_antimu", "Antimuon;TPC2 charged pion pull;Entries", 50, -10.0, 40.0);
+   TH1F *tpcpullpi_piplus = new TH1F("tpcpullpi_piplus", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpcpullpi_proton = new TH1F("tpcpullpi_proton", "Proton", 50, -10.0, 40.0);
+   TH1F *tpcpullpi_positron = new TH1F("tpcpullpi_positron", "Positron", 50, -10.0, 40.0);
    
-   TH1F *tpcpullp_antimu = new TH1F("tpcpullp_antimu", "Antimuon;TPC2 proton pull;Entries", 50, -50.0, 30.0);
-   TH1F *tpcpullp_piplus = new TH1F("tpcpullp_piplus", "Pi+", 50, -50.0, 30.0);
-   TH1F *tpcpullp_proton = new TH1F("tpcpullp_proton", "Proton", 50, -50.0, 30.0);
-   TH1F *tpcpullp_positron = new TH1F("tpcpullp_positron", "Positron", 50, -50.0, 30.0);
+   TH1F *tpcpullp_antimu = new TH1F("tpcpullp_antimu", "Antimuon;TPC2 proton pull;Entries", 50, -40.0, 20.0);
+   TH1F *tpcpullp_piplus = new TH1F("tpcpullp_piplus", "Pi+", 50, -40.0, 20.0);
+   TH1F *tpcpullp_proton = new TH1F("tpcpullp_proton", "Proton", 50, -40.0, 20.0);
+   TH1F *tpcpullp_positron = new TH1F("tpcpullp_positron", "Positron", 50, -40.0, 20.0);
    
-   TH1F *tpcpulle_antimu = new TH1F("tpcpulle_antimu", "Antimuon;TPC2 electron pull;Entries", 50, -30.0, 70.0);
-   TH1F *tpcpulle_piplus = new TH1F("tpcpulle_piplus", "Pi+", 50, -30.0, 70.0);
-   TH1F *tpcpulle_proton = new TH1F("tpcpulle_proton", "Proton", 50, -30.0, 70.0);
-   TH1F *tpcpulle_positron = new TH1F("tpcpulle_positron", "Positron", 50, 30.0, 70.0);
+   TH1F *tpcpulle_antimu = new TH1F("tpcpulle_antimu", "Antimuon;TPC2 electron pull;Entries", 50, -20.0, 30.0);
+   TH1F *tpcpulle_piplus = new TH1F("tpcpulle_piplus", "Pi+", 50, -20.0, 30.0);
+   TH1F *tpcpulle_proton = new TH1F("tpcpulle_proton", "Proton", 50, -20.0, 30.0);
+   TH1F *tpcpulle_positron = new TH1F("tpcpulle_positron", "Positron", 50, -20.0, 30.0);
    
    TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "Antimuon;FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
    TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "Pi+", 50, 0.0, 1.0);
