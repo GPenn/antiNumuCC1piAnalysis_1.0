@@ -26,10 +26,10 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
   //tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
   //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  tmvareader->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                 &bdt_tpc_pull_mu);
-  tmvareader->AddVariable( "tpcpulle := selmu_tpc_pullele",                   &bdt_tpc_pull_e);
-  tmvareader->AddVariable( "tpcpullp := selmu_tpc_pullp",                   &bdt_tpc_pull_p);
-  tmvareader->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                 &bdt_tpc_pull_pi);
+  tmvareader->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                 &bdt_tpc_pullmu);
+  tmvareader->AddVariable( "tpcpulle := selmu_tpc_pullele",                   &bdt_tpc_pulle);
+  tmvareader->AddVariable( "tpcpullp := selmu_tpc_pullp",                   &bdt_tpc_pullp);
+  tmvareader->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                 &bdt_tpc_pullpi);
   tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
   
   //tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
