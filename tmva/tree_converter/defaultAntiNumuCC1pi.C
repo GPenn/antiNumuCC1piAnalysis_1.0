@@ -185,11 +185,6 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
         
-       defout->selmu_tpc_pullmu               = selmu_tpc_pullmu[0];
-       defout->selmu_tpc_pullele              = selmu_tpc_pullele[0];
-       defout->selmu_tpc_pullp                = selmu_tpc_pullp[0];
-       defout->selmu_tpc_pullpi               = selmu_tpc_pullpi[0];
-        
        if (selmu_tpc_pullmu < -10.0)        {defout->selmu_tpc_pullmu = -10.0;}
        else if (selmu_tpc_pullmu > 40.0)    {defout->selmu_tpc_pullmu = 40.0;}
        else                                 {defout->selmu_tpc_pullmu = selmu_tpc_pullmu[0];}
