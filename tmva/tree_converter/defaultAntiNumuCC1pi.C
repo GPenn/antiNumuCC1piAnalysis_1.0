@@ -185,18 +185,18 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
         
-       if (selmu_tpc_pullmu < -10.0)        {defout->selmu_tpc_pullmu = -10.0;}
-       else if (selmu_tpc_pullmu > 40.0)    {defout->selmu_tpc_pullmu = 40.0;}
-       else                                 {defout->selmu_tpc_pullmu = selmu_tpc_pullmu[0];}
-       if (selmu_tpc_pullele < -20.0)       {defout->selmu_tpc_pullele = -20.0;}
-       else if (selmu_tpc_pullele > 30.0)   {defout->selmu_tpc_pullele = 30.0;}
-       else                                 {defout->selmu_tpc_pullele = selmu_tpc_pullele[0];}
-       if (selmu_tpc_pullp < -40.0)         {defout->selmu_tpc_pullp = -40.0;}
-       else if (selmu_tpc_pullp > 20.0)     {defout->selmu_tpc_pullp = 20.0;}
-       else                                 {defout->selmu_tpc_pullp = selmu_tpc_pullp[0];}
-       if (selmu_tpc_pullpi < -10.0)        {defout->selmu_tpc_pullpi = -10.0;}
-       else if (selmu_tpc_pullpi > 40.0)    {defout->selmu_tpc_pullpi = 40.0;}
-       else                                 {defout->selmu_tpc_pullpi = selmu_tpc_pullpi[0];}
+       if (selmu_tpc_pullmu[0] < -10.0)         {defout->selmu_tpc_pullmu = -10.0;}
+       else if (selmu_tpc_pullmu[0] > 40.0)     {defout->selmu_tpc_pullmu = 40.0;}
+       else                                     {defout->selmu_tpc_pullmu = selmu_tpc_pullmu[0];}
+       if (selmu_tpc_pullele[0] < -20.0)        {defout->selmu_tpc_pullele = -20.0;}
+       else if (selmu_tpc_pullele[0] > 30.0)    {defout->selmu_tpc_pullele = 30.0;}
+       else                                     {defout->selmu_tpc_pullele = selmu_tpc_pullele[0];}
+       if (selmu_tpc_pullp[0] < -40.0)          {defout->selmu_tpc_pullp = -40.0;}
+       else if (selmu_tpc_pullp[0] > 20.0)      {defout->selmu_tpc_pullp = 20.0;}
+       else                                     {defout->selmu_tpc_pullp = selmu_tpc_pullp[0];}
+       if (selmu_tpc_pullpi[0] < -10.0)         {defout->selmu_tpc_pullpi = -10.0;}
+       else if (selmu_tpc_pullpi[0] > 40.0)     {defout->selmu_tpc_pullpi = 40.0;}
+       else                                     {defout->selmu_tpc_pullpi = selmu_tpc_pullpi[0];}
         
        if (selmu_tpc_dedx[0] > 0.0 && selmu_tpc_dedx[0] < 2000.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
        else                                                          {defout->selmu_tpc2_dedx = -100.0;}
