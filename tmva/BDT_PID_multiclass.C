@@ -196,8 +196,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // Kinematic variables
    factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
    factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
-   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
-   //factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                "ECal E/p",          "", 'F' );
+   //factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
+   factory->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                "ECal E/p",          "", 'F' );
    
    // Muon candidate FGD variables
    //factory->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               "FGD1 muon pull",         "", 'F' );
@@ -552,7 +552,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedparams", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tpcpulls", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tpcdedx", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecallowlevel", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecallowlevel", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecalEbyP", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
