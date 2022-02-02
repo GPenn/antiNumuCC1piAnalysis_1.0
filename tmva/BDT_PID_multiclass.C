@@ -243,7 +243,6 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // Tuned list:
    factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
    factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
-   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
    factory->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      "FGD1 E/L",               "", 'F' );
    factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
    factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC2 mu-like",    "", 'F' );
@@ -251,6 +250,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC2 p-like",     "", 'F' );
    factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC2 pi-like",    "", 'F' );
    factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
+   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
    factory->AddVariable( "ecalEbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
    factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
    factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
