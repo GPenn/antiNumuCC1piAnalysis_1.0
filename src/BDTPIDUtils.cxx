@@ -110,6 +110,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_mom = -1.0;
   bdt_theta = -1.0;
   bdt_ecal_EMenergy = -100.0;
+  bdt_ecal_EbyP = -1.0;
   
   bdt_fgd1pullmu = -30.0;
   bdt_fgd1pullpi = -30.0;
