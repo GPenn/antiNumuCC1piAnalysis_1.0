@@ -10,7 +10,8 @@ BDTPIDmanager::BDTPIDmanager() {
   // Register BDT input variables
   tmvareader->AddVariable( "mom := selmu_mom",                               &bdt_mom);
   tmvareader->AddVariable( "theta := selmu_theta",                           &bdt_theta);
-  tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
+  //tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
+  tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",        &bdt_ecal_EbyP);
   
   //tmvareader->AddVariable( "fgd1pullmu := selmu_fgd1_pull_mu",               &bdt_fgd1pullmu);
   //tmvareader->AddVariable( "fgd1pullpi := selmu_fgd1_pull_pi",               &bdt_fgd1pullpi);
@@ -94,7 +95,8 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_tpclikelihoods", "parameters/weights/BDT_PID_multiclass_BDTG_tpclikelihoods.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tpcpulls", "parameters/weights/BDT_PID_multiclass_BDTG_tpcpulls.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tpcdedx", "parameters/weights/BDT_PID_multiclass_BDTG_tpcdedx.weights.xml" );
-  tmvareader->BookMVA( "BDTG_ecallowlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecallowlevel.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_ecallowlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecallowlevel.weights.xml" );
+  tmvareader->BookMVA( "BDTG_ecalEbyP", "parameters/weights/BDT_PID_multiclass_BDTG_ecalEbyP.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
