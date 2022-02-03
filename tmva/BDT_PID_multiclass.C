@@ -242,8 +242,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    
    // Tuned list:
    factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
-   //factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
-   factory->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      "FGD1 E/L",               "", 'F' );
+   factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
+   //factory->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      "FGD1 E/L",               "", 'F' );
    factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
    factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC2 mu-like",    "", 'F' );
    factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC2 e-like",     "", 'F' );
@@ -574,7 +574,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecalEbyP", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedparams2", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_minus_theta", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_minus_fgd1EbyL", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
