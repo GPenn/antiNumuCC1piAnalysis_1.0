@@ -115,7 +115,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_ecallowlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecallowlevel.weights.xml" );
   //tmvareader->BookMVA( "BDTG_ecalEbyP", "parameters/weights/BDT_PID_multiclass_BDTG_ecalEbyP.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_minus_fgd1EbyL", "parameters/weights/BDT_PID_multiclass_BDTG_minus_tpclikemu.weights.xml" );
+  tmvareader->BookMVA( "BDTG_minus_tpclikemu", "parameters/weights/BDT_PID_multiclass_BDTG_minus_tpclikemu.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
