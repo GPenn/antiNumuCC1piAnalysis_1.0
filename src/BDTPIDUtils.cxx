@@ -53,8 +53,8 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
   tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
   tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
-  //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
+  tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
+  //tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
   tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
   tmvareader->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 &bdt_ecal_EbyL);
   tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
@@ -115,7 +115,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_ecallowlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecallowlevel.weights.xml" );
   //tmvareader->BookMVA( "BDTG_ecalEbyP", "parameters/weights/BDT_PID_multiclass_BDTG_ecalEbyP.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_minus_tpclikepi", "parameters/weights/BDT_PID_multiclass_BDTG_minus_tpclikepi.weights.xml" );
+  tmvareader->BookMVA( "BDTG_minus_tpclikepi", "parameters/weights/BDT_PID_multiclass_BDTG_minus_tpc3dedx.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
