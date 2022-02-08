@@ -135,10 +135,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc2pulle_proton = new TH1F("tpc2pulle_proton", "Proton", 50, -20.0, 30.0);
    TH1F *tpc2pulle_positron = new TH1F("tpc2pulle_positron", "Positron", 50, -20.0, 30.0);
    
-   TH1F *tpc3pullmu_antimu = new TH1F("tpc3pullmu_antimu", "Antimuon;TPC3 muon pull;Entries", 50, -10.0, 40.0);
-   TH1F *tpc3pullmu_piplus = new TH1F("tpc3pullmu_piplus", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc3pullmu_proton = new TH1F("tpc3pullmu_proton", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc3pullmu_positron = new TH1F("tpc3pullmu_positron", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc3pullmu_antimu = new TH1F("tpc3pullmu_antimu", "Antimuon;TPC3 muon pull;Entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_piplus = new TH1F("tpc3pullmu_piplus", "Pi+", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_proton = new TH1F("tpc3pullmu_proton", "Proton", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_positron = new TH1F("tpc3pullmu_positron", "Positron", 50, -10.0, 30.0);
    
    TH1F *tpc3pullpi_antimu = new TH1F("tpc3pullpi_antimu", "Antimuon;TPC3 charged pion pull;Entries", 50, -10.0, 40.0);
    TH1F *tpc3pullpi_piplus = new TH1F("tpc3pullpi_piplus", "Pi+", 50, -10.0, 40.0);
@@ -150,10 +150,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3pullp_proton = new TH1F("tpc3pullp_proton", "Proton", 50, -40.0, 20.0);
    TH1F *tpc3pullp_positron = new TH1F("tpc3pullp_positron", "Positron", 50, -40.0, 20.0);
    
-   TH1F *tpc3pulle_antimu = new TH1F("tpc3pulle_antimu", "Antimuon;TPC3 electron pull;Entries", 50, -20.0, 30.0);
-   TH1F *tpc3pulle_piplus = new TH1F("tpc3pulle_piplus", "Pi+", 50, -20.0, 30.0);
-   TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "Proton", 50, -20.0, 30.0);
-   TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "Positron", 50, -20.0, 30.0);
+   TH1F *tpc3pulle_antimu = new TH1F("tpc3pulle_antimu", "Antimuon;TPC3 electron pull;Entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_piplus = new TH1F("tpc3pulle_piplus", "Pi+", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "Proton", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "Positron", 50, -10.0, 20.0);
    
    TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "Antimuon;FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
    TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "Pi+", 50, 0.0, 1.0);
