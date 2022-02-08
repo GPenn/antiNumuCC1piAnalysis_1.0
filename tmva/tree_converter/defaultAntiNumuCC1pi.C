@@ -185,18 +185,31 @@ void defaultAntiNumuCC1pi::Loop()
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
        defout->selmu_tpc_like_pi              = selmu_tpc_like_pi;
         
-       if (selmu_tpc_pullmu[0] < -10.0)         {defout->selmu_tpc_pullmu = -10.0;}
-       else if (selmu_tpc_pullmu[0] > 40.0)     {defout->selmu_tpc_pullmu = 40.0;}
-       else                                     {defout->selmu_tpc_pullmu = selmu_tpc_pullmu[0];}
-       if (selmu_tpc_pullele[0] < -20.0)        {defout->selmu_tpc_pullele = -20.0;}
-       else if (selmu_tpc_pullele[0] > 30.0)    {defout->selmu_tpc_pullele = 30.0;}
-       else                                     {defout->selmu_tpc_pullele = selmu_tpc_pullele[0];}
-       if (selmu_tpc_pullp[0] < -40.0)          {defout->selmu_tpc_pullp = -40.0;}
-       else if (selmu_tpc_pullp[0] > 20.0)      {defout->selmu_tpc_pullp = 20.0;}
-       else                                     {defout->selmu_tpc_pullp = selmu_tpc_pullp[0];}
-       if (selmu_tpc_pullpi[0] < -10.0)         {defout->selmu_tpc_pullpi = -10.0;}
-       else if (selmu_tpc_pullpi[0] > 40.0)     {defout->selmu_tpc_pullpi = 40.0;}
-       else                                     {defout->selmu_tpc_pullpi = selmu_tpc_pullpi[0];}
+       if (selmu_tpc_pullmu[0] < -10.0)         {defout->selmu_tpc2_pullmu = -10.0;}
+       else if (selmu_tpc_pullmu[0] > 40.0)     {defout->selmu_tpc2_pullmu = 40.0;}
+       else                                     {defout->selmu_tpc2_pullmu = selmu_tpc_pullmu[0];}
+       if (selmu_tpc_pullele[0] < -20.0)        {defout->selmu_tpc2_pullele = -20.0;}
+       else if (selmu_tpc_pullele[0] > 30.0)    {defout->selmu_tpc2_pullele = 30.0;}
+       else                                     {defout->selmu_tpc2_pullele = selmu_tpc_pullele[0];}
+       if (selmu_tpc_pullp[0] < -40.0)          {defout->selmu_tpc2_pullp = -40.0;}
+       else if (selmu_tpc_pullp[0] > 20.0)      {defout->selmu_tpc2_pullp = 20.0;}
+       else                                     {defout->selmu_tpc2_pullp = selmu_tpc_pullp[0];}
+       if (selmu_tpc_pullpi[0] < -10.0)         {defout->selmu_tpc2_pullpi = -10.0;}
+       else if (selmu_tpc_pullpi[0] > 40.0)     {defout->selmu_tpc2_pullpi = 40.0;}
+       else                                     {defout->selmu_tpc2_pullpi = selmu_tpc_pullpi[0];}
+        
+       if (selmu_tpc_pullmu[0] < -10.0)         {defout->selmu_tpc3_pullmu = -10.0;}
+       else if (selmu_tpc_pullmu[0] > 40.0)     {defout->selmu_tpc3_pullmu = 30.0;}
+       else                                     {defout->selmu_tpc3_pullmu = selmu_tpc_pullmu[0];}
+       if (selmu_tpc_pullele[0] < -20.0)        {defout->selmu_tpc3_pullele = -10.0;}
+       else if (selmu_tpc_pullele[0] > 30.0)    {defout->selmu_tpc3_pullele = 30.0;}
+       else                                     {defout->selmu_tpc3_pullele = selmu_tpc_pullele[0];}
+       if (selmu_tpc_pullp[0] < -40.0)          {defout->selmu_tpc3_pullp = -40.0;}
+       else if (selmu_tpc_pullp[0] > 20.0)      {defout->selmu_tpc3_pullp = 20.0;}
+       else                                     {defout->selmu_tpc3_pullp = selmu_tpc_pullp[0];}
+       if (selmu_tpc_pullpi[0] < -10.0)         {defout->selmu_tpc3_pullpi = -10.0;}
+       else if (selmu_tpc_pullpi[0] > 40.0)     {defout->selmu_tpc3_pullpi = 20.0;}
+       else                                     {defout->selmu_tpc3_pullpi = selmu_tpc_pullpi[0];}
         
        if (selmu_tpc_dedx[0] > 0.0 && selmu_tpc_dedx[0] < 2000.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
        else                                                          {defout->selmu_tpc2_dedx = -100.0;}
@@ -399,11 +412,15 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
   foutb_selmu_tpc_like_p  	          = fDefaultOut->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p  	         , "selmu_tpc_like_p/F");
   foutb_selmu_tpc_like_pi  	       = fDefaultOut->Branch("selmu_tpc_like_pi"              , &selmu_tpc_like_pi  	      , "selmu_tpc_like_pi/F");
-  foutb_selmu_tpc_pullmu  	       = fDefaultOut->Branch("selmu_tpc_pullmu"              , &selmu_tpc_pullmu  	      , "selmu_tpc_pullmu/F");
-  foutb_selmu_tpc_pullele  	       = fDefaultOut->Branch("selmu_tpc_pullele"              , &selmu_tpc_pullele  	      , "selmu_tpc_pullele/F");
-  foutb_selmu_tpc_pullp  	       = fDefaultOut->Branch("selmu_tpc_pullp"               , &selmu_tpc_pullp  	      , "selmu_tpc_pullp/F");
-  foutb_selmu_tpc_pullpi  	       = fDefaultOut->Branch("selmu_tpc_pullpi"              , &selmu_tpc_pullpi  	      , "selmu_tpc_pullpi/F");
+  foutb_selmu_tpc2_pullmu  	       = fDefaultOut->Branch("selmu_tpc2_pullmu"              , &selmu_tpc2_pullmu  	      , "selmu2_tpc2_pullmu/F");
+  foutb_selmu_tpc2_pullele  	       = fDefaultOut->Branch("selmu_tpc2_pullele"              , &selmu_tpc2_pullele  	      , "selmu_tpc2_pullele/F");
+  foutb_selmu_tpc2_pullp  	       = fDefaultOut->Branch("selmu_tpc2_pullp"               , &selmu_tpc2_pullp  	      , "selmu_tpc2_pullp/F");
+  foutb_selmu_tpc2_pullpi  	       = fDefaultOut->Branch("selmu_tpc2_pullpi"              , &selmu_tpc2_pullpi  	      , "selmu_tpc2_pullpi/F");
   foutb_selmu_tpc2_dedx 	       = fDefaultOut->Branch("selmu_tpc2_dedx"                , &selmu_tpc2_dedx  	          , "selmu_tpc2_dedx/F");
+  foutb_selmu_tpc3_pullmu  	       = fDefaultOut->Branch("selmu_tpc3_pullmu"              , &selmu_tpc3_pullmu  	      , "selmu2_tpc3_pullmu/F");
+  foutb_selmu_tpc3_pullele  	       = fDefaultOut->Branch("selmu_tpc3_pullele"              , &selmu_tpc3_pullele  	      , "selmu_tpc3_pullele/F");
+  foutb_selmu_tpc3_pullp  	       = fDefaultOut->Branch("selmu_tpc3_pullp"               , &selmu_tpc3_pullp  	      , "selmu_tpc3_pullp/F");
+  foutb_selmu_tpc3_pullpi  	       = fDefaultOut->Branch("selmu_tpc3_pullpi"              , &selmu_tpc3_pullpi  	      , "selmu_tpc3_pullpi/F");
   foutb_selmu_tpc3_dedx 	       = fDefaultOut->Branch("selmu_tpc3_dedx"                , &selmu_tpc3_dedx  	          , "selmu_tpc3_dedx/F");
    
   foutb_selmu_has_fgd1seg 	          = fDefaultOut->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg 	         , "selmu_has_fgd1seg/I");
