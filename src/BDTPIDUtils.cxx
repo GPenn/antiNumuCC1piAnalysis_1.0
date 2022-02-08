@@ -54,14 +54,18 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
   tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
   tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
+  //tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
+  tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
+  tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
+  tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
+  tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
   tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
   tmvareader->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 &bdt_ecal_EbyL);
   tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
   tmvareader->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
   tmvareader->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
   tmvareader->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
-  //tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
+  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
   // Book the BDTs
   
@@ -115,7 +119,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_ecallowlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecallowlevel.weights.xml" );
   //tmvareader->BookMVA( "BDTG_ecalEbyP", "parameters/weights/BDT_PID_multiclass_BDTG_ecalEbyP.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_minus_nsmrds", "parameters/weights/BDT_PID_multiclass_BDTG_minus_nsmrds.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tpc3pulls", "parameters/weights/BDT_PID_multiclass_BDTG_ptc3pulls.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
@@ -145,11 +149,16 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_tpc_like_e = -0.5;
   bdt_tpc_like_p = -0.5;
   bdt_tpc_like_pi = -0.5;
-  bdt_tpc_pullmu = -10.0;
-  bdt_tpc_pullpi = -10.0;
-  bdt_tpc_pullp = -40.0;
-  bdt_tpc_pulle = -20.0;
+  bdt_tpc2_pullmu = -10.0;
+  bdt_tpc2_pullpi = -10.0;
+  bdt_tpc2_pullp = -40.0;
+  bdt_tpc2_pulle = -20.0;
   bdt_tpc2_dedx = -100.0;
+  
+  bdt_tpc3_pullmu = -10.0;
+  bdt_tpc3_pullpi = -10.0;
+  bdt_tpc3_pullp = -40.0;
+  bdt_tpc3_pulle = -10.0;
   bdt_tpc3_dedx = -100.0;
   
   bdt_ecal_EbyP = -1.0;
@@ -184,15 +193,19 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   if (TPC2Segment)
   {
     bdt_tpc2_dedx = TPC2Segment->dEdxMeas;
-    bdt_tpc_pullmu = TPC2Segment->Pullmu;
-    bdt_tpc_pullpi = TPC2Segment->Pullpi;
-    bdt_tpc_pullp = TPC2Segment->Pullp;
-    bdt_tpc_pulle = TPC2Segment->Pullele;
+    bdt_tpc2_pullmu = TPC2Segment->Pullmu;
+    bdt_tpc2_pullpi = TPC2Segment->Pullpi;
+    bdt_tpc2_pullp = TPC2Segment->Pullp;
+    bdt_tpc2_pulle = TPC2Segment->Pullele;
   }
   AnaTPCParticle* TPC3Segment = static_cast<AnaTPCParticle*>(anaUtils::GetSegmentInDet( *track, static_cast<SubDetId::SubDetEnum >(4)));
   if (TPC3Segment)
   {
     bdt_tpc3_dedx = TPC3Segment->dEdxMeas;
+    bdt_tpc3_pullmu = TPC3Segment->Pullmu;
+    bdt_tpc3_pullpi = TPC3Segment->Pullpi;
+    bdt_tpc3_pullp = TPC3Segment->Pullp;
+    bdt_tpc3_pulle = TPC3Segment->Pullele;
   }
   // Fill FGD variables:
   //std::cout << "DEBUG: Filling BDT FGD1 variables..." << std::endl;
