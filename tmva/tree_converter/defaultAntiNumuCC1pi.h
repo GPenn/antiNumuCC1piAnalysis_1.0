@@ -69,11 +69,15 @@ public :
   Float_t         selmu_tpc_like_e;
   Float_t         selmu_tpc_like_p;
   Float_t         selmu_tpc_like_pi;
-  Float_t         selmu_tpc_pullmu;
-  Float_t         selmu_tpc_pullele;
-  Float_t         selmu_tpc_pullp;
-  Float_t         selmu_tpc_pullpi;
+  Float_t         selmu_tpc2_pullmu;
+  Float_t         selmu_tpc2_pullele;
+  Float_t         selmu_tpc2_pullp;
+  Float_t         selmu_tpc2_pullpi;
   Float_t         selmu_tpc2_dedx;
+  Float_t         selmu_tpc3_pullmu;
+  Float_t         selmu_tpc3_pullele;
+  Float_t         selmu_tpc3_pullp;
+  Float_t         selmu_tpc3_pullpi;
   Float_t         selmu_tpc3_dedx;
   
   Int_t           selmu_has_fgd1seg;
@@ -168,11 +172,15 @@ private:
   TBranch        *foutb_selmu_tpc_like_e;
   TBranch        *foutb_selmu_tpc_like_p;
   TBranch        *foutb_selmu_tpc_like_pi;
-  TBranch        *foutb_selmu_tpc_pullmu;
-  TBranch        *foutb_selmu_tpc_pullele;
-  TBranch        *foutb_selmu_tpc_pullp;
-  TBranch        *foutb_selmu_tpc_pullpi;
+  TBranch        *foutb_selmu_tpc2_pullmu;
+  TBranch        *foutb_selmu_tpc2_pullele;
+  TBranch        *foutb_selmu_tpc2_pullp;
+  TBranch        *foutb_selmu_tpc2_pullpi;
   TBranch        *foutb_selmu_tpc2_dedx;
+  TBranch        *foutb_selmu_tpc3_pullmu;
+  TBranch        *foutb_selmu_tpc3_pullele;
+  TBranch        *foutb_selmu_tpc3_pullp;
+  TBranch        *foutb_selmu_tpc3_pullpi;
   TBranch        *foutb_selmu_tpc3_dedx;
   
   TBranch        *foutb_selmu_has_fgd1seg;
