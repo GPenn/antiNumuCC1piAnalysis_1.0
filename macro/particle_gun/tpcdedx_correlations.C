@@ -14,8 +14,8 @@
   TCanvas tpc3_dedx_vs_recomom;
   draw.Draw(default,"selmu_tpc_dedx[1]:selmu_mom[1]",50,0,2000,50,0,2000, "all", "(accum_level[][1]>5)", "colz");
   
-  draw.SetTitleX("TPC3 reconstructed momentum (MeV/c)");
-  draw.SetTitleY("TPC2 dE/dx");
+  draw.SetTitleX("TPC2 reconstructed momentum (MeV/c)");
+  draw.SetTitleY("TPC3 dE/dx");
   TCanvas tpc3_dedx_vs_tpc2_recomom;
   draw.Draw(default,"selmu_tpc_dedx[1]:selmu_mom[0]",50,0,2000,50,0,2000, "all", "(accum_level[][1]>5)", "colz");
   
