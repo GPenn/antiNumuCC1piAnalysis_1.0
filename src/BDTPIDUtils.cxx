@@ -49,13 +49,13 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "mom := selmu_mom",                               &bdt_mom);
   tmvareader->AddVariable( "theta := selmu_theta",                           &bdt_theta);
   tmvareader->AddVariable("fgd1EbyL := selmu_fgd1_EbyL",                      &bdt_fgd1_EbyL);
-  tmvareader->AddVariable("fgd2EbyL := selmu_fgd2_EbyL",                      &bdt_fgd2_EbyL);
+  //tmvareader->AddVariable("fgd2EbyL := selmu_fgd2_EbyL",                      &bdt_fgd2_EbyL);
   tmvareader->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
   tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
   tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
   tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  //tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
-  tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
+  tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
+  //tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
   //tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
   //tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
   //tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
@@ -119,7 +119,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_ecallowlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecallowlevel.weights.xml" );
   //tmvareader->BookMVA( "BDTG_ecalEbyP", "parameters/weights/BDT_PID_multiclass_BDTG_ecalEbyP.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_tpc3pullmu", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3pullmu.weights.xml" );
+  tmvareader->BookMVA( "BDTG_minus_fgd2EbyL", "parameters/weights/BDT_PID_multiclass_BDTG_minus_fgd2EbyL.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
