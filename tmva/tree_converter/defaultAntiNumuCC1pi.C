@@ -180,6 +180,8 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_ecal_mippion[0] < -100.0) {defout->selmu_ecal_mippion = -100.0;}
        else                                {defout->selmu_ecal_mippion = selmu_ecal_mippion[0];}
 
+       defout->selmu_ntpcs                    = selmu_ntpcs;
+        
        defout->selmu_tpc_like_mu              = selmu_tpc_like_mu;
        defout->selmu_tpc_like_e               = selmu_tpc_like_e;
        defout->selmu_tpc_like_p               = selmu_tpc_like_p;
@@ -408,6 +410,7 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_ecal_emhip             = fDefaultOut->Branch("selmu_ecal_emhip"               , &selmu_ecal_emhip            , "selmu_ecal_emhip/F");
   foutb_selmu_ecal_mippion           = fDefaultOut->Branch("selmu_ecal_mippion"             , &selmu_ecal_mippion          , "selmu_ecal_mippion/F");
    
+  foutb_selmu_ntpcs      	       = fDefaultOut->Branch("selmu_ntpcs"                    , &selmu_ntpcs  	              , "selmu_ntpcs/I");
   foutb_selmu_tpc_like_mu  	       = fDefaultOut->Branch("selmu_tpc_like_mu"              , &selmu_tpc_like_mu  	      , "selmu_tpc_like_mu/F");
   foutb_selmu_tpc_like_e  	          = fDefaultOut->Branch("selmu_tpc_like_e"               , &selmu_tpc_like_e  	         , "selmu_tpc_like_e/F");
   foutb_selmu_tpc_like_p  	          = fDefaultOut->Branch("selmu_tpc_like_p"               , &selmu_tpc_like_p  	         , "selmu_tpc_like_p/F");
