@@ -65,7 +65,7 @@ public :
   Float_t         selmu_ecal_emhip;
   Float_t         selmu_ecal_mippion;
   
-  Float_t         selmu_ntpcs;
+  Int_t           selmu_ntpcs;
   Float_t         selmu_tpc_like_mu;
   Float_t         selmu_tpc_like_e;
   Float_t         selmu_tpc_like_p;
