@@ -65,6 +65,7 @@ public :
   Float_t         selmu_ecal_emhip;
   Float_t         selmu_ecal_mippion;
   
+  Float_t         selmu_ntpcs;
   Float_t         selmu_tpc_like_mu;
   Float_t         selmu_tpc_like_e;
   Float_t         selmu_tpc_like_p;
@@ -168,6 +169,7 @@ private:
   TBranch        *foutb_selmu_ecal_emhip;
   TBranch        *foutb_selmu_ecal_mippion;
   
+  TBranch        *foutb_selmu_ntpcs;
   TBranch        *foutb_selmu_tpc_like_mu;
   TBranch        *foutb_selmu_tpc_like_e;
   TBranch        *foutb_selmu_tpc_like_p;
