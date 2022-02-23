@@ -43,8 +43,11 @@ void DefaultCustomPlotting::Loop()
    std::time_t time_start = std::time(0);
    
    Int_t counter_all_accum8 = 0, counter_all_accum7 = 0;
+   Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0;
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    
+   
+   Int_t recomom_nbins = 25;
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -61,6 +64,26 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][1] > 8){
          
          counter_all_accum8++;
+         
+         if (topology == 0)
+         {
+            counter_cc0pi++;
+         }
+         
+         if (topology == 1)
+         {
+            counter_cc1pi++;
+         }
+         
+         if (topology == 2)
+         {
+            counter_ccother++;
+         }
+         
+         if (topology == 7)
+         {
+            counter_bkg++;
+         }
          
          if (particle == -13)
          {
@@ -123,19 +146,27 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*counter_selmu_antimu/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "True CC0pi: " << counter_cc0pi << " (" << 100*(float)counter_cc0pi/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*counter_selmu_mu/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "True CC1pi: " << counter_cc1pi << " (" << 100*(float)counter_cc1pi/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*counter_selmu_piplus/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "True CC-Other: " << counter_ccother << " (" << 100*(float)counter_ccother/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*counter_selmu_piminus/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "True BKG: " << counter_bkg << " (" << 100*(float)counter_bkg/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*counter_selmu_proton/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*(float)counter_selmu_antimu/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*counter_selmu_positron/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*(float)counter_selmu_mu/counter_all_accum8 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*(float)counter_selmu_piplus/counter_all_accum8 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*(float)counter_selmu_piminus/counter_all_accum8 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*(float)counter_selmu_proton/counter_all_accum8 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*(float)counter_selmu_positron/counter_all_accum8 << "\%)" << std::endl;
       
-   std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*counter_selmu_electron/counter_all_accum8 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*(float)counter_selmu_electron/counter_all_accum8 << "\%)" << std::endl;
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
