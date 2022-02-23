@@ -43,7 +43,7 @@ void DefaultCustomPlotting::Loop()
    std::time_t time_start = std::time(0);
    
    Int_t counter_all_accum8 = 0, counter_all_accum7 = 0;
-   Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0;
+   Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    
    
    Long64_t nbytes = 0, nb = 0;
@@ -92,6 +92,11 @@ void DefaultCustomPlotting::Loop()
             counter_selmu_positron++;
          }
          
+         if (particle == 11)
+         {
+            counter_selmu_electron++;
+         }
+         
       }
       
       
@@ -130,6 +135,8 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*counter_selmu_positron/counter_all_accum8 << "\%)" << std::endl;
       
+   std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*counter_selmu_electron/counter_all_accum8 << "\%)" << std::endl;
+   
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
    defout->Write();
