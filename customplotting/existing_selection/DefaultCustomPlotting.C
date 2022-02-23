@@ -118,17 +118,17 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*counter_selmu_antimu/counter_all_accum8 << "\%)" std::endl;
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*counter_selmu_antimu/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*counter_selmu_mu/counter_all_accum8 << "\%)" std::endl;
+   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*counter_selmu_mu/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*counter_selmu_piplus/counter_all_accum8 << "\%)" std::endl;
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*counter_selmu_piplus/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*counter_selmu_piminus/counter_all_accum8 << "\%)" std::endl;
+   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*counter_selmu_piminus/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*counter_selmu_proton/counter_all_accum8 << "\%)" std::endl;
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*counter_selmu_proton/counter_all_accum8 << "\%)" << std::endl;
    
-   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*counter_selmu_positron/counter_all_accum8 << "\%)" std::endl;
+   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*counter_selmu_positron/counter_all_accum8 << "\%)" << std::endl;
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
