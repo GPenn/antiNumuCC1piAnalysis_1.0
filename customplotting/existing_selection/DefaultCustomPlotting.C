@@ -47,7 +47,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    
    
-   Int_t recomom_nbins = 25;
+   Int_t recomom_nbins = 15;
    
    TH1F *recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 0.0, 5000.0);
    TH1F *recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
@@ -194,7 +194,7 @@ void DefaultCustomPlotting::Loop()
       Float_t purity = (float)(recomom_antimu->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
       graph_selmu_antimu_purity->SetPoint(bin, recomom_all->GetBinCenter(bin), purity);
    }
-   graph_selmu_antimu_purity->Draw("AC");
+   graph_selmu_antimu_purity->Draw("AL");
    canvas_selmu_antimu_purity->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
