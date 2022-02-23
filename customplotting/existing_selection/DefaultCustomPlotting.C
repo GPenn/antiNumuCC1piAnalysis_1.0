@@ -49,6 +49,11 @@ void DefaultCustomPlotting::Loop()
    
    Int_t recomom_nbins = 25;
    
+   TH1F *recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -64,6 +69,7 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][1] > 8){
          
          counter_all_accum8++;
+         recomom_all->Fill(selmu_mom[0]);
          
          if (topology == 0)
          {
@@ -93,6 +99,7 @@ void DefaultCustomPlotting::Loop()
          if (particle == -13)
          {
             counter_selmu_antimu++;
+            recomom_antimu->Fill(selmu_mom[0]);
          }
          
          if (particle == 13)
@@ -103,6 +110,7 @@ void DefaultCustomPlotting::Loop()
          if (particle == 211)
          {
             counter_selmu_piplus++;
+            recomom_piplus->Fill(selmu_mom[0]);
          }
          
          if (particle == -211)
@@ -113,6 +121,7 @@ void DefaultCustomPlotting::Loop()
          if (particle == 2212)
          {
             counter_selmu_proton++;
+            recomom_proton->Fill(selmu_mom[0]);
          }
          
          if (particle == -11)
@@ -174,6 +183,19 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*(float)counter_selmu_positron/counter_all_accum8 << "\%)" << std::endl;
       
    std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*(float)counter_selmu_electron/counter_all_accum8 << "\%)" << std::endl;
+   
+   
+   
+   TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
+   TGraph* graph_selmu_antimu_purity = new TGraph();
+   graph_selmu_antimu_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      purity = (float)(recomom_antimu->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
+      graph_selmu_antimu_purity->SetPoint(bin, recomom_all->GetBinCenter(bin), purity);
+   }
+   graph_selmu_antimu_purity->Draw("AC");
+   canvas_selmu_antimu_purity->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
