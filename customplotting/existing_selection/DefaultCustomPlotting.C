@@ -189,10 +189,10 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
    graph_selmu_antimu_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
-   for (Int_t bin=0; bin <= recomom_nbins; bin++)
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_antimu->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
-      graph_selmu_antimu_purity->SetPoint(bin, recomom_all->GetBinCenter(bin), purity);
+      graph_selmu_antimu_purity->SetPoint(bin-1, recomom_all->GetBinCenter(bin), purity);
    }
    graph_selmu_antimu_purity->Draw("AL");
    canvas_selmu_antimu_purity->Write();
