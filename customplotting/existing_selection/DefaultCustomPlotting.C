@@ -42,7 +42,7 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
-   
+   Int_t counter_all_accum9 = 0, counter_all_accum8 = 0;
    
    
    Long64_t nbytes = 0, nb = 0;
@@ -52,11 +52,14 @@ void DefaultCustomPlotting::Loop()
       // Cut on accum_level etc
       if (accum_level[0][0] <= 4) continue; // Set accum_level
       
-      
-      
-      if (accum_level[0][1] > 7){
+      if (accum_level[0][1] > 8){
          
-
+         counter_all_accum8++;
+      }
+      
+      if (accum_level[0][1] > 9){
+         
+         counter_all_accum9++;
       }
       
       
@@ -77,10 +80,11 @@ void DefaultCustomPlotting::Loop()
       }
    }
    
-   std::cout << std::endl << std::endl;
+   std::cout << std::endl;
    
- 
-      
+   std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
+   
+   std::cout << std::endl << "Events above accum_level 9: " << counter_all_accum9 << std::endl;
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
