@@ -43,7 +43,7 @@ void DefaultCustomPlotting::Loop()
    std::time_t time_start = std::time(0);
    
    Int_t counter_all_accum8 = 0, counter_all_accum7 = 0;
-   Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0;
+   Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0, counter_oofv = 0;
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    
    
@@ -80,9 +80,14 @@ void DefaultCustomPlotting::Loop()
             counter_ccother++;
          }
          
-         if (topology == 7)
+         if (topology == 3)
          {
             counter_bkg++;
+         }
+         
+         if (topology == 7)
+         {
+            counter_oofv++;
          }
          
          if (particle == -13)
@@ -153,6 +158,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "True CC-Other: " << counter_ccother << " (" << 100*(float)counter_ccother/counter_all_accum8 << "\%)" << std::endl;
    
    std::cout << std::endl << "True BKG: " << counter_bkg << " (" << 100*(float)counter_bkg/counter_all_accum8 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "True OOFV: " << counter_oofv << " (" << 100*(float)counter_oofv/counter_all_accum8 << "\%)" << std::endl;
    
    std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*(float)counter_selmu_antimu/counter_all_accum8 << "\%)" << std::endl;
    
