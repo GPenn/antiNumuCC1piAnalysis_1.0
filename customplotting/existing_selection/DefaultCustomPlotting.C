@@ -43,6 +43,7 @@ void DefaultCustomPlotting::Loop()
    std::time_t time_start = std::time(0);
    
    Int_t counter_all_accum8 = 0, counter_all_accum7 = 0;
+   Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0;
    
    
    Long64_t nbytes = 0, nb = 0;
@@ -60,6 +61,37 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][1] > 8){
          
          counter_all_accum8++;
+         
+         if (particle == -13)
+         {
+            counter_selmu_antimu++;
+         }
+         
+         if (particle == 13)
+         {
+            counter_selmu_mu++;
+         }
+         
+         if (particle == 211)
+         {
+            counter_selmu_piplus++;
+         }
+         
+         if (particle == -211)
+         {
+            counter_selmu_piminus++;
+         }
+         
+         if (particle == 2212)
+         {
+            counter_selmu_proton++;
+         }
+         
+         if (particle == -11)
+         {
+            counter_selmu_positron++;
+         }
+         
       }
       
       
@@ -85,6 +117,18 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
    
    std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*counter_selmu_antimu/counter_all_accum8 << "\%)" std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*counter_selmu_mu/counter_all_accum8 << "\%)" std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*counter_selmu_piplus/counter_all_accum8 << "\%)" std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*counter_selmu_piminus/counter_all_accum8 << "\%)" std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*counter_selmu_proton/counter_all_accum8 << "\%)" std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*counter_selmu_positron/counter_all_accum8 << "\%)" std::endl;
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
