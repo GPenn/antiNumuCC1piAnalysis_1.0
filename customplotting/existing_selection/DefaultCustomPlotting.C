@@ -191,7 +191,7 @@ void DefaultCustomPlotting::Loop()
    graph_selmu_antimu_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
-      purity = (float)(recomom_antimu->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
+      Float_t purity = (float)(recomom_antimu->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
       graph_selmu_antimu_purity->SetPoint(bin, recomom_all->GetBinCenter(bin), purity);
    }
    graph_selmu_antimu_purity->Draw("AC");
