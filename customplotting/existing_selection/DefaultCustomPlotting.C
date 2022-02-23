@@ -82,9 +82,9 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl;
    
-   std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
+   std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
    
-   std::cout << std::endl << "Events above accum_level 9: " << counter_all_accum9 << std::endl;
+   std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
