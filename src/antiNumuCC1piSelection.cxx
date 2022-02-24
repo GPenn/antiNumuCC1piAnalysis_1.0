@@ -28,9 +28,13 @@ antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* IN
 void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
 
-  // Copy all steps from the antiNumuCCSelection
-  //CopySteps(_antiNumuCCMultiPiSelection);
+  // ======== EXISTING SELECTION ========
   
+  CopySteps(_antiNumuCCMultiPiSelection);
+  
+  
+  // ======== MODIFIED SELECTION ========
+  /*
   // Cuts must be added in the right order
   // last "true" means the step sequence is broken if cut is not passed (default is "false")
   AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
@@ -99,11 +103,12 @@ void antiNumuCC1piSelection::DefineSteps(){
   //AddStep(2, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
   AddStep(2, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
   AddStep(2, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
+  */
 
   // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
-  //SetBranchAlias(1,"CC-1pi",  1);
-  SetBranchAlias(1, "CC-1pi with ECal",  1);
+  SetBranchAlias(1,"CC-1pi",  1);
+  //SetBranchAlias(1, "CC-1pi with ECal",  1);
   SetBranchAlias(2,"CC-Other",2);
   //SetBranchAlias(3, "CC-1pi without ECal",  1,1);
 
