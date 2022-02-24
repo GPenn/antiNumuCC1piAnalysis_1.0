@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Wed Feb 23 11:36:06 2022 by ROOT version 5.34/34
+// Thu Feb 24 15:00:26 2022 by ROOT version 5.34/34
 // from TTree default/20
-// found on file: ../../output/existing_selection/run5/oaAnalysis_prod6Trun5_1.root
+// found on file: ../../output/existing_selection/oaAnalysis_prod6Trun5_1.root
 //////////////////////////////////////////////////////////
 
 #ifndef DefaultCustomPlotting_forupdate_h
@@ -199,70 +199,70 @@ public :
    Float_t         NegPionMom[1][450];   //[NTOYS]
    Float_t         NegPionTheta[1][450];   //[NTOYS]
    Int_t           NNegPion;
-   Float_t         NegPionPidLik[3];   //[NNegPion]
-   Float_t         NegPionMipPidLik[3];   //[NNegPion]
-   Int_t           NegPionTId[3];   //[NNegPion]
-   Int_t           NegPionIndex[3];   //[NNegPion]
-   Int_t           NegPionParentTId[3];   //[NNegPion]
-   Int_t           NegPionGParentTId[3];   //[NNegPion]
-   Float_t         NegPionTrueMom[3];   //[NNegPion]
-   Float_t         NegPionTrueStartDir[3][3];   //[NNegPion]
-   Int_t           NegPionVId[3];   //[NNegPion]
-   Float_t         NegPionDir[3][3];   //[NNegPion]
-   Float_t         NegPionPosStart[3][3];   //[NNegPion]
-   Float_t         NegPionPosEnd[3][3];   //[NNegPion]
+   Float_t         NegPionPidLik[2];   //[NNegPion]
+   Float_t         NegPionMipPidLik[2];   //[NNegPion]
+   Int_t           NegPionTId[2];   //[NNegPion]
+   Int_t           NegPionIndex[2];   //[NNegPion]
+   Int_t           NegPionParentTId[2];   //[NNegPion]
+   Int_t           NegPionGParentTId[2];   //[NNegPion]
+   Float_t         NegPionTrueMom[2];   //[NNegPion]
+   Float_t         NegPionTrueStartDir[2][3];   //[NNegPion]
+   Int_t           NegPionVId[2];   //[NNegPion]
+   Float_t         NegPionDir[2][3];   //[NNegPion]
+   Float_t         NegPionPosStart[2][3];   //[NNegPion]
+   Float_t         NegPionPosEnd[2][3];   //[NNegPion]
    Float_t         PosPionMom[1][465];   //[NTOYS]
    Float_t         PosPionTheta[1][465];   //[NTOYS]
    Int_t           NPosPion;
-   Float_t         PosPionPidLik[3];   //[NPosPion]
-   Float_t         PosPionMipPidLik[3];   //[NPosPion]
-   Int_t           PosPionTId[3];   //[NPosPion]
-   Int_t           PosPionIndex[3];   //[NPosPion]
-   Int_t           PosPionParentTId[3];   //[NPosPion]
-   Int_t           PosPionGParentTId[3];   //[NPosPion]
-   Float_t         PosPionTrueMom[3];   //[NPosPion]
-   Float_t         PosPionTrueStartDir[3][3];   //[NPosPion]
-   Int_t           PosPionVId[3];   //[NPosPion]
-   Float_t         PosPionDir[3][3];   //[NPosPion]
-   Float_t         PosPionPosStart[3][3];   //[NPosPion]
-   Float_t         PosPionPosEnd[3][3];   //[NPosPion]
+   Float_t         PosPionPidLik[2];   //[NPosPion]
+   Float_t         PosPionMipPidLik[2];   //[NPosPion]
+   Int_t           PosPionTId[2];   //[NPosPion]
+   Int_t           PosPionIndex[2];   //[NPosPion]
+   Int_t           PosPionParentTId[2];   //[NPosPion]
+   Int_t           PosPionGParentTId[2];   //[NPosPion]
+   Float_t         PosPionTrueMom[2];   //[NPosPion]
+   Float_t         PosPionTrueStartDir[2][3];   //[NPosPion]
+   Int_t           PosPionVId[2];   //[NPosPion]
+   Float_t         PosPionDir[2][3];   //[NPosPion]
+   Float_t         PosPionPosStart[2][3];   //[NPosPion]
+   Float_t         PosPionPosEnd[2][3];   //[NPosPion]
    Int_t           NPi0El;
-   Float_t         Pi0ElMom[5];   //[NPi0El]
-   Float_t         Pi0ElPull[5];   //[NPi0El]
-   Int_t           Pi0ElTId[5];   //[NPi0El]
-   Int_t           Pi0ElIndex[5];   //[NPi0El]
-   Int_t           Pi0ElParentTId[5];   //[NPi0El]
-   Int_t           Pi0ElGParentTId[5];   //[NPi0El]
-   Int_t           Pi0ElVId[5];   //[NPi0El]
-   Float_t         Pi0ElDir[5][3];   //[NPi0El]
-   Float_t         Pi0ElPosStart[5][3];   //[NPi0El]
-   Float_t         Pi0ElPosEnd[5][3];   //[NPi0El]
+   Float_t         Pi0ElMom[2];   //[NPi0El]
+   Float_t         Pi0ElPull[2];   //[NPi0El]
+   Int_t           Pi0ElTId[2];   //[NPi0El]
+   Int_t           Pi0ElIndex[2];   //[NPi0El]
+   Int_t           Pi0ElParentTId[2];   //[NPi0El]
+   Int_t           Pi0ElGParentTId[2];   //[NPi0El]
+   Int_t           Pi0ElVId[2];   //[NPi0El]
+   Float_t         Pi0ElDir[2][3];   //[NPi0El]
+   Float_t         Pi0ElPosStart[2][3];   //[NPi0El]
+   Float_t         Pi0ElPosEnd[2][3];   //[NPi0El]
    Int_t           NPi0Pos;
-   Float_t         Pi0PosMom[3];   //[NPi0Pos]
-   Float_t         Pi0PosPull[3];   //[NPi0Pos]
-   Int_t           Pi0PosTId[3];   //[NPi0Pos]
-   Int_t           Pi0PosIndex[3];   //[NPi0Pos]
-   Int_t           Pi0PosParentTId[3];   //[NPi0Pos]
-   Int_t           Pi0PosGParentTId[3];   //[NPi0Pos]
-   Int_t           Pi0PosVId[3];   //[NPi0Pos]
-   Float_t         Pi0PosDir[3][3];   //[NPi0Pos]
-   Float_t         Pi0PosPosStart[3][3];   //[NPi0Pos]
-   Float_t         Pi0PosPosEnd[3][3];   //[NPi0Pos]
+   Float_t         Pi0PosMom[2];   //[NPi0Pos]
+   Float_t         Pi0PosPull[2];   //[NPi0Pos]
+   Int_t           Pi0PosTId[2];   //[NPi0Pos]
+   Int_t           Pi0PosIndex[2];   //[NPi0Pos]
+   Int_t           Pi0PosParentTId[2];   //[NPi0Pos]
+   Int_t           Pi0PosGParentTId[2];   //[NPi0Pos]
+   Int_t           Pi0PosVId[2];   //[NPi0Pos]
+   Float_t         Pi0PosDir[2][3];   //[NPi0Pos]
+   Float_t         Pi0PosPosStart[2][3];   //[NPi0Pos]
+   Float_t         Pi0PosPosEnd[2][3];   //[NPi0Pos]
    Int_t           NTPCSec;
-   Float_t         TPCSecMom[8];   //[NTPCSec]
-   Float_t         TPCSecMuPidLik[8];   //[NTPCSec]
-   Float_t         TPCSecPiPidLik[8];   //[NTPCSec]
-   Float_t         TPCSecPrPidLik[8];   //[NTPCSec]
-   Float_t         TPCSecElPidLik[8];   //[NTPCSec]
-   Int_t           TPCSecDetectors[8];   //[NTPCSec]
-   Int_t           TPCSecQ[8];   //[NTPCSec]
-   Int_t           TPCSecTId[8];   //[NTPCSec]
-   Int_t           TPCSecIndex[8];   //[NTPCSec]
-   Int_t           TPCSecParentTId[8];   //[NTPCSec]
-   Int_t           TPCSecGParentTId[8];   //[NTPCSec]
-   Float_t         TPCSecDir[8][3];   //[NTPCSec]
-   Float_t         TPCSecPosStart[8][3];   //[NTPCSec]
-   Float_t         TPCSecPosEnd[8][3];   //[NTPCSec]
+   Float_t         TPCSecMom[6];   //[NTPCSec]
+   Float_t         TPCSecMuPidLik[6];   //[NTPCSec]
+   Float_t         TPCSecPiPidLik[6];   //[NTPCSec]
+   Float_t         TPCSecPrPidLik[6];   //[NTPCSec]
+   Float_t         TPCSecElPidLik[6];   //[NTPCSec]
+   Int_t           TPCSecDetectors[6];   //[NTPCSec]
+   Int_t           TPCSecQ[6];   //[NTPCSec]
+   Int_t           TPCSecTId[6];   //[NTPCSec]
+   Int_t           TPCSecIndex[6];   //[NTPCSec]
+   Int_t           TPCSecParentTId[6];   //[NTPCSec]
+   Int_t           TPCSecGParentTId[6];   //[NTPCSec]
+   Float_t         TPCSecDir[6][3];   //[NTPCSec]
+   Float_t         TPCSecPosStart[6][3];   //[NTPCSec]
+   Float_t         TPCSecPosEnd[6][3];   //[NTPCSec]
    Int_t           NFGDPi;
    Float_t         FGDPiLength[1];   //[NFGDPi]
    Float_t         FGDPiPiPull[1];   //[NFGDPi]
@@ -302,37 +302,37 @@ public :
    Float_t         FGDElPosStart[3][3];   //[NFGDEl]
    Float_t         FGDElPosEnd[3][3];   //[NFGDEl]
    Int_t           NFGDSec;
-   Float_t         FGDSecLength[6];   //[NFGDSec]
-   Float_t         FGDSecPiPull[6];   //[NFGDSec]
-   Float_t         FGDSecAvgTime[6];   //[NFGDSec]
-   Int_t           FGDSecContained[6];   //[NFGDSec]
-   Int_t           FGDSecTId[6];   //[NFGDSec]
-   Int_t           FGDSecIndex[6];   //[NFGDSec]
-   Int_t           FGDSecParentTId[6];   //[NFGDSec]
-   Int_t           FGDSecGParentTId[6];   //[NFGDSec]
-   Float_t         FGDSecTimeIni[6];   //[NFGDSec]
-   Float_t         FGDSecTimeEnd[6];   //[NFGDSec]
-   Float_t         FGDSecDeltaTimeIniSelMu[6];   //[NFGDSec]
-   Float_t         FGDSecDeltaTimeEndSelMu[6];   //[NFGDSec]
-   Float_t         FGDSecCosTheta[6];   //[NFGDSec]
-   Float_t         FGDSecDir[6][3];   //[NFGDSec]
-   Float_t         FGDSecPosStart[6][3];   //[NFGDSec]
-   Float_t         FGDSecPosEnd[6][3];   //[NFGDSec]
+   Float_t         FGDSecLength[5];   //[NFGDSec]
+   Float_t         FGDSecPiPull[5];   //[NFGDSec]
+   Float_t         FGDSecAvgTime[5];   //[NFGDSec]
+   Int_t           FGDSecContained[5];   //[NFGDSec]
+   Int_t           FGDSecTId[5];   //[NFGDSec]
+   Int_t           FGDSecIndex[5];   //[NFGDSec]
+   Int_t           FGDSecParentTId[5];   //[NFGDSec]
+   Int_t           FGDSecGParentTId[5];   //[NFGDSec]
+   Float_t         FGDSecTimeIni[5];   //[NFGDSec]
+   Float_t         FGDSecTimeEnd[5];   //[NFGDSec]
+   Float_t         FGDSecDeltaTimeIniSelMu[5];   //[NFGDSec]
+   Float_t         FGDSecDeltaTimeEndSelMu[5];   //[NFGDSec]
+   Float_t         FGDSecCosTheta[5];   //[NFGDSec]
+   Float_t         FGDSecDir[5][3];   //[NFGDSec]
+   Float_t         FGDSecPosStart[5][3];   //[NFGDSec]
+   Float_t         FGDSecPosEnd[5][3];   //[NFGDSec]
    Int_t           NME;
    Int_t           MENHits[1];   //[NME]
    Float_t         MERawCharge[1];   //[NME]
    Float_t         MEMinTime[1];   //[NME]
    Float_t         MEMaxTime[1];   //[NME]
    Int_t           NTPC1Track;
-   Float_t         TPC1TrackMom[9];   //[NTPC1Track]
-   Float_t         TPC1TrackCosTheta[9];   //[NTPC1Track]
-   Float_t         TPC1TrackPhi[9];   //[NTPC1Track]
-   Int_t           TPC1TrackVId[9];   //[NTPC1Track]
-   Int_t           TPC1TrackTId[9];   //[NTPC1Track]
-   Int_t           TPC1TrackParentTId[9];   //[NTPC1Track]
-   Int_t           TPC1TrackGParentTId[9];   //[NTPC1Track]
-   Float_t         TPC1TrackPosStart[9][3];   //[NTPC1Track]
-   Float_t         TPC1TrackPosEnd[9][3];   //[NTPC1Track]
+   Float_t         TPC1TrackMom[7];   //[NTPC1Track]
+   Float_t         TPC1TrackCosTheta[7];   //[NTPC1Track]
+   Float_t         TPC1TrackPhi[7];   //[NTPC1Track]
+   Int_t           TPC1TrackVId[7];   //[NTPC1Track]
+   Int_t           TPC1TrackTId[7];   //[NTPC1Track]
+   Int_t           TPC1TrackParentTId[7];   //[NTPC1Track]
+   Int_t           TPC1TrackGParentTId[7];   //[NTPC1Track]
+   Float_t         TPC1TrackPosStart[7][3];   //[NTPC1Track]
+   Float_t         TPC1TrackPosEnd[7][3];   //[NTPC1Track]
    Float_t         truepi_mom;
    Float_t         truepi_costheta;
    Float_t         truepi_dir[3];
@@ -351,8 +351,110 @@ public :
    Float_t         FGDProtMom[2];   //[nProtonsFGD]
    Int_t           FGDProtonTId[2];   //[nProtonsFGD]
    Int_t           nProtonsTPC;
-   Float_t         TPCProtMom[3];   //[nProtonsTPC]
-   Int_t           TPCProtonTId[3];   //[nProtonsTPC]
+   Float_t         TPCProtMom[1];   //[nProtonsTPC]
+   Int_t           TPCProtonTId[1];   //[nProtonsTPC]
+   Float_t         selmu_det_theta;
+   Float_t         selmu_tpc_like_mu;
+   Float_t         selmu_tpc_like_e;
+   Float_t         selmu_tpc_like_p;
+   Float_t         selmu_tpc_like_pi;
+   Int_t           selmu_has_fgd1seg;
+   Float_t         selmu_fgd1_pull_mu;
+   Float_t         selmu_fgd1_pull_e;
+   Float_t         selmu_fgd1_pull_p;
+   Float_t         selmu_fgd1_pull_pi;
+   Float_t         selmu_fgd1_pull_no;
+   Float_t         selmu_fgd1_energy;
+   Float_t         selmu_fgd1_length;
+   Float_t         selmu_fgd1_EbyL;
+   Int_t           selmu_has_fgd2seg;
+   Float_t         selmu_fgd2_pull_mu;
+   Float_t         selmu_fgd2_pull_e;
+   Float_t         selmu_fgd2_pull_p;
+   Float_t         selmu_fgd2_pull_pi;
+   Float_t         selmu_fgd2_pull_no;
+   Float_t         selmu_fgd2_energy;
+   Float_t         selmu_fgd2_length;
+   Float_t         selmu_fgd2_EbyL;
+   Float_t         selmu_ecal_bestseg_EMenergy;
+   Float_t         selmu_ecal_bestseg_mippion;
+   Float_t         selmu_ecal_bestseg_EbyL;
+   Float_t         selmu_ecal_amr;
+   Float_t         selmu_ecal_angle;
+   Float_t         selmu_ecal_asymmetry;
+   Float_t         selmu_ecal_circularity;
+   Float_t         selmu_ecal_fbr;
+   Float_t         selmu_ecal_maxratio;
+   Float_t         selmu_ecal_meanpos;
+   Float_t         selmu_ecal_qrms;
+   Float_t         selmu_ecal_showerangle;
+   Float_t         selmu_ecal_showerwidth;
+   Float_t         selmu_ecal_tcr;
+   Float_t         selmu_ecal_tmr;
+   Float_t         HMNT_mom;
+   Float_t         HMNT_costheta;
+   Int_t           HMNT_pdg;
+   Int_t           HMNT_truepdg;
+   Int_t           HMNT_NEcalSegments;
+   Float_t         HMNT_ecal_EMenergy;
+   Float_t         HMNT_ecal_length;
+   Float_t         HMNT_ecal_mippion;
+   Float_t         HMNT_ecal_angle;
+   Float_t         HMNT_ecal_bestseg_EMenergy;
+   Float_t         HMNT_ecal_bestseg_mippion;
+   Float_t         HMNT_ecal_bestseg_EbyL;
+   Float_t         HMNT_tpc_like_mu;
+   Float_t         HMNT_tpc_like_e;
+   Float_t         HMNT_tpc_like_p;
+   Float_t         HMNT_tpc_like_pi;
+   Int_t           HMNT_has_fgd1seg;
+   Float_t         HMNT_fgd1_pull_mu;
+   Float_t         HMNT_fgd1_pull_e;
+   Float_t         HMNT_fgd1_pull_p;
+   Float_t         HMNT_fgd1_pull_pi;
+   Float_t         HMNT_fgd1_pull_no;
+   Int_t           HMNT_has_fgd2seg;
+   Float_t         HMNT_fgd2_pull_mu;
+   Float_t         HMNT_fgd2_pull_e;
+   Float_t         HMNT_fgd2_pull_p;
+   Float_t         HMNT_fgd2_pull_pi;
+   Float_t         HMNT_fgd2_pull_no;
+   Float_t         selmu_bdt_pid_mu;
+   Float_t         selmu_bdt_pid_pi;
+   Float_t         selmu_bdt_pid_p;
+   Float_t         selmu_bdt_pid_e;
+   Float_t         hmnt_bdt_pid_mu;
+   Float_t         hmnt_bdt_pid_pi;
+   Float_t         hmnt_bdt_pid_p;
+   Float_t         hmnt_bdt_pid_e;
+   Float_t         selmu_bdt_pid_mu_test1;
+   Float_t         selmu_bdt_pid_pi_test1;
+   Float_t         selmu_bdt_pid_p_test1;
+   Float_t         selmu_bdt_pid_e_test1;
+   Float_t         hmnt_bdt_pid_pi_test1;
+   Float_t         selmu_bdt_pid_mu_test2;
+   Float_t         selmu_bdt_pid_pi_test2;
+   Float_t         selmu_bdt_pid_p_test2;
+   Float_t         selmu_bdt_pid_e_test2;
+   Float_t         hmnt_bdt_pid_pi_test2;
+   Float_t         selmu_bdt_pid_mu_test3;
+   Float_t         selmu_bdt_pid_pi_test3;
+   Float_t         selmu_bdt_pid_p_test3;
+   Float_t         selmu_bdt_pid_e_test3;
+   Float_t         hmnt_bdt_pid_pi_test3;
+   Float_t         selmu_bdt_pid_mu_test4;
+   Float_t         selmu_bdt_pid_pi_test4;
+   Float_t         selmu_bdt_pid_p_test4;
+   Float_t         selmu_bdt_pid_e_test4;
+   Float_t         hmnt_bdt_pid_pi_test4;
+   Float_t         selmu_bdt_pid_mu_test5;
+   Float_t         selmu_bdt_pid_pi_test5;
+   Float_t         selmu_bdt_pid_p_test5;
+   Float_t         selmu_bdt_pid_e_test5;
+   Float_t         hmnt_bdt_pid_pi_test5;
+   Float_t         selmu_bdt_pid_unweighted_mu_cc1pi;
+   Float_t         hmnt_bdt_pid_unweighted_pi_cc1pi;
+   Int_t           particle_pg;
 
    // List of branches
    TBranch        *b_NTOYS;   //!
@@ -686,6 +788,108 @@ public :
    TBranch        *b_nProtonsTPC;   //!
    TBranch        *b_TPCProtMom;   //!
    TBranch        *b_TPCProtonTId;   //!
+   TBranch        *b_selmu_det_theta;   //!
+   TBranch        *b_selmu_tpc_like_mu;   //!
+   TBranch        *b_selmu_tpc_like_e;   //!
+   TBranch        *b_selmu_tpc_like_p;   //!
+   TBranch        *b_selmu_tpc_like_pi;   //!
+   TBranch        *b_selmu_has_fgd1seg;   //!
+   TBranch        *b_selmu_fgd1_pull_mu;   //!
+   TBranch        *b_selmu_fgd1_pull_e;   //!
+   TBranch        *b_selmu_fgd1_pull_p;   //!
+   TBranch        *b_selmu_fgd1_pull_pi;   //!
+   TBranch        *b_selmu_fgd1_pull_no;   //!
+   TBranch        *b_selmu_fgd1_energy;   //!
+   TBranch        *b_selmu_fgd1_length;   //!
+   TBranch        *b_selmu_fgd1_EbyL;   //!
+   TBranch        *b_selmu_has_fgd2seg;   //!
+   TBranch        *b_selmu_fgd2_pull_mu;   //!
+   TBranch        *b_selmu_fgd2_pull_e;   //!
+   TBranch        *b_selmu_fgd2_pull_p;   //!
+   TBranch        *b_selmu_fgd2_pull_pi;   //!
+   TBranch        *b_selmu_fgd2_pull_no;   //!
+   TBranch        *b_selmu_fgd2_energy;   //!
+   TBranch        *b_selmu_fgd2_length;   //!
+   TBranch        *b_selmu_fgd2_EbyL;   //!
+   TBranch        *b_selmu_ecal_bestseg_EMenergy;   //!
+   TBranch        *b_selmu_ecal_bestseg_mippion;   //!
+   TBranch        *b_selmu_ecal_bestseg_EbyL;   //!
+   TBranch        *b_selmu_ecal_amr;   //!
+   TBranch        *b_selmu_ecal_angle;   //!
+   TBranch        *b_selmu_ecal_asymmetry;   //!
+   TBranch        *b_selmu_ecal_circularity;   //!
+   TBranch        *b_selmu_ecal_fbr;   //!
+   TBranch        *b_selmu_ecal_maxratio;   //!
+   TBranch        *b_selmu_ecal_meanpos;   //!
+   TBranch        *b_selmu_ecal_qrms;   //!
+   TBranch        *b_selmu_ecal_showerangle;   //!
+   TBranch        *b_selmu_ecal_showerwidth;   //!
+   TBranch        *b_selmu_ecal_tcr;   //!
+   TBranch        *b_selmu_ecal_tmr;   //!
+   TBranch        *b_HMNT_mom;   //!
+   TBranch        *b_HMNT_costheta;   //!
+   TBranch        *b_HMNT_pdg;   //!
+   TBranch        *b_HMNT_truepdg;   //!
+   TBranch        *b_HMNT_NEcalSegments;   //!
+   TBranch        *b_HMNT_ecal_EMenergy;   //!
+   TBranch        *b_HMNT_ecal_length;   //!
+   TBranch        *b_HMNT_ecal_mippion;   //!
+   TBranch        *b_HMNT_ecal_angle;   //!
+   TBranch        *b_HMNT_ecal_bestseg_EMenergy;   //!
+   TBranch        *b_HMNT_ecal_bestseg_mippion;   //!
+   TBranch        *b_HMNT_ecal_bestseg_EbyL;   //!
+   TBranch        *b_HMNT_tpc_like_mu;   //!
+   TBranch        *b_HMNT_tpc_like_e;   //!
+   TBranch        *b_HMNT_tpc_like_p;   //!
+   TBranch        *b_HMNT_tpc_like_pi;   //!
+   TBranch        *b_HMNT_has_fgd1seg;   //!
+   TBranch        *b_HMNT_fgd1_pull_mu;   //!
+   TBranch        *b_HMNT_fgd1_pull_e;   //!
+   TBranch        *b_HMNT_fgd1_pull_p;   //!
+   TBranch        *b_HMNT_fgd1_pull_pi;   //!
+   TBranch        *b_HMNT_fgd1_pull_no;   //!
+   TBranch        *b_HMNT_has_fgd2seg;   //!
+   TBranch        *b_HMNT_fgd2_pull_mu;   //!
+   TBranch        *b_HMNT_fgd2_pull_e;   //!
+   TBranch        *b_HMNT_fgd2_pull_p;   //!
+   TBranch        *b_HMNT_fgd2_pull_pi;   //!
+   TBranch        *b_HMNT_fgd2_pull_no;   //!
+   TBranch        *b_selmu_bdt_pid_mu;   //!
+   TBranch        *b_selmu_bdt_pid_pi;   //!
+   TBranch        *b_selmu_bdt_pid_p;   //!
+   TBranch        *b_selmu_bdt_pid_e;   //!
+   TBranch        *b_hmnt_bdt_pid_mu;   //!
+   TBranch        *b_hmnt_bdt_pid_pi;   //!
+   TBranch        *b_hmnt_bdt_pid_p;   //!
+   TBranch        *b_hmnt_bdt_pid_e;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test1;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test1;   //!
+   TBranch        *b_selmu_bdt_pid_p_test1;   //!
+   TBranch        *b_selmu_bdt_pid_e_test1;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test1;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test2;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test2;   //!
+   TBranch        *b_selmu_bdt_pid_p_test2;   //!
+   TBranch        *b_selmu_bdt_pid_e_test2;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test2;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test3;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test3;   //!
+   TBranch        *b_selmu_bdt_pid_p_test3;   //!
+   TBranch        *b_selmu_bdt_pid_e_test3;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test3;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test4;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test4;   //!
+   TBranch        *b_selmu_bdt_pid_p_test4;   //!
+   TBranch        *b_selmu_bdt_pid_e_test4;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test4;   //!
+   TBranch        *b_selmu_bdt_pid_mu_test5;   //!
+   TBranch        *b_selmu_bdt_pid_pi_test5;   //!
+   TBranch        *b_selmu_bdt_pid_p_test5;   //!
+   TBranch        *b_selmu_bdt_pid_e_test5;   //!
+   TBranch        *b_hmnt_bdt_pid_pi_test5;   //!
+   TBranch        *b_selmu_bdt_pid_unweighted_mu_cc1pi;   //!
+   TBranch        *b_hmnt_bdt_pid_unweighted_pi_cc1pi;   //!
+   TBranch        *b_particle_pg;   //!
 
    DefaultCustomPlotting_forupdate(TTree *tree=0);
    virtual ~DefaultCustomPlotting_forupdate();
@@ -706,9 +910,9 @@ DefaultCustomPlotting_forupdate::DefaultCustomPlotting_forupdate(TTree *tree) : 
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/existing_selection/run5/oaAnalysis_prod6Trun5_1.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/existing_selection/oaAnalysis_prod6Trun5_1.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../../output/existing_selection/run5/oaAnalysis_prod6Trun5_1.root");
+         f = new TFile("../../output/existing_selection/oaAnalysis_prod6Trun5_1.root");
       }
       f->GetObject("default",tree);
 
@@ -1088,6 +1292,108 @@ void DefaultCustomPlotting_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("nProtonsTPC", &nProtonsTPC, &b_nProtonsTPC);
    fChain->SetBranchAddress("TPCProtMom", TPCProtMom, &b_TPCProtMom);
    fChain->SetBranchAddress("TPCProtonTId", TPCProtonTId, &b_TPCProtonTId);
+   fChain->SetBranchAddress("selmu_det_theta", &selmu_det_theta, &b_selmu_det_theta);
+   fChain->SetBranchAddress("selmu_tpc_like_mu", &selmu_tpc_like_mu, &b_selmu_tpc_like_mu);
+   fChain->SetBranchAddress("selmu_tpc_like_e", &selmu_tpc_like_e, &b_selmu_tpc_like_e);
+   fChain->SetBranchAddress("selmu_tpc_like_p", &selmu_tpc_like_p, &b_selmu_tpc_like_p);
+   fChain->SetBranchAddress("selmu_tpc_like_pi", &selmu_tpc_like_pi, &b_selmu_tpc_like_pi);
+   fChain->SetBranchAddress("selmu_has_fgd1seg", &selmu_has_fgd1seg, &b_selmu_has_fgd1seg);
+   fChain->SetBranchAddress("selmu_fgd1_pull_mu", &selmu_fgd1_pull_mu, &b_selmu_fgd1_pull_mu);
+   fChain->SetBranchAddress("selmu_fgd1_pull_e", &selmu_fgd1_pull_e, &b_selmu_fgd1_pull_e);
+   fChain->SetBranchAddress("selmu_fgd1_pull_p", &selmu_fgd1_pull_p, &b_selmu_fgd1_pull_p);
+   fChain->SetBranchAddress("selmu_fgd1_pull_pi", &selmu_fgd1_pull_pi, &b_selmu_fgd1_pull_pi);
+   fChain->SetBranchAddress("selmu_fgd1_pull_no", &selmu_fgd1_pull_no, &b_selmu_fgd1_pull_no);
+   fChain->SetBranchAddress("selmu_fgd1_energy", &selmu_fgd1_energy, &b_selmu_fgd1_energy);
+   fChain->SetBranchAddress("selmu_fgd1_length", &selmu_fgd1_length, &b_selmu_fgd1_length);
+   fChain->SetBranchAddress("selmu_fgd1_EbyL", &selmu_fgd1_EbyL, &b_selmu_fgd1_EbyL);
+   fChain->SetBranchAddress("selmu_has_fgd2seg", &selmu_has_fgd2seg, &b_selmu_has_fgd2seg);
+   fChain->SetBranchAddress("selmu_fgd2_pull_mu", &selmu_fgd2_pull_mu, &b_selmu_fgd2_pull_mu);
+   fChain->SetBranchAddress("selmu_fgd2_pull_e", &selmu_fgd2_pull_e, &b_selmu_fgd2_pull_e);
+   fChain->SetBranchAddress("selmu_fgd2_pull_p", &selmu_fgd2_pull_p, &b_selmu_fgd2_pull_p);
+   fChain->SetBranchAddress("selmu_fgd2_pull_pi", &selmu_fgd2_pull_pi, &b_selmu_fgd2_pull_pi);
+   fChain->SetBranchAddress("selmu_fgd2_pull_no", &selmu_fgd2_pull_no, &b_selmu_fgd2_pull_no);
+   fChain->SetBranchAddress("selmu_fgd2_energy", &selmu_fgd2_energy, &b_selmu_fgd2_energy);
+   fChain->SetBranchAddress("selmu_fgd2_length", &selmu_fgd2_length, &b_selmu_fgd2_length);
+   fChain->SetBranchAddress("selmu_fgd2_EbyL", &selmu_fgd2_EbyL, &b_selmu_fgd2_EbyL);
+   fChain->SetBranchAddress("selmu_ecal_bestseg_EMenergy", &selmu_ecal_bestseg_EMenergy, &b_selmu_ecal_bestseg_EMenergy);
+   fChain->SetBranchAddress("selmu_ecal_bestseg_mippion", &selmu_ecal_bestseg_mippion, &b_selmu_ecal_bestseg_mippion);
+   fChain->SetBranchAddress("selmu_ecal_bestseg_EbyL", &selmu_ecal_bestseg_EbyL, &b_selmu_ecal_bestseg_EbyL);
+   fChain->SetBranchAddress("selmu_ecal_amr", &selmu_ecal_amr, &b_selmu_ecal_amr);
+   fChain->SetBranchAddress("selmu_ecal_angle", &selmu_ecal_angle, &b_selmu_ecal_angle);
+   fChain->SetBranchAddress("selmu_ecal_asymmetry", &selmu_ecal_asymmetry, &b_selmu_ecal_asymmetry);
+   fChain->SetBranchAddress("selmu_ecal_circularity", &selmu_ecal_circularity, &b_selmu_ecal_circularity);
+   fChain->SetBranchAddress("selmu_ecal_fbr", &selmu_ecal_fbr, &b_selmu_ecal_fbr);
+   fChain->SetBranchAddress("selmu_ecal_maxratio", &selmu_ecal_maxratio, &b_selmu_ecal_maxratio);
+   fChain->SetBranchAddress("selmu_ecal_meanpos", &selmu_ecal_meanpos, &b_selmu_ecal_meanpos);
+   fChain->SetBranchAddress("selmu_ecal_qrms", &selmu_ecal_qrms, &b_selmu_ecal_qrms);
+   fChain->SetBranchAddress("selmu_ecal_showerangle", &selmu_ecal_showerangle, &b_selmu_ecal_showerangle);
+   fChain->SetBranchAddress("selmu_ecal_showerwidth", &selmu_ecal_showerwidth, &b_selmu_ecal_showerwidth);
+   fChain->SetBranchAddress("selmu_ecal_tcr", &selmu_ecal_tcr, &b_selmu_ecal_tcr);
+   fChain->SetBranchAddress("selmu_ecal_tmr", &selmu_ecal_tmr, &b_selmu_ecal_tmr);
+   fChain->SetBranchAddress("HMNT_mom", &HMNT_mom, &b_HMNT_mom);
+   fChain->SetBranchAddress("HMNT_costheta", &HMNT_costheta, &b_HMNT_costheta);
+   fChain->SetBranchAddress("HMNT_pdg", &HMNT_pdg, &b_HMNT_pdg);
+   fChain->SetBranchAddress("HMNT_truepdg", &HMNT_truepdg, &b_HMNT_truepdg);
+   fChain->SetBranchAddress("HMNT_NEcalSegments", &HMNT_NEcalSegments, &b_HMNT_NEcalSegments);
+   fChain->SetBranchAddress("HMNT_ecal_EMenergy", &HMNT_ecal_EMenergy, &b_HMNT_ecal_EMenergy);
+   fChain->SetBranchAddress("HMNT_ecal_length", &HMNT_ecal_length, &b_HMNT_ecal_length);
+   fChain->SetBranchAddress("HMNT_ecal_mippion", &HMNT_ecal_mippion, &b_HMNT_ecal_mippion);
+   fChain->SetBranchAddress("HMNT_ecal_angle", &HMNT_ecal_angle, &b_HMNT_ecal_angle);
+   fChain->SetBranchAddress("HMNT_ecal_bestseg_EMenergy", &HMNT_ecal_bestseg_EMenergy, &b_HMNT_ecal_bestseg_EMenergy);
+   fChain->SetBranchAddress("HMNT_ecal_bestseg_mippion", &HMNT_ecal_bestseg_mippion, &b_HMNT_ecal_bestseg_mippion);
+   fChain->SetBranchAddress("HMNT_ecal_bestseg_EbyL", &HMNT_ecal_bestseg_EbyL, &b_HMNT_ecal_bestseg_EbyL);
+   fChain->SetBranchAddress("HMNT_tpc_like_mu", &HMNT_tpc_like_mu, &b_HMNT_tpc_like_mu);
+   fChain->SetBranchAddress("HMNT_tpc_like_e", &HMNT_tpc_like_e, &b_HMNT_tpc_like_e);
+   fChain->SetBranchAddress("HMNT_tpc_like_p", &HMNT_tpc_like_p, &b_HMNT_tpc_like_p);
+   fChain->SetBranchAddress("HMNT_tpc_like_pi", &HMNT_tpc_like_pi, &b_HMNT_tpc_like_pi);
+   fChain->SetBranchAddress("HMNT_has_fgd1seg", &HMNT_has_fgd1seg, &b_HMNT_has_fgd1seg);
+   fChain->SetBranchAddress("HMNT_fgd1_pull_mu", &HMNT_fgd1_pull_mu, &b_HMNT_fgd1_pull_mu);
+   fChain->SetBranchAddress("HMNT_fgd1_pull_e", &HMNT_fgd1_pull_e, &b_HMNT_fgd1_pull_e);
+   fChain->SetBranchAddress("HMNT_fgd1_pull_p", &HMNT_fgd1_pull_p, &b_HMNT_fgd1_pull_p);
+   fChain->SetBranchAddress("HMNT_fgd1_pull_pi", &HMNT_fgd1_pull_pi, &b_HMNT_fgd1_pull_pi);
+   fChain->SetBranchAddress("HMNT_fgd1_pull_no", &HMNT_fgd1_pull_no, &b_HMNT_fgd1_pull_no);
+   fChain->SetBranchAddress("HMNT_has_fgd2seg", &HMNT_has_fgd2seg, &b_HMNT_has_fgd2seg);
+   fChain->SetBranchAddress("HMNT_fgd2_pull_mu", &HMNT_fgd2_pull_mu, &b_HMNT_fgd2_pull_mu);
+   fChain->SetBranchAddress("HMNT_fgd2_pull_e", &HMNT_fgd2_pull_e, &b_HMNT_fgd2_pull_e);
+   fChain->SetBranchAddress("HMNT_fgd2_pull_p", &HMNT_fgd2_pull_p, &b_HMNT_fgd2_pull_p);
+   fChain->SetBranchAddress("HMNT_fgd2_pull_pi", &HMNT_fgd2_pull_pi, &b_HMNT_fgd2_pull_pi);
+   fChain->SetBranchAddress("HMNT_fgd2_pull_no", &HMNT_fgd2_pull_no, &b_HMNT_fgd2_pull_no);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu", &selmu_bdt_pid_mu, &b_selmu_bdt_pid_mu);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi", &selmu_bdt_pid_pi, &b_selmu_bdt_pid_pi);
+   fChain->SetBranchAddress("selmu_bdt_pid_p", &selmu_bdt_pid_p, &b_selmu_bdt_pid_p);
+   fChain->SetBranchAddress("selmu_bdt_pid_e", &selmu_bdt_pid_e, &b_selmu_bdt_pid_e);
+   fChain->SetBranchAddress("hmnt_bdt_pid_mu", &hmnt_bdt_pid_mu, &b_hmnt_bdt_pid_mu);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi", &hmnt_bdt_pid_pi, &b_hmnt_bdt_pid_pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_p", &hmnt_bdt_pid_p, &b_hmnt_bdt_pid_p);
+   fChain->SetBranchAddress("hmnt_bdt_pid_e", &hmnt_bdt_pid_e, &b_hmnt_bdt_pid_e);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test1", &selmu_bdt_pid_mu_test1, &b_selmu_bdt_pid_mu_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test1", &selmu_bdt_pid_pi_test1, &b_selmu_bdt_pid_pi_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test1", &selmu_bdt_pid_p_test1, &b_selmu_bdt_pid_p_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test1", &selmu_bdt_pid_e_test1, &b_selmu_bdt_pid_e_test1);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test1", &hmnt_bdt_pid_pi_test1, &b_hmnt_bdt_pid_pi_test1);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test2", &selmu_bdt_pid_mu_test2, &b_selmu_bdt_pid_mu_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test2", &selmu_bdt_pid_pi_test2, &b_selmu_bdt_pid_pi_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test2", &selmu_bdt_pid_p_test2, &b_selmu_bdt_pid_p_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test2", &selmu_bdt_pid_e_test2, &b_selmu_bdt_pid_e_test2);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test2", &hmnt_bdt_pid_pi_test2, &b_hmnt_bdt_pid_pi_test2);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test3", &selmu_bdt_pid_mu_test3, &b_selmu_bdt_pid_mu_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test3", &selmu_bdt_pid_pi_test3, &b_selmu_bdt_pid_pi_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test3", &selmu_bdt_pid_p_test3, &b_selmu_bdt_pid_p_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test3", &selmu_bdt_pid_e_test3, &b_selmu_bdt_pid_e_test3);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test3", &hmnt_bdt_pid_pi_test3, &b_hmnt_bdt_pid_pi_test3);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test4", &selmu_bdt_pid_mu_test4, &b_selmu_bdt_pid_mu_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test4", &selmu_bdt_pid_pi_test4, &b_selmu_bdt_pid_pi_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test4", &selmu_bdt_pid_p_test4, &b_selmu_bdt_pid_p_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test4", &selmu_bdt_pid_e_test4, &b_selmu_bdt_pid_e_test4);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test4", &hmnt_bdt_pid_pi_test4, &b_hmnt_bdt_pid_pi_test4);
+   fChain->SetBranchAddress("selmu_bdt_pid_mu_test5", &selmu_bdt_pid_mu_test5, &b_selmu_bdt_pid_mu_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_pi_test5", &selmu_bdt_pid_pi_test5, &b_selmu_bdt_pid_pi_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_p_test5", &selmu_bdt_pid_p_test5, &b_selmu_bdt_pid_p_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_e_test5", &selmu_bdt_pid_e_test5, &b_selmu_bdt_pid_e_test5);
+   fChain->SetBranchAddress("hmnt_bdt_pid_pi_test5", &hmnt_bdt_pid_pi_test5, &b_hmnt_bdt_pid_pi_test5);
+   fChain->SetBranchAddress("selmu_bdt_pid_unweighted_mu_cc1pi", &selmu_bdt_pid_unweighted_mu_cc1pi, &b_selmu_bdt_pid_unweighted_mu_cc1pi);
+   fChain->SetBranchAddress("hmnt_bdt_pid_unweighted_pi_cc1pi", &hmnt_bdt_pid_unweighted_pi_cc1pi, &b_hmnt_bdt_pid_unweighted_pi_cc1pi);
+   fChain->SetBranchAddress("particle_pg", &particle_pg, &b_particle_pg);
    Notify();
 }
 
