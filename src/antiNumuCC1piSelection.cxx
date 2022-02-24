@@ -30,7 +30,36 @@ void antiNumuCC1piSelection::DefineSteps(){
 
   // ======== EXISTING SELECTION ========
   
-  CopySteps(_antiNumuCCMultiPiSelection);
+  // Copy all steps from the antiNumuCCSelection
+  CopySteps(_antiNumuCCSelection);
+
+  //Pawel - Pions sele
+  //Additional actions for the multi-pi selection.
+  
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  
+  AddStep(StepBase::kAction, "set_vertex_to_box",                 new SetVertexToBoxAction());
+  AddStep(StepBase::kAction, "fill_iso_fgd_proton_mom_to_vertex", new FillFgdIsoProtonsKinVertexAction());
+  AddStep(StepBase::kAction, "find_iso_fgd_pion_mom_to_vertex",   new FillFgdIsoPionsKinVertexAction());
+  
+  
+  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
+
+  //Add a split to the trunk with 3 branches.
+  AddSplit(3);
+
+  //First branch is for CC-0pi
+  AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
+  AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+
+  //Second branch is for CC-1pi
+  AddStep(1, StepBase::kCut, "CC-1pi",        new OnePionCut(false));
+  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+
+  //Third branch is for CC-Other
+  AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
+
   
   
   // ======== MODIFIED SELECTION ========
