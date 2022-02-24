@@ -46,6 +46,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0, counter_oofv = 0;
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    Int_t counter_selpi = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
+   Int_t counter_selmu_antimu_accum5 = 0, counter_selmu_antimu_accum6 = 0, counter_selmu_piplus_accum5 = 0, counter_selmu_piplus_accum6 = 0;
    
    Int_t recomom_nbins = 15;
    
@@ -60,6 +61,32 @@ void DefaultCustomPlotting::Loop()
 
       // Cut on accum_level etc
       if (accum_level[0][0] <= 4) continue; // Set accum_level
+      
+      if (accum_level[0][1] > 5){
+         
+         if (particle == -13)
+         {
+            counter_selmu_antimu_accum5++;
+         }
+         
+         if (particle == 211)
+         {
+            counter_selmu_piplus_accum5++;
+         }
+      }
+      
+      if (accum_level[0][1] > 6){
+         
+         if (particle == -13)
+         {
+            counter_selmu_antimu_accum6++;
+         }
+         
+         if (particle == 211)
+         {
+            counter_selmu_piplus_accum6++;
+         }
+      }
       
       if (accum_level[0][1] > 7){
          
@@ -205,6 +232,9 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu << " (" << 100*(float)counter_selpi_mu/counter_selpi << "\%)" << std::endl;
    std::cout << std::endl << "Pi- candidate true electrons: " << counter_selpi_electron << " (" << 100*(float)counter_selpi_electron/counter_selpi << "\%)" << std::endl;
    std::cout << std::endl << "Pi- candidate true protons: " << counter_selpi_proton << " (" << 100*(float)counter_selpi_proton/counter_selpi << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum5 << std::endl;
+   std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum6/counter_selmu_piplus_accum6 << std::endl;
    
    TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
