@@ -201,10 +201,10 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*(float)counter_selmu_electron/counter_all_accum8 << "\%)" << std::endl;
    
    std::cout << std::endl << "Pi- candidates: " << counter_selpi << std::endl;
-   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selmu_piminus << " (" << 100*(float)counter_selmu_piminus/counter_selpi << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true muons: " << counter_selmu_mu << " (" << 100*(float)counter_selmu_mu/counter_selpi << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true electrons: " << counter_selmu_electron << " (" << 100*(float)counter_selmu_electron/counter_selpi << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true protons: " << counter_selmu_proton << " (" << 100*(float)counter_selmu_proton/counter_selpi << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus << " (" << 100*(float)counter_selpi_piminus/counter_selpi << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu << " (" << 100*(float)counter_selpi_mu/counter_selpi << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true electrons: " << counter_selpi_electron << " (" << 100*(float)counter_selpi_electron/counter_selpi << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true protons: " << counter_selpi_proton << " (" << 100*(float)counter_selpi_proton/counter_selpi << "\%)" << std::endl;
    
    TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
