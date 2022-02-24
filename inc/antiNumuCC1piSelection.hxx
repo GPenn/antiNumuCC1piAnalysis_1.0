@@ -42,7 +42,7 @@ public:
   void SetDetectorFV(SubDetId_h det, Int_t ibranch=-1){
     SelectionBase::SetDetectorFV(det, ibranch);
     // Set to the selection that are used
-    //_antiNumuCCSelection.SetDetectorFV(det, ibranch); 
+    _antiNumuCCSelection.SetDetectorFV(det, ibranch); 
     //_numuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
     _antiNumuCCMultiPiSelection.SetDetectorFV(det, ibranch); 
   }
@@ -50,7 +50,7 @@ public:
 
 
 protected:
-  //antiNumuCCSelection _antiNumuCCSelection;
+  antiNumuCCSelection _antiNumuCCSelection;
   //numuCCMultiPiSelection _numuCCMultiPiSelection;
   antiNumuCCMultiPiSelection _antiNumuCCMultiPiSelection;
   InputManager* _input;
