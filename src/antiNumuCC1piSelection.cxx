@@ -17,7 +17,7 @@
 antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* INPUT) : 
   SelectionBase(forceBreak,EventBoxId::kEventBoxTracker), _input(INPUT) {
   //********************************************************************
-  //_antiNumuCCSelection.Initialize();
+  _antiNumuCCSelection.Initialize();
   //_numuCCMultiPiSelection.Initialize(); 
   _antiNumuCCMultiPiSelection.Initialize(); 
   //_useECalPiZeroInfo = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
@@ -434,7 +434,7 @@ void antiNumuCC1piSelection::InitializeEvent(AnaEventC& eventC){
   
   AnaEventB& event = *static_cast<AnaEventB*>(&eventC); 
   
-  //_antiNumuCCSelection.InitializeEvent(event); 
+  _antiNumuCCSelection.InitializeEvent(event); 
   _antiNumuCCMultiPiSelection.InitializeEvent(event); 
   /*
   boxUtils::FillTracksWithECal(event);
