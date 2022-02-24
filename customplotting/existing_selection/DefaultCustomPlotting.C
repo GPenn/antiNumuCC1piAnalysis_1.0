@@ -138,22 +138,22 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selpi++;
             
-            if (HMNT_pdg == -211)
+            if (HMNT_truepdg == -211)
             {
                counter_selpi_piminus++;
             }
             
-            if (HMNT_pdg == 13)
+            if (HMNT_truepdg == 13)
             {
                counter_selpi_mu++;
             }
             
-            if (HMNT_pdg == 11)
+            if (HMNT_truepdg == 11)
             {
                counter_selpi_electron++;
             }
             
-            if (HMNT_pdg == 2212)
+            if (HMNT_truepdg == 2212)
             {
                counter_selpi_proton++;
             }
