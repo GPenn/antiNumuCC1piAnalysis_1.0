@@ -238,7 +238,7 @@ void DefaultCustomPlotting::Loop()
    
    
    
-   TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,500,400);
+   TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
    graph_selmu_antimu_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
@@ -249,6 +249,7 @@ void DefaultCustomPlotting::Loop()
    graph_selmu_antimu_purity->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_selmu_antimu_purity->SetLineColor( kBlue);
    graph_selmu_antimu_purity->SetFillColor( kWhite);
+   graph_selmu_antimu_purity->SetLineWidth(2);
    graph_selmu_antimu_purity->Draw("AL");
    //canvas_selmu_antimu_purity->Write();
    
@@ -260,6 +261,9 @@ void DefaultCustomPlotting::Loop()
       Float_t purity = (float)(recomom_piplus->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
       graph_selmu_piplus_purity->SetPoint(bin-1, recomom_all->GetBinCenter(bin), purity);
    }
+   graph_selmu_piplus_purity->SetLineColor( kRed);
+   graph_selmu_piplus_purity->SetFillColor( kWhite);
+   graph_selmu_piplus_purity->SetLineWidth(2);
    graph_selmu_piplus_purity->Draw("L same");
    //canvas_selmu_piplus_purity->Write();
    
@@ -271,6 +275,9 @@ void DefaultCustomPlotting::Loop()
       Float_t purity = (float)(recomom_proton->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
       graph_selmu_proton_purity->SetPoint(bin-1, recomom_all->GetBinCenter(bin), purity);
    }
+   graph_selmu_proton_purity->SetLineColor( kGreen);
+   graph_selmu_proton_purity->SetFillColor( kWhite);
+   graph_selmu_proton_purity->SetLineWidth(2);
    graph_selmu_proton_purity->Draw("L same");
    //canvas_selmu_proton_purity->Write();
    
