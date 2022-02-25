@@ -245,18 +245,32 @@ void DefaultCustomPlotting::Loop()
       graph_selmu_antimu_purity->SetPoint(bin-1, recomom_all->GetBinCenter(bin), purity);
    }
    graph_selmu_antimu_purity->Draw("AL");
-   canvas_selmu_antimu_purity->Write();
+   //canvas_selmu_antimu_purity->Write();
    
-   TCanvas* canvas_selmu_proton_purity = new TCanvas("canvas_selmu_proton_purity","Antimu candidate track proton contamination vs reconstructed momentum",200,10,1000,600);
+   //TCanvas* canvas_selmu_pion_purity = new TCanvas("canvas_selmu_pion_purity","Antimu candidate track pion contamination vs reconstructed momentum",200,10,1000,600);
+   TGraph* graph_selmu_pion_purity = new TGraph();
+   //graph_selmu_pion_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track pion contamination;");
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_pion->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
+      graph_selmu_pion_purity->SetPoint(bin-1, recomom_all->GetBinCenter(bin), purity);
+   }
+   graph_selmu_pion_purity->Draw("L same");
+   //canvas_selmu_pion_purity->Write();
+   
+   //TCanvas* canvas_selmu_proton_purity = new TCanvas("canvas_selmu_proton_purity","Antimu candidate track proton contamination vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_proton_purity = new TGraph();
-   graph_selmu_proton_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track proton contamination;");
+   //graph_selmu_proton_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track proton contamination;");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_proton->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
       graph_selmu_proton_purity->SetPoint(bin-1, recomom_all->GetBinCenter(bin), purity);
    }
-   graph_selmu_proton_purity->Draw("AL");
-   canvas_selmu_proton_purity->Write();
+   graph_selmu_proton_purity->Draw("L same");
+   //canvas_selmu_proton_purity->Write();
+   
+   canvas_selmu_antimu_purity->BuildLegend();
+   canvas_selmu_antimu_purity->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
