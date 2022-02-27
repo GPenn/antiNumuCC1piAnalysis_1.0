@@ -126,6 +126,13 @@ protected:
 //--------------
 // My cuts
 
+class MyDummyCut: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new MyDummyCut();}
+};
+
 class AntiMuonPIDCut_Loop: public StepBase{
 public:
   using StepBase::Apply;
