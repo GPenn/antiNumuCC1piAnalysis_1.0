@@ -29,7 +29,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
 
   // ======== EXISTING SELECTION ========
-  
+  /*
   // Copy all steps from the antiNumuCCSelection
   CopySteps(_antiNumuCCSelection);
 
@@ -59,11 +59,11 @@ void antiNumuCC1piSelection::DefineSteps(){
 
   //Third branch is for CC-Other
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
-
+  */
   
   
   // ======== MODIFIED SELECTION ========
-  /*
+  
   // Cuts must be added in the right order
   // last "true" means the step sequence is broken if cut is not passed (default is "false")
   AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
@@ -97,15 +97,16 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   
   //AddStep(0, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
-  AddStep(0, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
-  AddStep(0, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
+  //AddStep(0, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
+  //AddStep(0, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
   
 
   //Second branch is for CC-1pi
   
   // --------------- old version ---------------
-  //AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
-  //AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+  AddStep(1, StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
+  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
   
@@ -120,10 +121,11 @@ void antiNumuCC1piSelection::DefineSteps(){
   //AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
   
   // --------------- BDT testing version ---------------
-  
+  /*
   AddStep(1, StepBase::kCut, "Main track kinematics for BDT",      new BDTPreselectionKinematicsCut());
   AddStep(1, StepBase::kCut, "1pos1neg TPC tracks",                new TwoTrack1pos1negCut());
   AddStep(1, StepBase::kCut, "HMNT kinematics for BDT",            new BDTPreselectionKinematicsPiCandCut());
+  */
   
   //Third branch is for CC-Other
   AddStep(2, StepBase::kCut, "Antimu PID", new AntiMuonPIDCut());
@@ -132,7 +134,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   //AddStep(2, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
   AddStep(2, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
   AddStep(2, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
-  */
+  
 
   // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
@@ -456,6 +458,12 @@ bool antiNumuCC1piSelection::CheckRedoSelection(const AnaEventC& event, const To
 }
 
 // PID cuts:
+
+//**************************************************
+bool MyDummyCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+  return true;
+}
 
 //**************************************************
 bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
