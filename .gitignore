@@ -16,6 +16,8 @@
 /customplotting/cc1pi/output
 /customplotting/existing_selection/bin
 /customplotting/existing_selection/output
+/customplotting/existing_selection_noposmult/bin
+/customplotting/existing_selection_noposmult/output
 /scripts/log
 /scripts/batch/run5
 /scripts/batch/run6
