@@ -104,7 +104,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   //Second branch is for CC-1pi
   
   // --------------- old version ---------------
-  AddStep(1, StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  //AddStep(1, StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  AddStep(1, StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
