@@ -233,8 +233,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Pi- candidate true electrons: " << counter_selpi_electron << " (" << 100*(float)counter_selpi_electron/counter_selpi << "\%)" << std::endl;
    std::cout << std::endl << "Pi- candidate true protons: " << counter_selpi_proton << " (" << 100*(float)counter_selpi_proton/counter_selpi << "\%)" << std::endl;
    
-   std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum4 << std::endl;
-   std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum6/counter_selmu_piplus_accum5 << std::endl;
+   std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum4/counter_selmu_piplus_accum4 << std::endl;
+   std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum5 << std::endl;
    
    
    
