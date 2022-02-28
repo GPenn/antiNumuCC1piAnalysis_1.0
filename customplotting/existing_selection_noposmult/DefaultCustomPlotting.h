@@ -918,6 +918,8 @@ public :
    TBranch        *b_particle_pg;   //!
   
    Float_t GetOptSignificanceValues(TH1F* hist_sig, TH1F* hist_bkg, Int_t nbins);
+  
+   void SetHistParticleStyle(TH1F* hist, std::string particle);
 
    DefaultCustomPlotting(TTree *tree=0, std::string outFileName="defaultTest.root");
    virtual ~DefaultCustomPlotting();
