@@ -67,6 +67,14 @@ void DefaultCustomPlotting::Loop()
    TH1F *selpi_mippion_piminus = new TH1F("selpi_mippion_piminus", "#pi^{-};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
    TH1F *selpi_mippion_mu = new TH1F("selpi_mippion_mu", "#mu^{-};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
    
+   Int_t mipem_nbins = 40;
+   TH1F *selmu_mipem_antimu = new TH1F("selmu_mipem_antimu", "#mu^{+};ECal MipEm variable (dimensionless);Entries", mipem_nbins, -30, 50.0);
+   TH1F *selmu_mipem_piplus = new TH1F("selmu_mipem_piplus", "#pi^{+}", mipem_nbins, -30, 50.0);
+   TH1F *selmu_mipem_proton = new TH1F("selmu_mipem_proton", "p", mipem_nbins, -30, 50.0);
+   
+   TH1F *selpi_mipem_piminus = new TH1F("selpi_mipem_piminus", "#pi^{-};ECal MipEm variable (dimensionless);Entries", mipem_nbins, -30, 50.0);
+   TH1F *selpi_mipem_mu = new TH1F("selpi_mipem_mu", "#mu^{-};ECal MipEm variable (dimensionless);Entries", mipem_nbins, -30, 50.0);
+   
    Int_t ebyl_nbins = 40;
    TH1F *selmu_ebyl_antimu = new TH1F("selmu_ebyl_antimu", "#mu^{+};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    TH1F *selmu_ebyl_piplus = new TH1F("selmu_ebyl_piplus", "#pi^{+}", ebyl_nbins, 0, 4.0);
@@ -349,6 +357,27 @@ void DefaultCustomPlotting::Loop()
    selpi_mippion_mu->Draw("same");
    canvas_mippion->cd(2)->BuildLegend();
    canvas_mippion->Write();
+   
+   // MipEm plots
+   
+   TCanvas* canvas_mipem = new TCanvas("canvas_mipem","",200,10,1000,400);
+   canvas_mipem->Divide(2,1,0.005,0.005);
+   canvas_mipem->cd(1);
+   SetHistParticleStyle(selmu_mipem_antimu, "antimu");
+   SetHistParticleStyle(selmu_mipem_piplus, "piplus");
+   SetHistParticleStyle(selmu_mipem_proton, "proton");
+   selmu_mipem_antimu->Draw();
+   selmu_mipem_piplus->Draw("same");
+   selmu_mipem_proton->Draw("same");
+   canvas_mipem->cd(1)->BuildLegend();
+   
+   canvas_mipem->cd(2);
+   SetHistParticleStyle(selpi_mipem_mu, "antimu");
+   SetHistParticleStyle(selpi_mipem_piminus, "piplus");
+   selpi_mipem_piminus->Draw();
+   selpi_mipem_mu->Draw("same");
+   canvas_mipem->cd(2)->BuildLegend();
+   canvas_mipem->Write();
    
    // E/L plots
    
