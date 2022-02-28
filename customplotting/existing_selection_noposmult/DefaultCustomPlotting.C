@@ -32,6 +32,10 @@ void DefaultCustomPlotting::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
    
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   gStyle->SetTitleYOffset(1.6);
+   gStyle->SetTitleXOffset(1.2);
    
    
    if (fChain == 0) return;
@@ -54,6 +58,22 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
    TH1F *recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
    TH1F *recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   
+   Int_t mippion_nbins = 20;
+   TH1F *selmu_mippion_antimu = new TH1F("selmu_mippion_antimu", "True antimu vs mippion", mippion_nbins, -50, 50.0);
+   TH1F *selmu_mippion_piplus = new TH1F("selmu_mippion_piplus", "True piplus vs mippion", mippion_nbins, -50, 50.0);
+   TH1F *selmu_mippion_proton = new TH1F("selmu_mippion_proton", "True piplus vs mippion", mippion_nbins, -50, 50.0);
+   
+   TH1F *selpi_mippion_piminus = new TH1F("selpi_mippion_piminus", "True piminus vs mippion", mippion_nbins, -50, 50.0);
+   TH1F *selpi_mippion_mu = new TH1F("selpi_mippion_mu", "True mu vs mippion", mippion_nbins, -50, 50.0);
+   
+   Int_t ebyl_nbins = 20;
+   TH1F *selmu_ebyl_antimu = new TH1F("selmu_ebyl_antimu", "True antimu vs E/L", ebyl_nbins, 0, 4.0);
+   TH1F *selmu_ebyl_piplus = new TH1F("selmu_ebyl_piplus", "True piplus vs E/L", ebyl_nbins, 0, 4.0);
+   TH1F *selmu_ebyl_proton = new TH1F("selmu_ebyl_proton", "True piplus vs E/L", ebyl_nbins, 0, 4.0);
+   
+   TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "True piminus vs E/L", ebyl_nbins, 0, 4.0);
+   TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "True mu vs E/L", ebyl_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -127,6 +147,11 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_antimu++;
             recomom_antimu->Fill(selmu_mom[0]);
+            if (selmu_necals==1)
+            {
+               selmu_mippion_antimu->Fill(selmu_ecal_bestseg_mippion);
+               selmu_ebyl_antimu->Fill(selmu_ecal_bestseg_EbyL);
+            }
          }
          
          if (particle == 13)
@@ -138,6 +163,11 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_piplus++;
             recomom_piplus->Fill(selmu_mom[0]);
+            if (selmu_necals==1)
+            {
+               selmu_mippion_piplus->Fill(selmu_ecal_bestseg_mippion);
+               selmu_ebyl_piplus->Fill(selmu_ecal_bestseg_EbyL);
+            }
          }
          
          if (particle == -211)
@@ -149,6 +179,11 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_proton++;
             recomom_proton->Fill(selmu_mom[0]);
+            if (selmu_necals==1)
+            {
+               selmu_mippion_proton->Fill(selmu_ecal_bestseg_mippion);
+               selmu_ebyl_proton->Fill(selmu_ecal_bestseg_EbyL);
+            }
          }
          
          if (particle == -11)
@@ -168,11 +203,21 @@ void DefaultCustomPlotting::Loop()
             if (HMNT_truepdg == -211)
             {
                counter_selpi_piminus++;
+               if (selmu_necals==1)
+               {
+                  selpi_mippion_piminus->Fill(HMNT_ecal_bestseg_mippion);
+                  selpi_ebyl_piminus->Fill(HMNT_ecal_bestseg_EbyL);
+               }
             }
             
             if (HMNT_truepdg == 13)
             {
                counter_selpi_mu++;
+               if (selmu_necals==1)
+               {
+                  selpi_mippion_mu->Fill(HMNT_ecal_bestseg_mippion);
+                  selpi_ebyl_mu->Fill(HMNT_ecal_bestseg_EbyL);
+               }
             }
             
             if (HMNT_truepdg == 11)
@@ -236,7 +281,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum4/counter_selmu_piplus_accum4 << std::endl;
    std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum5 << std::endl;
    
-   
+   // Purity plots
    
    TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
@@ -281,9 +326,29 @@ void DefaultCustomPlotting::Loop()
    graph_selmu_proton_purity->Draw("L same");
    //canvas_selmu_proton_purity->Write();
    
-   
    canvas_selmu_antimu_purity->BuildLegend();
    canvas_selmu_antimu_purity->Write();
+   
+   // MipPion plots
+   
+   TCanvas* canvas_mippion = new TCanvas("canvas_fgdEbyLs","",200,10,1000,400);
+   canvas_mippion->Divide(2,1,0.005,0.005);
+   canvas_mippion->cd(1);
+   SetHistParticleStyle(selmu_mippion_antimu, "antimu");
+   SetHistParticleStyle(selmu_mippion_piplus, "piplus");
+   SetHistParticleStyle(selmu_mippion_proton, "proton");
+   selmu_mippion_antimu->Draw();
+   selmu_mippion_piplus->Draw("same");
+   selmu_mippion_proton->Draw("same");
+   canvas_mippion->cd(1)->BuildLegend();
+   
+   canvas_mippion->cd(2);
+   SetHistParticleStyle(selpi_mippion_mu, "antimu");
+   SetHistParticleStyle(selpi_mippion_piminus, "piplus");
+   selpi_mippion_mu->Draw();
+   selpi_mippion_piminus->Draw("same");
+   canvas_mippion->cd(1)->BuildLegend();
+   canvas_mippion->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
@@ -379,4 +444,41 @@ Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist_sig, TH1F* hi
    }
    
    return optimal_signif;
+}
+
+void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
+   
+   hist->SetLineWidth(2);
+   
+   if (particle == "antimu")
+   {
+      hist->SetLineColor( kBlue);
+      //hist->SetFillColorAlpha(kBlue-10, 0.35);
+      //hist->SetFillStyle( 3006);
+   }
+   
+   else if (particle == "piplus")
+   {
+      hist->SetLineColor( kRed);
+      //hist->SetFillColorAlpha(kRed, 0.35);
+      //hist->SetFillStyle( 3354);
+   }
+   
+   else if (particle == "proton")
+   {
+      hist->SetLineColor( kGreen);
+      //hist->SetFillColorAlpha(kGreen, 0.35);
+      //hist->SetFillStyle( 3003);
+   }
+   
+   else if (particle == "positron")
+   {
+      hist->SetLineColor( kMagenta);
+      //hist->SetFillColorAlpha(kMagenta, 0.35);
+      //hist->SetFillStyle( 3345);
+   }
+   
+   else std::cout << "Error in SetHistParticleStyle: particle type not recognised." << std::endl;
+   
+   return;
 }
