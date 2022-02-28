@@ -158,6 +158,7 @@ void DefaultCustomPlotting::Loop()
             if (selmu_necals==1)
             {
                selmu_mippion_antimu->Fill(selmu_ecal_bestseg_mippion);
+               selmu_mipem_antimu->Fill(selmu_ecal_mipem[0]);
                selmu_ebyl_antimu->Fill(selmu_ecal_bestseg_EbyL);
             }
          }
@@ -174,6 +175,7 @@ void DefaultCustomPlotting::Loop()
             if (selmu_necals==1)
             {
                selmu_mippion_piplus->Fill(selmu_ecal_bestseg_mippion);
+               selmu_mipem_piplus->Fill(selmu_ecal_mipem[0]);
                selmu_ebyl_piplus->Fill(selmu_ecal_bestseg_EbyL);
             }
          }
@@ -190,6 +192,7 @@ void DefaultCustomPlotting::Loop()
             if (selmu_necals==1)
             {
                selmu_mippion_proton->Fill(selmu_ecal_bestseg_mippion);
+               selmu_mipem_proton->Fill(selmu_ecal_mipem[0]);
                selmu_ebyl_proton->Fill(selmu_ecal_bestseg_EbyL);
             }
          }
@@ -214,6 +217,7 @@ void DefaultCustomPlotting::Loop()
                if (selmu_necals==1)
                {
                   selpi_mippion_piminus->Fill(HMNT_ecal_bestseg_mippion);
+                  //selpi_mipem_piminus->Fill(selmu_ecal_mipem[0]);
                   selpi_ebyl_piminus->Fill(HMNT_ecal_bestseg_EbyL);
                }
             }
@@ -224,6 +228,7 @@ void DefaultCustomPlotting::Loop()
                if (selmu_necals==1)
                {
                   selpi_mippion_mu->Fill(HMNT_ecal_bestseg_mippion);
+                  //selmu_mipem_mu->Fill(selmu_ecal_mipem[0]);
                   selpi_ebyl_mu->Fill(HMNT_ecal_bestseg_EbyL);
                }
             }
