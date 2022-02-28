@@ -46,10 +46,11 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
-   Int_t counter_all_accum7 = 0, counter_all_accum6 = 0;
+   Int_t counter_all_accum7 = 0, counter_all_accum6 = 0, counter_selmuecal_accum7 = 0;
    Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0, counter_oofv = 0;
-   Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
-   Int_t counter_selpi = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
+   Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, 
+         counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
+   Int_t counter_selpi = 0, counter_selpiecal = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
    Int_t counter_selmu_antimu_accum4 = 0, counter_selmu_antimu_accum5 = 0, counter_selmu_piplus_accum4 = 0, counter_selmu_piplus_accum5 = 0;
    
    Int_t recomom_nbins = 15;
@@ -82,6 +83,9 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "#mu^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "#pi^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
+   
+   TH1F *selmu_ebyl_vs_mippion = new TH2F("selmu_ebyl_vs_mippion", "selmu_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          mipem_nbins, -30, 50.0, ebyl_nbins, 0, 4.0, "colz");
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -125,6 +129,12 @@ void DefaultCustomPlotting::Loop()
          
          counter_all_accum7++;
          recomom_all->Fill(selmu_mom[0]);
+         
+         if (selmu_necals==1)
+         {
+            counter_selmuecal_accum7++;
+            selmu_ebyl_vs_mippion->Fill(selmu_ecal_bestseg_mippion, selmu_ecal_bestseg_EbyL);
+         }
          
          if (topology == 0)
          {
@@ -211,10 +221,15 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selpi++;
             
+            if (HMNT_NEcalSegments==1)
+            {
+               counter_selpiecal++;
+            }
+            
             if (HMNT_truepdg == -211)
             {
                counter_selpi_piminus++;
-               if (selmu_necals==1)
+               if (HMNT_NEcalSegments==1)
                {
                   selpi_mippion_piminus->Fill(HMNT_ecal_bestseg_mippion);
                   //selpi_mipem_piminus->Fill(selmu_ecal_mipem[0]);
@@ -225,7 +240,7 @@ void DefaultCustomPlotting::Loop()
             if (HMNT_truepdg == 13)
             {
                counter_selpi_mu++;
-               if (selmu_necals==1)
+               if (HMNT_NEcalSegments==1)
                {
                   selpi_mippion_mu->Fill(HMNT_ecal_bestseg_mippion);
                   //selmu_mipem_mu->Fill(selmu_ecal_mipem[0]);
@@ -293,6 +308,9 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum4/counter_selmu_piplus_accum4 << std::endl;
    std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum5 << std::endl;
+   
+   std::cout << std::endl << "Mu+ candidate ECal efficiency: " << 100*(float)counter_selmuecal_accum7/counter_all_accum7 << "\%" << std::endl;
+   std::cout << std::endl << "Pi- candidate ECal efficiency: " << 100*(float)counter_selpiecal/counter_selpi << "\%" << std::endl;
    
    // Purity plots
    
@@ -408,6 +426,10 @@ void DefaultCustomPlotting::Loop()
    canvas_ebyl->cd(2)->BuildLegend();
    canvas_ebyl->cd(2)->SetLogy();
    canvas_ebyl->Write();
+   
+   // Correlation plots:
+   
+   selmu_ebyl_vs_mippion->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
