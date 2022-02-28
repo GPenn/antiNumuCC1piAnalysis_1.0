@@ -88,6 +88,9 @@ void DefaultCustomPlotting::Loop()
    TH2F *selmu_ebyl_vs_mippion = new TH2F("selmu_ebyl_vs_mippion", "selmu_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           mipem_nbins, -30, 50.0, ebyl_nbins, 0, 4.0);
    
+   TH2F *selpi_ebyl_vs_mippion = new TH2F("selpi_ebyl_vs_mippion", "selpi_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          mipem_nbins, -30, 50.0, ebyl_nbins, 0, 4.0);
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -231,6 +234,7 @@ void DefaultCustomPlotting::Loop()
             if (HMNT_NEcalSegments==1)
             {
                counter_selpiecal++;
+               selpi_ebyl_vs_mippion->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);
             }
             
             if (HMNT_truepdg == -211)
@@ -437,7 +441,16 @@ void DefaultCustomPlotting::Loop()
    
    // Correlation plots:
    
-   selmu_ebyl_vs_mippion->Write();
+   std::cout << std::endl << "Mu+ candidate mippion-E/L correlation: " << selmu_ebyl_vs_mippion->GetCorrelationFactor() << std::endl;
+   TCanvas* canvas_selmu_ebyl_vs_mippion = new TCanvas("canvas_selmu_ebyl_vs_mippion","",200,10,1000,800);
+   selmu_ebyl_vs_mippion->Draw("colz");
+   canvas_selmu_ebyl_vs_mippion->Write();
+   
+   std::cout << std::endl << "Pi- candidate mippion-E/L correlation: " << selpi_ebyl_vs_mippion->GetCorrelationFactor() << std::endl;
+   TCanvas* canvas_selpi_ebyl_vs_mippion = new TCanvas("canvas_selpi_ebyl_vs_mippion","",200,10,1000,800);
+   selpi_ebyl_vs_mippion->Draw("colz");
+   canvas_selpi_ebyl_vs_mippion->Write();
+   
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
