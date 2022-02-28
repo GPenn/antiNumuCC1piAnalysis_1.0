@@ -64,15 +64,15 @@ void DefaultCustomPlotting::Loop()
    TH1F *selmu_mippion_piplus = new TH1F("selmu_mippion_piplus", "#pi^{+}", mippion_nbins, -30, 50.0);
    TH1F *selmu_mippion_proton = new TH1F("selmu_mippion_proton", "p", mippion_nbins, -30, 50.0);
    
-   TH1F *selpi_mippion_piminus = new TH1F("selpi_mippion_piminus", "#mu^{-}", mippion_nbins, -30, 50.0);
-   TH1F *selpi_mippion_mu = new TH1F("selpi_mippion_mu", "#pi^{-};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
+   TH1F *selpi_mippion_piminus = new TH1F("selpi_mippion_piminus", "#pi^{-};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
+   TH1F *selpi_mippion_mu = new TH1F("selpi_mippion_mu", "#mu^{-};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
    
    Int_t ebyl_nbins = 40;
    TH1F *selmu_ebyl_antimu = new TH1F("selmu_ebyl_antimu", "#mu^{+};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    TH1F *selmu_ebyl_piplus = new TH1F("selmu_ebyl_piplus", "#pi^{+}", ebyl_nbins, 0, 4.0);
    TH1F *selmu_ebyl_proton = new TH1F("selmu_ebyl_proton", "p", ebyl_nbins, 0, 4.0);
    
-   TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "#mu^{-}", ebyl_nbins, 0, 4.0);
+   TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "#mu^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "#pi^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
@@ -345,8 +345,8 @@ void DefaultCustomPlotting::Loop()
    canvas_mippion->cd(2);
    SetHistParticleStyle(selpi_mippion_mu, "antimu");
    SetHistParticleStyle(selpi_mippion_piminus, "piplus");
-   selpi_mippion_mu->Draw();
-   selpi_mippion_piminus->Draw("same");
+   selpi_mippion_piminus->Draw();
+   selpi_mippion_mu->Draw("same");
    canvas_mippion->cd(2)->BuildLegend();
    canvas_mippion->Write();
    
@@ -369,8 +369,8 @@ void DefaultCustomPlotting::Loop()
    selpi_ebyl_piminus->GetYaxis()->SetRangeUser(1.0, 3000.0);
    SetHistParticleStyle(selpi_ebyl_mu, "antimu");
    SetHistParticleStyle(selpi_ebyl_piminus, "piplus");
-   selpi_ebyl_mu->Draw();
-   selpi_ebyl_piminus->Draw("same");
+   selpi_ebyl_piminus->Draw();
+   selpi_ebyl_mu->Draw("same");
    canvas_ebyl->cd(2)->BuildLegend();
    canvas_ebyl->cd(2)->SetLogy();
    canvas_ebyl->Write();
