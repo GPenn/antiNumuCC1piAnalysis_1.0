@@ -86,10 +86,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "#pi^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    
    TH2F *selmu_ebyl_vs_mippion = new TH2F("selmu_ebyl_vs_mippion", "selmu_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
-                                          mipem_nbins, -20, 50.0, ebyl_nbins, 0, 2.0);
+                                          mipem_nbins, -20, 50.0, 100, 0, 6.0);
    
    TH2F *selpi_ebyl_vs_mippion = new TH2F("selpi_ebyl_vs_mippion", "selpi_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
-                                          mipem_nbins, -20, 50.0, ebyl_nbins, 0, 2.0);
+                                          mipem_nbins, -20, 50.0, 100, 0, 6.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
