@@ -84,7 +84,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "#mu^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "#pi^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    
-   TH1F *selmu_ebyl_vs_mippion = new TH2F("selmu_ebyl_vs_mippion", "selmu_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+   TH2F *selmu_ebyl_vs_mippion = new TH2F("selmu_ebyl_vs_mippion", "selmu_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           mipem_nbins, -30, 50.0, ebyl_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
