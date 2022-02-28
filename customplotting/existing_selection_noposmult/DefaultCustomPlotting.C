@@ -355,6 +355,7 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_ebyl = new TCanvas("canvas_ebyl","",200,10,1000,400);
    canvas_ebyl->Divide(2,1,0.005,0.005);
    canvas_ebyl->cd(1);
+   selmu_ebyl_antimu->GetYaxis()->SetRangeUser(1.0, 5000.0);
    SetHistParticleStyle(selmu_ebyl_antimu, "antimu");
    SetHistParticleStyle(selmu_ebyl_piplus, "piplus");
    SetHistParticleStyle(selmu_ebyl_proton, "proton");
@@ -362,16 +363,15 @@ void DefaultCustomPlotting::Loop()
    selmu_ebyl_piplus->Draw("same");
    selmu_ebyl_proton->Draw("same");
    canvas_ebyl->cd(1)->BuildLegend();
-   canvas_ebyl->cd(1)->GetYaxis()->SetRangeUser(1.0, 5000.0);
    canvas_ebyl->cd(1)->SetLogy();
    
    canvas_ebyl->cd(2);
+   selpi_ebyl_piminus->GetYaxis()->SetRangeUser(1.0, 3000.0);
    SetHistParticleStyle(selpi_ebyl_mu, "antimu");
    SetHistParticleStyle(selpi_ebyl_piminus, "piplus");
    selpi_ebyl_mu->Draw();
    selpi_ebyl_piminus->Draw("same");
    canvas_ebyl->cd(2)->BuildLegend();
-   canvas_ebyl->cd(2)->GetYaxis()->SetRangeUser(1.0, 3000.0);
    canvas_ebyl->cd(2)->SetLogy();
    canvas_ebyl->Write();
    
