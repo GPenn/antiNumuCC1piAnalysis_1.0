@@ -59,21 +59,21 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
    TH1F *recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
    
-   Int_t mippion_nbins = 20;
-   TH1F *selmu_mippion_antimu = new TH1F("selmu_mippion_antimu", "True antimu vs mippion", mippion_nbins, -50, 50.0);
-   TH1F *selmu_mippion_piplus = new TH1F("selmu_mippion_piplus", "True piplus vs mippion", mippion_nbins, -50, 50.0);
-   TH1F *selmu_mippion_proton = new TH1F("selmu_mippion_proton", "True piplus vs mippion", mippion_nbins, -50, 50.0);
+   Int_t mippion_nbins = 40;
+   TH1F *selmu_mippion_antimu = new TH1F("selmu_mippion_antimu", "#mu^{+};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
+   TH1F *selmu_mippion_piplus = new TH1F("selmu_mippion_piplus", "#pi^{+}", mippion_nbins, -30, 50.0);
+   TH1F *selmu_mippion_proton = new TH1F("selmu_mippion_proton", "p", mippion_nbins, -30, 50.0);
    
-   TH1F *selpi_mippion_piminus = new TH1F("selpi_mippion_piminus", "True piminus vs mippion", mippion_nbins, -50, 50.0);
-   TH1F *selpi_mippion_mu = new TH1F("selpi_mippion_mu", "True mu vs mippion", mippion_nbins, -50, 50.0);
+   TH1F *selpi_mippion_piminus = new TH1F("selpi_mippion_piminus", "#mu^{-};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
+   TH1F *selpi_mippion_mu = new TH1F("selpi_mippion_mu", "#pi^{-}", mippion_nbins, -30, 50.0);
    
-   Int_t ebyl_nbins = 20;
-   TH1F *selmu_ebyl_antimu = new TH1F("selmu_ebyl_antimu", "True antimu vs E/L", ebyl_nbins, 0, 4.0);
-   TH1F *selmu_ebyl_piplus = new TH1F("selmu_ebyl_piplus", "True piplus vs E/L", ebyl_nbins, 0, 4.0);
-   TH1F *selmu_ebyl_proton = new TH1F("selmu_ebyl_proton", "True piplus vs E/L", ebyl_nbins, 0, 4.0);
+   Int_t ebyl_nbins = 40;
+   TH1F *selmu_ebyl_antimu = new TH1F("selmu_ebyl_antimu", "#mu^{+};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
+   TH1F *selmu_ebyl_piplus = new TH1F("selmu_ebyl_piplus", "#pi^{+}", ebyl_nbins, 0, 4.0);
+   TH1F *selmu_ebyl_proton = new TH1F("selmu_ebyl_proton", "p", ebyl_nbins, 0, 4.0);
    
-   TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "True piminus vs E/L", ebyl_nbins, 0, 4.0);
-   TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "True mu vs E/L", ebyl_nbins, 0, 4.0);
+   TH1F *selpi_ebyl_piminus = new TH1F("selpi_ebyl_piminus", "#mu^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
+   TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "#pi^{-}", ebyl_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -331,7 +331,7 @@ void DefaultCustomPlotting::Loop()
    
    // MipPion plots
    
-   TCanvas* canvas_mippion = new TCanvas("canvas_fgdEbyLs","",200,10,1000,400);
+   TCanvas* canvas_mippion = new TCanvas("canvas_mippion","",200,10,1000,400);
    canvas_mippion->Divide(2,1,0.005,0.005);
    canvas_mippion->cd(1);
    SetHistParticleStyle(selmu_mippion_antimu, "antimu");
@@ -347,8 +347,29 @@ void DefaultCustomPlotting::Loop()
    SetHistParticleStyle(selpi_mippion_piminus, "piplus");
    selpi_mippion_mu->Draw();
    selpi_mippion_piminus->Draw("same");
-   canvas_mippion->cd(1)->BuildLegend();
+   canvas_mippion->cd(2)->BuildLegend();
    canvas_mippion->Write();
+   
+   // E/L plots
+   
+   TCanvas* canvas_ebyl = new TCanvas("canvas_ebyl","",200,10,1000,400);
+   canvas_ebyl->Divide(2,1,0.005,0.005);
+   canvas_ebyl->cd(1);
+   SetHistParticleStyle(selmu_ebyl_antimu, "antimu");
+   SetHistParticleStyle(selmu_ebyl_piplus, "piplus");
+   SetHistParticleStyle(selmu_ebyl_proton, "proton");
+   selmu_ebyl_antimu->Draw();
+   selmu_ebyl_piplus->Draw("same");
+   selmu_ebyl_proton->Draw("same");
+   canvas_ebyl->cd(1)->BuildLegend();
+   
+   canvas_ebyl->cd(2);
+   SetHistParticleStyle(selpi_ebyl_mu, "antimu");
+   SetHistParticleStyle(selpi_ebyl_piminus, "piplus");
+   selpi_ebyl_mu->Draw();
+   selpi_ebyl_piminus->Draw("same");
+   canvas_ebyl->cd(2)->BuildLegend();
+   canvas_ebyl->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
