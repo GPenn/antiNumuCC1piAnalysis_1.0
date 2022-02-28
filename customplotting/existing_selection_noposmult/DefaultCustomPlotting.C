@@ -52,6 +52,7 @@ void DefaultCustomPlotting::Loop()
          counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    Int_t counter_selpi = 0, counter_selpiecal = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
    Int_t counter_selmu_antimu_accum4 = 0, counter_selmu_antimu_accum5 = 0, counter_selmu_piplus_accum4 = 0, counter_selmu_piplus_accum5 = 0;
+   Int_t counter_noecalinfo = 0;
    
    Int_t recomom_nbins = 15;
    
@@ -129,6 +130,7 @@ void DefaultCustomPlotting::Loop()
          
          counter_all_accum7++;
          recomom_all->Fill(selmu_mom[0]);
+        
          
          if (selmu_necals==1)
          {
@@ -221,6 +223,11 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selpi++;
             
+            if ((selmu_necals==0) && (HMNT_NEcalSegments==0))
+            {
+               counter_noecalinfo++;
+            }
+            
             if (HMNT_NEcalSegments==1)
             {
                counter_selpiecal++;
@@ -311,6 +318,7 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "Mu+ candidate ECal efficiency: " << 100*(float)counter_selmuecal_accum7/counter_all_accum7 << "\%" << std::endl;
    std::cout << std::endl << "Pi- candidate ECal efficiency: " << 100*(float)counter_selpiecal/counter_selpi << "\%" << std::endl;
+   std::cout << std::endl << "Events without ECal info: " << 100*(float)counter_noecalinfo/counter_all_accum7 << "\%" << std::endl;
    
    // Purity plots
    
