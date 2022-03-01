@@ -555,7 +555,6 @@ void DefaultCustomPlotting::Loop()
          Float_t efficiency = passed_sig/(selpi_ebyl_vs_mippion_sig->GetEntries());
          if (passed_sig == 0){significance = 0; purity = 0;}
       
-         selpi_ebyl_vs_mippion_signif->SetBinContent(cutx, cuty, significance);
          graph_selpi_ebyl_vs_mippion_signif->SetPoint(graphpoint, selpi_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx), 
                                                                   selpi_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty), significance);
          graph_selpi_ebyl_vs_mippion_effpur->SetPoint(graphpoint, selpi_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx), 
