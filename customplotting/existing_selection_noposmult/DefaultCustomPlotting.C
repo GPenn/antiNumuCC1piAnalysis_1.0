@@ -253,8 +253,8 @@ void DefaultCustomPlotting::Loop()
             {
                counter_selpiecal++;
                selpi_ebyl_vs_mippion->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);
-               if (particle == -211) {selpi_ebyl_vs_mippion_sig->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);}
-               if (particle != -211) {selpi_ebyl_vs_mippion_bkg->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);}
+               if (HMNT_truepdg == -211) {selpi_ebyl_vs_mippion_sig->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);}
+               if (HMNT_truepdg != -211) {selpi_ebyl_vs_mippion_bkg->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);}
             }
             
             if (HMNT_truepdg == -211)
