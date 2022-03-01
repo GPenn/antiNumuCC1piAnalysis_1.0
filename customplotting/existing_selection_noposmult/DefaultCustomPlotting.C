@@ -468,8 +468,11 @@ void DefaultCustomPlotting::Loop()
    // Optimisation:
    
    Float_t optimal_signif = 0;
-   Float_t optimal_cut_mippion = 0;
-   Float_t optimal_cut_ebyl = 0;
+   Float_t opt_cut_signif_mippion = 0;
+   Float_t opt_cut_signif_ebyl = 0;
+   Float_t optimal_effpur = 0;
+   Float_t opt_cut_effpur_mippion = 0;
+   Float_t opt_cut_effpur_ebyl = 0;
    TGraph2D* graph_selmu_ebyl_vs_mippion_signif = new TGraph2D();
    graph_selmu_ebyl_vs_mippion_signif->SetTitle("graph_selmu_ebyl_vs_mippion_signif; MipPion; E/L; Significance");
    TGraph2D* graph_selmu_ebyl_vs_mippion_effpur = new TGraph2D();
@@ -496,13 +499,20 @@ void DefaultCustomPlotting::Loop()
          if (significance > optimal_signif)
          {
             optimal_signif = significance;
-            optimal_cut_mippion = selmu_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx);
-            optimal_cut_ebyl = selmu_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty);
+            opt_cut_signif_mippion = selmu_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx);
+            opt_cut_signif_ebyl = selmu_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty);
+         }
+         if (efficiency*purity > optimal_effpur)
+         {
+            optimal_effpur = efficiency*purity;
+            opt_cut_effpur_mippion = selmu_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx);
+            opt_cut_effpur_ebyl = selmu_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty);
          }
       }
    }
    
-   std::cout << "Optimal muon candidate significance = " << optimal_signif << " at cut MipPion = " << optimal_cut_mippion << ", E/L = " << optimal_cut_ebyl << std::endl;
+   std::cout << "Optimal muon candidate significance = " << optimal_signif << " at cut MipPion = " << opt_cut_signif_mippion << ", E/L = " << opt_cut_signif_ebyl << std::endl;
+   std::cout << "Optimal muon candidate eff*pur = " << optimal_effpur << " at cut MipPion = " << opt_cut_effpur_mippion << ", E/L = " << opt_cut_effpur_ebyl << std::endl;
    
    TCanvas* canvas_selmu_ebyl_vs_mippion_signif = new TCanvas("canvas_selmu_ebyl_vs_mippion_signif","",200,10,1000,800);
    //selmu_ebyl_vs_mippion_signif->Draw("colz");
