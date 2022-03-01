@@ -110,6 +110,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
+  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
+  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
   
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
@@ -629,6 +631,25 @@ bool OptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 }
 
 //**************************************************
+bool ReoptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+ 
+  if (box.MainTrack->nECALSegments == 1)
+  {
+    AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
+      
+    if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) > 0.88) return false;
+  }
+  
+  return true;
+}
+
+//**************************************************
 bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
 
@@ -654,6 +675,30 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
       
       if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) < 0.28) return false;
       if ( ECalSeg->PIDMipPion < -0.91)                  return false;
+    }
+  }
+
+  return true;
+
+}
+
+//**************************************************
+bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  
+  if (box.HMNtrack)
+  { 
+    if (box.HMNtrack->nECALSegments == 1)
+    {
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
+      
+      if ( ECalSeg->PIDMipPion < -0.4) return false;
     }
   }
 
