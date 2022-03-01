@@ -86,10 +86,19 @@ void DefaultCustomPlotting::Loop()
    TH1F *selpi_ebyl_mu = new TH1F("selpi_ebyl_mu", "#pi^{-};ECal EM energy/ECal segment length (MeV/mm);Entries", ebyl_nbins, 0, 4.0);
    
    TH2F *selmu_ebyl_vs_mippion = new TH2F("selmu_ebyl_vs_mippion", "selmu_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
-                                          mipem_nbins, -20, 50.0, 100, 0, 6.0);
+                                          100, -20, 50.0, 100, 0, 6.0);
    
    TH2F *selpi_ebyl_vs_mippion = new TH2F("selpi_ebyl_vs_mippion", "selpi_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
-                                          mipem_nbins, -20, 50.0, 100, 0, 6.0);
+                                          100, -20, 50.0, 100, 0, 6.0);
+   
+   Int_t optimisation_nbins = 50;
+   
+   TH2F *selmu_ebyl_vs_mippion_sig = new TH2F("selmu_ebyl_vs_mippion_sig", "selmu_ebyl_vs_mippion_sig;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
+   TH2F *selmu_ebyl_vs_mippion_bkg = new TH2F("selmu_ebyl_vs_mippion_bkg", "selmu_ebyl_vs_mippion_bkg;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
+   TH2F *selmu_ebyl_vs_mippion_signif = new TH2F("selmu_ebyl_vs_mippion_signif", "selmu_ebyl_vs_mippion_signif;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -139,6 +148,8 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmuecal_accum7++;
             selmu_ebyl_vs_mippion->Fill(selmu_ecal_bestseg_mippion, selmu_ecal_bestseg_EbyL);
+            if (particle == -13) {selmu_ebyl_vs_mippion_sig->Fill(selmu_ecal_bestseg_mippion, selmu_ecal_bestseg_EbyL);}
+            if (particle != -13) {selmu_ebyl_vs_mippion_bkg->Fill(selmu_ecal_bestseg_mippion, selmu_ecal_bestseg_EbyL);}
          }
          
          if (topology == 0)
@@ -451,6 +462,27 @@ void DefaultCustomPlotting::Loop()
    selpi_ebyl_vs_mippion->Draw("colz");
    canvas_selpi_ebyl_vs_mippion->Write();
    
+   // Optimisation:
+   
+   for (Int_t cutx=1; cutx <= optimisation_nbins; cutx++)
+   {
+      for (Int_t cuty=1; cuty <= optimisation_nbins; cuty++)
+      {
+         Float_t passed_sig = selmu_ebyl_vs_mippion_sig->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
+         Float_t passed_bkg = selmu_ebyl_vs_mippion_bkg->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
+
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         //Float_t efficiency = passed_sig/(hist_sig->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+      
+         selmu_ebyl_vs_mippion_signif->SetBinContent(cutx, cuty, significance);
+      }
+   }
+   
+   TCanvas* canvas_selmu_ebyl_vs_mippion_signif = new TCanvas("canvas_selmu_ebyl_vs_mippion_signif","",200,10,1000,800);
+   selmu_ebyl_vs_mippion_signif->Draw("colz");
+   canvas_selmu_ebyl_vs_mippion_signif->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
