@@ -469,6 +469,8 @@ void DefaultCustomPlotting::Loop()
    Float_t optimal_signif = 0;
    Float_t optimal_cut_mippion = 0;
    Float_t optimal_cut_ebyl = 0;
+   TGraph2D* graph_selmu_ebyl_vs_mippion_signif = new TGraph2D();
+   Int_t graphpoint = 0;
    for (Int_t cutx=1; cutx <= optimisation_nbins; cutx++)
    {
       for (Int_t cuty=1; cuty <= optimisation_nbins; cuty++)
@@ -482,7 +484,10 @@ void DefaultCustomPlotting::Loop()
          if (passed_sig == 0){significance = 0; purity = 0;}
       
          selmu_ebyl_vs_mippion_signif->SetBinContent(cutx, cuty, significance);
-         
+         graph_selmu_ebyl_vs_mippion_signif->SetPoint(graphpoint, selmu_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx), 
+                                                                  selmu_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty), significance);
+         graphpoint++;
+            
          if (significance > optimal_signif)
          {
             optimal_signif = significance;
@@ -495,7 +500,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal muon candidate significance = " << optimal_signif << " at cut MipPion = " << optimal_cut_mippion << ", E/L = " << optimal_cut_ebyl << std::endl;
    
    TCanvas* canvas_selmu_ebyl_vs_mippion_signif = new TCanvas("canvas_selmu_ebyl_vs_mippion_signif","",200,10,1000,800);
-   selmu_ebyl_vs_mippion_signif->Draw("colz");
+   //selmu_ebyl_vs_mippion_signif->Draw("colz");
+   graph_selmu_ebyl_vs_mippion_signif->Draw("surf1");
    canvas_selmu_ebyl_vs_mippion_signif->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
