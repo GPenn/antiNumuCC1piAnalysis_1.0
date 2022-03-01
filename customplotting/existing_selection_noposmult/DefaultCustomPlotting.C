@@ -99,6 +99,8 @@ void DefaultCustomPlotting::Loop()
                                           optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    TH2F *selmu_ebyl_vs_mippion_signif = new TH2F("selmu_ebyl_vs_mippion_signif", "selmu_ebyl_vs_mippion_signif;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
+   TH2F *selmu_ebyl_vs_mippion_effpur = new TH2F("selmu_ebyl_vs_mippion_effpur", "selmu_ebyl_vs_mippion_effpur;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -468,12 +470,12 @@ void DefaultCustomPlotting::Loop()
    {
       for (Int_t cuty=1; cuty <= optimisation_nbins; cuty++)
       {
-         Float_t passed_sig = selmu_ebyl_vs_mippion_sig->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
-         Float_t passed_bkg = selmu_ebyl_vs_mippion_bkg->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
+         Float_t passed_sig = selmu_ebyl_vs_mippion_sig->GetEntries() - selmu_ebyl_vs_mippion_sig->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
+         Float_t passed_bkg = selmu_ebyl_vs_mippion_bkg->GetEntries() - selmu_ebyl_vs_mippion_bkg->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
 
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          Float_t purity = passed_sig/(passed_sig+passed_bkg);
-         //Float_t efficiency = passed_sig/(hist_sig->GetEntries());
+         Float_t efficiency = passed_sig/(selmu_ebyl_vs_mippion_sig->GetEntries());
          if (passed_sig == 0){significance = 0; purity = 0;}
       
          selmu_ebyl_vs_mippion_signif->SetBinContent(cutx, cuty, significance);
