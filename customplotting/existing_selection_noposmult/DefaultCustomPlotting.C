@@ -466,6 +466,9 @@ void DefaultCustomPlotting::Loop()
    
    // Optimisation:
    
+   Float_t optimal_signif = 0;
+   Float_t optimal_cut_mippion = 0;
+   Float_t optimal_cut_ebyl = 0;
    for (Int_t cutx=1; cutx <= optimisation_nbins; cutx++)
    {
       for (Int_t cuty=1; cuty <= optimisation_nbins; cuty++)
@@ -479,8 +482,17 @@ void DefaultCustomPlotting::Loop()
          if (passed_sig == 0){significance = 0; purity = 0;}
       
          selmu_ebyl_vs_mippion_signif->SetBinContent(cutx, cuty, significance);
+         
+         if (significance > optimal_signif)
+         {
+            optimal_signif = significance;
+            optimal_cut_mippion = selmu_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx);
+            optimal_cut_ebyl = selmu_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty);
+         }
       }
    }
+   
+   std::cout << "Optimal muon candidate significance = " << optimal_signif << " at cut MipPion = " << optimal_cut_mippion << ", E/L = " << optimal_cut_ebyl << std::endl;
    
    TCanvas* canvas_selmu_ebyl_vs_mippion_signif = new TCanvas("canvas_selmu_ebyl_vs_mippion_signif","",200,10,1000,800);
    selmu_ebyl_vs_mippion_signif->Draw("colz");
