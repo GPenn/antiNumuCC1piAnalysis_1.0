@@ -588,6 +588,9 @@ void DefaultCustomPlotting::Loop()
    graph_selpi_ebyl_vs_mippion_effpur->Draw("surf1");
    canvas_selpi_ebyl_vs_mippion_effpur->Write();
    
+   selpi_ebyl_vs_mippion_sig->Write();
+   selpi_ebyl_vs_mippion_bkg->Write();
+   
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
    defout->Write();
