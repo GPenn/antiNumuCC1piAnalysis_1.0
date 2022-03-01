@@ -102,6 +102,10 @@ void DefaultCustomPlotting::Loop()
                                           optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    TH2F *selmu_ebyl_vs_mippion_effpur = new TH2F("selmu_ebyl_vs_mippion_effpur", "selmu_ebyl_vs_mippion_effpur;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
+   TH2F *selpi_ebyl_vs_mippion_sig = new TH2F("selpi_ebyl_vs_mippion_sig", "selpi_ebyl_vs_mippion_sig;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
+   TH2F *selpi_ebyl_vs_mippion_bkg = new TH2F("selpi_ebyl_vs_mippion_bkg", "selpi_ebyl_vs_mippion_bkg;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
+                                          optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -249,6 +253,8 @@ void DefaultCustomPlotting::Loop()
             {
                counter_selpiecal++;
                selpi_ebyl_vs_mippion->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);
+               if (particle == -211) {selpi_ebyl_vs_mippion_sig->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);}
+               if (particle != -211) {selpi_ebyl_vs_mippion_bkg->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);}
             }
             
             if (HMNT_truepdg == -211)
@@ -465,7 +471,7 @@ void DefaultCustomPlotting::Loop()
    selpi_ebyl_vs_mippion->Draw("colz");
    canvas_selpi_ebyl_vs_mippion->Write();
    
-   // Optimisation:
+   // Mu candidate optimisation:
    
    Float_t optimal_signif = 0;
    Float_t opt_cut_signif_mippion = 0;
@@ -476,6 +482,7 @@ void DefaultCustomPlotting::Loop()
    TGraph2D* graph_selmu_ebyl_vs_mippion_signif = new TGraph2D();
    graph_selmu_ebyl_vs_mippion_signif->SetTitle("graph_selmu_ebyl_vs_mippion_signif; MipPion; E/L; Significance");
    TGraph2D* graph_selmu_ebyl_vs_mippion_effpur = new TGraph2D();
+   graph_selmu_ebyl_vs_mippion_effpur->SetTitle("; Cut on ECal MipPion; Cut on ECal E/L; #mu^{+} candidate efficiency*purity");
    Int_t graphpoint = 0;
    for (Int_t cutx=1; cutx <= optimisation_nbins; cutx++)
    {
@@ -522,6 +529,65 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_selmu_ebyl_vs_mippion_effpur = new TCanvas("canvas_selmu_ebyl_vs_mippion_effpur","",200,10,1000,800);
    graph_selmu_ebyl_vs_mippion_effpur->Draw("surf1");
    canvas_selmu_ebyl_vs_mippion_effpur->Write();
+   
+   // Pi candidate optimisation:
+   
+   optimal_signif = 0;
+   opt_cut_signif_mippion = 0;
+   opt_cut_signif_ebyl = 0;
+   optimal_effpur = 0;
+   opt_cut_effpur_mippion = 0;
+   opt_cut_effpur_ebyl = 0;
+   TGraph2D* graph_selpi_ebyl_vs_mippion_signif = new TGraph2D();
+   graph_selpi_ebyl_vs_mippion_signif->SetTitle("graph_selpi_ebyl_vs_mippion_signif; MipPion; E/L; Significance");
+   TGraph2D* graph_selpi_ebyl_vs_mippion_effpur = new TGraph2D();
+   graph_selpi_ebyl_vs_mippion_effpur->SetTitle("; Cut on ECal MipPion; Cut on ECal E/L; #pi^{-} candidate efficiency*purity");
+   graphpoint = 0;
+   for (Int_t cutx=1; cutx <= optimisation_nbins; cutx++)
+   {
+      for (Int_t cuty=1; cuty <= optimisation_nbins; cuty++)
+      {
+         Float_t passed_sig = selpi_ebyl_vs_mippion_sig->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
+         Float_t passed_bkg = selpi_ebyl_vs_mippion_bkg->Integral(cutx,optimisation_nbins,cuty,optimisation_nbins);
+
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         Float_t purity = passed_sig/(passed_sig+passed_bkg);
+         Float_t efficiency = passed_sig/(selpi_ebyl_vs_mippion_sig->GetEntries());
+         if (passed_sig == 0){significance = 0; purity = 0;}
+      
+         selpi_ebyl_vs_mippion_signif->SetBinContent(cutx, cuty, significance);
+         graph_selpi_ebyl_vs_mippion_signif->SetPoint(graphpoint, selpi_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx), 
+                                                                  selpi_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty), significance);
+         graph_selpi_ebyl_vs_mippion_effpur->SetPoint(graphpoint, selpi_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx), 
+                                                                  selpi_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty), efficiency*purity);
+         graphpoint++;
+            
+         if (significance > optimal_signif)
+         {
+            optimal_signif = significance;
+            opt_cut_signif_mippion = selpi_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx);
+            opt_cut_signif_ebyl = selpi_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty);
+         }
+         if (efficiency*purity > optimal_effpur)
+         {
+            optimal_effpur = efficiency*purity;
+            opt_cut_effpur_mippion = selpi_ebyl_vs_mippion_sig->ProjectionX()->GetBinLowEdge(cutx);
+            opt_cut_effpur_ebyl = selpi_ebyl_vs_mippion_sig->ProjectionY()->GetBinLowEdge(cuty);
+         }
+      }
+   }
+   
+   std::cout << "Optimal pion candidate significance = " << optimal_signif << " at cut MipPion = " << opt_cut_signif_mippion << ", E/L = " << opt_cut_signif_ebyl << std::endl;
+   std::cout << "Optimal pion candidate eff*pur = " << optimal_effpur << " at cut MipPion = " << opt_cut_effpur_mippion << ", E/L = " << opt_cut_effpur_ebyl << std::endl;
+   
+   TCanvas* canvas_selpi_ebyl_vs_mippion_signif = new TCanvas("canvas_selpi_ebyl_vs_mippion_signif","",200,10,1000,800);
+   //selpi_ebyl_vs_mippion_signif->Draw("colz");
+   graph_selpi_ebyl_vs_mippion_signif->Draw("surf1");
+   canvas_selpi_ebyl_vs_mippion_signif->Write();
+   
+   TCanvas* canvas_selpi_ebyl_vs_mippion_effpur = new TCanvas("canvas_selpi_ebyl_vs_mippion_effpur","",200,10,1000,800);
+   graph_selpi_ebyl_vs_mippion_effpur->Draw("surf1");
+   canvas_selpi_ebyl_vs_mippion_effpur->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
