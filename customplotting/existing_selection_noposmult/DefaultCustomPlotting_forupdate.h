@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Sun Feb 27 15:34:45 2022 by ROOT version 5.34/34
+// Tue Mar  1 16:39:16 2022 by ROOT version 5.34/34
 // from TTree default/20
-// found on file: ../../output/existing_selection_noposmult/oaAnalysis_prod6Trun5_1.root
+// found on file: ../../output/selection_newpid/oaAnalysis_prod6Trun5_1.root
 //////////////////////////////////////////////////////////
 
 #ifndef DefaultCustomPlotting_forupdate_h
@@ -76,6 +76,7 @@ public :
    Int_t           cut6[1][3];   //[NTOYS]
    Int_t           cut7[1][3];   //[NTOYS]
    Int_t           cut8[1][3];   //[NTOYS]
+   Int_t           cut9[1][3];   //[NTOYS]
    Float_t         weight_syst;
    Float_t         weight_syst_total;
    Float_t         weight_corr;
@@ -511,6 +512,7 @@ public :
    TBranch        *b_cut6;   //!
    TBranch        *b_cut7;   //!
    TBranch        *b_cut8;   //!
+   TBranch        *b_cut9;   //!
    TBranch        *b_weight_syst;   //!
    TBranch        *b_weight_syst_total;   //!
    TBranch        *b_weight_corr;   //!
@@ -910,9 +912,9 @@ DefaultCustomPlotting_forupdate::DefaultCustomPlotting_forupdate(TTree *tree) : 
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/existing_selection_noposmult/oaAnalysis_prod6Trun5_1.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../../output/selection_newpid/oaAnalysis_prod6Trun5_1.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../../output/existing_selection_noposmult/oaAnalysis_prod6Trun5_1.root");
+         f = new TFile("../../output/selection_newpid/oaAnalysis_prod6Trun5_1.root");
       }
       f->GetObject("default",tree);
 
@@ -1015,6 +1017,7 @@ void DefaultCustomPlotting_forupdate::Init(TTree *tree)
    fChain->SetBranchAddress("cut6", cut6, &b_cut6);
    fChain->SetBranchAddress("cut7", cut7, &b_cut7);
    fChain->SetBranchAddress("cut8", cut8, &b_cut8);
+   fChain->SetBranchAddress("cut9", cut9, &b_cut9);
    fChain->SetBranchAddress("weight_syst", &weight_syst, &b_weight_syst);
    fChain->SetBranchAddress("weight_syst_total", &weight_syst_total, &b_weight_syst_total);
    fChain->SetBranchAddress("weight_corr", &weight_corr, &b_weight_corr);
