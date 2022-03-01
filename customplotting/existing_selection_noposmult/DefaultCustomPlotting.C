@@ -54,6 +54,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi = 0, counter_selpiecal = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
    Int_t counter_selmu_antimu_accum4 = 0, counter_selmu_antimu_accum5 = 0, counter_selmu_piplus_accum4 = 0, counter_selmu_piplus_accum5 = 0;
    Int_t counter_noecalinfo = 0;
+   Int_t counter_all_accum9 = 0, counter_selmu_antimu_accum9 = 0, counter_selpi_accum9 = 0, counter_selpi_piminus_accum9 = 0, counter_cc1pi_accum9 = 0, counter_bkg_accum9 = 0;
    
    Int_t recomom_nbins = 15;
    
@@ -290,8 +291,32 @@ void DefaultCustomPlotting::Loop()
             }
             
             
+            
+         }
+
+      }
+      
+      if (accum_level[0][1] > 9){
+            
+         counter_all_accum9++;
+            
+         if (topology == 1)
+         {
+            counter_cc1pi_accum9++;
+         }
+         if (topology == 3)
+         {
+            counter_bkg_accum9++;
+         }
+         if (particle == -13)
+         {
+            counter_selmu_antimu_accum9++;
          }
          
+         if (ntpcnegQualityFV == 1)
+         {
+            counter_selpi_accum9++;
+         }
       }
       
       
