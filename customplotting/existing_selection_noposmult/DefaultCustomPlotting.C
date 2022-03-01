@@ -2,6 +2,7 @@
 #include "DefaultCustomPlotting.h"
 #include <TH2.h>
 #include <TGraph.h>
+#include <TGraph2D.h>
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <ctime> 
