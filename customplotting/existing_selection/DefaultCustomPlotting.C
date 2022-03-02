@@ -55,6 +55,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
    TH1F *recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
    
+   Int_t recomomdiff_nbins = 20;
+   TH1F *recomom_diff_sig = new TH1F("recomom_diff_sig", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
+   TH1F *recomom_diff_bkg = new TH1F("recomom_diff_bkg", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -164,6 +168,10 @@ void DefaultCustomPlotting::Loop()
          if (ntpcnegQualityFV == 1)
          {
             counter_selpi++;
+            
+            if (topology == 1){recomom_diff_sig->Fill(selmu_mom[0] - HMNT_mom);}
+            if (topology != 1){recomom_diff_bkg->Fill(selmu_mom[0] - HMNT_mom);}
+            
             
             if (HMNT_truepdg == -211)
             {
@@ -286,6 +294,9 @@ void DefaultCustomPlotting::Loop()
    
    canvas_selmu_antimu_purity->BuildLegend();
    canvas_selmu_antimu_purity->Write();
+   
+   recomom_diff_sig->Write();
+   recomom_diff_bkg->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
