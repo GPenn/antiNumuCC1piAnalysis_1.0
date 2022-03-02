@@ -110,6 +110,12 @@ void DefaultCustomPlotting::Loop()
    TH2F *selpi_ebyl_vs_mippion_bkg = new TH2F("selpi_ebyl_vs_mippion_bkg", "selpi_ebyl_vs_mippion_bkg;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    
+   Int_t recomomdiff_nbins = 20;
+   TH1F *recomom_diff_sig = new TH1F("recomom_diff_sig", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
+   TH1F *recomom_diff_bkg = new TH1F("recomom_diff_bkg", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
+   TH1F *recomom_diff_sig_accum9 = new TH1F("recomom_diff_sig_accum9", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
+   TH1F *recomom_diff_bkg_accum9 = new TH1F("recomom_diff_bkg_accum9", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -247,6 +253,9 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selpi++;
             
+            if (topology == 1){recomom_diff_sig->Fill(selmu_mom[0] - HMNT_mom);}
+            if (topology != 1){recomom_diff_bkg->Fill(selmu_mom[0] - HMNT_mom);}
+            
             if ((selmu_necals==0) && (HMNT_NEcalSegments==0))
             {
                counter_noecalinfo++;
@@ -326,6 +335,9 @@ void DefaultCustomPlotting::Loop()
          if (ntpcnegQualityFV == 1)
          {
             counter_selpi_accum9++;
+            
+            if (topology == 1){recomom_diff_sig_accum9->Fill(selmu_mom[0] - HMNT_mom);}
+            if (topology != 1){recomom_diff_bkg_accum9->Fill(selmu_mom[0] - HMNT_mom);}
             
             if (HMNT_truepdg == -211)
             {
@@ -656,6 +668,12 @@ void DefaultCustomPlotting::Loop()
    
    selpi_ebyl_vs_mippion_sig->Write();
    selpi_ebyl_vs_mippion_bkg->Write();
+   
+   recomom_diff_sig->Write();
+   recomom_diff_bkg->Write();
+   
+   recomom_diff_sig_accum9->Write();
+   recomom_diff_bkg_accum9->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
