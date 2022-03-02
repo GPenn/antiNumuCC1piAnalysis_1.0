@@ -213,6 +213,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
    std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
    
+   std::cout << std::endl << "Significance: " << (float)counter_cc1pi/sqrt(counter_all_accum8) << std::endl;
+   
    std::cout << std::endl << "True CC0pi: " << counter_cc0pi << " (" << 100*(float)counter_cc0pi/counter_all_accum8 << "\%)" << std::endl;
    std::cout << std::endl << "True CC1pi: " << counter_cc1pi << " (" << 100*(float)counter_cc1pi/counter_all_accum8 << "\%)" << std::endl;
    std::cout << std::endl << "True CC-Other: " << counter_ccother << " (" << 100*(float)counter_ccother/counter_all_accum8 << "\%)" << std::endl;
