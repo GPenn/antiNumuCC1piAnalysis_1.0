@@ -54,7 +54,9 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi = 0, counter_selpiecal = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
    Int_t counter_selmu_antimu_accum4 = 0, counter_selmu_antimu_accum5 = 0, counter_selmu_piplus_accum4 = 0, counter_selmu_piplus_accum5 = 0;
    Int_t counter_noecalinfo = 0;
-   Int_t counter_all_accum9 = 0, counter_selmu_antimu_accum9 = 0, counter_selpi_accum9 = 0, counter_selpi_piminus_accum9 = 0, counter_cc1pi_accum9 = 0, counter_bkg_accum9 = 0;
+   Int_t counter_all_accum9 = 0, counter_cc1pi_accum9 = 0, counter_bkg_accum9 = 0;
+   Int_t counter_selmu_antimu_accum9 = 0, counter_selmu_piplus_accum9 = 0, counter_selmu_proton_accum9 = 0;
+   Int_t counter_selpi_accum9 = 0, counter_selpi_piminus_accum9 = 0, counter_selpi_mu_accum9 = 0;
    
    Int_t recomom_nbins = 15;
    
@@ -312,10 +314,28 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_antimu_accum9++;
          }
+         if (particle == 211)
+         {
+            counter_selmu_piplus_accum9++;
+         }
+         if (particle == 2212)
+         {
+            counter_selmu_piplus_accum9++;
+         }
          
          if (ntpcnegQualityFV == 1)
          {
             counter_selpi_accum9++;
+            
+            if (HMNT_truepdg == -211)
+            {
+               counter_selpi_piminus_accum9++;
+            }
+            
+            if (HMNT_truepdg == 13)
+            {
+               counter_selpi_mu_accum9++;
+            }
          }
       }
       
@@ -341,6 +361,8 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "Events above accum_level 6: " << counter_all_accum6 << std::endl;
    std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
+   
+   std::cout << std::endl << "===== BEFORE ECAL CUTS: =====" << std::endl;
    
    std::cout << std::endl << "True CC0pi: " << counter_cc0pi << " (" << 100*(float)counter_cc0pi/counter_all_accum7 << "\%)" << std::endl;
    std::cout << std::endl << "True CC1pi: " << counter_cc1pi << " (" << 100*(float)counter_cc1pi/counter_all_accum7 << "\%)" << std::endl;
@@ -368,6 +390,21 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Mu+ candidate ECal efficiency: " << 100*(float)counter_selmuecal_accum7/counter_all_accum7 << "\%" << std::endl;
    std::cout << std::endl << "Pi- candidate ECal efficiency: " << 100*(float)counter_selpiecal/counter_selpi << "\%" << std::endl;
    std::cout << std::endl << "Events without ECal info: " << 100*(float)counter_noecalinfo/counter_all_accum7 << "\%" << std::endl;
+   
+   std::cout << std::endl << "===== AFTER ECAL CUTS: =====" << std::endl;
+   
+   std::cout << std::endl << "Events above accum_level 9: " << counter_all_accum9 << std::endl;
+   
+   std::cout << std::endl << "True CC1pi: " << counter_cc1pi_accum9 << " (" << 100*(float)counter_cc1pi_accum9/counter_all_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "True BKG: " << counter_bkg_accum9 << " (" << 100*(float)counter_bkg_accum9/counter_all_accum9 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu_accum9 << " (" << 100*(float)counter_selmu_antimu_accum9/counter_all_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus_accum9 << " (" << 100*(float)counter_selmu_piplus_accum9/counter_all_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton_accum9 << " (" << 100*(float)counter_selmu_proton_accum9/counter_all_accum9 << "\%)" << std::endl;
+   
+   std::cout << std::endl << "Pi- candidates: " << counter_selpi_accum9 << std::endl;
+   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus_accum9 << " (" << 100*(float)counter_selpi_piminus_accum9/counter_selpi_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu_accum9 << " (" << 100*(float)counter_selpi_mu_accum9/counter_selpi_accum9 << "\%)" << std::endl;
    
    // Purity plots
    
