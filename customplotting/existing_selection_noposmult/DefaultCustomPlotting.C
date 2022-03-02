@@ -320,7 +320,7 @@ void DefaultCustomPlotting::Loop()
          }
          if (particle == 2212)
          {
-            counter_selmu_piplus_accum9++;
+            counter_selmu_proton_accum9++;
          }
          
          if (ntpcnegQualityFV == 1)
