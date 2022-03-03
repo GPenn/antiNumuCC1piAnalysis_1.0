@@ -678,14 +678,14 @@ void DefaultCustomPlotting::Loop()
    //recomom_diff_bkg_accum9->Write();
    
    TCanvas* canvas_momdiff = new TCanvas("canvas_momdiff","",200,10,1000,400);
-   canvas_ebyl->Divide(2,1,0.005,0.005);
-   canvas_ebyl->cd(1);
+   canvas_momdiff->Divide(2,1,0.005,0.005);
+   canvas_momdiff->cd(1);
    SetHistParticleStyle(recomom_diff_sig, "antimu");
    SetHistParticleStyle(recomom_diff_bkg, "piplus");
    recomom_diff_sig->Draw();
    recomom_diff_bkg->Draw("same");
    canvas_momdiff->cd(1)->BuildLegend();
-   canvas_ebyl->cd(2);
+   canvas_momdiff->cd(2);
    SetHistParticleStyle(recomom_diff_sig_accum9, "antimu");
    SetHistParticleStyle(recomom_diff_bkg_accum9, "piplus");
    recomom_diff_sig_accum9->Draw();
