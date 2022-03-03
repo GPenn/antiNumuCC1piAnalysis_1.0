@@ -715,7 +715,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* graph_eff_vs_recomom = new TGraph();
    graph_eff_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Selection efficiency");
    
-   for (Int_t bin=1; bin <= optimisation_nbins; bin++)
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t signal = recomom_sig_sel->GetBinContent(bin);
       Float_t background = recomom_bkg_sel->GetBinContent(bin);
