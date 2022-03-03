@@ -116,6 +116,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_diff_sig_accum9 = new TH1F("recomom_diff_sig_accum9", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
    TH1F *recomom_diff_bkg_accum9 = new TH1F("recomom_diff_bkg_accum9", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
    
+   TH1F *recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_sig_sel = new TH1F("recomom_cc1pi_sel", "recomom_cc1pi_sel", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, 5000.0);
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -124,6 +128,11 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][0] <= 4) continue; // Set accum_level
       
       if (accum_level[0][1] > 4){
+         
+         if (topology == 1)
+         {
+            recomom_sig_presel->Fill(selmu_mom[0]);
+         }
          
          if (particle == -13)
          {
@@ -314,6 +323,12 @@ void DefaultCustomPlotting::Loop()
          if (topology == 1)
          {
             counter_cc1pi_accum9++;
+            recomom_sig_sel->Fill(selmu_mom[0]);
+         }
+         if (topology != 1)
+         {
+            counter_cc1pi_accum9++;
+            recomom_bkg_sel->Fill(selmu_mom[0]);
          }
          if (topology == 3)
          {
@@ -691,6 +706,32 @@ void DefaultCustomPlotting::Loop()
    recomom_diff_sig_accum9->Draw();
    recomom_diff_bkg_accum9->Draw("same");
    canvas_momdiff->Write();
+   
+   // Effpur plots
+   
+   TCanvas* canvas_effpur_vs_recomom = new TCanvas("canvas_effpur_vs_recomom","canvas_effpur_vs_recomom",200,10,1000,600);
+   TGraph* graph_pur_vs_recomom = new TGraph();
+   graph_pur_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Selection purity");
+   TGraph* graph_eff_vs_recomom = new TGraph();
+   graph_eff_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Selection efficiency");
+   
+   for (Int_t bin=1; bin <= optimisation_nbins; bin++)
+   {
+      Float_t signal = recomom_sig_sel->GetBinContent(bin);
+      Float_t background = recomom_bkg_sel->GetBinContent(bin);
+      Float_t sig_presel = recomom_sig_presel->GetBinContent(bin);
+      
+      Float_t purity = signal/(signal+background);
+      Float_t efficiency = signal/sig_presel;
+      if (signal == 0){purity = 0;}
+
+      graph_pur_vs_recomom->SetPoint(bin-1, opt_mulike_sig->GetBinCenter(bin), purity);
+      graph_eff_vs_recomom->SetPoint(bin-1, opt_mulike_sig->GetBinCenter(bin), efficiency);
+   }
+   
+   graph_pur_vs_recomom->Draw("AL");
+   graph_eff_vs_recomom->Draw("L same");
+   canvas_effpur_vs_recomom->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
