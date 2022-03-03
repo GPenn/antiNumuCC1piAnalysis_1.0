@@ -65,6 +65,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
    TH1F *recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
    
+   TH1F *recomom_all_accum9 = new TH1F("recomom_all_accum9", "Events vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_antimu_accum9 = new TH1F("recomom_antimu_accum9", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_piplus_accum9 = new TH1F("recomom_piplus_accum9", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_proton_accum9 = new TH1F("recomom_proton_accum9", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   
    Int_t mippion_nbins = 40;
    TH1F *selmu_mippion_antimu = new TH1F("selmu_mippion_antimu", "#mu^{+};ECal MipPion variable (dimensionless);Entries", mippion_nbins, -30, 50.0);
    TH1F *selmu_mippion_piplus = new TH1F("selmu_mippion_piplus", "#pi^{+}", mippion_nbins, -30, 50.0);
@@ -319,6 +324,7 @@ void DefaultCustomPlotting::Loop()
       if (accum_level[0][1] > 9){
             
          counter_all_accum9++;
+         recomom_all_accum9->Fill(selmu_mom[0]);
             
          if (topology == 1)
          {
@@ -337,14 +343,17 @@ void DefaultCustomPlotting::Loop()
          if (particle == -13)
          {
             counter_selmu_antimu_accum9++;
+            recomom_antimu_accum9->Fill(selmu_mom[0]);
          }
          if (particle == 211)
          {
             counter_selmu_piplus_accum9++;
+            recomom_piplus_accum9->Fill(selmu_mom[0]);
          }
          if (particle == 2212)
          {
             counter_selmu_proton_accum9++;
+            recomom_proton_accum9->Fill(selmu_mom[0]);
          }
          
          if (ntpcnegQualityFV == 1)
@@ -437,7 +446,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus_accum9 << " (" << 100*(float)counter_selpi_piminus_accum9/counter_selpi_accum9 << "\%)" << std::endl;
    std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu_accum9 << " (" << 100*(float)counter_selpi_mu_accum9/counter_selpi_accum9 << "\%)" << std::endl;
    
-   // Purity plots
+   // Track purity plots (before ECal PID)
    
    TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
@@ -484,6 +493,47 @@ void DefaultCustomPlotting::Loop()
    
    canvas_selmu_antimu_purity->BuildLegend();
    canvas_selmu_antimu_purity->Write();
+   
+   // Track purity plots (after ECal PID)
+   
+   TCanvas* canvas_selmu_antimu_purity_accum9 = new TCanvas("canvas_selmu_antimu_purity_accum9","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
+   TGraph* graph_selmu_antimu_purity_accum9 = new TGraph();
+   graph_selmu_antimu_purity_accum9->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_antimu_accum9->GetBinContent(bin))/(recomom_all_accum9->GetBinContent(bin));
+      graph_selmu_antimu_purity_accum9->SetPoint(bin-1, recomom_all_accum9->GetBinCenter(bin), purity);
+   }
+   graph_selmu_antimu_purity_accum9->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_selmu_antimu_purity_accum9->SetLineColor( kBlue);
+   graph_selmu_antimu_purity_accum9->SetFillColor( kWhite);
+   graph_selmu_antimu_purity_accum9->SetLineWidth(2);
+   graph_selmu_antimu_purity_accum9->Draw("AL");
+   
+   TGraph* graph_selmu_piplus_purity_accum9 = new TGraph();
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_piplus_accum9->GetBinContent(bin))/(recomom_all_accum9->GetBinContent(bin));
+      graph_selmu_piplus_purity_accum9->SetPoint(bin-1, recomom_all_accum9->GetBinCenter(bin), purity);
+   }
+   graph_selmu_piplus_purity_accum9->SetLineColor( kRed);
+   graph_selmu_piplus_purity_accum9->SetFillColor( kWhite);
+   graph_selmu_piplus_purity_accum9->SetLineWidth(2);
+   graph_selmu_piplus_purity_accum9->Draw("L same");
+   
+   TGraph* graph_selmu_proton_purity_accum9 = new TGraph();
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_proton_accum9->GetBinContent(bin))/(recomom_all_accum9->GetBinContent(bin));
+      graph_selmu_proton_purity_accum9->SetPoint(bin-1, recomom_all_accum9->GetBinCenter(bin), purity);
+   }
+   graph_selmu_proton_purity_accum9->SetLineColor( kGreen);
+   graph_selmu_proton_purity_accum9->SetFillColor( kWhite);
+   graph_selmu_proton_purity_accum9->SetLineWidth(2);
+   graph_selmu_proton_purity_accum9->Draw("L same");
+   
+   canvas_selmu_antimu_purity_accum9->BuildLegend();
+   canvas_selmu_antimu_purity_accum9->Write();
    
    // MipPion plots
    
