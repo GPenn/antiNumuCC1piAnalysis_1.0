@@ -677,7 +677,7 @@ void DefaultCustomPlotting::Loop()
    //recomom_diff_sig_accum9->Write();
    //recomom_diff_bkg_accum9->Write();
    
-   TCanvas* canvas_momdiff = new TCanvas("canvas_momdiff","",200,10,1000,800);
+   TCanvas* canvas_momdiff = new TCanvas("canvas_momdiff","",200,10,1000,400);
    canvas_ebyl->Divide(2,1,0.005,0.005);
    canvas_ebyl->cd(1);
    SetHistParticleStyle(recomom_diff_sig, "antimu");
