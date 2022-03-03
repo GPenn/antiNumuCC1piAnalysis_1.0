@@ -725,8 +725,8 @@ void DefaultCustomPlotting::Loop()
       Float_t efficiency = signal/sig_presel;
       if (signal == 0){purity = 0;}
 
-      graph_pur_vs_recomom->SetPoint(bin-1, opt_mulike_sig->GetBinCenter(bin), purity);
-      graph_eff_vs_recomom->SetPoint(bin-1, opt_mulike_sig->GetBinCenter(bin), efficiency);
+      graph_pur_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), purity);
+      graph_eff_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), efficiency);
    }
    
    graph_pur_vs_recomom->Draw("AL");
