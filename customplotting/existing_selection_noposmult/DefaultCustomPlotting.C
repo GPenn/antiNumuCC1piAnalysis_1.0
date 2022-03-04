@@ -783,9 +783,11 @@ void DefaultCustomPlotting::Loop()
    
    graph_pur_vs_recomom->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_pur_vs_recomom->SetLineWidth(2);
+   graph_pur_vs_recomom->SetFillColor(kWhite);
    graph_pur_vs_recomom->Draw("AL");
    graph_eff_vs_recomom->SetLineWidth(2);
    graph_eff_vs_recomom->SetLineColor(kRed);
+   graph_eff_vs_recomom->SetFillColor(kWhite);
    graph_eff_vs_recomom->Draw("L same");
    canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
