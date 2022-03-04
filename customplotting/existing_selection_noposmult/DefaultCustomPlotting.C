@@ -763,9 +763,9 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_effpur_vs_recomom = new TCanvas("canvas_effpur_vs_recomom","canvas_effpur_vs_recomom",200,10,1000,600);
    TGraph* graph_pur_vs_recomom = new TGraph();
-   graph_pur_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Selection purity");
+   graph_pur_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Improved #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
    TGraph* graph_eff_vs_recomom = new TGraph();
-   graph_eff_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Selection efficiency");
+   graph_eff_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);");
    
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
@@ -781,8 +781,13 @@ void DefaultCustomPlotting::Loop()
       graph_eff_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), efficiency);
    }
    
+   graph_pur_vs_recomom->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_pur_vs_recomom->SetLineWidth(2);
    graph_pur_vs_recomom->Draw("AL");
+   graph_eff_vs_recomom->SetLineWidth(2);
+   graph_eff_vs_recomom->SetLineColor(kRed);
    graph_eff_vs_recomom->Draw("L same");
+   canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
