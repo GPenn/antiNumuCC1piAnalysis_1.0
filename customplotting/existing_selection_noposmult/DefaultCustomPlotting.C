@@ -450,7 +450,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_selmu_antimu_purity = new TCanvas("canvas_selmu_antimu_purity","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity = new TGraph();
-   graph_selmu_antimu_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
+   graph_selmu_antimu_purity->SetTitle("#mu^{+};#mu^{+} candidate reconstructed momentum (MeV/c);#mu^{+} candidate track purity");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_antimu->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
@@ -465,7 +465,7 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_selmu_piplus_purity = new TCanvas("canvas_selmu_piplus_purity","Antimu candidate track pi+ contamination vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_piplus_purity = new TGraph();
-   //graph_selmu_piplus_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track pi+ contamination;");
+   graph_selmu_piplus_purity->SetTitle("#pi^{+}");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_piplus->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
@@ -479,7 +479,7 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_selmu_proton_purity = new TCanvas("canvas_selmu_proton_purity","Antimu candidate track proton contamination vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_proton_purity = new TGraph();
-   //graph_selmu_proton_purity->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track proton contamination;");
+   graph_selmu_proton_purity->SetTitle("p");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_proton->GetBinContent(bin))/(recomom_all->GetBinContent(bin));
@@ -498,7 +498,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_selmu_antimu_purity_accum9 = new TCanvas("canvas_selmu_antimu_purity_accum9","Antimu candidate track purity vs reconstructed momentum",200,10,1000,600);
    TGraph* graph_selmu_antimu_purity_accum9 = new TGraph();
-   graph_selmu_antimu_purity_accum9->SetTitle(" ;Antimu candidate reconstructed momentum (MeV/c);Track antimuon purity;");
+   graph_selmu_antimu_purity_accum9->SetTitle("#mu^{+};#mu^{+} candidate reconstructed momentum (MeV/c);#mu^{+} candidate track purity");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_antimu_accum9->GetBinContent(bin))/(recomom_all_accum9->GetBinContent(bin));
@@ -511,6 +511,7 @@ void DefaultCustomPlotting::Loop()
    graph_selmu_antimu_purity_accum9->Draw("AL");
    
    TGraph* graph_selmu_piplus_purity_accum9 = new TGraph();
+   graph_selmu_piplus_purity_accum9->SetTitle("#pi^{+}");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_piplus_accum9->GetBinContent(bin))/(recomom_all_accum9->GetBinContent(bin));
@@ -522,6 +523,7 @@ void DefaultCustomPlotting::Loop()
    graph_selmu_piplus_purity_accum9->Draw("L same");
    
    TGraph* graph_selmu_proton_purity_accum9 = new TGraph();
+   graph_selmu_proton_purity_accum9->SetTitle("p");
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t purity = (float)(recomom_proton_accum9->GetBinContent(bin))/(recomom_all_accum9->GetBinContent(bin));
