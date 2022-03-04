@@ -58,7 +58,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selmu_antimu_accum9 = 0, counter_selmu_piplus_accum9 = 0, counter_selmu_proton_accum9 = 0;
    Int_t counter_selpi_accum9 = 0, counter_selpi_piminus_accum9 = 0, counter_selpi_mu_accum9 = 0;
    
-   Int_t recomom_nbins = 25;
+   Int_t recomom_nbins = 15;
    Double_t recomom_max = 5000.0;
    
    TH1F *recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
