@@ -127,8 +127,14 @@ void DefaultCustomPlotting::Loop()
                                             recomomdiff_nbins, -recomom_max, recomom_max);
    
    TH1F *recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
-   TH1F *recomom_sig_sel = new TH1F("recomom_cc1pi_sel", "recomom_cc1pi_sel", recomom_nbins, 0.0, recomom_max);
+   TH1F *recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, recomom_max);
    TH1F *recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, recomom_max);
+   
+   Int_t theta_nbins = 15;
+   
+   TH1F *recotheta_sig_presel = new TH1F("recotheta_sig_presel", "recotheta_sig_presel", theta_nbins, 0.0, 90.0);
+   TH1F *recotheta_sig_sel = new TH1F("recotheta_sig_sel", "recotheta_sig_sel", theta_nbins, 0.0, 90.0);
+   TH1F *recotheta_bkg_sel = new TH1F("recotheta_bkg_sel", "recotheta_bkg_sel", theta_nbins, 0.0, 90.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -142,6 +148,7 @@ void DefaultCustomPlotting::Loop()
          if (topology == 1)
          {
             recomom_sig_presel->Fill(selmu_mom[0]);
+            recotheta_sig_presel->Fill(selmu_det_theta);
          }
          
          if (particle == -13)
@@ -335,11 +342,13 @@ void DefaultCustomPlotting::Loop()
          {
             counter_cc1pi_accum9++;
             recomom_sig_sel->Fill(selmu_mom[0]);
+            recotheta_sig_sel->Fill(selmu_det_theta);
          }
          if (topology != 1)
          {
             counter_cc1pi_accum9++;
             recomom_bkg_sel->Fill(selmu_mom[0]);
+            recotheta_bkg_sel->Fill(selmu_det_theta);
          }
          if (topology == 3)
          {
@@ -796,6 +805,37 @@ void DefaultCustomPlotting::Loop()
    graph_eff_vs_recomom->Draw("L same");
    canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
+   
+   TCanvas* canvas_effpur_vs_recotheta = new TCanvas("canvas_effpur_vs_recotheta","canvas_effpur_vs_recotheta",200,10,1000,600);
+   TGraph* graph_pur_vs_recotheta = new TGraph();
+   graph_pur_vs_recotheta->SetTitle("Purity;#mu^{+} candidate reconstructed angle (degrees);Improved #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
+   TGraph* graph_eff_vs_recotheta = new TGraph();
+   graph_eff_vs_recotheta->SetTitle("Efficiency");
+   
+   for (Int_t bin=1; bin <= recotheta_nbins; bin++)
+   {
+      Float_t signal = recotheta_sig_sel->GetBinContent(bin);
+      Float_t background = recotheta_bkg_sel->GetBinContent(bin);
+      Float_t sig_presel = recotheta_sig_presel->GetBinContent(bin);
+      
+      Float_t purity = signal/(signal+background);
+      Float_t efficiency = signal/sig_presel;
+      if (signal == 0){purity = 0;}
+
+      graph_pur_vs_recotheta->SetPoint(bin-1, recotheta_sig_sel->GetBinCenter(bin), purity);
+      graph_eff_vs_recotheta->SetPoint(bin-1, recotheta_sig_sel->GetBinCenter(bin), efficiency);
+   }
+   
+   graph_pur_vs_recotheta->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_pur_vs_recotheta->SetLineWidth(2);
+   graph_pur_vs_recotheta->SetFillColor(kWhite);
+   graph_pur_vs_recotheta->Draw("AL");
+   graph_eff_vs_recotheta->SetLineWidth(2);
+   graph_eff_vs_recotheta->SetLineColor(kRed);
+   graph_eff_vs_recotheta->SetFillColor(kWhite);
+   graph_eff_vs_recotheta->Draw("L same");
+   canvas_effpur_vs_recotheta->BuildLegend();
+   canvas_effpur_vs_recotheta->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
