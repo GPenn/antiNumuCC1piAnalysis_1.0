@@ -822,8 +822,8 @@ void DefaultCustomPlotting::Loop()
       Float_t efficiency = signal/sig_presel;
       if (signal == 0){purity = 0;}
 
-      graph_pur_vs_recotheta->SetPoint(bin-1, recotheta_sig_sel->GetBinCenter(bin), purity);
-      graph_eff_vs_recotheta->SetPoint(bin-1, recotheta_sig_sel->GetBinCenter(bin), efficiency);
+      graph_pur_vs_recotheta->SetPoint(bin-1, recotheta_sig_sel->GetBinCenter(bin)*57.2958, purity);
+      graph_eff_vs_recotheta->SetPoint(bin-1, recotheta_sig_sel->GetBinCenter(bin)*57.2958, efficiency);
    }
    
    graph_pur_vs_recotheta->GetYaxis()->SetRangeUser(0.0, 1.0);
