@@ -132,9 +132,9 @@ void DefaultCustomPlotting::Loop()
    
    Int_t recotheta_nbins = 15;
    
-   TH1F *recotheta_sig_presel = new TH1F("recotheta_sig_presel", "recotheta_sig_presel", recotheta_nbins, 0.0, 90.0);
-   TH1F *recotheta_sig_sel = new TH1F("recotheta_sig_sel", "recotheta_sig_sel", recotheta_nbins, 0.0, 90.0);
-   TH1F *recotheta_bkg_sel = new TH1F("recotheta_bkg_sel", "recotheta_bkg_sel", recotheta_nbins, 0.0, 90.0);
+   TH1F *recotheta_sig_presel = new TH1F("recotheta_sig_presel", "recotheta_sig_presel", recotheta_nbins, 0.0, 1.57);
+   TH1F *recotheta_sig_sel = new TH1F("recotheta_sig_sel", "recotheta_sig_sel", recotheta_nbins, 0.0, 1.57);
+   TH1F *recotheta_bkg_sel = new TH1F("recotheta_bkg_sel", "recotheta_bkg_sel", recotheta_nbins, 0.0, 1.57);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
