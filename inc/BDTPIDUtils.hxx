@@ -7,6 +7,7 @@
 #include "HighlandAnalysisUtils.hxx"
 #include "NuDirUtils.hxx"
 #include "ToyBoxTracker.hxx"
+#include "CutUtils.hxx"
 
 class BDTPIDmanager{
   public:
