@@ -477,4 +477,68 @@ bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   return true;
 }
 
+//*********************************************************************
+void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params){
+//*********************************************************************
+
+  EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
+  if (!EventBox){
+    std::cout << " BDTPIDUtils::FillPionInfo(): EventBoxTracker not available " << std::endl;  
+    exit(1);
+  }
+
+  if (!SubDetId::IsFGDDetector(pionBox.Detector)){
+    std::cout << " BDTPIDUtils::FillPionInfo(): provided detecor " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
+    exit(1);
+  } 
+
+  if (params.useTPCPions) cutUtils::FindGoodQualityTPCPionInfoInFGDFV(event, params.refTrack, 
+      pionBox, params.useOldSecondaryPID); 
+
+  if (params.useFGDPions) cutUtils::FindIsoFGDPionInfo(event, pionBox);
+
+  if (params.useME)  pionBox.nMichelElectrons =  EventBox->nFGDMichelElectrons[pionBox.Detector];
+
+  // ECal 
+  if (params.useECalPiZeroInfo){
+
+    // Get the most energetic ECal iso object from the event 
+    AnaTrackB* track = cutUtils::GetMostEnergeticIsoTrackInECal(event);
+    if (track && cutUtils::IsECalShower(*track, 
+          params.ECalMostUpstreamLayerHitCut, 
+          params.ECalEMEnergyCut, 
+          params.ECalPIDMipEmCut)){
+      pionBox.ECalPi0Photon  = track; 
+    }
+
+  }
+  return;
+
+}
+
+//*********************************************************************
+void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::ProtonSelectionParams& params){
+  //*********************************************************************
+
+  EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
+  if (!EventBox){
+    std::cout << " BDTPIDUtils::FillProtonInfo(): EventBoxTracker not available " << std::endl;  
+    exit(1);
+  }
+
+  if (!SubDetId::IsFGDDetector(pionBox.Detector)){
+    std::cout << " BDTPIDUtils::FillProtonInfo(): provided detecor " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
+    exit(1);
+  } 
+
+  // TPC pions
+  cutUtils::FindGoodQualityTPCProtonsInFGDFV(event, pionBox, params); 
+
+  // FGD-iso pions
+  cutUtils::FindIsoFGDProtons(event, pionBox, params);
+
+  return;
+}
+
+
 
