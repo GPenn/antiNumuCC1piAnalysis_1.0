@@ -427,3 +427,54 @@ bool BDTPreselectionKinematicsPiCandCut::Apply(AnaEventC& event, ToyBoxB& boxB) 
   return true;
 }
 
+//*********************************************************************
+bool FindPionsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
+  //*********************************************************************
+
+  // Slightly different filling w.r.t. the one of numuCCmultipi, so keep it 
+  
+  ToyBoxCCMultiPi* ccmultipibox = static_cast<ToyBoxCCMultiPi*>(&box);
+
+  pionSelParams.refTrack = ccmultipibox->MainTrack;
+  
+  ccmultipibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
+  
+  // Fill the info
+  cutUtils::FillPionInfo(event, ccmultipibox->pionBox, pionSelParams);
+
+  
+  int nnegpions        = ccmultipibox->pionBox.nNegativePionTPCtracks;
+  int npospions        = ccmultipibox->pionBox.nPositivePionTPCtracks;
+  int nisofgdpions     = ccmultipibox->pionBox.nIsoFGDPiontracks;
+  int nmichelelectrons = ccmultipibox->pionBox.nMichelElectrons;
+  int npi0             = ccmultipibox->pionBox.nPosPi0TPCtracks + ccmultipibox->pionBox.nElPi0TPCtracks;
+  
+  int pionFGD = 0;//nmichelelectrons;
+  if (!nmichelelectrons && nisofgdpions == 1) pionFGD = 1;
+
+  ccmultipibox->pionBox.nPosPions   = npospions + nmichelelectrons;
+  ccmultipibox->pionBox.nNegPions   = nnegpions + pionFGD;
+  ccmultipibox->pionBox.nOtherPions = ccmultipibox->pionBox.nPosPions+npi0;
+
+  return true;
+}
+
+//*********************************************************************
+bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
+  //*********************************************************************
+
+  ToyBoxCCMultiPi* ccmultipibox = static_cast<ToyBoxCCMultiPi*>(&box);
+
+  /// For the moment we use only one reference track
+  protonSelParams.refTracks[0] = ccmultipibox->MainTrack;
+  protonSelParams.nRefTracks = 1;
+
+  ccmultipibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
+
+  // Fill the info
+  cutUtils::FillProtonInfo(event, ccmultipibox->pionBox, protonSelParams);
+  
+  return true;
+}
+
+
