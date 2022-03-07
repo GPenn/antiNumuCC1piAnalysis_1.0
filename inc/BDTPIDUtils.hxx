@@ -51,6 +51,20 @@ public:
   StepBase* MakeClone(){return new BDTPreselectionKinematicsPiCandCut();}
 };
 
+// Modified FindPionsAction
+class FindPionsAction_BDTPID: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new FindPionsAction_BDTPID();}
+};
 
+// Modified FindProtonsAction
+class FindProtonsAction_BDTPID: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new FindProtonsAction_BDTPID();}
+};
 
 #endif
