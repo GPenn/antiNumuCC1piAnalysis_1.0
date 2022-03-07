@@ -84,8 +84,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID());
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID());
   AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
 
   //Add a split to the trunk with 3 branches.
