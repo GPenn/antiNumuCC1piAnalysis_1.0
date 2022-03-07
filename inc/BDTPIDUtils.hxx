@@ -76,17 +76,42 @@ public:
 class FindPionsAction_BDTPID: public StepBase{
 public:
   using StepBase::Apply;
-  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  FindPionsAction_BDTPID(){
+    pionSelParams.useTPCPions                 = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseTPCPions");
+    pionSelParams.useME                       = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseME");
+    pionSelParams.useFGDPions                 = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseFGDPions");
+    pionSelParams.useOldSecondaryPID          = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.OldSecondaryPID");
+    pionSelParams.useECalPiZeroInfo           = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
+    
+    pionSelParams.ECalMostUpstreamLayerHitCut = (Int_t)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.MostUpstreamLayerHitCut");
+    // Default
+    pionSelParams.ECalEMEnergyCut = 30.;
+    pionSelParams.ECalPIDMipEmCut = 0.;
+  } 
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;  
   StepBase* MakeClone(){return new FindPionsAction_BDTPID();}
+
+protected:
+  mutable multipart::PionSelectionParams pionSelParams;
 };
+
 
 // Modified FindProtonsAction
 class FindProtonsAction_BDTPID: public StepBase{
 public:
-  using StepBase::Apply;
-  bool Apply(AnaEventC& event, ToyBoxB& box) const;
-  StepBase* MakeClone(){return new FindProtonsAction_BDTPID();}
+ using StepBase::Apply;
+ FindProtonsAction_BDTPID(){
+   protonSelParams.tpcPIDCut  = (Float_t)ND::params().GetParameterD("psycheSelections.numuCCMultiPi.Protons.TPCPIDCut");
+   protonSelParams.fgd1PIDCut = (Float_t)ND::params().GetParameterD("psycheSelections.numuCCMultiPi.Protons.FGD1PIDCut");
+   protonSelParams.fgd2PIDCut = (Float_t)ND::params().GetParameterD("psycheSelections.numuCCMultiPi.Protons.FGD2PIDCut");
+ } 
+ bool Apply(AnaEventC& event, ToyBoxB& box) const;  
+ StepBase* MakeClone(){return new FindProtonsAction_BDTPID();}
+  
+protected:
+  mutable multipart::ProtonSelectionParams protonSelParams;
 };
+  
 
 
 
