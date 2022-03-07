@@ -36,6 +36,22 @@ namespace BDTPIDUtils {
   void FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params);
   
   void FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params);
+  
+  void FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+      bool useOldSecondaryPID);
+  
+  void FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+      EventBoxTracker::RecObjectGroupEnum groupID, 
+      bool useOldSecondaryPID);
+  
+  void FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox,
+      const multipart::ProtonSelectionParams& params);
+   
+  void FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, 
+      const multipart::ProtonSelectionParams& params, 
+      EventBoxTracker::RecObjectGroupEnum groupID);
+
+
 }
 
 // Apply BDT kinematics preselection cut
