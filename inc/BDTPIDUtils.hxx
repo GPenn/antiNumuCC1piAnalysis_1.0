@@ -28,7 +28,7 @@ class BDTPIDmanager{
     
 };
 
-Insert methods into a namespace.
+//Insert methods into a namespace.
 namespace BDTPIDUtils {
 
 //  std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
