@@ -540,5 +540,165 @@ void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticl
   return;
 }
 
+//*********************************************************************
+void BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+    bool useOldSecondaryPID){
+  //*********************************************************************
 
+  EventBoxTracker::RecObjectGroupEnum groupID;
+  if      (pionBox.Detector == SubDetId::kFGD1) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV;
+  else if (pionBox.Detector == SubDetId::kFGD2) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD2FV;
+  else return;
+
+
+  return FindGoodQualityTPCPionInfo(event, reftrack, pionBox, groupID, useOldSecondaryPID);
+
+}
+
+
+//*********************************************************************
+void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+    EventBoxTracker::RecObjectGroupEnum groupID, 
+    bool useOldSecondaryPID){
+  //*********************************************************************
+
+  pionBox.nPositivePionTPCtracks = 0;
+  pionBox.nPosPi0TPCtracks       = 0;
+  pionBox.nNegativePionTPCtracks = 0;
+  pionBox.nElPi0TPCtracks        = 0;
+
+  EventBoxB* EventBox = event.EventBoxes[EventBoxId::kEventBoxTracker];
+
+  // Look for pions in positive tracks 
+  for(int i = 0; i < EventBox->nRecObjectsInGroup[groupID]; i++ ) {
+
+
+    AnaTrackB *ptrack = static_cast<AnaTrackB*>(EventBox->RecObjectsInGroup[groupID][i]);
+
+    if (!ptrack) continue;
+
+    if (reftrack == ptrack ) continue; // Same as the reference track.
+
+    // A track should have a TPC and satisfy quality cut
+    if (!cutUtils::TrackQualityCut(*ptrack)){
+      continue;
+    }
+
+    if (ptrack->Charge>0){
+      if (useOldSecondaryPID){
+        if (cutUtils::PionPIDCut(*ptrack) ) {
+          pionBox.PositivePionTPCtracks[pionBox.nPositivePionTPCtracks++] = ptrack;
+        }
+        else if (cutUtils::ElectronPIDCut(*ptrack)) {
+          pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
+        }
+      }
+      else {
+        Float_t PIDLikelihood[4];
+        anaUtils::GetPIDLikelihood(*ptrack, PIDLikelihood);
+
+        // For Positive tracks we distinguish pions, electrons and protons.
+        double ElLklh = PIDLikelihood[1];  
+        double ProtonLklh = PIDLikelihood[2];  
+        double PionLklh = PIDLikelihood[3];  
+        double norm = ElLklh+ProtonLklh+PionLklh;
+        ProtonLklh /= norm; 
+        ElLklh /= norm; 
+        PionLklh /= norm; 
+
+        if( ProtonLklh > ElLklh && ProtonLklh > PionLklh ) continue; // If the highest probability is a proton continue. 
+
+        // Id associated to the largest of the two probabilities.
+        if (PionLklh > ElLklh){
+          pionBox.PositivePionTPCtracks[pionBox.nPositivePionTPCtracks++] = ptrack;
+        }
+        else {
+          if (ptrack->Momentum > 900.) continue; // This is mainly protons.
+          pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
+        }
+      }
+    }
+    else{
+      if(useOldSecondaryPID) {
+        if (cutUtils::PionPIDCut(*ptrack)) {
+          pionBox.NegativePionTPCtracks[pionBox.nNegativePionTPCtracks++] = ptrack;
+        } 
+        else if (cutUtils::ElectronPIDCut(*ptrack)) {
+          pionBox.ElPi0TPCtracks[pionBox.nElPi0TPCtracks++] = ptrack; 
+        }
+      }
+      else {
+        // For Negative tracks we distinguish pions and electrons
+        Float_t PIDLikelihood[4];
+        anaUtils::GetPIDLikelihood(*ptrack, PIDLikelihood);
+
+        double ElLklh = PIDLikelihood[1];  
+        double PionLklh = PIDLikelihood[3];  
+        double norm = ElLklh+PionLklh;
+        ElLklh /= norm; 
+        PionLklh /= norm;
+
+        if( PionLklh > 0.8 ){ // Id associated to the largest of the two probabilities.
+          pionBox.NegativePionTPCtracks[pionBox.nNegativePionTPCtracks++] = ptrack;
+        }
+        else{ 
+          pionBox.ElPi0TPCtracks[pionBox.nElPi0TPCtracks++] = ptrack; 
+        }
+      }
+    }
+  }
+}
+
+//**************************************************
+void BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params){
+  //**************************************************
+
+
+  EventBoxTracker::RecObjectGroupEnum groupID;
+  if      (protonBox.Detector == SubDetId::kFGD1) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV;
+  else if (protonBox.Detector == SubDetId::kFGD2) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD2FV;
+  else return;
+
+
+  return cutUtils::FindGoodQualityTPCProtons(event, protonBox, params, groupID);
+}
+
+
+//**************************************************
+void BDTPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
+    EventBoxTracker::RecObjectGroupEnum groupID){
+  //**************************************************
+
+  protonBox.nProtonTPCtracks = 0;
+
+  EventBoxB* EventBox = event.EventBoxes[EventBoxId::kEventBoxTracker];
+
+  // Look for protons in positive tracks 
+  for(int i = 0; i < EventBox->nRecObjectsInGroup[groupID]; i++ ) {
+
+
+    AnaTrackB *ptrack = static_cast<AnaTrackB*>(EventBox->RecObjectsInGroup[groupID][i]);
+
+    if (!ptrack) continue;
+
+    if (ptrack->Charge < 1) continue;
+
+    // Check that at track is not within the reference ones
+    bool found = false;
+    for (int j = 0; j < params.nRefTracks; j++){
+      if (ptrack == params.refTracks[j]){
+        found = true;
+        break;
+      }
+    }
+
+    if (found){
+      continue;
+    }
+
+    if (cutUtils::TPCProtonPIDCut(*ptrack, params.tpcPIDCut)){
+      protonBox.ProtonTPCtracks[protonBox.nProtonTPCtracks++] = ptrack;
+    }
+  }
+}
 
