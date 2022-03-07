@@ -28,12 +28,15 @@ class BDTPIDmanager{
     
 };
 
-// Insert methods into a namespace.
-//namespace BDTPIDUtils {
+Insert methods into a namespace.
+namespace BDTPIDUtils {
 
 //  std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
   
-//}
+  void FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params);
+  
+  void FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params);
+}
 
 // Apply BDT kinematics preselection cut
 class BDTPreselectionKinematicsCut: public StepBase{
@@ -66,5 +69,7 @@ public:
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new FindProtonsAction_BDTPID();}
 };
+
+
 
 #endif
