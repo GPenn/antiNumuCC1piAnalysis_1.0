@@ -440,7 +440,7 @@ bool FindPionsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   ccmultipibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
   
   // Fill the info
-  cutUtils::FillPionInfo(event, ccmultipibox->pionBox, pionSelParams);
+  BDTPIDUtils::FillPionInfo(event, ccmultipibox->pionBox, pionSelParams);
 
   
   int nnegpions        = ccmultipibox->pionBox.nNegativePionTPCtracks;
@@ -472,7 +472,7 @@ bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   ccmultipibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
 
   // Fill the info
-  cutUtils::FillProtonInfo(event, ccmultipibox->pionBox, protonSelParams);
+  BDTPIDUtils::FillProtonInfo(event, ccmultipibox->pionBox, protonSelParams);
   
   return true;
 }
@@ -492,7 +492,7 @@ void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleB
     exit(1);
   } 
 
-  if (params.useTPCPions) cutUtils::FindGoodQualityTPCPionInfoInFGDFV(event, params.refTrack, 
+  if (params.useTPCPions) BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(event, params.refTrack, 
       pionBox, params.useOldSecondaryPID); 
 
   if (params.useFGDPions) cutUtils::FindIsoFGDPionInfo(event, pionBox);
@@ -531,10 +531,10 @@ void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticl
     exit(1);
   } 
 
-  // TPC pions
-  cutUtils::FindGoodQualityTPCProtonsInFGDFV(event, pionBox, params); 
+  // TPC protons
+  BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(event, pionBox, params); 
 
-  // FGD-iso pions
+  // FGD-iso protons
   cutUtils::FindIsoFGDProtons(event, pionBox, params);
 
   return;
