@@ -740,6 +740,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
 
   AnaEventB&       event  = *static_cast<AnaEventB*>(&eventC);
   ToyBoxAntiCC1Pi* toyBox =  static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  EventBoxB* eventBox = eventC.EventBoxes[EventBoxId::kEventBoxTracker];
 
   if (toyBox->TECALReconObjects.empty()){ // if there are no ECal objects, continue
     //cout << "No ECal Objects" << std::endl; 
@@ -774,9 +775,9 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   }
   
   // Check each local ECal object against each good quality TPC track starting in FGD1FV:
-  for (unsigned int i = 0; i < toyBox->nRecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV]; i++)
+  for (unsigned int i = 0; i < eventBox->nRecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV]; i++)
   {
-    ecalTrack     = static_cast<AnaTrackB*>(toyBox->RecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV][i]);
+    ecalTrack     = static_cast<AnaTrackB*>(eventBox->RecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV][i]);
     
     // Only match if the track has exactly one ECal segment
     if (ecalTrack->nECALSegments == 1)
