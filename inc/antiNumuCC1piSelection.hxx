@@ -74,7 +74,7 @@ public:
     ToyBoxCCMultiPi::Reset();
   
     TECALReconObjects.clear();
-    TPCTrackLocalECalSegments.clear();
+    FGD1GoodTPCTrackLocalECalSegments.clear();
     
     MainTrackLocalECalSegment = NULL;
     HMNTLocalECalSegment = NULL;
@@ -87,7 +87,7 @@ public:
   // Local reco ECal segments matched to those of the main tracks:
   AnaTECALReconObject* MainTrackLocalECalSegment;
   AnaTECALReconObject* HMNTLocalECalSegment;
-  AnaTECALObjectVec TPCTrackLocalECalSegments;
+  AnaTECALObjectVec FGD1GoodTPCTrackLocalECalSegments;
 
 
 };
