@@ -723,7 +723,8 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
   for (unsigned int iObj=0; iObj<localEvent->TECALReconObjects.size(); iObj++){
     anaTECAL = localEvent->TECALReconObjects[iObj];
     toyBox->TECALReconObjects.push_back(anaTECAL);
-    //std::cout<<"INFO: Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
+    //std::cout<<"INFO: Read TECALReconObject with UniqueID:"<<anaTECAL->UniqueID<<" from bunch "<< anaTECAL->Bunch 
+    //  << "("<< event.Bunch <<") in event "<< event.EventInfo.Event<<std::endl;
     
   } // End of loop over TECALReconObjects
   
@@ -769,6 +770,24 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
       if (ecalComponent->UniqueID == toyBox->TECALReconObjects[i]->UniqueID)
         toyBox->HMNTLocalECalSegment = toyBox->TECALReconObjects[i];
         //std::cout << "Local-global match confirmed for HMNT." << std::endl;
+    }
+  }
+  
+  // Check each local ECal object against each good quality TPC track starting in FGD1FV:
+  for (unsigned int i = 0; i < toyBox->nRecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV]; i++)
+  {
+    ecalTrack     = static_cast<AnaTrackB*>(toyBox->RecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV][i]);
+    
+    // Only match if the track has exactly one ECal segment
+    if (ecalTrack->nECALSegments == 1)
+    {
+      ecalComponent = static_cast<AnaECALParticleB*>(ecalTrack->ECALSegments[0]);
+    
+      for (unsigned int j = 0; j < toyBox->TECALReconObjects.size(); j++)
+      {
+        if (ecalComponent->UniqueID == toyBox->TECALReconObjects[j]->UniqueID)
+        toyBox->FGD1GoodTPCTrackLocalECalSegments.push_back(toyBox->TECALReconObjects[j]);
+      }
     }
   }
   
