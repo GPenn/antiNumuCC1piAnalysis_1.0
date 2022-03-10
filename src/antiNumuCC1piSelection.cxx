@@ -738,7 +738,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   //if (anaCCPi0Utils::utils().Verbosity())
   //  std::cout << this->Index() << " MatchECalGlobalToLocalObjectsAction" <<std::endl;
 
-  AnaEventB&       event  = *static_cast<AnaEventB*>(&eventC);
+  //AnaEventB&       event  = *static_cast<AnaEventB*>(&eventC);
   ToyBoxAntiCC1Pi* toyBox =  static_cast<ToyBoxAntiCC1Pi*>(&boxB);
   EventBoxB* eventBox = eventC.EventBoxes[EventBoxId::kEventBoxTracker];
 
