@@ -775,7 +775,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
   }
   
   // Check each local ECal object against each good quality TPC track starting in FGD1FV:
-  for (unsigned int i = 0; i < eventBox->nRecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV]; i++)
+  for (Int_t i = 0; i < eventBox->nRecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV]; i++)
   {
     ecalTrack     = static_cast<AnaTrackB*>(eventBox->RecObjectsInGroup[EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV][i]);
     
