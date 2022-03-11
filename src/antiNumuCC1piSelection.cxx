@@ -899,3 +899,347 @@ bool TwoTrack1pos1negCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 
   return true;
 }
+
+//*********************************************************************
+bool FindPionsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
+  //*********************************************************************
+
+  // Slightly different filling w.r.t. the one of numuCCmultipi, so keep it 
+  
+  ToyBoxAntiCC1Pi* anticc1pibox = static_cast<ToyBoxAntiCC1Pi*>(&box);
+
+  pionSelParams.refTrack = anticc1pibox->MainTrack;
+  
+  anticc1pibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
+  
+  // Fill the info
+  BDTPIDUtils::FillPionInfo(event, anticc1pibox->pionBox, pionSelParams, _bdtpidmanager, anticc1pibox);
+  
+  int nnegpions        = anticc1pibox->pionBox.nNegativePionTPCtracks;
+  int npospions        = anticc1pibox->pionBox.nPositivePionTPCtracks;
+  int nisofgdpions     = anticc1pibox->pionBox.nIsoFGDPiontracks;
+  int nmichelelectrons = anticc1pibox->pionBox.nMichelElectrons;
+  int npi0             = anticc1pibox->pionBox.nPosPi0TPCtracks + anticc1pibox->pionBox.nElPi0TPCtracks;
+  
+  int pionFGD = 0;//nmichelelectrons;
+  if (!nmichelelectrons && nisofgdpions == 1) pionFGD = 1;
+
+  anticc1pibox->pionBox.nPosPions   = npospions + nmichelelectrons;
+  anticc1pibox->pionBox.nNegPions   = nnegpions + pionFGD;
+  anticc1pibox->pionBox.nOtherPions = anticc1pibox->pionBox.nPosPions+npi0;
+
+  return true;
+}
+
+//*********************************************************************
+bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
+  //*********************************************************************
+
+  ToyBoxAntiCC1Pi* anticc1pibox = static_cast<ToyBoxAntiCC1Pi*>(&box);
+
+  /// For the moment we use only one reference track
+  protonSelParams.refTracks[0] = anticc1pibox->MainTrack;
+  protonSelParams.nRefTracks = 1;
+
+  anticc1pibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
+
+  // Fill the info
+  BDTPIDUtils::FillProtonInfo(event, anticc1pibox->pionBox, protonSelParams, _bdtpidmanager, anticc1pibox);
+  
+  return true;
+}
+
+//*********************************************************************
+void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params, 
+                               BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
+//*********************************************************************
+  
+  EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
+  if (!EventBox){
+    std::cout << " BDTPIDUtils::FillPionInfo(): EventBoxTracker not available " << std::endl;  
+    exit(1);
+  }
+
+  if (!SubDetId::IsFGDDetector(pionBox.Detector)){
+    std::cout << " BDTPIDUtils::FillPionInfo(): provided detector " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
+    exit(1);
+  } 
+
+  if (params.useTPCPions) BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(event, params.refTrack, 
+      pionBox, params.useOldSecondaryPID, bdtpidmanager, anticc1pibox); 
+
+  if (params.useFGDPions) cutUtils::FindIsoFGDPionInfo(event, pionBox);
+
+  if (params.useME)  pionBox.nMichelElectrons =  EventBox->nFGDMichelElectrons[pionBox.Detector];
+
+  // ECal 
+  if (params.useECalPiZeroInfo){
+
+    // Get the most energetic ECal iso object from the event 
+    AnaTrackB* track = cutUtils::GetMostEnergeticIsoTrackInECal(event);
+    if (track && cutUtils::IsECalShower(*track, 
+          params.ECalMostUpstreamLayerHitCut, 
+          params.ECalEMEnergyCut, 
+          params.ECalPIDMipEmCut)){
+      pionBox.ECalPi0Photon  = track; 
+    }
+
+  }
+  return;
+
+}
+
+//*********************************************************************
+void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::ProtonSelectionParams& params, 
+                                 BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
+  //*********************************************************************
+
+  EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
+  if (!EventBox){
+    std::cout << " BDTPIDUtils::FillProtonInfo(): EventBoxTracker not available " << std::endl;  
+    exit(1);
+  }
+
+  if (!SubDetId::IsFGDDetector(pionBox.Detector)){
+    std::cout << " BDTPIDUtils::FillProtonInfo(): provided detector " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
+    exit(1);
+  } 
+
+  // TPC protons
+  BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(event, pionBox, params, bdtpidmanager, anticc1pibox); 
+
+  // FGD-iso protons
+  cutUtils::FindIsoFGDProtons(event, pionBox, params);
+
+  return;
+}
+
+//*********************************************************************
+void BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+    bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
+  //*********************************************************************
+
+  EventBoxTracker::RecObjectGroupEnum groupID;
+  if      (pionBox.Detector == SubDetId::kFGD1) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV;
+  else if (pionBox.Detector == SubDetId::kFGD2) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD2FV;
+  else return;
+
+
+  return FindGoodQualityTPCPionInfo(event, reftrack, pionBox, groupID, useOldSecondaryPID, bdtpidmanager, anticc1pibox);
+
+}
+
+
+//*********************************************************************
+void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+    EventBoxTracker::RecObjectGroupEnum groupID, 
+    bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
+  //*********************************************************************
+
+  pionBox.nPositivePionTPCtracks = 0;
+  pionBox.nPosPi0TPCtracks       = 0;
+  pionBox.nNegativePionTPCtracks = 0;
+  pionBox.nElPi0TPCtracks        = 0;
+
+  EventBoxB* EventBox = event.EventBoxes[EventBoxId::kEventBoxTracker];
+
+  // Look for pions in positive tracks 
+  for(int i = 0; i < EventBox->nRecObjectsInGroup[groupID]; i++ ) {
+
+
+    AnaTrackB *ptrack = static_cast<AnaTrackB*>(EventBox->RecObjectsInGroup[groupID][i]);
+
+    if (!ptrack) continue;
+
+    if (reftrack == ptrack ) continue; // Same as the reference track.
+
+    // A track should have a TPC and satisfy quality cut
+    if (!cutUtils::TrackQualityCut(*ptrack)){
+      continue;
+    }
+    
+    // Check whether the BDT PID is valid
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
+    if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    
+    // Get BDT PID vars
+    AnaTECALReconObject* localecalsegment = NULL;
+    std::vector<Float_t> bdtpidvars;
+    if (valid_for_BDTPID) {
+      // Find local ECal segment if one exists
+      if (ptrack->nECALSegments == 1) 
+      {
+        ecalComponent = static_cast<AnaECALParticleB*>(ptrack->ECALSegments[0]);
+        for (unsigned int i = 0; i < anticc1pibox->FGD1GoodTPCTrackLocalECalSegments.size(); i++)
+        {
+          if (ecalComponent->UniqueID == anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
+          {
+            localecalsegment = anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i];
+            std::cout << "INFO: Found local ECal segment for pion PID." << std::endl;
+            continue;
+          }
+        }
+      }
+      bdtpidvars = bdtpidmanager->GetBDTPIDVarsPos(ptrack, localecalsegment);
+    }
+
+    if (ptrack->Charge>0){
+      if (useOldSecondaryPID){
+        if (cutUtils::PionPIDCut(*ptrack) ) {
+          pionBox.PositivePionTPCtracks[pionBox.nPositivePionTPCtracks++] = ptrack;
+        }
+        else if (cutUtils::ElectronPIDCut(*ptrack)) {
+          pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
+        }
+      }
+      else if (valid_for_BDTPID) { // Apply BDT PID if valid
+        // For Positive tracks we distinguish pions, electrons and protons.
+        double ElLklh = bdtpidvars[1];  
+        double ProtonLklh = bdtpidvars[2];  
+        double PionLklh = bdtpidvars[3];  
+        double norm = ElLklh+ProtonLklh+PionLklh;
+        ProtonLklh /= norm; 
+        ElLklh /= norm; 
+        PionLklh /= norm; 
+
+        if( ProtonLklh > ElLklh && ProtonLklh > PionLklh ) continue; // If the highest probability is a proton continue. 
+
+        // Id associated to the largest of the two probabilities.
+        if (PionLklh > ElLklh){
+          pionBox.PositivePionTPCtracks[pionBox.nPositivePionTPCtracks++] = ptrack;
+        }
+        else {
+          if (ptrack->Momentum > 900.) continue; // This is mainly protons.
+          pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
+        }
+      }
+      else { // Apply TPC PID if BDT PID not valid
+        Float_t PIDLikelihood[4];
+        anaUtils::GetPIDLikelihood(*ptrack, PIDLikelihood);
+
+        // For Positive tracks we distinguish pions, electrons and protons.
+        double ElLklh = PIDLikelihood[1];  
+        double ProtonLklh = PIDLikelihood[2];  
+        double PionLklh = PIDLikelihood[3];  
+        double norm = ElLklh+ProtonLklh+PionLklh;
+        ProtonLklh /= norm; 
+        ElLklh /= norm; 
+        PionLklh /= norm; 
+
+        if( ProtonLklh > ElLklh && ProtonLklh > PionLklh ) continue; // If the highest probability is a proton continue. 
+
+        // Id associated to the largest of the two probabilities.
+        if (PionLklh > ElLklh){
+          pionBox.PositivePionTPCtracks[pionBox.nPositivePionTPCtracks++] = ptrack;
+        }
+        else {
+          if (ptrack->Momentum > 900.) continue; // This is mainly protons.
+          pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
+        }
+      }
+    }
+    else{
+      if(useOldSecondaryPID) {
+        if (cutUtils::PionPIDCut(*ptrack)) {
+          pionBox.NegativePionTPCtracks[pionBox.nNegativePionTPCtracks++] = ptrack;
+        } 
+        else if (cutUtils::ElectronPIDCut(*ptrack)) {
+          pionBox.ElPi0TPCtracks[pionBox.nElPi0TPCtracks++] = ptrack; 
+        }
+      }
+      else if (valid_for_BDTPID) { // Apply BDT PID if valid
+        // For Negative tracks we distinguish pions and electrons
+        double ElLklh = bdtpidvars[1];  
+        double PionLklh = bdtpidvars[3];  
+        double norm = ElLklh+PionLklh;
+        ElLklh /= norm; 
+        PionLklh /= norm;
+
+        if( PionLklh > ElLklh ){ // Id associated to the largest of the two probabilities.
+          pionBox.NegativePionTPCtracks[pionBox.nNegativePionTPCtracks++] = ptrack;
+        }
+        else{ 
+          pionBox.ElPi0TPCtracks[pionBox.nElPi0TPCtracks++] = ptrack; 
+        }
+      }
+      else { // Apply TPC PID if BDT PID not valid
+        // For Negative tracks we distinguish pions and electrons
+        Float_t PIDLikelihood[4];
+        anaUtils::GetPIDLikelihood(*ptrack, PIDLikelihood);
+
+        double ElLklh = PIDLikelihood[1];  
+        double PionLklh = PIDLikelihood[3];  
+        double norm = ElLklh+PionLklh;
+        ElLklh /= norm; 
+        PionLklh /= norm;
+
+        if( PionLklh > 0.8 ){ // Id associated to the largest of the two probabilities.
+          pionBox.NegativePionTPCtracks[pionBox.nNegativePionTPCtracks++] = ptrack;
+        }
+        else{ 
+          pionBox.ElPi0TPCtracks[pionBox.nElPi0TPCtracks++] = ptrack; 
+        }
+      }
+    }
+  }
+}
+
+//**************************************************
+void BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
+                                                   BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
+  //**************************************************
+
+
+  EventBoxTracker::RecObjectGroupEnum groupID;
+  if      (protonBox.Detector == SubDetId::kFGD1) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV;
+  else if (protonBox.Detector == SubDetId::kFGD2) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD2FV;
+  else return;
+
+
+  return BDTPIDUtils::FindGoodQualityTPCProtons(event, protonBox, params, groupID, bdtpidmanager, anticc1pibox);
+}
+
+
+//**************************************************
+void BDTPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
+    EventBoxTracker::RecObjectGroupEnum groupID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
+  //**************************************************
+
+  protonBox.nProtonTPCtracks = 0;
+
+  EventBoxB* EventBox = event.EventBoxes[EventBoxId::kEventBoxTracker];
+
+  // Look for protons in positive tracks 
+  for(int i = 0; i < EventBox->nRecObjectsInGroup[groupID]; i++ ) {
+
+
+    AnaTrackB *ptrack = static_cast<AnaTrackB*>(EventBox->RecObjectsInGroup[groupID][i]);
+
+    if (!ptrack) continue;
+
+    if (ptrack->Charge < 1) continue;
+    
+    // Check whether the BDT PID is valid
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
+    if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+
+    // Check that at track is not within the reference ones
+    bool found = false;
+    for (int j = 0; j < params.nRefTracks; j++){
+      if (ptrack == params.refTracks[j]){
+        found = true;
+        break;
+      }
+    }
+
+    if (found){
+      continue;
+    }
+
+    if (cutUtils::TPCProtonPIDCut(*ptrack, params.tpcPIDCut)){
+      protonBox.ProtonTPCtracks[protonBox.nProtonTPCtracks++] = ptrack;
+    }
+  }
+}
