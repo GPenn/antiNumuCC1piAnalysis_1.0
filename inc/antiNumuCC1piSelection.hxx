@@ -59,6 +59,32 @@ protected:
   bool  _useECalPiZeroInfo;
 };
 
+//Insert methods into a namespace.
+namespace BDTPIDUtils {
+
+//  std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
+  
+  void FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params, 
+                    BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
+                      BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+      bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+      EventBoxTracker::RecObjectGroupEnum groupID, 
+      bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox,
+      const multipart::ProtonSelectionParams& params, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+   
+  void FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, 
+      const multipart::ProtonSelectionParams& params, 
+      EventBoxTracker::RecObjectGroupEnum groupID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+}
+
 class ToyBoxAntiCC1Pi: public ToyBoxAntiCCMultiPi{
 
 public:
@@ -284,6 +310,54 @@ public:
   using StepBase::Apply;
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new TwoTrack1pos1negCut();}
+};
+
+// Modified FindPionsAction
+class FindPionsAction_BDTPID: public StepBase{
+public:
+  using StepBase::Apply;
+  FindPionsAction_BDTPID(BDTPIDmanager *bdtpidmanager=NULL){
+    pionSelParams.useTPCPions                 = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseTPCPions");
+    pionSelParams.useME                       = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseME");
+    pionSelParams.useFGDPions                 = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseFGDPions");
+    pionSelParams.useOldSecondaryPID          = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.OldSecondaryPID");
+    pionSelParams.useECalPiZeroInfo           = (bool)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.UseECalPiZeroInfo");
+    
+    pionSelParams.ECalMostUpstreamLayerHitCut = (Int_t)ND::params().GetParameterI("psycheSelections.antinumuCCMultiPi.MostUpstreamLayerHitCut");
+    // Default
+    pionSelParams.ECalEMEnergyCut = 30.;
+    pionSelParams.ECalPIDMipEmCut = 0.;
+    
+    _bdtpidmanager = bdtpidmanager;
+  } 
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;  
+  StepBase* MakeClone(){return new FindPionsAction_BDTPID();}
+  
+  BDTPIDmanager* _bdtpidmanager;
+  
+protected:
+  mutable multipart::PionSelectionParams pionSelParams;
+};
+
+
+// Modified FindProtonsAction
+class FindProtonsAction_BDTPID: public StepBase{
+public:
+ using StepBase::Apply;
+ FindProtonsAction_BDTPID(BDTPIDmanager *bdtpidmanager=NULL){
+   protonSelParams.tpcPIDCut  = (Float_t)ND::params().GetParameterD("psycheSelections.numuCCMultiPi.Protons.TPCPIDCut");
+   protonSelParams.fgd1PIDCut = (Float_t)ND::params().GetParameterD("psycheSelections.numuCCMultiPi.Protons.FGD1PIDCut");
+   protonSelParams.fgd2PIDCut = (Float_t)ND::params().GetParameterD("psycheSelections.numuCCMultiPi.Protons.FGD2PIDCut");
+   
+   _bdtpidmanager = bdtpidmanager;
+ } 
+ bool Apply(AnaEventC& event, ToyBoxB& box) const;  
+ StepBase* MakeClone(){return new FindProtonsAction_BDTPID();}
+  
+ BDTPIDmanager* _bdtpidmanager;
+  
+protected:
+  mutable multipart::ProtonSelectionParams protonSelParams;
 };
 
 #endif
