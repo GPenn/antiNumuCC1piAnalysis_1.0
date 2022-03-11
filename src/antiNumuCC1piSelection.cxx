@@ -1070,7 +1070,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
       // Find local ECal segment if one exists
       if (ptrack->nECALSegments == 1) 
       {
-        ecalComponent = static_cast<AnaECALParticleB*>(ptrack->ECALSegments[0]);
+         AnaECALParticleB* ecalComponent = static_cast<AnaECALParticleB*>(ptrack->ECALSegments[0]);
         for (unsigned int i = 0; i < anticc1pibox->FGD1GoodTPCTrackLocalECalSegments.size(); i++)
         {
           if (ecalComponent->UniqueID == anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
