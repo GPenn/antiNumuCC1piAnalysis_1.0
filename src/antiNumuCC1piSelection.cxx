@@ -569,6 +569,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
         box.MainTrack = track;
         NMuonLike++;
       }
+      std::cout << "INFO: BDT muon PID applied!" << std::endl;
     }
     
     // If BDT PID is not valid, apply usual TPC cut
