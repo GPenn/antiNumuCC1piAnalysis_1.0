@@ -71,7 +71,7 @@ void antiNumuCC1piAnalysis::DefineSelections(){
   //if(_whichFGD==1 || _whichFGD==3){
     // ---- Inclusive CC ----
     //if(!_runMultiTrack)
-      sel().AddSelection("kTrackerAntiNumuCC1pi",    "antiNumu FGD1 CC 1 Pion selection",  new antiNumuCC1piSelection(false, &(input())));
+      sel().AddSelection("kTrackerAntiNumuCC1pi",    "antiNumu FGD1 CC 1 Pion selection",  new antiNumuCC1piSelection(false, &(input()), myBDTPIDmanagerCC1pi));
     // ---- CC Multi Pion Samples ----
     //else
       //sel().AddSelection("kTrackerAntiNumuCCMultiTrack", "antiNumu FGD1 CC Multiple Track selection", new antiNumuCCMultiTrackSelection(false));
