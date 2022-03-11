@@ -488,7 +488,7 @@ void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleB
   }
 
   if (!SubDetId::IsFGDDetector(pionBox.Detector)){
-    std::cout << " BDTPIDUtils::FillPionInfo(): provided detecor " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
+    std::cout << " BDTPIDUtils::FillPionInfo(): provided detector " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
     exit(1);
   } 
 
@@ -527,7 +527,7 @@ void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticl
   }
 
   if (!SubDetId::IsFGDDetector(pionBox.Detector)){
-    std::cout << " BDTPIDUtils::FillProtonInfo(): provided detecor " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
+    std::cout << " BDTPIDUtils::FillProtonInfo(): provided detector " << pionBox.Detector << "is not FGD1 or FGD2" << std::endl;
     exit(1);
   } 
 
@@ -583,6 +583,11 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
     if (!cutUtils::TrackQualityCut(*ptrack)){
       continue;
     }
+    
+    // Check whether the BDT PID is valid
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
+    if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
 
     if (ptrack->Charge>0){
       if (useOldSecondaryPID){
@@ -593,6 +598,9 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
           pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
         }
       }
+      //else if (valid_for_BDTPID) {
+        
+      //}
       else {
         Float_t PIDLikelihood[4];
         anaUtils::GetPIDLikelihood(*ptrack, PIDLikelihood);
@@ -682,6 +690,11 @@ void BDTPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::M
     if (!ptrack) continue;
 
     if (ptrack->Charge < 1) continue;
+    
+    // Check whether the BDT PID is valid
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
+    if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
 
     // Check that at track is not within the reference ones
     bool found = false;
