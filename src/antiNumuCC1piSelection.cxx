@@ -544,7 +544,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
     TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
-    if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (_bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars and apply if valid
     if (valid_for_BDTPID) {
@@ -553,16 +553,16 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
       {
         AnaTECALReconObject* localecalsegment = NULL;
         AnaECALParticleB* ecalComponent = static_cast<AnaECALParticleB*>(track->ECALSegments[0]);
-        for (unsigned int i = 0; i < box->FGD1GoodTPCTrackLocalECalSegments.size(); i++)
+        for (unsigned int i = 0; i < box.FGD1GoodTPCTrackLocalECalSegments.size(); i++)
         {
-          if (ecalComponent->UniqueID == box->FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
+          if (ecalComponent->UniqueID == box.FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
           {
-            localecalsegment = box->FGD1GoodTPCTrackLocalECalSegments[i];
+            localecalsegment = box.FGD1GoodTPCTrackLocalECalSegments[i];
             continue;
           }
         }
       }
-      std::vector<Float_t> bdtpidvars = bdtpidmanager->GetBDTPIDVarsPos(ptrack, localecalsegment);
+      std::vector<Float_t> bdtpidvars = _bdtpidmanager->GetBDTPIDVarsPos(track, localecalsegment);
       
       if ((bdtpidvars[0] > bdtpidvars[1]) && (bdtpidvars[0] > bdtpidvars[2]) && (bdtpidvars[0] > bdtpidvars[3]))
       {
