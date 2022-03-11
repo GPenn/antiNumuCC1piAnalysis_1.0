@@ -59,32 +59,6 @@ protected:
   bool  _useECalPiZeroInfo;
 };
 
-//Insert methods into a namespace.
-namespace BDTPIDUtils {
-
-//  std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
-  
-  void FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params, 
-                    BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
-  
-  void FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
-                      BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
-  
-  void FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
-      bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
-  
-  void FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
-      EventBoxTracker::RecObjectGroupEnum groupID, 
-      bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
-  
-  void FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox,
-      const multipart::ProtonSelectionParams& params, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
-   
-  void FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, 
-      const multipart::ProtonSelectionParams& params, 
-      EventBoxTracker::RecObjectGroupEnum groupID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
-}
-
 class ToyBoxAntiCC1Pi: public ToyBoxAntiCCMultiPi{
 
 public:
@@ -114,8 +88,36 @@ public:
   AnaTECALReconObject* HMNTLocalECalSegment;
   AnaTECALObjectVec FGD1GoodTPCTrackLocalECalSegments;
 
-
 };
+
+
+//Insert methods into a namespace.
+namespace BDTPIDUtils {
+
+//  std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
+  
+  void FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params, 
+                    BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
+                      BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+      bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
+      EventBoxTracker::RecObjectGroupEnum groupID, 
+      bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+  
+  void FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox,
+      const multipart::ProtonSelectionParams& params, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+   
+  void FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, 
+      const multipart::ProtonSelectionParams& params, 
+      EventBoxTracker::RecObjectGroupEnum groupID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox);
+}
+
+
 
 inline ToyBoxB* antiNumuCC1piSelection::MakeToyBox(){return new ToyBoxAntiCC1Pi();}
 
