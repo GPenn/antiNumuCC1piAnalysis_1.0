@@ -9,6 +9,7 @@
 #include "ToyBoxTracker.hxx"
 #include "CutUtils.hxx"
 #include "numuCCMultiPiSelection.hxx"
+#include "antiNumuCC1piSelection.hxx"
 
 class BDTPIDmanager{
   public:
