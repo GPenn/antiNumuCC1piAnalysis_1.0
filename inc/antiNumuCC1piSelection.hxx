@@ -178,6 +178,8 @@ public:
   }
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new AntiMuonPIDCut_LoopBDTPID();}
+  
+  BDTPIDmanager* _bdtpidmanager;
 };
 
 class MuonWithECalSegmentsCut: public StepBase{
