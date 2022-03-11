@@ -169,6 +169,17 @@ public:
   StepBase* MakeClone(){return new AntiMuonPIDCut_Loop();}
 };
 
+class AntiMuonPIDCut_LoopBDTPID: public StepBase{
+public:
+  using StepBase::Apply;
+  AntiMuonPIDCut_LoopBDTPID(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new AntiMuonPIDCut_LoopBDTPID();}
+};
+
 class MuonWithECalSegmentsCut: public StepBase{
 public:
   using StepBase::Apply;
