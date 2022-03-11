@@ -17,8 +17,6 @@ class antiNumuCC1piSelection: public SelectionBase{
 public:
   antiNumuCC1piSelection(bool forceBreak=true, InputManager *INPUT=NULL, BDTPIDmanager *BDTPID=NULL);
   virtual ~antiNumuCC1piSelection(){}
-  
-  TMVA::Reader* tmvareader_sel = new TMVA::Reader( "Color" );
 
   //---- These are mandatory functions
   void DefineSteps();
