@@ -15,7 +15,7 @@ typedef std::vector<AnaTECALReconObject*>        AnaTECALObjectVec;
 
 class antiNumuCC1piSelection: public SelectionBase{
 public:
-  antiNumuCC1piSelection(bool forceBreak=true, InputManager *INPUT=NULL);
+  antiNumuCC1piSelection(bool forceBreak=true, InputManager *INPUT=NULL, BDTPIDmanager *BDTPID=NULL);
   virtual ~antiNumuCC1piSelection(){}
   
   TMVA::Reader* tmvareader_sel = new TMVA::Reader( "Color" );
@@ -54,6 +54,7 @@ protected:
   //numuCCMultiPiSelection _numuCCMultiPiSelection;
   antiNumuCCMultiPiSelection _antiNumuCCMultiPiSelection;
   InputManager* _input;
+  BDTPIDmanager* _bdtpid;
   
   Int_t _MuonPIDCutIndex;
   Int_t _FindPionsStepIndex; 
