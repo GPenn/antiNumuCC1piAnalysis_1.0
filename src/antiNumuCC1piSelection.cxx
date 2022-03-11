@@ -549,9 +549,9 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     // Get BDT PID vars and apply if valid
     if (valid_for_BDTPID) {
       // Find local ECal segment if one exists
+      AnaTECALReconObject* localecalsegment = NULL;
       if (track->nECALSegments == 1) 
       {
-        AnaTECALReconObject* localecalsegment = NULL;
         AnaECALParticleB* ecalComponent = static_cast<AnaECALParticleB*>(track->ECALSegments[0]);
         for (unsigned int i = 0; i < box.FGD1GoodTPCTrackLocalECalSegments.size(); i++)
         {
