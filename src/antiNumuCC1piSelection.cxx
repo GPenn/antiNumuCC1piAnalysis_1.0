@@ -85,6 +85,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
   AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
   AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
@@ -94,7 +95,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddSplit(3);
 
   //First branch is for CC-0pi
-  AddStep(0, StepBase::kCut, "Antimu PID",         new AntiMuonPIDCut());
+  //AddStep(0, StepBase::kCut, "Antimu PID",         new AntiMuonPIDCut());
   AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
   AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   
@@ -107,7 +108,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   
   // --------------- old version ---------------
   //AddStep(1, StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
-  AddStep(1, StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  //AddStep(1, StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
@@ -133,7 +134,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   */
   
   //Third branch is for CC-Other
-  AddStep(2, StepBase::kCut, "Antimu PID", new AntiMuonPIDCut());
+  //AddStep(2, StepBase::kCut, "Antimu PID", new AntiMuonPIDCut());
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
   
   //AddStep(2, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
@@ -507,6 +508,80 @@ bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   
   //Old version just applies PID to the HMPT
   //return cutUtils::AntiMuonPIDCut(*(box.HMPtrack));
+  
+}
+
+//**************************************************
+bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+//**************************************************
+
+  (void)event;
+  // Cast the ToyBox to the appropriate type
+  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
+  
+  // Check that HMPT exists and momentum is positive
+  if (!box.HMPtrack) return false;
+  if (box.HMPtrack->Momentum < 0.) return false;
+  
+  // Loop over positive TPC tracks, applying antimu PID
+  Int_t NTracks = box.nPositiveTPCtracks;
+  Int_t NMuonLike = 0;
+  
+  AnaTrackB** PosTracksArray = box.PositiveTPCtracks;
+  
+  for (int i=0; i < NTracks; i++)
+  {
+    AnaTrackB* track = PosTracksArray[i];
+    
+    if (track->Momentum < 0.) continue; // Check that track momentum is valid
+    
+    //if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
+    //{
+    //  box.MainTrack = track;
+    //  NMuonLike++;
+    //}
+    
+    // Check whether the BDT PID is valid
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
+    if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    
+    // Get BDT PID vars and apply if valid
+    if (valid_for_BDTPID) {
+      // Find local ECal segment if one exists
+      if (track->nECALSegments == 1) 
+      {
+        AnaTECALReconObject* localecalsegment = NULL;
+        AnaECALParticleB* ecalComponent = static_cast<AnaECALParticleB*>(track->ECALSegments[0]);
+        for (unsigned int i = 0; i < box->FGD1GoodTPCTrackLocalECalSegments.size(); i++)
+        {
+          if (ecalComponent->UniqueID == box->FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
+          {
+            localecalsegment = box->FGD1GoodTPCTrackLocalECalSegments[i];
+            continue;
+          }
+        }
+      }
+      std::vector<Float_t> bdtpidvars = bdtpidmanager->GetBDTPIDVarsPos(ptrack, localecalsegment);
+      
+      if ((bdtpidvars[0] > bdtpidvars[1]) && (bdtpidvars[0] > bdtpidvars[2]) && (bdtpidvars[0] > bdtpidvars[3]))
+      {
+        box.MainTrack = track;
+        NMuonLike++;
+      }
+    }
+    
+    // If BDT PID is not valid, apply usual TPC cut
+    else if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
+    {
+      box.MainTrack = track;
+      NMuonLike++;
+    }
+  }
+  
+  
+  if (NMuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
+  return false; // Otherwise, i.e. if there are no antimu-like tracks, or more than one, the cut is failed
   
 }
 
