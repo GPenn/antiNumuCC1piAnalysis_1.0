@@ -1076,7 +1076,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
           if (ecalComponent->UniqueID == anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
           {
             localecalsegment = anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i];
-            std::cout << "INFO: Found local ECal segment for pion PID." << std::endl;
+            //std::cout << "INFO: Found local ECal segment for pion PID." << std::endl;
             continue;
           }
         }
@@ -1113,6 +1113,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
           if (ptrack->Momentum > 900.) continue; // This is mainly protons.
           pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
         }
+        std::cout << "INFO: BDT pion PID applied!" << std::endl;
       }
       else { // Apply TPC PID if BDT PID not valid
         Float_t PIDLikelihood[4];
