@@ -14,7 +14,7 @@
 
 
 //********************************************************************
-antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* INPUT) : 
+antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* INPUT, BDTPIDmanager *BDTPID) : 
   SelectionBase(forceBreak,EventBoxId::kEventBoxTracker), _input(INPUT) {
   //********************************************************************
   _antiNumuCCSelection.Initialize();
