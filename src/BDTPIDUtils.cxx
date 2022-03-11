@@ -440,8 +440,7 @@ bool FindPionsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   ccmultipibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
   
   // Fill the info
-  BDTPIDUtils::FillPionInfo(event, ccmultipibox->pionBox, pionSelParams);
-
+  BDTPIDUtils::FillPionInfo(event, ccmultipibox->pionBox, pionSelParams, _bdtpidmanager);
   
   int nnegpions        = ccmultipibox->pionBox.nNegativePionTPCtracks;
   int npospions        = ccmultipibox->pionBox.nPositivePionTPCtracks;
@@ -472,13 +471,13 @@ bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   ccmultipibox->pionBox.Detector = (SubDetId::SubDetEnum)box.DetectorFV;
 
   // Fill the info
-  BDTPIDUtils::FillProtonInfo(event, ccmultipibox->pionBox, protonSelParams);
+  BDTPIDUtils::FillProtonInfo(event, ccmultipibox->pionBox, protonSelParams, _bdtpidmanager);
   
   return true;
 }
 
 //*********************************************************************
-void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params){
+void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params, BDTPIDmanager* bdtpidmanager){
 //*********************************************************************
 
   EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
@@ -493,7 +492,7 @@ void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleB
   } 
 
   if (params.useTPCPions) BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(event, params.refTrack, 
-      pionBox, params.useOldSecondaryPID); 
+      pionBox, params.useOldSecondaryPID, bdtpidmanager); 
 
   if (params.useFGDPions) cutUtils::FindIsoFGDPionInfo(event, pionBox);
 
@@ -517,7 +516,7 @@ void BDTPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleB
 }
 
 //*********************************************************************
-void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::ProtonSelectionParams& params){
+void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::ProtonSelectionParams& params, BDTPIDmanager* bdtpidmanager){
   //*********************************************************************
 
   EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
@@ -532,7 +531,7 @@ void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticl
   } 
 
   // TPC protons
-  BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(event, pionBox, params); 
+  BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(event, pionBox, params, bdtpidmanager); 
 
   // FGD-iso protons
   cutUtils::FindIsoFGDProtons(event, pionBox, params);
@@ -542,7 +541,7 @@ void BDTPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticl
 
 //*********************************************************************
 void BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
-    bool useOldSecondaryPID){
+    bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager){
   //*********************************************************************
 
   EventBoxTracker::RecObjectGroupEnum groupID;
@@ -551,7 +550,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, cons
   else return;
 
 
-  return FindGoodQualityTPCPionInfo(event, reftrack, pionBox, groupID, useOldSecondaryPID);
+  return FindGoodQualityTPCPionInfo(event, reftrack, pionBox, groupID, useOldSecondaryPID, bdtpidmanager);
 
 }
 
@@ -559,7 +558,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, cons
 //*********************************************************************
 void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
     EventBoxTracker::RecObjectGroupEnum groupID, 
-    bool useOldSecondaryPID){
+    bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager){
   //*********************************************************************
 
   pionBox.nPositivePionTPCtracks = 0;
@@ -658,7 +657,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
 }
 
 //**************************************************
-void BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params){
+void BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, BDTPIDmanager* bdtpidmanager){
   //**************************************************
 
 
@@ -668,13 +667,13 @@ void BDTPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multi
   else return;
 
 
-  return cutUtils::FindGoodQualityTPCProtons(event, protonBox, params, groupID);
+  return BDTPIDUtils::FindGoodQualityTPCProtons(event, protonBox, params, groupID, bdtpidmanager);
 }
 
 
 //**************************************************
 void BDTPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
-    EventBoxTracker::RecObjectGroupEnum groupID){
+    EventBoxTracker::RecObjectGroupEnum groupID, BDTPIDmanager* bdtpidmanager){
   //**************************************************
 
   protonBox.nProtonTPCtracks = 0;
