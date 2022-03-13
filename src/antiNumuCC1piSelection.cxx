@@ -83,14 +83,14 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
-  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
-  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
+  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
   AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
 
   //Add a split to the trunk with 3 branches.
@@ -115,8 +115,10 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
+  //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
+  //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
+  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT());
+  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT());
   
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
@@ -729,6 +731,32 @@ bool ReoptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   return true;
 }
 
+
+//**************************************************
+bool ReoptimisedMuonECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  // Check whether the BDT PID is valid; if so, waive cut
+  bool valid_for_BDTPID = false;
+  TVector3 DirVec = anaUtils::ArrayToTVector3(box.MainTrack->DirectionStart);
+  if ((box.MainTrack->Momentum > 200) && (box.MainTrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
+  if (valid_for_BDTPID) return true;
+ 
+  if (box.MainTrack->nECALSegments == 1)
+  {
+    AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
+      
+    if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) > 0.88) return false;
+  }
+  
+  return true;
+}
+
 //**************************************************
 bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
@@ -771,6 +799,11 @@ bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Cast the ToyBox to the appropriate type
   ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
   
+  // Check whether the BDT PID is valid; if so, waive cut
+  bool valid_for_BDTPID = false;
+  TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
+  if ((box.HMNtrack->Momentum > 200) && (box.HMNtrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
+  if (valid_for_BDTPID) return true;
   
   if (box.HMNtrack)
   { 
@@ -783,7 +816,30 @@ bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   }
 
   return true;
+}
 
+
+//**************************************************
+bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+  //**************************************************
+
+  (void)event;
+
+  // Cast the ToyBox to the appropriate type
+  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
+  
+  
+  if (box.HMNtrack)
+  { 
+    if (box.HMNtrack->nECALSegments == 1)
+    {
+      AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
+      
+      if ( ECalSeg->PIDMipPion < -0.4) return false;
+    }
+  }
+
+  return true;
 }
 
 //********************************************************************
