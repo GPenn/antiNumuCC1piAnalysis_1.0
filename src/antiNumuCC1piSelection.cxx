@@ -820,7 +820,7 @@ bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 
 
 //**************************************************
-bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
+bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
 
   (void)event;
