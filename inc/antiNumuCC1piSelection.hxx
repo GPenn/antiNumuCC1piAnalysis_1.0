@@ -231,6 +231,13 @@ public:
   StepBase* MakeClone(){return new ReoptimisedMuonECalPIDCut();}
 };
 
+class ReoptimisedMuonECalPIDCut_ifnoBDT: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new ReoptimisedMuonECalPIDCut_ifnoBDT();}
+};
+
 class OptimisedPionECalPIDCut: public StepBase{
 public:
   using StepBase::Apply;
@@ -243,6 +250,13 @@ public:
   using StepBase::Apply;
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new ReoptimisedPionECalPIDCut();}
+};
+
+class ReoptimisedPionECalPIDCut_ifnoBDT: public StepBase{
+public:
+  using StepBase::Apply;
+  bool Apply(AnaEventC& event, ToyBoxB& box) const;
+  StepBase* MakeClone(){return new ReoptimisedPionECalPIDCut_ifnoBDT();}
 };
 
 // GetAllTECALReconObjects from the AnaLocalReconBunch
