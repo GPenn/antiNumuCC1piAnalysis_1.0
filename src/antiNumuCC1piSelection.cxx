@@ -83,12 +83,14 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
-  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
+  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
   AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
 
   //Add a split to the trunk with 3 branches.
