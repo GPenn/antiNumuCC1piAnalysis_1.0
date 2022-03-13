@@ -1306,7 +1306,6 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
 
         double ElLklh = PIDLikelihood[1];  
         double PionLklh = PIDLikelihood[3];
-        double PionLklh = PIDLikelihood[3];
         double norm = ElLklh+PionLklh;
         ElLklh /= norm; 
         PionLklh /= norm;
