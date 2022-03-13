@@ -573,7 +573,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
         box.MainTrack = track;
         NMuonLike++;
       }
-      std::cout << "INFO: BDT muon PID applied!" << std::endl;
+      //std::cout << "INFO: BDT muon PID applied!" << std::endl;
     }
     
     // If BDT PID is not valid, apply usual TPC cut
@@ -1229,9 +1229,9 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
       }
       else if (valid_for_BDTPID) { // Apply BDT PID if valid
         // For Positive tracks we distinguish pions, electrons and protons.
-        double ElLklh = bdtpidvars[1];  
+        double ElLklh = bdtpidvars[3];  
         double ProtonLklh = bdtpidvars[2];  
-        double PionLklh = bdtpidvars[3];  
+        double PionLklh = bdtpidvars[1];  
         double norm = ElLklh+ProtonLklh+PionLklh;
         ProtonLklh /= norm; 
         ElLklh /= norm; 
@@ -1244,10 +1244,10 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
           pionBox.PositivePionTPCtracks[pionBox.nPositivePionTPCtracks++] = ptrack;
         }
         else {
-          if (ptrack->Momentum > 900.) continue; // This is mainly protons.
+          //if (ptrack->Momentum > 900.) continue; // This is mainly protons.
           pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
         }
-        std::cout << "INFO: BDT pion PID applied!" << std::endl;
+        //std::cout << "INFO: BDT pion PID applied!" << std::endl;
       }
       else { // Apply TPC PID if BDT PID not valid
         Float_t PIDLikelihood[4];
@@ -1285,13 +1285,14 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
       }
       else if (valid_for_BDTPID) { // Apply BDT PID if valid
         // For Negative tracks we distinguish pions and electrons
-        double ElLklh = bdtpidvars[1];  
-        double PionLklh = bdtpidvars[3];  
+        double ElLklh = bdtpidvars[3];  
+        double PionLklh = bdtpidvars[1];
+        //double MuonLklh = bdtpidvars[0];
         double norm = ElLklh+PionLklh;
         ElLklh /= norm; 
         PionLklh /= norm;
 
-        if( PionLklh > ElLklh ){ // Id associated to the largest of the two probabilities.
+        if( (PionLklh > ElLklh) ){ // Id associated to the largest of the two probabilities.
           pionBox.NegativePionTPCtracks[pionBox.nNegativePionTPCtracks++] = ptrack;
         }
         else{ 
@@ -1304,7 +1305,8 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
         anaUtils::GetPIDLikelihood(*ptrack, PIDLikelihood);
 
         double ElLklh = PIDLikelihood[1];  
-        double PionLklh = PIDLikelihood[3];  
+        double PionLklh = PIDLikelihood[3];
+        double PionLklh = PIDLikelihood[3];
         double norm = ElLklh+PionLklh;
         ElLklh /= norm; 
         PionLklh /= norm;
@@ -1359,6 +1361,27 @@ void BDTPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::M
     bool valid_for_BDTPID = false;
     TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
     if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    
+    // Get BDT PID vars
+    AnaTECALReconObject* localecalsegment = NULL;
+    std::vector<Float_t> bdtpidvars;
+    if (valid_for_BDTPID) {
+      // Find local ECal segment if one exists
+      if (ptrack->nECALSegments == 1) 
+      {
+         AnaECALParticleB* ecalComponent = static_cast<AnaECALParticleB*>(ptrack->ECALSegments[0]);
+        for (unsigned int i = 0; i < anticc1pibox->FGD1GoodTPCTrackLocalECalSegments.size(); i++)
+        {
+          if (ecalComponent->UniqueID == anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
+          {
+            localecalsegment = anticc1pibox->FGD1GoodTPCTrackLocalECalSegments[i];
+            //std::cout << "INFO: Found local ECal segment for proton PID." << std::endl;
+            continue;
+          }
+        }
+      }
+      bdtpidvars = bdtpidmanager->GetBDTPIDVarsPos(ptrack, localecalsegment);
+    }
 
     // Check that at track is not within the reference ones
     bool found = false;
@@ -1372,8 +1395,23 @@ void BDTPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::M
     if (found){
       continue;
     }
-
-    if (cutUtils::TPCProtonPIDCut(*ptrack, params.tpcPIDCut)){
+    
+    // Identify as proton if BDT is valid and proton-like is highest output
+    if (valid_for_BDTPID)
+    {
+      // For Positive tracks we distinguish pions, electrons and protons.
+      double ElLklh = bdtpidvars[3];  
+      double ProtonLklh = bdtpidvars[2];  
+      double PionLklh = bdtpidvars[1];  
+      double norm = ElLklh+ProtonLklh+PionLklh;
+      ProtonLklh /= norm; 
+      ElLklh /= norm; 
+      PionLklh /= norm; 
+      
+      if ((ProtonLklh > ElLklh) && (ProtonLklh > PionLklh)) {protonBox.ProtonTPCtracks[protonBox.nProtonTPCtracks++] = ptrack;}
+    }
+    // Otherwise, use TPC PID
+    else if (cutUtils::TPCProtonPIDCut(*ptrack, params.tpcPIDCut)){
       protonBox.ProtonTPCtracks[protonBox.nProtonTPCtracks++] = ptrack;
     }
   }
