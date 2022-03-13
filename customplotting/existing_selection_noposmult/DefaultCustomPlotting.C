@@ -346,7 +346,7 @@ void DefaultCustomPlotting::Loop()
          }
          if (topology != 1)
          {
-            counter_cc1pi_accum9++;
+            //counter_cc1pi_accum9++;
             recomom_bkg_sel->Fill(selmu_mom[0]);
             recotheta_bkg_sel->Fill(selmu_det_theta);
          }
