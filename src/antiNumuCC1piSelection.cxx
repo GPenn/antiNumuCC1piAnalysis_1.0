@@ -1244,7 +1244,7 @@ void CC1piPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const Ana
     
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
-    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(ptrack))) {valid_for_BDTPID = true;}
+    if ((bdtpidmanager!=NULL) && (bdtpidmanager->GetBDTPIDValidity(ptrack))) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars
     AnaTECALReconObject* localecalsegment = NULL;
@@ -1407,7 +1407,7 @@ void CC1piPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart:
     
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
-    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(ptrack))) {valid_for_BDTPID = true;}
+    if ((bdtpidmanager!=NULL) && (bdtpidmanager->GetBDTPIDValidity(ptrack))) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars
     AnaTECALReconObject* localecalsegment = NULL;
