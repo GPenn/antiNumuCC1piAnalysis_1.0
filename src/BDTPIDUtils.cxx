@@ -389,6 +389,17 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsNeg(AnaTrackB* track, AnaTECALR
   return output;
 }
 
+//--------------------------------------------------------------------------------------------------//
+bool BDTPIDmanager::GetBDTPIDValidity(AnaTrackB* track) {
+//--------------------------------------------------------------------------------------------------//
+  if (ignoreBDTvalidity) return true;
+  
+  TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
+  if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) return true;
+  
+  else return false;
+}
+
 //**************************************************
 bool BDTPreselectionKinematicsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
