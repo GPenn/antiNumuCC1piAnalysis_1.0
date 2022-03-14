@@ -19,6 +19,8 @@ class BDTPIDmanager{
   std::vector<Float_t> GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname="BDTG_ntpcs");
   std::vector<Float_t> GetBDTPIDVarsNeg(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname="BDTG_tree3_neg");
   
+  bool GetBDTPIDValidity(AnaTrackB* track);
+  
   protected:
     TMVA::Reader* tmvareader;
     // NOTE: Need to add default values in GetVars function
@@ -28,6 +30,7 @@ class BDTPIDmanager{
     Float_t bdt_fgd1pullmu, bdt_fgd1pullp, bdt_fgd1pullpi, bdt_fgd2pullmu, bdt_fgd2pullp, bdt_fgd2pullpi, bdt_fgd1_EbyL, bdt_fgd2_EbyL;
     Float_t bdt_nsmrds, bdt_ntpcs;
     
+    bool ignoreBDTvalidity = true;
 };
 
 
