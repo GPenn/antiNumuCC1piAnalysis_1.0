@@ -234,8 +234,14 @@ public:
 class ReoptimisedMuonECalPIDCut_ifnoBDT: public StepBase{
 public:
   using StepBase::Apply;
+  ReoptimisedMuonECalPIDCut_ifnoBDT(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new ReoptimisedMuonECalPIDCut_ifnoBDT();}
+  
+  BDTPIDmanager* _bdtpidmanager;
 };
 
 class OptimisedPionECalPIDCut: public StepBase{
@@ -255,8 +261,14 @@ public:
 class ReoptimisedPionECalPIDCut_ifnoBDT: public StepBase{
 public:
   using StepBase::Apply;
+  ReoptimisedPionECalPIDCut_ifnoBDT(BDTPIDmanager *bdtpidmanager=NULL){
+    _bdtpidmanager = bdtpidmanager;
+    if (!bdtpidmanager) std::cout << "!!!" << std::endl << "DEBUG: NO BDT PID MANAGER FOUND!" << std::endl << "!!!" << std::endl;
+  }
   bool Apply(AnaEventC& event, ToyBoxB& box) const;
   StepBase* MakeClone(){return new ReoptimisedPionECalPIDCut_ifnoBDT();}
+  
+  BDTPIDmanager* _bdtpidmanager;
 };
 
 // GetAllTECALReconObjects from the AnaLocalReconBunch
