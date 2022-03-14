@@ -502,7 +502,7 @@ bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     if (track->Momentum < 0.) continue; // Check that track momentum is valid
     
     // Check that track satisfies quality cut
-    //if (!cutUtils::TrackQualityCut(*track)) continue;
+    if (!cutUtils::TrackQualityCut(*track)) continue;
     
     if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
     {
