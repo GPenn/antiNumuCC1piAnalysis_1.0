@@ -855,6 +855,7 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 
 }
 
+
 //**************************************************
 bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
@@ -864,11 +865,6 @@ bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   // Cast the ToyBox to the appropriate type
   ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
   
-  // Check whether the BDT PID is valid; if so, waive cut
-  bool valid_for_BDTPID = false;
-  TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
-  if ((box.HMNtrack->Momentum > 200) && (box.HMNtrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
-  if (valid_for_BDTPID) return true;
   
   if (box.HMNtrack)
   { 
@@ -892,10 +888,16 @@ bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
 
   // Cast the ToyBox to the appropriate type
   ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
-  
+ 
   
   if (box.HMNtrack)
   { 
+    // Check whether the BDT PID is valid; if so, waive cut
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
+    if ((box.HMNtrack->Momentum > 200) && (box.HMNtrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
+    if (valid_for_BDTPID) return true;
+    
     if (box.HMNtrack->nECALSegments == 1)
     {
       AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
