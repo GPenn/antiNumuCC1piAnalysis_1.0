@@ -93,7 +93,7 @@ public:
 
 
 //Insert methods into a namespace.
-namespace BDTPIDUtils {
+namespace CC1piPIDUtils {
 
 //  std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
   
