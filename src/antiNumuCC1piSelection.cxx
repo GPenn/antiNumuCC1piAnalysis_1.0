@@ -592,7 +592,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     }
   }
   
-  /*
+  
   // Loop over negative TPC tracks, applying muon PID
   Int_t NNegTracks = box.nNegativeTPCtracks;
   Int_t NMuonLike = 0;
@@ -636,7 +636,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     }
   }
   
-  if (NMuonLike > 0) return false; // If there are any negative muon-like tracks, reject the event*/
+  if (NMuonLike > 0) return false; // If there are any negative muon-like tracks, reject the event
   if (NAntimuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
   return false; // Otherwise, i.e. if there are no antimu-like tracks, or more than one, the cut is failed
   
