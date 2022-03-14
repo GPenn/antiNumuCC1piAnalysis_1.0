@@ -556,11 +556,10 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
-    TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
-    if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (_bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(track))) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars and apply if valid
-    if (_ignoreBDTvalidity || valid_for_BDTPID) {
+    if (valid_for_BDTPID) {
       // Find local ECal segment if one exists
       AnaTECALReconObject* localecalsegment = NULL;
       if (track->nECALSegments == 1) 
@@ -608,11 +607,10 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
-    TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
-    if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (_bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(track))) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars and apply if valid
-    if (_ignoreBDTvalidity || valid_for_BDTPID) {
+    if (valid_for_BDTPID) {
       // Find local ECal segment if one exists
       AnaTECALReconObject* localecalsegment = NULL;
       if (track->nECALSegments == 1) 
@@ -796,9 +794,8 @@ bool ReoptimisedMuonECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
   
   // Check whether the BDT PID is valid; if so, waive cut
   bool valid_for_BDTPID = false;
-  TVector3 DirVec = anaUtils::ArrayToTVector3(box.MainTrack->DirectionStart);
-  if ((box.MainTrack->Momentum > 200) && (box.MainTrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
-  if (_ignoreBDTvalidity || valid_for_BDTPID) return true;
+  if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(box.MainTrack))) {valid_for_BDTPID = true;}
+  if (valid_for_BDTPID) return true;
  
   if (box.MainTrack->nECALSegments == 1)
   {
@@ -882,9 +879,8 @@ bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
   { 
     // Check whether the BDT PID is valid; if so, waive cut
     bool valid_for_BDTPID = false;
-    TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
-    if ((box.HMNtrack->Momentum > 200) && (box.HMNtrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
-    if (_ignoreBDTvalidity || valid_for_BDTPID) return true;
+    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(box.HMNtrack))) {valid_for_BDTPID = true;}
+    if (valid_for_BDTPID) return true;
     
     if (box.HMNtrack->nECALSegments == 1)
     {
@@ -1249,13 +1245,12 @@ void CC1piPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const Ana
     
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
-    TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
-    if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(ptrack))) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars
     AnaTECALReconObject* localecalsegment = NULL;
     std::vector<Float_t> bdtpidvars;
-    if (_ignoreBDTvalidity || valid_for_BDTPID) {
+    if (valid_for_BDTPID) {
       // Find local ECal segment if one exists
       if (ptrack->nECALSegments == 1) 
       {
@@ -1282,7 +1277,7 @@ void CC1piPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const Ana
           pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
         }
       }
-      else if (_ignoreBDTvalidity || valid_for_BDTPID) { // Apply BDT PID if valid
+      else if (valid_for_BDTPID) { // Apply BDT PID if valid
         // For Positive tracks we distinguish pions, electrons and protons.
         double ElLklh = bdtpidvars[3];  
         double ProtonLklh = bdtpidvars[2];  
@@ -1413,8 +1408,7 @@ void CC1piPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart:
     
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
-    TVector3 DirVec = anaUtils::ArrayToTVector3(ptrack->DirectionStart);
-    if ((ptrack->Momentum > 200) && (ptrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    if ((_bdtpidmanager!=NULL) && (_bdtpidmanager->GetBDTPIDValidity(ptrack))) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars
     AnaTECALReconObject* localecalsegment = NULL;
