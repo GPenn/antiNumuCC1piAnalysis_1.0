@@ -57,7 +57,6 @@ protected:
   Int_t _MuonPIDCutIndex;
   Int_t _FindPionsStepIndex; 
   bool  _useECalPiZeroInfo;
-  bool _ignoreBDTvalidity;
 };
 
 class ToyBoxAntiCC1Pi: public ToyBoxAntiCCMultiPi{
