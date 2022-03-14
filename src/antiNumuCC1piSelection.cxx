@@ -501,6 +501,9 @@ bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     
     if (track->Momentum < 0.) continue; // Check that track momentum is valid
     
+    // Check that track satisfies quality cut
+    if (!cutUtils::TrackQualityCut(*ptrack)) continue;
+    
     if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
     {
       box.MainTrack = track;
@@ -531,13 +534,74 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   
   // Loop over positive TPC tracks, applying antimu PID
   Int_t NTracks = box.nPositiveTPCtracks;
-  Int_t NMuonLike = 0;
+  Int_t NAntimuonLike = 0;
   
   AnaTrackB** PosTracksArray = box.PositiveTPCtracks;
   
   for (int i=0; i < NTracks; i++)
   {
     AnaTrackB* track = PosTracksArray[i];
+    
+    if (track->Momentum < 0.) continue; // Check that track momentum is valid
+    
+    // Check that track satisfies quality cut
+    if (!cutUtils::TrackQualityCut(*ptrack)) continue;
+    
+    //if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
+    //{
+    //  box.MainTrack = track;
+    //  NMuonLike++;
+    //}
+    
+    // Check whether the BDT PID is valid
+    bool valid_for_BDTPID = false;
+    TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
+    if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (_bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
+    
+    // Get BDT PID vars and apply if valid
+    if (valid_for_BDTPID) {
+      // Find local ECal segment if one exists
+      AnaTECALReconObject* localecalsegment = NULL;
+      if (track->nECALSegments == 1) 
+      {
+        AnaECALParticleB* ecalComponent = static_cast<AnaECALParticleB*>(track->ECALSegments[0]);
+        for (unsigned int i = 0; i < box.FGD1GoodTPCTrackLocalECalSegments.size(); i++)
+        {
+          if (ecalComponent->UniqueID == box.FGD1GoodTPCTrackLocalECalSegments[i]->UniqueID)
+          {
+            localecalsegment = box.FGD1GoodTPCTrackLocalECalSegments[i];
+            continue;
+          }
+        }
+      }
+      std::vector<Float_t> bdtpidvars = _bdtpidmanager->GetBDTPIDVarsPos(track, localecalsegment);
+      
+      if ((bdtpidvars[0] > bdtpidvars[1]) && (bdtpidvars[0] > bdtpidvars[2]) && (bdtpidvars[0] > bdtpidvars[3]))
+      {
+        box.MainTrack = track;
+        NAntimuonLike++;
+      }
+      //std::cout << "INFO: BDT muon PID applied!" << std::endl;
+    }
+    
+    // If BDT PID is not valid, apply usual TPC cut
+    else if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
+    {
+      box.MainTrack = track;
+      NAntimuonLike++;
+    }
+  }
+  
+  /*
+  // Loop over negative TPC tracks, applying muon PID
+  Int_t NNegTracks = box.nNegativeTPCtracks;
+  Int_t NMuonLike = 0;
+  
+  AnaTrackB** NegTracksArray = box.NegativeTPCtracks;
+  
+  for (int i=0; i < NNegTracks; i++)
+  {
+    AnaTrackB* track = NegTracksArray[i];
     
     if (track->Momentum < 0.) continue; // Check that track momentum is valid
     
@@ -573,7 +637,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
       if ((bdtpidvars[0] > bdtpidvars[1]) && (bdtpidvars[0] > bdtpidvars[2]) && (bdtpidvars[0] > bdtpidvars[3]))
       {
         box.MainTrack = track;
-        NMuonLike++;
+        NAntimuonLike++;
       }
       //std::cout << "INFO: BDT muon PID applied!" << std::endl;
     }
@@ -582,12 +646,11 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     else if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
     {
       box.MainTrack = track;
-      NMuonLike++;
+      NAntimuonLike++;
     }
-  }
+  }*/
   
-  
-  if (NMuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
+  if (NAntimuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
   return false; // Otherwise, i.e. if there are no antimu-like tracks, or more than one, the cut is failed
   
 }
