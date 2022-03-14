@@ -83,8 +83,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
   AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
@@ -872,7 +872,7 @@ bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     {
       AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
       
-      if ( ECalSeg->PIDMipPion < -0.4) return false;
+      if ( ECalSeg->PIDMipPion < 1.0) return false;
     }
   }
 
@@ -902,7 +902,7 @@ bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
     {
       AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
       
-      if ( ECalSeg->PIDMipPion < -0.4) return false;
+      if ( ECalSeg->PIDMipPion < 1.0) return false;
     }
   }
 
