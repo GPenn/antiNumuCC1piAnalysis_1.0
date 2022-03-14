@@ -605,12 +605,6 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     
     if (track->Momentum < 0.) continue; // Check that track momentum is valid
     
-    //if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
-    //{
-    //  box.MainTrack = track;
-    //  NMuonLike++;
-    //}
-    
     // Check whether the BDT PID is valid
     bool valid_for_BDTPID = false;
     TVector3 DirVec = anaUtils::ArrayToTVector3(track->DirectionStart);
@@ -633,23 +627,16 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
         }
       }
       std::vector<Float_t> bdtpidvars = _bdtpidmanager->GetBDTPIDVarsPos(track, localecalsegment);
-      
-      if ((bdtpidvars[0] > bdtpidvars[1]) && (bdtpidvars[0] > bdtpidvars[2]) && (bdtpidvars[0] > bdtpidvars[3]))
+      // No need to check proton hypothesis
+      if ((bdtpidvars[0] > bdtpidvars[1]) && (bdtpidvars[0] > bdtpidvars[3]))
       {
-        box.MainTrack = track;
-        NAntimuonLike++;
+        NMuonLike++;
       }
       //std::cout << "INFO: BDT muon PID applied!" << std::endl;
     }
-    
-    // If BDT PID is not valid, apply usual TPC cut
-    else if (cutUtils::AntiMuonPIDCut(*track)) // If track passes muon PID, set as antimu candidate
-    {
-      box.MainTrack = track;
-      NAntimuonLike++;
-    }
-  }*/
+  }
   
+  if (NMuonLike > 0) return false; // If there are any negative muon-like tracks, reject the event*/
   if (NAntimuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
   return false; // Otherwise, i.e. if there are no antimu-like tracks, or more than one, the cut is failed
   
