@@ -24,6 +24,7 @@ antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* IN
   //_numuCCMultiPiSelection.SetUseECalPiZeroInfo(_useECalPiZeroInfo);
     
   _bdtpid = BDTPID;
+  _ignoreBDTvalidity = true;
 }
 
 //********************************************************************
@@ -559,7 +560,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (_bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars and apply if valid
-    if (valid_for_BDTPID) {
+    if (_ignoreBDTvalidity || valid_for_BDTPID) {
       // Find local ECal segment if one exists
       AnaTECALReconObject* localecalsegment = NULL;
       if (track->nECALSegments == 1) 
@@ -611,7 +612,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
     if ((track->Momentum > 200) && (track->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472) && (_bdtpidmanager!=NULL)) {valid_for_BDTPID = true;}
     
     // Get BDT PID vars and apply if valid
-    if (valid_for_BDTPID) {
+    if (_ignoreBDTvalidity || valid_for_BDTPID) {
       // Find local ECal segment if one exists
       AnaTECALReconObject* localecalsegment = NULL;
       if (track->nECALSegments == 1) 
@@ -797,7 +798,7 @@ bool ReoptimisedMuonECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
   bool valid_for_BDTPID = false;
   TVector3 DirVec = anaUtils::ArrayToTVector3(box.MainTrack->DirectionStart);
   if ((box.MainTrack->Momentum > 200) && (box.MainTrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
-  if (valid_for_BDTPID) return true;
+  if (_ignoreBDTvalidity || valid_for_BDTPID) return true;
  
   if (box.MainTrack->nECALSegments == 1)
   {
@@ -883,7 +884,7 @@ bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
     bool valid_for_BDTPID = false;
     TVector3 DirVec = anaUtils::ArrayToTVector3(box.HMNtrack->DirectionStart);
     if ((box.HMNtrack->Momentum > 200) && (box.HMNtrack->Momentum < 1500) && (TMath::ACos(DirVec[2]) < 1.0472)) {valid_for_BDTPID = true;}
-    if (valid_for_BDTPID) return true;
+    if (_ignoreBDTvalidity || valid_for_BDTPID) return true;
     
     if (box.HMNtrack->nECALSegments == 1)
     {
@@ -1254,7 +1255,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
     // Get BDT PID vars
     AnaTECALReconObject* localecalsegment = NULL;
     std::vector<Float_t> bdtpidvars;
-    if (valid_for_BDTPID) {
+    if (_ignoreBDTvalidity || valid_for_BDTPID) {
       // Find local ECal segment if one exists
       if (ptrack->nECALSegments == 1) 
       {
@@ -1281,7 +1282,7 @@ void BDTPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const AnaTr
           pionBox.PosPi0TPCtracks[pionBox.nPosPi0TPCtracks++] = ptrack; 
         }
       }
-      else if (valid_for_BDTPID) { // Apply BDT PID if valid
+      else if (_ignoreBDTvalidity || valid_for_BDTPID) { // Apply BDT PID if valid
         // For Positive tracks we distinguish pions, electrons and protons.
         double ElLklh = bdtpidvars[3];  
         double ProtonLklh = bdtpidvars[2];  
