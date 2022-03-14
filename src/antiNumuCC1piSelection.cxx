@@ -24,7 +24,6 @@ antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* IN
   //_numuCCMultiPiSelection.SetUseECalPiZeroInfo(_useECalPiZeroInfo);
     
   _bdtpid = BDTPID;
-  _ignoreBDTvalidity = true;
 }
 
 //********************************************************************
@@ -120,8 +119,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT());
-  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT());
+  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
+  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
   
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
