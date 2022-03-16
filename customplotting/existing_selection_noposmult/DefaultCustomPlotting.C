@@ -57,6 +57,8 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_all_accum9 = 0, counter_cc1pi_accum9 = 0, counter_bkg_accum9 = 0;
    Int_t counter_selmu_antimu_accum9 = 0, counter_selmu_piplus_accum9 = 0, counter_selmu_proton_accum9 = 0;
    Int_t counter_selpi_accum9 = 0, counter_selpi_piminus_accum9 = 0, counter_selpi_mu_accum9 = 0;
+   Int_t counter_selmu_bdtvalid = 0, counter_selmu_antimu_bdtvalid = 0, counter_selmu_piplus_bdtvalid = 0, counter_selmu_proton_bdtvalid = 0;
+   Int_t counter_selpi_bdtvalid = 0, counter_selpi_piminus_bdtvalid = 0, counter_selpi_mu_bdtvalid = 0;
    
    Int_t recomom_nbins = 15;
    Double_t recomom_max = 5000.0;
@@ -370,6 +372,14 @@ void DefaultCustomPlotting::Loop()
             recomom_proton_accum9->Fill(selmu_mom[0]);
          }
          
+         if ((selmu_mom[0] > 200) && (selmu_mom[0] < 1500) && (selmu_det_theta < 1.0472))
+         {
+            counter_selmu_bdtvalid++;
+            if (particle == -13) {counter_selmu_antimu_bdtvalid++;}
+            if (particle == 211) {counter_selmu_piplus_bdtvalid++;}
+            if (particle == 2212) {counter_selmu_proton_accum9++;}
+         }
+         
          if (ntpcnegQualityFV == 1)
          {
             counter_selpi_accum9++;
@@ -414,51 +424,58 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl << "===== BEFORE ECAL CUTS: =====" << std::endl;
    
-   std::cout << std::endl << "Significance: " << (float)counter_cc1pi/sqrt(counter_all_accum7) << std::endl;
+   std::cout << std::endl << "Significance: " << (float)counter_cc1pi/sqrt(counter_all_accum7);
    
-   std::cout << std::endl << "True CC0pi: " << counter_cc0pi << " (" << 100*(float)counter_cc0pi/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "True CC1pi: " << counter_cc1pi << " (" << 100*(float)counter_cc1pi/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "True CC-Other: " << counter_ccother << " (" << 100*(float)counter_ccother/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "True BKG: " << counter_bkg << " (" << 100*(float)counter_bkg/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "True OOFV: " << counter_oofv << " (" << 100*(float)counter_oofv/counter_all_accum7 << "\%)" << std::endl;
+   std::cout << std::endl << "True CC0pi: " << counter_cc0pi << " (" << 100*(float)counter_cc0pi/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "True CC1pi: " << counter_cc1pi << " (" << 100*(float)counter_cc1pi/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "True CC-Other: " << counter_ccother << " (" << 100*(float)counter_ccother/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "True BKG: " << counter_bkg << " (" << 100*(float)counter_bkg/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "True OOFV: " << counter_oofv << " (" << 100*(float)counter_oofv/counter_all_accum7 << "\%)";
    
-   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*(float)counter_selmu_antimu/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*(float)counter_selmu_mu/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*(float)counter_selmu_piplus/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*(float)counter_selmu_piminus/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*(float)counter_selmu_proton/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*(float)counter_selmu_positron/counter_all_accum7 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*(float)counter_selmu_electron/counter_all_accum7 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu << " (" << 100*(float)counter_selmu_antimu/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "Antimu candidate true mu: " << counter_selmu_mu << " (" << 100*(float)counter_selmu_mu/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus << " (" << 100*(float)counter_selmu_piplus/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "Antimu candidate true piminus: " << counter_selmu_piminus << " (" << 100*(float)counter_selmu_piminus/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton << " (" << 100*(float)counter_selmu_proton/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "Antimu candidate true positrons: " << counter_selmu_positron << " (" << 100*(float)counter_selmu_positron/counter_all_accum7 << "\%)";
+   std::cout << std::endl << "Antimu candidate true electrons: " << counter_selmu_electron << " (" << 100*(float)counter_selmu_electron/counter_all_accum7 << "\%)";
    
    std::cout << std::endl << "Pi- candidates: " << counter_selpi << std::endl;
-   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus << " (" << 100*(float)counter_selpi_piminus/counter_selpi << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu << " (" << 100*(float)counter_selpi_mu/counter_selpi << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true electrons: " << counter_selpi_electron << " (" << 100*(float)counter_selpi_electron/counter_selpi << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true protons: " << counter_selpi_proton << " (" << 100*(float)counter_selpi_proton/counter_selpi << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus << " (" << 100*(float)counter_selpi_piminus/counter_selpi << "\%)";
+   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu << " (" << 100*(float)counter_selpi_mu/counter_selpi << "\%)";
+   std::cout << std::endl << "Pi- candidate true electrons: " << counter_selpi_electron << " (" << 100*(float)counter_selpi_electron/counter_selpi << "\%)";
+   std::cout << std::endl << "Pi- candidate true protons: " << counter_selpi_proton << " (" << 100*(float)counter_selpi_proton/counter_selpi << "\%)";
    
-   std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum4/counter_selmu_piplus_accum4 << std::endl;
-   std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum5 << std::endl;
+   std::cout << std::endl << "Mu/pi ratio before PID: " << (float)counter_selmu_antimu_accum4/counter_selmu_piplus_accum4;
+   std::cout << std::endl << "Mu/pi ratio after PID: " << (float)counter_selmu_antimu_accum5/counter_selmu_piplus_accum5;
    
-   std::cout << std::endl << "Mu+ candidate ECal efficiency: " << 100*(float)counter_selmuecal_accum7/counter_all_accum7 << "\%" << std::endl;
-   std::cout << std::endl << "Pi- candidate ECal efficiency: " << 100*(float)counter_selpiecal/counter_selpi << "\%" << std::endl;
-   std::cout << std::endl << "Events without ECal info: " << 100*(float)counter_noecalinfo/counter_all_accum7 << "\%" << std::endl;
+   std::cout << std::endl << "Mu+ candidate ECal efficiency: " << 100*(float)counter_selmuecal_accum7/counter_all_accum7 << "\%";
+   std::cout << std::endl << "Pi- candidate ECal efficiency: " << 100*(float)counter_selpiecal/counter_selpi << "\%";
+   std::cout << std::endl << "Events without ECal info: " << 100*(float)counter_noecalinfo/counter_all_accum7 << "\%";
    
    std::cout << std::endl << "===== AFTER ECAL CUTS: =====" << std::endl;
    
-   std::cout << std::endl << "Significance: " << (float)counter_cc1pi_accum9/sqrt(counter_all_accum9) << std::endl;
+   std::cout << std::endl << "Significance: " << (float)counter_cc1pi_accum9/sqrt(counter_all_accum9);
    
-   std::cout << std::endl << "Events above accum_level 9: " << counter_all_accum9 << std::endl;
+   std::cout << std::endl << "Events above accum_level 9: " << counter_all_accum9;
    
-   std::cout << std::endl << "True CC1pi: " << counter_cc1pi_accum9 << " (" << 100*(float)counter_cc1pi_accum9/counter_all_accum9 << "\%)" << std::endl;
-   std::cout << std::endl << "True BKG: " << counter_bkg_accum9 << " (" << 100*(float)counter_bkg_accum9/counter_all_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "True CC1pi: " << counter_cc1pi_accum9 << " (" << 100*(float)counter_cc1pi_accum9/counter_all_accum9 << "\%)";
+   std::cout << std::endl << "True BKG: " << counter_bkg_accum9 << " (" << 100*(float)counter_bkg_accum9/counter_all_accum9 << "\%)";
    
-   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu_accum9 << " (" << 100*(float)counter_selmu_antimu_accum9/counter_all_accum9 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus_accum9 << " (" << 100*(float)counter_selmu_piplus_accum9/counter_all_accum9 << "\%)" << std::endl;
-   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton_accum9 << " (" << 100*(float)counter_selmu_proton_accum9/counter_all_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu_accum9 << " (" << 100*(float)counter_selmu_antimu_accum9/counter_all_accum9 << "\%)";
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus_accum9 << " (" << 100*(float)counter_selmu_piplus_accum9/counter_all_accum9 << "\%)";
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton_accum9 << " (" << 100*(float)counter_selmu_proton_accum9/counter_all_accum9 << "\%)";
    
    std::cout << std::endl << "Pi- candidates: " << counter_selpi_accum9 << std::endl;
-   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus_accum9 << " (" << 100*(float)counter_selpi_piminus_accum9/counter_selpi_accum9 << "\%)" << std::endl;
-   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu_accum9 << " (" << 100*(float)counter_selpi_mu_accum9/counter_selpi_accum9 << "\%)" << std::endl;
+   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus_accum9 << " (" << 100*(float)counter_selpi_piminus_accum9/counter_selpi_accum9 << "\%)";
+   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu_accum9 << " (" << 100*(float)counter_selpi_mu_accum9/counter_selpi_accum9 << "\%)";
+   
+   std::cout << std::endl << "===== VALID FOR BDT PID: =====" << std::endl;
+   
+   std::cout << std::endl << "Antimuon candidates: " << counter_selmu_bdtvalid;
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu_bdtvalid << " (" << 100*(float)counter_selmu_antimu_bdtvalid/counter_selmu_bdtvalid << "\%)";
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus_bdtvalid << " (" << 100*(float)counter_selmu_piplus_bdtvalid/counter_selmu_bdtvalid << "\%)";
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton_bdtvalid << " (" << 100*(float)counter_selmu_proton_bdtvalid/counter_selmu_bdtvalid << "\%)";
    
    // Track purity plots (before ECal PID)
    
