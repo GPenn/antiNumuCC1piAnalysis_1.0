@@ -377,7 +377,7 @@ void DefaultCustomPlotting::Loop()
             counter_selmu_bdtvalid++;
             if (particle == -13) {counter_selmu_antimu_bdtvalid++;}
             if (particle == 211) {counter_selmu_piplus_bdtvalid++;}
-            if (particle == 2212) {counter_selmu_proton_accum9++;}
+            if (particle == 2212) {counter_selmu_proton_bdtvalid++;}
          }
          
          if (ntpcnegQualityFV == 1)
