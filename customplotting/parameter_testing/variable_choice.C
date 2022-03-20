@@ -51,12 +51,12 @@
     TPC2_pg_e->SetLineColor( kMagenta);
     
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
-    TPC2_cc1pi_mu->Draw("B");
-    TPC2_cc1pi_pi->Draw("B same");
-    TPC2_pg_mu->Draw("B same");
-    TPC2_pg_pi->Draw("B same");
-    TPC2_pg_p->Draw("B same");
-    TPC2_pg_e->Draw("B same");
+    TPC2_cc1pi_mu->Draw("");
+    TPC2_cc1pi_pi->Draw("same");
+    TPC2_pg_mu->Draw("same");
+    TPC2_pg_pi->Draw("same");
+    TPC2_pg_p->Draw("same");
+    TPC2_pg_e->Draw("same");
     
     canvas_TPC2_choices->BuildLegend();
     
