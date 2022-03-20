@@ -9,42 +9,42 @@
     const char *tpc2varchoices[nx] = {"TPC2 dE/dx","TPC2 pulls","TPC2 likelihoods"};
     
     refvalue_cc1pi_mu = 33.3699;
-    TH1F* TPC2_cc1pi_mu = new TH1F("h","test",3,0,3);
+    TH1F* TPC2_cc1pi_mu = new TH1F("TPC2_cc1pi_mu","test",3,0,3);
     TPC2_cc1pi_mu->Fill(tpc2varchoices[0],33.3699/refvalue_cc1pi_mu);
     TPC2_cc1pi_mu->Fill(tpc2varchoices[1],33.7904/refvalue_cc1pi_mu);
     TPC2_cc1pi_mu->Fill(tpc2varchoices[2],33.9678/refvalue_cc1pi_mu);
     TPC2_cc1pi_mu->SetLineColor( kBlue);
     
     refvalue_cc1pi_pi = 36.7011;
-    TH1F* TPC2_cc1pi_pi = new TH1F("h","test",3,0,3);
+    TH1F* TPC2_cc1pi_pi = new TH1F("TPC2_cc1pi_pi","test",3,0,3);
     TPC2_cc1pi_pi->Fill(tpc2varchoices[0],36.7011/refvalue_cc1pi_pi);
     TPC2_cc1pi_pi->Fill(tpc2varchoices[1],37.3834/refvalue_cc1pi_pi);
     TPC2_cc1pi_pi->Fill(tpc2varchoices[2],38.2774/refvalue_cc1pi_pi);
     TPC2_cc1pi_pi->SetLineColor( kRed);
     
     refvalue_pg_mu = 210.16;
-    TH1F* TPC2_pg_mu = new TH1F("h","test",3,0,3);
+    TH1F* TPC2_pg_mu = new TH1F("TPC2_pg_mu","test",3,0,3);
     TPC2_pg_mu->Fill(tpc2varchoices[0],210.16/refvalue_pg_mu);
     TPC2_pg_mu->Fill(tpc2varchoices[1],213.597/refvalue_pg_mu);
     TPC2_pg_mu->Fill(tpc2varchoices[2],214.249/refvalue_pg_mu);
     TPC2_pg_mu->SetLineColor( kBlue);
     
     refvalue_pg_pi = 157.581;
-    TH1F* TPC2_pg_pi = new TH1F("h","test",3,0,3);
+    TH1F* TPC2_pg_pi = new TH1F("TPC2_pg_pi","test",3,0,3);
     TPC2_pg_pi->Fill(tpc2varchoices[0],157.581/refvalue_pg_pi);
     TPC2_pg_pi->Fill(tpc2varchoices[1],160.974/refvalue_pg_pi);
     TPC2_pg_pi->Fill(tpc2varchoices[2],161.309/refvalue_pg_pi);
     TPC2_pg_pi->SetLineColor( kRed);
     
     refvalue_pg_p = 187.364;
-    TH1F* TPC2_pg_p = new TH1F("h","test",3,0,3);
+    TH1F* TPC2_pg_p = new TH1F("TPC2_pg_p","test",3,0,3);
     TPC2_pg_p->Fill(tpc2varchoices[0],187.364/refvalue_pg_p);
     TPC2_pg_p->Fill(tpc2varchoices[1],193.76/refvalue_pg_p);
     TPC2_pg_p->Fill(tpc2varchoices[2],195.318/refvalue_pg_p);
     TPC2_pg_p->SetLineColor( kGreen);
     
     refvalue_pg_e = 223.002;
-    TH1F* TPC2_pg_e = new TH1F("h","test",3,0,3);
+    TH1F* TPC2_pg_e = new TH1F("TPC2_pg_e","test",3,0,3);
     TPC2_pg_e->Fill(tpc2varchoices[0],223.002/refvalue_pg_e);
     TPC2_pg_e->Fill(tpc2varchoices[1],227.148/refvalue_pg_e);
     TPC2_pg_e->Fill(tpc2varchoices[2],226.972/refvalue_pg_e);
