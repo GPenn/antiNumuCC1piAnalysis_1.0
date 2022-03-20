@@ -67,6 +67,7 @@
     TPC2_pg_e->SetBarOffset(bar_offset + (bar_width*5));
     
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
+    TPC2_cc1pi_mu->GetYaxis()->SetRangeUser(0.995, 1.045);
     TPC2_cc1pi_mu->Draw("B");
     TPC2_cc1pi_pi->Draw("B same");
     TPC2_pg_mu->Draw("B same");
