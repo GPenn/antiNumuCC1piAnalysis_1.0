@@ -152,7 +152,7 @@
     const char *tpc3varchoices[4] = {"TPC3 dE/dx","TPC3 pulls","TPC3 muon pull", "nTPCs"};
     
     refvalue_pg_mu = 217.434;
-    TH1F* TPC3_pg_mu = new TH1F("TPC3_pg_mu","Particle gun selection #mu^{+}",3,0,3);
+    TH1F* TPC3_pg_mu = new TH1F("TPC3_pg_mu","Particle gun selection #mu^{+}",4,0,4);
     TPC3_pg_mu->Fill(tpc3varchoices[0],217.434/refvalue_pg_mu);
     TPC3_pg_mu->Fill(tpc3varchoices[1],215.571/refvalue_pg_mu);
     TPC3_pg_mu->Fill(tpc3varchoices[2],218.447/refvalue_pg_mu);
@@ -162,7 +162,7 @@
     TPC3_pg_mu->SetBarOffset(bar_offset + (bar_width*0));
     
     refvalue_pg_pi = 162.945;
-    TH1F* TPC3_pg_pi = new TH1F("TPC3_pg_pi","Particle gun selection #pi^{+}",3,0,3);
+    TH1F* TPC3_pg_pi = new TH1F("TPC3_pg_pi","Particle gun selection #pi^{+}",4,0,4);
     TPC3_pg_pi->Fill(tpc3varchoices[0],162.945/refvalue_pg_pi);
     TPC3_pg_pi->Fill(tpc3varchoices[1],120.719/refvalue_pg_pi);
     TPC3_pg_pi->Fill(tpc3varchoices[2],157.713/refvalue_pg_pi);
@@ -172,7 +172,7 @@
     TPC3_pg_pi->SetBarOffset(bar_offset + (bar_width*1));
     
     refvalue_pg_p = 205.627;
-    TH1F* TPC3_pg_p = new TH1F("TPC3_pg_p","Particle gun selection p",3,0,3);
+    TH1F* TPC3_pg_p = new TH1F("TPC3_pg_p","Particle gun selection p",4,0,4);
     TPC3_pg_p->Fill(tpc3varchoices[0],205.627/refvalue_pg_p);
     TPC3_pg_p->Fill(tpc3varchoices[1],159.92/refvalue_pg_p);
     TPC3_pg_p->Fill(tpc3varchoices[2],212.311/refvalue_pg_p);
@@ -182,7 +182,7 @@
     TPC3_pg_p->SetBarOffset(bar_offset + (bar_width*2));
     
     refvalue_pg_e = 234.699;
-    TH1F* TPC3_pg_e = new TH1F("TPC3_pg_e","Particle gun selection e^{+}",3,0,3);
+    TH1F* TPC3_pg_e = new TH1F("TPC3_pg_e","Particle gun selection e^{+}",4,0,4);
     TPC3_pg_e->Fill(tpc3varchoices[0],234.699/refvalue_pg_e);
     TPC3_pg_e->Fill(tpc3varchoices[1],201.967/refvalue_pg_e);
     TPC3_pg_e->Fill(tpc3varchoices[2],237.307/refvalue_pg_e);
@@ -192,7 +192,7 @@
     TPC3_pg_e->SetBarOffset(bar_offset + (bar_width*3));
     
     refvalue_cc1pi_mu = 34.3838;
-    TH1F* TPC3_cc1pi_mu = new TH1F("TPC3_cc1pi_mu","CC1pi selection #mu^{+}",3,0,3);
+    TH1F* TPC3_cc1pi_mu = new TH1F("TPC3_cc1pi_mu","CC1pi selection #mu^{+}",4,0,4);
     TPC3_cc1pi_mu->Fill(tpc3varchoices[0],34.3838/refvalue_cc1pi_mu);
     TPC3_cc1pi_mu->Fill(tpc3varchoices[1],34.1836/refvalue_cc1pi_mu);
     TPC3_cc1pi_mu->Fill(tpc3varchoices[2],34.3731/refvalue_cc1pi_mu);
@@ -202,7 +202,7 @@
     TPC3_cc1pi_mu->SetBarOffset(bar_offset + (bar_width*4));
     
     refvalue_cc1pi_pi = 39.6111;
-    TH1F* TPC3_cc1pi_pi = new TH1F("TPC3_cc1pi_pi","CC1pi selection #pi^{-}",3,0,3);
+    TH1F* TPC3_cc1pi_pi = new TH1F("TPC3_cc1pi_pi","CC1pi selection #pi^{-}",4,0,4);
     TPC3_cc1pi_pi->Fill(tpc3varchoices[0],39.6111/refvalue_cc1pi_pi);
     TPC3_cc1pi_pi->Fill(tpc3varchoices[1],37.6768/refvalue_cc1pi_pi);
     TPC3_cc1pi_pi->Fill(tpc3varchoices[2],38.9833/refvalue_cc1pi_pi);
@@ -231,7 +231,8 @@
                                    "TPC3 dE/dx","ECal EM energy","ECal E/L", "ECal circularity","ECal FBR", "ECal TMR", "ECal QRMS", "nSMRDs"};
     
     refvalue_pg_mu = 217.434;
-    TH1F* nminus1_pg_mu = new TH1F("nminus1_pg_mu","Particle gun selection #mu^{+}",3,0,3);
+    TH1F* nminus1_pg_mu = new TH1F("nminus1_pg_mu","Particle gun selection #mu^{+}",8,0,8);
+    //TH1F* nminus1_pg_mu2 = new TH1F("nminus1_pg_mu2","Particle gun selection #mu^{+}",8,0,8);
     nminus1_pg_mu->Fill(nminus1varchoices[0],215.815/refvalue_pg_mu);
     nminus1_pg_mu->Fill(nminus1varchoices[1],217.277/refvalue_pg_mu);
     nminus1_pg_mu->Fill(nminus1varchoices[2],215.867/refvalue_pg_mu);
@@ -253,7 +254,7 @@
     nminus1_pg_mu->SetBarOffset(bar_offset + (bar_width*0));
     
     refvalue_pg_pi = 162.945;
-    TH1F* nminus1_pg_pi = new TH1F("nminus1_pg_pi","Particle gun selection #pi^{+}",3,0,3);
+    TH1F* nminus1_pg_pi = new TH1F("nminus1_pg_pi","Particle gun selection #pi^{+}",8,0,8);
     nminus1_pg_pi->Fill(nminus1varchoices[0],162.902/refvalue_pg_pi);
     nminus1_pg_pi->Fill(nminus1varchoices[1],161.993/refvalue_pg_pi);
     nminus1_pg_pi->Fill(nminus1varchoices[2],159.805/refvalue_pg_pi);
@@ -275,7 +276,7 @@
     nminus1_pg_pi->SetBarOffset(bar_offset + (bar_width*1));
     
     refvalue_pg_p = 205.627;
-    TH1F* nminus1_pg_p = new TH1F("nminus1_pg_p","Particle gun selection p",3,0,3);
+    TH1F* nminus1_pg_p = new TH1F("nminus1_pg_p","Particle gun selection p",8,0,8);
     nminus1_pg_p->Fill(nminus1varchoices[0],202.643/refvalue_pg_p);
     nminus1_pg_p->Fill(nminus1varchoices[1],206.435/refvalue_pg_p);
     nminus1_pg_p->Fill(nminus1varchoices[2],199.125/refvalue_pg_p);
@@ -297,7 +298,7 @@
     nminus1_pg_p->SetBarOffset(bar_offset + (bar_width*2));
     
     refvalue_pg_e = 234.699;
-    TH1F* nminus1_pg_e = new TH1F("nminus1_pg_e","Particle gun selection e^{+}",3,0,3);
+    TH1F* nminus1_pg_e = new TH1F("nminus1_pg_e","Particle gun selection e^{+}",8,0,8);
     nminus1_pg_e->Fill(nminus1varchoices[0],231.661/refvalue_pg_e);
     nminus1_pg_e->Fill(nminus1varchoices[1],234.731/refvalue_pg_e);
     nminus1_pg_e->Fill(nminus1varchoices[2],230.196/refvalue_pg_e);
@@ -319,7 +320,7 @@
     nminus1_pg_e->SetBarOffset(bar_offset + (bar_width*3));
     
     refvalue_cc1pi_mu = 34.3838;
-    TH1F* nminus1_cc1pi_mu = new TH1F("nminus1_cc1pi_mu","CC1pi selection #mu^{+}",3,0,3);
+    TH1F* nminus1_cc1pi_mu = new TH1F("nminus1_cc1pi_mu","CC1pi selection #mu^{+}",8,0,8);
     nminus1_cc1pi_mu->Fill(nminus1varchoices[0],34.0072/refvalue_cc1pi_mu);
     nminus1_cc1pi_mu->Fill(nminus1varchoices[1],34.1127/refvalue_cc1pi_mu);
     nminus1_cc1pi_mu->Fill(nminus1varchoices[2],34.0343/refvalue_cc1pi_mu);
@@ -341,7 +342,7 @@
     nminus1_cc1pi_mu->SetBarOffset(bar_offset + (bar_width*4));
     
     refvalue_cc1pi_pi = 39.6111;
-    TH1F* nminus1_cc1pi_pi = new TH1F("nminus1_cc1pi_pi","CC1pi selection #pi^{-}",3,0,3);
+    TH1F* nminus1_cc1pi_pi = new TH1F("nminus1_cc1pi_pi","CC1pi selection #pi^{-}",8,0,8);
     nminus1_cc1pi_pi->Fill(nminus1varchoices[0],39.5201/refvalue_cc1pi_pi);
     nminus1_cc1pi_pi->Fill(nminus1varchoices[1],39.3991/refvalue_cc1pi_pi);
     nminus1_cc1pi_pi->Fill(nminus1varchoices[2],40.0751/refvalue_cc1pi_pi);
