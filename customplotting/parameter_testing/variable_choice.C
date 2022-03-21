@@ -1,8 +1,8 @@
 {
     gStyle->SetTitleYOffset(1.5);
     gStyle->SetOptStat(0);
-    gStyle->SetLabelSize(0.025);
-    gStyle->SetTitleSize(0.025);
+    //gStyle->SetLabelSize(0.025);
+    //gStyle->SetTitleSize(0.025);
     
     Float_t refvalue_cc1pi_mu, refvalue_cc1pi_pi, refvalue_pg_mu, refvalue_pg_pi, refvalue_pg_p, refvalue_pg_e;
     
@@ -70,6 +70,8 @@
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
     TPC2_pg_mu->GetYaxis()->SetRangeUser(0.995, 1.045);
     TPC2_pg_mu->GetYaxis()->SetTitle("Track ID max significance (relative)");
+    TPC2_pg_mu->GetYaxis()->SetLabelSize(0.025);
+    TPC2_pg_mu->GetYaxis()->SetTitleSize(0.025);
     TPC2_pg_mu->Draw("B");
     TPC2_pg_pi->Draw("B same");
     TPC2_pg_p->Draw("B same");
