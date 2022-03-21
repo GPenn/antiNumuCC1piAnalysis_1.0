@@ -86,7 +86,7 @@
     const char *ecalvarchoices[2] = {"ECal high-level", "ECal low-level"};
     
     refvalue_pg_mu = 215.931;
-    TH1F* ECal_pg_mu = new TH1F("ECal_pg_mu","Particle gun selection #mu^{+}",3,0,3);
+    TH1F* ECal_pg_mu = new TH1F("ECal_pg_mu","Particle gun selection #mu^{+}",2,0,2);
     ECal_pg_mu->Fill(ecalvarchoices[0],215.931/refvalue_pg_mu);
     ECal_pg_mu->Fill(ecalvarchoices[1],217.434/refvalue_pg_mu);
     ECal_pg_mu->SetLineColor( kBlue); ECal_pg_mu->SetFillColor( kBlue);
@@ -94,7 +94,7 @@
     ECal_pg_mu->SetBarOffset(bar_offset + (bar_width*0));
     
     refvalue_pg_pi = 155.64;
-    TH1F* ECal_pg_pi = new TH1F("ECal_pg_pi","Particle gun selection #pi^{+}",3,0,3);
+    TH1F* ECal_pg_pi = new TH1F("ECal_pg_pi","Particle gun selection #pi^{+}",2,0,2);
     ECal_pg_pi->Fill(ecalvarchoices[0],155.64/refvalue_pg_pi);
     ECal_pg_pi->Fill(ecalvarchoices[1],162.945/refvalue_pg_pi);
     ECal_pg_pi->SetLineColor( kRed); ECal_pg_pi->SetFillColor( kRed);
@@ -102,7 +102,7 @@
     ECal_pg_pi->SetBarOffset(bar_offset + (bar_width*1));
     
     refvalue_pg_p = 194.814;
-    TH1F* ECal_pg_p = new TH1F("ECal_pg_p","Particle gun selection p",3,0,3);
+    TH1F* ECal_pg_p = new TH1F("ECal_pg_p","Particle gun selection p",2,0,2);
     ECal_pg_p->Fill(ecalvarchoices[0],194.814/refvalue_pg_p);
     ECal_pg_p->Fill(ecalvarchoices[1],205.627/refvalue_pg_p);
     ECal_pg_p->SetLineColor( kGreen); ECal_pg_p->SetFillColor( kGreen);
@@ -110,7 +110,7 @@
     ECal_pg_p->SetBarOffset(bar_offset + (bar_width*2));
     
     refvalue_pg_e = 189.482;
-    TH1F* ECal_pg_e = new TH1F("ECal_pg_e","Particle gun selection e^{+}",3,0,3);
+    TH1F* ECal_pg_e = new TH1F("ECal_pg_e","Particle gun selection e^{+}",2,0,2);
     ECal_pg_e->Fill(ecalvarchoices[0],189.482/refvalue_pg_e);
     ECal_pg_e->Fill(ecalvarchoices[1],234.699/refvalue_pg_e);
     ECal_pg_e->SetLineColor( kMagenta); ECal_pg_e->SetFillColor( kMagenta);
@@ -118,7 +118,7 @@
     ECal_pg_e->SetBarOffset(bar_offset + (bar_width*3));
     
     refvalue_cc1pi_mu = 34.1669;
-    TH1F* ECal_cc1pi_mu = new TH1F("ECal_cc1pi_mu","CC1pi selection #mu^{+}",3,0,3);
+    TH1F* ECal_cc1pi_mu = new TH1F("ECal_cc1pi_mu","CC1pi selection #mu^{+}",2,0,2);
     ECal_cc1pi_mu->Fill(ecalvarchoices[0],34.1669/refvalue_cc1pi_mu);
     ECal_cc1pi_mu->Fill(ecalvarchoices[1],34.3838/refvalue_cc1pi_mu);
     ECal_cc1pi_mu->SetLineColor( kBlue + 2); ECal_cc1pi_mu->SetFillColor( kBlue + 2);
@@ -126,7 +126,7 @@
     ECal_cc1pi_mu->SetBarOffset(bar_offset + (bar_width*4));
     
     refvalue_cc1pi_pi = 37.8601;
-    TH1F* ECal_cc1pi_pi = new TH1F("ECal_cc1pi_pi","CC1pi selection #pi^{-}",3,0,3);
+    TH1F* ECal_cc1pi_pi = new TH1F("ECal_cc1pi_pi","CC1pi selection #pi^{-}",2,0,2);
     ECal_cc1pi_pi->Fill(ecalvarchoices[0],37.8601/refvalue_cc1pi_pi);
     ECal_cc1pi_pi->Fill(ecalvarchoices[1],39.6111/refvalue_cc1pi_pi);
     ECal_cc1pi_pi->SetLineColor( kRed + 2); ECal_cc1pi_pi->SetFillColor( kRed + 2);
@@ -134,7 +134,7 @@
     ECal_cc1pi_pi->SetBarOffset(bar_offset + (bar_width*5));
     
     TCanvas* canvas_ECal_choices = new TCanvas("canvas_ECal_choices","",200,10,1000,800);
-    ECal_pg_mu->GetYaxis()->SetRangeUser(0.995, 1.045);
+    ECal_pg_mu->GetYaxis()->SetRangeUser(0.9, 1.3);
     ECal_pg_mu->GetYaxis()->SetTitle("Track ID max significance (relative)");
     ECal_pg_mu->GetYaxis()->SetLabelSize(0.025);
     ECal_pg_mu->GetYaxis()->SetTitleSize(0.025);
@@ -212,7 +212,7 @@
     TPC3_cc1pi_pi->SetBarOffset(bar_offset + (bar_width*5));
     
     TCanvas* canvas_TPC3_choices = new TCanvas("canvas_TPC3_choices","",200,10,1000,800);
-    TPC3_pg_mu->GetYaxis()->SetRangeUser(0.995, 1.045);
+    TPC3_pg_mu->GetYaxis()->SetRangeUser(0.7, 1.1);
     TPC3_pg_mu->GetYaxis()->SetTitle("Track ID max significance (relative)");
     TPC3_pg_mu->GetYaxis()->SetLabelSize(0.025);
     TPC3_pg_mu->GetYaxis()->SetTitleSize(0.025);
