@@ -149,7 +149,7 @@
     
     // =============== TPC3 variable choice =============== VALUES NEED CHANGING
     
-    const char *tpc3varchoices[3] = {"TPC3 dE/dx","TPC3 pulls","TPC3 muon pull", "nTPCs"};
+    const char *tpc3varchoices[4] = {"TPC3 dE/dx","TPC3 pulls","TPC3 muon pull", "nTPCs"};
     
     refvalue_pg_mu = 217.434;
     TH1F* TPC3_pg_mu = new TH1F("TPC3_pg_mu","Particle gun selection #mu^{+}",3,0,3);
