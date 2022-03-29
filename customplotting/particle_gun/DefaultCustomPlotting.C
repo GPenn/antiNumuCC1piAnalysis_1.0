@@ -173,6 +173,11 @@ void DefaultCustomPlotting::Loop()
    
    Int_t recomom_nbins = 25;
    
+   Int_t presel_nAntimu = 0;
+   Int_t presel_nPiplus = 0;
+   Int_t presel_nProton = 0;
+   Int_t presel_nPositron = 0;
+   
    Int_t musel_nAntimu = 0;
    Int_t musel_nPiplus = 0;
    Int_t musel_nProton = 0;
@@ -435,6 +440,8 @@ void DefaultCustomPlotting::Loop()
          
          if (particle == -13)
          {
+            presel_nAntimu++;
+            
             opt_mulike_sig->Fill(selmu_bdt_pid_mu);
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
@@ -468,6 +475,8 @@ void DefaultCustomPlotting::Loop()
          }
          else if (particle == 211)
          {
+            presel_nPiplus++;
+            
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
             opt_pilike_sig->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
@@ -500,6 +509,8 @@ void DefaultCustomPlotting::Loop()
          }
          else if (particle == 2212)
          {
+            presel_nProton++;
+            
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_sig->Fill(selmu_bdt_pid_p);
@@ -534,6 +545,8 @@ void DefaultCustomPlotting::Loop()
          }
          else if (particle == -11)
          {
+            presel_nPositron++;
+            
             opt_mulike_bkg->Fill(selmu_bdt_pid_mu);
             opt_pilike_bkg->Fill(selmu_bdt_pid_pi);
             opt_plike_bkg->Fill(selmu_bdt_pid_p);
@@ -566,6 +579,41 @@ void DefaultCustomPlotting::Loop()
             
             
          }
+         
+         // Fill counters for new performance testing
+         
+         if ((selmu_bdt_pid_mu > selmu_bdt_pid_pi) && (selmu_bdt_pid_mu > selmu_bdt_pid_p) (selmu_bdt_pid_mu > selmu_bdt_pid_e))
+         {
+            if (particle == -13) musel_nAntimu++;
+            if (particle == 211) musel_nPiplus++;
+            if (particle == 2212) musel_nProton++;
+            if (particle == -11) musel_nPositron++;
+         }
+         
+         if ((selmu_bdt_pid_pi > selmu_bdt_pid_mu) && (selmu_bdt_pid_pi > selmu_bdt_pid_p) (selmu_bdt_pid_pi > selmu_bdt_pid_e))
+         {
+            if (particle == -13) pisel_nAntimu++;
+            if (particle == 211) pisel_nPiplus++;
+            if (particle == 2212) pisel_nProton++;
+            if (particle == -11) pisel_nPositron++;
+         }
+         
+         if ((selmu_bdt_pid_p > selmu_bdt_pid_mu) && (selmu_bdt_pid_p > selmu_bdt_pid_pi) (selmu_bdt_pid_p > selmu_bdt_pid_e))
+         {
+            if (particle == -13) psel_nAntimu++;
+            if (particle == 211) psel_nPiplus++;
+            if (particle == 2212) psel_nProton++;
+            if (particle == -11) psel_nPositron++;
+         }
+         
+         if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) (selmu_bdt_pid_e > selmu_bdt_pid_p))
+         {
+            if (particle == -13) esel_nAntimu++;
+            if (particle == 211) esel_nPiplus++;
+            if (particle == 2212) esel_nProton++;
+            if (particle == -11) esel_nPositron++;
+         }
+                
          
          //corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
          //corr_weighting_pilike->Fill(selmu_bdt_pid_pi, selmu_bdt_pid_unweighted_pi);
@@ -1277,8 +1325,12 @@ void DefaultCustomPlotting::Loop()
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
-   std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+   //std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
+   //std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
+   std::cout << "mu+ efficiency: " << musel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << musel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << musel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << musel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_mu->Draw("AC");
    canvas_opt_mu->Write();
@@ -1333,8 +1385,13 @@ void DefaultCustomPlotting::Loop()
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
-   std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+   //std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
+   //std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
+   //std::cout << std::endl;
+   std::cout << "mu+ efficiency: " << pisel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << pisel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << pisel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << pisel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_pi->Draw("AC");
    canvas_opt_pi->Write();
@@ -1389,8 +1446,13 @@ void DefaultCustomPlotting::Loop()
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
-   std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
+   //std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
+   //std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
+   
+   std::cout << "mu+ efficiency: " << psel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << psel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << psel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << psel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_p->Draw("AC");
    canvas_opt_p->Write();
@@ -1445,8 +1507,12 @@ void DefaultCustomPlotting::Loop()
      
    }
    
-   std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
-   std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+   //std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
+   //std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
+   std::cout << "mu+ efficiency: " << esel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << esel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << esel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << esel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_e->Draw("AC");
    canvas_opt_e->Write();
