@@ -1327,10 +1327,10 @@ void DefaultCustomPlotting::Loop()
    
    //std::cout << "Optimal significance = " << optimal_signif_mu << " at cut value of " << optimal_cut_mu << std::endl;
    //std::cout << "Efficiency = " << optimal_eff_mu  << ", purity = " << optimal_pur_mu << ", eff*pur = " << optimal_eff_mu*optimal_pur_mu << std::endl;
-   std::cout << "mu+ efficiency: " << musel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << musel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << musel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << musel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " <<  (Float_t)musel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_mu->Draw("AC");
    canvas_opt_mu->Write();
@@ -1388,10 +1388,10 @@ void DefaultCustomPlotting::Loop()
    //std::cout << "Optimal significance = " << optimal_signif_pi << " at cut value of " << optimal_cut_pi << std::endl;
    //std::cout << "Efficiency = " << optimal_eff_pi  << ", purity = " << optimal_pur_pi << ", eff*pur = " << optimal_eff_pi*optimal_pur_pi << std::endl;
    //std::cout << std::endl;
-   std::cout << "mu+ efficiency: " << pisel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << pisel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << pisel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << pisel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)pisel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_pi->Draw("AC");
    canvas_opt_pi->Write();
@@ -1449,10 +1449,10 @@ void DefaultCustomPlotting::Loop()
    //std::cout << "Optimal significance = " << optimal_signif_p << " at cut value of " << optimal_cut_p << std::endl;
    //std::cout << "Efficiency = " << optimal_eff_p  << ", purity = " << optimal_pur_p << ", eff*pur = " << optimal_eff_p*optimal_pur_p << std::endl;
    
-   std::cout << "mu+ efficiency: " << psel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << psel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << psel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << psel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)psel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)psel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)psel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)psel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_p->Draw("AC");
    canvas_opt_p->Write();
@@ -1509,10 +1509,10 @@ void DefaultCustomPlotting::Loop()
    
    //std::cout << "Optimal significance = " << optimal_signif_e << " at cut value of " << optimal_cut_e << std::endl;
    //std::cout << "Efficiency = " << optimal_eff_e  << ", purity = " << optimal_pur_e << ", eff*pur = " << optimal_eff_e*optimal_pur_e << std::endl;
-   std::cout << "mu+ efficiency: " << esel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << esel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << esel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << esel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)esel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
    
    graph_opt_e->Draw("AC");
    canvas_opt_e->Write();
