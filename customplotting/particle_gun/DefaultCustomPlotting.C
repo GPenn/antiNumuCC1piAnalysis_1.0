@@ -582,7 +582,7 @@ void DefaultCustomPlotting::Loop()
          
          // Fill counters for new performance testing
          
-         if ((selmu_bdt_pid_mu > selmu_bdt_pid_pi) && (selmu_bdt_pid_mu > selmu_bdt_pid_p) (selmu_bdt_pid_mu > selmu_bdt_pid_e))
+         if ((selmu_bdt_pid_mu > selmu_bdt_pid_pi) && (selmu_bdt_pid_mu > selmu_bdt_pid_p) && (selmu_bdt_pid_mu > selmu_bdt_pid_e))
          {
             if (particle == -13) musel_nAntimu++;
             if (particle == 211) musel_nPiplus++;
@@ -590,7 +590,7 @@ void DefaultCustomPlotting::Loop()
             if (particle == -11) musel_nPositron++;
          }
          
-         if ((selmu_bdt_pid_pi > selmu_bdt_pid_mu) && (selmu_bdt_pid_pi > selmu_bdt_pid_p) (selmu_bdt_pid_pi > selmu_bdt_pid_e))
+         if ((selmu_bdt_pid_pi > selmu_bdt_pid_mu) && (selmu_bdt_pid_pi > selmu_bdt_pid_p) && (selmu_bdt_pid_pi > selmu_bdt_pid_e))
          {
             if (particle == -13) pisel_nAntimu++;
             if (particle == 211) pisel_nPiplus++;
@@ -598,7 +598,7 @@ void DefaultCustomPlotting::Loop()
             if (particle == -11) pisel_nPositron++;
          }
          
-         if ((selmu_bdt_pid_p > selmu_bdt_pid_mu) && (selmu_bdt_pid_p > selmu_bdt_pid_pi) (selmu_bdt_pid_p > selmu_bdt_pid_e))
+         if ((selmu_bdt_pid_p > selmu_bdt_pid_mu) && (selmu_bdt_pid_p > selmu_bdt_pid_pi) && (selmu_bdt_pid_p > selmu_bdt_pid_e))
          {
             if (particle == -13) psel_nAntimu++;
             if (particle == 211) psel_nPiplus++;
@@ -606,7 +606,7 @@ void DefaultCustomPlotting::Loop()
             if (particle == -11) psel_nPositron++;
          }
          
-         if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) (selmu_bdt_pid_e > selmu_bdt_pid_p))
+         if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
          {
             if (particle == -13) esel_nAntimu++;
             if (particle == 211) esel_nPiplus++;
