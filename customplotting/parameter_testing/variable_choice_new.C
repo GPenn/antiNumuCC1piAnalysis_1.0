@@ -45,10 +45,10 @@
     TPC2_psel_pi->SetFillColor( kRed);
     TPC2_psel_p->SetFillColor( kGreen);
     TPC2_psel_e->SetFillColor( kMagenta);
-    TPC2_psel_mu->SetFillColor( kBlue);
-    TPC2_psel_pi->SetFillColor( kRed);
-    TPC2_psel_p->SetFillColor( kGreen);
-    TPC2_psel_e->SetFillColor( kMagenta);
+    TPC2_esel_mu->SetFillColor( kBlue);
+    TPC2_esel_pi->SetFillColor( kRed);
+    TPC2_esel_p->SetFillColor( kGreen);
+    TPC2_esel_e->SetFillColor( kMagenta);
     
     TPC2_musel_mu->SetBarOffset(bar_offset + (bar_width*0)); TPC2_musel_mu->SetBarWidth(bar_width);
     TPC2_musel_pi->SetBarOffset(bar_offset + (bar_width*1)); TPC2_musel_pi->SetBarWidth(bar_width);
