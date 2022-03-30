@@ -84,6 +84,39 @@
     TPC2_esel_p->Fill(tpc2varchoices[0],0.0143693);
     TPC2_esel_e->Fill(tpc2varchoices[0],0.339048);
     
+    TPC2_musel_mu->Fill(tpc2varchoices[1],0.934599);
+    TPC2_musel_pi->Fill(tpc2varchoices[1],0.377815); 
+    TPC2_musel_p->Fill(tpc2varchoices[1],0.032454);
+    TPC2_musel_e->Fill(tpc2varchoices[1],0.0662307);
+    TPC2_pisel_mu->Fill(tpc2varchoices[1],0.0582641);
+    TPC2_pisel_pi->Fill(tpc2varchoices[1],0.599077);
+    TPC2_pisel_p->Fill(tpc2varchoices[1],0.0505556);
+    TPC2_pisel_e->Fill(tpc2varchoices[1],0.138897);
+    TPC2_psel_mu->Fill(tpc2varchoices[1],0.00681798);
+    TPC2_psel_pi->Fill(tpc2varchoices[1],0.0222551);
+    TPC2_psel_p->Fill(tpc2varchoices[1],0.901501);
+    TPC2_psel_e->Fill(tpc2varchoices[1],0.406339);
+    TPC2_esel_mu->Fill(tpc2varchoices[1],0.000318462);
+    TPC2_esel_pi->Fill(tpc2varchoices[1],0.000853287);
+    TPC2_esel_p->Fill(tpc2varchoices[1],0.015489);
+    TPC2_esel_e->Fill(tpc2varchoices[1],0.388533);
+    
+    TPC2_musel_mu->Fill(tpc2varchoices[2],0.935222);
+    TPC2_musel_pi->Fill(tpc2varchoices[2],0.381837); 
+    TPC2_musel_p->Fill(tpc2varchoices[2],0.0341505);
+    TPC2_musel_e->Fill(tpc2varchoices[2],0.0603691);
+    TPC2_pisel_mu->Fill(tpc2varchoices[2],0.0572798);
+    TPC2_pisel_pi->Fill(tpc2varchoices[2],0.586765);
+    TPC2_pisel_p->Fill(tpc2varchoices[2],0.0683179);
+    TPC2_pisel_e->Fill(tpc2varchoices[2],0.103212);
+    TPC2_psel_mu->Fill(tpc2varchoices[2],0.00712197);
+    TPC2_psel_pi->Fill(tpc2varchoices[2],0.0293078);
+    TPC2_psel_p->Fill(tpc2varchoices[2],0.88552);
+    TPC2_psel_e->Fill(tpc2varchoices[2],0.362597);
+    TPC2_esel_mu->Fill(tpc2varchoices[2],0.000376364);
+    TPC2_esel_pi->Fill(tpc2varchoices[2],0.00208968);
+    TPC2_esel_p->Fill(tpc2varchoices[2],0.0120112);
+    TPC2_esel_e->Fill(tpc2varchoices[2],0.473821);
     
     /*TPC2_pg_mu->Fill(tpc2varchoices[0],);
     TPC2_pg_mu->Fill(tpc2varchoices[1],);
