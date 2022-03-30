@@ -4,25 +4,94 @@
     //gStyle->SetLabelSize(0.025);
     //gStyle->SetTitleSize(0.025);
     
-    Float_t refvalue_cc1pi_mu, refvalue_cc1pi_pi, refvalue_pg_mu, refvalue_pg_pi, refvalue_pg_p, refvalue_pg_e;
+    //Float_t refvalue_cc1pi_mu, refvalue_cc1pi_pi, refvalue_pg_mu, refvalue_pg_pi, refvalue_pg_p, refvalue_pg_e;
     
-    Float_t bar_width = 0.1;
-    Float_t bar_offset = 0.5 - bar_width*3;
+    Float_t bar_width = 0.05;
+    Float_t bar_offset = 0.5 - bar_width*8;
     
     // =============== TPC2 variable choice ===============
     
     const char *tpc2varchoices[3] = {"TPC2 dE/dx","TPC2 pulls","TPC2 likelihoods"};
     
-    refvalue_pg_mu = 210.16;
-    TH1F* TPC2_pg_mu = new TH1F("TPC2_pg_mu","Particle gun selection #mu^{+}",3,0,3);
-    TPC2_pg_mu->Fill(tpc2varchoices[0],210.16/refvalue_pg_mu);
-    TPC2_pg_mu->Fill(tpc2varchoices[1],213.597/refvalue_pg_mu);
-    TPC2_pg_mu->Fill(tpc2varchoices[2],214.249/refvalue_pg_mu);
+    TH1F* TPC2_musel_mu = new TH1F("TPC2_musel_mu","#mu^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_musel_pi = new TH1F("TPC2_musel_pi","#mu^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_musel_p = new TH1F("TPC2_musel_p","#mu^{+} selection true p",3,0,3);
+    TH1F* TPC2_musel_e = new TH1F("TPC2_musel_e","#mu^{+} selection true e^{+}",3,0,3);
+    
+    TH1F* TPC2_pisel_mu = new TH1F("TPC2_pisel_mu","#pi^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_pisel_pi = new TH1F("TPC2_pisel_pi","#pi^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_pisel_p = new TH1F("TPC2_pisel_p","#pi^{+} selection true p",3,0,3);
+    TH1F* TPC2_pisel_e = new TH1F("TPC2_pisel_e","#pi^{+} selection true e^{+}",3,0,3);
+    
+    TH1F* TPC2_psel_mu = new TH1F("TPC2_psel_mu","p selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_psel_pi = new TH1F("TPC2_psel_pi","p selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_psel_p = new TH1F("TPC2_psel_p","p selection true p",3,0,3);
+    TH1F* TPC2_psel_e = new TH1F("TPC2_psel_e","p selection true e^{+}",3,0,3);
+    
+    TH1F* TPC2_esel_mu = new TH1F("TPC2_esel_mu","#e^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_esel_pi = new TH1F("TPC2_esel_pi","#e^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_esel_p = new TH1F("TPC2_esel_p","#e^{+} selection true p",3,0,3);
+    TH1F* TPC2_esel_e = new TH1F("TPC2_esel_e","#e^{+} selection true e^{+}",3,0,3);
+    
+    TPC2_musel_mu->SetFillColor( kBlue);
+    TPC2_musel_pi->SetFillColor( kRed);
+    TPC2_musel_p->SetFillColor( kGreen);
+    TPC2_musel_e->SetFillColor( kMagenta);
+    TPC2_pisel_mu->SetFillColor( kBlue);
+    TPC2_pisel_pi->SetFillColor( kRed);
+    TPC2_pisel_p->SetFillColor( kGreen);
+    TPC2_pisel_e->SetFillColor( kMagenta);
+    TPC2_psel_mu->SetFillColor( kBlue);
+    TPC2_psel_pi->SetFillColor( kRed);
+    TPC2_psel_p->SetFillColor( kGreen);
+    TPC2_psel_e->SetFillColor( kMagenta);
+    TPC2_psel_mu->SetFillColor( kBlue);
+    TPC2_psel_pi->SetFillColor( kRed);
+    TPC2_psel_p->SetFillColor( kGreen);
+    TPC2_psel_e->SetFillColor( kMagenta);
+    
+    TPC2_musel_mu->SetBarOffset(bar_offset + (bar_width*0)); TPC2_musel_mu->SetBarWidth(bar_width);
+    TPC2_musel_pi->SetBarOffset(bar_offset + (bar_width*1)); TPC2_musel_pi->SetBarWidth(bar_width);
+    TPC2_musel_p->SetBarOffset(bar_offset + (bar_width*2)); TPC2_musel_p->SetBarWidth(bar_width);
+    TPC2_musel_e->SetBarOffset(bar_offset + (bar_width*3)); TPC2_musel_e->SetBarWidth(bar_width);
+    TPC2_pisel_mu->SetBarOffset(bar_offset + (bar_width*4)); TPC2_pisel_mu->SetBarWidth(bar_width);
+    TPC2_pisel_pi->SetBarOffset(bar_offset + (bar_width*5)); TPC2_pisel_pi->SetBarWidth(bar_width);
+    TPC2_pisel_p->SetBarOffset(bar_offset + (bar_width*6)); TPC2_pisel_p->SetBarWidth(bar_width);
+    TPC2_pisel_e->SetBarOffset(bar_offset + (bar_width*7)); TPC2_pisel_e->SetBarWidth(bar_width);
+    TPC2_psel_mu->SetBarOffset(bar_offset + (bar_width*8)); TPC2_psel_mu->SetBarWidth(bar_width);
+    TPC2_psel_pi->SetBarOffset(bar_offset + (bar_width*9)); TPC2_psel_pi->SetBarWidth(bar_width);
+    TPC2_psel_p->SetBarOffset(bar_offset + (bar_width*10)); TPC2_psel_p->SetBarWidth(bar_width);
+    TPC2_psel_e->SetBarOffset(bar_offset + (bar_width*11)); TPC2_psel_e->SetBarWidth(bar_width);
+    TPC2_esel_mu->SetBarOffset(bar_offset + (bar_width*12)); TPC2_esel_mu->SetBarWidth(bar_width);
+    TPC2_esel_pi->SetBarOffset(bar_offset + (bar_width*13)); TPC2_esel_pi->SetBarWidth(bar_width);
+    TPC2_esel_p->SetBarOffset(bar_offset + (bar_width*14)); TPC2_esel_p->SetBarWidth(bar_width);
+    TPC2_esel_e->SetBarOffset(bar_offset + (bar_width*15)); TPC2_esel_e->SetBarWidth(bar_width);
+    
+    TPC2_musel_mu->Fill(tpc2varchoices[0],0.935975);
+    TPC2_musel_pi->Fill(tpc2varchoices[0],0.39852); 
+    TPC2_musel_p->Fill(tpc2varchoices[0],0.032946);
+    TPC2_musel_e->Fill(tpc2varchoices[0],0.125024);
+    TPC2_pisel_mu->Fill(tpc2varchoices[0],0.0549058);
+    TPC2_pisel_pi->Fill(tpc2varchoices[0],0.560488);
+    TPC2_pisel_p->Fill(tpc2varchoices[0],0.0596319);
+    TPC2_pisel_e->Fill(tpc2varchoices[0],0.12093);
+    TPC2_psel_mu->Fill(tpc2varchoices[0],0.00878666);
+    TPC2_psel_pi->Fill(tpc2varchoices[0],0.0398433);
+    TPC2_psel_p->Fill(tpc2varchoices[0],0.893053);
+    TPC2_psel_e->Fill(tpc2varchoices[0],0.414999);
+    TPC2_esel_mu->Fill(tpc2varchoices[0],0.000332938);
+    TPC2_esel_pi->Fill(tpc2varchoices[0],0.00114933);
+    TPC2_esel_p->Fill(tpc2varchoices[0],0.0143693);
+    TPC2_esel_e->Fill(tpc2varchoices[0],0.339048);
+    
+    
+    /*TPC2_pg_mu->Fill(tpc2varchoices[0],);
+    TPC2_pg_mu->Fill(tpc2varchoices[1],);
+    TPC2_pg_mu->Fill(tpc2varchoices[2],);
     TPC2_pg_mu->SetLineColor( kBlue); TPC2_pg_mu->SetFillColor( kBlue);
     TPC2_pg_mu->SetBarWidth(bar_width);
     TPC2_pg_mu->SetBarOffset(bar_offset + (bar_width*0));
     
-    refvalue_pg_pi = 157.581;
     TH1F* TPC2_pg_pi = new TH1F("TPC2_pg_pi","Particle gun selection #pi^{+}",3,0,3);
     TPC2_pg_pi->Fill(tpc2varchoices[0],157.581/refvalue_pg_pi);
     TPC2_pg_pi->Fill(tpc2varchoices[1],160.974/refvalue_pg_pi);
@@ -31,7 +100,6 @@
     TPC2_pg_pi->SetBarWidth(bar_width);
     TPC2_pg_pi->SetBarOffset(bar_offset + (bar_width*1));
     
-    refvalue_pg_p = 187.364;
     TH1F* TPC2_pg_p = new TH1F("TPC2_pg_p","Particle gun selection p",3,0,3);
     TPC2_pg_p->Fill(tpc2varchoices[0],187.364/refvalue_pg_p);
     TPC2_pg_p->Fill(tpc2varchoices[1],193.76/refvalue_pg_p);
@@ -40,50 +108,42 @@
     TPC2_pg_p->SetBarWidth(bar_width);
     TPC2_pg_p->SetBarOffset(bar_offset + (bar_width*2));
     
-    refvalue_pg_e = 223.002;
     TH1F* TPC2_pg_e = new TH1F("TPC2_pg_e","Particle gun selection e^{+}",3,0,3);
     TPC2_pg_e->Fill(tpc2varchoices[0],223.002/refvalue_pg_e);
     TPC2_pg_e->Fill(tpc2varchoices[1],227.148/refvalue_pg_e);
     TPC2_pg_e->Fill(tpc2varchoices[2],226.972/refvalue_pg_e);
     TPC2_pg_e->SetLineColor( kMagenta); TPC2_pg_e->SetFillColor( kMagenta);
     TPC2_pg_e->SetBarWidth(bar_width);
-    TPC2_pg_e->SetBarOffset(bar_offset + (bar_width*3));
-    
-    refvalue_cc1pi_mu = 33.3699;
-    TH1F* TPC2_cc1pi_mu = new TH1F("TPC2_cc1pi_mu","CC1pi selection #mu^{+}",3,0,3);
-    TPC2_cc1pi_mu->Fill(tpc2varchoices[0],33.3699/refvalue_cc1pi_mu);
-    TPC2_cc1pi_mu->Fill(tpc2varchoices[1],33.7904/refvalue_cc1pi_mu);
-    TPC2_cc1pi_mu->Fill(tpc2varchoices[2],33.9678/refvalue_cc1pi_mu);
-    TPC2_cc1pi_mu->SetLineColor( kBlue + 2); TPC2_cc1pi_mu->SetFillColor( kBlue + 2);
-    TPC2_cc1pi_mu->SetBarWidth(bar_width);
-    TPC2_cc1pi_mu->SetBarOffset(bar_offset + (bar_width*4));
-    
-    refvalue_cc1pi_pi = 36.7011;
-    TH1F* TPC2_cc1pi_pi = new TH1F("TPC2_cc1pi_pi","CC1pi selection #pi^{-}",3,0,3);
-    TPC2_cc1pi_pi->Fill(tpc2varchoices[0],36.7011/refvalue_cc1pi_pi);
-    TPC2_cc1pi_pi->Fill(tpc2varchoices[1],37.3834/refvalue_cc1pi_pi);
-    TPC2_cc1pi_pi->Fill(tpc2varchoices[2],38.2774/refvalue_cc1pi_pi);
-    TPC2_cc1pi_pi->SetLineColor( kRed + 2); TPC2_cc1pi_pi->SetFillColor( kRed + 2);
-    TPC2_cc1pi_pi->SetBarWidth(bar_width);
-    TPC2_cc1pi_pi->SetBarOffset(bar_offset + (bar_width*5));
+    TPC2_pg_e->SetBarOffset(bar_offset + (bar_width*3));*/
     
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
-    TPC2_pg_mu->GetYaxis()->SetRangeUser(0.995, 1.045);
-    TPC2_pg_mu->GetYaxis()->SetTitle("Track ID max significance (relative)");
-    TPC2_pg_mu->GetYaxis()->SetLabelSize(0.025);
-    TPC2_pg_mu->GetYaxis()->SetTitleSize(0.025);
-    TPC2_pg_mu->Draw("B");
-    TPC2_pg_pi->Draw("B same");
-    TPC2_pg_p->Draw("B same");
-    TPC2_pg_e->Draw("B same");
-    TPC2_cc1pi_mu->Draw("B same");
-    TPC2_cc1pi_pi->Draw("B same");
+    //TPC2_pg_mu->GetYaxis()->SetRangeUser(0.995, 1.045);
+    TPC2_musel_mu->GetYaxis()->SetTitle("Track ID efficiency");
+    TPC2_musel_mu->GetYaxis()->SetLabelSize(0.025);
+    TPC2_musel_mu->GetYaxis()->SetTitleSize(0.025);
+    
+    TPC2_musel_mu->Draw("B");
+    TPC2_musel_pi->Draw("B same");
+    TPC2_musel_p->Draw("B same");
+    TPC2_musel_e->Draw("B same");
+    TPC2_pisel_mu->Draw("B same");
+    TPC2_pisel_pi->Draw("B same");
+    TPC2_pisel_p->Draw("B same");
+    TPC2_pisel_e->Draw("B same");
+    TPC2_psel_mu->Draw("B same");
+    TPC2_psel_pi->Draw("B same");
+    TPC2_psel_p->Draw("B same");
+    TPC2_psel_e->Draw("B same");
+    TPC2_esel_mu->Draw("B same");
+    TPC2_esel_pi->Draw("B same");
+    TPC2_esel_p->Draw("B same");
+    TPC2_esel_e->Draw("B same");
     
     canvas_TPC2_choices->BuildLegend();
     
     // =============== ECal variable choice ===============
     
-    const char *ecalvarchoices[2] = {"ECal high-level", "ECal low-level"};
+    /*const char *ecalvarchoices[2] = {"ECal high-level", "ECal low-level"};
     
     refvalue_pg_mu = 215.931;
     TH1F* ECal_pg_mu = new TH1F("ECal_pg_mu","Particle gun selection #mu^{+}",2,0,2);
@@ -410,6 +470,6 @@
     nminus1_pg_e2->Draw("B same");
     nminus1_cc1pi_mu2->Draw("B same");
     nminus1_cc1pi_pi2->Draw("B same");
-    canvas_nminus1_choices2->BuildLegend();
+    canvas_nminus1_choices2->BuildLegend();*/
   
 }
