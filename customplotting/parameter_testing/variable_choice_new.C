@@ -150,7 +150,7 @@
     TPC2_pg_e->SetBarOffset(bar_offset + (bar_width*3));*/
     
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
-    TPC2_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    TPC2_musel_mu->GetYaxis()->SetRangeUser(0, 1);
     TPC2_musel_mu->GetYaxis()->SetTitle("Track ID efficiency");
     TPC2_musel_mu->GetYaxis()->SetLabelSize(0.025);
     TPC2_musel_mu->GetYaxis()->SetTitleSize(0.025);
