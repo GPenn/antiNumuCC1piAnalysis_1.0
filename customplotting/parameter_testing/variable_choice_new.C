@@ -33,7 +33,7 @@
     TH1F* TPC2_esel_p = new TH1F("TPC2_esel_p","e^{+} selection true p",3,0,3);
     TH1F* TPC2_esel_e = new TH1F("TPC2_esel_e","e^{+} selection true e^{+}",3,0,3);
     
-    TPC2_musel_mu->SetFillColor( kBlue);
+    TPC2_musel_mu->SetFillColor( kBlue); TPC2_musel_mu->SetLineColorAlpha(kBlue, 1.0);
     TPC2_musel_pi->SetFillColor( kRed);
     TPC2_musel_p->SetFillColor( kGreen);
     TPC2_musel_e->SetFillColor( kMagenta);
