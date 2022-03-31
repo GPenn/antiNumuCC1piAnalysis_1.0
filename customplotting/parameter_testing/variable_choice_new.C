@@ -152,7 +152,7 @@
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
     TPC2_musel_mu->GetYaxis()->SetRangeUser(0, 1);
     TPC2_musel_mu->GetXaxis()->SetRangeUser(0, 4);
-    TPC2_musel_mu->GetYaxis()->SetTitle("Track ID efficiency");
+    TPC2_musel_mu->GetYaxis()->SetTitle("Efficiency");
     TPC2_musel_mu->GetYaxis()->SetLabelSize(0.025);
     TPC2_musel_mu->GetYaxis()->SetTitleSize(0.025);
     
