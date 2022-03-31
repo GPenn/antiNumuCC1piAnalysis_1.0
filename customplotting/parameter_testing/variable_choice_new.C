@@ -28,10 +28,10 @@
     TH1F* TPC2_psel_p = new TH1F("TPC2_psel_p","p selection true p",3,0,3);
     TH1F* TPC2_psel_e = new TH1F("TPC2_psel_e","p selection true e^{+}",3,0,3);
     
-    TH1F* TPC2_esel_mu = new TH1F("TPC2_esel_mu","#e^{+} selection true #mu^{+}",3,0,3);
-    TH1F* TPC2_esel_pi = new TH1F("TPC2_esel_pi","#e^{+} selection true #pi^{+}",3,0,3);
-    TH1F* TPC2_esel_p = new TH1F("TPC2_esel_p","#e^{+} selection true p",3,0,3);
-    TH1F* TPC2_esel_e = new TH1F("TPC2_esel_e","#e^{+} selection true e^{+}",3,0,3);
+    TH1F* TPC2_esel_mu = new TH1F("TPC2_esel_mu","e^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_esel_pi = new TH1F("TPC2_esel_pi","e^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_esel_p = new TH1F("TPC2_esel_p","e^{+} selection true p",3,0,3);
+    TH1F* TPC2_esel_e = new TH1F("TPC2_esel_e","e^{+} selection true e^{+}",3,0,3);
     
     TPC2_musel_mu->SetFillColor( kBlue);
     TPC2_musel_pi->SetFillColor( kRed);
@@ -151,6 +151,7 @@
     
     TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
     TPC2_musel_mu->GetYaxis()->SetRangeUser(0, 1);
+    TPC2_musel_mu->GetXaxis()->SetRangeUser(0, 4);
     TPC2_musel_mu->GetYaxis()->SetTitle("Track ID efficiency");
     TPC2_musel_mu->GetYaxis()->SetLabelSize(0.025);
     TPC2_musel_mu->GetYaxis()->SetTitleSize(0.025);
