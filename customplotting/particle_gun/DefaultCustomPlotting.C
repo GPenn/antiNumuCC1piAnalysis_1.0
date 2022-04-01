@@ -1227,7 +1227,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_ntpcs = new TCanvas("canvas_ntpcs","",200,10,500,400);
    
-   ntpcs_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
+   ntpcs_antimu->GetYaxis()->SetRangeUser(0.0, 60000.0);
   
    SetHistParticleStyle(ntpcs_antimu, "antimu");
    SetHistParticleStyle(ntpcs_piplus, "piplus");
