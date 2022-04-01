@@ -155,6 +155,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "Proton", 50, -10.0, 20.0);
    TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "Positron", 50, -10.0, 20.0);
    
+   TH1F *ntpcs_antimu = new TH1F("ntpcs_antimu", "Antimuon;Number of TPC segments;Entries", 2, 0, 2);
+   TH1F *ntpcs_piplus = new TH1F("ntpcs_piplus", "Pi+", 2, 0, 2);
+   TH1F *ntpcs_proton = new TH1F("ntpcs_proton", "Proton", 2, 0, 2);
+   TH1F *ntpcs_positron = new TH1F("ntpcs_positron", "Positron", 2, 0, 2);
+   
    TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "Antimuon;FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
    TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "Pi+", 50, 0.0, 1.0);
    TH1F *fgd1EbyL_proton = new TH1F("fgd1EbyL_proton", "Proton", 50, 0.0, 1.0);
@@ -334,6 +339,7 @@ void DefaultCustomPlotting::Loop()
             tpc3pullpi_antimu->Fill(selmu_tpc_pullpi[1]);
             tpc3pullp_antimu->Fill(selmu_tpc_pullp[1]);
             tpc3pulle_antimu->Fill(selmu_tpc_pullele[1]);
+            ntpcs_antimu->Fill(selmu_ntpcs);
             fgd1EbyL_antimu->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_antimu->Fill(selmu_fgd2_EbyL);
             nsmrds_antimu->Fill(selmu_nsmrds);
@@ -365,6 +371,7 @@ void DefaultCustomPlotting::Loop()
             tpc3pullpi_piplus->Fill(selmu_tpc_pullpi[1]);
             tpc3pullp_piplus->Fill(selmu_tpc_pullp[1]);
             tpc3pulle_piplus->Fill(selmu_tpc_pullele[1]);
+            ntpcs_piplus->Fill(selmu_ntpcs);
             fgd1EbyL_piplus->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_piplus->Fill(selmu_fgd2_EbyL);
             nsmrds_piplus->Fill(selmu_nsmrds);
@@ -396,6 +403,7 @@ void DefaultCustomPlotting::Loop()
             tpc3pullpi_proton->Fill(selmu_tpc_pullpi[1]);
             tpc3pullp_proton->Fill(selmu_tpc_pullp[1]);
             tpc3pulle_proton->Fill(selmu_tpc_pullele[1]);
+            ntpcs_proton->Fill(selmu_ntpcs);
             fgd1EbyL_proton->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_proton->Fill(selmu_fgd2_EbyL);
             nsmrds_proton->Fill(selmu_nsmrds);
@@ -427,6 +435,7 @@ void DefaultCustomPlotting::Loop()
             tpc3pullpi_positron->Fill(selmu_tpc_pullpi[1]);
             tpc3pullp_positron->Fill(selmu_tpc_pullp[1]);
             tpc3pulle_positron->Fill(selmu_tpc_pullele[1]);
+            ntpcs_positron->Fill(selmu_ntpcs);
             fgd1EbyL_positron->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_positron->Fill(selmu_fgd2_EbyL);
             nsmrds_positron->Fill(selmu_nsmrds);
@@ -1213,6 +1222,24 @@ void DefaultCustomPlotting::Loop()
    
    canvas_tpc3pulls->cd(1)->BuildLegend();
    canvas_tpc3pulls->Write();
+   
+   // nTPCs
+   
+   TCanvas* canvas_ntpcs = new TCanvas("canvas_ntpcs","",200,10,500,400);
+   
+   //ntpcs_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
+  
+   SetHistParticleStyle(ntpcs_antimu, "antimu");
+   SetHistParticleStyle(ntpcs_piplus, "piplus");
+   SetHistParticleStyle(ntpcs_proton, "proton");
+   SetHistParticleStyle(ntpcs_positron, "positron");
+   
+   ntpcs_antimu->Draw();
+   ntpcs_piplus->Draw("same");
+   ntpcs_proton->Draw("same");
+   ntpcs_positron->Draw("same");
+   canvas_ntpcs->BuildLegend();
+   canvas_ntpcs->Write();
    
    // FGD1 E/L
    
