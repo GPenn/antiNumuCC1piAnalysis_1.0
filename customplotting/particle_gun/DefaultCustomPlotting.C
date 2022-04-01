@@ -155,10 +155,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "Proton", 50, -10.0, 20.0);
    TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "Positron", 50, -10.0, 20.0);
    
-   TH1F *ntpcs_antimu = new TH1F("ntpcs_antimu", "Antimuon;Number of TPC segments;Entries", 2, 0, 2);
-   TH1F *ntpcs_piplus = new TH1F("ntpcs_piplus", "Pi+", 2, 0, 2);
-   TH1F *ntpcs_proton = new TH1F("ntpcs_proton", "Proton", 2, 0, 2);
-   TH1F *ntpcs_positron = new TH1F("ntpcs_positron", "Positron", 2, 0, 2);
+   TH1F *ntpcs_antimu = new TH1F("ntpcs_antimu", "Antimuon;Number of TPC segments;Entries", 2, 0.5, 2.5);
+   TH1F *ntpcs_piplus = new TH1F("ntpcs_piplus", "Pi+", 2, 0.5, 2.5);
+   TH1F *ntpcs_proton = new TH1F("ntpcs_proton", "Proton", 2, 0.5, 2.5);
+   TH1F *ntpcs_positron = new TH1F("ntpcs_positron", "Positron", 2, 0.5, 2.5);
    
    TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "Antimuon;FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
    TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "Pi+", 50, 0.0, 1.0);
@@ -1227,7 +1227,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_ntpcs = new TCanvas("canvas_ntpcs","",200,10,500,400);
    
-   //ntpcs_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
+   ntpcs_antimu->GetYaxis()->SetRangeUser(0.0, 80000.0);
   
    SetHistParticleStyle(ntpcs_antimu, "antimu");
    SetHistParticleStyle(ntpcs_piplus, "piplus");
