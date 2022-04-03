@@ -1631,7 +1631,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ptheta->Divide(2,1,0.005,0.005);
    canvas_weighted_ptheta->cd(1);
    
-   recomom_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   //recomom_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 6000.0);
   
    SetHistParticleStyle(recomom_antimu_weighted, "antimu");
    SetHistParticleStyle(recomom_piplus_weighted, "piplus");
@@ -1651,7 +1651,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_weighted_theta = new TCanvas("canvas_weighted_theta","Reconstructed angle w.r.t. detector Z-axis (rad)",200,10,1000,600);
    canvas_weighted_ptheta->cd(2);
    
-   theta_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 5000.0);
+   //theta_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 5000.0);
   
    SetHistParticleStyle(theta_antimu_weighted, "antimu");
    SetHistParticleStyle(theta_piplus_weighted, "piplus");
@@ -1737,7 +1737,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_weighted_fbr = new TCanvas("canvas_weighted_fbr","",200,10,1000,600);
    canvas_weighted_ecallowlevel->cd(2);
    
-   fbr_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 20000.0);
+   //fbr_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 20000.0);
   
    SetHistParticleStyle(fbr_antimu_weighted, "antimu");
    SetHistParticleStyle(fbr_piplus_weighted, "piplus");
@@ -1757,7 +1757,7 @@ void DefaultCustomPlotting::Loop()
    
    canvas_weighted_ecallowlevel->cd(3);
    
-   tmr_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 6500.0);
+   //tmr_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 6500.0);
   
    SetHistParticleStyle(tmr_antimu_weighted, "antimu");
    SetHistParticleStyle(tmr_piplus_weighted, "piplus");
@@ -1908,7 +1908,7 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_weighted_tpclikemu = new TCanvas("canvas_weighted_tpclikemu","",200,10,1000,600);
    
-   tpclikemu_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   //tpclikemu_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
    tpclikemu_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikemu_antimu_weighted, "antimu");
@@ -1929,7 +1929,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_weighted_tpclikepi = new TCanvas("canvas_weighted_tpclikepi","",200,10,1000,600);
    canvas_weighted_tpclikelihoods->cd(2);
    
-   tpclikepi_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   //tpclikepi_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
    tpclikepi_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikepi_antimu_weighted, "antimu");
@@ -1950,7 +1950,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_weighted_tpclikep = new TCanvas("canvas_weighted_tpclikep","",200,10,1000,600);
    canvas_weighted_tpclikelihoods->cd(3);
    
-   tpclikep_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   //tpclikep_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
    tpclikep_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikep_antimu_weighted, "antimu");
@@ -1971,7 +1971,7 @@ void DefaultCustomPlotting::Loop()
    //TCanvas* canvas_weighted_tpclikee = new TCanvas("canvas_weighted_tpclikee","",200,10,1000,600);
    canvas_weighted_tpclikelihoods->cd(4);
    
-   tpclikee_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   //tpclikee_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
    tpclikee_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpclikee_antimu_weighted, "antimu");
@@ -2152,7 +2152,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_weighted_ntpcs = new TCanvas("canvas_weighted_ntpcs","",200,10,500,400);
    
-   ntpcs_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 60000.0);
+   //ntpcs_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 60000.0);
   
    SetHistParticleStyle(ntpcs_antimu_weighted, "antimu");
    SetHistParticleStyle(ntpcs_piplus_weighted, "piplus");
@@ -2212,7 +2212,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_weighted_nsmrds = new TCanvas("canvas_weighted_nsmrds","",200,10,500,400);
    
-   nsmrds_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 80000.0);
+   //nsmrds_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 80000.0);
   
    SetHistParticleStyle(nsmrds_antimu_weighted, "antimu");
    SetHistParticleStyle(nsmrds_piplus_weighted, "piplus");
