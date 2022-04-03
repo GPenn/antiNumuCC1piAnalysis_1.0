@@ -176,6 +176,152 @@ void DefaultCustomPlotting::Loop()
    TH1F *nsmrds_positron = new TH1F("nsmrds_positron", "Positron", 3, -0.5, 2.5);
    
    
+   TH1F *recomom_antimu_weighted = new TH1F("recomom_antimu_weighted", "Antimuon;Reconstructed momentum (MeV/c);Momentum weighted entries/50 MeV/c", 32, 0.0, 1600.0);
+   TH1F *recomom_piplus_weighted = new TH1F("recomom_piplus_weighted", "Pi+", 32, 0.0, 1600.0);
+   TH1F *recomom_proton_weighted = new TH1F("recomom_proton_weighted", "Proton", 32, 0.0, 1600.0);
+   TH1F *recomom_positron_weighted = new TH1F("recomom_positron_weighted", "Positron", 32, 0.0, 1600.0);
+   
+   TH1F *theta_antimu_weighted = new TH1F("theta_antimu_weighted", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Momentum weighted entries/0.05 rad", 24, 0.0, 1.2);
+   TH1F *theta_piplus_weighted = new TH1F("theta_piplus_weighted", "Pi+", 24, 0.0, 1.2);
+   TH1F *theta_proton_weighted = new TH1F("theta_proton_weighted", "Proton", 24, 0.0, 1.2);
+   TH1F *theta_positron_weighted = new TH1F("theta_positron_weighted", "Positron", 24, 0.0, 1.2);
+   
+   TH1F *EMEnergy_antimu_weighted = new TH1F("EMEnergy_antimu_weighted", "Antimuon;Reconstructed ECal EM energy (MeV);Momentum weighted entries/50 MeV", 50, 0.0, 2500);
+   TH1F *EMEnergy_piplus_weighted = new TH1F("EMEnergy_piplus_weighted", "Pi+", 50, 0.0, 2500);
+   TH1F *EMEnergy_proton_weighted = new TH1F("EMEnergy_proton_weighted", "Proton", 50, 0.0, 2500);
+   TH1F *EMEnergy_positron_weighted = new TH1F("EMEnergy_positron_weighted", "Positron", 50, 0.0, 2500);
+   
+   TH1F *EbyL_antimu_weighted = new TH1F("EbyL_antimu_weighted", "Antimuon;ECal EM energy/ECal segment length (MeV/mm);Momentum weighted entries/10 MeV/mm", 40, 0.0, 4);
+   TH1F *EbyL_piplus_weighted = new TH1F("EbyL_piplus_weighted", "Pi+", 40, 0.0, 4);
+   TH1F *EbyL_proton_weighted = new TH1F("EbyL_proton_weighted", "Proton", 40, 0.0, 4);
+   TH1F *EbyL_positron_weighted = new TH1F("EbyL_positron_weighted", "Positron", 40, 0.0, 4);
+   
+   TH1F *circularity_antimu_weighted = new TH1F("circularity_antimu_weighted", "Antimuon;ECal circularity variable (dimensionless);Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *circularity_piplus_weighted = new TH1F("circularity_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *circularity_proton_weighted = new TH1F("circularity_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *circularity_positron_weighted = new TH1F("circularity_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *fbr_antimu_weighted = new TH1F("fbr_antimu_weighted", "Antimuon;ECal FrontBackRatio variable (dimensionless);Momentum weighted entries", 50, 0.0, 10.0);
+   TH1F *fbr_piplus_weighted = new TH1F("fbr_piplus_weighted", "Pi+", 50, 0.0, 10.0);
+   TH1F *fbr_proton_weighted = new TH1F("fbr_proton_weighted", "Proton", 50, 0.0, 10.0);
+   TH1F *fbr_positron_weighted = new TH1F("fbr_positron_weighted", "Positron", 50, 0.0, 10.0);
+   
+   TH1F *tmr_antimu_weighted = new TH1F("tmr_antimu_weighted", "Antimuon;ECal TruncatedMaxRatio variable (dimensionless);Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tmr_piplus_weighted = new TH1F("tmr_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *tmr_proton_weighted = new TH1F("tmr_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *tmr_positron_weighted = new TH1F("tmr_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *qrms_antimu_weighted = new TH1F("qrms_antimu_weighted", "Antimuon;ECal QRMS variable (dimensionless);Momentum weighted entries", 30, 0.0, 3.0);
+   TH1F *qrms_piplus_weighted = new TH1F("qrms_piplus_weighted", "Pi+", 30, 0.0, 3.0);
+   TH1F *qrms_proton_weighted = new TH1F("qrms_proton_weighted", "Proton", 30, 0.0, 3.0);
+   TH1F *qrms_positron_weighted = new TH1F("qrms_positron_weighted", "Positron", 30, 0.0, 3.0);
+   
+   TH1F *mipem_antimu_weighted = new TH1F("mipem_antimu_weighted", "Antimuon;ECal MipEm variable (dimensionless);Momentum weighted entries", 60, -50.0, 70.0);
+   TH1F *mipem_piplus_weighted = new TH1F("mipem_piplus_weighted", "Pi+", 60, -50.0, 70.0);
+   TH1F *mipem_proton_weighted = new TH1F("mipem_proton_weighted", "Proton", 60, -50.0, 70.0);
+   TH1F *mipem_positron_weighted = new TH1F("mipem_positron_weighted", "Positron", 60, -50.0, 70.0);
+   
+   TH1F *emhip_antimu_weighted = new TH1F("emhip_antimu_weighted", "Antimuon;ECal EmHip variable (dimensionless);Momentum weighted entries", 40, -40.0, 40.0);
+   TH1F *emhip_piplus_weighted = new TH1F("emhip_piplus_weighted", "Pi+", 40, -40.0, 40.0);
+   TH1F *emhip_proton_weighted = new TH1F("emhip_proton_weighted", "Proton", 40, -40.0, 40.0);
+   TH1F *emhip_positron_weighted = new TH1F("emhip_positron_weighted", "Positron", 40, -40.0, 40.0);
+   
+   TH1F *mippion_antimu_weighted = new TH1F("mippion_antimu_weighted", "Antimuon;ECal MipPion variable (dimensionless);Momentum weighted entries", 50, -30.0, 70.0);
+   TH1F *mippion_piplus_weighted = new TH1F("mippion_piplus_weighted", "Pi+", 50, -30.0, 70.0);
+   TH1F *mippion_proton_weighted = new TH1F("mippion_proton_weighted", "Proton", 50, -30.0, 70.0);
+   TH1F *mippion_positron_weighted = new TH1F("mippion_positron_weighted", "Positron", 50, -30.0, 70.0);
+   
+   TH1F *tpc2dedx_antimu_weighted = new TH1F("tpc2dedx_antimu_weighted", "Antimuon;TPC2 dE/dx truncated mean (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_piplus_weighted = new TH1F("tpc2dedx_piplus_weighted", "Pi+", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_proton_weighted = new TH1F("tpc2dedx_proton_weighted", "Proton", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_positron_weighted = new TH1F("tpc2dedx_positron_weighted", "Positron", 50, 0.0, 2000.0);
+   
+   TH1F *tpc3dedx_antimu_weighted = new TH1F("tpc3dedx_antimu_weighted", "Antimuon;TPC3 dE/dx truncated mean (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_piplus_weighted = new TH1F("tpc3dedx_piplus_weighted", "Pi+", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_proton_weighted = new TH1F("tpc3dedx_proton_weighted", "Proton", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_positron_weighted = new TH1F("tpc3dedx_positron_weighted", "Positron", 50, 0.0, 2000.0);
+   
+   TH1F *tpclikemu_antimu_weighted = new TH1F("tpclikemu_antimu_weighted", "Antimuon;TPC2 muon likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikemu_piplus_weighted = new TH1F("tpclikemu_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikemu_proton_weighted = new TH1F("tpclikemu_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikemu_positron_weighted = new TH1F("tpclikemu_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpclikepi_antimu_weighted = new TH1F("tpclikepi_antimu_weighted", "Antimuon;TPC2 charged pion likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikepi_piplus_weighted = new TH1F("tpclikepi_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikepi_proton_weighted = new TH1F("tpclikepi_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikepi_positron_weighted = new TH1F("tpclikepi_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpclikep_antimu_weighted = new TH1F("tpclikep_antimu_weighted", "Antimuon;TPC2 proton likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikep_piplus_weighted = new TH1F("tpclikep_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikep_proton_weighted = new TH1F("tpclikep_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikep_positron_weighted = new TH1F("tpclikep_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpclikee_antimu_weighted = new TH1F("tpclikee_antimu_weighted", "Antimuon;TPC2 electron likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikee_piplus_weighted = new TH1F("tpclikee_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *tpclikee_proton_weighted = new TH1F("tpclikee_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *tpclikee_positron_weighted = new TH1F("tpclikee_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *tpc2pullmu_antimu_weighted = new TH1F("tpc2pullmu_antimu_weighted", "Antimuon;TPC2 muon pull;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_piplus_weighted = new TH1F("tpc2pullmu_piplus_weighted", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_proton_weighted = new TH1F("tpc2pullmu_proton_weighted", "Proton", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_positron_weighted = new TH1F("tpc2pullmu_positron_weighted", "Positron", 50, -10.0, 40.0);
+   
+   TH1F *tpc2pullpi_antimu_weighted = new TH1F("tpc2pullpi_antimu_weighted", "Antimuon;TPC2 charged pion pull;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_piplus_weighted = new TH1F("tpc2pullpi_piplus_weighted", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_proton_weighted = new TH1F("tpc2pullpi_proton_weighted", "Proton", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_positron_weighted = new TH1F("tpc2pullpi_positron_weighted", "Positron", 50, -10.0, 40.0);
+   
+   TH1F *tpc2pullp_antimu_weighted = new TH1F("tpc2pullp_antimu_weighted", "Antimuon;TPC2 proton pull;Momentum weighted entries", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_piplus_weighted = new TH1F("tpc2pullp_piplus_weighted", "Pi+", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_proton_weighted = new TH1F("tpc2pullp_proton_weighted", "Proton", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_positron_weighted = new TH1F("tpc2pullp_positron_weighted", "Positron", 50, -40.0, 20.0);
+   
+   TH1F *tpc2pulle_antimu_weighted = new TH1F("tpc2pulle_antimu_weighted", "Antimuon;TPC2 electron pull;Momentum weighted entries", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_piplus_weighted = new TH1F("tpc2pulle_piplus_weighted", "Pi+", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_proton_weighted = new TH1F("tpc2pulle_proton_weighted", "Proton", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_positron_weighted = new TH1F("tpc2pulle_positron_weighted", "Positron", 50, -20.0, 30.0);
+   
+   TH1F *tpc3pullmu_antimu_weighted = new TH1F("tpc3pullmu_antimu_weighted", "Antimuon;TPC3 muon pull;Momentum weighted entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_piplus_weighted = new TH1F("tpc3pullmu_piplus_weighted", "Pi+", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_proton_weighted = new TH1F("tpc3pullmu_proton_weighted", "Proton", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_positron_weighted = new TH1F("tpc3pullmu_positron_weighted", "Positron", 50, -10.0, 30.0);
+   
+   TH1F *tpc3pullpi_antimu_weighted = new TH1F("tpc3pullpi_antimu_weighted", "Antimuon;TPC3 charged pion pull;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_piplus_weighted = new TH1F("tpc3pullpi_piplus_weighted", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_proton_weighted = new TH1F("tpc3pullpi_proton_weighted", "Proton", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_positron_weighted = new TH1F("tpc3pullpi_positron_weighted", "Positron", 50, -10.0, 40.0);
+   
+   TH1F *tpc3pullp_antimu_weighted = new TH1F("tpc3pullp_antimu_weighted", "Antimuon;TPC3 proton pull;Momentum weighted entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_piplus_weighted = new TH1F("tpc3pullp_piplus_weighted", "Pi+", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_proton_weighted = new TH1F("tpc3pullp_proton_weighted", "Proton", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_positron_weighted = new TH1F("tpc3pullp_positron_weighted", "Positron", 50, -40.0, 20.0);
+   
+   TH1F *tpc3pulle_antimu_weighted = new TH1F("tpc3pulle_antimu_weighted", "Antimuon;TPC3 electron pull;Momentum weighted entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_piplus_weighted = new TH1F("tpc3pulle_piplus_weighted", "Pi+", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_proton_weighted = new TH1F("tpc3pulle_proton_weighted", "Proton", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_positron_weighted = new TH1F("tpc3pulle_positron_weighted", "Positron", 50, -10.0, 20.0);
+   
+   TH1F *ntpcs_antimu_weighted = new TH1F("ntpcs_antimu_weighted", "Antimuon;Number of TPC segments;Momentum weighted entries", 2, 0.5, 2.5);
+   TH1F *ntpcs_piplus_weighted = new TH1F("ntpcs_piplus_weighted", "Pi+", 2, 0.5, 2.5);
+   TH1F *ntpcs_proton_weighted = new TH1F("ntpcs_proton_weighted", "Proton", 2, 0.5, 2.5);
+   TH1F *ntpcs_positron_weighted = new TH1F("ntpcs_positron_weighted", "Positron", 2, 0.5, 2.5);
+   
+   TH1F *fgd1EbyL_antimu_weighted = new TH1F("fgd1EbyL_antimu_weighted", "Antimuon;FGD1 energy/length (MeV/mm);Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_piplus_weighted = new TH1F("fgd1EbyL_piplus_weighted", "Pi+", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_proton_weighted = new TH1F("fgd1EbyL_proton_weighted", "Proton", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_positron_weighted = new TH1F("fgd1EbyL_positron_weighted", "Positron", 50, 0.0, 1.0);
+   
+   TH1F *fgd2EbyL_antimu_weighted = new TH1F("fgd2EbyL_antimu_weighted", "Antimuon;FGD2 energy/length (MeV/mm);Momentum weighted entries", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_piplus_weighted = new TH1F("fgd2EbyL_piplus_weighted", "Pi+", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_proton_weighted = new TH1F("fgd2EbyL_proton_weighted", "Proton", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_positron_weighted = new TH1F("fgd2EbyL_positron_weighted", "Positron", 30, 0.0, 0.6);
+   
+   TH1F *nsmrds_antimu_weighted = new TH1F("nsmrds_antimu_weighted", "Antimuon;Number of SMRD segments;Momentum weighted entries", 3, -0.5, 2.5);
+   TH1F *nsmrds_piplus_weighted = new TH1F("nsmrds_piplus_weighted", "Pi+", 3, -0.5, 2.5);
+   TH1F *nsmrds_proton_weighted = new TH1F("nsmrds_proton_weighted", "Proton", 3, -0.5, 2.5);
+   TH1F *nsmrds_positron_weighted = new TH1F("nsmrds_positron_weighted", "Positron", 3, -0.5, 2.5);
+   
+   
    Int_t recomom_nbins = 25;
    
    Int_t presel_nAntimu = 0;
@@ -300,6 +446,33 @@ void DefaultCustomPlotting::Loop()
                                            "Correlation: e-like disagreement vs reco mom;Reco momentum;BDT e-like disagreement (weighted - unweighted)", 
                                             correlation_nbins, 200.0, 1500.0, correlation_nbins, -1.0, 1.0);*/
    
+   // ============= Prepare momentum weighting histogram =============
+   
+   TH1F *weighting_hist_antimu = new TH1F("weighting_hist_antimu", "Reco momentum for weighting", 150, 0, 1500);
+   TH1F *weighting_hist_piplus = new TH1F("weighting_hist_piplus", "Reco momentum for weighting", 150, 0, 1500);
+   TH1F *weighting_hist_proton = new TH1F("weighting_hist_proton", "Reco momentum for weighting", 150, 0, 1500);
+   TH1F *weighting_hist_positron = new TH1F("weighting_hist_positron", "Reco momentum for weighting", 150, 0, 1500);
+   
+   for (Long64_t jentry=0; jentry<nentries;jentry++) {
+   
+        fChain->GetEntry(jentry);
+
+        // Cut on accum_level etc. N.B. make sure these cuts are the same as below
+        if (accum_level[0][1] <= 4) continue; // Set accum_level
+        if (selmu_mom[0] > 1500.0) continue;
+        if (selmu_mom[0] < 200.0) continue;
+        if ((particle == 2212) && (selmu_mom[0] < 300.0)) continue;
+        if (selmu_det_theta > 1.0472) continue;
+        if (selmu_necals > 1) continue;
+        
+        if ((particle == -13)&&(particle_pg == -13)) weighting_hist_antimu->Fill(selmu_mom[0]);
+        if ((particle == 211)&&(particle_pg == 211)) weighting_hist_piplus->Fill(selmu_mom[0]);
+        if ((particle == 2212)&&(particle_pg == 2212)) weighting_hist_proton->Fill(selmu_mom[0]);
+        if ((particle == -11)&&(particle_pg == -11)) weighting_hist_positron->Fill(selmu_mom[0]);
+
+    }
+   
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -310,10 +483,17 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms for input variable plotting =============
       
-      if ((accum_level[0][1] > 5) && (selmu_necals < 2)){
+      if ((accum_level[0][1] > 5) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){
          
          if ((particle == -13)&&(particle_pg == -13))
          {
+            // Calculate event weight based on reco mom histogram:
+            Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
+            Float_t inv_weight = weighting_hist_antimu->GetBinContent(weight_bin);
+            Float_t weight;
+            if (inv_weight > 0) {weight = 1/inv_weight;}
+            else                {weight = 0;}
+            
             recomom_antimu->Fill(selmu_mom[0]);
             theta_antimu->Fill(selmu_det_theta);
             EMEnergy_antimu->Fill(selmu_ecal_bestseg_EMenergy);
@@ -343,9 +523,46 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_antimu->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_antimu->Fill(selmu_fgd2_EbyL);
             nsmrds_antimu->Fill(selmu_nsmrds);
+            
+            recomom_antimu_weighted->Fill(selmu_mom[0], weight);
+            theta_antimu_weighted->Fill(selmu_det_theta, weight);
+            EMEnergy_antimu_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
+            EbyL_antimu_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            circularity_antimu_weighted->Fill(selmu_ecal_circularity, weight);
+            fbr_antimu_weighted->Fill(selmu_ecal_fbr, weight);
+            tmr_antimu_weighted->Fill(selmu_ecal_tmr, weight);
+            qrms_antimu_weighted->Fill(selmu_ecal_qrms, weight);
+            mipem_antimu_weighted->Fill(selmu_ecal_mipem[0], weight);
+            emhip_antimu_weighted->Fill(selmu_ecal_emhip[0], weight);
+            mippion_antimu_weighted->Fill(selmu_ecal_mippion[0], weight);
+            tpc2dedx_antimu_weighted->Fill(selmu_tpc_dedx[0], weight);
+            tpc3dedx_antimu_weighted->Fill(selmu_tpc_dedx[1], weight);
+            tpclikemu_antimu_weighted->Fill(selmu_tpc_like_mu, weight);
+            tpclikepi_antimu_weighted->Fill(selmu_tpc_like_pi, weight);
+            tpclikep_antimu_weighted->Fill(selmu_tpc_like_p, weight);
+            tpclikee_antimu_weighted->Fill(selmu_tpc_like_e, weight);
+            tpc2pullmu_antimu_weighted->Fill(selmu_tpc_pullmu[0], weight);
+            tpc2pullpi_antimu_weighted->Fill(selmu_tpc_pullpi[0], weight);
+            tpc2pullp_antimu_weighted->Fill(selmu_tpc_pullp[0], weight);
+            tpc2pulle_antimu_weighted->Fill(selmu_tpc_pullele[0], weight);
+            tpc3pullmu_antimu_weighted->Fill(selmu_tpc_pullmu[1], weight);
+            tpc3pullpi_antimu_weighted->Fill(selmu_tpc_pullpi[1], weight);
+            tpc3pullp_antimu_weighted->Fill(selmu_tpc_pullp[1], weight);
+            tpc3pulle_antimu_weighted->Fill(selmu_tpc_pullele[1], weight);
+            ntpcs_antimu_weighted->Fill(selmu_ntpcs, weight);
+            fgd1EbyL_antimu_weighted->Fill(selmu_fgd1_EbyL, weight);
+            fgd2EbyL_antimu_weighted->Fill(selmu_fgd2_EbyL, weight);
+            nsmrds_antimu_weighted->Fill(selmu_nsmrds, weight);
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
+            // Calculate event weight based on reco mom histogram:
+            Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
+            Float_t inv_weight = weighting_hist_piplus->GetBinContent(weight_bin);
+            Float_t weight;
+            if (inv_weight > 0) {weight = 1/inv_weight;}
+            else                {weight = 0;}
+            
             recomom_piplus->Fill(selmu_mom[0]);
             theta_piplus->Fill(selmu_det_theta);
             EMEnergy_piplus->Fill(selmu_ecal_bestseg_EMenergy);
@@ -375,9 +592,46 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_piplus->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_piplus->Fill(selmu_fgd2_EbyL);
             nsmrds_piplus->Fill(selmu_nsmrds);
+            
+            recomom_piplus_weighted->Fill(selmu_mom[0], weight);
+            theta_piplus_weighted->Fill(selmu_det_theta, weight);
+            EMEnergy_piplus_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
+            EbyL_piplus_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            circularity_piplus_weighted->Fill(selmu_ecal_circularity, weight);
+            fbr_piplus_weighted->Fill(selmu_ecal_fbr, weight);
+            tmr_piplus_weighted->Fill(selmu_ecal_tmr, weight);
+            qrms_piplus_weighted->Fill(selmu_ecal_qrms, weight);
+            mipem_piplus_weighted->Fill(selmu_ecal_mipem[0], weight);
+            emhip_piplus_weighted->Fill(selmu_ecal_emhip[0], weight);
+            mippion_piplus_weighted->Fill(selmu_ecal_mippion[0], weight);
+            tpc2dedx_piplus_weighted->Fill(selmu_tpc_dedx[0], weight);
+            tpc3dedx_piplus_weighted->Fill(selmu_tpc_dedx[1], weight);
+            tpclikemu_piplus_weighted->Fill(selmu_tpc_like_mu, weight);
+            tpclikepi_piplus_weighted->Fill(selmu_tpc_like_pi, weight);
+            tpclikep_piplus_weighted->Fill(selmu_tpc_like_p, weight);
+            tpclikee_piplus_weighted->Fill(selmu_tpc_like_e, weight);
+            tpc2pullmu_piplus_weighted->Fill(selmu_tpc_pullmu[0], weight);
+            tpc2pullpi_piplus_weighted->Fill(selmu_tpc_pullpi[0], weight);
+            tpc2pullp_piplus_weighted->Fill(selmu_tpc_pullp[0], weight);
+            tpc2pulle_piplus_weighted->Fill(selmu_tpc_pullele[0], weight);
+            tpc3pullmu_piplus_weighted->Fill(selmu_tpc_pullmu[1], weight);
+            tpc3pullpi_piplus_weighted->Fill(selmu_tpc_pullpi[1], weight);
+            tpc3pullp_piplus_weighted->Fill(selmu_tpc_pullp[1], weight);
+            tpc3pulle_piplus_weighted->Fill(selmu_tpc_pullele[1], weight);
+            ntpcs_piplus_weighted->Fill(selmu_ntpcs, weight);
+            fgd1EbyL_piplus_weighted->Fill(selmu_fgd1_EbyL, weight);
+            fgd2EbyL_piplus_weighted->Fill(selmu_fgd2_EbyL, weight);
+            nsmrds_piplus_weighted->Fill(selmu_nsmrds, weight);
          }
-         else if ((particle == 2212)&&(particle_pg == 2212))
+         else if ((particle == 2212)&&(particle_pg == 2212)&&(selmu_mom[0] > 300.0))
          {
+            // Calculate event weight based on reco mom histogram:
+            Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
+            Float_t inv_weight = weighting_hist_proton->GetBinContent(weight_bin);
+            Float_t weight;
+            if (inv_weight > 0) {weight = 1/inv_weight;}
+            else                {weight = 0;}
+            
             recomom_proton->Fill(selmu_mom[0]);
             theta_proton->Fill(selmu_det_theta);
             EMEnergy_proton->Fill(selmu_ecal_bestseg_EMenergy);
@@ -407,9 +661,45 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_proton->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_proton->Fill(selmu_fgd2_EbyL);
             nsmrds_proton->Fill(selmu_nsmrds);
+            
+            recomom_proton_weighted->Fill(selmu_mom[0], weight);
+            theta_proton_weighted->Fill(selmu_det_theta, weight);
+            EMEnergy_proton_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
+            EbyL_proton_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            circularity_proton_weighted->Fill(selmu_ecal_circularity, weight);
+            fbr_proton_weighted->Fill(selmu_ecal_fbr, weight);
+            tmr_proton_weighted->Fill(selmu_ecal_tmr, weight);
+            qrms_proton_weighted->Fill(selmu_ecal_qrms, weight);
+            mipem_proton_weighted->Fill(selmu_ecal_mipem[0], weight);
+            emhip_proton_weighted->Fill(selmu_ecal_emhip[0], weight);
+            mippion_proton_weighted->Fill(selmu_ecal_mippion[0], weight);
+            tpc2dedx_proton_weighted->Fill(selmu_tpc_dedx[0], weight);
+            tpc3dedx_proton_weighted->Fill(selmu_tpc_dedx[1], weight);
+            tpclikemu_proton_weighted->Fill(selmu_tpc_like_mu, weight);
+            tpclikepi_proton_weighted->Fill(selmu_tpc_like_pi, weight);
+            tpclikep_proton_weighted->Fill(selmu_tpc_like_p, weight);
+            tpclikee_proton_weighted->Fill(selmu_tpc_like_e, weight);
+            tpc2pullmu_proton_weighted->Fill(selmu_tpc_pullmu[0], weight);
+            tpc2pullpi_proton_weighted->Fill(selmu_tpc_pullpi[0], weight);
+            tpc2pullp_proton_weighted->Fill(selmu_tpc_pullp[0], weight);
+            tpc2pulle_proton_weighted->Fill(selmu_tpc_pullele[0], weight);
+            tpc3pullmu_proton_weighted->Fill(selmu_tpc_pullmu[1], weight);
+            tpc3pullpi_proton_weighted->Fill(selmu_tpc_pullpi[1], weight);
+            tpc3pullp_proton_weighted->Fill(selmu_tpc_pullp[1], weight);
+            tpc3pulle_proton_weighted->Fill(selmu_tpc_pullele[1], weight);
+            ntpcs_proton_weighted->Fill(selmu_ntpcs, weight);
+            fgd1EbyL_proton_weighted->Fill(selmu_fgd1_EbyL, weight);
+            fgd2EbyL_proton_weighted->Fill(selmu_fgd2_EbyL, weight);
+            nsmrds_proton_weighted->Fill(selmu_nsmrds, weight);
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
+            Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
+            Float_t inv_weight = weighting_hist_positron->GetBinContent(weight_bin);
+            Float_t weight;
+            if (inv_weight > 0) {weight = 1/inv_weight;}
+            else                {weight = 0;}
+            
             recomom_positron->Fill(selmu_mom[0]);
             theta_positron->Fill(selmu_det_theta);
             EMEnergy_positron->Fill(selmu_ecal_bestseg_EMenergy);
@@ -439,6 +729,36 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_positron->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_positron->Fill(selmu_fgd2_EbyL);
             nsmrds_positron->Fill(selmu_nsmrds);
+            
+            recomom_positron_weighted->Fill(selmu_mom[0], weight);
+            theta_positron_weighted->Fill(selmu_det_theta, weight);
+            EMEnergy_positron_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
+            EbyL_positron_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            circularity_positron_weighted->Fill(selmu_ecal_circularity, weight);
+            fbr_positron_weighted->Fill(selmu_ecal_fbr, weight);
+            tmr_positron_weighted->Fill(selmu_ecal_tmr, weight);
+            qrms_positron_weighted->Fill(selmu_ecal_qrms, weight);
+            mipem_positron_weighted->Fill(selmu_ecal_mipem[0], weight);
+            emhip_positron_weighted->Fill(selmu_ecal_emhip[0], weight);
+            mippion_positron_weighted->Fill(selmu_ecal_mippion[0], weight);
+            tpc2dedx_positron_weighted->Fill(selmu_tpc_dedx[0], weight);
+            tpc3dedx_positron_weighted->Fill(selmu_tpc_dedx[1], weight);
+            tpclikemu_positron_weighted->Fill(selmu_tpc_like_mu, weight);
+            tpclikepi_positron_weighted->Fill(selmu_tpc_like_pi, weight);
+            tpclikep_positron_weighted->Fill(selmu_tpc_like_p, weight);
+            tpclikee_positron_weighted->Fill(selmu_tpc_like_e, weight);
+            tpc2pullmu_positron_weighted->Fill(selmu_tpc_pullmu[0], weight);
+            tpc2pullpi_positron_weighted->Fill(selmu_tpc_pullpi[0], weight);
+            tpc2pullp_positron_weighted->Fill(selmu_tpc_pullp[0], weight);
+            tpc2pulle_positron_weighted->Fill(selmu_tpc_pullele[0], weight);
+            tpc3pullmu_positron_weighted->Fill(selmu_tpc_pullmu[1], weight);
+            tpc3pullpi_positron_weighted->Fill(selmu_tpc_pullpi[1], weight);
+            tpc3pullp_positron_weighted->Fill(selmu_tpc_pullp[1], weight);
+            tpc3pulle_positron_weighted->Fill(selmu_tpc_pullele[1], weight);
+            ntpcs_positron_weighted->Fill(selmu_ntpcs, weight);
+            fgd1EbyL_positron_weighted->Fill(selmu_fgd1_EbyL, weight);
+            fgd2EbyL_positron_weighted->Fill(selmu_fgd2_EbyL, weight);
+            nsmrds_positron_weighted->Fill(selmu_nsmrds, weight);
          }
       }
       
