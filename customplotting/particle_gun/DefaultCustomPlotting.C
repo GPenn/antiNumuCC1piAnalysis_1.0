@@ -1392,7 +1392,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc2pulls->cd(1);
    
    //tpc2pullmu_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc2pullmu_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc2pullmu_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc2pullmu_antimu, "antimu");
    SetHistParticleStyle(tpc2pullmu_piplus, "piplus");
@@ -1411,7 +1411,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc2pulls->cd(2);
    
    //tpc2pullpi_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc2pullpi_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc2pullpi_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc2pullpi_antimu, "antimu");
    SetHistParticleStyle(tpc2pullpi_piplus, "piplus");
@@ -1430,7 +1430,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc2pulls->cd(3);
    
    //tpc2pullp_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc2pullp_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc2pullp_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc2pullp_antimu, "antimu");
    SetHistParticleStyle(tpc2pullp_piplus, "piplus");
@@ -1448,7 +1448,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc2pulls->cd(4);
    
    //tpc2pulle_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc2pulle_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc2pulle_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc2pulle_antimu, "antimu");
    SetHistParticleStyle(tpc2pulle_piplus, "piplus");
@@ -1471,7 +1471,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc3pulls->cd(1);
    
    //tpc3pullmu_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc3pullmu_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc3pullmu_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc3pullmu_antimu, "antimu");
    SetHistParticleStyle(tpc3pullmu_piplus, "piplus");
@@ -1490,7 +1490,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc3pulls->cd(2);
    
    //tpc3pullpi_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc3pullpi_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc3pullpi_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc3pullpi_antimu, "antimu");
    SetHistParticleStyle(tpc3pullpi_piplus, "piplus");
@@ -1509,7 +1509,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc3pulls->cd(3);
    
    //tpc3pullp_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc3pullp_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc3pullp_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc3pullp_antimu, "antimu");
    SetHistParticleStyle(tpc3pullp_piplus, "piplus");
@@ -1527,7 +1527,7 @@ void DefaultCustomPlotting::Loop()
    canvas_tpc3pulls->cd(4);
    
    //tpc3pulle_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc3pulle_antimu->GetYaxis()->SetTitleOffset(1.2);
+   tpc3pulle_antimu->GetYaxis()->SetTitleOffset(1.6);
   
    SetHistParticleStyle(tpc3pulle_antimu, "antimu");
    SetHistParticleStyle(tpc3pulle_piplus, "piplus");
@@ -1631,7 +1631,8 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ptheta->Divide(2,1,0.005,0.005);
    canvas_weighted_ptheta->cd(1);
    
-   //recomom_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   recomom_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 8.0);
+   recomom_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(recomom_antimu_weighted, "antimu");
    SetHistParticleStyle(recomom_piplus_weighted, "piplus");
@@ -1652,6 +1653,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ptheta->cd(2);
    
    //theta_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 5000.0);
+   theta_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(theta_antimu_weighted, "antimu");
    SetHistParticleStyle(theta_piplus_weighted, "piplus");
@@ -1675,6 +1677,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_EandEbyL->cd(1);
    
    //EMEnergy_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   EMEnergy_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(EMEnergy_antimu_weighted, "antimu");
    SetHistParticleStyle(EMEnergy_piplus_weighted, "piplus");
@@ -1695,6 +1698,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_EandEbyL->cd(2);
    
    //EbyL_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   EbyL_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(EbyL_antimu_weighted, "antimu");
    SetHistParticleStyle(EbyL_piplus_weighted, "piplus");
@@ -1718,6 +1722,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecallowlevel->cd(1);
    
    //circularity_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   circularity_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(circularity_antimu_weighted, "antimu");
    SetHistParticleStyle(circularity_piplus_weighted, "piplus");
@@ -1738,6 +1743,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecallowlevel->cd(2);
    
    //fbr_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 20000.0);
+   fbr_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(fbr_antimu_weighted, "antimu");
    SetHistParticleStyle(fbr_piplus_weighted, "piplus");
@@ -1758,6 +1764,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecallowlevel->cd(3);
    
    //tmr_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 6500.0);
+   tmr_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tmr_antimu_weighted, "antimu");
    SetHistParticleStyle(tmr_piplus_weighted, "piplus");
@@ -1778,6 +1785,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecallowlevel->cd(4);
    
    //qrms_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   qrms_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(qrms_antimu_weighted, "antimu");
    SetHistParticleStyle(qrms_piplus_weighted, "piplus");
@@ -1801,6 +1809,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecalhighlevel->cd(1);
    
    //mipem_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   mipem_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(mipem_antimu_weighted, "antimu");
    SetHistParticleStyle(mipem_piplus_weighted, "piplus");
@@ -1822,6 +1831,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecalhighlevel->cd(2);
    
    //emhip_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   emhip_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(emhip_antimu_weighted, "antimu");
    SetHistParticleStyle(emhip_piplus_weighted, "piplus");
@@ -1842,6 +1852,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_ecalhighlevel->cd(3);
    
    //mippion_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   mippion_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(mippion_antimu_weighted, "antimu");
    SetHistParticleStyle(mippion_piplus_weighted, "piplus");
@@ -1866,6 +1877,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_tpcdedx->cd(1);
    
    //tpc2dedx_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   tpc2dedx_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpc2dedx_antimu_weighted, "antimu");
    SetHistParticleStyle(tpc2dedx_piplus_weighted, "piplus");
@@ -1886,6 +1898,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_tpcdedx->cd(2);
    
    //tpc3dedx_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   tpc3dedx_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(tpc3dedx_antimu_weighted, "antimu");
    SetHistParticleStyle(tpc3dedx_piplus_weighted, "piplus");
@@ -2153,6 +2166,7 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_weighted_ntpcs = new TCanvas("canvas_weighted_ntpcs","",200,10,500,400);
    
    //ntpcs_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 60000.0);
+   ntpcs_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(ntpcs_antimu_weighted, "antimu");
    SetHistParticleStyle(ntpcs_piplus_weighted, "piplus");
@@ -2174,6 +2188,7 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_fgdEbyLs->cd(1);
    
    //fgd1EbyL_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   fgd1EbyL_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(fgd1EbyL_antimu_weighted, "antimu");
    SetHistParticleStyle(fgd1EbyL_piplus_weighted, "piplus");
@@ -2194,7 +2209,8 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_fgdEbyLs->cd(2);
    
    //fgd2EbyL_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
-  
+   fgd2EbyL_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+   
    SetHistParticleStyle(fgd2EbyL_antimu_weighted, "antimu");
    SetHistParticleStyle(fgd2EbyL_piplus_weighted, "piplus");
    SetHistParticleStyle(fgd2EbyL_proton_weighted, "proton");
@@ -2213,6 +2229,7 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_weighted_nsmrds = new TCanvas("canvas_weighted_nsmrds","",200,10,500,400);
    
    //nsmrds_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 80000.0);
+   nsmrds_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
   
    SetHistParticleStyle(nsmrds_antimu_weighted, "antimu");
    SetHistParticleStyle(nsmrds_piplus_weighted, "piplus");
