@@ -17,38 +17,69 @@
     TH1F* TPC2_musel_pi = new TH1F("TPC2_musel_pi","#mu^{+} selection true #pi^{+}",3,0,3);
     TH1F* TPC2_musel_p = new TH1F("TPC2_musel_p","#mu^{+} selection true p",3,0,3);
     TH1F* TPC2_musel_e = new TH1F("TPC2_musel_e","#mu^{+} selection true e^{+}",3,0,3);
-    
     TH1F* TPC2_pisel_mu = new TH1F("TPC2_pisel_mu","#pi^{+} selection true #mu^{+}",3,0,3);
     TH1F* TPC2_pisel_pi = new TH1F("TPC2_pisel_pi","#pi^{+} selection true #pi^{+}",3,0,3);
     TH1F* TPC2_pisel_p = new TH1F("TPC2_pisel_p","#pi^{+} selection true p",3,0,3);
     TH1F* TPC2_pisel_e = new TH1F("TPC2_pisel_e","#pi^{+} selection true e^{+}",3,0,3);
-    
     TH1F* TPC2_psel_mu = new TH1F("TPC2_psel_mu","p selection true #mu^{+}",3,0,3);
     TH1F* TPC2_psel_pi = new TH1F("TPC2_psel_pi","p selection true #pi^{+}",3,0,3);
     TH1F* TPC2_psel_p = new TH1F("TPC2_psel_p","p selection true p",3,0,3);
     TH1F* TPC2_psel_e = new TH1F("TPC2_psel_e","p selection true e^{+}",3,0,3);
-    
     TH1F* TPC2_esel_mu = new TH1F("TPC2_esel_mu","e^{+} selection true #mu^{+}",3,0,3);
     TH1F* TPC2_esel_pi = new TH1F("TPC2_esel_pi","e^{+} selection true #pi^{+}",3,0,3);
     TH1F* TPC2_esel_p = new TH1F("TPC2_esel_p","e^{+} selection true p",3,0,3);
     TH1F* TPC2_esel_e = new TH1F("TPC2_esel_e","e^{+} selection true e^{+}",3,0,3);
     
-    TPC2_musel_mu->SetFillColor( kBlue); TPC2_musel_mu->SetLineWidth(0);
+    TH1F* TPC2_musel_mu_diff = new TH1F("TPC2_musel_mu_diff","#mu^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_musel_pi_diff = new TH1F("TPC2_musel_pi_diff","#mu^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_musel_p_diff = new TH1F("TPC2_musel_p_diff","#mu^{+} selection true p",3,0,3);
+    TH1F* TPC2_musel_e_diff = new TH1F("TPC2_musel_e_diff","#mu^{+} selection true e^{+}",3,0,3);
+    TH1F* TPC2_pisel_mu_diff = new TH1F("TPC2_pisel_mu_diff","#pi^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_pisel_pi_diff = new TH1F("TPC2_pisel_pi_diff","#pi^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_pisel_p_diff = new TH1F("TPC2_pisel_p_diff","#pi^{+} selection true p",3,0,3);
+    TH1F* TPC2_pisel_e_diff = new TH1F("TPC2_pisel_e_diff","#pi^{+} selection true e^{+}",3,0,3);
+    TH1F* TPC2_psel_mu_diff = new TH1F("TPC2_psel_mu_diff","p selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_psel_pi_diff = new TH1F("TPC2_psel_pi_diff","p selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_psel_p_diff = new TH1F("TPC2_psel_p_diff","p selection true p",3,0,3);
+    TH1F* TPC2_psel_e_diff = new TH1F("TPC2_psel_e_diff","p selection true e^{+}",3,0,3);
+    TH1F* TPC2_esel_mu_diff = new TH1F("TPC2_esel_mu_diff","e^{+} selection true #mu^{+}",3,0,3);
+    TH1F* TPC2_esel_pi_diff = new TH1F("TPC2_esel_pi_diff","e^{+} selection true #pi^{+}",3,0,3);
+    TH1F* TPC2_esel_p_diff = new TH1F("TPC2_esel_p_diff","e^{+} selection true p",3,0,3);
+    TH1F* TPC2_esel_e_diff = new TH1F("TPC2_esel_e_diff","e^{+} selection true e^{+}",3,0,3);
+    
+    TPC2_musel_mu->SetFillColor( kBlue);
     TPC2_musel_pi->SetFillColor( kRed);
     TPC2_musel_p->SetFillColor( kGreen);
     TPC2_musel_e->SetFillColor( kMagenta);
     TPC2_pisel_mu->SetFillColor( kBlue+1);
-    TPC2_pisel_pi->SetFillColor( kRed+1);
+    TPC2_pisel_pi->SetFillColor( kRed);
     TPC2_pisel_p->SetFillColor( kGreen+1);
     TPC2_pisel_e->SetFillColor( kMagenta+1);
     TPC2_psel_mu->SetFillColor( kBlue+2);
     TPC2_psel_pi->SetFillColor( kRed+2);
-    TPC2_psel_p->SetFillColor( kGreen+2);
+    TPC2_psel_p->SetFillColor( kGreen);
     TPC2_psel_e->SetFillColor( kMagenta+2);
     TPC2_esel_mu->SetFillColor( kBlue-1);
     TPC2_esel_pi->SetFillColor( kRed-1);
     TPC2_esel_p->SetFillColor( kGreen-1);
-    TPC2_esel_e->SetFillColor( kMagenta-1);
+    TPC2_esel_e->SetFillColor( kMagenta);
+    
+    TPC2_musel_mu_diff->SetFillColor( kBlue);
+    TPC2_musel_pi_diff->SetFillColor( kRed);
+    TPC2_musel_p_diff->SetFillColor( kGreen);
+    TPC2_musel_e_diff->SetFillColor( kMagenta);
+    TPC2_pisel_mu_diff->SetFillColor( kBlue+1);
+    TPC2_pisel_pi_diff->SetFillColor( kRed);
+    TPC2_pisel_p_diff->SetFillColor( kGreen+1);
+    TPC2_pisel_e_diff->SetFillColor( kMagenta+1);
+    TPC2_psel_mu_diff->SetFillColor( kBlue+2);
+    TPC2_psel_pi_diff->SetFillColor( kRed+2);
+    TPC2_psel_p_diff->SetFillColor( kGreen);
+    TPC2_psel_e_diff->SetFillColor( kMagenta+2);
+    TPC2_esel_mu_diff->SetFillColor( kBlue-1);
+    TPC2_esel_pi_diff->SetFillColor( kRed-1);
+    TPC2_esel_p_diff->SetFillColor( kGreen-1);
+    TPC2_esel_e_diff->SetFillColor( kMagenta);
     
     /*TPC2_musel_mu->SetBarOffset(bar_offset + (bar_width*0)); TPC2_musel_mu->SetBarWidth(bar_width);
     TPC2_musel_pi->SetBarOffset(bar_offset + (bar_width*1)); TPC2_musel_pi->SetBarWidth(bar_width);
@@ -71,6 +102,11 @@
     TPC2_pisel_pi->SetBarOffset(bar_offset + (bar_width*1)); TPC2_pisel_pi->SetBarWidth(bar_width);
     TPC2_psel_p->SetBarOffset(bar_offset + (bar_width*2)); TPC2_psel_p->SetBarWidth(bar_width);
     TPC2_esel_e->SetBarOffset(bar_offset + (bar_width*3)); TPC2_esel_e->SetBarWidth(bar_width);
+    
+    TPC2_musel_mu_diff->SetBarOffset(bar_offset + (bar_width*0)); TPC2_musel_mu->SetBarWidth(bar_width);
+    TPC2_pisel_pi_diff->SetBarOffset(bar_offset + (bar_width*1)); TPC2_pisel_pi->SetBarWidth(bar_width);
+    TPC2_psel_p_diff->SetBarOffset(bar_offset + (bar_width*2)); TPC2_psel_p->SetBarWidth(bar_width);
+    TPC2_esel_e_diff->SetBarOffset(bar_offset + (bar_width*3)); TPC2_esel_e->SetBarWidth(bar_width);
     
     TPC2_musel_mu->Fill(tpc2varchoices[0],0.935975);
     TPC2_musel_pi->Fill(tpc2varchoices[0],0.39852); 
@@ -160,6 +196,7 @@
     TPC2_musel_mu->GetYaxis()->SetTitle("Efficiency");
     TPC2_musel_mu->GetYaxis()->SetLabelSize(0.025);
     TPC2_musel_mu->GetYaxis()->SetTitleSize(0.025);
+    TPC2_musel_mu->GetYaxis()->SetTitleOffset(1.2);
     
     TPC2_musel_mu->Draw("B");
     //TPC2_musel_pi->Draw("B same");
@@ -179,6 +216,84 @@
     TPC2_esel_e->Draw("B same");
     
     canvas_TPC2_choices->BuildLegend();
+    
+    TPC2_musel_mu_diff->Fill(tpc2varchoices[0], TPC2_musel_mu->GetBinContent(0)-TPC2_musel_mu->GetBinContent(0) );
+    TPC2_musel_pi_diff->Fill(tpc2varchoices[0], TPC2_musel_pi->GetBinContent(0)-TPC2_musel_pi->GetBinContent(0) ); 
+    TPC2_musel_p_diff->Fill(tpc2varchoices[0], TPC2_musel_p->GetBinContent(0)-TPC2_musel_p->GetBinContent(0) );
+    TPC2_musel_e_diff->Fill(tpc2varchoices[0], TPC2_musel_e->GetBinContent(0)-TPC2_musel_e->GetBinContent(0) );
+    TPC2_pisel_mu_diff->Fill(tpc2varchoices[0], TPC2_pisel_mu->GetBinContent(0)-TPC2_pisel_mu->GetBinContent(0) );
+    TPC2_pisel_pi_diff->Fill(tpc2varchoices[0], TPC2_pisel_pi->GetBinContent(0)-TPC2_pisel_pi->GetBinContent(0) );
+    TPC2_pisel_p_diff->Fill(tpc2varchoices[0], TPC2_pisel_p->GetBinContent(0)-TPC2_pisel_p->GetBinContent(0) );
+    TPC2_pisel_e_diff->Fill(tpc2varchoices[0], TPC2_pisel_e->GetBinContent(0)-TPC2_pisel_e->GetBinContent(0) );
+    TPC2_psel_mu_diff->Fill(tpc2varchoices[0], TPC2_psel_mu->GetBinContent(0)-TPC2_psel_mu->GetBinContent(0) );
+    TPC2_psel_pi_diff->Fill(tpc2varchoices[0], TPC2_psel_pi->GetBinContent(0)-TPC2_psel_pi->GetBinContent(0) );
+    TPC2_psel_p_diff->Fill(tpc2varchoices[0], TPC2_psel_p->GetBinContent(0)-TPC2_psel_p->GetBinContent(0) );
+    TPC2_psel_e_diff->Fill(tpc2varchoices[0], TPC2_psel_e->GetBinContent(0)-TPC2_psel_e->GetBinContent(0) );
+    TPC2_esel_mu_diff->Fill(tpc2varchoices[0], TPC2_esel_mu->GetBinContent(0)-TPC2_esel_mu->GetBinContent(0) );
+    TPC2_esel_pi_diff->Fill(tpc2varchoices[0], TPC2_esel_pi->GetBinContent(0)-TPC2_esel_pi->GetBinContent(0) );
+    TPC2_esel_p_diff->Fill(tpc2varchoices[0], TPC2_esel_p->GetBinContent(0)-TPC2_esel_p->GetBinContent(0) );
+    TPC2_esel_e_diff->Fill(tpc2varchoices[0], TPC2_esel_e->GetBinContent(0)-TPC2_esel_e->GetBinContent(0) );
+    
+    TPC2_musel_mu_diff->Fill(tpc2varchoices[1], TPC2_musel_mu->GetBinContent(1)-TPC2_musel_mu->GetBinContent(0) );
+    TPC2_musel_pi_diff->Fill(tpc2varchoices[1], TPC2_musel_pi->GetBinContent(1)-TPC2_musel_pi->GetBinContent(0) ); 
+    TPC2_musel_p_diff->Fill(tpc2varchoices[1], TPC2_musel_p->GetBinContent(1)-TPC2_musel_p->GetBinContent(0) );
+    TPC2_musel_e_diff->Fill(tpc2varchoices[1], TPC2_musel_e->GetBinContent(1)-TPC2_musel_e->GetBinContent(0) );
+    TPC2_pisel_mu_diff->Fill(tpc2varchoices[1], TPC2_pisel_mu->GetBinContent(1)-TPC2_pisel_mu->GetBinContent(0) );
+    TPC2_pisel_pi_diff->Fill(tpc2varchoices[1], TPC2_pisel_pi->GetBinContent(1)-TPC2_pisel_pi->GetBinContent(0) );
+    TPC2_pisel_p_diff->Fill(tpc2varchoices[1], TPC2_pisel_p->GetBinContent(1)-TPC2_pisel_p->GetBinContent(0) );
+    TPC2_pisel_e_diff->Fill(tpc2varchoices[1], TPC2_pisel_e->GetBinContent(1)-TPC2_pisel_e->GetBinContent(0) );
+    TPC2_psel_mu_diff->Fill(tpc2varchoices[1], TPC2_psel_mu->GetBinContent(1)-TPC2_psel_mu->GetBinContent(0) );
+    TPC2_psel_pi_diff->Fill(tpc2varchoices[1], TPC2_psel_pi->GetBinContent(1)-TPC2_psel_pi->GetBinContent(0) );
+    TPC2_psel_p_diff->Fill(tpc2varchoices[1], TPC2_psel_p->GetBinContent(1)-TPC2_psel_p->GetBinContent(0) );
+    TPC2_psel_e_diff->Fill(tpc2varchoices[1], TPC2_psel_e->GetBinContent(1)-TPC2_psel_e->GetBinContent(0) );
+    TPC2_esel_mu_diff->Fill(tpc2varchoices[1], TPC2_esel_mu->GetBinContent(1)-TPC2_esel_mu->GetBinContent(0) );
+    TPC2_esel_pi_diff->Fill(tpc2varchoices[1], TPC2_esel_pi->GetBinContent(1)-TPC2_esel_pi->GetBinContent(0) );
+    TPC2_esel_p_diff->Fill(tpc2varchoices[1], TPC2_esel_p->GetBinContent(1)-TPC2_esel_p->GetBinContent(0) );
+    TPC2_esel_e_diff->Fill(tpc2varchoices[1], TPC2_esel_e->GetBinContent(1)-TPC2_esel_e->GetBinContent(0) );
+    
+    TPC2_musel_mu_diff->Fill(tpc2varchoices[2], TPC2_musel_mu->GetBinContent(2)-TPC2_musel_mu->GetBinContent(0) );
+    TPC2_musel_pi_diff->Fill(tpc2varchoices[2], TPC2_musel_pi->GetBinContent(2)-TPC2_musel_pi->GetBinContent(0) ); 
+    TPC2_musel_p_diff->Fill(tpc2varchoices[2], TPC2_musel_p->GetBinContent(2)-TPC2_musel_p->GetBinContent(0) );
+    TPC2_musel_e_diff->Fill(tpc2varchoices[2], TPC2_musel_e->GetBinContent(2)-TPC2_musel_e->GetBinContent(0) );
+    TPC2_pisel_mu_diff->Fill(tpc2varchoices[2], TPC2_pisel_mu->GetBinContent(2)-TPC2_pisel_mu->GetBinContent(0) );
+    TPC2_pisel_pi_diff->Fill(tpc2varchoices[2], TPC2_pisel_pi->GetBinContent(2)-TPC2_pisel_pi->GetBinContent(0) );
+    TPC2_pisel_p_diff->Fill(tpc2varchoices[2], TPC2_pisel_p->GetBinContent(2)-TPC2_pisel_p->GetBinContent(0) );
+    TPC2_pisel_e_diff->Fill(tpc2varchoices[2], TPC2_pisel_e->GetBinContent(2)-TPC2_pisel_e->GetBinContent(0) );
+    TPC2_psel_mu_diff->Fill(tpc2varchoices[2], TPC2_psel_mu->GetBinContent(2)-TPC2_psel_mu->GetBinContent(0) );
+    TPC2_psel_pi_diff->Fill(tpc2varchoices[2], TPC2_psel_pi->GetBinContent(2)-TPC2_psel_pi->GetBinContent(0) );
+    TPC2_psel_p_diff->Fill(tpc2varchoices[2], TPC2_psel_p->GetBinContent(2)-TPC2_psel_p->GetBinContent(0) );
+    TPC2_psel_e_diff->Fill(tpc2varchoices[2], TPC2_psel_e->GetBinContent(2)-TPC2_psel_e->GetBinContent(0) );
+    TPC2_esel_mu_diff->Fill(tpc2varchoices[2], TPC2_esel_mu->GetBinContent(2)-TPC2_esel_mu->GetBinContent(0) );
+    TPC2_esel_pi_diff->Fill(tpc2varchoices[2], TPC2_esel_pi->GetBinContent(2)-TPC2_esel_pi->GetBinContent(0) );
+    TPC2_esel_p_diff->Fill(tpc2varchoices[2], TPC2_esel_p->GetBinContent(2)-TPC2_esel_p->GetBinContent(0) );
+    TPC2_esel_e_diff->Fill(tpc2varchoices[2], TPC2_esel_e->GetBinContent(2)-TPC2_esel_e->GetBinContent(0) );
+    
+    TCanvas* canvas_TPC2_choices_diff = new TCanvas("canvas_TPC2_choices_diff","",200,10,1000,800);
+    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    TPC2_musel_mu_diff->GetXaxis()->SetRangeUser(0, 4);
+    TPC2_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
+    TPC2_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
+    TPC2_musel_mu_diff->GetYaxis()->SetTitleSize(0.025);
+    TPC2_musel_mu_diff->GetYaxis()->SetTitleOffset(1.2);
+    
+    TPC2_musel_mu_diff->Draw("B");
+    //TPC2_musel_pi->Draw("B same");
+    //TPC2_musel_p->Draw("B same");
+    //TPC2_musel_e->Draw("B same");
+    //TPC2_pisel_mu->Draw("B same");
+    TPC2_pisel_pi_diff->Draw("B same");
+    //TPC2_pisel_p->Draw("B same");
+    //TPC2_pisel_e->Draw("B same");
+    //TPC2_psel_mu->Draw("B same");
+    //TPC2_psel_pi->Draw("B same");
+    TPC2_psel_p_diff->Draw("B same");
+    //TPC2_psel_e->Draw("B same");
+    //TPC2_esel_mu->Draw("B same");
+    //TPC2_esel_pi->Draw("B same");
+    //TPC2_esel_p->Draw("B same");
+    TPC2_esel_e_diff->Draw("B same");
+    
+    canvas_TPC2_choices_diff->BuildLegend();
     
     // =============== ECal variable choice ===============
     
