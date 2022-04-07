@@ -269,7 +269,7 @@
     TPC2_esel_e_diff->Fill(tpc2varchoices[2], TPC2_esel_e->GetBinContent(2)-TPC2_esel_e->GetBinContent(0) );
     
     TCanvas* canvas_TPC2_choices_diff = new TCanvas("canvas_TPC2_choices_diff","",200,10,1000,800);
-    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-1, 1);
     TPC2_musel_mu_diff->GetXaxis()->SetRangeUser(0, 4);
     TPC2_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     TPC2_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
