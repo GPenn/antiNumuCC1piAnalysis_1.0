@@ -111,18 +111,18 @@
     TPC2_psel_p_diff->SetBarOffset(bar_offset_sig + (bar_width_sig*2)); TPC2_psel_p_diff->SetBarWidth(bar_width_sig);
     TPC2_esel_e_diff->SetBarOffset(bar_offset_sig + (bar_width_sig*3)); TPC2_esel_e_diff->SetBarWidth(bar_width_sig);
     
-    TPC2_musel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*1)); TPC2_musel_pi->SetBarWidth(bar_width_bkg);
-    TPC2_musel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*2)); TPC2_musel_p->SetBarWidth(bar_width_bkg);
-    TPC2_musel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*3)); TPC2_musel_e->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*4)); TPC2_pisel_mu->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*6)); TPC2_pisel_p->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*7)); TPC2_pisel_e->SetBarWidth(bar_width_bkg);
-    TPC2_psel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*8)); TPC2_psel_mu->SetBarWidth(bar_width_bkg);
-    TPC2_psel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*9)); TPC2_psel_pi->SetBarWidth(bar_width_bkg);
-    TPC2_psel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*11)); TPC2_psel_e->SetBarWidth(bar_width_bkg);
-    TPC2_esel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*12)); TPC2_esel_mu->SetBarWidth(bar_width_bkg);
-    TPC2_esel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*13)); TPC2_esel_pi->SetBarWidth(bar_width_bkg);
-    TPC2_esel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*14)); TPC2_esel_p->SetBarWidth(bar_width_bkg);
+    TPC2_musel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*0)); TPC2_musel_pi->SetBarWidth(bar_width_bkg);
+    TPC2_musel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*1)); TPC2_musel_p->SetBarWidth(bar_width_bkg);
+    TPC2_musel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*2)); TPC2_musel_e->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*3)); TPC2_pisel_mu->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*4)); TPC2_pisel_p->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*5)); TPC2_pisel_e->SetBarWidth(bar_width_bkg);
+    TPC2_psel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*6)); TPC2_psel_mu->SetBarWidth(bar_width_bkg);
+    TPC2_psel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*7)); TPC2_psel_pi->SetBarWidth(bar_width_bkg);
+    TPC2_psel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*8)); TPC2_psel_e->SetBarWidth(bar_width_bkg);
+    TPC2_esel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*9)); TPC2_esel_mu->SetBarWidth(bar_width_bkg);
+    TPC2_esel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*10)); TPC2_esel_pi->SetBarWidth(bar_width_bkg);
+    TPC2_esel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*11)); TPC2_esel_p->SetBarWidth(bar_width_bkg);
     
     TPC2_musel_mu->Fill(tpc2varchoices[0],0.935975);
     TPC2_musel_pi->Fill(tpc2varchoices[0],0.39852); 
