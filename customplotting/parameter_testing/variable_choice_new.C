@@ -205,7 +205,13 @@
     TPC2_esel_e->Draw("B same");
     
     //canvas_TPC2_choices->BuildLegend();
-    canvas_TPC2_choices_sig->cd(1)->BuildLegend();
+    //canvas_TPC2_choices_sig->cd(1)->BuildLegend();
+    TLegend *legend = new TLegend(0.55,0.65,0.76,0.82);
+    legend->AddEntry(TPC2_musel_mu,"#mu^{+} identified as #mu^{+}","f");
+    legend->AddEntry(TPC2_pisel_pi,"#pi^{+} identified as #pi^{+}","f");
+    legend->AddEntry(TPC2_psel_p,"p identified as p","f");
+    legend->AddEntry(TPC2_esel_e,"e^{+} identified as e^{+}","f");
+    legend->Draw();
     
     //TCanvas* canvas_TPC2_choices_bkg = new TCanvas("canvas_TPC2_choices_bkg","",200,10,1000,800);
     TCanvas* canvas_TPC2_choices_bkg = new TCanvas("canvas_TPC2_choices_bkg","",200,10,2000,800);
