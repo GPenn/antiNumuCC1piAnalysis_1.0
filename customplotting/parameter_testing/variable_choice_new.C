@@ -323,7 +323,7 @@
     TPC2_esel_pi_diff->Draw("B same");
     TPC2_esel_p_diff->Draw("B same");
     
-    canvas_TPC2_choices_bkg_diff->BuildLegend();
+    //canvas_TPC2_choices_bkg_diff->BuildLegend();
     
     // =============== ECal variable choice ===============
     
