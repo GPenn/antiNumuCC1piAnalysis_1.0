@@ -51,37 +51,37 @@
     TH1F* TPC2_esel_e_diff = new TH1F("TPC2_esel_e_diff","e^{+} identified as e^{+}",3,0,3);
     
     TPC2_musel_mu->SetFillColor( kBlue);
-    TPC2_musel_pi->SetFillColor( kRed); TPC2_musel_pi->SetFillStyle(3305);
-    TPC2_musel_p->SetFillColor( kGreen); TPC2_musel_p->SetFillStyle(3305);
-    TPC2_musel_e->SetFillColor( kMagenta); TPC2_musel_e->SetFillStyle(3305);
-    TPC2_pisel_mu->SetFillColor( kBlue); TPC2_pisel_mu->SetFillStyle(3345);
+    TPC2_musel_pi->SetFillColor( kRed); //TPC2_musel_pi->SetFillStyle(3305);
+    TPC2_musel_p->SetFillColor( kGreen); //TPC2_musel_p->SetFillStyle(3305);
+    TPC2_musel_e->SetFillColor( kMagenta); //TPC2_musel_e->SetFillStyle(3305);
+    TPC2_pisel_mu->SetFillColor( kBlue); //TPC2_pisel_mu->SetFillStyle(3345);
     TPC2_pisel_pi->SetFillColor( kRed); 
-    TPC2_pisel_p->SetFillColor( kGreen); TPC2_pisel_p->SetFillStyle(3345);
-    TPC2_pisel_e->SetFillColor( kMagenta); TPC2_pisel_e->SetFillStyle(3345);
-    TPC2_psel_mu->SetFillColor( kBlue); TPC2_psel_mu->SetFillStyle(3354);
-    TPC2_psel_pi->SetFillColor( kRed); TPC2_psel_pi->SetFillStyle(3354);
+    TPC2_pisel_p->SetFillColor( kGreen+1); //TPC2_pisel_p->SetFillStyle(3345);
+    TPC2_pisel_e->SetFillColor( kMagenta+1); //TPC2_pisel_e->SetFillStyle(3345);
+    TPC2_psel_mu->SetFillColor( kBlue+1); //TPC2_psel_mu->SetFillStyle(3354);
+    TPC2_psel_pi->SetFillColor( kRed+1); //TPC2_psel_pi->SetFillStyle(3354);
     TPC2_psel_p->SetFillColor( kGreen); 
-    TPC2_psel_e->SetFillColor( kMagenta); TPC2_psel_e->SetFillStyle(3354);
-    TPC2_esel_mu->SetFillColor( kBlue); TPC2_esel_mu->SetFillStyle(3144);
-    TPC2_esel_pi->SetFillColor( kRed); TPC2_esel_pi->SetFillStyle(3144);
-    TPC2_esel_p->SetFillColor( kGreen); TPC2_esel_p->SetFillStyle(3144);
+    TPC2_psel_e->SetFillColor( kMagenta+2); //TPC2_psel_e->SetFillStyle(3354);
+    TPC2_esel_mu->SetFillColor( kBlue+2); //TPC2_esel_mu->SetFillStyle(3144);
+    TPC2_esel_pi->SetFillColor( kRed+2); //TPC2_esel_pi->SetFillStyle(3144);
+    TPC2_esel_p->SetFillColor( kGreen+2); //TPC2_esel_p->SetFillStyle(3144);
     TPC2_esel_e->SetFillColor( kMagenta);
     
     TPC2_musel_mu_diff->SetFillColor( kBlue);
-    TPC2_musel_pi_diff->SetFillColor( kRed); TPC2_musel_pi_diff->SetFillStyle(3305);
-    TPC2_musel_p_diff->SetFillColor( kGreen); TPC2_musel_p_diff->SetFillStyle(3305);
-    TPC2_musel_e_diff->SetFillColor( kMagenta); TPC2_musel_e_diff->SetFillStyle(3305);
-    TPC2_pisel_mu_diff->SetFillColor( kBlue); TPC2_pisel_mu_diff->SetFillStyle(3345);
+    TPC2_musel_pi_diff->SetFillColor( kRed); //TPC2_musel_pi_diff->SetFillStyle(3305);
+    TPC2_musel_p_diff->SetFillColor( kGreen); //TPC2_musel_p_diff->SetFillStyle(3305);
+    TPC2_musel_e_diff->SetFillColor( kMagenta); //TPC2_musel_e_diff->SetFillStyle(3305);
+    TPC2_pisel_mu_diff->SetFillColor( kBlue); //TPC2_pisel_mu_diff->SetFillStyle(3345);
     TPC2_pisel_pi_diff->SetFillColor( kRed);
-    TPC2_pisel_p_diff->SetFillColor( kGreen); TPC2_pisel_p_diff->SetFillStyle(3345);
-    TPC2_pisel_e_diff->SetFillColor( kMagenta); TPC2_pisel_e_diff->SetFillStyle(3345);
-    TPC2_psel_mu_diff->SetFillColor( kBlue); TPC2_psel_mu_diff->SetFillStyle(3354);
-    TPC2_psel_pi_diff->SetFillColor( kRed); TPC2_psel_pi_diff->SetFillStyle(3354);
+    TPC2_pisel_p_diff->SetFillColor( kGreen); //TPC2_pisel_p_diff->SetFillStyle(3345);
+    TPC2_pisel_e_diff->SetFillColor( kMagenta); //TPC2_pisel_e_diff->SetFillStyle(3345);
+    TPC2_psel_mu_diff->SetFillColor( kBlue); //TPC2_psel_mu_diff->SetFillStyle(3354);
+    TPC2_psel_pi_diff->SetFillColor( kRed); //TPC2_psel_pi_diff->SetFillStyle(3354);
     TPC2_psel_p_diff->SetFillColor( kGreen);
-    TPC2_psel_e_diff->SetFillColor( kMagenta); TPC2_psel_e_diff->SetFillStyle(3354);
-    TPC2_esel_mu_diff->SetFillColor( kBlue); TPC2_esel_mu_diff->SetFillStyle(3144);
-    TPC2_esel_pi_diff->SetFillColor( kRed); TPC2_esel_pi->SetFillStyle(3144);
-    TPC2_esel_p_diff->SetFillColor( kGreen); TPC2_esel_p->SetFillStyle(3144);
+    TPC2_psel_e_diff->SetFillColor( kMagenta); //TPC2_psel_e_diff->SetFillStyle(3354);
+    TPC2_esel_mu_diff->SetFillColor( kBlue); //TPC2_esel_mu_diff->SetFillStyle(3144);
+    TPC2_esel_pi_diff->SetFillColor( kRed); //TPC2_esel_pi->SetFillStyle(3144);
+    TPC2_esel_p_diff->SetFillColor( kGreen); //TPC2_esel_p->SetFillStyle(3144);
     TPC2_esel_e_diff->SetFillColor( kMagenta);
     
     /*TPC2_musel_mu->SetBarOffset(bar_offset + (bar_width*0)); TPC2_musel_mu->SetBarWidth(bar_width);
@@ -111,31 +111,31 @@
     TPC2_psel_p_diff->SetBarOffset(bar_offset_sig + (bar_width_sig*2)); TPC2_psel_p_diff->SetBarWidth(bar_width_sig);
     TPC2_esel_e_diff->SetBarOffset(bar_offset_sig + (bar_width_sig*3)); TPC2_esel_e_diff->SetBarWidth(bar_width_sig);
     
-    TPC2_musel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*0)); TPC2_musel_pi->SetBarWidth(bar_width_bkg);
-    TPC2_musel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*1)); TPC2_musel_p->SetBarWidth(bar_width_bkg);
-    TPC2_musel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*2)); TPC2_musel_e->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*3)); TPC2_pisel_mu->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*4)); TPC2_pisel_p->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*5)); TPC2_pisel_e->SetBarWidth(bar_width_bkg);
-    TPC2_psel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*6)); TPC2_psel_mu->SetBarWidth(bar_width_bkg);
-    TPC2_psel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*7)); TPC2_psel_pi->SetBarWidth(bar_width_bkg);
-    TPC2_psel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*8)); TPC2_psel_e->SetBarWidth(bar_width_bkg);
-    TPC2_esel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*9)); TPC2_esel_mu->SetBarWidth(bar_width_bkg);
-    TPC2_esel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*10)); TPC2_esel_pi->SetBarWidth(bar_width_bkg);
-    TPC2_esel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*11)); TPC2_esel_p->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*0)); TPC2_pisel_mu->SetBarWidth(bar_width_bkg);
+    TPC2_psel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*1)); TPC2_psel_mu->SetBarWidth(bar_width_bkg);
+    TPC2_esel_mu->SetBarOffset(bar_offset_bkg + (bar_width_bkg*2)); TPC2_esel_mu->SetBarWidth(bar_width_bkg);
+    TPC2_musel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*3)); TPC2_musel_pi->SetBarWidth(bar_width_bkg);
+    TPC2_psel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*4)); TPC2_psel_pi->SetBarWidth(bar_width_bkg);
+    TPC2_esel_pi->SetBarOffset(bar_offset_bkg + (bar_width_bkg*5)); TPC2_esel_pi->SetBarWidth(bar_width_bkg);
+    TPC2_musel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*6)); TPC2_musel_p->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*7)); TPC2_pisel_p->SetBarWidth(bar_width_bkg);
+    TPC2_esel_p->SetBarOffset(bar_offset_bkg + (bar_width_bkg*8)); TPC2_esel_p->SetBarWidth(bar_width_bkg);
+    TPC2_musel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*9)); TPC2_musel_e->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*10)); TPC2_pisel_e->SetBarWidth(bar_width_bkg);
+    TPC2_psel_e->SetBarOffset(bar_offset_bkg + (bar_width_bkg*11)); TPC2_psel_e->SetBarWidth(bar_width_bkg);
     
-    TPC2_musel_pi_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*0)); TPC2_musel_pi_diff->SetBarWidth(bar_width_bkg);
-    TPC2_musel_p_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*1)); TPC2_musel_p_diff->SetBarWidth(bar_width_bkg);
-    TPC2_musel_e_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*2)); TPC2_musel_e_diff->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_mu_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*3)); TPC2_pisel_mu_diff->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_p_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*4)); TPC2_pisel_p_diff->SetBarWidth(bar_width_bkg);
-    TPC2_pisel_e_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*5)); TPC2_pisel_e_diff->SetBarWidth(bar_width_bkg);
-    TPC2_psel_mu_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*6)); TPC2_psel_mu_diff->SetBarWidth(bar_width_bkg);
-    TPC2_psel_pi_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*7)); TPC2_psel_pi_diff->SetBarWidth(bar_width_bkg);
-    TPC2_psel_e_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*8)); TPC2_psel_e_diff->SetBarWidth(bar_width_bkg);
-    TPC2_esel_mu_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*9)); TPC2_esel_mu_diff->SetBarWidth(bar_width_bkg);
-    TPC2_esel_pi_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*10)); TPC2_esel_pi_diff->SetBarWidth(bar_width_bkg);
-    TPC2_esel_p_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*11)); TPC2_esel_p_diff->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_mu_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*0)); TPC2_pisel_mu_diff->SetBarWidth(bar_width_bkg);
+    TPC2_psel_mu_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*1)); TPC2_psel_mu_diff->SetBarWidth(bar_width_bkg);
+    TPC2_esel_mu_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*2)); TPC2_esel_mu_diff->SetBarWidth(bar_width_bkg);
+    TPC2_musel_pi_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*3)); TPC2_musel_pi_diff->SetBarWidth(bar_width_bkg);
+    TPC2_psel_pi_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*4)); TPC2_psel_pi_diff->SetBarWidth(bar_width_bkg);
+    TPC2_esel_pi_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*5)); TPC2_esel_pi_diff->SetBarWidth(bar_width_bkg);
+    TPC2_musel_p_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*6)); TPC2_musel_p_diff->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_p_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*7)); TPC2_pisel_p_diff->SetBarWidth(bar_width_bkg);
+    TPC2_esel_p_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*8)); TPC2_esel_p_diff->SetBarWidth(bar_width_bkg);
+    TPC2_musel_e_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*9)); TPC2_musel_e_diff->SetBarWidth(bar_width_bkg);
+    TPC2_pisel_e_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*10)); TPC2_pisel_e_diff->SetBarWidth(bar_width_bkg);
+    TPC2_psel_e_diff->SetBarOffset(bar_offset_bkg + (bar_width_bkg*11)); TPC2_psel_e_diff->SetBarWidth(bar_width_bkg);
     
     TPC2_musel_mu->Fill(tpc2varchoices[0],0.935975);
     TPC2_musel_pi->Fill(tpc2varchoices[0],0.39852); 
@@ -218,19 +218,19 @@
     TPC2_musel_pi->GetYaxis()->SetTitleSize(0.025);
     TPC2_musel_pi->GetYaxis()->SetTitleOffset(1.4);
     
-    TPC2_musel_pi->Draw("B");
-    TPC2_musel_p->Draw("B same");
-    TPC2_musel_e->Draw("B same");
-    TPC2_pisel_mu->Draw("B same");
-    TPC2_pisel_p->Draw("B same");
-    TPC2_pisel_e->Draw("B same");
+    TPC2_pisel_mu->Draw("B");
     TPC2_psel_mu->Draw("B same");
-    TPC2_psel_pi->Draw("B same");
-    TPC2_psel_e->Draw("B same");
     TPC2_esel_mu->Draw("B same");
+    TPC2_musel_pi->Draw("B same");
+    TPC2_psel_pi->Draw("B same");
     TPC2_esel_pi->Draw("B same");
+    TPC2_musel_p->Draw("B same");
+    TPC2_pisel_p->Draw("B same");
     TPC2_esel_p->Draw("B same");
-    
+    TPC2_musel_e->Draw("B same");
+    TPC2_pisel_e->Draw("B same");
+    TPC2_psel_e->Draw("B same");
+
     //canvas_TPC2_choices_bkg->BuildLegend();
     canvas_TPC2_choices_bkg->cd(1)->BuildLegend();
     
@@ -310,18 +310,18 @@
     TPC2_musel_pi_diff->GetYaxis()->SetTitleSize(0.025);
     TPC2_musel_pi_diff->GetYaxis()->SetTitleOffset(1.5);
     
-    TPC2_musel_pi_diff->Draw("B");
-    TPC2_musel_p_diff->Draw("B same");
-    TPC2_musel_e_diff->Draw("B same");
-    TPC2_pisel_mu_diff->Draw("B same");
-    TPC2_pisel_p_diff->Draw("B same");
-    TPC2_pisel_e_diff->Draw("B same");
+    TPC2_pisel_mu_diff->Draw("B");
     TPC2_psel_mu_diff->Draw("B same");
-    TPC2_psel_pi_diff->Draw("B same");
-    TPC2_psel_e_diff->Draw("B same");
     TPC2_esel_mu_diff->Draw("B same");
+    TPC2_musel_pi_diff->Draw("B same");
+    TPC2_psel_pi_diff->Draw("B same");
     TPC2_esel_pi_diff->Draw("B same");
+    TPC2_musel_p_diff->Draw("B same");
+    TPC2_pisel_p_diff->Draw("B same");
     TPC2_esel_p_diff->Draw("B same");
+    TPC2_musel_e_diff->Draw("B same");
+    TPC2_pisel_e_diff->Draw("B same");
+    TPC2_psel_e_diff->Draw("B same");
     
     //canvas_TPC2_choices_bkg_diff->BuildLegend();
     
