@@ -206,12 +206,12 @@
     
     //canvas_TPC2_choices->BuildLegend();
     //canvas_TPC2_choices_sig->cd(1)->BuildLegend();
-    TLegend *legend = new TLegend(0.55,0.65,0.76,0.82);
-    legend->AddEntry(TPC2_musel_mu,"#mu^{+} identified as #mu^{+}","f");
-    legend->AddEntry(TPC2_pisel_pi,"#pi^{+} identified as #pi^{+}","f");
-    legend->AddEntry(TPC2_psel_p,"p identified as p","f");
-    legend->AddEntry(TPC2_esel_e,"e^{+} identified as e^{+}","f");
-    legend->Draw();
+    TLegend *legend_sig = new TLegend(0.55,0.65,0.76,0.82);
+    legend_sig->AddEntry(TPC2_musel_mu,"#mu^{+} identified as #mu^{+}","f");
+    legend_sig->AddEntry(TPC2_pisel_pi,"#pi^{+} identified as #pi^{+}","f");
+    legend_sig->AddEntry(TPC2_psel_p,"p identified as p","f");
+    legend_sig->AddEntry(TPC2_esel_e,"e^{+} identified as e^{+}","f");
+    legend_sig->Draw();
     
     //TCanvas* canvas_TPC2_choices_bkg = new TCanvas("canvas_TPC2_choices_bkg","",200,10,1000,800);
     TCanvas* canvas_TPC2_choices_bkg = new TCanvas("canvas_TPC2_choices_bkg","",200,10,2000,800);
@@ -238,7 +238,21 @@
     TPC2_psel_e->Draw("B same");
 
     //canvas_TPC2_choices_bkg->BuildLegend();
-    canvas_TPC2_choices_bkg->cd(1)->BuildLegend();
+    //canvas_TPC2_choices_bkg->cd(1)->BuildLegend();
+    TLegend *legend_bkg = new TLegend(0.55,0.65,0.76,0.82);
+    legend_bkg->AddEntry(TPC2_pisel_mu,"#mu^{+} identified as #pi^{+}","f");
+    legend_bkg->AddEntry(TPC2_psel_mu,"#mu^{+} identified as p","f");
+    legend_bkg->AddEntry(TPC2_esel_mu,"#mu^{+} identified as e^{+}","f");
+    legend_bkg->AddEntry(TPC2_musel_pi,"#pi^{+} identified as #mu^{+}","f");
+    legend_bkg->AddEntry(TPC2_psel_pi,"#pi^{+} identified as p","f");
+    legend_bkg->AddEntry(TPC2_esel_pi,"#pi^{+} identified as e^{+}","f");
+    legend_bkg->AddEntry(TPC2_musel_p,"p identified as #mu^{+}","f");
+    legend_bkg->AddEntry(TPC2_pisel_p,"p identified as #pi^{+}","f");
+    legend_bkg->AddEntry(TPC2_esel_p,"p identified as e^{+}","f");
+    legend_bkg->AddEntry(TPC2_musel_e,"e^{+} identified as #mu^{+}","f");
+    legend_bkg->AddEntry(TPC2_pisel_e,"e^{+} identified as #pi^{+}","f");
+    legend_bkg->AddEntry(TPC2_psel_e,"e^{+} identified as p","f");
+    legend_bkg->Draw();
     
     TPC2_musel_mu_diff->Fill(tpc2varchoices[0], TPC2_musel_mu->GetBinContent(1)-TPC2_musel_mu->GetBinContent(3) );
     TPC2_musel_pi_diff->Fill(tpc2varchoices[0], TPC2_musel_pi->GetBinContent(1)-TPC2_musel_pi->GetBinContent(3) ); 
