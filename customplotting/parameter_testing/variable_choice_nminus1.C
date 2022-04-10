@@ -15,39 +15,39 @@
     const char *nminus1varchoices[16] = {"Momentum","Angle","FGD1 E/L","FGD2 E/L","TPC2 mu-like","TPC2 pi-like","TPC2 p-like","TPC2 e-like",
                                    "TPC3 dE/dx","ECal EM energy","ECal E/L", "ECal circularity","ECal FBR", "ECal TMR", "ECal QRMS", "nSMRDs"};
     
-    TH1F* Nminus1_musel_mu = new TH1F("Nminus1_musel_mu","#mu^{+} identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_musel_pi = new TH1F("Nminus1_musel_pi","#pi^{+} identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_musel_p = new TH1F("Nminus1_musel_p","p identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_musel_e = new TH1F("Nminus1_musel_e","e^{+} identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_pisel_mu = new TH1F("Nminus1_pisel_mu","#mu^{+} identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_pisel_pi = new TH1F("Nminus1_pisel_pi","#pi^{+} identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_pisel_p = new TH1F("Nminus1_pisel_p","p identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_pisel_e = new TH1F("Nminus1_pisel_e","e^{+} identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_psel_mu = new TH1F("Nminus1_psel_mu","#mu^{+} identified as p",3,0,3);
-    TH1F* Nminus1_psel_pi = new TH1F("Nminus1_psel_pi","#pi^{+} identified as p",3,0,3);
-    TH1F* Nminus1_psel_p = new TH1F("Nminus1_psel_p","p identified as p",3,0,3);
-    TH1F* Nminus1_psel_e = new TH1F("Nminus1_psel_e","e^{+} identified as p",3,0,3);
-    TH1F* Nminus1_esel_mu = new TH1F("Nminus1_esel_mu","#mu^{+} identified as e^{+}",3,0,3);
-    TH1F* Nminus1_esel_pi = new TH1F("Nminus1_esel_pi","#pi^{+} identified as e^{+}",3,0,3);
-    TH1F* Nminus1_esel_p = new TH1F("Nminus1_esel_p","p identified as e^{+}",3,0,3);
-    TH1F* Nminus1_esel_e = new TH1F("Nminus1_esel_e","e^{+} identified as e^{+}",3,0,3);
+    TH1F* Nminus1_musel_mu = new TH1F("Nminus1_musel_mu","#mu^{+} identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_musel_pi = new TH1F("Nminus1_musel_pi","#pi^{+} identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_musel_p = new TH1F("Nminus1_musel_p","p identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_musel_e = new TH1F("Nminus1_musel_e","e^{+} identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_pisel_mu = new TH1F("Nminus1_pisel_mu","#mu^{+} identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_pisel_pi = new TH1F("Nminus1_pisel_pi","#pi^{+} identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_pisel_p = new TH1F("Nminus1_pisel_p","p identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_pisel_e = new TH1F("Nminus1_pisel_e","e^{+} identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_psel_mu = new TH1F("Nminus1_psel_mu","#mu^{+} identified as p",4,0,4);
+    TH1F* Nminus1_psel_pi = new TH1F("Nminus1_psel_pi","#pi^{+} identified as p",4,0,4);
+    TH1F* Nminus1_psel_p = new TH1F("Nminus1_psel_p","p identified as p",4,0,4);
+    TH1F* Nminus1_psel_e = new TH1F("Nminus1_psel_e","e^{+} identified as p",4,0,4);
+    TH1F* Nminus1_esel_mu = new TH1F("Nminus1_esel_mu","#mu^{+} identified as e^{+}",4,0,4);
+    TH1F* Nminus1_esel_pi = new TH1F("Nminus1_esel_pi","#pi^{+} identified as e^{+}",4,0,4);
+    TH1F* Nminus1_esel_p = new TH1F("Nminus1_esel_p","p identified as e^{+}",4,0,4);
+    TH1F* Nminus1_esel_e = new TH1F("Nminus1_esel_e","e^{+} identified as e^{+}",4,0,4);
     
-    TH1F* Nminus1_musel_mu_diff = new TH1F("Nminus1_musel_mu_diff","#mu^{+} identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_musel_pi_diff = new TH1F("Nminus1_musel_pi_diff","#pi^{+} identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_musel_p_diff = new TH1F("Nminus1_musel_p_diff","p identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_musel_e_diff = new TH1F("Nminus1_musel_e_diff","e^{+} identified as #mu^{+}",3,0,3);
-    TH1F* Nminus1_pisel_mu_diff = new TH1F("Nminus1_pisel_mu_diff","#mu^{+} identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_pisel_pi_diff = new TH1F("Nminus1_pisel_pi_diff","#pi^{+} identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_pisel_p_diff = new TH1F("Nminus1_pisel_p_diff","p identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_pisel_e_diff = new TH1F("Nminus1_pisel_e_diff","e^{+} identified as #pi^{+}",3,0,3);
-    TH1F* Nminus1_psel_mu_diff = new TH1F("Nminus1_psel_mu_diff","#mu^{+} identified as p",3,0,3);
-    TH1F* Nminus1_psel_pi_diff = new TH1F("Nminus1_psel_pi_diff","#pi^{+} identified as p",3,0,3);
-    TH1F* Nminus1_psel_p_diff = new TH1F("Nminus1_psel_p_diff","p identified as p",3,0,3);
-    TH1F* Nminus1_psel_e_diff = new TH1F("Nminus1_psel_e_diff","e^{+} identified as p",3,0,3);
-    TH1F* Nminus1_esel_mu_diff = new TH1F("Nminus1_esel_mu_diff","#mu^{+} identified as e^{+}",3,0,3);
-    TH1F* Nminus1_esel_pi_diff = new TH1F("Nminus1_esel_pi_diff","#pi^{+} identified as e^{+}",3,0,3);
-    TH1F* Nminus1_esel_p_diff = new TH1F("Nminus1_esel_p_diff","p identified as e^{+}",3,0,3);
-    TH1F* Nminus1_esel_e_diff = new TH1F("Nminus1_esel_e_diff","e^{+} identified as e^{+}",3,0,3);
+    TH1F* Nminus1_musel_mu_diff = new TH1F("Nminus1_musel_mu_diff","#mu^{+} identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_musel_pi_diff = new TH1F("Nminus1_musel_pi_diff","#pi^{+} identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_musel_p_diff = new TH1F("Nminus1_musel_p_diff","p identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_musel_e_diff = new TH1F("Nminus1_musel_e_diff","e^{+} identified as #mu^{+}",4,0,4);
+    TH1F* Nminus1_pisel_mu_diff = new TH1F("Nminus1_pisel_mu_diff","#mu^{+} identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_pisel_pi_diff = new TH1F("Nminus1_pisel_pi_diff","#pi^{+} identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_pisel_p_diff = new TH1F("Nminus1_pisel_p_diff","p identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_pisel_e_diff = new TH1F("Nminus1_pisel_e_diff","e^{+} identified as #pi^{+}",4,0,4);
+    TH1F* Nminus1_psel_mu_diff = new TH1F("Nminus1_psel_mu_diff","#mu^{+} identified as p",4,0,4);
+    TH1F* Nminus1_psel_pi_diff = new TH1F("Nminus1_psel_pi_diff","#pi^{+} identified as p",4,0,4);
+    TH1F* Nminus1_psel_p_diff = new TH1F("Nminus1_psel_p_diff","p identified as p",4,0,4);
+    TH1F* Nminus1_psel_e_diff = new TH1F("Nminus1_psel_e_diff","e^{+} identified as p",4,0,4);
+    TH1F* Nminus1_esel_mu_diff = new TH1F("Nminus1_esel_mu_diff","#mu^{+} identified as e^{+}",4,0,4);
+    TH1F* Nminus1_esel_pi_diff = new TH1F("Nminus1_esel_pi_diff","#pi^{+} identified as e^{+}",4,0,4);
+    TH1F* Nminus1_esel_p_diff = new TH1F("Nminus1_esel_p_diff","p identified as e^{+}",4,0,4);
+    TH1F* Nminus1_esel_e_diff = new TH1F("Nminus1_esel_e_diff","e^{+} identified as e^{+}",4,0,4);
     
     Nminus1_musel_mu->SetFillColor( kBlue);
     Nminus1_musel_pi->SetFillColor( kRed); //Nminus1_musel_pi->SetFillStyle(3305);
@@ -528,9 +528,9 @@
     
     
     
-    //TCanvas* canvas_Nminus1_choices_diff = new TCanvas("canvas_Nminus1_choices_diff","",200,10,1000,800);
-    canvas_Nminus1_choices_sig->cd(2);
-    Nminus1_musel_mu_diff->GetYaxis()->SetRangeUser(-0.15, 0.02);
+    TCanvas* canvas_Nminus1_choices_diff = new TCanvas("canvas_Nminus1_choices_diff","",200,10,1000,800);
+    //canvas_Nminus1_choices_sig->cd(2);
+    Nminus1_musel_mu_diff->GetYaxis()->SetRangeUser(-0.05, 0.45);
     Nminus1_musel_mu_diff->GetXaxis()->SetRangeUser(0, 17);
     Nminus1_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     Nminus1_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
@@ -543,6 +543,7 @@
     Nminus1_esel_e_diff->Draw("B same");
     
     //canvas_Nminus1_choices_diff->BuildLegend();
+    legend_sig->Draw();
     
     //TCanvas* canvas_Nminus1_choices_bkg_diff = new TCanvas("canvas_Nminus1_choices_bkg_diff","",200,10,1000,800);
     canvas_Nminus1_choices_bkg->cd(2);
