@@ -2559,10 +2559,10 @@ void DefaultCustomPlotting::Loop()
       //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test1, opt_pilike_bkg_test1, optimisation_nbins) << std::endl;
       //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test1, opt_plike_bkg_test1, optimisation_nbins) << std::endl;
       //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test1, opt_elike_bkg_test1, optimisation_nbins) << std::endl;
-      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test1/presel_nAntimu << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)musel_nAntimu_test1/presel_nAntimu << std::endl;
       std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test1/presel_nPiplus << std::endl;
-      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test1/presel_nProton << std::endl;
-      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test1/presel_nPositron << std::endl;
+      std::cout << "p efficiency: " << (Float_t)psel_nProton_test1/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)esel_nPositron_test1/presel_nPositron << std::endl;
       
       // Point 2
 
@@ -2576,10 +2576,10 @@ void DefaultCustomPlotting::Loop()
       //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test2, opt_pilike_bkg_test2, optimisation_nbins) << std::endl;
       //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test2, opt_plike_bkg_test2, optimisation_nbins) << std::endl;
       //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test2, opt_elike_bkg_test2, optimisation_nbins) << std::endl;
-      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test2/presel_nAntimu << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)musel_nAntimu_test2/presel_nAntimu << std::endl;
       std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test2/presel_nPiplus << std::endl;
-      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test2/presel_nProton << std::endl;
-      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test2/presel_nPositron << std::endl;
+      std::cout << "p efficiency: " << (Float_t)psel_nProton_test2/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)esel_nPositron_test2/presel_nPositron << std::endl;
       
       // Point 3
       
@@ -2593,10 +2593,10 @@ void DefaultCustomPlotting::Loop()
       //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test3, opt_pilike_bkg_test3, optimisation_nbins) << std::endl;
       //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test3, opt_plike_bkg_test3, optimisation_nbins) << std::endl;
       //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test3, opt_elike_bkg_test3, optimisation_nbins) << std::endl;
-      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test3/presel_nAntimu << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)musel_nAntimu_test3/presel_nAntimu << std::endl;
       std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test3/presel_nPiplus << std::endl;
-      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test3/presel_nProton << std::endl;
-      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test3/presel_nPositron << std::endl;
+      std::cout << "p efficiency: " << (Float_t)psel_nProton_test3/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)esel_nPositron_test3/presel_nPositron << std::endl;
       
       // Point 4
 
@@ -2610,10 +2610,10 @@ void DefaultCustomPlotting::Loop()
       //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test4, opt_pilike_bkg_test4, optimisation_nbins) << std::endl;
       //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test4, opt_plike_bkg_test4, optimisation_nbins) << std::endl;
       //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test4, opt_elike_bkg_test4, optimisation_nbins) << std::endl;
-      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test4/presel_nAntimu << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)musel_nAntimu_test4/presel_nAntimu << std::endl;
       std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test4/presel_nPiplus << std::endl;
-      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test4/presel_nProton << std::endl;
-      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test4/presel_nPositron << std::endl;
+      std::cout << "p efficiency: " << (Float_t)psel_nProton_test4/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)esel_nPositron_test4/presel_nPositron << std::endl;
       
       // Point 5
       
@@ -2628,10 +2628,10 @@ void DefaultCustomPlotting::Loop()
          //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test5, opt_pilike_bkg_test5, optimisation_nbins) << std::endl;
          //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test5, opt_plike_bkg_test5, optimisation_nbins) << std::endl;
          //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test5, opt_elike_bkg_test5, optimisation_nbins) << std::endl;
-         std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test5/presel_nAntimu << std::endl;
+         std::cout << "mu+ efficiency: " << (Float_t)musel_nAntimu_test5/presel_nAntimu << std::endl;
          std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test5/presel_nPiplus << std::endl;
-         std::cout << "p efficiency: " << (Float_t)pisel_nProton_test5/presel_nProton << std::endl;
-         std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test5/presel_nPositron << std::endl;
+         std::cout << "p efficiency: " << (Float_t)psel_nProton_test5/presel_nProton << std::endl;
+         std::cout << "e+ efficiency: " << (Float_t)esel_nPositron_test5/presel_nPositron << std::endl;
       }
          
          
