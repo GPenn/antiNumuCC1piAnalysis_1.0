@@ -45,7 +45,7 @@
     //canvas_treedepth->Divide(2,1,0.005,0.005);
     //canvas_treedepth->cd(1);
     
-    treedepth_pg_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    treedepth_pg_mu->GetYaxis()->SetRangeUser(-0.1, 0.04);
     treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
     treedepth_pg_mu->Draw("AL*");
     treedepth_pg_pi->Draw("L* same");
