@@ -17,7 +17,7 @@ void DefaultCustomPlotting::Loop()
    gStyle->SetTitleXOffset(1.2);
    
    
-   TString parameter = "randomforests";
+   TString parameter = "treedepth";
    
    
    if (fChain == 0) return;
@@ -765,7 +765,8 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms to find optimal cuts =============
       
-      if (accum_level[0][1] > 5){
+      // NOW WITH VALIDITY CHECK:
+      if (accum_level[0][1] > 5) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
          
          if (particle == -13)
          {
@@ -2505,10 +2506,10 @@ void DefaultCustomPlotting::Loop()
       if (parameter == "bagged") std::cout << "Bagged 0.1:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 4:" << std::endl;
       
-      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test1, opt_mulike_bkg_test1, optimisation_nbins) << std::endl;
-      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test1, opt_pilike_bkg_test1, optimisation_nbins) << std::endl;
-      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test1, opt_plike_bkg_test1, optimisation_nbins) << std::endl;
-      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test1, opt_elike_bkg_test1, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test1, opt_mulike_bkg_test1, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test1, opt_pilike_bkg_test1, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test1, opt_plike_bkg_test1, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test1, opt_elike_bkg_test1, optimisation_nbins) << std::endl;
       
       // Point 2
 
