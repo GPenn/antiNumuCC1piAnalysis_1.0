@@ -766,7 +766,7 @@ void DefaultCustomPlotting::Loop()
       // ============= Fill histograms to find optimal cuts =============
       
       // NOW WITH VALIDITY CHECK:
-      if (accum_level[0][1] > 5) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
+      if ((accum_level[0][1] > 5) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
          
          if (particle == -13)
          {
