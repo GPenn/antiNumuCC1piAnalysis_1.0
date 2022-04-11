@@ -17,7 +17,7 @@ void DefaultCustomPlotting::Loop()
    gStyle->SetTitleXOffset(1.2);
    
    
-   TString parameter = "treedepth";
+   TString parameter = "treenumber";
    
    
    if (fChain == 0) return;
