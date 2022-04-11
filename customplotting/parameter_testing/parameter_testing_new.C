@@ -5,79 +5,53 @@
     
     // =============== Tree depth ===============
     
-    refvalue_cc1pi_mu = 33.8996;
-    TGraph* treedepth_cc1pi_mu = new TGraph();
-    treedepth_cc1pi_mu->SetTitle("#mu^{+} selection mu-like cut");
-    treedepth_cc1pi_mu->SetPoint(0, 2.0, 33.6252/refvalue_cc1pi_mu);
-    treedepth_cc1pi_mu->SetPoint(1, 3.0, 33.8996/refvalue_cc1pi_mu);
-    treedepth_cc1pi_mu->SetPoint(2, 4.0, 33.8306/refvalue_cc1pi_mu);
-    treedepth_cc1pi_mu->SetPoint(3, 5.0, 33.9517/refvalue_cc1pi_mu);
-    treedepth_cc1pi_mu->SetLineColor( kBlue); treedepth_cc1pi_mu->SetMarkerColor( kBlue); treedepth_cc1pi_mu->SetFillColor( kWhite); 
-    
-    refvalue_cc1pi_pi = 37.6332;
-    TGraph* treedepth_cc1pi_pi = new TGraph();
-    treedepth_cc1pi_pi->SetTitle("#pi^{-} selection pi-like cut");
-    treedepth_cc1pi_pi->SetPoint(0, 2.0, 36.5911/refvalue_cc1pi_pi);
-    treedepth_cc1pi_pi->SetPoint(1, 3.0, 37.6332/refvalue_cc1pi_pi);
-    treedepth_cc1pi_pi->SetPoint(2, 4.0, 38.3201/refvalue_cc1pi_pi);
-    treedepth_cc1pi_pi->SetPoint(3, 5.0, 37.4604/refvalue_cc1pi_pi);
-    treedepth_cc1pi_pi->SetLineColor( kRed); treedepth_cc1pi_pi->SetMarkerColor( kRed); treedepth_cc1pi_pi->SetFillColor( kWhite); 
-    
-    refvalue_pg_mu = 215.289;
+    refvalue_pg_mu = 0.963724;
     TGraph* treedepth_pg_mu = new TGraph();
-    treedepth_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
-    treedepth_pg_mu->SetPoint(0, 2.0, 213.861/refvalue_pg_mu);
-    treedepth_pg_mu->SetPoint(1, 3.0, 215.289/refvalue_pg_mu);
-    treedepth_pg_mu->SetPoint(2, 4.0, 215.964/refvalue_pg_mu);
-    treedepth_pg_mu->SetPoint(3, 5.0, 215.816/refvalue_pg_mu);
+    treedepth_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
+    treedepth_pg_mu->SetPoint(0, 2.0, 0.976332-refvalue_pg_mu);
+    treedepth_pg_mu->SetPoint(1, 3.0, 0.963724-refvalue_pg_mu);
+    treedepth_pg_mu->SetPoint(2, 4.0, 0.955835-refvalue_pg_mu);
+    treedepth_pg_mu->SetPoint(3, 5.0, 0.959671-refvalue_pg_mu);
     treedepth_pg_mu->SetLineColor( kBlue); treedepth_pg_mu->SetMarkerColor( kBlue); treedepth_pg_mu->SetFillColor( kWhite);
     
-    refvalue_pg_pi = 150.043;
+    refvalue_pg_pi = 0.525485;
     TGraph* treedepth_pg_pi = new TGraph();
-    treedepth_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
-    treedepth_pg_pi->SetPoint(0, 2.0, 149.891/refvalue_pg_pi);
-    treedepth_pg_pi->SetPoint(1, 3.0, 150.043/refvalue_pg_pi);
-    treedepth_pg_pi->SetPoint(2, 4.0, 152.363/refvalue_pg_pi);
-    treedepth_pg_pi->SetPoint(3, 5.0, 149.491/refvalue_pg_pi);
+    treedepth_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
+    treedepth_pg_pi->SetPoint(0, 2.0, 0.450048-refvalue_pg_pi);
+    treedepth_pg_pi->SetPoint(1, 3.0, 0.525485-refvalue_pg_pi);
+    treedepth_pg_pi->SetPoint(2, 4.0, 0.556587-refvalue_pg_pi);
+    treedepth_pg_pi->SetPoint(3, 5.0, 0.538685-refvalue_pg_pi);
     treedepth_pg_pi->SetLineColor( kRed); treedepth_pg_pi->SetMarkerColor( kRed); treedepth_pg_pi->SetFillColor( kWhite); 
     
-    refvalue_pg_p = 203.881;
+    refvalue_pg_p = 0.845924;
     TGraph* treedepth_pg_p = new TGraph();
-    treedepth_pg_p->SetTitle("p selection p-like cut");
-    treedepth_pg_p->SetPoint(0, 2.0, 202.915/refvalue_pg_p);
-    treedepth_pg_p->SetPoint(1, 3.0, 203.881/refvalue_pg_p);
-    treedepth_pg_p->SetPoint(2, 4.0, 203.882/refvalue_pg_p);
-    treedepth_pg_p->SetPoint(3, 5.0, 204.167/refvalue_pg_p);
+    treedepth_pg_p->SetTitle("p identified as p");
+    treedepth_pg_p->SetPoint(0, 2.0, 0.85422-refvalue_pg_p);
+    treedepth_pg_p->SetPoint(1, 3.0, 0.845924-refvalue_pg_p);
+    treedepth_pg_p->SetPoint(2, 4.0, 0.864603-refvalue_pg_p);
+    treedepth_pg_p->SetPoint(3, 5.0, 0.861057-refvalue_pg_p);
     treedepth_pg_p->SetLineColor( kGreen); treedepth_pg_p->SetMarkerColor( kGreen); treedepth_pg_p->SetFillColor( kWhite); 
     
-    refvalue_pg_e = 190.245;
+    refvalue_pg_e = 0.549095;
     TGraph* treedepth_pg_e = new TGraph();
-    treedepth_pg_e->SetTitle("e^{+} selection e-like cut");
-    treedepth_pg_e->SetPoint(0, 2.0, 189.429/refvalue_pg_e);
-    treedepth_pg_e->SetPoint(1, 3.0, 190.245/refvalue_pg_e);
-    treedepth_pg_e->SetPoint(2, 4.0, 190.529/refvalue_pg_e);
-    treedepth_pg_e->SetPoint(3, 5.0, 190.811/refvalue_pg_e);
+    treedepth_pg_e->SetTitle("e^{+} identified as e^{+}");
+    treedepth_pg_e->SetPoint(0, 2.0, 0.546797-refvalue_pg_e);
+    treedepth_pg_e->SetPoint(1, 3.0, 0.549095-refvalue_pg_e);
+    treedepth_pg_e->SetPoint(2, 4.0, 0.549198-refvalue_pg_e);
+    treedepth_pg_e->SetPoint(3, 5.0, 0.549714-refvalue_pg_e);
     treedepth_pg_e->SetLineColor( kMagenta); treedepth_pg_e->SetMarkerColor( kMagenta); treedepth_pg_e->SetFillColor( kWhite); 
     
-    TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,400);
-    canvas_treedepth->Divide(2,1,0.005,0.005);
-    canvas_treedepth->cd(1);
+    TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,800);
+    //canvas_treedepth->Divide(2,1,0.005,0.005);
+    //canvas_treedepth->cd(1);
     
-    treedepth_cc1pi_mu->GetYaxis()->SetRangeUser(0.97, 1.02);
-    treedepth_cc1pi_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_cc1pi_mu->GetYaxis()->SetTitle("Optimal selection significance");
-    
-    treedepth_cc1pi_mu->Draw("AL*");
-    treedepth_cc1pi_pi->Draw("L* same");
-    canvas_treedepth->cd(1)->BuildLegend();
-    
-    canvas_treedepth->cd(2);
-    treedepth_pg_mu->GetYaxis()->SetRangeUser(0.97, 1.02);
-    treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Optimal selection significance");
+    treedepth_pg_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
     treedepth_pg_mu->Draw("AL*");
     treedepth_pg_pi->Draw("L* same");
     treedepth_pg_p->Draw("L* same");
     treedepth_pg_e->Draw("L* same");
-    canvas_treedepth->cd(2)->BuildLegend();
+    canvas_treedepth->BuildLegend();
     
     // =============== Tree number ===============
     
