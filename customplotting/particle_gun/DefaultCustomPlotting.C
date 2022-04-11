@@ -357,6 +357,31 @@ void DefaultCustomPlotting::Loop()
    TH1F *esel_sig_recomom = new TH1F("esel_sig_recomom", "E-like selection signal vs reco momentum", recomom_nbins, 200.0, 1500.0);
    TH1F *esel_bkg_recomom = new TH1F("esel_bkg_recomom", "E-like selection bkg vs reco momentum", recomom_nbins, 200.0, 1500.0);
    
+   Int_t musel_nAntimu_test1 = 0;
+   Int_t pisel_nPiplus_test1 = 0;
+   Int_t psel_nProton_test1 = 0;
+   Int_t esel_nPositron_test1 = 0;
+   
+   Int_t musel_nAntimu_test2 = 0;
+   Int_t pisel_nPiplus_test2 = 0;
+   Int_t psel_nProton_test2 = 0;
+   Int_t esel_nPositron_test2 = 0;
+   
+   Int_t musel_nAntimu_test3 = 0;
+   Int_t pisel_nPiplus_test3 = 0;
+   Int_t psel_nProton_test3 = 0;
+   Int_t esel_nPositron_test3 = 0;
+   
+   Int_t musel_nAntimu_test4 = 0;
+   Int_t pisel_nPiplus_test4 = 0;
+   Int_t psel_nProton_test4 = 0;
+   Int_t esel_nPositron_test4 = 0;
+   
+   Int_t musel_nAntimu_test5 = 0;
+   Int_t pisel_nPiplus_test5 = 0;
+   Int_t psel_nProton_test5 = 0;
+   Int_t esel_nPositron_test5 = 0;
+   
    Int_t optimisation_nbins = 50;
    
    TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
@@ -765,8 +790,7 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms to find optimal cuts =============
       
-      // NOW WITH VALIDITY CHECK:
-      if ((accum_level[0][1] > 5) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
+      if (accum_level[0][1] > 5){ 
          
          if (particle == -13)
          {
@@ -943,7 +967,32 @@ void DefaultCustomPlotting::Loop()
             if (particle == 2212) esel_nProton++;
             if (particle == -11) esel_nPositron++;
          }
+         
+         
+         if ((selmu_bdt_pid_mu_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_mu_test1 > selmu_bdt_pid_p_test1) && (selmu_bdt_pid_mu_test1 > selmu_bdt_pid_e_test1) && (particle == -13)) musel_nAntimu_test1++;
+         if ((selmu_bdt_pid_pi_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_pi_test1 > selmu_bdt_pid_p_test1) && (selmu_bdt_pid_pi_test1 > selmu_bdt_pid_e_test1) && (particle == -13)) pisel_nPiplus_test1++;
+         if ((selmu_bdt_pid_p_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_p_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_p_test1 > selmu_bdt_pid_e_test1) && (particle == -13)) psel_nProton_test1++;
+         if ((selmu_bdt_pid_e_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_e_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_e_test1 > selmu_bdt_pid_p_test1) && (particle == -13)) esel_nPositron_test1++;
                 
+         if ((selmu_bdt_pid_mu_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_mu_test2 > selmu_bdt_pid_p_test2) && (selmu_bdt_pid_mu_test2 > selmu_bdt_pid_e_test2) && (particle == -13)) musel_nAntimu_test2++;
+         if ((selmu_bdt_pid_pi_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_pi_test2 > selmu_bdt_pid_p_test2) && (selmu_bdt_pid_pi_test2 > selmu_bdt_pid_e_test2) && (particle == -13)) pisel_nPiplus_test2++;
+         if ((selmu_bdt_pid_p_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_p_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_p_test2 > selmu_bdt_pid_e_test2) && (particle == -13)) psel_nProton_test2++;
+         if ((selmu_bdt_pid_e_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_e_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_e_test2 > selmu_bdt_pid_p_test2) && (particle == -13)) esel_nPositron_test2++;
+         
+         if ((selmu_bdt_pid_mu_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_mu_test3 > selmu_bdt_pid_p_test3) && (selmu_bdt_pid_mu_test3 > selmu_bdt_pid_e_test3) && (particle == -13)) musel_nAntimu_test3++;
+         if ((selmu_bdt_pid_pi_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_pi_test3 > selmu_bdt_pid_p_test3) && (selmu_bdt_pid_pi_test3 > selmu_bdt_pid_e_test3) && (particle == -13)) pisel_nPiplus_test3++;
+         if ((selmu_bdt_pid_p_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_p_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_p_test3 > selmu_bdt_pid_e_test3) && (particle == -13)) psel_nProton_test3++;
+         if ((selmu_bdt_pid_e_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_e_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_e_test3 > selmu_bdt_pid_p_test3) && (particle == -13)) esel_nPositron_test3++;
+         
+         if ((selmu_bdt_pid_mu_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_mu_test4 > selmu_bdt_pid_p_test4) && (selmu_bdt_pid_mu_test4 > selmu_bdt_pid_e_test4) && (particle == -13)) musel_nAntimu_test4++;
+         if ((selmu_bdt_pid_pi_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_pi_test4 > selmu_bdt_pid_p_test4) && (selmu_bdt_pid_pi_test4 > selmu_bdt_pid_e_test4) && (particle == -13)) pisel_nPiplus_test4++;
+         if ((selmu_bdt_pid_p_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_p_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_p_test4 > selmu_bdt_pid_e_test4) && (particle == -13)) psel_nProton_test4++;
+         if ((selmu_bdt_pid_e_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_e_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_e_test4 > selmu_bdt_pid_p_test4) && (particle == -13)) esel_nPositron_test4++;
+         
+         if ((selmu_bdt_pid_mu_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_mu_test5 > selmu_bdt_pid_p_test5) && (selmu_bdt_pid_mu_test5 > selmu_bdt_pid_e_test5) && (particle == -13)) musel_nAntimu_test5++;
+         if ((selmu_bdt_pid_pi_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_pi_test5 > selmu_bdt_pid_p_test5) && (selmu_bdt_pid_pi_test5 > selmu_bdt_pid_e_test5) && (particle == -13)) pisel_nPiplus_test5++;
+         if ((selmu_bdt_pid_p_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_p_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_p_test5 > selmu_bdt_pid_e_test5) && (particle == -13)) psel_nProton_test5++;
+         if ((selmu_bdt_pid_e_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_e_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_e_test5 > selmu_bdt_pid_p_test5) && (particle == -13)) esel_nPositron_test5++;
          
          //corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
          //corr_weighting_pilike->Fill(selmu_bdt_pid_pi, selmu_bdt_pid_unweighted_pi);
@@ -2510,6 +2559,10 @@ void DefaultCustomPlotting::Loop()
       //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test1, opt_pilike_bkg_test1, optimisation_nbins) << std::endl;
       //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test1, opt_plike_bkg_test1, optimisation_nbins) << std::endl;
       //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test1, opt_elike_bkg_test1, optimisation_nbins) << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test1/presel_nAntimu << std::endl;
+      std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test1/presel_nPiplus << std::endl;
+      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test1/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test1/presel_nPositron << std::endl;
       
       // Point 2
 
@@ -2519,10 +2572,14 @@ void DefaultCustomPlotting::Loop()
       if (parameter == "bagged") std::cout << "Bagged 0.3:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 6:" << std::endl;
       
-      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test2, opt_mulike_bkg_test2, optimisation_nbins) << std::endl;
-      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test2, opt_pilike_bkg_test2, optimisation_nbins) << std::endl;
-      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test2, opt_plike_bkg_test2, optimisation_nbins) << std::endl;
-      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test2, opt_elike_bkg_test2, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test2, opt_mulike_bkg_test2, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test2, opt_pilike_bkg_test2, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test2, opt_plike_bkg_test2, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test2, opt_elike_bkg_test2, optimisation_nbins) << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test2/presel_nAntimu << std::endl;
+      std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test2/presel_nPiplus << std::endl;
+      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test2/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test2/presel_nPositron << std::endl;
       
       // Point 3
       
@@ -2532,10 +2589,14 @@ void DefaultCustomPlotting::Loop()
       if (parameter == "bagged") std::cout << "Bagged 0.5:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 8:" << std::endl;
       
-      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test3, opt_mulike_bkg_test3, optimisation_nbins) << std::endl;
-      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test3, opt_pilike_bkg_test3, optimisation_nbins) << std::endl;
-      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test3, opt_plike_bkg_test3, optimisation_nbins) << std::endl;
-      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test3, opt_elike_bkg_test3, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test3, opt_mulike_bkg_test3, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test3, opt_pilike_bkg_test3, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test3, opt_plike_bkg_test3, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test3, opt_elike_bkg_test3, optimisation_nbins) << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test3/presel_nAntimu << std::endl;
+      std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test3/presel_nPiplus << std::endl;
+      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test3/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test3/presel_nPositron << std::endl;
       
       // Point 4
 
@@ -2545,10 +2606,14 @@ void DefaultCustomPlotting::Loop()
       if (parameter == "bagged") std::cout << "Bagged 0.7:" << std::endl;
       if (parameter == "randomforests") std::cout << "NVars 10:" << std::endl;
       
-      std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test4, opt_mulike_bkg_test4, optimisation_nbins) << std::endl;
-      std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test4, opt_pilike_bkg_test4, optimisation_nbins) << std::endl;
-      std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test4, opt_plike_bkg_test4, optimisation_nbins) << std::endl;
-      std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test4, opt_elike_bkg_test4, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test4, opt_mulike_bkg_test4, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test4, opt_pilike_bkg_test4, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test4, opt_plike_bkg_test4, optimisation_nbins) << std::endl;
+      //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test4, opt_elike_bkg_test4, optimisation_nbins) << std::endl;
+      std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test4/presel_nAntimu << std::endl;
+      std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test4/presel_nPiplus << std::endl;
+      std::cout << "p efficiency: " << (Float_t)pisel_nProton_test4/presel_nProton << std::endl;
+      std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test4/presel_nPositron << std::endl;
       
       // Point 5
       
@@ -2559,10 +2624,14 @@ void DefaultCustomPlotting::Loop()
          if (parameter == "bagged") std::cout << "Bagged 0.9:" << std::endl;
          if (parameter == "randomforests") std::cout << "NVars 12:" << std::endl;
          
-         std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test5, opt_mulike_bkg_test5, optimisation_nbins) << std::endl;
-         std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test5, opt_pilike_bkg_test5, optimisation_nbins) << std::endl;
-         std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test5, opt_plike_bkg_test5, optimisation_nbins) << std::endl;
-         std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test5, opt_elike_bkg_test5, optimisation_nbins) << std::endl;
+         //std::cout << "Optimal mu-like significance = " << GetOptSignificanceValues(opt_mulike_sig_test5, opt_mulike_bkg_test5, optimisation_nbins) << std::endl;
+         //std::cout << "Optimal pi-like significance = " << GetOptSignificanceValues(opt_pilike_sig_test5, opt_pilike_bkg_test5, optimisation_nbins) << std::endl;
+         //std::cout << "Optimal p-like significance = " << GetOptSignificanceValues(opt_plike_sig_test5, opt_plike_bkg_test5, optimisation_nbins) << std::endl;
+         //std::cout << "Optimal e-like significance = " << GetOptSignificanceValues(opt_elike_sig_test5, opt_elike_bkg_test5, optimisation_nbins) << std::endl;
+         std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu_test5/presel_nAntimu << std::endl;
+         std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus_test5/presel_nPiplus << std::endl;
+         std::cout << "p efficiency: " << (Float_t)pisel_nProton_test5/presel_nProton << std::endl;
+         std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron_test5/presel_nPositron << std::endl;
       }
          
          
