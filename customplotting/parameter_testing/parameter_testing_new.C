@@ -92,7 +92,7 @@
     treenumber_pg_e->SetLineColor( kMagenta); treenumber_pg_e->SetMarkerColor( kMagenta); treenumber_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_treenumber = new TCanvas("canvas_treenumber","",200,10,1000,800);
-    treenumber_pg_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    treenumber_pg_mu->GetYaxis()->SetRangeUser(-0.04, 0.08);
     treenumber_pg_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
     treenumber_pg_mu->Draw("AL*");
     treenumber_pg_pi->Draw("L* same");
@@ -159,7 +159,7 @@
     shrinkage_pg_e->SetLineColor( kMagenta); shrinkage_pg_e->SetMarkerColor( kMagenta); shrinkage_pg_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_shrinkage = new TCanvas("canvas_shrinkage","",200,10,1000,800);
-    shrinkage_pg_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    shrinkage_pg_mu->GetYaxis()->SetRangeUser(-0.3, 0.04);
     shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
@@ -205,8 +205,8 @@
     bagged_pg_e->SetPoint(4, 0.9, 0.548197-refvalue_pg_e);
     bagged_pg_e->SetLineColor( kMagenta); bagged_pg_e->SetMarkerColor( kMagenta); bagged_pg_e->SetFillColor( kWhite); 
     
-    TCanvas* canvas_bagged = new TCanvas("canvas_bagged","",200,10,1000,400);
-    bagged_pg_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    TCanvas* canvas_bagged = new TCanvas("canvas_bagged","",200,10,1000,800);
+    bagged_pg_mu->GetYaxis()->SetRangeUser(-0.2, 0.1);
     bagged_pg_mu->GetXaxis()->SetTitle("BaggedSampleFraction"); bagged_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
     bagged_pg_mu->Draw("AL*");
     bagged_pg_pi->Draw("L* same");
@@ -252,8 +252,8 @@
     randomforests_pg_e->SetPoint(4, 12, 0.549198-refvalue_pg_e);
     randomforests_pg_e->SetLineColor( kMagenta); randomforests_pg_e->SetMarkerColor( kMagenta); randomforests_pg_e->SetFillColor( kWhite); 
     
-    TCanvas* canvas_randomforests = new TCanvas("canvas_randomforests","",200,10,1000,400);
-    randomforests_pg_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    TCanvas* canvas_randomforests = new TCanvas("canvas_randomforests","",200,10,1000,800);
+    randomforests_pg_mu->GetYaxis()->SetRangeUser(-0.03, 0.05);
     randomforests_pg_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
     randomforests_pg_mu->Draw("AL*");
     randomforests_pg_pi->Draw("L* same");
