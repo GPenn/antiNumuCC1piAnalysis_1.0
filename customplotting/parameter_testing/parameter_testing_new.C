@@ -8,50 +8,90 @@
     refvalue_pg_mu = 0.963724;
     TGraph* treedepth_pg_mu = new TGraph();
     treedepth_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
-    treedepth_pg_mu->SetPoint(0, 2.0, 0.976332-refvalue_pg_mu);
-    treedepth_pg_mu->SetPoint(1, 3.0, 0.963724-refvalue_pg_mu);
-    treedepth_pg_mu->SetPoint(2, 4.0, 0.955835-refvalue_pg_mu);
-    treedepth_pg_mu->SetPoint(3, 5.0, 0.959671-refvalue_pg_mu);
+    treedepth_pg_mu->SetPoint(0, 2.0, 0.976332);
+    treedepth_pg_mu->SetPoint(1, 3.0, 0.963724);
+    treedepth_pg_mu->SetPoint(2, 4.0, 0.955835);
+    treedepth_pg_mu->SetPoint(3, 5.0, 0.959671);
     treedepth_pg_mu->SetLineColor( kBlue); treedepth_pg_mu->SetMarkerColor( kBlue); treedepth_pg_mu->SetFillColor( kWhite);
     
     refvalue_pg_pi = 0.525485;
     TGraph* treedepth_pg_pi = new TGraph();
     treedepth_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
-    treedepth_pg_pi->SetPoint(0, 2.0, 0.450048-refvalue_pg_pi);
-    treedepth_pg_pi->SetPoint(1, 3.0, 0.525485-refvalue_pg_pi);
-    treedepth_pg_pi->SetPoint(2, 4.0, 0.556587-refvalue_pg_pi);
-    treedepth_pg_pi->SetPoint(3, 5.0, 0.538685-refvalue_pg_pi);
+    treedepth_pg_pi->SetPoint(0, 2.0, 0.450048);
+    treedepth_pg_pi->SetPoint(1, 3.0, 0.525485);
+    treedepth_pg_pi->SetPoint(2, 4.0, 0.556587);
+    treedepth_pg_pi->SetPoint(3, 5.0, 0.538685);
     treedepth_pg_pi->SetLineColor( kRed); treedepth_pg_pi->SetMarkerColor( kRed); treedepth_pg_pi->SetFillColor( kWhite); 
     
     refvalue_pg_p = 0.845924;
     TGraph* treedepth_pg_p = new TGraph();
     treedepth_pg_p->SetTitle("p identified as p");
-    treedepth_pg_p->SetPoint(0, 2.0, 0.85422-refvalue_pg_p);
-    treedepth_pg_p->SetPoint(1, 3.0, 0.845924-refvalue_pg_p);
-    treedepth_pg_p->SetPoint(2, 4.0, 0.864603-refvalue_pg_p);
-    treedepth_pg_p->SetPoint(3, 5.0, 0.861057-refvalue_pg_p);
+    treedepth_pg_p->SetPoint(0, 2.0, 0.85422);
+    treedepth_pg_p->SetPoint(1, 3.0, 0.845924);
+    treedepth_pg_p->SetPoint(2, 4.0, 0.864603);
+    treedepth_pg_p->SetPoint(3, 5.0, 0.861057);
     treedepth_pg_p->SetLineColor( kGreen); treedepth_pg_p->SetMarkerColor( kGreen); treedepth_pg_p->SetFillColor( kWhite); 
     
     refvalue_pg_e = 0.549095;
     TGraph* treedepth_pg_e = new TGraph();
     treedepth_pg_e->SetTitle("e^{+} identified as e^{+}");
-    treedepth_pg_e->SetPoint(0, 2.0, 0.546797-refvalue_pg_e);
-    treedepth_pg_e->SetPoint(1, 3.0, 0.549095-refvalue_pg_e);
-    treedepth_pg_e->SetPoint(2, 4.0, 0.549198-refvalue_pg_e);
-    treedepth_pg_e->SetPoint(3, 5.0, 0.549714-refvalue_pg_e);
+    treedepth_pg_e->SetPoint(0, 2.0, 0.546797);
+    treedepth_pg_e->SetPoint(1, 3.0, 0.549095);
+    treedepth_pg_e->SetPoint(2, 4.0, 0.549198);
+    treedepth_pg_e->SetPoint(3, 5.0, 0.549714);
     treedepth_pg_e->SetLineColor( kMagenta); treedepth_pg_e->SetMarkerColor( kMagenta); treedepth_pg_e->SetFillColor( kWhite); 
     
-    TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,800);
-    //canvas_treedepth->Divide(2,1,0.005,0.005);
-    //canvas_treedepth->cd(1);
+    TGraph* treedepth_pg_diff_mu = new TGraph();
+    treedepth_pg_diff_mu->SetTitle("#mu^{+} identified as #mu^{+}");
+    treedepth_pg_diff_mu->SetPoint(0, 2.0, 0.976332-refvalue_pg_mu);
+    treedepth_pg_diff_mu->SetPoint(1, 3.0, 0.963724-refvalue_pg_mu);
+    treedepth_pg_diff_mu->SetPoint(2, 4.0, 0.955835-refvalue_pg_mu);
+    treedepth_pg_diff_mu->SetPoint(3, 5.0, 0.959671-refvalue_pg_mu);
+    treedepth_pg_diff_mu->SetLineColor( kBlue); treedepth_pg_diff_mu->SetMarkerColor( kBlue); treedepth_pg_diff_mu->SetFillColor( kWhite);
     
-    treedepth_pg_mu->GetYaxis()->SetRangeUser(-0.1, 0.04);
-    treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Difference in efficiency");
+    TGraph* treedepth_pg_diff_pi = new TGraph();
+    treedepth_pg_diff_pi->SetTitle("#pi^{+} identified as #pi^{+}");
+    treedepth_pg_diff_pi->SetPoint(0, 2.0, 0.450048-refvalue_pg_pi);
+    treedepth_pg_diff_pi->SetPoint(1, 3.0, 0.525485-refvalue_pg_pi);
+    treedepth_pg_diff_pi->SetPoint(2, 4.0, 0.556587-refvalue_pg_pi);
+    treedepth_pg_diff_pi->SetPoint(3, 5.0, 0.538685-refvalue_pg_pi);
+    treedepth_pg_diff_pi->SetLineColor( kRed); treedepth_pg_diff_pi->SetMarkerColor( kRed); treedepth_pg_diff_pi->SetFillColor( kWhite); 
+    
+    TGraph* treedepth_pg_diff_p = new TGraph();
+    treedepth_pg_diff_p->SetTitle("p identified as p");
+    treedepth_pg_diff_p->SetPoint(0, 2.0, 0.85422-refvalue_pg_p);
+    treedepth_pg_diff_p->SetPoint(1, 3.0, 0.845924-refvalue_pg_p);
+    treedepth_pg_diff_p->SetPoint(2, 4.0, 0.864603-refvalue_pg_p);
+    treedepth_pg_diff_p->SetPoint(3, 5.0, 0.861057-refvalue_pg_p);
+    treedepth_pg_diff_p->SetLineColor( kGreen); treedepth_pg_diff_p->SetMarkerColor( kGreen); treedepth_pg_diff_p->SetFillColor( kWhite); 
+    
+    TGraph* treedepth_pg_diff_e = new TGraph();
+    treedepth_pg_diff_e->SetTitle("e^{+} identified as e^{+}");
+    treedepth_pg_diff_e->SetPoint(0, 2.0, 0.546797-refvalue_pg_e);
+    treedepth_pg_diff_e->SetPoint(1, 3.0, 0.549095-refvalue_pg_e);
+    treedepth_pg_diff_e->SetPoint(2, 4.0, 0.549198-refvalue_pg_e);
+    treedepth_pg_diff_e->SetPoint(3, 5.0, 0.549714-refvalue_pg_e);
+    treedepth_pg_diff_e->SetLineColor( kMagenta); treedepth_pg_diff_e->SetMarkerColor( kMagenta); treedepth_pg_diff_e->SetFillColor( kWhite); 
+    
+    TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,400);
+    canvas_treedepth->Divide(2,1,0.005,0.005);
+    
+    canvas_treedepth->cd(1);   
+    treedepth_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Efficiency");
     treedepth_pg_mu->Draw("AL*");
     treedepth_pg_pi->Draw("L* same");
     treedepth_pg_p->Draw("L* same");
     treedepth_pg_e->Draw("L* same");
-    canvas_treedepth->BuildLegend();
+    canvas_treedepth->cd(1)->BuildLegend();
+    
+    canvas_treedepth->cd(2);   
+    treedepth_pg_diff_mu->GetYaxis()->SetRangeUser(-0.1, 0.04);
+    treedepth_pg_diff_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
+    treedepth_pg_diff_mu->Draw("AL*");
+    treedepth_pg_diff_pi->Draw("L* same");
+    treedepth_pg_diff_p->Draw("L* same");
+    treedepth_pg_diff_e->Draw("L* same");
     
     // =============== Tree number ===============
     
