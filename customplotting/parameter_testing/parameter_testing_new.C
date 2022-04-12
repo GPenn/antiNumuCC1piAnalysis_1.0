@@ -187,7 +187,7 @@
     treenumber_pg_diff_mu->Draw("AL*");
     treenumber_pg_diff_pi->Draw("L* same");
     treenumber_pg_diff_p->Draw("L* same");
-    treenumber_pg_e->Draw("L* same");
+    treenumber_pg_e_diff->Draw("L* same");
     
     // =============== Shrinkage ===============
     
