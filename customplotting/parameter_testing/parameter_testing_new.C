@@ -78,6 +78,7 @@
     
     canvas_treedepth->cd(1);   
     treedepth_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    treedepth_pg_mu->GetYaxis()->SetTitleOffset(1.2);
     treedepth_pg_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_mu->GetYaxis()->SetTitle("Efficiency");
     treedepth_pg_mu->Draw("AL*");
     treedepth_pg_pi->Draw("L* same");
@@ -172,6 +173,7 @@
     
     canvas_treenumber->cd(1);   
     treenumber_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    treenumber_pg_mu->GetYaxis()->SetTitleOffset(1.2);
     treenumber_pg_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_pg_mu->GetYaxis()->SetTitle("Efficiency");
     treenumber_pg_mu->Draw("AL*");
     treenumber_pg_pi->Draw("L* same");
@@ -306,6 +308,7 @@
     
     canvas_shrinkage->cd(1);  
     shrinkage_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    shrinkage_pg_mu->GetYaxis()->SetTitleOffset(1.2);
     shrinkage_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_mu->GetYaxis()->SetTitle("Efficiency");
     shrinkage_pg_mu->Draw("AL*");
     shrinkage_pg_pi->Draw("L* same");
@@ -400,6 +403,7 @@
     
     canvas_bagged->cd(1);  
     bagged_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    bagged_pg_mu->GetYaxis()->SetTitleOffset(1.2);
     bagged_pg_mu->GetXaxis()->SetTitle("BaggedSampleFraction"); bagged_pg_mu->GetYaxis()->SetTitle("Efficiency");
     bagged_pg_mu->Draw("AL*");
     bagged_pg_pi->Draw("L* same");
@@ -494,6 +498,7 @@
     
     canvas_randomforests->cd(1);
     randomforests_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    randomforests_pg_mu->GetYaxis()->SetTitleOffset(1.2);
     randomforests_pg_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_pg_mu->GetYaxis()->SetTitle("Efficiency");
     randomforests_pg_mu->Draw("AL*");
     randomforests_pg_pi->Draw("L* same");
