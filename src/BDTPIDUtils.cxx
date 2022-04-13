@@ -49,7 +49,7 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "EmHip := selmu_ecal_emhip",                       &bdt_ecal_emhip);
   tmvareader->AddVariable( "MipPion := selmu_ecal_mippion",                   &bdt_ecal_mippion);
   
-  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
+  //tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
   /*tmvareader->AddVariable( "mom := selmu_mom",                               &bdt_mom);
   tmvareader->AddVariable( "theta := selmu_theta",                           &bdt_theta);
