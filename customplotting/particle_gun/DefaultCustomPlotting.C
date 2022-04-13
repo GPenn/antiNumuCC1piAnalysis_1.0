@@ -2293,7 +2293,10 @@ void DefaultCustomPlotting::Loop()
    canvas_weighted_nsmrds->BuildLegend();
    canvas_weighted_nsmrds->Write();
    
-   
+   std::cout << "DEBUG: Preselection mu+: " << presel_nAntimu << std::endl;
+   std::cout << "DEBUG: Preselection pi+: " << presel_nPiplus << std::endl;
+   std::cout << "DEBUG: Preselection p: " << presel_nProton << std::endl;
+   std::cout << "DEBUG: Preselection e+: " << presel_nPositron << std::endl;
    
    // ============= Find optimal cuts =============
    
