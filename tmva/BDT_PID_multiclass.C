@@ -215,10 +215,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
    
    // Muon candidate TPC variables
-   factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC2 mu-like",    "", 'F' );
-   factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC2 e-like",     "", 'F' );
-   factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC2 p-like",     "", 'F' );
-   factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC2 pi-like",    "", 'F' );
+   //factory->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 "TPC2 mu-like",    "", 'F' );
+   //factory->AddVariable( "tpclikee := selmu_tpc_like_e",                   "TPC2 e-like",     "", 'F' );
+   //factory->AddVariable( "tpclikep := selmu_tpc_like_p",                   "TPC2 p-like",     "", 'F' );
+   //factory->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 "TPC2 pi-like",    "", 'F' );
    //factory->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                  "TPC2 mu pull",    "", 'F' );
    //factory->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                  "TPC2 e pull",     "", 'F' );
    //factory->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                    "TPC2 p pull",     "", 'F' );
@@ -227,7 +227,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                  "TPC3 e pull",     "", 'F' );
    //factory->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                    "TPC3 p pull",     "", 'F' );
    //factory->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                  "TPC3 pi pull",    "", 'F' );
-   //factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
+   factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
    factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
    //factory->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                  "TPC3 mu pull",    "", 'F' );
    //factory->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                  "TPC3 e pull",     "", 'F' );
@@ -237,13 +237,13 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    
    // Muon candidate ECal variables
    factory->AddVariable( "ecalEbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
-   //factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
-   //factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
-   //factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
-   //factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
-   factory->AddVariable( "MipEm := selmu_ecal_mipem",                      "ECal MipEm",               "", 'F' );
-   factory->AddVariable( "EmHip := selmu_ecal_emhip",                      "ECal EmHip",               "", 'F' );
-   factory->AddVariable( "MipPion := selmu_ecal_mippion",                  "ECal MipPion",             "", 'F' );
+   factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
+   factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
+   factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
+   factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
+   //factory->AddVariable( "MipEm := selmu_ecal_mipem",                      "ECal MipEm",               "", 'F' );
+   //factory->AddVariable( "EmHip := selmu_ecal_emhip",                      "ECal EmHip",               "", 'F' );
+   //factory->AddVariable( "MipPion := selmu_ecal_mippion",                  "ECal MipPion",             "", 'F' );
    
    // Muon candidate SMRD variables
    factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
@@ -538,10 +538,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage0.8", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=0.80:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_shrinkage1.0", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=1.00:UseBaggedBoost:BaggedSampleFraction=0.50:nCuts=2000:MaxDepth=3");
    
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree2", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=2");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
-   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree5", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=5");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree2", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=2");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree3", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree4", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tree5", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=5");
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_500trees", "!H:!V:NTrees=500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1000trees", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=3");
@@ -573,9 +573,9 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_0.3bagged", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseBaggedBoost:BaggedSampleFraction=0.30:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_0.1bagged", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseBaggedBoost:BaggedSampleFraction=0.10:nCuts=2000:MaxDepth=3");
    
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_2vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=2:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_3vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=3:nCuts=2000:MaxDepth=3");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_4vars_redo", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=4:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_2vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=2:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_3vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=3:nCuts=2000:MaxDepth=3");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_4vars_redo", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=4:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_4vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=4:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_6vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=6:nCuts=2000:MaxDepth=3");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_8vars", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=1.0:UseRandomisedTrees:UseNvars=8:nCuts=2000:MaxDepth=3");
