@@ -1431,7 +1431,7 @@ void CC1piPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart:
     }
 
     // Check that at track is not within the reference ones
-    std::cout << "INFO: Reference tracks: " << params.nRefTracks << std::endl;
+    //std::cout << "INFO: Reference tracks: " << params.nRefTracks << std::endl;
     bool found = false;
     for (int j = 0; j < params.nRefTracks; j++){
       if (ptrack == params.refTracks[j]){
