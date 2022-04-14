@@ -31,6 +31,8 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <chrono>
+#include <ctime> 
 
 #include "TChain.h"
 #include "TFile.h"
@@ -65,6 +67,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // (an example is given for using the BDT as plugin (see below),
    // but of course the real application is when you write your own
    // method based)
+   
+   auto start = std::chrono::system_clock::now();
 
    //---------------------------------------------------------------
    // This loads the library
@@ -627,6 +631,12 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    std::cout << "==> BDT_PID_multiclass is done!" << std::endl;
    
    delete factory;
+   
+   auto end = std::chrono::system_clock::now();
+   std::chrono::duration<double> elapsed_seconds = end-start;
+   std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+   std::cout << "finished computation at " << std::ctime(&end_time)
+             << "elapsed time: " << elapsed_seconds.count()/60 << " minutes\n";
 
    // Launch the GUI for the root macros
    // Launch the GUI for the root macros
