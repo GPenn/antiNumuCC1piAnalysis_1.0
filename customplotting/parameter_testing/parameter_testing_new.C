@@ -67,10 +67,10 @@
     
     TGraph* treedepth_pg_diff_e = new TGraph();
     treedepth_pg_diff_e->SetTitle("e^{+} identified as e^{+}");
-    treedepth_pg_diff_e->SetPoint(0, 2.0, 0.590713);
-    treedepth_pg_diff_e->SetPoint(1, 3.0, 0.627811);
-    treedepth_pg_diff_e->SetPoint(2, 4.0, 0.64741);
-    treedepth_pg_diff_e->SetPoint(3, 5.0, 0.641789);
+    treedepth_pg_diff_e->SetPoint(0, 2.0, 0.590713-refvalue_pg_e);
+    treedepth_pg_diff_e->SetPoint(1, 3.0, 0.627811-refvalue_pg_e);
+    treedepth_pg_diff_e->SetPoint(2, 4.0, 0.64741-refvalue_pg_e);
+    treedepth_pg_diff_e->SetPoint(3, 5.0, 0.641789-refvalue_pg_e);
     treedepth_pg_diff_e->SetLineColor( kMagenta); treedepth_pg_diff_e->SetMarkerColor( kMagenta); treedepth_pg_diff_e->SetFillColor( kWhite); 
     
     TCanvas* canvas_treedepth = new TCanvas("canvas_treedepth","",200,10,1000,400);
