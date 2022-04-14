@@ -430,7 +430,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_p_test4, BDT_PID_results_vector[2]);
     output().FillVar(selmu_bdt_pid_e_test4, BDT_PID_results_vector[3]);
     
-    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVarsPos(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_2500tres");
+    BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVarsPos(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_2500trees");
     output().FillVar(selmu_bdt_pid_mu_test5, BDT_PID_results_vector[0]);
     output().FillVar(selmu_bdt_pid_pi_test5, BDT_PID_results_vector[1]);
     output().FillVar(selmu_bdt_pid_p_test5, BDT_PID_results_vector[2]);
