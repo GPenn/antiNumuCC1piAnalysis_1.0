@@ -84,13 +84,13 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
   //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
-  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
-  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
+  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
   AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
@@ -117,10 +117,10 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
-  //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
-  //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
-  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
+  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
+  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
+  //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
+  //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
   
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
