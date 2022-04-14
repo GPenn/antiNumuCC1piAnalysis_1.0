@@ -87,7 +87,7 @@
     canvas_treedepth->cd(1)->BuildLegend();
     
     canvas_treedepth->cd(2);   
-    treedepth_pg_diff_mu->GetYaxis()->SetRangeUser(-0.1, 0.04);
+    treedepth_pg_diff_mu->GetYaxis()->SetRangeUser(-0.04, 0.03);
     treedepth_pg_diff_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     treedepth_pg_diff_mu->Draw("AL*");
     treedepth_pg_diff_pi->Draw("L* same");
