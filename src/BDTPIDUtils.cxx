@@ -23,31 +23,32 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 &bdt_fgd2pullp);
   tmvareader->AddVariable("fgd2EbyL := selmu_fgd2_EbyL",                      &bdt_fgd2_EbyL);
   
-  tmvareader->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
-  tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
-  tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
-  tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
+  //tmvareader->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
+  //tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
+  //tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
+  //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
   //tmvareader->AddVariable( "tpcpullmu := selmu_tpc_pullmu",                 &bdt_tpc_pullmu);
   //tmvareader->AddVariable( "tpcpulle := selmu_tpc_pullele",                   &bdt_tpc_pulle);
   //tmvareader->AddVariable( "tpcpullp := selmu_tpc_pullp",                   &bdt_tpc_pullp);
   //tmvareader->AddVariable( "tpcpullpi := selmu_tpc_pullpi",                 &bdt_tpc_pullpi);
-  //tmvareader->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                 &bdt_tpc2_dedx);
+  tmvareader->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                 &bdt_tpc2_dedx);
   
-  //tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
+  tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
   //tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
   //tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
   //tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
   //tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
+  //tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
   
   //tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
   tmvareader->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 &bdt_ecal_EbyL);
-  //tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
-  //tmvareader->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
-  //tmvareader->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
-  //tmvareader->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
-  tmvareader->AddVariable( "MipEm := selmu_ecal_mipem",                       &bdt_ecal_mipem);
-  tmvareader->AddVariable( "EmHip := selmu_ecal_emhip",                       &bdt_ecal_emhip);
-  tmvareader->AddVariable( "MipPion := selmu_ecal_mippion",                   &bdt_ecal_mippion);
+  tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
+  tmvareader->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
+  tmvareader->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
+  tmvareader->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
+  //tmvareader->AddVariable( "MipEm := selmu_ecal_mipem",                       &bdt_ecal_mipem);
+  //tmvareader->AddVariable( "EmHip := selmu_ecal_emhip",                       &bdt_ecal_emhip);
+  //tmvareader->AddVariable( "MipPion := selmu_ecal_mippion",                   &bdt_ecal_mippion);
   
   tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
@@ -74,10 +75,10 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_tree2", "parameters/weights/BDT_PID_multiclass_BDTG_tree2.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tree3_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tree3_noweights.weights.xml" );
   
-  //tmvareader->BookMVA( "BDTG_tree2", "parameters/weights/BDT_PID_multiclass_BDTG_tree2.weights.xml" );
-  //tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
-  //tmvareader->BookMVA( "BDTG_tree4", "parameters/weights/BDT_PID_multiclass_BDTG_tree4.weights.xml" );
-  //tmvareader->BookMVA( "BDTG_tree5", "parameters/weights/BDT_PID_multiclass_BDTG_tree5.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tree2", "parameters/weights/BDT_PID_multiclass_BDTG_tree2.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tree4", "parameters/weights/BDT_PID_multiclass_BDTG_tree4.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tree5", "parameters/weights/BDT_PID_multiclass_BDTG_tree5.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_500trees", "parameters/weights/BDT_PID_multiclass_BDTG_500trees.weights.xml" );
   //tmvareader->BookMVA( "BDTG_1000trees", "parameters/weights/BDT_PID_multiclass_BDTG_1000trees.weights.xml" );
@@ -103,11 +104,11 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_0.7bagged", "parameters/weights/BDT_PID_multiclass_BDTG_0.7bagged.weights.xml" );
   //tmvareader->BookMVA( "BDTG_0.9bagged", "parameters/weights/BDT_PID_multiclass_BDTG_0.9bagged.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_4vars", "parameters/weights/BDT_PID_multiclass_BDTG_4vars.weights.xml" );
-  tmvareader->BookMVA( "BDTG_6vars", "parameters/weights/BDT_PID_multiclass_BDTG_6vars.weights.xml" );
-  tmvareader->BookMVA( "BDTG_8vars", "parameters/weights/BDT_PID_multiclass_BDTG_8vars.weights.xml" );
-  tmvareader->BookMVA( "BDTG_10vars", "parameters/weights/BDT_PID_multiclass_BDTG_10vars.weights.xml" );
-  tmvareader->BookMVA( "BDTG_12vars", "parameters/weights/BDT_PID_multiclass_BDTG_12vars.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_4vars", "parameters/weights/BDT_PID_multiclass_BDTG_4vars.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_6vars", "parameters/weights/BDT_PID_multiclass_BDTG_6vars.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_8vars", "parameters/weights/BDT_PID_multiclass_BDTG_8vars.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_10vars", "parameters/weights/BDT_PID_multiclass_BDTG_10vars.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_12vars", "parameters/weights/BDT_PID_multiclass_BDTG_12vars.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_neg_tree3", "parameters/weights/BDT_PID_multiclass_negative_BDTG_tree3.weights.xml" );
   
