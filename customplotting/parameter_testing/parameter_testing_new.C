@@ -96,6 +96,11 @@
     
     // =============== Tree number ===============
     
+    refvalue_pg_mu = 0.932985;
+    refvalue_pg_pi = 0.588093;
+    refvalue_pg_p = 0.918464;
+    refvalue_pg_e = 0.64741;
+    
     TGraph* treenumber_pg_mu = new TGraph();
     treenumber_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
     treenumber_pg_mu->SetPoint(0, 500.0, 0.936174);
