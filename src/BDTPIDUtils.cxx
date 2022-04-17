@@ -71,7 +71,7 @@ BDTPIDmanager::BDTPIDmanager() {
   
   // Book the BDTs
   
-  tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_tree3", "parameters/weights/BDT_PID_multiclass_BDTG_tree3.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tree2", "parameters/weights/BDT_PID_multiclass_BDTG_tree2.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tree3_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tree3_noweights.weights.xml" );
   
