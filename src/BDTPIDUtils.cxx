@@ -126,11 +126,11 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_3vars", "parameters/weights/BDT_PID_multiclass_BDTG_3vars.weights.xml" );
   //tmvareader->BookMVA( "BDTG_4vars_redo", "parameters/weights/BDT_PID_multiclass_BDTG_4vars_redo.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_0.1shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_BDTG_0.1shrinkage_2500trees.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.3shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_BDTG_0.3shrinkage_2500trees.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.5shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_BDTG_0.5shrinkage_2500trees.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.7shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_BDTG_0.7shrinkage_2500trees.weights.xml" );
-  tmvareader->BookMVA( "BDTG_0.9shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_BDTG_0.9shrinkage_2500trees.weights.xml" );
+  tmvareader->BookMVA( "BDTG_0.1shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.1shrinkage_2500trees.weights.xml" );
+  tmvareader->BookMVA( "BDTG_0.3shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.3shrinkage_2500trees.weights.xml" );
+  tmvareader->BookMVA( "BDTG_0.5shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.5shrinkage_2500trees.weights.xml" );
+  tmvareader->BookMVA( "BDTG_0.7shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.7shrinkage_2500trees.weights.xml" );
+  tmvareader->BookMVA( "BDTG_0.9shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.9shrinkage_2500trees.weights.xml" );
 }
 
 //--------------------------------------------------------------------------------------------------//
