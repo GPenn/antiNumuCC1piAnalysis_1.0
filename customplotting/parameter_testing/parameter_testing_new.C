@@ -329,6 +329,101 @@
     shrinkage_pg_diff_p->Draw("L* same");
     shrinkage_pg_diff_e->Draw("L* same");
     
+    // =============== Shrinkage ===============
+    
+    TGraph* shrinkage_extra_pg_mu = new TGraph();
+    shrinkage_extra_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
+    shrinkage_extra_pg_mu->SetPoint(0, 0.1, 0.939013);
+    shrinkage_extra_pg_mu->SetPoint(1, 0.3, 0.935913);
+    shrinkage_extra_pg_mu->SetPoint(2, 0.5, 0.9319);
+    shrinkage_extra_pg_mu->SetPoint(3, 0.7, 0.929539);
+    shrinkage_extra_pg_mu->SetPoint(4, 0.9, 0.925874);
+    shrinkage_extra_pg_mu->SetLineColor( kBlue); shrinkage_extra_pg_mu->SetMarkerColor( kBlue); shrinkage_extra_pg_mu->SetFillColor( kWhite);
+    
+    TGraph* shrinkage_extra_pg_pi = new TGraph();
+    shrinkage_extra_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
+    shrinkage_extra_pg_pi->SetPoint(0, 0.1, 0.580241);
+    shrinkage_extra_pg_pi->SetPoint(1, 0.3, 0.588423);
+    shrinkage_extra_pg_pi->SetPoint(2, 0.5, 0.594584);
+    shrinkage_extra_pg_pi->SetPoint(3, 0.7, 0.59734);
+    shrinkage_extra_pg_pi->SetPoint(4, 0.9, 0.601516);
+    shrinkage_extra_pg_pi->SetLineColor( kRed); shrinkage_extra_pg_pi->SetMarkerColor( kRed); shrinkage_extra_pg_pi->SetFillColor( kWhite);
+    
+    TGraph* shrinkage_extra_pg_p = new TGraph();
+    shrinkage_extra_pg_p->SetTitle("p selection p-like cut");
+    shrinkage_extra_pg_p->SetPoint(0, 0.1, 0.905649);
+    shrinkage_extra_pg_p->SetPoint(1, 0.3, 0.914448);
+    shrinkage_extra_pg_p->SetPoint(2, 0.5, 0.918182);
+    shrinkage_extra_pg_p->SetPoint(3, 0.7, 0.919496);
+    shrinkage_extra_pg_p->SetPoint(4, 0.9, 0.919081);
+    shrinkage_extra_pg_p->SetLineColor( kGreen); shrinkage_extra_pg_p->SetMarkerColor( kGreen); shrinkage_extra_pg_p->SetFillColor( kWhite); 
+    
+    TGraph* shrinkage_extra_pg_e = new TGraph();
+    shrinkage_extra_pg_e->SetTitle("e^{+} selection e-like cut");
+    shrinkage_extra_pg_e->SetPoint(0, 0.1, 0.52974);
+    shrinkage_extra_pg_e->SetPoint(1, 0.3, 0.634848);
+    shrinkage_extra_pg_e->SetPoint(2, 0.5, 0.657179);
+    shrinkage_extra_pg_e->SetPoint(3, 0.7, 0.663742);
+    shrinkage_extra_pg_e->SetPoint(4, 0.9, 0.662732);
+    shrinkage_extra_pg_e->SetLineColor( kMagenta); shrinkage_extra_pg_e->SetMarkerColor( kMagenta); shrinkage_extra_pg_e->SetFillColor( kWhite); 
+    
+    TGraph* shrinkage_extra_pg_diff_mu = new TGraph();
+    shrinkage_extra_pg_diff_mu->SetTitle("#mu^{+} selection mu-like cut");
+    shrinkage_extra_pg_diff_mu->SetPoint(0, 0.1, 0.939013-refvalue_pg_mu);
+    shrinkage_extra_pg_diff_mu->SetPoint(1, 0.3, 0.935913-refvalue_pg_mu);
+    shrinkage_extra_pg_diff_mu->SetPoint(2, 0.5, 0.9319-refvalue_pg_mu);
+    shrinkage_extra_pg_diff_mu->SetPoint(3, 0.7, 0.929539-refvalue_pg_mu);
+    shrinkage_extra_pg_diff_mu->SetPoint(4, 0.9, 0.925874-refvalue_pg_mu);
+    shrinkage_extra_pg_diff_mu->SetLineColor( kBlue); shrinkage_extra_pg_diff_mu->SetMarkerColor( kBlue); shrinkage_extra_pg_diff_mu->SetFillColor( kWhite);
+    
+    TGraph* shrinkage_extra_pg_diff_pi = new TGraph();
+    shrinkage_extra_pg_diff_pi->SetTitle("#pi^{+} selection pi-like cut");
+    shrinkage_extra_pg_diff_pi->SetPoint(0, 0.1, 0.580241-refvalue_pg_pi);
+    shrinkage_extra_pg_diff_pi->SetPoint(1, 0.3, 0.588423-refvalue_pg_pi);
+    shrinkage_extra_pg_diff_pi->SetPoint(2, 0.5, 0.594584-refvalue_pg_pi);
+    shrinkage_extra_pg_diff_pi->SetPoint(3, 0.7, 0.59734-refvalue_pg_pi);
+    shrinkage_extra_pg_diff_pi->SetPoint(4, 0.9, 0.601516-refvalue_pg_pi);
+    shrinkage_extra_pg_diff_pi->SetLineColor( kRed); shrinkage_extra_pg_diff_pi->SetMarkerColor( kRed); shrinkage_extra_pg_diff_pi->SetFillColor( kWhite);
+    
+    TGraph* shrinkage_extra_pg_diff_p = new TGraph();
+    shrinkage_extra_pg_diff_p->SetTitle("p selection p-like cut");
+    shrinkage_extra_pg_diff_p->SetPoint(0, 0.1, 0.905649-refvalue_pg_p);
+    shrinkage_extra_pg_diff_p->SetPoint(1, 0.3, 0.914448-refvalue_pg_p);
+    shrinkage_extra_pg_diff_p->SetPoint(2, 0.5, 0.918182-refvalue_pg_p);
+    shrinkage_extra_pg_diff_p->SetPoint(3, 0.7, 0.919496-refvalue_pg_p);
+    shrinkage_extra_pg_diff_p->SetPoint(4, 0.9, 0.919081-refvalue_pg_p);
+    shrinkage_extra_pg_diff_p->SetLineColor( kGreen); shrinkage_extra_pg_diff_p->SetMarkerColor( kGreen); shrinkage_extra_pg_diff_p->SetFillColor( kWhite); 
+    
+    TGraph* shrinkage_extra_pg_diff_e = new TGraph();
+    shrinkage_extra_pg_diff_e->SetTitle("e^{+} selection e-like cut");
+    shrinkage_extra_pg_diff_e->SetPoint(0, 0.1, 0.52974-refvalue_pg_e);
+    shrinkage_extra_pg_diff_e->SetPoint(1, 0.3, 0.634848-refvalue_pg_e);
+    shrinkage_extra_pg_diff_e->SetPoint(2, 0.5, 0.657179-refvalue_pg_e);
+    shrinkage_extra_pg_diff_e->SetPoint(3, 0.7, 0.663742-refvalue_pg_e);
+    shrinkage_extra_pg_diff_e->SetPoint(4, 0.9, 0.662732-refvalue_pg_e);
+    shrinkage_extra_pg_diff_e->SetLineColor( kMagenta); shrinkage_extra_pg_diff_e->SetMarkerColor( kMagenta); shrinkage_extra_pg_diff_e->SetFillColor( kWhite); 
+    
+    TCanvas* canvas_shrinkage = new TCanvas("canvas_shrinkage","",200,10,1000,400);
+    canvas_shrinkage->Divide(2,1,0.005,0.005);
+    
+    canvas_shrinkage->cd(1);  
+    shrinkage_extra_pg_mu->GetYaxis()->SetRangeUser(0, 1);
+    shrinkage_extra_pg_mu->GetYaxis()->SetTitleOffset(1.2);
+    shrinkage_extra_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_extra_pg_mu->GetYaxis()->SetTitle("Efficiency");
+    shrinkage_extra_pg_mu->Draw("AL*");
+    shrinkage_extra_pg_pi->Draw("L* same");
+    shrinkage_extra_pg_p->Draw("L* same");
+    shrinkage_extra_pg_e->Draw("L* same");
+    canvas_shrinkage->cd(1)->BuildLegend();
+    
+    canvas_shrinkage->cd(2);  
+    shrinkage_extra_pg_diff_mu->GetYaxis()->SetRangeUser(-0.3, 0.04);
+    shrinkage_extra_pg_diff_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_extra_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
+    shrinkage_extra_pg_diff_mu->Draw("AL*");
+    shrinkage_extra_pg_diff_pi->Draw("L* same");
+    shrinkage_extra_pg_diff_p->Draw("L* same");
+    shrinkage_extra_pg_diff_e->Draw("L* same");
+    
     // =============== Bagged ===============
     
     TGraph* bagged_pg_mu = new TGraph();
