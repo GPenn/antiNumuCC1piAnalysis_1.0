@@ -403,10 +403,10 @@
     shrinkage_extra_pg_diff_e->SetPoint(4, 0.9, 0.662732-refvalue_pg_e);
     shrinkage_extra_pg_diff_e->SetLineColor( kMagenta); shrinkage_extra_pg_diff_e->SetMarkerColor( kMagenta); shrinkage_extra_pg_diff_e->SetFillColor( kWhite); 
     
-    TCanvas* canvas_shrinkage = new TCanvas("canvas_shrinkage","",200,10,1000,400);
-    canvas_shrinkage->Divide(2,1,0.005,0.005);
+    TCanvas* canvas_shrinkage_extra = new TCanvas("canvas_shrinkage_extra","",200,10,1000,400);
+    canvas_shrinkage_extra->Divide(2,1,0.005,0.005);
     
-    canvas_shrinkage->cd(1);  
+    canvas_shrinkage_extra->cd(1);  
     shrinkage_extra_pg_mu->GetYaxis()->SetRangeUser(0, 1);
     shrinkage_extra_pg_mu->GetYaxis()->SetTitleOffset(1.2);
     shrinkage_extra_pg_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_extra_pg_mu->GetYaxis()->SetTitle("Efficiency");
@@ -414,10 +414,10 @@
     shrinkage_extra_pg_pi->Draw("L* same");
     shrinkage_extra_pg_p->Draw("L* same");
     shrinkage_extra_pg_e->Draw("L* same");
-    canvas_shrinkage->cd(1)->BuildLegend();
+    canvas_shrinkage_extra->cd(1)->BuildLegend();
     
-    canvas_shrinkage->cd(2);  
-    shrinkage_extra_pg_diff_mu->GetYaxis()->SetRangeUser(-0.3, 0.04);
+    canvas_shrinkage_extra->cd(2);  
+    shrinkage_extra_pg_diff_mu->GetYaxis()->SetRangeUser(-0.15, 0.04);
     shrinkage_extra_pg_diff_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_extra_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     shrinkage_extra_pg_diff_mu->Draw("AL*");
     shrinkage_extra_pg_diff_pi->Draw("L* same");
