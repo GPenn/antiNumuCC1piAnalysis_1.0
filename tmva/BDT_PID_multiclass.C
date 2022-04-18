@@ -229,11 +229,11 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                    "TPC3 p pull",     "", 'F' );
    //factory->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                  "TPC3 pi pull",    "", 'F' );
    //factory->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                   "TPC2 dE/dx",    "", 'F' );
-   factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
-   //factory->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                  "TPC3 mu pull",    "", 'F' );
-   //factory->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                  "TPC3 e pull",     "", 'F' );
-   //factory->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                    "TPC3 p pull",     "", 'F' );
-   //factory->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                  "TPC3 pi pull",    "", 'F' );
+   //factory->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                   "TPC3 dE/dx",    "", 'F' );
+   factory->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                  "TPC3 mu pull",    "", 'F' );
+   factory->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                  "TPC3 e pull",     "", 'F' );
+   factory->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                    "TPC3 p pull",     "", 'F' );
+   factory->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                  "TPC3 pi pull",    "", 'F' );
    //factory->AddVariable( "ntpcs := selmu_ntpcs ",                          "TPC segments",    "", 'I' );
    
    // Muon candidate ECal variables
