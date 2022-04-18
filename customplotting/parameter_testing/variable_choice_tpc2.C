@@ -307,7 +307,7 @@
     
     //TCanvas* canvas_TPC2_choices_diff = new TCanvas("canvas_TPC2_choices_diff","",200,10,1000,800);
     canvas_TPC2_choices_sig->cd(2);
-    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-0.1, 0.1);
+    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-0.01, 0.035);
     TPC2_musel_mu_diff->GetXaxis()->SetRangeUser(1, 3);
     TPC2_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     TPC2_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
