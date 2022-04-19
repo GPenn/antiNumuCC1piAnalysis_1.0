@@ -14,7 +14,7 @@
     
     // =============== ECal variable choice ===============
     
-    const char *ecalvarchoices[3] = {"ECal high-level", "ECal low-level"};
+    const char *ecalvarchoices[3] = {"ECal low-level", "ECal high-level"};
     
     TH1F* ECal_musel_mu = new TH1F("ECal_musel_mu","#mu^{+} identified as #mu^{+}",3,0,3);
     TH1F* ECal_musel_pi = new TH1F("ECal_musel_pi","#pi^{+} identified as #mu^{+}",3,0,3);
@@ -237,39 +237,39 @@
     legend_bkg->AddEntry(ECal_psel_e,"e^{+} identified as p","f");
     legend_bkg->Draw();
     
-    ECal_musel_mu_diff->Fill(ecalvarchoices[0], ECal_musel_mu->GetBinContent(1)-ECal_musel_mu->GetBinContent(1) );
-    ECal_musel_pi_diff->Fill(ecalvarchoices[0], ECal_musel_pi->GetBinContent(1)-ECal_musel_pi->GetBinContent(1) ); 
-    ECal_musel_p_diff->Fill(ecalvarchoices[0], ECal_musel_p->GetBinContent(1)-ECal_musel_p->GetBinContent(1) );
-    ECal_musel_e_diff->Fill(ecalvarchoices[0], ECal_musel_e->GetBinContent(1)-ECal_musel_e->GetBinContent(1) );
-    ECal_pisel_mu_diff->Fill(ecalvarchoices[0], ECal_pisel_mu->GetBinContent(1)-ECal_pisel_mu->GetBinContent(1) );
-    ECal_pisel_pi_diff->Fill(ecalvarchoices[0], ECal_pisel_pi->GetBinContent(1)-ECal_pisel_pi->GetBinContent(1) );
-    ECal_pisel_p_diff->Fill(ecalvarchoices[0], ECal_pisel_p->GetBinContent(1)-ECal_pisel_p->GetBinContent(1) );
-    ECal_pisel_e_diff->Fill(ecalvarchoices[0], ECal_pisel_e->GetBinContent(1)-ECal_pisel_e->GetBinContent(1) );
-    ECal_psel_mu_diff->Fill(ecalvarchoices[0], ECal_psel_mu->GetBinContent(1)-ECal_psel_mu->GetBinContent(1) );
-    ECal_psel_pi_diff->Fill(ecalvarchoices[0], ECal_psel_pi->GetBinContent(1)-ECal_psel_pi->GetBinContent(1) );
-    ECal_psel_p_diff->Fill(ecalvarchoices[0], ECal_psel_p->GetBinContent(1)-ECal_psel_p->GetBinContent(1) );
-    ECal_psel_e_diff->Fill(ecalvarchoices[0], ECal_psel_e->GetBinContent(1)-ECal_psel_e->GetBinContent(1) );
-    ECal_esel_mu_diff->Fill(ecalvarchoices[0], ECal_esel_mu->GetBinContent(1)-ECal_esel_mu->GetBinContent(1) );
-    ECal_esel_pi_diff->Fill(ecalvarchoices[0], ECal_esel_pi->GetBinContent(1)-ECal_esel_pi->GetBinContent(1) );
-    ECal_esel_p_diff->Fill(ecalvarchoices[0], ECal_esel_p->GetBinContent(1)-ECal_esel_p->GetBinContent(1) );
-    ECal_esel_e_diff->Fill(ecalvarchoices[0], ECal_esel_e->GetBinContent(1)-ECal_esel_e->GetBinContent(1) );
+    ECal_musel_mu_diff->Fill(ecalvarchoices[0], ECal_musel_mu->GetBinContent(1)-ECal_musel_mu->GetBinContent(2) );
+    ECal_musel_pi_diff->Fill(ecalvarchoices[0], ECal_musel_pi->GetBinContent(1)-ECal_musel_pi->GetBinContent(2) ); 
+    ECal_musel_p_diff->Fill(ecalvarchoices[0], ECal_musel_p->GetBinContent(1)-ECal_musel_p->GetBinContent(2) );
+    ECal_musel_e_diff->Fill(ecalvarchoices[0], ECal_musel_e->GetBinContent(1)-ECal_musel_e->GetBinContent(2) );
+    ECal_pisel_mu_diff->Fill(ecalvarchoices[0], ECal_pisel_mu->GetBinContent(1)-ECal_pisel_mu->GetBinContent(2) );
+    ECal_pisel_pi_diff->Fill(ecalvarchoices[0], ECal_pisel_pi->GetBinContent(1)-ECal_pisel_pi->GetBinContent(2) );
+    ECal_pisel_p_diff->Fill(ecalvarchoices[0], ECal_pisel_p->GetBinContent(1)-ECal_pisel_p->GetBinContent(2) );
+    ECal_pisel_e_diff->Fill(ecalvarchoices[0], ECal_pisel_e->GetBinContent(1)-ECal_pisel_e->GetBinContent(2) );
+    ECal_psel_mu_diff->Fill(ecalvarchoices[0], ECal_psel_mu->GetBinContent(1)-ECal_psel_mu->GetBinContent(2) );
+    ECal_psel_pi_diff->Fill(ecalvarchoices[0], ECal_psel_pi->GetBinContent(1)-ECal_psel_pi->GetBinContent(2) );
+    ECal_psel_p_diff->Fill(ecalvarchoices[0], ECal_psel_p->GetBinContent(1)-ECal_psel_p->GetBinContent(2) );
+    ECal_psel_e_diff->Fill(ecalvarchoices[0], ECal_psel_e->GetBinContent(1)-ECal_psel_e->GetBinContent(2) );
+    ECal_esel_mu_diff->Fill(ecalvarchoices[0], ECal_esel_mu->GetBinContent(1)-ECal_esel_mu->GetBinContent(2) );
+    ECal_esel_pi_diff->Fill(ecalvarchoices[0], ECal_esel_pi->GetBinContent(1)-ECal_esel_pi->GetBinContent(2) );
+    ECal_esel_p_diff->Fill(ecalvarchoices[0], ECal_esel_p->GetBinContent(1)-ECal_esel_p->GetBinContent(2) );
+    ECal_esel_e_diff->Fill(ecalvarchoices[0], ECal_esel_e->GetBinContent(1)-ECal_esel_e->GetBinContent(2) );
     
-    ECal_musel_mu_diff->Fill(ecalvarchoices[1], ECal_musel_mu->GetBinContent(2)-ECal_musel_mu->GetBinContent(1) );
-    ECal_musel_pi_diff->Fill(ecalvarchoices[1], ECal_musel_pi->GetBinContent(2)-ECal_musel_pi->GetBinContent(1) ); 
-    ECal_musel_p_diff->Fill(ecalvarchoices[1], ECal_musel_p->GetBinContent(2)-ECal_musel_p->GetBinContent(1) );
-    ECal_musel_e_diff->Fill(ecalvarchoices[1], ECal_musel_e->GetBinContent(2)-ECal_musel_e->GetBinContent(1) );
-    ECal_pisel_mu_diff->Fill(ecalvarchoices[1], ECal_pisel_mu->GetBinContent(2)-ECal_pisel_mu->GetBinContent(1) );
-    ECal_pisel_pi_diff->Fill(ecalvarchoices[1], ECal_pisel_pi->GetBinContent(2)-ECal_pisel_pi->GetBinContent(1) );
-    ECal_pisel_p_diff->Fill(ecalvarchoices[1], ECal_pisel_p->GetBinContent(2)-ECal_pisel_p->GetBinContent(1) );
-    ECal_pisel_e_diff->Fill(ecalvarchoices[1], ECal_pisel_e->GetBinContent(2)-ECal_pisel_e->GetBinContent(1) );
-    ECal_psel_mu_diff->Fill(ecalvarchoices[1], ECal_psel_mu->GetBinContent(2)-ECal_psel_mu->GetBinContent(1) );
-    ECal_psel_pi_diff->Fill(ecalvarchoices[1], ECal_psel_pi->GetBinContent(2)-ECal_psel_pi->GetBinContent(1) );
-    ECal_psel_p_diff->Fill(ecalvarchoices[1], ECal_psel_p->GetBinContent(2)-ECal_psel_p->GetBinContent(1) );
-    ECal_psel_e_diff->Fill(ecalvarchoices[1], ECal_psel_e->GetBinContent(2)-ECal_psel_e->GetBinContent(1) );
-    ECal_esel_mu_diff->Fill(ecalvarchoices[1], ECal_esel_mu->GetBinContent(2)-ECal_esel_mu->GetBinContent(1) );
-    ECal_esel_pi_diff->Fill(ecalvarchoices[1], ECal_esel_pi->GetBinContent(2)-ECal_esel_pi->GetBinContent(1) );
-    ECal_esel_p_diff->Fill(ecalvarchoices[1], ECal_esel_p->GetBinContent(2)-ECal_esel_p->GetBinContent(1) );
-    ECal_esel_e_diff->Fill(ecalvarchoices[1], ECal_esel_e->GetBinContent(2)-ECal_esel_e->GetBinContent(1) );
+    ECal_musel_mu_diff->Fill(ecalvarchoices[1], ECal_musel_mu->GetBinContent(2)-ECal_musel_mu->GetBinContent(2) );
+    ECal_musel_pi_diff->Fill(ecalvarchoices[1], ECal_musel_pi->GetBinContent(2)-ECal_musel_pi->GetBinContent(2) ); 
+    ECal_musel_p_diff->Fill(ecalvarchoices[1], ECal_musel_p->GetBinContent(2)-ECal_musel_p->GetBinContent(2) );
+    ECal_musel_e_diff->Fill(ecalvarchoices[1], ECal_musel_e->GetBinContent(2)-ECal_musel_e->GetBinContent(2) );
+    ECal_pisel_mu_diff->Fill(ecalvarchoices[1], ECal_pisel_mu->GetBinContent(2)-ECal_pisel_mu->GetBinContent(2) );
+    ECal_pisel_pi_diff->Fill(ecalvarchoices[1], ECal_pisel_pi->GetBinContent(2)-ECal_pisel_pi->GetBinContent(2) );
+    ECal_pisel_p_diff->Fill(ecalvarchoices[1], ECal_pisel_p->GetBinContent(2)-ECal_pisel_p->GetBinContent(2) );
+    ECal_pisel_e_diff->Fill(ecalvarchoices[1], ECal_pisel_e->GetBinContent(2)-ECal_pisel_e->GetBinContent(2) );
+    ECal_psel_mu_diff->Fill(ecalvarchoices[1], ECal_psel_mu->GetBinContent(2)-ECal_psel_mu->GetBinContent(2) );
+    ECal_psel_pi_diff->Fill(ecalvarchoices[1], ECal_psel_pi->GetBinContent(2)-ECal_psel_pi->GetBinContent(2) );
+    ECal_psel_p_diff->Fill(ecalvarchoices[1], ECal_psel_p->GetBinContent(2)-ECal_psel_p->GetBinContent(2) );
+    ECal_psel_e_diff->Fill(ecalvarchoices[1], ECal_psel_e->GetBinContent(2)-ECal_psel_e->GetBinContent(2) );
+    ECal_esel_mu_diff->Fill(ecalvarchoices[1], ECal_esel_mu->GetBinContent(2)-ECal_esel_mu->GetBinContent(2) );
+    ECal_esel_pi_diff->Fill(ecalvarchoices[1], ECal_esel_pi->GetBinContent(2)-ECal_esel_pi->GetBinContent(2) );
+    ECal_esel_p_diff->Fill(ecalvarchoices[1], ECal_esel_p->GetBinContent(2)-ECal_esel_p->GetBinContent(2) );
+    ECal_esel_e_diff->Fill(ecalvarchoices[1], ECal_esel_e->GetBinContent(2)-ECal_esel_e->GetBinContent(2) );
     
     //TCanvas* canvas_ECal_choices_diff = new TCanvas("canvas_ECal_choices_diff","",200,10,1000,800);
     canvas_ECal_choices_sig->cd(2);
