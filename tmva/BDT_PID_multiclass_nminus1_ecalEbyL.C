@@ -50,7 +50,7 @@
 
 using namespace TMVA;
 
-void BDT_PID_multiclass_nminus1_ecalEbyL_nminus1_mom( TString myMethodList = "" )
+void BDT_PID_multiclass_nminus1_ecalEbyL( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
