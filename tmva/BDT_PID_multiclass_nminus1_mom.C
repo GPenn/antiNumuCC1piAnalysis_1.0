@@ -163,7 +163,7 @@ void BDT_PID_multiclass_nminus1_mom( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_PID_multiclass_nminus1_mom_nminus1_mom.root" );
+   TString outfileName( "output/BDT_PID_multiclass_nminus1_mom.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
