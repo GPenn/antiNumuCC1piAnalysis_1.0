@@ -289,7 +289,7 @@
     
     //TCanvas* canvas_ECal_choices_bkg_diff = new TCanvas("canvas_ECal_choices_bkg_diff","",200,10,1000,800);
     canvas_ECal_choices_bkg->cd(2);
-    ECal_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.1, 0.3);
+    ECal_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.05, 0.3);
     ECal_pisel_mu_diff->GetXaxis()->SetRangeUser(1, 2);
     ECal_pisel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     ECal_pisel_mu_diff->GetYaxis()->SetLabelSize(0.025);
