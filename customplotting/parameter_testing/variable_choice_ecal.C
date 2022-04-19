@@ -200,7 +200,7 @@
     TCanvas* canvas_ECal_choices_bkg = new TCanvas("canvas_ECal_choices_bkg","",200,10,2000,800);
     canvas_ECal_choices_bkg->Divide(2,1,0.005,0.005);
     canvas_ECal_choices_bkg->cd(1);
-    ECal_pisel_mu->GetYaxis()->SetRangeUser(0, 0.5);
+    ECal_pisel_mu->GetYaxis()->SetRangeUser(0, 0.35);
     ECal_pisel_mu->GetXaxis()->SetRangeUser(0, 3);
     ECal_pisel_mu->GetYaxis()->SetTitle("Efficiency");
     ECal_pisel_mu->GetYaxis()->SetLabelSize(0.025);
@@ -273,7 +273,7 @@
     
     //TCanvas* canvas_ECal_choices_diff = new TCanvas("canvas_ECal_choices_diff","",200,10,1000,800);
     canvas_ECal_choices_sig->cd(2);
-    ECal_musel_mu_diff->GetYaxis()->SetRangeUser(-1.0, 1.0);
+    ECal_musel_mu_diff->GetYaxis()->SetRangeUser(-0.4, 0.05);
     ECal_musel_mu_diff->GetXaxis()->SetRangeUser(1, 2);
     ECal_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     ECal_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
@@ -289,7 +289,7 @@
     
     //TCanvas* canvas_ECal_choices_bkg_diff = new TCanvas("canvas_ECal_choices_bkg_diff","",200,10,1000,800);
     canvas_ECal_choices_bkg->cd(2);
-    ECal_pisel_mu_diff->GetYaxis()->SetRangeUser(-1.0, 1.0);
+    ECal_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.1, 0.3);
     ECal_pisel_mu_diff->GetXaxis()->SetRangeUser(1, 2);
     ECal_pisel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     ECal_pisel_mu_diff->GetYaxis()->SetLabelSize(0.025);
