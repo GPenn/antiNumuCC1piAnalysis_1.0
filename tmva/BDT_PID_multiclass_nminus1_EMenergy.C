@@ -50,7 +50,7 @@
 
 using namespace TMVA;
 
-void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
+void BDT_PID_multiclass_nminus1_EMenergy( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -138,7 +138,7 @@ void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
    // ---------------------------------------------------------------
 
    std::cout << std::endl;
-   std::cout << "==> Start BDT_PID_multiclass_nminus1_mom" << std::endl;
+   std::cout << "==> Start BDT_PID_multiclass_nminus1_EMenergy" << std::endl;
 
    // Select methods (don't look at this code - not of interest)
    if (myMethodList != "") {
@@ -163,7 +163,7 @@ void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_PID_multiclass_nminus1_mom_nminus1_mom.root" );
+   TString outfileName( "output/BDT_PID_multiclass_nminus1_EMenergy_nminus1_mom.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -179,12 +179,12 @@ void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
    //TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
    //                                            "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
    
-   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass_nminus1_mom", outputFile,
+   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass_nminus1_EMenergy", outputFile,
                                                "!V:!Silent:Color:DrawProgressBar:Transformations=I:AnalysisType=multiclass" );
 
    
    // Tuned list:
-   //factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
+   factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
    factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
    factory->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      "FGD1 E/L",               "", 'F' );
    factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
@@ -193,7 +193,7 @@ void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
    factory->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                    "TPC2 p pull",     "", 'F' );
    factory->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                  "TPC2 pi pull",    "", 'F' );
    factory->AddVariable( "ntpcs := selmu_ntpcs ",                          "TPC segments",    "", 'I' );
-   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
+   //factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
    factory->AddVariable( "ecalEbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
    factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
    factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
@@ -213,7 +213,7 @@ void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
    TFile *input_p  = TFile::Open( fname_p );
    TFile *input_e  = TFile::Open( fname_e );
    
-   std::cout << "--- BDT_PID_multiclass_nminus1_mom       : Using input files: " << std::endl 
+   std::cout << "--- BDT_PID_multiclass_nminus1_EMenergy       : Using input files: " << std::endl 
       << input_mu->GetName() << std::endl 
       << input_pi->GetName() << std::endl 
       << input_p->GetName() << std::endl 
@@ -453,7 +453,7 @@ void BDT_PID_multiclass_nminus1_mom_nminus1_mom( TString myMethodList = "" )
    outputFile->Close();
 
    std::cout << "==> Wrote root file: " << outputFile->GetName() << std::endl;
-   std::cout << "==> BDT_PID_multiclass_nminus1_mom is done!" << std::endl;
+   std::cout << "==> BDT_PID_multiclass_nminus1_EMenergy is done!" << std::endl;
    
    delete factory;
    
