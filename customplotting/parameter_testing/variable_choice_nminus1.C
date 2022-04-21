@@ -444,7 +444,7 @@
     TCanvas* canvas_Nminus1_choices_sig = new TCanvas("canvas_Nminus1_choices_sig","",200,10,2000,800);
     canvas_Nminus1_choices_sig->Divide(2,1,0.005,0.005);
     canvas_Nminus1_choices_sig->cd(1);
-    Nminus1_musel_mu->GetYaxis()->SetRangeUser(0, 1);
+    Nminus1_musel_mu->GetYaxis()->SetRangeUser(-0.045, 0.005);
     Nminus1_musel_mu->GetXaxis()->SetRangeUser(0, 17);
     Nminus1_musel_mu->GetYaxis()->SetTitle("Efficiency");
     Nminus1_musel_mu->GetYaxis()->SetLabelSize(0.025);
