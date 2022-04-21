@@ -545,6 +545,11 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1500trees", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_2000trees", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_2500trees", "!H:!V:NTrees=2500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_750trees", "!H:!V:NTrees=750:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1100trees", "!H:!V:NTrees=1100:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1200trees", "!H:!V:NTrees=1200:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1300trees", "!H:!V:NTrees=1300:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_1400trees", "!H:!V:NTrees=1400:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_0.9shrinkage", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.9:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_0.7shrinkage", "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.7:nCuts=2000:MaxDepth=4");
