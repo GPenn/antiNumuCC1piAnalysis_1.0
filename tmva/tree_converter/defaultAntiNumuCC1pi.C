@@ -220,7 +220,7 @@ void defaultAntiNumuCC1pi::Loop()
        if (selmu_tpc_dedx[1] > 0.0 && selmu_tpc_dedx[1] < 2000.0)    {defout->selmu_tpc3_dedx = selmu_tpc_dedx[1];}
        else                                                          {defout->selmu_tpc3_dedx = -100.0;}
         
-       if (selmu_tpc_nnodes>18)
+       if (selmu_tpc_nnodes[1]>18)
        {
             if (selmu_tpc_pullmu[1] < -10.0)         {defout->selmu_tpc3_pullmu_gq = -10.0;}
             else if (selmu_tpc_pullmu[1] > 40.0)     {defout->selmu_tpc3_pullmu_gq = 30.0;}
