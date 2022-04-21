@@ -241,11 +241,11 @@ void defaultAntiNumuCC1pi::Loop()
         
        else
        {
-           selmu_tpc3_pullmu_gq = -10;
-           selmu_tpc3_pullpi_gq = -10;
-           selmu_tpc3_pullp_gq = -10;
-           selmu_tpc3_pullele_gq = -10;
-           selmu_tpc3_dedx_gq = -100.0;
+           defout->selmu_tpc3_pullmu_gq = -10;
+           defout->selmu_tpc3_pullpi_gq = -10;
+           defout->selmu_tpc3_pullp_gq = -10;
+           defout->selmu_tpc3_pullele_gq = -10;
+           defout->selmu_tpc3_dedx_gq = -100.0;
        }
          
             defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
