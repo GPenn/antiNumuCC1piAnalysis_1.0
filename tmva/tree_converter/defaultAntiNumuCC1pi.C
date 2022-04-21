@@ -41,8 +41,6 @@ void defaultAntiNumuCC1pi::Loop()
    
     std::cout << "Total entries to convert: " << nentries << std::endl << std::endl;
    
-    std::time_t time_start = std::time(0);
-   
     std::cout << "Generating weight histogram... ";
    
     //TH1F *recomom_hist = new TH1F("recomom_hist", "Reco momentum", 30, 0, 1500);
@@ -73,6 +71,8 @@ void defaultAntiNumuCC1pi::Loop()
     }
    
     std::cout << "Done." << std::endl << std::endl;
+    
+    std::time_t time_start = std::time(0);
       
     for (Long64_t jentry=0; jentry<nentries;jentry++) {
    
@@ -200,23 +200,53 @@ void defaultAntiNumuCC1pi::Loop()
        else if (selmu_tpc_pullpi[0] > 40.0)     {defout->selmu_tpc2_pullpi = 40.0;}
        else                                     {defout->selmu_tpc2_pullpi = selmu_tpc_pullpi[0];}
         
-       if (selmu_tpc_pullmu[0] < -10.0)         {defout->selmu_tpc3_pullmu = -10.0;}
-       else if (selmu_tpc_pullmu[0] > 40.0)     {defout->selmu_tpc3_pullmu = 30.0;}
-       else                                     {defout->selmu_tpc3_pullmu = selmu_tpc_pullmu[0];}
-       if (selmu_tpc_pullele[0] < -20.0)        {defout->selmu_tpc3_pullele = -10.0;}
-       else if (selmu_tpc_pullele[0] > 30.0)    {defout->selmu_tpc3_pullele = 30.0;}
-       else                                     {defout->selmu_tpc3_pullele = selmu_tpc_pullele[0];}
-       if (selmu_tpc_pullp[0] < -40.0)          {defout->selmu_tpc3_pullp = -40.0;}
-       else if (selmu_tpc_pullp[0] > 20.0)      {defout->selmu_tpc3_pullp = 20.0;}
-       else                                     {defout->selmu_tpc3_pullp = selmu_tpc_pullp[0];}
-       if (selmu_tpc_pullpi[0] < -10.0)         {defout->selmu_tpc3_pullpi = -10.0;}
-       else if (selmu_tpc_pullpi[0] > 40.0)     {defout->selmu_tpc3_pullpi = 20.0;}
-       else                                     {defout->selmu_tpc3_pullpi = selmu_tpc_pullpi[0];}
+       if (selmu_tpc_pullmu[1] < -10.0)         {defout->selmu_tpc3_pullmu = -10.0;}
+       else if (selmu_tpc_pullmu[1] > 40.0)     {defout->selmu_tpc3_pullmu = 30.0;}
+       else                                     {defout->selmu_tpc3_pullmu = selmu_tpc_pullmu[1];}
+       if (selmu_tpc_pullele[1] < -20.0)        {defout->selmu_tpc3_pullele = -10.0;}
+       else if (selmu_tpc_pullele[1] > 30.0)    {defout->selmu_tpc3_pullele = 30.0;}
+       else                                     {defout->selmu_tpc3_pullele = selmu_tpc_pullele[1];}
+       if (selmu_tpc_pullp[1] < -40.0)          {defout->selmu_tpc3_pullp = -40.0;}
+       else if (selmu_tpc_pullp[1] > 20.0)      {defout->selmu_tpc3_pullp = 20.0;}
+       else                                     {defout->selmu_tpc3_pullp = selmu_tpc_pullp[1];}
+       if (selmu_tpc_pullpi[1] < -10.0)         {defout->selmu_tpc3_pullpi = -10.0;}
+       else if (selmu_tpc_pullpi[1] > 40.0)     {defout->selmu_tpc3_pullpi = 20.0;}
+       else                                     {defout->selmu_tpc3_pullpi = selmu_tpc_pullpi[1];}
+        
+        
         
        if (selmu_tpc_dedx[0] > 0.0 && selmu_tpc_dedx[0] < 2000.0)    {defout->selmu_tpc2_dedx = selmu_tpc_dedx[0];}
        else                                                          {defout->selmu_tpc2_dedx = -100.0;}
        if (selmu_tpc_dedx[1] > 0.0 && selmu_tpc_dedx[1] < 2000.0)    {defout->selmu_tpc3_dedx = selmu_tpc_dedx[1];}
        else                                                          {defout->selmu_tpc3_dedx = -100.0;}
+        
+       if (selmu_tpc_nnodes>18)
+       {
+            if (selmu_tpc_pullmu[1] < -10.0)         {defout->selmu_tpc3_pullmu_gq = -10.0;}
+            else if (selmu_tpc_pullmu[1] > 40.0)     {defout->selmu_tpc3_pullmu_gq = 30.0;}
+            else                                     {defout->selmu_tpc3_pullmu_gq = selmu_tpc_pullmu[1];}
+            if (selmu_tpc_pullele[1] < -20.0)        {defout->selmu_tpc3_pullele_gq = -10.0;}
+            else if (selmu_tpc_pullele[1] > 30.0)    {defout->selmu_tpc3_pullele_gq = 30.0;}
+            else                                     {defout->selmu_tpc3_pullele_gq = selmu_tpc_pullele[1];}
+            if (selmu_tpc_pullp[1] < -40.0)          {defout->selmu_tpc3_pullp_gq = -40.0;}
+            else if (selmu_tpc_pullp[1] > 20.0)      {defout->selmu_tpc3_pullp_gq = 20.0;}
+            else                                     {defout->selmu_tpc3_pullp_gq = selmu_tpc_pullp[1];}
+            if (selmu_tpc_pullpi[1] < -10.0)         {defout->selmu_tpc3_pullpi_gq = -10.0;}
+            else if (selmu_tpc_pullpi[1] > 40.0)     {defout->selmu_tpc3_pullpi_gq = 20.0;}
+            else                                     {defout->selmu_tpc3_pullpi_gq = selmu_tpc_pullpi[1];}
+           
+            if (selmu_tpc_dedx[1] > 0.0 && selmu_tpc_dedx[1] < 2000.0)    {defout->selmu_tpc3_dedx_gq = selmu_tpc_dedx[1];}
+            else                                                          {defout->selmu_tpc3_dedx_gq = -100.0;}
+       }
+        
+       else
+       {
+           selmu_tpc3_pullmu_gq = -10;
+           selmu_tpc3_pullpi_gq = -10;
+           selmu_tpc3_pullp_gq = -10;
+           selmu_tpc3_pullele_gq = -10;
+           selmu_tpc3_dedx_gq = -100.0;
+       }
          
             defout->selmu_has_fgd1seg              = selmu_has_fgd1seg;
             if (selmu_fgd1_pull_mu > -30.0 && selmu_fgd1_pull_mu < 60.0)  {defout->selmu_fgd1_pull_mu = selmu_fgd1_pull_mu;}
@@ -425,6 +455,11 @@ defaultOut::defaultOut(std::string outname) {
   foutb_selmu_tpc3_pullp  	       = fDefaultOut->Branch("selmu_tpc3_pullp"               , &selmu_tpc3_pullp  	      , "selmu_tpc3_pullp/F");
   foutb_selmu_tpc3_pullpi  	       = fDefaultOut->Branch("selmu_tpc3_pullpi"              , &selmu_tpc3_pullpi  	      , "selmu_tpc3_pullpi/F");
   foutb_selmu_tpc3_dedx 	       = fDefaultOut->Branch("selmu_tpc3_dedx"                , &selmu_tpc3_dedx  	          , "selmu_tpc3_dedx/F");
+  foutb_selmu_tpc3_pullmu_gq  	       = fDefaultOut->Branch("selmu_tpc3_pullmu_gq"              , &selmu_tpc3_pullmu_gq  	      , "selmu2_tpc3_pullmu_gq/F");
+  foutb_selmu_tpc3_pullele_gq  	       = fDefaultOut->Branch("selmu_tpc3_pullele_gq"              , &selmu_tpc3_pullele_gq  	      , "selmu_tpc3_pullele_gq/F");
+  foutb_selmu_tpc3_pullp_gq  	       = fDefaultOut->Branch("selmu_tpc3_pullp_gq"               , &selmu_tpc3_pullp_gq  	      , "selmu_tpc3_pullp_gq/F");
+  foutb_selmu_tpc3_pullpi_gq  	       = fDefaultOut->Branch("selmu_tpc3_pullpi_gq"              , &selmu_tpc3_pullpi_gq  	      , "selmu_tpc3_pullpi_gq/F");
+  foutb_selmu_tpc3_dedx_gq 	       = fDefaultOut->Branch("selmu_tpc3_dedx_gq"                , &selmu_tpc3_dedx_gq  	          , "selmu_tpc3_dedx_gq/F");
    
   foutb_selmu_has_fgd1seg 	          = fDefaultOut->Branch("selmu_has_fgd1seg"              , &selmu_has_fgd1seg 	         , "selmu_has_fgd1seg/I");
   foutb_selmu_fgd1_pull_mu  	       = fDefaultOut->Branch("selmu_fgd1_pull_mu"             , &selmu_fgd1_pull_mu  	      , "selmu_fgd1_pull_mu/F");
