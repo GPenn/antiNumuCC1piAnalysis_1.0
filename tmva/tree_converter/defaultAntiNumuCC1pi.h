@@ -80,6 +80,11 @@ public :
   Float_t         selmu_tpc3_pullp;
   Float_t         selmu_tpc3_pullpi;
   Float_t         selmu_tpc3_dedx;
+  Float_t         selmu_tpc3_pullmu_gq;
+  Float_t         selmu_tpc3_pullele_gq;
+  Float_t         selmu_tpc3_pullp_gq;
+  Float_t         selmu_tpc3_pullpi_gq;
+  Float_t         selmu_tpc3_dedx_gq;
   
   Int_t           selmu_has_fgd1seg;
   Float_t         selmu_fgd1_pull_mu;
@@ -184,6 +189,11 @@ private:
   TBranch        *foutb_selmu_tpc3_pullp;
   TBranch        *foutb_selmu_tpc3_pullpi;
   TBranch        *foutb_selmu_tpc3_dedx;
+  TBranch        *foutb_selmu_tpc3_pullmu_gq;
+  TBranch        *foutb_selmu_tpc3_pullele_gq;
+  TBranch        *foutb_selmu_tpc3_pullp_gq;
+  TBranch        *foutb_selmu_tpc3_pullpi_gq;
+  TBranch        *foutb_selmu_tpc3_dedx_gq;
   
   TBranch        *foutb_selmu_has_fgd1seg;
   TBranch        *foutb_selmu_fgd1_pull_mu;
