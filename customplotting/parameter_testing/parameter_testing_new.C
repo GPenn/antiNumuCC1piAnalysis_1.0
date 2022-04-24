@@ -42,7 +42,6 @@
     treedepth_pg_e->SetLineColor( kMagenta); treedepth_pg_e->SetMarkerColor( kMagenta); treedepth_pg_e->SetFillColor( kWhite); 
     
     TGraph* treedepth_pg_diff_mu = new TGraph();
-    treedepth_pg_diff_mu->SetTitle("#mu^{+} identified as #mu^{+}");
     treedepth_pg_diff_mu->SetPoint(0, 2.0, 0.-refvalue_pg_mu);
     treedepth_pg_diff_mu->SetPoint(1, 3.0, 0.-refvalue_pg_mu);
     treedepth_pg_diff_mu->SetPoint(2, 4.0, 0.-refvalue_pg_mu);
@@ -50,7 +49,6 @@
     treedepth_pg_diff_mu->SetLineColor( kBlue); treedepth_pg_diff_mu->SetMarkerColor( kBlue); treedepth_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* treedepth_pg_diff_pi = new TGraph();
-    treedepth_pg_diff_pi->SetTitle("#pi^{+} identified as #pi^{+}");
     treedepth_pg_diff_pi->SetPoint(0, 2.0, 0.-refvalue_pg_pi);
     treedepth_pg_diff_pi->SetPoint(1, 3.0, 0.-refvalue_pg_pi);
     treedepth_pg_diff_pi->SetPoint(2, 4.0, 0.-refvalue_pg_pi);
@@ -58,7 +56,6 @@
     treedepth_pg_diff_pi->SetLineColor( kRed); treedepth_pg_diff_pi->SetMarkerColor( kRed); treedepth_pg_diff_pi->SetFillColor( kWhite); 
     
     TGraph* treedepth_pg_diff_p = new TGraph();
-    treedepth_pg_diff_p->SetTitle("p identified as p");
     treedepth_pg_diff_p->SetPoint(0, 2.0, 0.-refvalue_pg_p);
     treedepth_pg_diff_p->SetPoint(1, 3.0, 0.-refvalue_pg_p);
     treedepth_pg_diff_p->SetPoint(2, 4.0, 0.-refvalue_pg_p);
@@ -66,7 +63,6 @@
     treedepth_pg_diff_p->SetLineColor( kGreen); treedepth_pg_diff_p->SetMarkerColor( kGreen); treedepth_pg_diff_p->SetFillColor( kWhite); 
     
     TGraph* treedepth_pg_diff_e = new TGraph();
-    treedepth_pg_diff_e->SetTitle("e^{+} identified as e^{+}");
     treedepth_pg_diff_e->SetPoint(0, 2.0, 0.-refvalue_pg_e);
     treedepth_pg_diff_e->SetPoint(1, 3.0, 0.-refvalue_pg_e);
     treedepth_pg_diff_e->SetPoint(2, 4.0, 0.-refvalue_pg_e);
@@ -102,7 +98,7 @@
     refvalue_pg_e = 0.627854;
     
     TGraph* treenumber_pg_mu = new TGraph();
-    treenumber_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
+    treenumber_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
     treenumber_pg_mu->SetPoint(0, 500.0, 0.932451);
     treenumber_pg_mu->SetPoint(1, 750.0, 0.931668);
     treenumber_pg_mu->SetPoint(2, 1000.0, 0.931205);
@@ -116,7 +112,7 @@
     treenumber_pg_mu->SetLineColor( kBlue); treenumber_pg_mu->SetMarkerColor( kBlue); treenumber_pg_mu->SetFillColor( kWhite);
     
     TGraph* treenumber_pg_pi = new TGraph();
-    treenumber_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
+    treenumber_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
     treenumber_pg_pi->SetPoint(0, 500.0, 0.618975);
     treenumber_pg_pi->SetPoint(1, 750.0, 0.620088);
     treenumber_pg_pi->SetPoint(2, 1000.0, 0.620858);
@@ -130,6 +126,7 @@
     treenumber_pg_pi->SetLineColor( kRed); treenumber_pg_pi->SetMarkerColor( kRed); treenumber_pg_pi->SetFillColor( kWhite);
     
     TGraph* treenumber_pg_p = new TGraph();
+    treenumber_pg_p->SetTitle("p identified as p");
     treenumber_pg_p->SetPoint(0, 500.0, 0.908744);
     treenumber_pg_p->SetPoint(1, 750.0, 0.911873);
     treenumber_pg_p->SetPoint(2, 1000.0, 0.913739);
@@ -143,7 +140,7 @@
     treenumber_pg_p->SetLineColor( kGreen); treenumber_pg_p->SetMarkerColor( kGreen); treenumber_pg_p->SetFillColor( kWhite); 
     
     TGraph* treenumber_pg_e = new TGraph();
-    treenumber_pg_e->SetTitle("e^{+} selection e-like cut");
+    treenumber_pg_e->SetTitle("e^{+} identified as e^{+}");
     treenumber_pg_e->SetPoint(0, 500.0, 0.573779);
     treenumber_pg_e->SetPoint(1, 750.0, 0.606578);
     treenumber_pg_e->SetPoint(2, 1000.0, 0.627854);
@@ -157,7 +154,6 @@
     treenumber_pg_e->SetLineColor( kMagenta); treenumber_pg_e->SetMarkerColor( kMagenta); treenumber_pg_e->SetFillColor( kWhite); 
     
     TGraph* treenumber_pg_diff_mu = new TGraph();
-    treenumber_pg_diff_mu->SetTitle("#mu^{+} selection mu-like cut");
     treenumber_pg_diff_mu->SetPoint(0, 500.0, 0.932451-refvalue_pg_mu);
     treenumber_pg_diff_mu->SetPoint(1, 750.0, 0.931668-refvalue_pg_mu);
     treenumber_pg_diff_mu->SetPoint(2, 1000.0, 0.931205-refvalue_pg_mu);
@@ -171,7 +167,6 @@
     treenumber_pg_diff_mu->SetLineColor( kBlue); treenumber_pg_diff_mu->SetMarkerColor( kBlue); treenumber_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* treenumber_pg_diff_pi = new TGraph();
-    treenumber_pg_diff_pi->SetTitle("#pi^{+} selection pi-like cut");
     treenumber_pg_diff_pi->SetPoint(0, 500.0, 0.618975-refvalue_pg_pi);
     treenumber_pg_diff_pi->SetPoint(1, 750.0, 0.620088-refvalue_pg_pi);
     treenumber_pg_diff_pi->SetPoint(2, 1000.0, 0.620858-refvalue_pg_pi);
@@ -198,7 +193,6 @@
     treenumber_pg_diff_p->SetLineColor( kGreen); treenumber_pg_diff_p->SetMarkerColor( kGreen); treenumber_pg_diff_p->SetFillColor( kWhite); 
     
     TGraph* treenumber_pg_diff_e = new TGraph();
-    treenumber_pg_diff_e->SetTitle("e^{+} selection e-like cut");
     treenumber_pg_diff_e->SetPoint(0, 500.0, 0.573779-refvalue_pg_e);
     treenumber_pg_diff_e->SetPoint(1, 750.0, 0.606578-refvalue_pg_e);
     treenumber_pg_diff_e->SetPoint(2, 1000.0, 0.627854-refvalue_pg_e);
@@ -235,12 +229,7 @@
     // =============== Shrinkage ===============
     
     TGraph* shrinkage_pg_mu = new TGraph();
-    shrinkage_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
-    //shrinkage_pg_mu->SetPoint(0, 0.01, 0.);
-    //shrinkage_pg_mu->SetPoint(1, 0.02, 0.);
-    //shrinkage_pg_mu->SetPoint(2, 0.04, 0.);
-    //shrinkage_pg_mu->SetPoint(3, 0.06, 0.);
-    //shrinkage_pg_mu->SetPoint(4, 0.08, 0.);
+    shrinkage_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
     shrinkage_pg_mu->SetPoint(0, 0.1, 0.938274);
     shrinkage_pg_mu->SetPoint(1, 0.3, 0.938969);
     shrinkage_pg_mu->SetPoint(2, 0.5, 0.937622);
@@ -249,12 +238,7 @@
     shrinkage_pg_mu->SetLineColor( kBlue); shrinkage_pg_mu->SetMarkerColor( kBlue); shrinkage_pg_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_pi = new TGraph();
-    shrinkage_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
-    //shrinkage_pg_pi->SetPoint(0, 0.01, 0.);
-    //shrinkage_pg_pi->SetPoint(1, 0.02, 0.);
-    //shrinkage_pg_pi->SetPoint(2, 0.04, 0.);
-    //shrinkage_pg_pi->SetPoint(3, 0.06, 0.);
-    //shrinkage_pg_pi->SetPoint(4, 0.08, 0.);
+    shrinkage_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
     shrinkage_pg_pi->SetPoint(0, 0.1, 0.580429);
     shrinkage_pg_pi->SetPoint(1, 0.3, 0.578238);
     shrinkage_pg_pi->SetPoint(2, 0.5, 0.584503);
@@ -263,12 +247,7 @@
     shrinkage_pg_pi->SetLineColor( kRed); shrinkage_pg_pi->SetMarkerColor( kRed); shrinkage_pg_pi->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_p = new TGraph();
-    shrinkage_pg_p->SetTitle("p selection p-like cut");
-    //shrinkage_pg_p->SetPoint(0, 0.01, 0.);
-    //shrinkage_pg_p->SetPoint(1, 0.02, 0.);
-    //shrinkage_pg_p->SetPoint(2, 0.04, 0.);
-    //shrinkage_pg_p->SetPoint(3, 0.06, 0.);
-    //shrinkage_pg_p->SetPoint(4, 0.08, 0.);
+    shrinkage_pg_p->SetTitle("p identified as p");
     shrinkage_pg_p->SetPoint(0, 0.1, 0.883349);
     shrinkage_pg_p->SetPoint(1, 0.3, 0.909401);
     shrinkage_pg_p->SetPoint(2, 0.5, 0.913117);
@@ -277,12 +256,7 @@
     shrinkage_pg_p->SetLineColor( kGreen); shrinkage_pg_p->SetMarkerColor( kGreen); shrinkage_pg_p->SetFillColor( kWhite); 
     
     TGraph* shrinkage_pg_e = new TGraph();
-    shrinkage_pg_e->SetTitle("e^{+} selection e-like cut");
-    //shrinkage_pg_e->SetPoint(0, 0.01, 0.);
-    //shrinkage_pg_e->SetPoint(1, 0.02, 0.);
-    //shrinkage_pg_e->SetPoint(2, 0.04, 0.);
-    //shrinkage_pg_e->SetPoint(3, 0.06, 0.);
-    //shrinkage_pg_e->SetPoint(4, 0.08, 0.);
+    shrinkage_pg_e->SetTitle("e^{+} identified as e^{+}");
     shrinkage_pg_e->SetPoint(0, 0.1, 0.377001);
     shrinkage_pg_e->SetPoint(1, 0.3, 0.576125);
     shrinkage_pg_e->SetPoint(2, 0.5, 0.625419);
@@ -291,12 +265,6 @@
     shrinkage_pg_e->SetLineColor( kMagenta); shrinkage_pg_e->SetMarkerColor( kMagenta); shrinkage_pg_e->SetFillColor( kWhite); 
     
     TGraph* shrinkage_pg_diff_mu = new TGraph();
-    shrinkage_pg_diff_mu->SetTitle("#mu^{+} selection mu-like cut");
-    //shrinkage_pg_diff_mu->SetPoint(0, 0.01, 0.-refvalue_pg_mu);
-    //shrinkage_pg_diff_mu->SetPoint(1, 0.02, 0.-refvalue_pg_mu);
-    //shrinkage_pg_diff_mu->SetPoint(2, 0.04, 0.-refvalue_pg_mu);
-    //shrinkage_pg_diff_mu->SetPoint(3, 0.06, 0.-refvalue_pg_mu);
-    //shrinkage_pg_diff_mu->SetPoint(4, 0.08, 0.-refvalue_pg_mu);
     shrinkage_pg_diff_mu->SetPoint(0, 0.1, 0.938274-refvalue_pg_mu);
     shrinkage_pg_diff_mu->SetPoint(1, 0.3, 0.938969-refvalue_pg_mu);
     shrinkage_pg_diff_mu->SetPoint(2, 0.5, 0.937622-refvalue_pg_mu);
@@ -305,12 +273,6 @@
     shrinkage_pg_diff_mu->SetLineColor( kBlue); shrinkage_pg_diff_mu->SetMarkerColor( kBlue); shrinkage_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_diff_pi = new TGraph();
-    //shrinkage_pg_diff_pi->SetTitle("#pi^{+} selection pi-like cut");
-    //shrinkage_pg_diff_pi->SetPoint(0, 0.01, 0.-refvalue_pg_pi);
-    //shrinkage_pg_diff_pi->SetPoint(1, 0.02, 0.-refvalue_pg_pi);
-    //shrinkage_pg_diff_pi->SetPoint(2, 0.04, 0.-refvalue_pg_pi);
-    //shrinkage_pg_diff_pi->SetPoint(3, 0.06, 0.-refvalue_pg_pi);
-    //shrinkage_pg_diff_pi->SetPoint(4, 0.08, 0.-refvalue_pg_pi);
     shrinkage_pg_diff_pi->SetPoint(0, 0.1, 0.580429-refvalue_pg_pi);
     shrinkage_pg_diff_pi->SetPoint(1, 0.3, 0.578238-refvalue_pg_pi);
     shrinkage_pg_diff_pi->SetPoint(2, 0.5, 0.584503-refvalue_pg_pi);
@@ -319,12 +281,6 @@
     shrinkage_pg_diff_pi->SetLineColor( kRed); shrinkage_pg_diff_pi->SetMarkerColor( kRed); shrinkage_pg_diff_pi->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_diff_p = new TGraph();
-    //shrinkage_pg_diff_p->SetTitle("p selection p-like cut");
-    //shrinkage_pg_diff_p->SetPoint(0, 0.01, 0.-refvalue_pg_p);
-    //shrinkage_pg_diff_p->SetPoint(1, 0.02, 0.-refvalue_pg_p);
-    //shrinkage_pg_diff_p->SetPoint(2, 0.04, 0.-refvalue_pg_p);
-    //shrinkage_pg_diff_p->SetPoint(3, 0.06, 0.-refvalue_pg_p);
-    //shrinkage_pg_diff_p->SetPoint(4, 0.08, 0.-refvalue_pg_p);
     shrinkage_pg_diff_p->SetPoint(0, 0.1, 0.883349-refvalue_pg_p);
     shrinkage_pg_diff_p->SetPoint(1, 0.3, 0.909401-refvalue_pg_p);
     shrinkage_pg_diff_p->SetPoint(2, 0.5, 0.913117-refvalue_pg_p);
@@ -333,12 +289,6 @@
     shrinkage_pg_diff_p->SetLineColor( kGreen); shrinkage_pg_diff_p->SetMarkerColor( kGreen); shrinkage_pg_diff_p->SetFillColor( kWhite); 
     
     TGraph* shrinkage_pg_diff_e = new TGraph();
-    //shrinkage_pg_diff_e->SetTitle("e^{+} selection e-like cut");
-    //shrinkage_pg_diff_e->SetPoint(0, 0.01, 0.-refvalue_pg_e);
-    //shrinkage_pg_diff_e->SetPoint(1, 0.02, 0.-refvalue_pg_e);
-    //shrinkage_pg_diff_e->SetPoint(2, 0.04, 0.-refvalue_pg_e);
-    //shrinkage_pg_diff_e->SetPoint(3, 0.06, 0.-refvalue_pg_e);
-    //shrinkage_pg_diff_e->SetPoint(4, 0.08, 0.-refvalue_pg_e);
     shrinkage_pg_diff_e->SetPoint(0, 0.1, 0.377001-refvalue_pg_e);
     shrinkage_pg_diff_e->SetPoint(1, 0.3, 0.576125-refvalue_pg_e);
     shrinkage_pg_diff_e->SetPoint(2, 0.5, 0.625419-refvalue_pg_e);
@@ -370,7 +320,7 @@
     // =============== Shrinkage ===============
     
     TGraph* shrinkage_extra_pg_mu = new TGraph();
-    shrinkage_extra_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
+    shrinkage_extra_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
     shrinkage_extra_pg_mu->SetPoint(0, 0.1, 0.939013);
     shrinkage_extra_pg_mu->SetPoint(1, 0.3, 0.935913);
     shrinkage_extra_pg_mu->SetPoint(2, 0.5, 0.9319);
@@ -379,7 +329,7 @@
     shrinkage_extra_pg_mu->SetLineColor( kBlue); shrinkage_extra_pg_mu->SetMarkerColor( kBlue); shrinkage_extra_pg_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_extra_pg_pi = new TGraph();
-    shrinkage_extra_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
+    shrinkage_extra_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
     shrinkage_extra_pg_pi->SetPoint(0, 0.1, 0.580241);
     shrinkage_extra_pg_pi->SetPoint(1, 0.3, 0.588423);
     shrinkage_extra_pg_pi->SetPoint(2, 0.5, 0.594584);
@@ -388,7 +338,7 @@
     shrinkage_extra_pg_pi->SetLineColor( kRed); shrinkage_extra_pg_pi->SetMarkerColor( kRed); shrinkage_extra_pg_pi->SetFillColor( kWhite);
     
     TGraph* shrinkage_extra_pg_p = new TGraph();
-    shrinkage_extra_pg_p->SetTitle("p selection p-like cut");
+    shrinkage_extra_pg_p->SetTitle("p identified as p");
     shrinkage_extra_pg_p->SetPoint(0, 0.1, 0.905649);
     shrinkage_extra_pg_p->SetPoint(1, 0.3, 0.914448);
     shrinkage_extra_pg_p->SetPoint(2, 0.5, 0.918182);
@@ -397,7 +347,7 @@
     shrinkage_extra_pg_p->SetLineColor( kGreen); shrinkage_extra_pg_p->SetMarkerColor( kGreen); shrinkage_extra_pg_p->SetFillColor( kWhite); 
     
     TGraph* shrinkage_extra_pg_e = new TGraph();
-    shrinkage_extra_pg_e->SetTitle("e^{+} selection e-like cut");
+    shrinkage_extra_pg_e->SetTitle("e^{+} identified as e^{+}");
     shrinkage_extra_pg_e->SetPoint(0, 0.1, 0.52974);
     shrinkage_extra_pg_e->SetPoint(1, 0.3, 0.634848);
     shrinkage_extra_pg_e->SetPoint(2, 0.5, 0.657179);
@@ -406,7 +356,6 @@
     shrinkage_extra_pg_e->SetLineColor( kMagenta); shrinkage_extra_pg_e->SetMarkerColor( kMagenta); shrinkage_extra_pg_e->SetFillColor( kWhite); 
     
     TGraph* shrinkage_extra_pg_diff_mu = new TGraph();
-    shrinkage_extra_pg_diff_mu->SetTitle("#mu^{+} selection mu-like cut");
     shrinkage_extra_pg_diff_mu->SetPoint(0, 0.1, 0.939013-refvalue_pg_mu);
     shrinkage_extra_pg_diff_mu->SetPoint(1, 0.3, 0.935913-refvalue_pg_mu);
     shrinkage_extra_pg_diff_mu->SetPoint(2, 0.5, 0.9319-refvalue_pg_mu);
@@ -415,7 +364,6 @@
     shrinkage_extra_pg_diff_mu->SetLineColor( kBlue); shrinkage_extra_pg_diff_mu->SetMarkerColor( kBlue); shrinkage_extra_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_extra_pg_diff_pi = new TGraph();
-    shrinkage_extra_pg_diff_pi->SetTitle("#pi^{+} selection pi-like cut");
     shrinkage_extra_pg_diff_pi->SetPoint(0, 0.1, 0.580241-refvalue_pg_pi);
     shrinkage_extra_pg_diff_pi->SetPoint(1, 0.3, 0.588423-refvalue_pg_pi);
     shrinkage_extra_pg_diff_pi->SetPoint(2, 0.5, 0.594584-refvalue_pg_pi);
@@ -424,7 +372,6 @@
     shrinkage_extra_pg_diff_pi->SetLineColor( kRed); shrinkage_extra_pg_diff_pi->SetMarkerColor( kRed); shrinkage_extra_pg_diff_pi->SetFillColor( kWhite);
     
     TGraph* shrinkage_extra_pg_diff_p = new TGraph();
-    shrinkage_extra_pg_diff_p->SetTitle("p selection p-like cut");
     shrinkage_extra_pg_diff_p->SetPoint(0, 0.1, 0.905649-refvalue_pg_p);
     shrinkage_extra_pg_diff_p->SetPoint(1, 0.3, 0.914448-refvalue_pg_p);
     shrinkage_extra_pg_diff_p->SetPoint(2, 0.5, 0.918182-refvalue_pg_p);
@@ -433,7 +380,6 @@
     shrinkage_extra_pg_diff_p->SetLineColor( kGreen); shrinkage_extra_pg_diff_p->SetMarkerColor( kGreen); shrinkage_extra_pg_diff_p->SetFillColor( kWhite); 
     
     TGraph* shrinkage_extra_pg_diff_e = new TGraph();
-    shrinkage_extra_pg_diff_e->SetTitle("e^{+} selection e-like cut");
     shrinkage_extra_pg_diff_e->SetPoint(0, 0.1, 0.52974-refvalue_pg_e);
     shrinkage_extra_pg_diff_e->SetPoint(1, 0.3, 0.634848-refvalue_pg_e);
     shrinkage_extra_pg_diff_e->SetPoint(2, 0.5, 0.657179-refvalue_pg_e);
@@ -465,7 +411,7 @@
     // =============== Bagged ===============
     
     TGraph* bagged_pg_mu = new TGraph();
-    bagged_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
+    bagged_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
     bagged_pg_mu->SetPoint(0, 0.1, 0.833466);
     bagged_pg_mu->SetPoint(1, 0.3, 0.925034);
     bagged_pg_mu->SetPoint(2, 0.5, 0.925671);
@@ -474,7 +420,7 @@
     bagged_pg_mu->SetLineColor( kBlue); bagged_pg_mu->SetMarkerColor( kBlue); bagged_pg_mu->SetFillColor( kWhite);
     
     TGraph* bagged_pg_pi = new TGraph();
-    bagged_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
+    bagged_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
     bagged_pg_pi->SetPoint(0, 0.1, 0.56713);
     bagged_pg_pi->SetPoint(1, 0.3, 0.596091);
     bagged_pg_pi->SetPoint(2, 0.5, 0.602646);
@@ -483,7 +429,7 @@
     bagged_pg_pi->SetLineColor( kRed); bagged_pg_pi->SetMarkerColor( kRed); bagged_pg_pi->SetFillColor( kWhite);
     
     TGraph* bagged_pg_p = new TGraph();
-    bagged_pg_p->SetTitle("p selection p-like cut");
+    bagged_pg_p->SetTitle("p identified as p");
     bagged_pg_p->SetPoint(0, 0.1, 0.813874);
     bagged_pg_p->SetPoint(1, 0.3, 0.911596);
     bagged_pg_p->SetPoint(2, 0.5, 0.910662);
@@ -492,7 +438,7 @@
     bagged_pg_p->SetLineColor( kGreen); bagged_pg_p->SetMarkerColor( kGreen); bagged_pg_p->SetFillColor( kWhite); 
     
     TGraph* bagged_pg_e = new TGraph();
-    bagged_pg_e->SetTitle("e^{+} selection e-like cut");
+    bagged_pg_e->SetTitle("e^{+} identified as e^{+}");
     bagged_pg_e->SetPoint(0, 0.1, 0.274892);
     bagged_pg_e->SetPoint(1, 0.3, 0.63853);
     bagged_pg_e->SetPoint(2, 0.5, 0.607112);
@@ -501,7 +447,6 @@
     bagged_pg_e->SetLineColor( kMagenta); bagged_pg_e->SetMarkerColor( kMagenta); bagged_pg_e->SetFillColor( kWhite); 
     
     TGraph* bagged_pg_diff_mu = new TGraph();
-    bagged_pg_diff_mu->SetTitle("#mu^{+} selection mu-like cut");
     bagged_pg_diff_mu->SetPoint(0, 0.1, 0.833466-refvalue_pg_mu);
     bagged_pg_diff_mu->SetPoint(1, 0.3, 0.925034-refvalue_pg_mu);
     bagged_pg_diff_mu->SetPoint(2, 0.5, 0.925671-refvalue_pg_mu);
@@ -510,7 +455,6 @@
     bagged_pg_diff_mu->SetLineColor( kBlue); bagged_pg_diff_mu->SetMarkerColor( kBlue); bagged_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* bagged_pg_diff_pi = new TGraph();
-    bagged_pg_diff_pi->SetTitle("#pi^{+} selection pi-like cut");
     bagged_pg_diff_pi->SetPoint(0, 0.1, 0.56713-refvalue_pg_pi);
     bagged_pg_diff_pi->SetPoint(1, 0.3, 0.596091-refvalue_pg_pi);
     bagged_pg_diff_pi->SetPoint(2, 0.5, 0.602646-refvalue_pg_pi);
@@ -519,7 +463,6 @@
     bagged_pg_diff_pi->SetLineColor( kRed); bagged_pg_diff_pi->SetMarkerColor( kRed); bagged_pg_diff_pi->SetFillColor( kWhite);
     
     TGraph* bagged_pg_diff_p = new TGraph();
-    bagged_pg_diff_p->SetTitle("p selection p-like cut");
     bagged_pg_diff_p->SetPoint(0, 0.1, 0.813874-refvalue_pg_p);
     bagged_pg_diff_p->SetPoint(1, 0.3, 0.911596-refvalue_pg_p);
     bagged_pg_diff_p->SetPoint(2, 0.5, 0.910662-refvalue_pg_p);
@@ -528,7 +471,6 @@
     bagged_pg_diff_p->SetLineColor( kGreen); bagged_pg_diff_p->SetMarkerColor( kGreen); bagged_pg_diff_p->SetFillColor( kWhite); 
     
     TGraph* bagged_pg_diff_e = new TGraph();
-    bagged_pg_diff_e->SetTitle("e^{+} selection e-like cut");
     bagged_pg_diff_e->SetPoint(0, 0.1, 0.274892-refvalue_pg_e);
     bagged_pg_diff_e->SetPoint(1, 0.3, 0.63853-refvalue_pg_e);
     bagged_pg_diff_e->SetPoint(2, 0.5, 0.607112-refvalue_pg_e);
@@ -560,7 +502,7 @@
     // =============== Random Forests ===============
     
     TGraph* randomforests_pg_mu = new TGraph();
-    randomforests_pg_mu->SetTitle("#mu^{+} selection mu-like cut");
+    randomforests_pg_mu->SetTitle("#mu^{+} identified as #mu^{+}");
     randomforests_pg_mu->SetPoint(0, 2, 0.936289);
     randomforests_pg_mu->SetPoint(1, 3, 0.93571);
     randomforests_pg_mu->SetPoint(2, 4, 0.935174);
@@ -571,7 +513,7 @@
     randomforests_pg_mu->SetLineColor( kBlue); randomforests_pg_mu->SetMarkerColor( kBlue); randomforests_pg_mu->SetFillColor( kWhite);
     
     TGraph* randomforests_pg_pi = new TGraph();
-    randomforests_pg_pi->SetTitle("#pi^{+} selection pi-like cut");
+    randomforests_pg_pi->SetTitle("#pi^{+} identified as #pi^{+}");
     randomforests_pg_pi->SetPoint(0, 2, 0.585393);
     randomforests_pg_pi->SetPoint(1, 3, 0.586711);
     randomforests_pg_pi->SetPoint(2, 4, 0.587259);
@@ -582,7 +524,7 @@
     randomforests_pg_pi->SetLineColor( kRed); randomforests_pg_pi->SetMarkerColor( kRed); randomforests_pg_pi->SetFillColor( kWhite);
     
     TGraph* randomforests_pg_p = new TGraph();
-    randomforests_pg_p->SetTitle("p selection p-like cut");
+    randomforests_pg_p->SetTitle("p identified as p");
     randomforests_pg_p->SetPoint(0, 2, 0.913549);
     randomforests_pg_p->SetPoint(1, 3, 0.916142);
     randomforests_pg_p->SetPoint(2, 4, 0.915831);
@@ -593,7 +535,7 @@
     randomforests_pg_p->SetLineColor( kGreen); randomforests_pg_p->SetMarkerColor( kGreen); randomforests_pg_p->SetFillColor( kWhite); 
     
     TGraph* randomforests_pg_e = new TGraph();
-    randomforests_pg_e->SetTitle("e^{+} selection e-like cut");
+    randomforests_pg_e->SetTitle("e^{+} identified as e^{+}");
     randomforests_pg_e->SetPoint(0, 2, 0.651997);
     randomforests_pg_e->SetPoint(1, 3, 0.672368);
     randomforests_pg_e->SetPoint(2, 4, 0.667394);
@@ -604,7 +546,6 @@
     randomforests_pg_e->SetLineColor( kMagenta); randomforests_pg_e->SetMarkerColor( kMagenta); randomforests_pg_e->SetFillColor( kWhite); 
     
     TGraph* randomforests_pg_diff_mu = new TGraph();
-    randomforests_pg_diff_mu->SetTitle("#mu^{+} selection mu-like cut");
     randomforests_pg_diff_mu->SetPoint(0, 2, 0.936289-refvalue_pg_mu);
     randomforests_pg_diff_mu->SetPoint(1, 3, 0.93571-refvalue_pg_mu);
     randomforests_pg_diff_mu->SetPoint(2, 4, 0.935174-refvalue_pg_mu);
@@ -615,7 +556,6 @@
     randomforests_pg_diff_mu->SetLineColor( kBlue); randomforests_pg_diff_mu->SetMarkerColor( kBlue); randomforests_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* randomforests_pg_diff_pi = new TGraph();
-    randomforests_pg_diff_pi->SetTitle("#pi^{+} selection pi-like cut");
     randomforests_pg_diff_pi->SetPoint(0, 2, 0.585393-refvalue_pg_pi);
     randomforests_pg_diff_pi->SetPoint(1, 3, 0.586711-refvalue_pg_pi);
     randomforests_pg_diff_pi->SetPoint(2, 4, 0.587259-refvalue_pg_pi);
@@ -626,7 +566,6 @@
     randomforests_pg_diff_pi->SetLineColor( kRed); randomforests_pg_diff_pi->SetMarkerColor( kRed); randomforests_pg_diff_pi->SetFillColor( kWhite);
     
     TGraph* randomforests_pg_diff_p = new TGraph();
-    randomforests_pg_diff_p->SetTitle("p selection p-like cut");
     randomforests_pg_diff_p->SetPoint(0, 2, 0.913549-refvalue_pg_p);
     randomforests_pg_diff_p->SetPoint(1, 3, 0.93571-refvalue_pg_p); 
     randomforests_pg_diff_p->SetPoint(2, 4, 0.915831-refvalue_pg_p);
@@ -637,7 +576,6 @@
     randomforests_pg_diff_p->SetLineColor( kGreen); randomforests_pg_diff_p->SetMarkerColor( kGreen); randomforests_pg_diff_p->SetFillColor( kWhite); 
     
     TGraph* randomforests_pg_diff_e = new TGraph();
-    randomforests_pg_diff_e->SetTitle("e^{+} selection e-like cut");
     randomforests_pg_diff_e->SetPoint(0, 2, 0.651997-refvalue_pg_e);
     randomforests_pg_diff_e->SetPoint(1, 3, 0.672368-refvalue_pg_e);
     randomforests_pg_diff_e->SetPoint(2, 4, 0.667394-refvalue_pg_e);
