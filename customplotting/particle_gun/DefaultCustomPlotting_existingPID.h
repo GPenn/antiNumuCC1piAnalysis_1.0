@@ -5,8 +5,8 @@
 // found on file: ../output/particle_gun/particlegun_allpositive_bdttest.root
 //////////////////////////////////////////////////////////
 
-#ifndef DefaultCustomPlotting_h
-#define DefaultCustomPlotting_h
+#ifndef DefaultCustomPlotting_existingPID_h
+#define DefaultCustomPlotting_existingPID_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -42,7 +42,7 @@ private:
 };
 
 
-class DefaultCustomPlotting {
+class DefaultCustomPlotting_existingPID {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -920,8 +920,8 @@ public :
    TBranch        *b_particle_pg;   //!
 
 
-   DefaultCustomPlotting(TTree *tree=0, std::string outFileName="defaultTest.root");
-   virtual ~DefaultCustomPlotting();
+   DefaultCustomPlotting_existingPID(TTree *tree=0, std::string outFileName="defaultTest.root");
+   virtual ~DefaultCustomPlotting_existingPID();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -939,8 +939,8 @@ public :
 
 #endif
 
-#ifdef DefaultCustomPlotting_cxx
-DefaultCustomPlotting::DefaultCustomPlotting(TTree *tree, std::string outFileName) : fChain(0) 
+#ifdef DefaultCustomPlotting_existingPID_cxx
+DefaultCustomPlotting_existingPID::DefaultCustomPlotting_existingPID(TTree *tree, std::string outFileName) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
@@ -957,19 +957,19 @@ DefaultCustomPlotting::DefaultCustomPlotting(TTree *tree, std::string outFileNam
    defout = new defaultOut(outFileName);
 }
 
-DefaultCustomPlotting::~DefaultCustomPlotting()
+DefaultCustomPlotting_existingPID::~DefaultCustomPlotting_existingPID()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t DefaultCustomPlotting::GetEntry(Long64_t entry)
+Int_t DefaultCustomPlotting_existingPID::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t DefaultCustomPlotting::LoadTree(Long64_t entry)
+Long64_t DefaultCustomPlotting_existingPID::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -982,7 +982,7 @@ Long64_t DefaultCustomPlotting::LoadTree(Long64_t entry)
    return centry;
 }
 
-void DefaultCustomPlotting::Init(TTree *tree)
+void DefaultCustomPlotting_existingPID::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -1435,7 +1435,7 @@ void DefaultCustomPlotting::Init(TTree *tree)
    Notify();
 }
 
-Bool_t DefaultCustomPlotting::Notify()
+Bool_t DefaultCustomPlotting_existingPID::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -1446,18 +1446,18 @@ Bool_t DefaultCustomPlotting::Notify()
    return kTRUE;
 }
 
-void DefaultCustomPlotting::Show(Long64_t entry)
+void DefaultCustomPlotting_existingPID::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t DefaultCustomPlotting::Cut(Long64_t entry)
+Int_t DefaultCustomPlotting_existingPID::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef DefaultCustomPlotting_cxx
+#endif // #ifdef DefaultCustomPlotting_existingPID_cxx
