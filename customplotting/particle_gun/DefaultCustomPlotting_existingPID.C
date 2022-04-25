@@ -1,5 +1,5 @@
-#define DefaultCustomPlotting_cxx
-#include "DefaultCustomPlotting.h"
+#define DefaultCustomPlotting_existingPID_cxx
+#include "DefaultCustomPlotting_existingPID.h"
 #include <TH2.h>
 #include <TGraph.h>
 #include <TStyle.h>
@@ -7,7 +7,7 @@
 #include <TLegend.h>
 #include <ctime> 
 
-void DefaultCustomPlotting::Loop()
+void DefaultCustomPlotting_existingPID::Loop()
 {
 
    
@@ -2822,7 +2822,7 @@ int main(int argc, char* argv[]) {
     std::cout<<"Adding file "<<f->c_str()<<std::endl;
   }
   
-  DefaultCustomPlotting *deftree = new DefaultCustomPlotting(rootFiles, outFileName);
+  DefaultCustomPlotting_existingPID *deftree = new DefaultCustomPlotting_existingPID(rootFiles, outFileName);
   
   deftree->Loop();
 
@@ -2841,7 +2841,7 @@ defaultOut::defaultOut(std::string outname) {
   return;
 }
 
-void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
+void DefaultCustomPlotting_existingPID::SetHistParticleStyle(TH1F* hist, std::string particle) {
    
    hist->SetLineWidth(2);
    
@@ -2878,7 +2878,7 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    return;
 }
 
-Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist_sig, TH1F* hist_bkg, Int_t nbins) {
+Float_t DefaultCustomPlotting_existingPID::GetOptSignificanceValues(TH1F* hist_sig, TH1F* hist_bkg, Int_t nbins) {
    
    Float_t optimal_signif = 0;
    Float_t optimal_cut = 0;
