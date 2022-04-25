@@ -70,6 +70,10 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t esel_cc1pi_nPiplus = 0;
    Int_t esel_cc1pi_nProton = 0;
    Int_t esel_cc1pi_nPositron = 0;
+   Int_t nosel_cc1pi_nAntimu = 0;
+   Int_t nosel_cc1pi_nPiplus = 0;
+   Int_t nosel_cc1pi_nProton = 0;
+   Int_t nosel_cc1pi_nPositron = 0;
    
    
    
@@ -85,26 +89,16 @@ void DefaultCustomPlotting_existingPID::Loop()
       
       // ============= Fill variables for efficiency tests =============
       
+      // Preselection:
+      
       if ((accum_level[0][1] > 4) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
          
-         if (particle == -13)
-         {
-            presel_nAntimu++;
-         }
-         else if (particle == 211)
-         {
-            presel_nPiplus++;
-         }
-         else if (particle == 2212)
-         {
-            presel_nProton++;
-         }
-         else if (particle == -11)
-         {
-            presel_nPositron++;
-         }
+         if (particle == -13)       presel_nAntimu++;
+         else if (particle == 211)  presel_nPiplus++;
+         else if (particle == 2212) presel_nProton++;
+         else if (particle == -11)  presel_nPositron++;
          
-         // Fill counters for new performance testing
+         // BDT selection:
          
          if ((selmu_bdt_pid_mu > selmu_bdt_pid_pi) && (selmu_bdt_pid_mu > selmu_bdt_pid_p) && (selmu_bdt_pid_mu > selmu_bdt_pid_e))
          {
@@ -136,6 +130,37 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == 211) esel_nPiplus++;
             if (particle == 2212) esel_nProton++;
             if (particle == -11) esel_nPositron++;
+         }
+         
+         // CC1pi selection:
+         
+         if (((selmu_tpc_like_mu+selmu_tpc_like_pi)/(1-selmu_tpc_like_p) > 0.9 || selmu_mom[0] > 500.0 ) && (selmu_tpc_like_mu>0.1))
+         {
+            if (particle == -13) musel_cc1pi_nAntimu++;
+            if (particle == 211) musel_cc1pi_nPiplus++;
+            if (particle == 2212) musel_cc1pi_nProton++;
+            if (particle == -11) musel_cc1pi_nPositron++;
+         }
+         else if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
+         {
+            if (particle == -13) pisel_cc1pi_nAntimu++;
+            if (particle == 211) pisel_cc1pi_nPiplus++;
+            if (particle == 2212) pisel_cc1pi_nProton++;
+            if (particle == -11) pisel_cc1pi_nPositron++;
+         }
+         else if ((selmu_tpc_like_e > selmu_tpc_like_p) && (selmu_tpc_like_e > selmu_tpc_like_pi) && (selmu_mom[0] < 900.0))
+         {
+            if (particle == -13) esel_cc1pi_nAntimu++;
+            if (particle == 211) esel_cc1pi_nPiplus++;
+            if (particle == 2212) esel_cc1pi_nProton++;
+            if (particle == -11) esel_cc1pi_nPositron++;
+         }
+         else //if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
+         {
+            if (particle == -13) psel_cc1pi_nAntimu++;
+            if (particle == 211) psel_cc1pi_nPiplus++;
+            if (particle == 2212) psel_cc1pi_nProton++;
+            if (particle == -11) psel_cc1pi_nPositron++;
          }
          
       }
