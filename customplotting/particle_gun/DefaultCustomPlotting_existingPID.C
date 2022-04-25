@@ -33,25 +33,43 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t presel_nProton = 0;
    Int_t presel_nPositron = 0;
    
+   // BDT selection
+   
    Int_t musel_nAntimu = 0;
    Int_t musel_nPiplus = 0;
    Int_t musel_nProton = 0;
    Int_t musel_nPositron = 0;
-   
    Int_t pisel_nAntimu = 0;
    Int_t pisel_nPiplus = 0;
    Int_t pisel_nProton = 0;
    Int_t pisel_nPositron = 0;
-   
    Int_t psel_nAntimu = 0;
    Int_t psel_nPiplus = 0;
    Int_t psel_nProton = 0;
    Int_t psel_nPositron = 0;
-   
    Int_t esel_nAntimu = 0;
    Int_t esel_nPiplus = 0;
    Int_t esel_nProton = 0;
    Int_t esel_nPositron = 0;
+   
+   // Existing CC1pi selection
+   
+   Int_t musel_cc1pi_nAntimu = 0;
+   Int_t musel_cc1pi_nPiplus = 0;
+   Int_t musel_cc1pi_nProton = 0;
+   Int_t musel_cc1pi_nPositron = 0;
+   Int_t pisel_cc1pi_nAntimu = 0;
+   Int_t pisel_cc1pi_nPiplus = 0;
+   Int_t pisel_cc1pi_nProton = 0;
+   Int_t pisel_cc1pi_nPositron = 0;
+   Int_t psel_cc1pi_nAntimu = 0;
+   Int_t psel_cc1pi_nPiplus = 0;
+   Int_t psel_cc1pi_nProton = 0;
+   Int_t psel_cc1pi_nPositron = 0;
+   Int_t esel_cc1pi_nAntimu = 0;
+   Int_t esel_cc1pi_nPiplus = 0;
+   Int_t esel_cc1pi_nProton = 0;
+   Int_t esel_cc1pi_nPositron = 0;
    
    
    
@@ -154,6 +172,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    // ============= Find efficiencies =============
    
+   std::cout << "================ BDT SELECTION ================" << std::endl << std::endl;
+   
    std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
    
    std::cout << "mu+ efficiency: " <<  (Float_t)musel_nAntimu/presel_nAntimu << std::endl;
@@ -181,6 +201,36 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "================ CC1PI SELECTION ================" << std::endl << std::endl;
+   
+   std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " <<  (Float_t)musel_cc1pi_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_cc1pi_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_cc1pi_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_cc1pi_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Pi-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)pisel_cc1pi_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)pisel_cc1pi_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)pisel_cc1pi_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)pisel_cc1pi_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Proton-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)psel_cc1pi_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)psel_cc1pi_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)psel_cc1pi_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)psel_cc1pi_nPositron/presel_nPositron << std::endl;
+  
+   std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_cc1pi_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_cc1pi_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_cc1pi_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_cc1pi_nPositron/presel_nPositron << std::endl;
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
