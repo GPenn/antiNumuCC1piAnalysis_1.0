@@ -217,7 +217,7 @@
     TCanvas* canvas_TPC2_choices_bkg = new TCanvas("canvas_TPC2_choices_bkg","",200,10,2000,800);
     canvas_TPC2_choices_bkg->Divide(2,1,0.005,0.005);
     canvas_TPC2_choices_bkg->cd(1);
-    TPC2_pisel_mu->GetYaxis()->SetRangeUser(0, 0.5);
+    TPC2_pisel_mu->GetYaxis()->SetRangeUser(0, 0.35);
     TPC2_pisel_mu->GetXaxis()->SetRangeUser(0, 4);
     TPC2_pisel_mu->GetYaxis()->SetTitle("Efficiency");
     TPC2_pisel_mu->GetYaxis()->SetLabelSize(0.025);
@@ -307,7 +307,7 @@
     
     //TCanvas* canvas_TPC2_choices_diff = new TCanvas("canvas_TPC2_choices_diff","",200,10,1000,800);
     canvas_TPC2_choices_sig->cd(2);
-    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-0.01, 0.035);
+    TPC2_musel_mu_diff->GetYaxis()->SetRangeUser(-0.005, 0.03);
     TPC2_musel_mu_diff->GetXaxis()->SetRangeUser(1, 3);
     TPC2_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     TPC2_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
@@ -323,7 +323,7 @@
     
     //TCanvas* canvas_TPC2_choices_bkg_diff = new TCanvas("canvas_TPC2_choices_bkg_diff","",200,10,1000,800);
     canvas_TPC2_choices_bkg->cd(2);
-    TPC2_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.035, 0.015);
+    TPC2_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.03, 0.015);
     TPC2_pisel_mu_diff->GetXaxis()->SetRangeUser(1, 3);
     TPC2_pisel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     TPC2_pisel_mu_diff->GetYaxis()->SetLabelSize(0.025);
