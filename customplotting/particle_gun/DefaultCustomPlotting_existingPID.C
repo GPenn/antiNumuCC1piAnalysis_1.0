@@ -141,7 +141,7 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == 2212) musel_cc1pi_nProton++;
             if (particle == -11) musel_cc1pi_nPositron++;
          }
-         else if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
+         if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
          {
             if (particle == -13) pisel_cc1pi_nAntimu++;
             if (particle == 211) pisel_cc1pi_nPiplus++;
