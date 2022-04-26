@@ -270,19 +270,19 @@
     shrinkage_pg_e->SetLineColor( kMagenta); shrinkage_pg_e->SetMarkerColor( kMagenta); shrinkage_pg_e->SetFillColor( kWhite); 
     
     TGraph* shrinkage_pg_diff_mu = new TGraph();
-    shrinkage_pg_diff_mu->SetPoint(0, 0.1, 0.-refvalue_pg_mu);
-    shrinkage_pg_diff_mu->SetPoint(1, 0.3, 0.-refvalue_pg_mu);
-    shrinkage_pg_diff_mu->SetPoint(2, 0.5, 0.-refvalue_pg_mu);
-    shrinkage_pg_diff_mu->SetPoint(3, 0.7, 0.-refvalue_pg_mu);
-    shrinkage_pg_diff_mu->SetPoint(4, 0.9, 0.-refvalue_pg_mu);
+    shrinkage_pg_diff_mu->SetPoint(0, 0.1, 0.932016-refvalue_pg_mu);
+    shrinkage_pg_diff_mu->SetPoint(1, 0.3, 0.934768-refvalue_pg_mu);
+    shrinkage_pg_diff_mu->SetPoint(2, 0.5, 0.934276-refvalue_pg_mu);
+    shrinkage_pg_diff_mu->SetPoint(3, 0.7, 0.933407-refvalue_pg_mu);
+    shrinkage_pg_diff_mu->SetPoint(4, 0.9, 0.931524-refvalue_pg_mu);
     shrinkage_pg_diff_mu->SetLineColor( kBlue); shrinkage_pg_diff_mu->SetMarkerColor( kBlue); shrinkage_pg_diff_mu->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_diff_pi = new TGraph();
-    shrinkage_pg_diff_pi->SetPoint(0, 0.1, 0.932016-refvalue_pg_pi);
-    shrinkage_pg_diff_pi->SetPoint(1, 0.3, 0.934768-refvalue_pg_pi);
-    shrinkage_pg_diff_pi->SetPoint(2, 0.5, 0.934276-refvalue_pg_pi);
-    shrinkage_pg_diff_pi->SetPoint(3, 0.7, 0.933407-refvalue_pg_pi);
-    shrinkage_pg_diff_pi->SetPoint(4, 0.9, 0.931524-refvalue_pg_pi);
+    shrinkage_pg_diff_pi->SetPoint(0, 0.1, 0.620995-refvalue_pg_pi);
+    shrinkage_pg_diff_pi->SetPoint(1, 0.3, 0.615175-refvalue_pg_pi);
+    shrinkage_pg_diff_pi->SetPoint(2, 0.5, 0.614165-refvalue_pg_pi);
+    shrinkage_pg_diff_pi->SetPoint(3, 0.7, 0.61663-refvalue_pg_pi);
+    shrinkage_pg_diff_pi->SetPoint(4, 0.9, 0.618462-refvalue_pg_pi);
     shrinkage_pg_diff_pi->SetLineColor( kRed); shrinkage_pg_diff_pi->SetMarkerColor( kRed); shrinkage_pg_diff_pi->SetFillColor( kWhite);
     
     TGraph* shrinkage_pg_diff_p = new TGraph();
