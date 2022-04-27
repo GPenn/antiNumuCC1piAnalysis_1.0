@@ -26,7 +26,8 @@ class BDTPIDmanager{
     // NOTE: Need to add default values in GetVars function
     Float_t bdt_mom, bdt_theta;
     Float_t bdt_ecal_EMenergy, bdt_ecal_EbyP, bdt_ecal_EbyL, bdt_ecal_circularity, bdt_ecal_fbr, bdt_ecal_tmr, bdt_ecal_qrms, bdt_ecal_mipem, bdt_ecal_emhip, bdt_ecal_mippion;
-    Float_t bdt_tpc_like_mu, bdt_tpc_like_e, bdt_tpc_like_p, bdt_tpc_like_pi, bdt_tpc2_dedx, bdt_tpc3_dedx, bdt_tpc2_pullmu, bdt_tpc2_pullpi, bdt_tpc2_pullp, bdt_tpc2_pulle, bdt_tpc3_pullmu, bdt_tpc3_pullpi, bdt_tpc3_pullp, bdt_tpc3_pulle;
+    Float_t bdt_tpc_like_mu, bdt_tpc_like_e, bdt_tpc_like_p, bdt_tpc_like_pi, bdt_tpc2_dedx, bdt_tpc2_pullmu, bdt_tpc2_pullpi, bdt_tpc2_pullp, bdt_tpc2_pulle;
+    Float_t bdt_tpc3_dedx, bdt_tpc3_pullmu, bdt_tpc3_pullpi, bdt_tpc3_pullp, bdt_tpc3_pulle, bdt_tpc3_dedx_gq, bdt_tpc3_pullmu_gq, bdt_tpc3_pullpi_gq, bdt_tpc3_pullp_gq, bdt_tpc3_pulle_gq;
     Float_t bdt_fgd1pullmu, bdt_fgd1pullp, bdt_fgd1pullpi, bdt_fgd2pullmu, bdt_fgd2pullp, bdt_fgd2pullpi, bdt_fgd1_EbyL, bdt_fgd2_EbyL;
     Float_t bdt_nsmrds, bdt_ntpcs;
     
