@@ -94,6 +94,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3dedx_piplus = new TH1F("tpc3dedx_piplus", "Pi+", 50, 0.0, 2000.0);
    TH1F *tpc3dedx_proton = new TH1F("tpc3dedx_proton", "Proton", 50, 0.0, 2000.0);
    TH1F *tpc3dedx_positron = new TH1F("tpc3dedx_positron", "Positron", 50, 0.0, 2000.0);
+
+   TH1F *tpc3dedx_gq_antimu = new TH1F("tpc3dedx_gq_antimu", "Antimuon;TPC3 dE/dx truncated mean with quality check (arb. units);Entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_piplus = new TH1F("tpc3dedx_gq_piplus", "Pi+", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_proton = new TH1F("tpc3dedx_gq_proton", "Proton", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_positron = new TH1F("tpc3dedx_gq_positron", "Positron", 50, 0.0, 2000.0);
    
    TH1F *tpclikemu_antimu = new TH1F("tpclikemu_antimu", "Antimuon;TPC2 muon likelihood;Entries", 50, 0.0, 1.0);
    TH1F *tpclikemu_piplus = new TH1F("tpclikemu_piplus", "Pi+", 50, 0.0, 1.0);
@@ -154,6 +159,26 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3pulle_piplus = new TH1F("tpc3pulle_piplus", "Pi+", 50, -10.0, 20.0);
    TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "Proton", 50, -10.0, 20.0);
    TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "Positron", 50, -10.0, 20.0);
+   
+   TH1F *tpc3pullmu_gq_antimu = new TH1F("tpc3pullmu_gq_antimu", "Antimuon;TPC3 muon pull with quality check;Entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_piplus = new TH1F("tpc3pullmu_gq_piplus", "Pi+", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_proton = new TH1F("tpc3pullmu_gq_proton", "Proton", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_positron = new TH1F("tpc3pullmu_gq_positron", "Positron", 50, -10.0, 30.0);
+   
+   TH1F *tpc3pullpi_gq_antimu = new TH1F("tpc3pullpi_gq_antimu", "Antimuon;TPC3 charged pion pull with quality check;Entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_piplus = new TH1F("tpc3pullpi_gq_piplus", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_proton = new TH1F("tpc3pullpi_gq_proton", "Proton", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_positron = new TH1F("tpc3pullpi_gq_positron", "Positron", 50, -10.0, 40.0);
+   
+   TH1F *tpc3pullp_gq_antimu = new TH1F("tpc3pullp_gq_antimu", "Antimuon;TPC3 proton pull with quality check;Entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_piplus = new TH1F("tpc3pullp_gq_piplus", "Pi+", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_proton = new TH1F("tpc3pullp_gq_proton", "Proton", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_positron = new TH1F("tpc3pullp_gq_positron", "Positron", 50, -40.0, 20.0);
+   
+   TH1F *tpc3pulle_gq_antimu = new TH1F("tpc3pulle_gq_antimu", "Antimuon;TPC3 electron pull with quality check;Entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_piplus = new TH1F("tpc3pulle_gq_piplus", "Pi+", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_proton = new TH1F("tpc3pulle_gq_proton", "Proton", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_positron = new TH1F("tpc3pulle_gq_positron", "Positron", 50, -10.0, 20.0);
    
    TH1F *ntpcs_antimu = new TH1F("ntpcs_antimu", "Antimuon;Number of TPC segments;Entries", 2, 0.5, 2.5);
    TH1F *ntpcs_piplus = new TH1F("ntpcs_piplus", "Pi+", 2, 0.5, 2.5);
@@ -241,6 +266,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3dedx_proton_weighted = new TH1F("tpc3dedx_proton_weighted", "Proton", 50, 0.0, 2000.0);
    TH1F *tpc3dedx_positron_weighted = new TH1F("tpc3dedx_positron_weighted", "Positron", 50, 0.0, 2000.0);
    
+   TH1F *tpc3dedx_gq_antimu_weighted = new TH1F("tpc3dedx_gq_antimu_weighted", "Antimuon;TPC3 dE/dx truncated mean with quality check (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_piplus_weighted = new TH1F("tpc3dedx_gq_piplus_weighted", "Pi+", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_proton_weighted = new TH1F("tpc3dedx_gq_proton_weighted", "Proton", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_positron_weighted = new TH1F("tpc3dedx_gq_positron_weighted", "Positron", 50, 0.0, 2000.0);
+   
    TH1F *tpclikemu_antimu_weighted = new TH1F("tpclikemu_antimu_weighted", "Antimuon;TPC2 muon likelihood;Momentum weighted entries", 50, 0.0, 1.0);
    TH1F *tpclikemu_piplus_weighted = new TH1F("tpclikemu_piplus_weighted", "Pi+", 50, 0.0, 1.0);
    TH1F *tpclikemu_proton_weighted = new TH1F("tpclikemu_proton_weighted", "Proton", 50, 0.0, 1.0);
@@ -300,6 +330,26 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc3pulle_piplus_weighted = new TH1F("tpc3pulle_piplus_weighted", "Pi+", 50, -10.0, 20.0);
    TH1F *tpc3pulle_proton_weighted = new TH1F("tpc3pulle_proton_weighted", "Proton", 50, -10.0, 20.0);
    TH1F *tpc3pulle_positron_weighted = new TH1F("tpc3pulle_positron_weighted", "Positron", 50, -10.0, 20.0);
+   
+   TH1F *tpc3pullmu_gq_antimu_weighted = new TH1F("tpc3pullmu_gq_antimu_weighted", "Antimuon;TPC3 muon pull with quality check;Momentum weighted entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_piplus_weighted = new TH1F("tpc3pullmu_gq_piplus_weighted", "Pi+", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_proton_weighted = new TH1F("tpc3pullmu_gq_proton_weighted", "Proton", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_positron_weighted = new TH1F("tpc3pullmu_gq_positron_weighted", "Positron", 50, -10.0, 30.0);
+   
+   TH1F *tpc3pullpi_gq_antimu_weighted = new TH1F("tpc3pullpi_gq_antimu_weighted", "Antimuon;TPC3 charged pion pull with quality check;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_piplus_weighted = new TH1F("tpc3pullpi_gq_piplus_weighted", "Pi+", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_proton_weighted = new TH1F("tpc3pullpi_gq_proton_weighted", "Proton", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_positron_weighted = new TH1F("tpc3pullpi_gq_positron_weighted", "Positron", 50, -10.0, 40.0);
+   
+   TH1F *tpc3pullp_gq_antimu_weighted = new TH1F("tpc3pullp_gq_antimu_weighted", "Antimuon;TPC3 proton pull with quality check;Momentum weighted entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_piplus_weighted = new TH1F("tpc3pullp_gq_piplus_weighted", "Pi+", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_proton_weighted = new TH1F("tpc3pullp_gq_proton_weighted", "Proton", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_positron_weighted = new TH1F("tpc3pullp_gq_positron_weighted", "Positron", 50, -40.0, 20.0);
+   
+   TH1F *tpc3pulle_gq_antimu_weighted = new TH1F("tpc3pulle_gq_antimu_weighted", "Antimuon;TPC3 electron pull with quality check;Momentum weighted entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_piplus_weighted = new TH1F("tpc3pulle_gq_piplus_weighted", "Pi+", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_proton_weighted = new TH1F("tpc3pulle_gq_proton_weighted", "Proton", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_positron_weighted = new TH1F("tpc3pulle_gq_positron_weighted", "Positron", 50, -10.0, 20.0);
    
    TH1F *ntpcs_antimu_weighted = new TH1F("ntpcs_antimu_weighted", "Antimuon;Number of TPC segments;Momentum weighted entries", 2, 0.5, 2.5);
    TH1F *ntpcs_piplus_weighted = new TH1F("ntpcs_piplus_weighted", "Pi+", 2, 0.5, 2.5);
@@ -548,6 +598,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_antimu->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_antimu->Fill(selmu_fgd2_EbyL);
             nsmrds_antimu->Fill(selmu_nsmrds);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_antimu->Fill(selmu_tpc_dedx[1]);
+               tpc3pullmu_gq_antimu->Fill(selmu_tpc_pullmu[1]);
+               tpc3pullpi_gq_antimu->Fill(selmu_tpc_pullpi[1]);
+               tpc3pullp_gq_antimu->Fill(selmu_tpc_pullp[1]);
+               tpc3pulle_gq_antimu->Fill(selmu_tpc_pullele[1]);
+            }
             
             recomom_antimu_weighted->Fill(selmu_mom[0], weight);
             theta_antimu_weighted->Fill(selmu_det_theta, weight);
@@ -578,6 +636,15 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_antimu_weighted->Fill(selmu_fgd1_EbyL, weight);
             fgd2EbyL_antimu_weighted->Fill(selmu_fgd2_EbyL, weight);
             nsmrds_antimu_weighted->Fill(selmu_nsmrds, weight);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_antimu_weighted->Fill(selmu_tpc_dedx[1], weight);
+               tpc3pullmu_gq_antimu_weighted->Fill(selmu_tpc_pullmu[1], weight);
+               tpc3pullpi_gq_antimu_weighted->Fill(selmu_tpc_pullpi[1], weight);
+               tpc3pullp_gq_antimu_weighted->Fill(selmu_tpc_pullp[1], weight);
+               tpc3pulle_gq_antimu_weighted->Fill(selmu_tpc_pullele[1], weight);
+            }
+            
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
@@ -617,6 +684,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_piplus->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_piplus->Fill(selmu_fgd2_EbyL);
             nsmrds_piplus->Fill(selmu_nsmrds);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_piplus->Fill(selmu_tpc_dedx[1]);
+               tpc3pullmu_gq_piplus->Fill(selmu_tpc_pullmu[1]);
+               tpc3pullpi_gq_piplus->Fill(selmu_tpc_pullpi[1]);
+               tpc3pullp_gq_piplus->Fill(selmu_tpc_pullp[1]);
+               tpc3pulle_gq_piplus->Fill(selmu_tpc_pullele[1]);
+            }
             
             recomom_piplus_weighted->Fill(selmu_mom[0], weight);
             theta_piplus_weighted->Fill(selmu_det_theta, weight);
@@ -647,6 +722,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_piplus_weighted->Fill(selmu_fgd1_EbyL, weight);
             fgd2EbyL_piplus_weighted->Fill(selmu_fgd2_EbyL, weight);
             nsmrds_piplus_weighted->Fill(selmu_nsmrds, weight);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_piplus_weighted->Fill(selmu_tpc_dedx[1], weight);
+               tpc3pullmu_gq_piplus_weighted->Fill(selmu_tpc_pullmu[1], weight);
+               tpc3pullpi_gq_piplus_weighted->Fill(selmu_tpc_pullpi[1], weight);
+               tpc3pullp_gq_piplus_weighted->Fill(selmu_tpc_pullp[1], weight);
+               tpc3pulle_gq_piplus_weighted->Fill(selmu_tpc_pullele[1], weight);
+            }
          }
          else if ((particle == 2212)&&(particle_pg == 2212)&&(selmu_mom[0] > 300.0))
          {
@@ -686,6 +769,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_proton->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_proton->Fill(selmu_fgd2_EbyL);
             nsmrds_proton->Fill(selmu_nsmrds);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_proton->Fill(selmu_tpc_dedx[1]);
+               tpc3pullmu_gq_proton->Fill(selmu_tpc_pullmu[1]);
+               tpc3pullpi_gq_proton->Fill(selmu_tpc_pullpi[1]);
+               tpc3pullp_gq_proton->Fill(selmu_tpc_pullp[1]);
+               tpc3pulle_gq_proton->Fill(selmu_tpc_pullele[1]);
+            }
             
             recomom_proton_weighted->Fill(selmu_mom[0], weight);
             theta_proton_weighted->Fill(selmu_det_theta, weight);
@@ -716,6 +807,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_proton_weighted->Fill(selmu_fgd1_EbyL, weight);
             fgd2EbyL_proton_weighted->Fill(selmu_fgd2_EbyL, weight);
             nsmrds_proton_weighted->Fill(selmu_nsmrds, weight);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_proton_weighted->Fill(selmu_tpc_dedx[1], weight);
+               tpc3pullmu_gq_proton_weighted->Fill(selmu_tpc_pullmu[1], weight);
+               tpc3pullpi_gq_proton_weighted->Fill(selmu_tpc_pullpi[1], weight);
+               tpc3pullp_gq_proton_weighted->Fill(selmu_tpc_pullp[1], weight);
+               tpc3pulle_gq_proton_weighted->Fill(selmu_tpc_pullele[1], weight);
+            }
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
@@ -754,6 +853,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_positron->Fill(selmu_fgd1_EbyL);
             fgd2EbyL_positron->Fill(selmu_fgd2_EbyL);
             nsmrds_positron->Fill(selmu_nsmrds);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_positron->Fill(selmu_tpc_dedx[1]);
+               tpc3pullmu_gq_positron->Fill(selmu_tpc_pullmu[1]);
+               tpc3pullpi_gq_positron->Fill(selmu_tpc_pullpi[1]);
+               tpc3pullp_gq_positron->Fill(selmu_tpc_pullp[1]);
+               tpc3pulle_gq_positron->Fill(selmu_tpc_pullele[1]);
+            }
             
             recomom_positron_weighted->Fill(selmu_mom[0], weight);
             theta_positron_weighted->Fill(selmu_det_theta, weight);
@@ -784,6 +891,14 @@ void DefaultCustomPlotting::Loop()
             fgd1EbyL_positron_weighted->Fill(selmu_fgd1_EbyL, weight);
             fgd2EbyL_positron_weighted->Fill(selmu_fgd2_EbyL, weight);
             nsmrds_positron_weighted->Fill(selmu_nsmrds, weight);
+            if (selmu_tpc_nnodes[1]>18)
+            {
+               tpc3dedx_gq_positron_weighted->Fill(selmu_tpc_dedx[1], weight);
+               tpc3pullmu_gq_positron_weighted->Fill(selmu_tpc_pullmu[1], weight);
+               tpc3pullpi_gq_positron_weighted->Fill(selmu_tpc_pullpi[1], weight);
+               tpc3pullp_gq_positron_weighted->Fill(selmu_tpc_pullp[1], weight);
+               tpc3pulle_gq_positron_weighted->Fill(selmu_tpc_pullele[1], weight);
+            }
          }
       }
       
@@ -1306,8 +1421,8 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_tpc2dedx = new TCanvas("canvas_tpc2dedx","",200,10,1000,600);
    
-   TCanvas* canvas_tpcdedx = new TCanvas("canvas_tpcdedx","",200,10,1000,400);
-   canvas_tpcdedx->Divide(2,1,0.005,0.005);
+   TCanvas* canvas_tpcdedx = new TCanvas("canvas_tpcdedx","",200,10,1000,800);
+   canvas_tpcdedx->Divide(2,2,0.005,0.005);
    canvas_tpcdedx->cd(1);
    
    //tpc2dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -1341,6 +1456,26 @@ void DefaultCustomPlotting::Loop()
    tpc3dedx_piplus->Draw("same");
    tpc3dedx_proton->Draw("same");
    tpc3dedx_positron->Draw("same");
+   //canvas_tpc3dedx->BuildLegend();
+   //canvas_tpc3dedx->Write();
+   //canvas_tpcdedx->Write();
+   
+   // TPC3 dE/dx GQ
+   
+   //TCanvas* canvas_tpc3dedx = new TCanvas("canvas_tpc3dedx","",200,10,1000,600);
+   canvas_tpcdedx->cd(3);
+   
+   //tpc3dedx_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(tpc3dedx_gq_antimu, "antimu");
+   SetHistParticleStyle(tpc3dedx_gq_piplus, "piplus");
+   SetHistParticleStyle(tpc3dedx_gq_proton, "proton");
+   SetHistParticleStyle(tpc3dedx_gq_positron, "positron");
+   
+   tpc3dedx_gq_antimu->Draw();
+   tpc3dedx_gq_piplus->Draw("same");
+   tpc3dedx_gq_proton->Draw("same");
+   tpc3dedx_gq_positron->Draw("same");
    //canvas_tpc3dedx->BuildLegend();
    //canvas_tpc3dedx->Write();
    canvas_tpcdedx->Write();
@@ -1592,6 +1727,85 @@ void DefaultCustomPlotting::Loop()
    
    canvas_tpc3pulls->cd(1)->BuildLegend();
    canvas_tpc3pulls->Write();
+   
+   // TPC3 mu pull GQ
+   
+   TCanvas* canvas_tpc3pulls_gq = new TCanvas("canvas_tpc3pulls_gq","",200,10,1000,800);
+   canvas_tpc3pulls_gq->Divide(2,2,0.005,0.005);
+   canvas_tpc3pulls_gq->cd(1);
+   
+   //tpc3pullmu_gq_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullmu_gq_antimu->GetYaxis()->SetTitleOffset(1.6);
+  
+   SetHistParticleStyle(tpc3pullmu_gq_antimu, "antimu");
+   SetHistParticleStyle(tpc3pullmu_gq_piplus, "piplus");
+   SetHistParticleStyle(tpc3pullmu_gq_proton, "proton");
+   SetHistParticleStyle(tpc3pullmu_gq_positron, "positron");
+   
+   tpc3pullmu_gq_antimu->Draw();
+   tpc3pullmu_gq_piplus->Draw("same");
+   tpc3pullmu_gq_proton->Draw("same");
+   tpc3pullmu_gq_positron->Draw("same");
+   //canvas_tpc3pulls_gq->cd(1)->SetLogy();
+
+   
+   // TPC3 pi pull GQ
+   
+   canvas_tpc3pulls_gq->cd(2);
+   
+   //tpc3pullpi_gq_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullpi_gq_antimu->GetYaxis()->SetTitleOffset(1.6);
+  
+   SetHistParticleStyle(tpc3pullpi_gq_antimu, "antimu");
+   SetHistParticleStyle(tpc3pullpi_gq_piplus, "piplus");
+   SetHistParticleStyle(tpc3pullpi_gq_proton, "proton");
+   SetHistParticleStyle(tpc3pullpi_gq_positron, "positron");
+   
+   tpc3pullpi_gq_antimu->Draw();
+   tpc3pullpi_gq_piplus->Draw("same");
+   tpc3pullpi_gq_proton->Draw("same");
+   tpc3pullpi_gq_positron->Draw("same");
+   //canvas_tpc3pulls_gq->cd(2)->SetLogy();
+   
+   
+   // TPC3 p pull GQ
+  
+   canvas_tpc3pulls_gq->cd(3);
+   
+   //tpc3pullpi_gq_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullpi_gq_antimu->GetYaxis()->SetTitleOffset(1.6);
+  
+   SetHistParticleStyle(tpc3pullpi_gq_antimu, "antimu");
+   SetHistParticleStyle(tpc3pullpi_gq_piplus, "piplus");
+   SetHistParticleStyle(tpc3pullpi_gq_proton, "proton");
+   SetHistParticleStyle(tpc3pullpi_gq_positron, "positron");
+   
+   tpc3pullpi_gq_antimu->Draw();
+   tpc3pullpi_gq_piplus->Draw("same");
+   tpc3pullpi_gq_proton->Draw("same");
+   tpc3pullpi_gq_positron->Draw("same");
+   //canvas_tpc3pulls_gq->cd(3)->SetLogy();
+   
+   // TPC3 e pull GQ
+   
+   canvas_tpc3pulls_gq->cd(4);
+   
+   //tpc3pulle_gq_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pulle_gq_antimu->GetYaxis()->SetTitleOffset(1.6);
+  
+   SetHistParticleStyle(tpc3pulle_gq_antimu, "antimu");
+   SetHistParticleStyle(tpc3pulle_gq_piplus, "piplus");
+   SetHistParticleStyle(tpc3pulle_gq_proton, "proton");
+   SetHistParticleStyle(tpc3pulle_gq_positron, "positron");
+   
+   tpc3pulle_gq_antimu->Draw();
+   tpc3pulle_gq_piplus->Draw("same");
+   tpc3pulle_gq_proton->Draw("same");
+   tpc3pulle_gq_positron->Draw("same");
+   //canvas_tpc3pulls_gq->cd(4)->SetLogy();
+   
+   canvas_tpc3pulls_gq->cd(1)->BuildLegend();
+   canvas_tpc3pulls_gq->Write();
    
    // nTPCs
    
