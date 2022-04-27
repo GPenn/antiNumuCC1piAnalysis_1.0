@@ -34,10 +34,15 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                 &bdt_tpc2_dedx);
   
   //tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
-  tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
-  tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
-  tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
-  tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
+  //tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
+  //tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
+  //tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
+  //tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
+  tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
+  //tmvareader->AddVariable( "tpc3pullmu_gq := selmu_tpc3_pullmu_gq",                 &bdt_tpc3_pullmu_gq);
+  //tmvareader->AddVariable( "tpc3pulle_gq := selmu_tpc3_pullele_gq",                   &bdt_tpc3_pulle_gq);
+  //tmvareader->AddVariable( "tpc3pullp_gq := selmu_tpc3_pullp_gq",                   &bdt_tpc3_pullp_gq);
+  //tmvareader->AddVariable( "tpc3pullpi_gq := selmu_tpc3_pullpi_gq",                 &bdt_tpc3_pullpi_gq);
   tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
   
   //tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
@@ -181,6 +186,11 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   bdt_tpc3_pullp = -40.0;
   bdt_tpc3_pulle = -10.0;
   bdt_tpc3_dedx = -100.0;
+  bdt_tpc3_pullmu_gq = -10.0;
+  bdt_tpc3_pullpi_gq = -10.0;
+  bdt_tpc3_pullp_gq = -40.0;
+  bdt_tpc3_pulle_gq = -10.0;
+  bdt_tpc3_dedx_gq = -100.0;
   
   bdt_ecal_EbyP = -1.0;
   bdt_ecal_EbyL = -1.0;
@@ -229,6 +239,15 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
     bdt_tpc3_pullpi = TPC3Segment->Pullpi;
     bdt_tpc3_pullp = TPC3Segment->Pullp;
     bdt_tpc3_pulle = TPC3Segment->Pullele;
+    
+    if (TPC3Segment.NNodes > 18)
+    {
+      bdt_tpc3_dedx_gq = TPC3Segment->dEdxMeas;
+      bdt_tpc3_pullmu_gq = TPC3Segment->Pullmu;
+      bdt_tpc3_pullpi_gq = TPC3Segment->Pullpi;
+      bdt_tpc3_pullp_gq = TPC3Segment->Pullp;
+      bdt_tpc3_pulle_gq = TPC3Segment->Pullele;
+    }
   }
   // Fill FGD variables:
   //std::cout << "DEBUG: Filling BDT FGD1 variables..." << std::endl;
