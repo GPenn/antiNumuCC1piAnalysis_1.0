@@ -240,7 +240,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
     bdt_tpc3_pullp = TPC3Segment->Pullp;
     bdt_tpc3_pulle = TPC3Segment->Pullele;
     
-    if (TPC3Segment.NNodes > 18)
+    if (TPC3Segment->NNodes > 18)
     {
       bdt_tpc3_dedx_gq = TPC3Segment->dEdxMeas;
       bdt_tpc3_pullmu_gq = TPC3Segment->Pullmu;
