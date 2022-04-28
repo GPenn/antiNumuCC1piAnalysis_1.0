@@ -50,7 +50,7 @@
 
 using namespace TMVA;
 
-void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
+void BDT_PID_multiclass_nminus1_ecal( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -138,7 +138,7 @@ void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
    // ---------------------------------------------------------------
 
    std::cout << std::endl;
-   std::cout << "==> Start BDT_PID_multiclass_nminus1_ntpcs" << std::endl;
+   std::cout << "==> Start BDT_PID_multiclass_nminus1_ecal" << std::endl;
 
    // Select methods (don't look at this code - not of interest)
    if (myMethodList != "") {
@@ -163,7 +163,7 @@ void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
    // --- Here the preparation phase begins
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName( "output/BDT_PID_multiclass_nminus1_ntpcs.root" );
+   TString outfileName( "output/BDT_PID_multiclass_nminus1_ecal.root" );
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
    // Create the factory object. Later you can choose the methods
@@ -179,7 +179,7 @@ void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
    //TMVA::Factory *factory = new TMVA::Factory( "TMVAClassification", outputFile,
    //                                            "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
    
-   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass_nminus1_ntpcs", outputFile,
+   TMVA::Factory *factory = new TMVA::Factory( "BDT_PID_multiclass_nminus1_ecal", outputFile,
                                                "!V:!Silent:Color:DrawProgressBar:Transformations=I:AnalysisType=multiclass" );
 
    
@@ -193,13 +193,13 @@ void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
    factory->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                    "TPC2 p pull",     "", 'F' );
    factory->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                  "TPC2 pi pull",    "", 'F' );
    factory->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                   "TPC3 dE/dx (GQ)",    "", 'F' );
-   //factory->AddVariable( "ntpcs := selmu_ntpcs ",                          "TPC segments",    "", 'I' );
-   factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
-   factory->AddVariable( "ecalEbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
-   factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
-   factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
-   factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
-   factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
+   factory->AddVariable( "ntpcs := selmu_ecal ",                          "TPC segments",    "", 'I' );
+   //factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
+   //factory->AddVariable( "ecalEbyL := selmu_ecal_bestseg_EbyL",                "ECal E/L",               "MeV/mm", 'F' );
+   //factory->AddVariable( "circularity := selmu_ecal_circularity",          "ECal Circularity",       "", 'F' );
+   //factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
+   //factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
+   //factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
    factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
 
    // Read training and test data
@@ -214,7 +214,7 @@ void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
    TFile *input_p  = TFile::Open( fname_p );
    TFile *input_e  = TFile::Open( fname_e );
    
-   std::cout << "--- BDT_PID_multiclass_nminus1_ntpcs       : Using input files: " << std::endl 
+   std::cout << "--- BDT_PID_multiclass_nminus1_ecal       : Using input files: " << std::endl 
       << input_mu->GetName() << std::endl 
       << input_pi->GetName() << std::endl 
       << input_p->GetName() << std::endl 
@@ -454,7 +454,7 @@ void BDT_PID_multiclass_nminus1_ntpcs( TString myMethodList = "" )
    outputFile->Close();
 
    std::cout << "==> Wrote root file: " << outputFile->GetName() << std::endl;
-   std::cout << "==> BDT_PID_multiclass_nminus1_ntpcs is done!" << std::endl;
+   std::cout << "==> BDT_PID_multiclass_nminus1_ecal is done!" << std::endl;
    
    delete factory;
    
