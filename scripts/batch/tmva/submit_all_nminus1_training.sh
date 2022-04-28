@@ -1,20 +1,20 @@
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_circularity.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_ecalEbyL.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_ecal.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_EMenergy.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fbr.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fgd1EbyL.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fgd2EbyL.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fgd.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_mom.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_nsmrds.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_ntpcs.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_qrms.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_theta.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tmr.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pulle.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pullmu.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pullpi.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pullp.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc3dedx_gq.sh
-/user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_circularity.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_ecalEbyL.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_ecal.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_EMenergy.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fbr.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fgd1EbyL.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fgd2EbyL.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_fgd.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_mom.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_nsmrds.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_ntpcs.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_qrms.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_theta.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tmr.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pulle.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pullmu.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pullpi.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc2pullp.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc3dedx_gq.sh
+sbatch /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/batch/tmva/submit_bdt_training_nminus1_tpc.sh
