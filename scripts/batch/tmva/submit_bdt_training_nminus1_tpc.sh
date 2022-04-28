@@ -10,4 +10,4 @@
 #run the application:
 source ~/highlandsetup.sh
 cd tmva
-root -b BDT_PID_multiclass_nminus1_ntpcs.C
+root -b BDT_PID_multiclass_nminus1_tpc.C
