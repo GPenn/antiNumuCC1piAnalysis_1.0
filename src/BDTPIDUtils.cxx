@@ -23,21 +23,21 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "fgd2pullp := selmu_fgd2_pull_p",                 &bdt_fgd2pullp);
   tmvareader->AddVariable("fgd2EbyL := selmu_fgd2_EbyL",                      &bdt_fgd2_EbyL);
   
-  tmvareader->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
-  tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
-  tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
-  tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
-  //tmvareader->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                 &bdt_tpc2_pullmu);
-  //tmvareader->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                   &bdt_tpc2_pulle);
-  //tmvareader->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                   &bdt_tpc2_pullp);
-  //tmvareader->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                 &bdt_tpc2_pullpi);
+  //tmvareader->AddVariable( "tpclikemu := selmu_tpc_like_mu",                 &bdt_tpc_like_mu);
+  //tmvareader->AddVariable( "tpclikee := selmu_tpc_like_e",                   &bdt_tpc_like_e);
+  //tmvareader->AddVariable( "tpclikep := selmu_tpc_like_p",                   &bdt_tpc_like_p);
+  //tmvareader->AddVariable( "tpclikepi := selmu_tpc_like_pi",                 &bdt_tpc_like_pi);
+  tmvareader->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                 &bdt_tpc2_pullmu);
+  tmvareader->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                   &bdt_tpc2_pulle);
+  tmvareader->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                   &bdt_tpc2_pullp);
+  tmvareader->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                 &bdt_tpc2_pullpi);
   //tmvareader->AddVariable( "tpc2dedx := selmu_tpc2_dedx ",                 &bdt_tpc2_dedx);
   
-  tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
-  //tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
-  //tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
-  //tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
-  //tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
+  //tmvareader->AddVariable( "tpc3dedx := selmu_tpc3_dedx ",                 &bdt_tpc3_dedx);
+  tmvareader->AddVariable( "tpc3pullmu := selmu_tpc3_pullmu",                 &bdt_tpc3_pullmu);
+  tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
+  tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
+  tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
   //tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
   //tmvareader->AddVariable( "tpc3pullmu_gq := selmu_tpc3_pullmu_gq",                 &bdt_tpc3_pullmu_gq);
   //tmvareader->AddVariable( "tpc3pulle_gq := selmu_tpc3_pullele_gq",                   &bdt_tpc3_pulle_gq);
@@ -142,7 +142,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_0.7shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.7shrinkage_2500trees.weights.xml" );
   //tmvareader->BookMVA( "BDTG_0.9shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.9shrinkage_2500trees.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_tpc2likelihoods", "parameters/weights/BDT_PID_multiclass_BDTG_tpc2likelihoods.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tpc3pulls", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3pulls.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_nsmrds_BDTG_tuned.weights.xml" );
   
