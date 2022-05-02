@@ -5,7 +5,7 @@
 #SBATCH -o /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/log/pg-%j.out
 #SBATCH -e /user/gpenn/nd280software/nd280release_12.31/antiNumuCC1piAnalysis_1.0/scripts/log/pg-%j.err
 #SBATCH -J pg_test
-#SBATCH -t 24:00:00
+#SBATCH -t 3:00:00
 
 #run the application:
 source ~/highlandsetup.sh
