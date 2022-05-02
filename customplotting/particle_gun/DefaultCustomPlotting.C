@@ -907,7 +907,7 @@ void DefaultCustomPlotting::Loop()
       
       if ((accum_level[0][1] > 4) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
          
-         if (particle == -13)
+         if ((particle == -13)&&(particle_pg == -13))
          {
             presel_nAntimu++;
             
@@ -942,7 +942,7 @@ void DefaultCustomPlotting::Loop()
             opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
             
          }
-         else if (particle == 211)
+         else if ((particle == 211)&&(particle_pg == 211))
          {
             presel_nPiplus++;
             
@@ -976,7 +976,7 @@ void DefaultCustomPlotting::Loop()
             opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
             opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
          }
-         else if (particle == 2212)
+         else if ((particle == 2212)&&(particle_pg == 2212))
          {
             presel_nProton++;
             
@@ -1012,7 +1012,7 @@ void DefaultCustomPlotting::Loop()
 
 
          }
-         else if (particle == -11)
+         else if ((particle == -11)&&(particle_pg == -11))
          {
             presel_nPositron++;
             
@@ -1053,61 +1053,61 @@ void DefaultCustomPlotting::Loop()
          
          if ((selmu_bdt_pid_mu > selmu_bdt_pid_pi) && (selmu_bdt_pid_mu > selmu_bdt_pid_p) && (selmu_bdt_pid_mu > selmu_bdt_pid_e))
          {
-            if (particle == -13) musel_nAntimu++;
-            if (particle == 211) musel_nPiplus++;
-            if (particle == 2212) musel_nProton++;
-            if (particle == -11) musel_nPositron++;
+            if ((particle == -13)&&(particle_pg == -13)) musel_nAntimu++;
+            if ((particle == 211)&&(particle_pg == 211)) musel_nPiplus++;
+            if ((particle == 2212)&&(particle_pg == 2212)) musel_nProton++;
+            if ((particle == -11)&&(particle_pg == -11)) musel_nPositron++;
          }
          
          if ((selmu_bdt_pid_pi > selmu_bdt_pid_mu) && (selmu_bdt_pid_pi > selmu_bdt_pid_p) && (selmu_bdt_pid_pi > selmu_bdt_pid_e))
          {
-            if (particle == -13) pisel_nAntimu++;
-            if (particle == 211) pisel_nPiplus++;
-            if (particle == 2212) pisel_nProton++;
-            if (particle == -11) pisel_nPositron++;
+            if ((particle == -13)&&(particle_pg == -13)) pisel_nAntimu++;
+            if ((particle == 211)&&(particle_pg == 211)) pisel_nPiplus++;
+            if ((particle == 2212)&&(particle_pg == 2212)) pisel_nProton++;
+            if ((particle == -11)&&(particle_pg == -11)) pisel_nPositron++;
          }
          
          if ((selmu_bdt_pid_p > selmu_bdt_pid_mu) && (selmu_bdt_pid_p > selmu_bdt_pid_pi) && (selmu_bdt_pid_p > selmu_bdt_pid_e))
          {
-            if (particle == -13) psel_nAntimu++;
-            if (particle == 211) psel_nPiplus++;
-            if (particle == 2212) psel_nProton++;
-            if (particle == -11) psel_nPositron++;
+            if ((particle == -13)&&(particle_pg == -13)) psel_nAntimu++;
+            if ((particle == 211)&&(particle_pg == 211)) psel_nPiplus++;
+            if ((particle == 2212)&&(particle_pg == 2212)) psel_nProton++;
+            if ((particle == -11)&&(particle_pg == -11)) psel_nPositron++;
          }
          
          if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
          {
-            if (particle == -13) esel_nAntimu++;
-            if (particle == 211) esel_nPiplus++;
-            if (particle == 2212) esel_nProton++;
-            if (particle == -11) esel_nPositron++;
+            if ((particle == -13)&&(particle_pg == -13)) esel_nAntimu++;
+            if ((particle == 211)&&(particle_pg == 211)) esel_nPiplus++;
+            if ((particle == 2212)&&(particle_pg == 2212)) esel_nProton++;
+            if ((particle == -11)&&(particle_pg == -11)) esel_nPositron++;
          }
          
          
-         if ((selmu_bdt_pid_mu_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_mu_test1 > selmu_bdt_pid_p_test1) && (selmu_bdt_pid_mu_test1 > selmu_bdt_pid_e_test1) && (particle == -13)) musel_nAntimu_test1++;
-         if ((selmu_bdt_pid_pi_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_pi_test1 > selmu_bdt_pid_p_test1) && (selmu_bdt_pid_pi_test1 > selmu_bdt_pid_e_test1) && (particle == 211)) pisel_nPiplus_test1++;
-         if ((selmu_bdt_pid_p_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_p_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_p_test1 > selmu_bdt_pid_e_test1) && (particle == 2212)) psel_nProton_test1++;
-         if ((selmu_bdt_pid_e_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_e_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_e_test1 > selmu_bdt_pid_p_test1) && (particle == -11)) esel_nPositron_test1++;
+         if ((selmu_bdt_pid_mu_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_mu_test1 > selmu_bdt_pid_p_test1) && (selmu_bdt_pid_mu_test1 > selmu_bdt_pid_e_test1) && (particle == -13)&&(particle_pg == -13)) musel_nAntimu_test1++;
+         if ((selmu_bdt_pid_pi_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_pi_test1 > selmu_bdt_pid_p_test1) && (selmu_bdt_pid_pi_test1 > selmu_bdt_pid_e_test1) && (particle == 211)&&(particle_pg == 211)) pisel_nPiplus_test1++;
+         if ((selmu_bdt_pid_p_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_p_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_p_test1 > selmu_bdt_pid_e_test1) && (particle == 2212)&&(particle_pg == 2212))) psel_nProton_test1++;
+         if ((selmu_bdt_pid_e_test1 > selmu_bdt_pid_mu_test1) && (selmu_bdt_pid_e_test1 > selmu_bdt_pid_pi_test1) && (selmu_bdt_pid_e_test1 > selmu_bdt_pid_p_test1) && (particle == -11)&&(particle_pg == -11)) esel_nPositron_test1++;
                 
-         if ((selmu_bdt_pid_mu_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_mu_test2 > selmu_bdt_pid_p_test2) && (selmu_bdt_pid_mu_test2 > selmu_bdt_pid_e_test2) && (particle == -13)) musel_nAntimu_test2++;
-         if ((selmu_bdt_pid_pi_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_pi_test2 > selmu_bdt_pid_p_test2) && (selmu_bdt_pid_pi_test2 > selmu_bdt_pid_e_test2) && (particle == 211)) pisel_nPiplus_test2++;
-         if ((selmu_bdt_pid_p_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_p_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_p_test2 > selmu_bdt_pid_e_test2) && (particle == 2212)) psel_nProton_test2++;
-         if ((selmu_bdt_pid_e_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_e_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_e_test2 > selmu_bdt_pid_p_test2) && (particle == -11)) esel_nPositron_test2++;
+         if ((selmu_bdt_pid_mu_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_mu_test2 > selmu_bdt_pid_p_test2) && (selmu_bdt_pid_mu_test2 > selmu_bdt_pid_e_test2) && (particle == -13)&&(particle_pg == -13)) musel_nAntimu_test2++;
+         if ((selmu_bdt_pid_pi_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_pi_test2 > selmu_bdt_pid_p_test2) && (selmu_bdt_pid_pi_test2 > selmu_bdt_pid_e_test2) && (particle == 211)&&(particle_pg == 211)) pisel_nPiplus_test2++;
+         if ((selmu_bdt_pid_p_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_p_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_p_test2 > selmu_bdt_pid_e_test2) && (particle == 2212)&&(particle_pg == 2212))) psel_nProton_test2++;
+         if ((selmu_bdt_pid_e_test2 > selmu_bdt_pid_mu_test2) && (selmu_bdt_pid_e_test2 > selmu_bdt_pid_pi_test2) && (selmu_bdt_pid_e_test2 > selmu_bdt_pid_p_test2) && (particle == -11)&&(particle_pg == -11)) esel_nPositron_test2++;
          
-         if ((selmu_bdt_pid_mu_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_mu_test3 > selmu_bdt_pid_p_test3) && (selmu_bdt_pid_mu_test3 > selmu_bdt_pid_e_test3) && (particle == -13)) musel_nAntimu_test3++;
-         if ((selmu_bdt_pid_pi_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_pi_test3 > selmu_bdt_pid_p_test3) && (selmu_bdt_pid_pi_test3 > selmu_bdt_pid_e_test3) && (particle == 211)) pisel_nPiplus_test3++;
-         if ((selmu_bdt_pid_p_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_p_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_p_test3 > selmu_bdt_pid_e_test3) && (particle == 2212)) psel_nProton_test3++;
-         if ((selmu_bdt_pid_e_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_e_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_e_test3 > selmu_bdt_pid_p_test3) && (particle == -11)) esel_nPositron_test3++;
+         if ((selmu_bdt_pid_mu_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_mu_test3 > selmu_bdt_pid_p_test3) && (selmu_bdt_pid_mu_test3 > selmu_bdt_pid_e_test3) && (particle == -13)&&(particle_pg == -13)) musel_nAntimu_test3++;
+         if ((selmu_bdt_pid_pi_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_pi_test3 > selmu_bdt_pid_p_test3) && (selmu_bdt_pid_pi_test3 > selmu_bdt_pid_e_test3) && (particle == 211)&&(particle_pg == 211)) pisel_nPiplus_test3++;
+         if ((selmu_bdt_pid_p_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_p_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_p_test3 > selmu_bdt_pid_e_test3) && (particle == 2212)&&(particle_pg == 2212))) psel_nProton_test3++;
+         if ((selmu_bdt_pid_e_test3 > selmu_bdt_pid_mu_test3) && (selmu_bdt_pid_e_test3 > selmu_bdt_pid_pi_test3) && (selmu_bdt_pid_e_test3 > selmu_bdt_pid_p_test3) && (particle == -11)&&(particle_pg == -11)) esel_nPositron_test3++;
          
-         if ((selmu_bdt_pid_mu_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_mu_test4 > selmu_bdt_pid_p_test4) && (selmu_bdt_pid_mu_test4 > selmu_bdt_pid_e_test4) && (particle == -13)) musel_nAntimu_test4++;
-         if ((selmu_bdt_pid_pi_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_pi_test4 > selmu_bdt_pid_p_test4) && (selmu_bdt_pid_pi_test4 > selmu_bdt_pid_e_test4) && (particle == 211)) pisel_nPiplus_test4++;
-         if ((selmu_bdt_pid_p_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_p_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_p_test4 > selmu_bdt_pid_e_test4) && (particle == 2212)) psel_nProton_test4++;
-         if ((selmu_bdt_pid_e_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_e_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_e_test4 > selmu_bdt_pid_p_test4) && (particle == -11)) esel_nPositron_test4++;
+         if ((selmu_bdt_pid_mu_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_mu_test4 > selmu_bdt_pid_p_test4) && (selmu_bdt_pid_mu_test4 > selmu_bdt_pid_e_test4) && (particle == -13)&&(particle_pg == -13)) musel_nAntimu_test4++;
+         if ((selmu_bdt_pid_pi_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_pi_test4 > selmu_bdt_pid_p_test4) && (selmu_bdt_pid_pi_test4 > selmu_bdt_pid_e_test4) && (particle == 211)&&(particle_pg == 211)) pisel_nPiplus_test4++;
+         if ((selmu_bdt_pid_p_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_p_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_p_test4 > selmu_bdt_pid_e_test4) && (particle == 2212)&&(particle_pg == 2212))) psel_nProton_test4++;
+         if ((selmu_bdt_pid_e_test4 > selmu_bdt_pid_mu_test4) && (selmu_bdt_pid_e_test4 > selmu_bdt_pid_pi_test4) && (selmu_bdt_pid_e_test4 > selmu_bdt_pid_p_test4) && (particle == -11)&&(particle_pg == -11)) esel_nPositron_test4++;
          
-         if ((selmu_bdt_pid_mu_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_mu_test5 > selmu_bdt_pid_p_test5) && (selmu_bdt_pid_mu_test5 > selmu_bdt_pid_e_test5) && (particle == -13)) musel_nAntimu_test5++;
-         if ((selmu_bdt_pid_pi_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_pi_test5 > selmu_bdt_pid_p_test5) && (selmu_bdt_pid_pi_test5 > selmu_bdt_pid_e_test5) && (particle == 211)) pisel_nPiplus_test5++;
-         if ((selmu_bdt_pid_p_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_p_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_p_test5 > selmu_bdt_pid_e_test5) && (particle == 2212)) psel_nProton_test5++;
-         if ((selmu_bdt_pid_e_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_e_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_e_test5 > selmu_bdt_pid_p_test5) && (particle == -11)) esel_nPositron_test5++;
+         if ((selmu_bdt_pid_mu_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_mu_test5 > selmu_bdt_pid_p_test5) && (selmu_bdt_pid_mu_test5 > selmu_bdt_pid_e_test5) && (particle == -13)&&(particle_pg == -13)) musel_nAntimu_test5++;
+         if ((selmu_bdt_pid_pi_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_pi_test5 > selmu_bdt_pid_p_test5) && (selmu_bdt_pid_pi_test5 > selmu_bdt_pid_e_test5) && (particle == 211)&&(particle_pg == 211)) pisel_nPiplus_test5++;
+         if ((selmu_bdt_pid_p_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_p_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_p_test5 > selmu_bdt_pid_e_test5) && (particle == 2212)&&(particle_pg == 2212))) psel_nProton_test5++;
+         if ((selmu_bdt_pid_e_test5 > selmu_bdt_pid_mu_test5) && (selmu_bdt_pid_e_test5 > selmu_bdt_pid_pi_test5) && (selmu_bdt_pid_e_test5 > selmu_bdt_pid_p_test5) && (particle == -11)&&(particle_pg == -11)) esel_nPositron_test5++;
          
          //corr_weighting_mulike->Fill(selmu_bdt_pid_mu, selmu_bdt_pid_unweighted_mu);
          //corr_weighting_pilike->Fill(selmu_bdt_pid_pi, selmu_bdt_pid_unweighted_pi);
