@@ -35,6 +35,21 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", 32, 0.0, 1600.0);
    TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", 32, 0.0, 1600.0);
    
+   TH1F *recomom_antimu2 = new TH1F("recomom_antimu2", "Antimuon;Reconstructed momentum (MeV/c);Entries/50 MeV/c", 50, 0.0, 2500.0);
+   TH1F *recomom_piplus2 = new TH1F("recomom_piplus2", "Pi+", 50, 0.0, 2500.0);
+   TH1F *recomom_proton2 = new TH1F("recomom_proton2", "Proton", 50, 0.0, 2500.0);
+   TH1F *recomom_positron2 = new TH1F("recomom_positron2", "Positron", 50, 0.0, 2500.0);
+   
+   TH1F *truemom_antimu = new TH1F("truemom_antimu", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 32, 0.0, 1600.0);
+   TH1F *truemom_piplus = new TH1F("truemom_piplus", "Pi+", 32, 0.0, 1600.0);
+   TH1F *truemom_proton = new TH1F("truemom_proton", "Proton", 32, 0.0, 1600.0);
+   TH1F *truemom_positron = new TH1F("truemom_positron", "Positron", 32, 0.0, 1600.0);
+   
+   TH1F *truemom_antimu2 = new TH1F("truemom_antimu2", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 50, 0.0, 2500.0);
+   TH1F *truemom_piplus2 = new TH1F("truemom_piplus2", "Pi+", 50, 0.0, 2500.0);
+   TH1F *truemom_proton2 = new TH1F("truemom_proton2", "Proton", 50, 0.0, 2500.0);
+   TH1F *truemom_positron2 = new TH1F("truemom_positron2", "Positron", 50, 0.0, 2500.0);
+   
    TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.05 rad", 24, 0.0, 1.2);
    TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 24, 0.0, 1.2);
    TH1F *theta_proton = new TH1F("theta_proton", "Proton", 24, 0.0, 1.2);
@@ -558,6 +573,30 @@ void DefaultCustomPlotting::Loop()
       
       // ============= Fill histograms for input variable plotting =============
       
+      if ((accum_level[0][1] > 5) && (selmu_necals < 2)){
+         
+         if ((particle == -13)&&(particle_pg == -13))
+         {
+            recomom_antimu1->Fill(selmu_mom[0]);
+            truemom_antimu1->Fill(selmu_truemom);
+         }
+         if ((particle == 211)&&(particle_pg == 211))
+         {
+            recomom_piplus1->Fill(selmu_mom[0]);
+            truemom_piplus1->Fill(selmu_truemom);
+         }
+         if ((particle == 2212)&&(particle_pg == 2212))
+         {
+            recomom_proton1->Fill(selmu_mom[0]);
+            truemom_proton1->Fill(selmu_truemom);
+         }
+         if ((particle == -11)&&(particle_pg == -11))
+         {
+            recomom_positron1->Fill(selmu_mom[0]);
+            truemom_positron1->Fill(selmu_truemom);
+         }
+      }
+      
       if ((accum_level[0][1] > 5) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){
          
          if ((particle == -13)&&(particle_pg == -13))
@@ -570,6 +609,7 @@ void DefaultCustomPlotting::Loop()
             else                {weight = 0;}
             
             recomom_antimu->Fill(selmu_mom[0]);
+            truemom_antimu->Fill(selmu_truemom);
             theta_antimu->Fill(selmu_det_theta);
             EMEnergy_antimu->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_antimu->Fill(selmu_ecal_bestseg_EbyL);
@@ -656,6 +696,7 @@ void DefaultCustomPlotting::Loop()
             else                {weight = 0;}
             
             recomom_piplus->Fill(selmu_mom[0]);
+            truemom_piplus->Fill(selmu_truemom);
             theta_piplus->Fill(selmu_det_theta);
             EMEnergy_piplus->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_piplus->Fill(selmu_ecal_bestseg_EbyL);
@@ -741,6 +782,7 @@ void DefaultCustomPlotting::Loop()
             else                {weight = 0;}
             
             recomom_proton->Fill(selmu_mom[0]);
+            truemom_proton->Fill(selmu_truemom);
             theta_proton->Fill(selmu_det_theta);
             EMEnergy_proton->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_proton->Fill(selmu_ecal_bestseg_EbyL);
@@ -825,6 +867,7 @@ void DefaultCustomPlotting::Loop()
             else                {weight = 0;}
             
             recomom_positron->Fill(selmu_mom[0]);
+            truemom_positron->Fill(selmu_truemom);
             theta_positron->Fill(selmu_det_theta);
             EMEnergy_positron->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_positron->Fill(selmu_ecal_bestseg_EbyL);
@@ -1185,8 +1228,6 @@ void DefaultCustomPlotting::Loop()
    
    // Reco momentum
    
-   //TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
-   
    TCanvas* canvas_ptheta = new TCanvas("canvas_ptheta","",200,10,1000,400);
    canvas_ptheta->Divide(2,1,0.005,0.005);
    canvas_ptheta->cd(1);
@@ -1202,9 +1243,72 @@ void DefaultCustomPlotting::Loop()
    recomom_piplus->Draw("same");
    recomom_proton->Draw("same");
    recomom_positron->Draw("same");
-   //canvas_recomom->BuildLegend();
-   //canvas_recomom->Write();
    canvas_ptheta->cd(1)->BuildLegend();
+   
+   TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   recomom_antimu->Draw();
+   recomom_piplus->Draw("same");
+   recomom_proton->Draw("same");
+   recomom_positron->Draw("same");
+   canvas_recomom->BuildLegend();
+   canvas_recomom->Write();
+   
+   // Reco momentum (before cuts)
+   
+   recomom_antimu1->GetYaxis()->SetRangeUser(0.0, 6000.0);
+  
+   SetHistParticleStyle(recomom_antimu1, "antimu");
+   SetHistParticleStyle(recomom_piplus1, "piplus");
+   SetHistParticleStyle(recomom_proton1, "proton");
+   SetHistParticleStyle(recomom_positron1, "positron");
+   
+   TCanvas* canvas_recomom1 = new TCanvas("canvas_recomom1","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   
+   recomom_antimu1->Draw();
+   recomom_piplus1->Draw("same");
+   recomom_proton1->Draw("same");
+   recomom_positron1->Draw("same");
+
+   canvas_recomom1->BuildLegend();
+   canvas_recomom1->Write();
+   
+   // True momentum
+   
+   truemom_antimu->GetYaxis()->SetRangeUser(0.0, 6000.0);
+  
+   SetHistParticleStyle(truemom_antimu, "antimu");
+   SetHistParticleStyle(truemom_piplus, "piplus");
+   SetHistParticleStyle(truemom_proton, "proton");
+   SetHistParticleStyle(truemom_positron, "positron");
+   
+   TCanvas* canvas_truemom = new TCanvas("canvas_truemom","True momentum (MeV/c)",200,10,1000,600);
+   
+   truemom_antimu->Draw();
+   truemom_piplus->Draw("same");
+   truemom_proton->Draw("same");
+   truemom_positron->Draw("same");
+
+   canvas_truemom->BuildLegend();
+   canvas_truemom->Write();
+   
+   // True momentum (before cuts)
+   
+   truemom_antimu1->GetYaxis()->SetRangeUser(0.0, 6000.0);
+  
+   SetHistParticleStyle(truemom_antimu1, "antimu");
+   SetHistParticleStyle(truemom_piplus1, "piplus");
+   SetHistParticleStyle(truemom_proton1, "proton");
+   SetHistParticleStyle(truemom_positron1, "positron");
+   
+   TCanvas* canvas_truemom1 = new TCanvas("canvas_truemom1","True momentum (MeV/c)",200,10,1000,600);
+   
+   truemom_antimu1->Draw();
+   truemom_piplus1->Draw("same");
+   truemom_proton1->Draw("same");
+   truemom_positron1->Draw("same");
+
+   canvas_truemom1->BuildLegend();
+   canvas_truemom1->Write();
    
    // Reco theta
    
