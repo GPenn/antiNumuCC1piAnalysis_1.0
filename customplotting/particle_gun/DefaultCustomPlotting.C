@@ -1909,18 +1909,18 @@ void DefaultCustomPlotting::Loop()
   
    canvas_tpc3pulls_gq->cd(3);
    
-   //tpc3pullpi_gq_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
-   tpc3pullpi_gq_antimu->GetYaxis()->SetTitleOffset(1.6);
+   //tpc3pullp_gq_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullp_gq_antimu->GetYaxis()->SetTitleOffset(1.6);
   
-   SetHistParticleStyle(tpc3pullpi_gq_antimu, "antimu");
-   SetHistParticleStyle(tpc3pullpi_gq_piplus, "piplus");
-   SetHistParticleStyle(tpc3pullpi_gq_proton, "proton");
-   SetHistParticleStyle(tpc3pullpi_gq_positron, "positron");
+   SetHistParticleStyle(tpc3pullp_gq_antimu, "antimu");
+   SetHistParticleStyle(tpc3pullp_gq_piplus, "piplus");
+   SetHistParticleStyle(tpc3pullp_gq_proton, "proton");
+   SetHistParticleStyle(tpc3pullp_gq_positron, "positron");
    
-   tpc3pullpi_gq_antimu->Draw();
-   tpc3pullpi_gq_piplus->Draw("same");
-   tpc3pullpi_gq_proton->Draw("same");
-   tpc3pullpi_gq_positron->Draw("same");
+   tpc3pullp_gq_antimu->Draw();
+   tpc3pullp_gq_piplus->Draw("same");
+   tpc3pullp_gq_proton->Draw("same");
+   tpc3pullp_gq_positron->Draw("same");
    //canvas_tpc3pulls_gq->cd(3)->SetLogy();
    
    // TPC3 e pull GQ
