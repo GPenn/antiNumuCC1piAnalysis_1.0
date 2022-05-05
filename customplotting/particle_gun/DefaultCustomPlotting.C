@@ -1313,7 +1313,7 @@ void DefaultCustomPlotting::Loop()
    
    // Combined momentum canvases
    
-   TCanvas* canvas_mom1 = new TCanvas("canvas_mom1","",200,10,1000,400);
+   TCanvas* canvas_mom1 = new TCanvas("canvas_mom1","",200,10,1500,600);
    canvas_mom1->Divide(2,1,0.005,0.005);
    canvas_mom1->cd(1);
    recomom_antimu->Draw();
@@ -1328,7 +1328,7 @@ void DefaultCustomPlotting::Loop()
    truemom_positron->Draw("same");
    canvas_mom1->Write();
    
-   TCanvas* canvas_mom2 = new TCanvas("canvas_mom2","",200,10,1000,400);
+   TCanvas* canvas_mom2 = new TCanvas("canvas_mom2","",200,10,1500,600);
    canvas_mom2->Divide(2,1,0.005,0.005);
    canvas_mom2->cd(1);
    recomom_antimu2->Draw();
