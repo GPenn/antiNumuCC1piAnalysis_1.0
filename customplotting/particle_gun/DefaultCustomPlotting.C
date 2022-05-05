@@ -40,15 +40,15 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_proton2 = new TH1F("recomom_proton2", "Proton", 50, 0.0, 2500.0);
    TH1F *recomom_positron2 = new TH1F("recomom_positron2", "Positron", 50, 0.0, 2500.0);
    
-   TH1F *truemom_antimu = new TH1F("truemom_antimu", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 32, 0.0, 1600.0);
-   TH1F *truemom_piplus = new TH1F("truemom_piplus", "Pi+", 32, 0.0, 1600.0);
-   TH1F *truemom_proton = new TH1F("truemom_proton", "Proton", 32, 0.0, 1600.0);
-   TH1F *truemom_positron = new TH1F("truemom_positron", "Positron", 32, 0.0, 1600.0);
+   TH1F *truemom_antimu = new TH1F("truemom_antimu", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 42, 0.0, 2100.0);
+   TH1F *truemom_piplus = new TH1F("truemom_piplus", "Pi+", 42, 0.0, 2100.0);
+   TH1F *truemom_proton = new TH1F("truemom_proton", "Proton", 42, 0.0, 2100.0);
+   TH1F *truemom_positron = new TH1F("truemom_positron", "Positron", 42, 0.0, 2100.0);
    
-   TH1F *truemom_antimu2 = new TH1F("truemom_antimu2", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 50, 0.0, 2500.0);
-   TH1F *truemom_piplus2 = new TH1F("truemom_piplus2", "Pi+", 50, 0.0, 2500.0);
-   TH1F *truemom_proton2 = new TH1F("truemom_proton2", "Proton", 50, 0.0, 2500.0);
-   TH1F *truemom_positron2 = new TH1F("truemom_positron2", "Positron", 50, 0.0, 2500.0);
+   TH1F *truemom_antimu2 = new TH1F("truemom_antimu2", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 42, 0.0, 2100.0);
+   TH1F *truemom_piplus2 = new TH1F("truemom_piplus2", "Pi+", 42, 0.0, 2100.0);
+   TH1F *truemom_proton2 = new TH1F("truemom_proton2", "Proton", 42, 0.0, 2100.0);
+   TH1F *truemom_positron2 = new TH1F("truemom_positron2", "Positron", 42, 0.0, 2100.0);
    
    TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.05 rad", 24, 0.0, 1.2);
    TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 24, 0.0, 1.2);
@@ -1255,7 +1255,7 @@ void DefaultCustomPlotting::Loop()
    
    // Reco momentum (before cuts)
    
-   recomom_antimu2->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   recomom_antimu2->GetYaxis()->SetRangeUser(0.0, 7500.0);
   
    SetHistParticleStyle(recomom_antimu2, "antimu");
    SetHistParticleStyle(recomom_piplus2, "piplus");
