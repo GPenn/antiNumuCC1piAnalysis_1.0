@@ -1245,6 +1245,7 @@ void DefaultCustomPlotting::Loop()
    recomom_positron->Draw("same");
    canvas_ptheta->cd(1)->BuildLegend();
    
+   
    TCanvas* canvas_recomom = new TCanvas("canvas_recomom","Reconstructed momentum (MeV/c)",200,10,1000,600);
    recomom_antimu->Draw();
    recomom_piplus->Draw("same");
@@ -1309,6 +1310,38 @@ void DefaultCustomPlotting::Loop()
 
    canvas_truemom2->BuildLegend();
    canvas_truemom2->Write();
+   
+   // Combined momentum canvases
+   
+   TCanvas* canvas_mom1 = new TCanvas("canvas_mom1","",200,10,1000,400);
+   canvas_mom1->Divide(2,1,0.005,0.005);
+   canvas_mom1->cd(1);
+   recomom_antimu->Draw();
+   recomom_piplus->Draw("same");
+   recomom_proton->Draw("same");
+   recomom_positron->Draw("same");
+   canvas_mom1->cd(1)->BuildLegend();
+   canvas_mom1->cd(2);
+   truemom_antimu->Draw();
+   truemom_piplus->Draw("same");
+   truemom_proton->Draw("same");
+   truemom_positron->Draw("same");
+   canvas_mom1->Write();
+   
+   TCanvas* canvas_mom2 = new TCanvas("canvas_mom2","",200,10,1000,400);
+   canvas_mom2->Divide(2,1,0.005,0.005);
+   canvas_mom2->cd(1);
+   recomom_antimu2->Draw();
+   recomom_piplus2->Draw("same");
+   recomom_proton2->Draw("same");
+   recomom_positron2->Draw("same");
+   canvas_mom2->cd(1)->BuildLegend();
+   canvas_mom2->cd(2);
+   truemom_antimu2->Draw();
+   truemom_piplus2->Draw("same");
+   truemom_proton2->Draw("same");
+   truemom_positron2->Draw("same");
+   canvas_mom2->Write();
    
    // Reco theta
    
