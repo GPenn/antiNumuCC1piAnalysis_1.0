@@ -2273,8 +2273,8 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_weighted_tpc2dedx = new TCanvas("canvas_weighted_tpc2dedx","",200,10,1000,600);
    
-   TCanvas* canvas_weighted_tpcdedx = new TCanvas("canvas_weighted_tpcdedx","",200,10,1000,400);
-   canvas_weighted_tpcdedx->Divide(2,1,0.005,0.005);
+   TCanvas* canvas_weighted_tpcdedx = new TCanvas("canvas_weighted_tpcdedx","",200,10,1000,800);
+   canvas_weighted_tpcdedx->Divide(2,2,0.005,0.005);
    canvas_weighted_tpcdedx->cd(1);
    
    //tpc2dedx_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -2312,6 +2312,23 @@ void DefaultCustomPlotting::Loop()
    tpc3dedx_positron_weighted->Draw("same");
    //canvas_weighted_tpc3dedx->BuildLegend();
    //canvas_weighted_tpc3dedx->Write();
+   //canvas_weighted_tpcdedx->Write();
+   
+   // TPC3 dE/dx GQ
+   
+   canvas_weighted_tpcdedx->cd(3);
+   
+   tpc3dedx_gq_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(tpc3dedx_gq_antimu_weighted, "antimu");
+   SetHistParticleStyle(tpc3dedx_gq_piplus_weighted, "piplus");
+   SetHistParticleStyle(tpc3dedx_gq_proton_weighted, "proton");
+   SetHistParticleStyle(tpc3dedx_gq_positron_weighted, "positron");
+   
+   tpc3dedx_gq_antimu_weighted->Draw();
+   tpc3dedx_gq_piplus_weighted->Draw("same");
+   tpc3dedx_gq_proton_weighted->Draw("same");
+   tpc3dedx_gq_positron_weighted->Draw("same");
    canvas_weighted_tpcdedx->Write();
    
    // TPC mu-like
@@ -2561,6 +2578,84 @@ void DefaultCustomPlotting::Loop()
    
    canvas_weighted_tpc3pulls->cd(1)->BuildLegend();
    canvas_weighted_tpc3pulls->Write();
+   
+   // TPC3 mu pull GQ
+   
+   TCanvas* canvas_weighted_tpc3pulls_gq = new TCanvas("canvas_weighted_tpc3pulls_gq","",200,10,1000,800);
+   canvas_weighted_tpc3pulls_gq->Divide(2,2,0.005,0.005);
+   canvas_weighted_tpc3pulls_gq->cd(1);
+   
+   //tpc3pullmu_gq_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullmu_gq_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(tpc3pullmu_gq_antimu_weighted, "antimu");
+   SetHistParticleStyle(tpc3pullmu_gq_piplus_weighted, "piplus");
+   SetHistParticleStyle(tpc3pullmu_gq_proton_weighted, "proton");
+   SetHistParticleStyle(tpc3pullmu_gq_positron_weighted, "positron");
+   
+   tpc3pullmu_gq_antimu_weighted->Draw();
+   tpc3pullmu_gq_piplus_weighted->Draw("same");
+   tpc3pullmu_gq_proton_weighted->Draw("same");
+   tpc3pullmu_gq_positron_weighted->Draw("same");
+   //canvas_weighted_tpc3pulls_gq->cd(1)->SetLogy();
+
+   
+   // TPC3 pi pull GQ
+   
+   canvas_weighted_tpc3pulls_gq->cd(2);
+   
+   //tpc3pullpi_gq_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullpi_gq_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(tpc3pullpi_gq_antimu_weighted, "antimu");
+   SetHistParticleStyle(tpc3pullpi_gq_piplus_weighted, "piplus");
+   SetHistParticleStyle(tpc3pullpi_gq_proton_weighted, "proton");
+   SetHistParticleStyle(tpc3pullpi_gq_positron_weighted, "positron");
+   
+   tpc3pullpi_gq_antimu_weighted->Draw();
+   tpc3pullpi_gq_piplus_weighted->Draw("same");
+   tpc3pullpi_gq_proton_weighted->Draw("same");
+   tpc3pullpi_gq_positron_weighted->Draw("same");
+   //canvas_weighted_tpc3pulls_gq->cd(2)->SetLogy();
+   
+   // TPC3 p pull GQ
+  
+   canvas_weighted_tpc3pulls_gq->cd(3);
+   
+   //tpc3pullp_gq_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pullp_gq_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(tpc3pullp_gq_antimu_weighted, "antimu");
+   SetHistParticleStyle(tpc3pullp_gq_piplus_weighted, "piplus");
+   SetHistParticleStyle(tpc3pullp_gq_proton_weighted, "proton");
+   SetHistParticleStyle(tpc3pullp_gq_positron_weighted, "positron");
+   
+   tpc3pullp_gq_antimu_weighted->Draw();
+   tpc3pullp_gq_piplus_weighted->Draw("same");
+   tpc3pullp_gq_proton_weighted->Draw("same");
+   tpc3pullp_gq_positron_weighted->Draw("same");
+   //canvas_weighted_tpc3pulls_gq->cd(3)->SetLogy();
+   
+   // TPC3 e pull GQ
+   
+   canvas_weighted_tpc3pulls_gq->cd(4);
+   
+   //tpc3pulle_gq_antimu_weighted->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   tpc3pulle_gq_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(tpc3pulle_gq_antimu_weighted, "antimu");
+   SetHistParticleStyle(tpc3pulle_gq_piplus_weighted, "piplus");
+   SetHistParticleStyle(tpc3pulle_gq_proton_weighted, "proton");
+   SetHistParticleStyle(tpc3pulle_gq_positron_weighted, "positron");
+   
+   tpc3pulle_gq_antimu_weighted->Draw();
+   tpc3pulle_gq_piplus_weighted->Draw("same");
+   tpc3pulle_gq_proton_weighted->Draw("same");
+   tpc3pulle_gq_positron_weighted->Draw("same");
+   //canvas_weighted_tpc3pulls_gq->cd(4)->SetLogy();
+   
+   canvas_weighted_tpc3pulls_gq->cd(1)->BuildLegend();
+   canvas_weighted_tpc3pulls_gq->Write();
    
    // nTPCs
    
