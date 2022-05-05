@@ -30,361 +30,361 @@ void DefaultCustomPlotting::Loop()
    
    Int_t variable_bins = 50;
    
-   TH1F *recomom_antimu = new TH1F("recomom_antimu", "Antimuon;Reconstructed momentum (MeV/c);Entries/50 MeV/c", 32, 0.0, 1600.0);
-   TH1F *recomom_piplus = new TH1F("recomom_piplus", "Pi+", 32, 0.0, 1600.0);
-   TH1F *recomom_proton = new TH1F("recomom_proton", "Proton", 32, 0.0, 1600.0);
-   TH1F *recomom_positron = new TH1F("recomom_positron", "Positron", 32, 0.0, 1600.0);
+   TH1F *recomom_antimu = new TH1F("recomom_antimu", "#mu^{+};Reconstructed momentum (MeV/c);Entries/50 MeV/c", 32, 0.0, 1600.0);
+   TH1F *recomom_piplus = new TH1F("recomom_piplus", "#pi^{+}", 32, 0.0, 1600.0);
+   TH1F *recomom_proton = new TH1F("recomom_proton", "p", 32, 0.0, 1600.0);
+   TH1F *recomom_positron = new TH1F("recomom_positron", "e^{+}", 32, 0.0, 1600.0);
    
-   TH1F *recomom_antimu2 = new TH1F("recomom_antimu2", "Antimuon;Reconstructed momentum (MeV/c);Entries/50 MeV/c", 50, 0.0, 2500.0);
-   TH1F *recomom_piplus2 = new TH1F("recomom_piplus2", "Pi+", 50, 0.0, 2500.0);
-   TH1F *recomom_proton2 = new TH1F("recomom_proton2", "Proton", 50, 0.0, 2500.0);
-   TH1F *recomom_positron2 = new TH1F("recomom_positron2", "Positron", 50, 0.0, 2500.0);
+   TH1F *recomom_antimu2 = new TH1F("recomom_antimu2", "#mu^{+};Reconstructed momentum (MeV/c);Entries/50 MeV/c", 50, 0.0, 2500.0);
+   TH1F *recomom_piplus2 = new TH1F("recomom_piplus2", "#pi^{+}", 50, 0.0, 2500.0);
+   TH1F *recomom_proton2 = new TH1F("recomom_proton2", "p", 50, 0.0, 2500.0);
+   TH1F *recomom_positron2 = new TH1F("recomom_positron2", "e^{+}", 50, 0.0, 2500.0);
    
-   TH1F *truemom_antimu = new TH1F("truemom_antimu", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 42, 0.0, 2100.0);
-   TH1F *truemom_piplus = new TH1F("truemom_piplus", "Pi+", 42, 0.0, 2100.0);
-   TH1F *truemom_proton = new TH1F("truemom_proton", "Proton", 42, 0.0, 2100.0);
-   TH1F *truemom_positron = new TH1F("truemom_positron", "Positron", 42, 0.0, 2100.0);
+   TH1F *truemom_antimu = new TH1F("truemom_antimu", "#mu^{+};True momentum (MeV/c);Entries/50 MeV/c", 42, 0.0, 2100.0);
+   TH1F *truemom_piplus = new TH1F("truemom_piplus", "#pi^{+}", 42, 0.0, 2100.0);
+   TH1F *truemom_proton = new TH1F("truemom_proton", "p", 42, 0.0, 2100.0);
+   TH1F *truemom_positron = new TH1F("truemom_positron", "e^{+}", 42, 0.0, 2100.0);
    
-   TH1F *truemom_antimu2 = new TH1F("truemom_antimu2", "Antimuon;True momentum (MeV/c);Entries/50 MeV/c", 42, 0.0, 2100.0);
-   TH1F *truemom_piplus2 = new TH1F("truemom_piplus2", "Pi+", 42, 0.0, 2100.0);
-   TH1F *truemom_proton2 = new TH1F("truemom_proton2", "Proton", 42, 0.0, 2100.0);
-   TH1F *truemom_positron2 = new TH1F("truemom_positron2", "Positron", 42, 0.0, 2100.0);
+   TH1F *truemom_antimu2 = new TH1F("truemom_antimu2", "#mu^{+};True momentum (MeV/c);Entries/50 MeV/c", 42, 0.0, 2100.0);
+   TH1F *truemom_piplus2 = new TH1F("truemom_piplus2", "#pi^{+}", 42, 0.0, 2100.0);
+   TH1F *truemom_proton2 = new TH1F("truemom_proton2", "p", 42, 0.0, 2100.0);
+   TH1F *truemom_positron2 = new TH1F("truemom_positron2", "e^{+}", 42, 0.0, 2100.0);
    
-   TH1F *theta_antimu = new TH1F("theta_antimu", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.05 rad", 24, 0.0, 1.2);
-   TH1F *theta_piplus = new TH1F("theta_piplus", "Pi+", 24, 0.0, 1.2);
-   TH1F *theta_proton = new TH1F("theta_proton", "Proton", 24, 0.0, 1.2);
-   TH1F *theta_positron = new TH1F("theta_positron", "Positron", 24, 0.0, 1.2);
+   TH1F *theta_antimu = new TH1F("theta_antimu", "#mu^{+};Reconstructed angle w.r.t. detector Z-axis (rad);Entries/0.05 rad", 24, 0.0, 1.2);
+   TH1F *theta_piplus = new TH1F("theta_piplus", "#pi^{+}", 24, 0.0, 1.2);
+   TH1F *theta_proton = new TH1F("theta_proton", "p", 24, 0.0, 1.2);
+   TH1F *theta_positron = new TH1F("theta_positron", "e^{+}", 24, 0.0, 1.2);
    
-   TH1F *EMEnergy_antimu = new TH1F("EMEnergy_antimu", "Antimuon;Reconstructed ECal EM energy (MeV);Entries/50 MeV", 50, 0.0, 2500);
-   TH1F *EMEnergy_piplus = new TH1F("EMEnergy_piplus", "Pi+", 50, 0.0, 2500);
-   TH1F *EMEnergy_proton = new TH1F("EMEnergy_proton", "Proton", 50, 0.0, 2500);
-   TH1F *EMEnergy_positron = new TH1F("EMEnergy_positron", "Positron", 50, 0.0, 2500);
+   TH1F *EMEnergy_antimu = new TH1F("EMEnergy_antimu", "#mu^{+};Reconstructed ECal EM energy (MeV);Entries/50 MeV", 50, 0.0, 2500);
+   TH1F *EMEnergy_piplus = new TH1F("EMEnergy_piplus", "#pi^{+}", 50, 0.0, 2500);
+   TH1F *EMEnergy_proton = new TH1F("EMEnergy_proton", "p", 50, 0.0, 2500);
+   TH1F *EMEnergy_positron = new TH1F("EMEnergy_positron", "e^{+}", 50, 0.0, 2500);
    
-   TH1F *EbyL_antimu = new TH1F("EbyL_antimu", "Antimuon;ECal EM energy/ECal segment length (MeV/mm);Entries/10 MeV/mm", 40, 0.0, 4);
-   TH1F *EbyL_piplus = new TH1F("EbyL_piplus", "Pi+", 40, 0.0, 4);
-   TH1F *EbyL_proton = new TH1F("EbyL_proton", "Proton", 40, 0.0, 4);
-   TH1F *EbyL_positron = new TH1F("EbyL_positron", "Positron", 40, 0.0, 4);
+   TH1F *EbyL_antimu = new TH1F("EbyL_antimu", "#mu^{+};ECal EM energy/ECal segment length (MeV/mm);Entries/10 MeV/mm", 40, 0.0, 4);
+   TH1F *EbyL_piplus = new TH1F("EbyL_piplus", "#pi^{+}", 40, 0.0, 4);
+   TH1F *EbyL_proton = new TH1F("EbyL_proton", "p", 40, 0.0, 4);
+   TH1F *EbyL_positron = new TH1F("EbyL_positron", "e^{+}", 40, 0.0, 4);
    
-   TH1F *circularity_antimu = new TH1F("circularity_antimu", "Antimuon;ECal circularity variable (dimensionless);Entries", 50, 0.0, 1.0);
-   TH1F *circularity_piplus = new TH1F("circularity_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *circularity_proton = new TH1F("circularity_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *circularity_positron = new TH1F("circularity_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *circularity_antimu = new TH1F("circularity_antimu", "#mu^{+};ECal circularity variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *circularity_piplus = new TH1F("circularity_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *circularity_proton = new TH1F("circularity_proton", "p", 50, 0.0, 1.0);
+   TH1F *circularity_positron = new TH1F("circularity_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *fbr_antimu = new TH1F("fbr_antimu", "Antimuon;ECal FrontBackRatio variable (dimensionless);Entries", 50, 0.0, 10.0);
-   TH1F *fbr_piplus = new TH1F("fbr_piplus", "Pi+", 50, 0.0, 10.0);
-   TH1F *fbr_proton = new TH1F("fbr_proton", "Proton", 50, 0.0, 10.0);
-   TH1F *fbr_positron = new TH1F("fbr_positron", "Positron", 50, 0.0, 10.0);
+   TH1F *fbr_antimu = new TH1F("fbr_antimu", "#mu^{+};ECal FrontBackRatio variable (dimensionless);Entries", 50, 0.0, 10.0);
+   TH1F *fbr_piplus = new TH1F("fbr_piplus", "#pi^{+}", 50, 0.0, 10.0);
+   TH1F *fbr_proton = new TH1F("fbr_proton", "p", 50, 0.0, 10.0);
+   TH1F *fbr_positron = new TH1F("fbr_positron", "e^{+}", 50, 0.0, 10.0);
    
-   TH1F *tmr_antimu = new TH1F("tmr_antimu", "Antimuon;ECal TruncatedMaxRatio variable (dimensionless);Entries", 50, 0.0, 1.0);
-   TH1F *tmr_piplus = new TH1F("tmr_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *tmr_proton = new TH1F("tmr_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *tmr_positron = new TH1F("tmr_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *tmr_antimu = new TH1F("tmr_antimu", "#mu^{+};ECal TruncatedMaxRatio variable (dimensionless);Entries", 50, 0.0, 1.0);
+   TH1F *tmr_piplus = new TH1F("tmr_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tmr_proton = new TH1F("tmr_proton", "p", 50, 0.0, 1.0);
+   TH1F *tmr_positron = new TH1F("tmr_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *qrms_antimu = new TH1F("qrms_antimu", "Antimuon;ECal QRMS variable (dimensionless);Entries", 30, 0.0, 3.0);
-   TH1F *qrms_piplus = new TH1F("qrms_piplus", "Pi+", 30, 0.0, 3.0);
-   TH1F *qrms_proton = new TH1F("qrms_proton", "Proton", 30, 0.0, 3.0);
-   TH1F *qrms_positron = new TH1F("qrms_positron", "Positron", 30, 0.0, 3.0);
+   TH1F *qrms_antimu = new TH1F("qrms_antimu", "#mu^{+};ECal QRMS variable (dimensionless);Entries", 30, 0.0, 3.0);
+   TH1F *qrms_piplus = new TH1F("qrms_piplus", "#pi^{+}", 30, 0.0, 3.0);
+   TH1F *qrms_proton = new TH1F("qrms_proton", "p", 30, 0.0, 3.0);
+   TH1F *qrms_positron = new TH1F("qrms_positron", "e^{+}", 30, 0.0, 3.0);
    
-   TH1F *mipem_antimu = new TH1F("mipem_antimu", "Antimuon;ECal MipEm variable (dimensionless);Entries", 60, -50.0, 70.0);
-   TH1F *mipem_piplus = new TH1F("mipem_piplus", "Pi+", 60, -50.0, 70.0);
-   TH1F *mipem_proton = new TH1F("mipem_proton", "Proton", 60, -50.0, 70.0);
-   TH1F *mipem_positron = new TH1F("mipem_positron", "Positron", 60, -50.0, 70.0);
+   TH1F *mipem_antimu = new TH1F("mipem_antimu", "#mu^{+};ECal MipEm variable (dimensionless);Entries", 60, -50.0, 70.0);
+   TH1F *mipem_piplus = new TH1F("mipem_piplus", "#pi^{+}", 60, -50.0, 70.0);
+   TH1F *mipem_proton = new TH1F("mipem_proton", "p", 60, -50.0, 70.0);
+   TH1F *mipem_positron = new TH1F("mipem_positron", "e^{+}", 60, -50.0, 70.0);
    
-   TH1F *emhip_antimu = new TH1F("emhip_antimu", "Antimuon;ECal EmHip variable (dimensionless);Entries", 40, -40.0, 40.0);
-   TH1F *emhip_piplus = new TH1F("emhip_piplus", "Pi+", 40, -40.0, 40.0);
-   TH1F *emhip_proton = new TH1F("emhip_proton", "Proton", 40, -40.0, 40.0);
-   TH1F *emhip_positron = new TH1F("emhip_positron", "Positron", 40, -40.0, 40.0);
+   TH1F *emhip_antimu = new TH1F("emhip_antimu", "#mu^{+};ECal EmHip variable (dimensionless);Entries", 40, -40.0, 40.0);
+   TH1F *emhip_piplus = new TH1F("emhip_piplus", "#pi^{+}", 40, -40.0, 40.0);
+   TH1F *emhip_proton = new TH1F("emhip_proton", "p", 40, -40.0, 40.0);
+   TH1F *emhip_positron = new TH1F("emhip_positron", "e^{+}", 40, -40.0, 40.0);
    
-   TH1F *mippion_antimu = new TH1F("mippion_antimu", "Antimuon;ECal MipPion variable (dimensionless);Entries", 50, -30.0, 70.0);
-   TH1F *mippion_piplus = new TH1F("mippion_piplus", "Pi+", 50, -30.0, 70.0);
-   TH1F *mippion_proton = new TH1F("mippion_proton", "Proton", 50, -30.0, 70.0);
-   TH1F *mippion_positron = new TH1F("mippion_positron", "Positron", 50, -30.0, 70.0);
+   TH1F *mippion_antimu = new TH1F("mippion_antimu", "#mu^{+};ECal MipPion variable (dimensionless);Entries", 50, -30.0, 70.0);
+   TH1F *mippion_piplus = new TH1F("mippion_piplus", "#pi^{+}", 50, -30.0, 70.0);
+   TH1F *mippion_proton = new TH1F("mippion_proton", "p", 50, -30.0, 70.0);
+   TH1F *mippion_positron = new TH1F("mippion_positron", "e^{+}", 50, -30.0, 70.0);
    
-   TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "Antimuon;TPC2 dE/dx truncated mean (arb. units);Entries", 50, 0.0, 2000.0);
-   TH1F *tpc2dedx_piplus = new TH1F("tpc2dedx_piplus", "Pi+", 50, 0.0, 2000.0);
-   TH1F *tpc2dedx_proton = new TH1F("tpc2dedx_proton", "Proton", 50, 0.0, 2000.0);
-   TH1F *tpc2dedx_positron = new TH1F("tpc2dedx_positron", "Positron", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_antimu = new TH1F("tpc2dedx_antimu", "#mu^{+};TPC2 dE/dx truncated mean (arb. units);Entries", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_piplus = new TH1F("tpc2dedx_piplus", "#pi^{+}", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_proton = new TH1F("tpc2dedx_proton", "p", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_positron = new TH1F("tpc2dedx_positron", "e^{+}", 50, 0.0, 2000.0);
    
-   TH1F *tpc3dedx_antimu = new TH1F("tpc3dedx_antimu", "Antimuon;TPC3 dE/dx truncated mean (arb. units);Entries", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_piplus = new TH1F("tpc3dedx_piplus", "Pi+", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_proton = new TH1F("tpc3dedx_proton", "Proton", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_positron = new TH1F("tpc3dedx_positron", "Positron", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_antimu = new TH1F("tpc3dedx_antimu", "#mu^{+};TPC3 dE/dx truncated mean (arb. units);Entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_piplus = new TH1F("tpc3dedx_piplus", "#pi^{+}", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_proton = new TH1F("tpc3dedx_proton", "p", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_positron = new TH1F("tpc3dedx_positron", "e^{+}", 50, 0.0, 2000.0);
 
-   TH1F *tpc3dedx_gq_antimu = new TH1F("tpc3dedx_gq_antimu", "Antimuon;TPC3 dE/dx truncated mean with quality check (arb. units);Entries", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_gq_piplus = new TH1F("tpc3dedx_gq_piplus", "Pi+", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_gq_proton = new TH1F("tpc3dedx_gq_proton", "Proton", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_gq_positron = new TH1F("tpc3dedx_gq_positron", "Positron", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_antimu = new TH1F("tpc3dedx_gq_antimu", "#mu^{+};TPC3 dE/dx truncated mean with quality check (arb. units);Entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_piplus = new TH1F("tpc3dedx_gq_piplus", "#pi^{+}", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_proton = new TH1F("tpc3dedx_gq_proton", "p", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_positron = new TH1F("tpc3dedx_gq_positron", "e^{+}", 50, 0.0, 2000.0);
    
-   TH1F *tpclikemu_antimu = new TH1F("tpclikemu_antimu", "Antimuon;TPC2 muon likelihood;Entries", 50, 0.0, 1.0);
-   TH1F *tpclikemu_piplus = new TH1F("tpclikemu_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikemu_proton = new TH1F("tpclikemu_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikemu_positron = new TH1F("tpclikemu_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikemu_antimu = new TH1F("tpclikemu_antimu", "#mu^{+};TPC2 muon likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikemu_piplus = new TH1F("tpclikemu_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikemu_proton = new TH1F("tpclikemu_proton", "p", 50, 0.0, 1.0);
+   TH1F *tpclikemu_positron = new TH1F("tpclikemu_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpclikepi_antimu = new TH1F("tpclikepi_antimu", "Antimuon;TPC2 charged pion likelihood;Entries", 50, 0.0, 1.0);
-   TH1F *tpclikepi_piplus = new TH1F("tpclikepi_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikepi_proton = new TH1F("tpclikepi_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikepi_positron = new TH1F("tpclikepi_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikepi_antimu = new TH1F("tpclikepi_antimu", "#mu^{+};TPC2 charged pion likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikepi_piplus = new TH1F("tpclikepi_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikepi_proton = new TH1F("tpclikepi_proton", "p", 50, 0.0, 1.0);
+   TH1F *tpclikepi_positron = new TH1F("tpclikepi_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpclikep_antimu = new TH1F("tpclikep_antimu", "Antimuon;TPC2 proton likelihood;Entries", 50, 0.0, 1.0);
-   TH1F *tpclikep_piplus = new TH1F("tpclikep_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikep_proton = new TH1F("tpclikep_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikep_positron = new TH1F("tpclikep_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikep_antimu = new TH1F("tpclikep_antimu", "#mu^{+};TPC2 proton likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikep_piplus = new TH1F("tpclikep_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikep_proton = new TH1F("tpclikep_proton", "p", 50, 0.0, 1.0);
+   TH1F *tpclikep_positron = new TH1F("tpclikep_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpclikee_antimu = new TH1F("tpclikee_antimu", "Antimuon;TPC2 electron likelihood;Entries", 50, 0.0, 1.0);
-   TH1F *tpclikee_piplus = new TH1F("tpclikee_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikee_proton = new TH1F("tpclikee_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikee_positron = new TH1F("tpclikee_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikee_antimu = new TH1F("tpclikee_antimu", "#mu^{+};TPC2 electron likelihood;Entries", 50, 0.0, 1.0);
+   TH1F *tpclikee_piplus = new TH1F("tpclikee_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikee_proton = new TH1F("tpclikee_proton", "p", 50, 0.0, 1.0);
+   TH1F *tpclikee_positron = new TH1F("tpclikee_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpc2pullmu_antimu = new TH1F("tpc2pullmu_antimu", "Antimuon;TPC2 muon pull;Entries", 50, -10.0, 40.0);
-   TH1F *tpc2pullmu_piplus = new TH1F("tpc2pullmu_piplus", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc2pullmu_proton = new TH1F("tpc2pullmu_proton", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc2pullmu_positron = new TH1F("tpc2pullmu_positron", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_antimu = new TH1F("tpc2pullmu_antimu", "#mu^{+};TPC2 muon pull;Entries", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_piplus = new TH1F("tpc2pullmu_piplus", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_proton = new TH1F("tpc2pullmu_proton", "p", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_positron = new TH1F("tpc2pullmu_positron", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc2pullpi_antimu = new TH1F("tpc2pullpi_antimu", "Antimuon;TPC2 charged pion pull;Entries", 50, -10.0, 40.0);
-   TH1F *tpc2pullpi_piplus = new TH1F("tpc2pullpi_piplus", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc2pullpi_proton = new TH1F("tpc2pullpi_proton", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc2pullpi_positron = new TH1F("tpc2pullpi_positron", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_antimu = new TH1F("tpc2pullpi_antimu", "#mu^{+};TPC2 charged pion pull;Entries", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_piplus = new TH1F("tpc2pullpi_piplus", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_proton = new TH1F("tpc2pullpi_proton", "p", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_positron = new TH1F("tpc2pullpi_positron", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc2pullp_antimu = new TH1F("tpc2pullp_antimu", "Antimuon;TPC2 proton pull;Entries", 50, -40.0, 20.0);
-   TH1F *tpc2pullp_piplus = new TH1F("tpc2pullp_piplus", "Pi+", 50, -40.0, 20.0);
-   TH1F *tpc2pullp_proton = new TH1F("tpc2pullp_proton", "Proton", 50, -40.0, 20.0);
-   TH1F *tpc2pullp_positron = new TH1F("tpc2pullp_positron", "Positron", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_antimu = new TH1F("tpc2pullp_antimu", "#mu^{+};TPC2 proton pull;Entries", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_piplus = new TH1F("tpc2pullp_piplus", "#pi^{+}", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_proton = new TH1F("tpc2pullp_proton", "p", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_positron = new TH1F("tpc2pullp_positron", "e^{+}", 50, -40.0, 20.0);
    
-   TH1F *tpc2pulle_antimu = new TH1F("tpc2pulle_antimu", "Antimuon;TPC2 electron pull;Entries", 50, -20.0, 30.0);
-   TH1F *tpc2pulle_piplus = new TH1F("tpc2pulle_piplus", "Pi+", 50, -20.0, 30.0);
-   TH1F *tpc2pulle_proton = new TH1F("tpc2pulle_proton", "Proton", 50, -20.0, 30.0);
-   TH1F *tpc2pulle_positron = new TH1F("tpc2pulle_positron", "Positron", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_antimu = new TH1F("tpc2pulle_antimu", "#mu^{+};TPC2 electron pull;Entries", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_piplus = new TH1F("tpc2pulle_piplus", "#pi^{+}", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_proton = new TH1F("tpc2pulle_proton", "p", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_positron = new TH1F("tpc2pulle_positron", "e^{+}", 50, -20.0, 30.0);
    
-   TH1F *tpc3pullmu_antimu = new TH1F("tpc3pullmu_antimu", "Antimuon;TPC3 muon pull;Entries", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_piplus = new TH1F("tpc3pullmu_piplus", "Pi+", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_proton = new TH1F("tpc3pullmu_proton", "Proton", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_positron = new TH1F("tpc3pullmu_positron", "Positron", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_antimu = new TH1F("tpc3pullmu_antimu", "#mu^{+};TPC3 muon pull;Entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_piplus = new TH1F("tpc3pullmu_piplus", "#pi^{+}", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_proton = new TH1F("tpc3pullmu_proton", "p", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_positron = new TH1F("tpc3pullmu_positron", "e^{+}", 50, -10.0, 30.0);
    
-   TH1F *tpc3pullpi_antimu = new TH1F("tpc3pullpi_antimu", "Antimuon;TPC3 charged pion pull;Entries", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_piplus = new TH1F("tpc3pullpi_piplus", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_proton = new TH1F("tpc3pullpi_proton", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_positron = new TH1F("tpc3pullpi_positron", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_antimu = new TH1F("tpc3pullpi_antimu", "#mu^{+};TPC3 charged pion pull;Entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_piplus = new TH1F("tpc3pullpi_piplus", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_proton = new TH1F("tpc3pullpi_proton", "p", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_positron = new TH1F("tpc3pullpi_positron", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc3pullp_antimu = new TH1F("tpc3pullp_antimu", "Antimuon;TPC3 proton pull;Entries", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_piplus = new TH1F("tpc3pullp_piplus", "Pi+", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_proton = new TH1F("tpc3pullp_proton", "Proton", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_positron = new TH1F("tpc3pullp_positron", "Positron", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_antimu = new TH1F("tpc3pullp_antimu", "#mu^{+};TPC3 proton pull;Entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_piplus = new TH1F("tpc3pullp_piplus", "#pi^{+}", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_proton = new TH1F("tpc3pullp_proton", "p", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_positron = new TH1F("tpc3pullp_positron", "e^{+}", 50, -40.0, 20.0);
    
-   TH1F *tpc3pulle_antimu = new TH1F("tpc3pulle_antimu", "Antimuon;TPC3 electron pull;Entries", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_piplus = new TH1F("tpc3pulle_piplus", "Pi+", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "Proton", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "Positron", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_antimu = new TH1F("tpc3pulle_antimu", "#mu^{+};TPC3 electron pull;Entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_piplus = new TH1F("tpc3pulle_piplus", "#pi^{+}", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_proton = new TH1F("tpc3pulle_proton", "p", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_positron = new TH1F("tpc3pulle_positron", "e^{+}", 50, -10.0, 20.0);
    
-   TH1F *tpc3pullmu_gq_antimu = new TH1F("tpc3pullmu_gq_antimu", "Antimuon;TPC3 muon pull with quality check;Entries", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_gq_piplus = new TH1F("tpc3pullmu_gq_piplus", "Pi+", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_gq_proton = new TH1F("tpc3pullmu_gq_proton", "Proton", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_gq_positron = new TH1F("tpc3pullmu_gq_positron", "Positron", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_antimu = new TH1F("tpc3pullmu_gq_antimu", "#mu^{+};TPC3 muon pull with quality check;Entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_piplus = new TH1F("tpc3pullmu_gq_piplus", "#pi^{+}", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_proton = new TH1F("tpc3pullmu_gq_proton", "p", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_positron = new TH1F("tpc3pullmu_gq_positron", "e^{+}", 50, -10.0, 30.0);
    
-   TH1F *tpc3pullpi_gq_antimu = new TH1F("tpc3pullpi_gq_antimu", "Antimuon;TPC3 charged pion pull with quality check;Entries", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_gq_piplus = new TH1F("tpc3pullpi_gq_piplus", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_gq_proton = new TH1F("tpc3pullpi_gq_proton", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_gq_positron = new TH1F("tpc3pullpi_gq_positron", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_antimu = new TH1F("tpc3pullpi_gq_antimu", "#mu^{+};TPC3 charged pion pull with quality check;Entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_piplus = new TH1F("tpc3pullpi_gq_piplus", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_proton = new TH1F("tpc3pullpi_gq_proton", "p", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_positron = new TH1F("tpc3pullpi_gq_positron", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc3pullp_gq_antimu = new TH1F("tpc3pullp_gq_antimu", "Antimuon;TPC3 proton pull with quality check;Entries", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_gq_piplus = new TH1F("tpc3pullp_gq_piplus", "Pi+", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_gq_proton = new TH1F("tpc3pullp_gq_proton", "Proton", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_gq_positron = new TH1F("tpc3pullp_gq_positron", "Positron", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_antimu = new TH1F("tpc3pullp_gq_antimu", "#mu^{+};TPC3 proton pull with quality check;Entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_piplus = new TH1F("tpc3pullp_gq_piplus", "#pi^{+}", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_proton = new TH1F("tpc3pullp_gq_proton", "p", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_positron = new TH1F("tpc3pullp_gq_positron", "e^{+}", 50, -40.0, 20.0);
    
-   TH1F *tpc3pulle_gq_antimu = new TH1F("tpc3pulle_gq_antimu", "Antimuon;TPC3 electron pull with quality check;Entries", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_gq_piplus = new TH1F("tpc3pulle_gq_piplus", "Pi+", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_gq_proton = new TH1F("tpc3pulle_gq_proton", "Proton", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_gq_positron = new TH1F("tpc3pulle_gq_positron", "Positron", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_antimu = new TH1F("tpc3pulle_gq_antimu", "#mu^{+};TPC3 electron pull with quality check;Entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_piplus = new TH1F("tpc3pulle_gq_piplus", "#pi^{+}", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_proton = new TH1F("tpc3pulle_gq_proton", "p", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_positron = new TH1F("tpc3pulle_gq_positron", "e^{+}", 50, -10.0, 20.0);
    
-   TH1F *ntpcs_antimu = new TH1F("ntpcs_antimu", "Antimuon;Number of TPC segments;Entries", 2, 0.5, 2.5);
-   TH1F *ntpcs_piplus = new TH1F("ntpcs_piplus", "Pi+", 2, 0.5, 2.5);
-   TH1F *ntpcs_proton = new TH1F("ntpcs_proton", "Proton", 2, 0.5, 2.5);
-   TH1F *ntpcs_positron = new TH1F("ntpcs_positron", "Positron", 2, 0.5, 2.5);
+   TH1F *ntpcs_antimu = new TH1F("ntpcs_antimu", "#mu^{+};Number of TPC segments;Entries", 2, 0.5, 2.5);
+   TH1F *ntpcs_piplus = new TH1F("ntpcs_piplus", "#pi^{+}", 2, 0.5, 2.5);
+   TH1F *ntpcs_proton = new TH1F("ntpcs_proton", "p", 2, 0.5, 2.5);
+   TH1F *ntpcs_positron = new TH1F("ntpcs_positron", "e^{+}", 2, 0.5, 2.5);
    
-   TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "Antimuon;FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
-   TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "Pi+", 50, 0.0, 1.0);
-   TH1F *fgd1EbyL_proton = new TH1F("fgd1EbyL_proton", "Proton", 50, 0.0, 1.0);
-   TH1F *fgd1EbyL_positron = new TH1F("fgd1EbyL_positron", "Positron", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_antimu = new TH1F("fgd1EbyL_antimu", "#mu^{+};FGD1 energy/length (MeV/mm);Entries", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_piplus = new TH1F("fgd1EbyL_piplus", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_proton = new TH1F("fgd1EbyL_proton", "p", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_positron = new TH1F("fgd1EbyL_positron", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *fgd2EbyL_antimu = new TH1F("fgd2EbyL_antimu", "Antimuon;FGD2 energy/length (MeV/mm);Entries", 30, 0.0, 0.6);
-   TH1F *fgd2EbyL_piplus = new TH1F("fgd2EbyL_piplus", "Pi+", 30, 0.0, 0.6);
-   TH1F *fgd2EbyL_proton = new TH1F("fgd2EbyL_proton", "Proton", 30, 0.0, 0.6);
-   TH1F *fgd2EbyL_positron = new TH1F("fgd2EbyL_positron", "Positron", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_antimu = new TH1F("fgd2EbyL_antimu", "#mu^{+};FGD2 energy/length (MeV/mm);Entries", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_piplus = new TH1F("fgd2EbyL_piplus", "#pi^{+}", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_proton = new TH1F("fgd2EbyL_proton", "p", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_positron = new TH1F("fgd2EbyL_positron", "e^{+}", 30, 0.0, 0.6);
    
-   TH1F *nsmrds_antimu = new TH1F("nsmrds_antimu", "Antimuon;Number of SMRD segments;Entries", 3, -0.5, 2.5);
-   TH1F *nsmrds_piplus = new TH1F("nsmrds_piplus", "Pi+", 3, -0.5, 2.5);
-   TH1F *nsmrds_proton = new TH1F("nsmrds_proton", "Proton", 3, -0.5, 2.5);
-   TH1F *nsmrds_positron = new TH1F("nsmrds_positron", "Positron", 3, -0.5, 2.5);
+   TH1F *nsmrds_antimu = new TH1F("nsmrds_antimu", "#mu^{+};Number of SMRD segments;Entries", 3, -0.5, 2.5);
+   TH1F *nsmrds_piplus = new TH1F("nsmrds_piplus", "#pi^{+}", 3, -0.5, 2.5);
+   TH1F *nsmrds_proton = new TH1F("nsmrds_proton", "p", 3, -0.5, 2.5);
+   TH1F *nsmrds_positron = new TH1F("nsmrds_positron", "e^{+}", 3, -0.5, 2.5);
    
    
-   TH1F *recomom_antimu_weighted = new TH1F("recomom_antimu_weighted", "Antimuon;Reconstructed momentum (MeV/c);Momentum weighted entries/50 MeV/c", 32, 0.0, 1600.0);
-   TH1F *recomom_piplus_weighted = new TH1F("recomom_piplus_weighted", "Pi+", 32, 0.0, 1600.0);
-   TH1F *recomom_proton_weighted = new TH1F("recomom_proton_weighted", "Proton", 32, 0.0, 1600.0);
-   TH1F *recomom_positron_weighted = new TH1F("recomom_positron_weighted", "Positron", 32, 0.0, 1600.0);
+   TH1F *recomom_antimu_weighted = new TH1F("recomom_antimu_weighted", "#mu^{+};Reconstructed momentum (MeV/c);Momentum weighted entries/50 MeV/c", 32, 0.0, 1600.0);
+   TH1F *recomom_piplus_weighted = new TH1F("recomom_piplus_weighted", "#pi^{+}", 32, 0.0, 1600.0);
+   TH1F *recomom_proton_weighted = new TH1F("recomom_proton_weighted", "p", 32, 0.0, 1600.0);
+   TH1F *recomom_positron_weighted = new TH1F("recomom_positron_weighted", "e^{+}", 32, 0.0, 1600.0);
    
-   TH1F *theta_antimu_weighted = new TH1F("theta_antimu_weighted", "Antimuon;Reconstructed angle w.r.t. detector Z-axis (rad);Momentum weighted entries/0.05 rad", 24, 0.0, 1.2);
-   TH1F *theta_piplus_weighted = new TH1F("theta_piplus_weighted", "Pi+", 24, 0.0, 1.2);
-   TH1F *theta_proton_weighted = new TH1F("theta_proton_weighted", "Proton", 24, 0.0, 1.2);
-   TH1F *theta_positron_weighted = new TH1F("theta_positron_weighted", "Positron", 24, 0.0, 1.2);
+   TH1F *theta_antimu_weighted = new TH1F("theta_antimu_weighted", "#mu^{+};Reconstructed angle w.r.t. detector Z-axis (rad);Momentum weighted entries/0.05 rad", 24, 0.0, 1.2);
+   TH1F *theta_piplus_weighted = new TH1F("theta_piplus_weighted", "#pi^{+}", 24, 0.0, 1.2);
+   TH1F *theta_proton_weighted = new TH1F("theta_proton_weighted", "p", 24, 0.0, 1.2);
+   TH1F *theta_positron_weighted = new TH1F("theta_positron_weighted", "e^{+}", 24, 0.0, 1.2);
    
-   TH1F *EMEnergy_antimu_weighted = new TH1F("EMEnergy_antimu_weighted", "Antimuon;Reconstructed ECal EM energy (MeV);Momentum weighted entries/50 MeV", 50, 0.0, 2500);
-   TH1F *EMEnergy_piplus_weighted = new TH1F("EMEnergy_piplus_weighted", "Pi+", 50, 0.0, 2500);
-   TH1F *EMEnergy_proton_weighted = new TH1F("EMEnergy_proton_weighted", "Proton", 50, 0.0, 2500);
-   TH1F *EMEnergy_positron_weighted = new TH1F("EMEnergy_positron_weighted", "Positron", 50, 0.0, 2500);
+   TH1F *EMEnergy_antimu_weighted = new TH1F("EMEnergy_antimu_weighted", "#mu^{+};Reconstructed ECal EM energy (MeV);Momentum weighted entries/50 MeV", 50, 0.0, 2500);
+   TH1F *EMEnergy_piplus_weighted = new TH1F("EMEnergy_piplus_weighted", "#pi^{+}", 50, 0.0, 2500);
+   TH1F *EMEnergy_proton_weighted = new TH1F("EMEnergy_proton_weighted", "p", 50, 0.0, 2500);
+   TH1F *EMEnergy_positron_weighted = new TH1F("EMEnergy_positron_weighted", "e^{+}", 50, 0.0, 2500);
    
-   TH1F *EbyL_antimu_weighted = new TH1F("EbyL_antimu_weighted", "Antimuon;ECal EM energy/ECal segment length (MeV/mm);Momentum weighted entries/10 MeV/mm", 40, 0.0, 4);
-   TH1F *EbyL_piplus_weighted = new TH1F("EbyL_piplus_weighted", "Pi+", 40, 0.0, 4);
-   TH1F *EbyL_proton_weighted = new TH1F("EbyL_proton_weighted", "Proton", 40, 0.0, 4);
-   TH1F *EbyL_positron_weighted = new TH1F("EbyL_positron_weighted", "Positron", 40, 0.0, 4);
+   TH1F *EbyL_antimu_weighted = new TH1F("EbyL_antimu_weighted", "#mu^{+};ECal EM energy/ECal segment length (MeV/mm);Momentum weighted entries/10 MeV/mm", 40, 0.0, 4);
+   TH1F *EbyL_piplus_weighted = new TH1F("EbyL_piplus_weighted", "#pi^{+}", 40, 0.0, 4);
+   TH1F *EbyL_proton_weighted = new TH1F("EbyL_proton_weighted", "p", 40, 0.0, 4);
+   TH1F *EbyL_positron_weighted = new TH1F("EbyL_positron_weighted", "e^{+}", 40, 0.0, 4);
    
-   TH1F *circularity_antimu_weighted = new TH1F("circularity_antimu_weighted", "Antimuon;ECal circularity variable (dimensionless);Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *circularity_piplus_weighted = new TH1F("circularity_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *circularity_proton_weighted = new TH1F("circularity_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *circularity_positron_weighted = new TH1F("circularity_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *circularity_antimu_weighted = new TH1F("circularity_antimu_weighted", "#mu^{+};ECal circularity variable (dimensionless);Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *circularity_piplus_weighted = new TH1F("circularity_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *circularity_proton_weighted = new TH1F("circularity_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *circularity_positron_weighted = new TH1F("circularity_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *fbr_antimu_weighted = new TH1F("fbr_antimu_weighted", "Antimuon;ECal FrontBackRatio variable (dimensionless);Momentum weighted entries", 50, 0.0, 10.0);
-   TH1F *fbr_piplus_weighted = new TH1F("fbr_piplus_weighted", "Pi+", 50, 0.0, 10.0);
-   TH1F *fbr_proton_weighted = new TH1F("fbr_proton_weighted", "Proton", 50, 0.0, 10.0);
-   TH1F *fbr_positron_weighted = new TH1F("fbr_positron_weighted", "Positron", 50, 0.0, 10.0);
+   TH1F *fbr_antimu_weighted = new TH1F("fbr_antimu_weighted", "#mu^{+};ECal FrontBackRatio variable (dimensionless);Momentum weighted entries", 50, 0.0, 10.0);
+   TH1F *fbr_piplus_weighted = new TH1F("fbr_piplus_weighted", "#pi^{+}", 50, 0.0, 10.0);
+   TH1F *fbr_proton_weighted = new TH1F("fbr_proton_weighted", "p", 50, 0.0, 10.0);
+   TH1F *fbr_positron_weighted = new TH1F("fbr_positron_weighted", "e^{+}", 50, 0.0, 10.0);
    
-   TH1F *tmr_antimu_weighted = new TH1F("tmr_antimu_weighted", "Antimuon;ECal TruncatedMaxRatio variable (dimensionless);Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *tmr_piplus_weighted = new TH1F("tmr_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *tmr_proton_weighted = new TH1F("tmr_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *tmr_positron_weighted = new TH1F("tmr_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *tmr_antimu_weighted = new TH1F("tmr_antimu_weighted", "#mu^{+};ECal TruncatedMaxRatio variable (dimensionless);Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tmr_piplus_weighted = new TH1F("tmr_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tmr_proton_weighted = new TH1F("tmr_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *tmr_positron_weighted = new TH1F("tmr_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *qrms_antimu_weighted = new TH1F("qrms_antimu_weighted", "Antimuon;ECal QRMS variable (dimensionless);Momentum weighted entries", 30, 0.0, 3.0);
-   TH1F *qrms_piplus_weighted = new TH1F("qrms_piplus_weighted", "Pi+", 30, 0.0, 3.0);
-   TH1F *qrms_proton_weighted = new TH1F("qrms_proton_weighted", "Proton", 30, 0.0, 3.0);
-   TH1F *qrms_positron_weighted = new TH1F("qrms_positron_weighted", "Positron", 30, 0.0, 3.0);
+   TH1F *qrms_antimu_weighted = new TH1F("qrms_antimu_weighted", "#mu^{+};ECal QRMS variable (dimensionless);Momentum weighted entries", 30, 0.0, 3.0);
+   TH1F *qrms_piplus_weighted = new TH1F("qrms_piplus_weighted", "#pi^{+}", 30, 0.0, 3.0);
+   TH1F *qrms_proton_weighted = new TH1F("qrms_proton_weighted", "p", 30, 0.0, 3.0);
+   TH1F *qrms_positron_weighted = new TH1F("qrms_positron_weighted", "e^{+}", 30, 0.0, 3.0);
    
-   TH1F *mipem_antimu_weighted = new TH1F("mipem_antimu_weighted", "Antimuon;ECal MipEm variable (dimensionless);Momentum weighted entries", 60, -50.0, 70.0);
-   TH1F *mipem_piplus_weighted = new TH1F("mipem_piplus_weighted", "Pi+", 60, -50.0, 70.0);
-   TH1F *mipem_proton_weighted = new TH1F("mipem_proton_weighted", "Proton", 60, -50.0, 70.0);
-   TH1F *mipem_positron_weighted = new TH1F("mipem_positron_weighted", "Positron", 60, -50.0, 70.0);
+   TH1F *mipem_antimu_weighted = new TH1F("mipem_antimu_weighted", "#mu^{+};ECal MipEm variable (dimensionless);Momentum weighted entries", 60, -50.0, 70.0);
+   TH1F *mipem_piplus_weighted = new TH1F("mipem_piplus_weighted", "#pi^{+}", 60, -50.0, 70.0);
+   TH1F *mipem_proton_weighted = new TH1F("mipem_proton_weighted", "p", 60, -50.0, 70.0);
+   TH1F *mipem_positron_weighted = new TH1F("mipem_positron_weighted", "e^{+}", 60, -50.0, 70.0);
    
-   TH1F *emhip_antimu_weighted = new TH1F("emhip_antimu_weighted", "Antimuon;ECal EmHip variable (dimensionless);Momentum weighted entries", 40, -40.0, 40.0);
-   TH1F *emhip_piplus_weighted = new TH1F("emhip_piplus_weighted", "Pi+", 40, -40.0, 40.0);
-   TH1F *emhip_proton_weighted = new TH1F("emhip_proton_weighted", "Proton", 40, -40.0, 40.0);
-   TH1F *emhip_positron_weighted = new TH1F("emhip_positron_weighted", "Positron", 40, -40.0, 40.0);
+   TH1F *emhip_antimu_weighted = new TH1F("emhip_antimu_weighted", "#mu^{+};ECal EmHip variable (dimensionless);Momentum weighted entries", 40, -40.0, 40.0);
+   TH1F *emhip_piplus_weighted = new TH1F("emhip_piplus_weighted", "#pi^{+}", 40, -40.0, 40.0);
+   TH1F *emhip_proton_weighted = new TH1F("emhip_proton_weighted", "p", 40, -40.0, 40.0);
+   TH1F *emhip_positron_weighted = new TH1F("emhip_positron_weighted", "e^{+}", 40, -40.0, 40.0);
    
-   TH1F *mippion_antimu_weighted = new TH1F("mippion_antimu_weighted", "Antimuon;ECal MipPion variable (dimensionless);Momentum weighted entries", 50, -30.0, 70.0);
-   TH1F *mippion_piplus_weighted = new TH1F("mippion_piplus_weighted", "Pi+", 50, -30.0, 70.0);
-   TH1F *mippion_proton_weighted = new TH1F("mippion_proton_weighted", "Proton", 50, -30.0, 70.0);
-   TH1F *mippion_positron_weighted = new TH1F("mippion_positron_weighted", "Positron", 50, -30.0, 70.0);
+   TH1F *mippion_antimu_weighted = new TH1F("mippion_antimu_weighted", "#mu^{+};ECal MipPion variable (dimensionless);Momentum weighted entries", 50, -30.0, 70.0);
+   TH1F *mippion_piplus_weighted = new TH1F("mippion_piplus_weighted", "#pi^{+}", 50, -30.0, 70.0);
+   TH1F *mippion_proton_weighted = new TH1F("mippion_proton_weighted", "p", 50, -30.0, 70.0);
+   TH1F *mippion_positron_weighted = new TH1F("mippion_positron_weighted", "e^{+}", 50, -30.0, 70.0);
    
-   TH1F *tpc2dedx_antimu_weighted = new TH1F("tpc2dedx_antimu_weighted", "Antimuon;TPC2 dE/dx truncated mean (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
-   TH1F *tpc2dedx_piplus_weighted = new TH1F("tpc2dedx_piplus_weighted", "Pi+", 50, 0.0, 2000.0);
-   TH1F *tpc2dedx_proton_weighted = new TH1F("tpc2dedx_proton_weighted", "Proton", 50, 0.0, 2000.0);
-   TH1F *tpc2dedx_positron_weighted = new TH1F("tpc2dedx_positron_weighted", "Positron", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_antimu_weighted = new TH1F("tpc2dedx_antimu_weighted", "#mu^{+};TPC2 dE/dx truncated mean (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_piplus_weighted = new TH1F("tpc2dedx_piplus_weighted", "#pi^{+}", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_proton_weighted = new TH1F("tpc2dedx_proton_weighted", "p", 50, 0.0, 2000.0);
+   TH1F *tpc2dedx_positron_weighted = new TH1F("tpc2dedx_positron_weighted", "e^{+}", 50, 0.0, 2000.0);
    
-   TH1F *tpc3dedx_antimu_weighted = new TH1F("tpc3dedx_antimu_weighted", "Antimuon;TPC3 dE/dx truncated mean (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_piplus_weighted = new TH1F("tpc3dedx_piplus_weighted", "Pi+", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_proton_weighted = new TH1F("tpc3dedx_proton_weighted", "Proton", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_positron_weighted = new TH1F("tpc3dedx_positron_weighted", "Positron", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_antimu_weighted = new TH1F("tpc3dedx_antimu_weighted", "#mu^{+};TPC3 dE/dx truncated mean (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_piplus_weighted = new TH1F("tpc3dedx_piplus_weighted", "#pi^{+}", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_proton_weighted = new TH1F("tpc3dedx_proton_weighted", "p", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_positron_weighted = new TH1F("tpc3dedx_positron_weighted", "e^{+}", 50, 0.0, 2000.0);
    
-   TH1F *tpc3dedx_gq_antimu_weighted = new TH1F("tpc3dedx_gq_antimu_weighted", "Antimuon;TPC3 dE/dx truncated mean with quality check (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_gq_piplus_weighted = new TH1F("tpc3dedx_gq_piplus_weighted", "Pi+", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_gq_proton_weighted = new TH1F("tpc3dedx_gq_proton_weighted", "Proton", 50, 0.0, 2000.0);
-   TH1F *tpc3dedx_gq_positron_weighted = new TH1F("tpc3dedx_gq_positron_weighted", "Positron", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_antimu_weighted = new TH1F("tpc3dedx_gq_antimu_weighted", "#mu^{+};TPC3 dE/dx truncated mean with quality check (arb. units);Momentum weighted entries", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_piplus_weighted = new TH1F("tpc3dedx_gq_piplus_weighted", "#pi^{+}", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_proton_weighted = new TH1F("tpc3dedx_gq_proton_weighted", "p", 50, 0.0, 2000.0);
+   TH1F *tpc3dedx_gq_positron_weighted = new TH1F("tpc3dedx_gq_positron_weighted", "e^{+}", 50, 0.0, 2000.0);
    
-   TH1F *tpclikemu_antimu_weighted = new TH1F("tpclikemu_antimu_weighted", "Antimuon;TPC2 muon likelihood;Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *tpclikemu_piplus_weighted = new TH1F("tpclikemu_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikemu_proton_weighted = new TH1F("tpclikemu_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikemu_positron_weighted = new TH1F("tpclikemu_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikemu_antimu_weighted = new TH1F("tpclikemu_antimu_weighted", "#mu^{+};TPC2 muon likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikemu_piplus_weighted = new TH1F("tpclikemu_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikemu_proton_weighted = new TH1F("tpclikemu_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *tpclikemu_positron_weighted = new TH1F("tpclikemu_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpclikepi_antimu_weighted = new TH1F("tpclikepi_antimu_weighted", "Antimuon;TPC2 charged pion likelihood;Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *tpclikepi_piplus_weighted = new TH1F("tpclikepi_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikepi_proton_weighted = new TH1F("tpclikepi_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikepi_positron_weighted = new TH1F("tpclikepi_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikepi_antimu_weighted = new TH1F("tpclikepi_antimu_weighted", "#mu^{+};TPC2 charged pion likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikepi_piplus_weighted = new TH1F("tpclikepi_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikepi_proton_weighted = new TH1F("tpclikepi_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *tpclikepi_positron_weighted = new TH1F("tpclikepi_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpclikep_antimu_weighted = new TH1F("tpclikep_antimu_weighted", "Antimuon;TPC2 proton likelihood;Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *tpclikep_piplus_weighted = new TH1F("tpclikep_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikep_proton_weighted = new TH1F("tpclikep_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikep_positron_weighted = new TH1F("tpclikep_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikep_antimu_weighted = new TH1F("tpclikep_antimu_weighted", "#mu^{+};TPC2 proton likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikep_piplus_weighted = new TH1F("tpclikep_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikep_proton_weighted = new TH1F("tpclikep_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *tpclikep_positron_weighted = new TH1F("tpclikep_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpclikee_antimu_weighted = new TH1F("tpclikee_antimu_weighted", "Antimuon;TPC2 electron likelihood;Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *tpclikee_piplus_weighted = new TH1F("tpclikee_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *tpclikee_proton_weighted = new TH1F("tpclikee_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *tpclikee_positron_weighted = new TH1F("tpclikee_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *tpclikee_antimu_weighted = new TH1F("tpclikee_antimu_weighted", "#mu^{+};TPC2 electron likelihood;Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *tpclikee_piplus_weighted = new TH1F("tpclikee_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *tpclikee_proton_weighted = new TH1F("tpclikee_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *tpclikee_positron_weighted = new TH1F("tpclikee_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *tpc2pullmu_antimu_weighted = new TH1F("tpc2pullmu_antimu_weighted", "Antimuon;TPC2 muon pull;Momentum weighted entries", 50, -10.0, 40.0);
-   TH1F *tpc2pullmu_piplus_weighted = new TH1F("tpc2pullmu_piplus_weighted", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc2pullmu_proton_weighted = new TH1F("tpc2pullmu_proton_weighted", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc2pullmu_positron_weighted = new TH1F("tpc2pullmu_positron_weighted", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_antimu_weighted = new TH1F("tpc2pullmu_antimu_weighted", "#mu^{+};TPC2 muon pull;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_piplus_weighted = new TH1F("tpc2pullmu_piplus_weighted", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_proton_weighted = new TH1F("tpc2pullmu_proton_weighted", "p", 50, -10.0, 40.0);
+   TH1F *tpc2pullmu_positron_weighted = new TH1F("tpc2pullmu_positron_weighted", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc2pullpi_antimu_weighted = new TH1F("tpc2pullpi_antimu_weighted", "Antimuon;TPC2 charged pion pull;Momentum weighted entries", 50, -10.0, 40.0);
-   TH1F *tpc2pullpi_piplus_weighted = new TH1F("tpc2pullpi_piplus_weighted", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc2pullpi_proton_weighted = new TH1F("tpc2pullpi_proton_weighted", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc2pullpi_positron_weighted = new TH1F("tpc2pullpi_positron_weighted", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_antimu_weighted = new TH1F("tpc2pullpi_antimu_weighted", "#mu^{+};TPC2 charged pion pull;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_piplus_weighted = new TH1F("tpc2pullpi_piplus_weighted", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_proton_weighted = new TH1F("tpc2pullpi_proton_weighted", "p", 50, -10.0, 40.0);
+   TH1F *tpc2pullpi_positron_weighted = new TH1F("tpc2pullpi_positron_weighted", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc2pullp_antimu_weighted = new TH1F("tpc2pullp_antimu_weighted", "Antimuon;TPC2 proton pull;Momentum weighted entries", 50, -40.0, 20.0);
-   TH1F *tpc2pullp_piplus_weighted = new TH1F("tpc2pullp_piplus_weighted", "Pi+", 50, -40.0, 20.0);
-   TH1F *tpc2pullp_proton_weighted = new TH1F("tpc2pullp_proton_weighted", "Proton", 50, -40.0, 20.0);
-   TH1F *tpc2pullp_positron_weighted = new TH1F("tpc2pullp_positron_weighted", "Positron", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_antimu_weighted = new TH1F("tpc2pullp_antimu_weighted", "#mu^{+};TPC2 proton pull;Momentum weighted entries", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_piplus_weighted = new TH1F("tpc2pullp_piplus_weighted", "#pi^{+}", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_proton_weighted = new TH1F("tpc2pullp_proton_weighted", "p", 50, -40.0, 20.0);
+   TH1F *tpc2pullp_positron_weighted = new TH1F("tpc2pullp_positron_weighted", "e^{+}", 50, -40.0, 20.0);
    
-   TH1F *tpc2pulle_antimu_weighted = new TH1F("tpc2pulle_antimu_weighted", "Antimuon;TPC2 electron pull;Momentum weighted entries", 50, -20.0, 30.0);
-   TH1F *tpc2pulle_piplus_weighted = new TH1F("tpc2pulle_piplus_weighted", "Pi+", 50, -20.0, 30.0);
-   TH1F *tpc2pulle_proton_weighted = new TH1F("tpc2pulle_proton_weighted", "Proton", 50, -20.0, 30.0);
-   TH1F *tpc2pulle_positron_weighted = new TH1F("tpc2pulle_positron_weighted", "Positron", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_antimu_weighted = new TH1F("tpc2pulle_antimu_weighted", "#mu^{+};TPC2 electron pull;Momentum weighted entries", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_piplus_weighted = new TH1F("tpc2pulle_piplus_weighted", "#pi^{+}", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_proton_weighted = new TH1F("tpc2pulle_proton_weighted", "p", 50, -20.0, 30.0);
+   TH1F *tpc2pulle_positron_weighted = new TH1F("tpc2pulle_positron_weighted", "e^{+}", 50, -20.0, 30.0);
    
-   TH1F *tpc3pullmu_antimu_weighted = new TH1F("tpc3pullmu_antimu_weighted", "Antimuon;TPC3 muon pull;Momentum weighted entries", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_piplus_weighted = new TH1F("tpc3pullmu_piplus_weighted", "Pi+", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_proton_weighted = new TH1F("tpc3pullmu_proton_weighted", "Proton", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_positron_weighted = new TH1F("tpc3pullmu_positron_weighted", "Positron", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_antimu_weighted = new TH1F("tpc3pullmu_antimu_weighted", "#mu^{+};TPC3 muon pull;Momentum weighted entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_piplus_weighted = new TH1F("tpc3pullmu_piplus_weighted", "#pi^{+}", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_proton_weighted = new TH1F("tpc3pullmu_proton_weighted", "p", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_positron_weighted = new TH1F("tpc3pullmu_positron_weighted", "e^{+}", 50, -10.0, 30.0);
    
-   TH1F *tpc3pullpi_antimu_weighted = new TH1F("tpc3pullpi_antimu_weighted", "Antimuon;TPC3 charged pion pull;Momentum weighted entries", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_piplus_weighted = new TH1F("tpc3pullpi_piplus_weighted", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_proton_weighted = new TH1F("tpc3pullpi_proton_weighted", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_positron_weighted = new TH1F("tpc3pullpi_positron_weighted", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_antimu_weighted = new TH1F("tpc3pullpi_antimu_weighted", "#mu^{+};TPC3 charged pion pull;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_piplus_weighted = new TH1F("tpc3pullpi_piplus_weighted", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_proton_weighted = new TH1F("tpc3pullpi_proton_weighted", "p", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_positron_weighted = new TH1F("tpc3pullpi_positron_weighted", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc3pullp_antimu_weighted = new TH1F("tpc3pullp_antimu_weighted", "Antimuon;TPC3 proton pull;Momentum weighted entries", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_piplus_weighted = new TH1F("tpc3pullp_piplus_weighted", "Pi+", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_proton_weighted = new TH1F("tpc3pullp_proton_weighted", "Proton", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_positron_weighted = new TH1F("tpc3pullp_positron_weighted", "Positron", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_antimu_weighted = new TH1F("tpc3pullp_antimu_weighted", "#mu^{+};TPC3 proton pull;Momentum weighted entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_piplus_weighted = new TH1F("tpc3pullp_piplus_weighted", "#pi^{+}", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_proton_weighted = new TH1F("tpc3pullp_proton_weighted", "p", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_positron_weighted = new TH1F("tpc3pullp_positron_weighted", "e^{+}", 50, -40.0, 20.0);
    
-   TH1F *tpc3pulle_antimu_weighted = new TH1F("tpc3pulle_antimu_weighted", "Antimuon;TPC3 electron pull;Momentum weighted entries", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_piplus_weighted = new TH1F("tpc3pulle_piplus_weighted", "Pi+", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_proton_weighted = new TH1F("tpc3pulle_proton_weighted", "Proton", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_positron_weighted = new TH1F("tpc3pulle_positron_weighted", "Positron", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_antimu_weighted = new TH1F("tpc3pulle_antimu_weighted", "#mu^{+};TPC3 electron pull;Momentum weighted entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_piplus_weighted = new TH1F("tpc3pulle_piplus_weighted", "#pi^{+}", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_proton_weighted = new TH1F("tpc3pulle_proton_weighted", "p", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_positron_weighted = new TH1F("tpc3pulle_positron_weighted", "e^{+}", 50, -10.0, 20.0);
    
-   TH1F *tpc3pullmu_gq_antimu_weighted = new TH1F("tpc3pullmu_gq_antimu_weighted", "Antimuon;TPC3 muon pull with quality check;Momentum weighted entries", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_gq_piplus_weighted = new TH1F("tpc3pullmu_gq_piplus_weighted", "Pi+", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_gq_proton_weighted = new TH1F("tpc3pullmu_gq_proton_weighted", "Proton", 50, -10.0, 30.0);
-   TH1F *tpc3pullmu_gq_positron_weighted = new TH1F("tpc3pullmu_gq_positron_weighted", "Positron", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_antimu_weighted = new TH1F("tpc3pullmu_gq_antimu_weighted", "#mu^{+};TPC3 muon pull with quality check;Momentum weighted entries", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_piplus_weighted = new TH1F("tpc3pullmu_gq_piplus_weighted", "#pi^{+}", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_proton_weighted = new TH1F("tpc3pullmu_gq_proton_weighted", "p", 50, -10.0, 30.0);
+   TH1F *tpc3pullmu_gq_positron_weighted = new TH1F("tpc3pullmu_gq_positron_weighted", "e^{+}", 50, -10.0, 30.0);
    
-   TH1F *tpc3pullpi_gq_antimu_weighted = new TH1F("tpc3pullpi_gq_antimu_weighted", "Antimuon;TPC3 charged pion pull with quality check;Momentum weighted entries", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_gq_piplus_weighted = new TH1F("tpc3pullpi_gq_piplus_weighted", "Pi+", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_gq_proton_weighted = new TH1F("tpc3pullpi_gq_proton_weighted", "Proton", 50, -10.0, 40.0);
-   TH1F *tpc3pullpi_gq_positron_weighted = new TH1F("tpc3pullpi_gq_positron_weighted", "Positron", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_antimu_weighted = new TH1F("tpc3pullpi_gq_antimu_weighted", "#mu^{+};TPC3 charged pion pull with quality check;Momentum weighted entries", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_piplus_weighted = new TH1F("tpc3pullpi_gq_piplus_weighted", "#pi^{+}", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_proton_weighted = new TH1F("tpc3pullpi_gq_proton_weighted", "p", 50, -10.0, 40.0);
+   TH1F *tpc3pullpi_gq_positron_weighted = new TH1F("tpc3pullpi_gq_positron_weighted", "e^{+}", 50, -10.0, 40.0);
    
-   TH1F *tpc3pullp_gq_antimu_weighted = new TH1F("tpc3pullp_gq_antimu_weighted", "Antimuon;TPC3 proton pull with quality check;Momentum weighted entries", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_gq_piplus_weighted = new TH1F("tpc3pullp_gq_piplus_weighted", "Pi+", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_gq_proton_weighted = new TH1F("tpc3pullp_gq_proton_weighted", "Proton", 50, -40.0, 20.0);
-   TH1F *tpc3pullp_gq_positron_weighted = new TH1F("tpc3pullp_gq_positron_weighted", "Positron", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_antimu_weighted = new TH1F("tpc3pullp_gq_antimu_weighted", "#mu^{+};TPC3 proton pull with quality check;Momentum weighted entries", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_piplus_weighted = new TH1F("tpc3pullp_gq_piplus_weighted", "#pi^{+}", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_proton_weighted = new TH1F("tpc3pullp_gq_proton_weighted", "p", 50, -40.0, 20.0);
+   TH1F *tpc3pullp_gq_positron_weighted = new TH1F("tpc3pullp_gq_positron_weighted", "e^{+}", 50, -40.0, 20.0);
    
-   TH1F *tpc3pulle_gq_antimu_weighted = new TH1F("tpc3pulle_gq_antimu_weighted", "Antimuon;TPC3 electron pull with quality check;Momentum weighted entries", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_gq_piplus_weighted = new TH1F("tpc3pulle_gq_piplus_weighted", "Pi+", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_gq_proton_weighted = new TH1F("tpc3pulle_gq_proton_weighted", "Proton", 50, -10.0, 20.0);
-   TH1F *tpc3pulle_gq_positron_weighted = new TH1F("tpc3pulle_gq_positron_weighted", "Positron", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_antimu_weighted = new TH1F("tpc3pulle_gq_antimu_weighted", "#mu^{+};TPC3 electron pull with quality check;Momentum weighted entries", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_piplus_weighted = new TH1F("tpc3pulle_gq_piplus_weighted", "#pi^{+}", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_proton_weighted = new TH1F("tpc3pulle_gq_proton_weighted", "p", 50, -10.0, 20.0);
+   TH1F *tpc3pulle_gq_positron_weighted = new TH1F("tpc3pulle_gq_positron_weighted", "e^{+}", 50, -10.0, 20.0);
    
-   TH1F *ntpcs_antimu_weighted = new TH1F("ntpcs_antimu_weighted", "Antimuon;Number of TPC segments;Momentum weighted entries", 2, 0.5, 2.5);
-   TH1F *ntpcs_piplus_weighted = new TH1F("ntpcs_piplus_weighted", "Pi+", 2, 0.5, 2.5);
-   TH1F *ntpcs_proton_weighted = new TH1F("ntpcs_proton_weighted", "Proton", 2, 0.5, 2.5);
-   TH1F *ntpcs_positron_weighted = new TH1F("ntpcs_positron_weighted", "Positron", 2, 0.5, 2.5);
+   TH1F *ntpcs_antimu_weighted = new TH1F("ntpcs_antimu_weighted", "#mu^{+};Number of TPC segments;Momentum weighted entries", 2, 0.5, 2.5);
+   TH1F *ntpcs_piplus_weighted = new TH1F("ntpcs_piplus_weighted", "#pi^{+}", 2, 0.5, 2.5);
+   TH1F *ntpcs_proton_weighted = new TH1F("ntpcs_proton_weighted", "p", 2, 0.5, 2.5);
+   TH1F *ntpcs_positron_weighted = new TH1F("ntpcs_positron_weighted", "e^{+}", 2, 0.5, 2.5);
    
-   TH1F *fgd1EbyL_antimu_weighted = new TH1F("fgd1EbyL_antimu_weighted", "Antimuon;FGD1 energy/length (MeV/mm);Momentum weighted entries", 50, 0.0, 1.0);
-   TH1F *fgd1EbyL_piplus_weighted = new TH1F("fgd1EbyL_piplus_weighted", "Pi+", 50, 0.0, 1.0);
-   TH1F *fgd1EbyL_proton_weighted = new TH1F("fgd1EbyL_proton_weighted", "Proton", 50, 0.0, 1.0);
-   TH1F *fgd1EbyL_positron_weighted = new TH1F("fgd1EbyL_positron_weighted", "Positron", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_antimu_weighted = new TH1F("fgd1EbyL_antimu_weighted", "#mu^{+};FGD1 energy/length (MeV/mm);Momentum weighted entries", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_piplus_weighted = new TH1F("fgd1EbyL_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_proton_weighted = new TH1F("fgd1EbyL_proton_weighted", "p", 50, 0.0, 1.0);
+   TH1F *fgd1EbyL_positron_weighted = new TH1F("fgd1EbyL_positron_weighted", "e^{+}", 50, 0.0, 1.0);
    
-   TH1F *fgd2EbyL_antimu_weighted = new TH1F("fgd2EbyL_antimu_weighted", "Antimuon;FGD2 energy/length (MeV/mm);Momentum weighted entries", 30, 0.0, 0.6);
-   TH1F *fgd2EbyL_piplus_weighted = new TH1F("fgd2EbyL_piplus_weighted", "Pi+", 30, 0.0, 0.6);
-   TH1F *fgd2EbyL_proton_weighted = new TH1F("fgd2EbyL_proton_weighted", "Proton", 30, 0.0, 0.6);
-   TH1F *fgd2EbyL_positron_weighted = new TH1F("fgd2EbyL_positron_weighted", "Positron", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_antimu_weighted = new TH1F("fgd2EbyL_antimu_weighted", "#mu^{+};FGD2 energy/length (MeV/mm);Momentum weighted entries", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_piplus_weighted = new TH1F("fgd2EbyL_piplus_weighted", "#pi^{+}", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_proton_weighted = new TH1F("fgd2EbyL_proton_weighted", "p", 30, 0.0, 0.6);
+   TH1F *fgd2EbyL_positron_weighted = new TH1F("fgd2EbyL_positron_weighted", "e^{+}", 30, 0.0, 0.6);
    
-   TH1F *nsmrds_antimu_weighted = new TH1F("nsmrds_antimu_weighted", "Antimuon;Number of SMRD segments;Momentum weighted entries", 3, -0.5, 2.5);
-   TH1F *nsmrds_piplus_weighted = new TH1F("nsmrds_piplus_weighted", "Pi+", 3, -0.5, 2.5);
-   TH1F *nsmrds_proton_weighted = new TH1F("nsmrds_proton_weighted", "Proton", 3, -0.5, 2.5);
-   TH1F *nsmrds_positron_weighted = new TH1F("nsmrds_positron_weighted", "Positron", 3, -0.5, 2.5);
+   TH1F *nsmrds_antimu_weighted = new TH1F("nsmrds_antimu_weighted", "#mu^{+};Number of SMRD segments;Momentum weighted entries", 3, -0.5, 2.5);
+   TH1F *nsmrds_piplus_weighted = new TH1F("nsmrds_piplus_weighted", "#pi^{+}", 3, -0.5, 2.5);
+   TH1F *nsmrds_proton_weighted = new TH1F("nsmrds_proton_weighted", "p", 3, -0.5, 2.5);
+   TH1F *nsmrds_positron_weighted = new TH1F("nsmrds_positron_weighted", "e^{+}", 3, -0.5, 2.5);
    
    
    Int_t recomom_nbins = 25;
