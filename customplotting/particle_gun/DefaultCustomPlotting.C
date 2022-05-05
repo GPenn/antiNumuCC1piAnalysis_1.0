@@ -577,23 +577,23 @@ void DefaultCustomPlotting::Loop()
          
          if ((particle == -13)&&(particle_pg == -13))
          {
-            recomom_antimu1->Fill(selmu_mom[0]);
-            truemom_antimu1->Fill(selmu_truemom);
+            recomom_antimu2->Fill(selmu_mom[0]);
+            truemom_antimu2->Fill(selmu_truemom);
          }
          if ((particle == 211)&&(particle_pg == 211))
          {
-            recomom_piplus1->Fill(selmu_mom[0]);
-            truemom_piplus1->Fill(selmu_truemom);
+            recomom_piplus2->Fill(selmu_mom[0]);
+            truemom_piplus2->Fill(selmu_truemom);
          }
          if ((particle == 2212)&&(particle_pg == 2212))
          {
-            recomom_proton1->Fill(selmu_mom[0]);
-            truemom_proton1->Fill(selmu_truemom);
+            recomom_proton2->Fill(selmu_mom[0]);
+            truemom_proton2->Fill(selmu_truemom);
          }
          if ((particle == -11)&&(particle_pg == -11))
          {
-            recomom_positron1->Fill(selmu_mom[0]);
-            truemom_positron1->Fill(selmu_truemom);
+            recomom_positron2->Fill(selmu_mom[0]);
+            truemom_positron2->Fill(selmu_truemom);
          }
       }
       
@@ -1255,22 +1255,22 @@ void DefaultCustomPlotting::Loop()
    
    // Reco momentum (before cuts)
    
-   recomom_antimu1->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   recomom_antimu2->GetYaxis()->SetRangeUser(0.0, 6000.0);
   
-   SetHistParticleStyle(recomom_antimu1, "antimu");
-   SetHistParticleStyle(recomom_piplus1, "piplus");
-   SetHistParticleStyle(recomom_proton1, "proton");
-   SetHistParticleStyle(recomom_positron1, "positron");
+   SetHistParticleStyle(recomom_antimu2, "antimu");
+   SetHistParticleStyle(recomom_piplus2, "piplus");
+   SetHistParticleStyle(recomom_proton2, "proton");
+   SetHistParticleStyle(recomom_positron2, "positron");
    
-   TCanvas* canvas_recomom1 = new TCanvas("canvas_recomom1","Reconstructed momentum (MeV/c)",200,10,1000,600);
+   TCanvas* canvas_recomom2 = new TCanvas("canvas_recomom2","Reconstructed momentum (MeV/c)",200,10,1000,600);
    
-   recomom_antimu1->Draw();
-   recomom_piplus1->Draw("same");
-   recomom_proton1->Draw("same");
-   recomom_positron1->Draw("same");
+   recomom_antimu2->Draw();
+   recomom_piplus2->Draw("same");
+   recomom_proton2->Draw("same");
+   recomom_positron2->Draw("same");
 
-   canvas_recomom1->BuildLegend();
-   canvas_recomom1->Write();
+   canvas_recomom2->BuildLegend();
+   canvas_recomom2->Write();
    
    // True momentum
    
@@ -1293,22 +1293,22 @@ void DefaultCustomPlotting::Loop()
    
    // True momentum (before cuts)
    
-   truemom_antimu1->GetYaxis()->SetRangeUser(0.0, 6000.0);
+   truemom_antimu2->GetYaxis()->SetRangeUser(0.0, 6000.0);
   
-   SetHistParticleStyle(truemom_antimu1, "antimu");
-   SetHistParticleStyle(truemom_piplus1, "piplus");
-   SetHistParticleStyle(truemom_proton1, "proton");
-   SetHistParticleStyle(truemom_positron1, "positron");
+   SetHistParticleStyle(truemom_antimu2, "antimu");
+   SetHistParticleStyle(truemom_piplus2, "piplus");
+   SetHistParticleStyle(truemom_proton2, "proton");
+   SetHistParticleStyle(truemom_positron2, "positron");
    
-   TCanvas* canvas_truemom1 = new TCanvas("canvas_truemom1","True momentum (MeV/c)",200,10,1000,600);
+   TCanvas* canvas_truemom2 = new TCanvas("canvas_truemom2","True momentum (MeV/c)",200,10,1000,600);
    
-   truemom_antimu1->Draw();
-   truemom_piplus1->Draw("same");
-   truemom_proton1->Draw("same");
-   truemom_positron1->Draw("same");
+   truemom_antimu2->Draw();
+   truemom_piplus2->Draw("same");
+   truemom_proton2->Draw("same");
+   truemom_positron2->Draw("same");
 
-   canvas_truemom1->BuildLegend();
-   canvas_truemom1->Write();
+   canvas_truemom2->BuildLegend();
+   canvas_truemom2->Write();
    
    // Reco theta
    
