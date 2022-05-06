@@ -145,7 +145,7 @@ BDTPIDmanager::BDTPIDmanager() {
   
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_EbyL_BDTG_tuned.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_ecalEbyL_BDTG_tuned.weights.xml" );
   
 }
 
