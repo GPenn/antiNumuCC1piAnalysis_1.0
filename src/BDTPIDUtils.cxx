@@ -69,8 +69,8 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
   tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
   tmvareader->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 &bdt_ecal_EbyL);
-  //tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
-  tmvareader->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
+  tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
+  //tmvareader->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
   tmvareader->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
   tmvareader->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
   tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);*
@@ -145,7 +145,7 @@ BDTPIDmanager::BDTPIDmanager() {
   
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
   
-  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_circularity_BDTG_tuned.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_fbr_BDTG_tuned.weights.xml" );
   
 }
 
