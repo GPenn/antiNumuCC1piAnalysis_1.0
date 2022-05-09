@@ -83,7 +83,7 @@
     canvas_treedepth->cd(1)->BuildLegend();
     
     canvas_treedepth->cd(2);   
-    treedepth_pg_diff_mu->GetYaxis()->SetRangeUser(-0.04, 0.03);
+    treedepth_pg_diff_mu->GetYaxis()->SetRangeUser(-0.03, 0.05);
     treedepth_pg_diff_mu->GetXaxis()->SetTitle("Maximum tree depth"); treedepth_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     treedepth_pg_diff_mu->Draw("AL*");
     treedepth_pg_diff_pi->Draw("L* same");
@@ -219,7 +219,7 @@
     canvas_treenumber->cd(1)->BuildLegend();
     
     canvas_treenumber->cd(2);
-    treenumber_pg_diff_mu->GetYaxis()->SetRangeUser(-0.06, 0.03);
+    treenumber_pg_diff_mu->GetYaxis()->SetRangeUser(-0.06, 0.04);
     treenumber_pg_diff_mu->GetXaxis()->SetTitle("Number of trees"); treenumber_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     treenumber_pg_diff_mu->Draw("AL*");
     treenumber_pg_diff_pi->Draw("L* same");
@@ -315,7 +315,7 @@
     canvas_shrinkage->cd(1)->BuildLegend();
     
     canvas_shrinkage->cd(2);  
-    shrinkage_pg_diff_mu->GetYaxis()->SetRangeUser(-0.5, 0.5);
+    shrinkage_pg_diff_mu->GetYaxis()->SetRangeUser(-0.23, 0.2);
     shrinkage_pg_diff_mu->GetXaxis()->SetTitle("Shrinkage"); shrinkage_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     shrinkage_pg_diff_mu->Draw("AL*");
     shrinkage_pg_diff_pi->Draw("L* same");
@@ -497,7 +497,7 @@
     canvas_bagged->cd(1)->BuildLegend();
     
     canvas_bagged->cd(2);  
-    bagged_pg_diff_mu->GetYaxis()->SetRangeUser(-0.25, 0.05);
+    bagged_pg_diff_mu->GetYaxis()->SetRangeUser(-0.35, 0.03);
     bagged_pg_diff_mu->GetXaxis()->SetTitle("BaggedSampleFraction"); bagged_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     bagged_pg_diff_mu->Draw("AL*");
     bagged_pg_diff_pi->Draw("L* same");
@@ -604,7 +604,7 @@
     canvas_randomforests->cd(1)->BuildLegend();
     
     canvas_randomforests->cd(2);
-    randomforests_pg_diff_mu->GetYaxis()->SetRangeUser(-0.015, 0.03);
+    randomforests_pg_diff_mu->GetYaxis()->SetRangeUser(-0.015, 0.02);
     randomforests_pg_diff_mu->GetXaxis()->SetTitle("Random forests NVars"); randomforests_pg_diff_mu->GetYaxis()->SetTitle("Difference in efficiency");
     randomforests_pg_diff_mu->Draw("AL*");
     randomforests_pg_diff_pi->Draw("L* same");
