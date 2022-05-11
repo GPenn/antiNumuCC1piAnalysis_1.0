@@ -144,7 +144,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_0.9shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.9shrinkage_2500trees.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
-  tmvareader->BookMVA( "BDTG_tpc3dedx_gq", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3dedx_gq.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tpc3pulls_gq", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3pulls_gq.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_ecal_BDTG_tuned.weights.xml" );
   
 }
