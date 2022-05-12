@@ -38,11 +38,11 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "tpc3pulle := selmu_tpc3_pullele",                   &bdt_tpc3_pulle);
   //tmvareader->AddVariable( "tpc3pullp := selmu_tpc3_pullp",                   &bdt_tpc3_pullp);
   //tmvareader->AddVariable( "tpc3pullpi := selmu_tpc3_pullpi",                 &bdt_tpc3_pullpi);
-  tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
-  //tmvareader->AddVariable( "tpc3pullmu_gq := selmu_tpc3_pullmu_gq",                 &bdt_tpc3_pullmu_gq);
-  //tmvareader->AddVariable( "tpc3pulle_gq := selmu_tpc3_pullele_gq",                   &bdt_tpc3_pulle_gq);
-  //tmvareader->AddVariable( "tpc3pullp_gq := selmu_tpc3_pullp_gq",                   &bdt_tpc3_pullp_gq);
-  //tmvareader->AddVariable( "tpc3pullpi_gq := selmu_tpc3_pullpi_gq",                 &bdt_tpc3_pullpi_gq);
+  //tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
+  tmvareader->AddVariable( "tpc3pullmu_gq := selmu_tpc3_pullmu_gq",                 &bdt_tpc3_pullmu_gq);
+  tmvareader->AddVariable( "tpc3pulle_gq := selmu_tpc3_pullele_gq",                   &bdt_tpc3_pulle_gq);
+  tmvareader->AddVariable( "tpc3pullp_gq := selmu_tpc3_pullp_gq",                   &bdt_tpc3_pullp_gq);
+  tmvareader->AddVariable( "tpc3pullpi_gq := selmu_tpc3_pullpi_gq",                 &bdt_tpc3_pullpi_gq);
   tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
   
   //tmvareader->AddVariable( "EbyP := selmu_ecal_bestseg_EbyP",                &bdt_ecal_EbyP);
@@ -144,7 +144,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_0.9shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.9shrinkage_2500trees.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
-  tmvareader->BookMVA( "BDTG_tpc3dedx_gq", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3dedx_gq.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tpc3pulls_gq", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3pulls_gq.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_ecal_BDTG_tuned.weights.xml" );
   
 }
