@@ -171,22 +171,22 @@
     TPC2_esel_p->Fill(tpc2varchoices[1],0.010977);
     TPC2_esel_e->Fill(tpc2varchoices[1],0.663163);
     
-    TPC2_musel_mu->Fill(tpc2varchoices[2],0.930104);
-    TPC2_musel_pi->Fill(tpc2varchoices[2],0.321614); 
-    TPC2_musel_p->Fill(tpc2varchoices[2],0.0211762);
-    TPC2_musel_e->Fill(tpc2varchoices[2],0.0447661);
-    TPC2_pisel_mu->Fill(tpc2varchoices[2],0.0625371);
-    TPC2_pisel_pi->Fill(tpc2varchoices[2],0.649579);
-    TPC2_pisel_p->Fill(tpc2varchoices[2],0.0422832);
-    TPC2_pisel_e->Fill(tpc2varchoices[2],0.108151);
-    TPC2_psel_mu->Fill(tpc2varchoices[2],0.0070548);
-    TPC2_psel_pi->Fill(tpc2varchoices[2],0.0274374);
-    TPC2_psel_p->Fill(tpc2varchoices[2],0.924924);
-    TPC2_psel_e->Fill(tpc2varchoices[2],0.170453);
-    TPC2_esel_mu->Fill(tpc2varchoices[2],0.000304211);
-    TPC2_esel_pi->Fill(tpc2varchoices[2],0.0013693);
-    TPC2_esel_p->Fill(tpc2varchoices[2],0.0116167);
-    TPC2_esel_e->Fill(tpc2varchoices[2],0.67663);
+    TPC2_musel_mu->Fill(tpc2varchoices[2],0.928583);
+    TPC2_musel_pi->Fill(tpc2varchoices[2],0.323172); 
+    TPC2_musel_p->Fill(tpc2varchoices[2],0.022248);
+    TPC2_musel_e->Fill(tpc2varchoices[2],0.0328137);
+    TPC2_pisel_mu->Fill(tpc2varchoices[2],0.0634498);
+    TPC2_pisel_pi->Fill(tpc2varchoices[2],0.641072);
+    TPC2_pisel_p->Fill(tpc2varchoices[2],0.0573399);
+    TPC2_pisel_e->Fill(tpc2varchoices[2],0.10974);
+    TPC2_psel_mu->Fill(tpc2varchoices[2],0.0076922);
+    TPC2_psel_pi->Fill(tpc2varchoices[2],0.0330857);
+    TPC2_psel_p->Fill(tpc2varchoices[2],0.910974);
+    TPC2_psel_e->Fill(tpc2varchoices[2],0.189354);
+    TPC2_esel_mu->Fill(tpc2varchoices[2],0.000275239);
+    TPC2_esel_pi->Fill(tpc2varchoices[2],0.00267014);
+    TPC2_esel_p->Fill(tpc2varchoices[2],0.00943853);
+    TPC2_esel_e->Fill(tpc2varchoices[2],0.668092);
     
     //TCanvas* canvas_TPC2_choices = new TCanvas("canvas_TPC2_choices","",200,10,1000,800);
     TCanvas* canvas_TPC2_choices_sig = new TCanvas("canvas_TPC2_choices_sig","",200,10,2000,800);
