@@ -359,7 +359,7 @@
     //TCanvas* canvas_nminus1det_choices_diff = new TCanvas("canvas_nminus1det_choices_diff","",200,10,1000,800);
     canvas_nminus1det_choices_sig->cd(2);
     nminus1det_musel_mu_diff->GetYaxis()->SetRangeUser(-0.8, 0.2);
-    nminus1det_musel_mu_diff->GetXaxis()->SetRangeUser(1, 4);
+    nminus1det_musel_mu_diff->GetXaxis()->SetRangeUser(0, 4);
     nminus1det_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     nminus1det_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
     nminus1det_musel_mu_diff->GetYaxis()->SetTitleSize(0.025);
@@ -375,7 +375,7 @@
     //TCanvas* canvas_nminus1det_choices_bkg_diff = new TCanvas("canvas_nminus1det_choices_bkg_diff","",200,10,1000,800);
     canvas_nminus1det_choices_bkg->cd(2);
     nminus1det_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.8, 0.2);
-    nminus1det_pisel_mu_diff->GetXaxis()->SetRangeUser(1, 4);
+    nminus1det_pisel_mu_diff->GetXaxis()->SetRangeUser(0, 4);
     nminus1det_pisel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     nminus1det_pisel_mu_diff->GetYaxis()->SetLabelSize(0.025);
     nminus1det_pisel_mu_diff->GetYaxis()->SetTitleSize(0.025);
