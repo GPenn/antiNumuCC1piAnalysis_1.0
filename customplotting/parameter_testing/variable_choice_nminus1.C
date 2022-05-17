@@ -12,8 +12,8 @@
     
     // =============== N-1 studies ===============
     
-    const char *nminus1varchoices[16] = {"Momentum","Angle","FGD1 E/L","FGD2 E/L","TPC2 mu-like","TPC2 pi-like","TPC2 p-like","TPC2 e-like",
-                                   "nTPCs","ECal EM energy","ECal E/L", "ECal circularity","ECal FBR", "ECal TMR", "ECal QRMS", "nSMRDs"};
+    const char *nminus1varchoices[17] = {"Momentum","Angle","FGD1 E/L","FGD2 E/L","TPC2 mu pull","TPC2 pi pull","TPC2 p pull","TPC2 e pull", "TPC3 dE/dx (GQ)",
+                                   "nTPCs","ECal EM energy","ECal E/L", "ECal Circularity","ECal FBR", "ECal TMR", "ECal QRMS", "nSMRDs"};
     
     TH1F* Nminus1_musel_mu = new TH1F("Nminus1_musel_mu","#mu^{+} identified as #mu^{+}",4,0,4);
     TH1F* Nminus1_musel_pi = new TH1F("Nminus1_musel_pi","#pi^{+} identified as #mu^{+}",4,0,4);
@@ -138,307 +138,326 @@
     
     // Momentum
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[0],0.93739);
+    Nminus1_musel_mu->Fill(nminus1varchoices[0],0.927453);
     Nminus1_musel_pi->Fill(nminus1varchoices[0],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[0],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[0],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[0],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[0],0.616134);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[0],0.628748);
     Nminus1_pisel_p->Fill(nminus1varchoices[0],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[0],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[0],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[0],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[0],0.873565);
+    Nminus1_psel_p->Fill(nminus1varchoices[0],0.896677);
     Nminus1_psel_e->Fill(nminus1varchoices[0],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[0],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[0],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[0],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[0],0.937728);
+    Nminus1_esel_e->Fill(nminus1varchoices[0],0.928894);
     
     // Theta
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[1],0.934826);
+    Nminus1_musel_mu->Fill(nminus1varchoices[1],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[1],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[1],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[1],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[1],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[1],0.623271);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[1],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[1],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[1],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[1],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[1],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[1],0.883799);
+    Nminus1_psel_p->Fill(nminus1varchoices[1],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[1],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[1],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[1],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[1],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[1],0.941321);
+    Nminus1_esel_e->Fill(nminus1varchoices[1],0.);
     
     // FGD1 E/L
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[2],0.93797);
+    Nminus1_musel_mu->Fill(nminus1varchoices[2],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[2],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[2],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[2],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[2],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[2],0.605642);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[2],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[2],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[2],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[2],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[2],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[2],0.838283);
+    Nminus1_psel_p->Fill(nminus1varchoices[2],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[2],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[2],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[2],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[2],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[2],0.928389);
+    Nminus1_esel_e->Fill(nminus1varchoices[2],0.);
     
     // FGD2 E/L
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[3],0.932248);
+    Nminus1_musel_mu->Fill(nminus1varchoices[3],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[3],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[3],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[3],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[3],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[3],0.622946);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[3],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[3],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[3],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[3],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[3],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[3],0.871664);
+    Nminus1_psel_p->Fill(nminus1varchoices[3],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[3],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[3],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[3],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[3],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[3],0.936496);
+    Nminus1_esel_e->Fill(nminus1varchoices[3],0.);
     
-    // TPC2 mu-like
+    // TPC2 mu
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[4],0.938477);
+    Nminus1_musel_mu->Fill(nminus1varchoices[4],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[4],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[4],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[4],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[4],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[4],0.622518);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[4],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[4],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[4],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[4],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[4],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[4],0.882157);
+    Nminus1_psel_p->Fill(nminus1varchoices[4],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[4],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[4],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[4],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[4],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[4],0.937728);
+    Nminus1_esel_e->Fill(nminus1varchoices[4],0.);
     
-    // TPC2 pi-like
+    // TPC2 pi
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[5],0.937622);
+    Nminus1_musel_mu->Fill(nminus1varchoices[5],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[5],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[5],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[5],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[5],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[5],0.618564);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[5],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[5],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[5],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[5],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[5],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[5],0.881811);
+    Nminus1_psel_p->Fill(nminus1varchoices[5],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[5],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[5],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[5],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[5],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[5],0.940624);
+    Nminus1_esel_e->Fill(nminus1varchoices[5],0.);
     
-    // TPC2 p-like
+    // TPC2 p
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[6],0.93881);
+    Nminus1_musel_mu->Fill(nminus1varchoices[6],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[6],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[6],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[6],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[6],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[6],0.619009);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[6],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[6],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[6],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[6],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[6],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[6],0.876936);
+    Nminus1_psel_p->Fill(nminus1varchoices[6],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[6],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[6],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[6],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[6],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[6],0.937699);
+    Nminus1_esel_e->Fill(nminus1varchoices[6],0.);
     
-    // TPC2 e-like
+    // TPC2 e
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[7],0.938477);
+    Nminus1_musel_mu->Fill(nminus1varchoices[7],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[7],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[7],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[7],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[7],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[7],0.618034);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[7],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[7],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[7],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[7],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[7],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[7],0.875588);
+    Nminus1_psel_p->Fill(nminus1varchoices[7],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[7],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[7],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[7],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[7],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[7],0.914254);
+    Nminus1_esel_e->Fill(nminus1varchoices[7],0.);
     
-    // nTPCs
+    // TPC3 dedx gq
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[8],0.934319);
+    Nminus1_musel_mu->Fill(nminus1varchoices[8],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[8],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[8],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[8],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[8],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[8],0.60138);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[8],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[8],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[8],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[8],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[8],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[8],0.881586);
+    Nminus1_psel_p->Fill(nminus1varchoices[8],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[8],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[8],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[8],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[8],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[8],0.939332);
+    Nminus1_esel_e->Fill(nminus1varchoices[8],0.);
     
-    // ECal EM energy
+    // nTPCs
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[9],0.936898);
+    Nminus1_musel_mu->Fill(nminus1varchoices[9],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[9],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[9],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[9],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[9],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[9],0.616955);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[9],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[9],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[9],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[9],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[9],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[9],0.878181);
+    Nminus1_psel_p->Fill(nminus1varchoices[9],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[9],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[9],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[9],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[9],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[9],0.939005);
+    Nminus1_esel_e->Fill(nminus1varchoices[9],0.);
     
-    // ECal E/L
+    // ECal EM energy
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[10],0.936782);
+    Nminus1_musel_mu->Fill(nminus1varchoices[10],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[10],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[10],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[10],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[10],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[10],0.611324);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[10],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[10],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[10],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[10],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[10],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[10],0.870281);
+    Nminus1_psel_p->Fill(nminus1varchoices[10],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[10],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[10],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[10],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[10],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[10],0.938812);
+    Nminus1_esel_e->Fill(nminus1varchoices[10],0.);
     
-    // ECal circularity
+    // ECal E/L
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[11],0.9391);
+    Nminus1_musel_mu->Fill(nminus1varchoices[11],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[11],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[11],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[11],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[11],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[11],0.61675);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[11],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[11],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[11],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[11],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[11],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[11],0.879788);
+    Nminus1_psel_p->Fill(nminus1varchoices[11],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[11],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[11],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[11],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[11],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[11],0.93948);
+    Nminus1_esel_e->Fill(nminus1varchoices[11],0.);
     
-    // ECal FBR
+    // ECal circularity
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[12],0.938376);
+    Nminus1_musel_mu->Fill(nminus1varchoices[12],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[12],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[12],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[12],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[12],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[12],0.618239);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[12],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[12],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[12],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[12],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[12],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[12],0.880307);
+    Nminus1_psel_p->Fill(nminus1varchoices[12],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[12],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[12],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[12],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[12],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[12],0.939733);
+    Nminus1_esel_e->Fill(nminus1varchoices[12],0.);
     
-    // ECal TMR
+    // ECal FBR
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[13],0.937767);
+    Nminus1_musel_mu->Fill(nminus1varchoices[13],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[13],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[13],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[13],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[13],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[13],0.619865);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[13],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[13],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[13],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[13],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[13],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[13],0.877126);
+    Nminus1_psel_p->Fill(nminus1varchoices[13],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[13],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[13],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[13],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[13],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[13],0.938248);
+    Nminus1_esel_e->Fill(nminus1varchoices[13],0.);
     
-    // ECal QRMS
+    // ECal TMR
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[14],0.938506);
+    Nminus1_musel_mu->Fill(nminus1varchoices[14],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[14],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[14],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[14],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[14],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[14],0.614936);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[14],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[14],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[14],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[14],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[14],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[14],0.877109);
+    Nminus1_psel_p->Fill(nminus1varchoices[14],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[14],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[14],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[14],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[14],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[14],0.939733);
+    Nminus1_esel_e->Fill(nminus1varchoices[14],0.);
     
-    // nSMRDs
+    // ECal QRMS
     
-    Nminus1_musel_mu->Fill(nminus1varchoices[15],0.930162);
+    Nminus1_musel_mu->Fill(nminus1varchoices[15],0.);
     Nminus1_musel_pi->Fill(nminus1varchoices[15],0.); 
     Nminus1_musel_p->Fill(nminus1varchoices[15],0.);
     Nminus1_musel_e->Fill(nminus1varchoices[15],0.);
     Nminus1_pisel_mu->Fill(nminus1varchoices[15],0.);
-    Nminus1_pisel_pi->Fill(nminus1varchoices[15],0.603177);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[15],0.);
     Nminus1_pisel_p->Fill(nminus1varchoices[15],0.);
     Nminus1_pisel_e->Fill(nminus1varchoices[15],0.);
     Nminus1_psel_mu->Fill(nminus1varchoices[15],0.);
     Nminus1_psel_pi->Fill(nminus1varchoices[15],0.);
-    Nminus1_psel_p->Fill(nminus1varchoices[15],0.881863);
+    Nminus1_psel_p->Fill(nminus1varchoices[15],0.);
     Nminus1_psel_e->Fill(nminus1varchoices[15],0.);
     Nminus1_esel_mu->Fill(nminus1varchoices[15],0.);
     Nminus1_esel_pi->Fill(nminus1varchoices[15],0.);
     Nminus1_esel_p->Fill(nminus1varchoices[15],0.);
-    Nminus1_esel_e->Fill(nminus1varchoices[15],0.939525);
+    Nminus1_esel_e->Fill(nminus1varchoices[15],0.);
+    
+    // nSMRDs
+    
+    Nminus1_musel_mu->Fill(nminus1varchoices[16],0.);
+    Nminus1_musel_pi->Fill(nminus1varchoices[16],0.); 
+    Nminus1_musel_p->Fill(nminus1varchoices[16],0.);
+    Nminus1_musel_e->Fill(nminus1varchoices[16],0.);
+    Nminus1_pisel_mu->Fill(nminus1varchoices[16],0.);
+    Nminus1_pisel_pi->Fill(nminus1varchoices[16],0.);
+    Nminus1_pisel_p->Fill(nminus1varchoices[16],0.);
+    Nminus1_pisel_e->Fill(nminus1varchoices[16],0.);
+    Nminus1_psel_mu->Fill(nminus1varchoices[16],0.);
+    Nminus1_psel_pi->Fill(nminus1varchoices[16],0.);
+    Nminus1_psel_p->Fill(nminus1varchoices[16],0.);
+    Nminus1_psel_e->Fill(nminus1varchoices[16],0.);
+    Nminus1_esel_mu->Fill(nminus1varchoices[16],0.);
+    Nminus1_esel_pi->Fill(nminus1varchoices[16],0.);
+    Nminus1_esel_p->Fill(nminus1varchoices[16],0.);
+    Nminus1_esel_e->Fill(nminus1varchoices[16],0.);
     
     //TCanvas* canvas_Nminus1_choices = new TCanvas("canvas_Nminus1_choices","",200,10,1000,800);
     TCanvas* canvas_Nminus1_choices_sig = new TCanvas("canvas_Nminus1_choices_sig","",200,10,2000,800);
@@ -470,7 +489,7 @@
     canvas_Nminus1_choices_bkg->Divide(2,1,0.005,0.005);
     canvas_Nminus1_choices_bkg->cd(1);
     Nminus1_pisel_mu->GetYaxis()->SetRangeUser(0, 0.5);
-    Nminus1_pisel_mu->GetXaxis()->SetRangeUser(0, 17);
+    Nminus1_pisel_mu->GetXaxis()->SetRangeUser(0, 18);
     Nminus1_pisel_mu->GetYaxis()->SetTitle("Efficiency");
     Nminus1_pisel_mu->GetYaxis()->SetLabelSize(0.025);
     Nminus1_pisel_mu->GetYaxis()->SetTitleSize(0.025);
@@ -506,24 +525,24 @@
     legend_bkg->AddEntry(Nminus1_psel_e,"e^{+} identified as p","f");
     legend_bkg->Draw();
     
-    for (int i=0; i < 16; i++) 
+    for (int i=0; i < 17; i++) 
     {
-        Nminus1_musel_mu_diff->Fill(nminus1varchoices[i], Nminus1_musel_mu->GetBinContent(i+1)-0.93881 );
+        Nminus1_musel_mu_diff->Fill(nminus1varchoices[i], Nminus1_musel_mu->GetBinContent(i+1)-0.928829 );
         Nminus1_musel_pi_diff->Fill(nminus1varchoices[i], Nminus1_musel_pi->GetBinContent(i+1)-0. ); 
         Nminus1_musel_p_diff->Fill(nminus1varchoices[i], Nminus1_musel_p->GetBinContent(i+1)-0. );
         Nminus1_musel_e_diff->Fill(nminus1varchoices[i], Nminus1_musel_e->GetBinContent(i+1)-0. );
         Nminus1_pisel_mu_diff->Fill(nminus1varchoices[i], Nminus1_pisel_mu->GetBinContent(i+1)-0. );
-        Nminus1_pisel_pi_diff->Fill(nminus1varchoices[i], Nminus1_pisel_pi->GetBinContent(i+1)-0.621063 );
+        Nminus1_pisel_pi_diff->Fill(nminus1varchoices[i], Nminus1_pisel_pi->GetBinContent(i+1)-0.634636 );
         Nminus1_pisel_p_diff->Fill(nminus1varchoices[i], Nminus1_pisel_p->GetBinContent(i+1)-0. );
         Nminus1_pisel_e_diff->Fill(nminus1varchoices[i], Nminus1_pisel_e->GetBinContent(i+1)-0. );
         Nminus1_psel_mu_diff->Fill(nminus1varchoices[i], Nminus1_psel_mu->GetBinContent(i+1)-0. );
         Nminus1_psel_pi_diff->Fill(nminus1varchoices[i], Nminus1_psel_pi->GetBinContent(i+1)-0. );
-        Nminus1_psel_p_diff->Fill(nminus1varchoices[i], Nminus1_psel_p->GetBinContent(i+1)-0.881275 );
+        Nminus1_psel_p_diff->Fill(nminus1varchoices[i], Nminus1_psel_p->GetBinContent(i+1)-0.898458 );
         Nminus1_psel_e_diff->Fill(nminus1varchoices[i], Nminus1_psel_e->GetBinContent(i+1)-0. );
         Nminus1_esel_mu_diff->Fill(nminus1varchoices[i], Nminus1_esel_mu->GetBinContent(i+1)-0. );
         Nminus1_esel_pi_diff->Fill(nminus1varchoices[i], Nminus1_esel_pi->GetBinContent(i+1)-0. );
         Nminus1_esel_p_diff->Fill(nminus1varchoices[i], Nminus1_esel_p->GetBinContent(i+1)-0. );
-        Nminus1_esel_e_diff->Fill(nminus1varchoices[i], Nminus1_esel_e->GetBinContent(i+1)-0.941262 );
+        Nminus1_esel_e_diff->Fill(nminus1varchoices[i], Nminus1_esel_e->GetBinContent(i+1)-0.932428 );
     }
     
     
@@ -531,7 +550,7 @@
     TCanvas* canvas_Nminus1_choices_diff = new TCanvas("canvas_Nminus1_choices_diff","",200,10,1000,800);
     //canvas_Nminus1_choices_sig->cd(2);
     Nminus1_musel_mu_diff->GetYaxis()->SetRangeUser(-0.1, 0.1);
-    Nminus1_musel_mu_diff->GetXaxis()->SetRangeUser(0, 17);
+    Nminus1_musel_mu_diff->GetXaxis()->SetRangeUser(0, 18);
     Nminus1_musel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     Nminus1_musel_mu_diff->GetYaxis()->SetLabelSize(0.025);
     Nminus1_musel_mu_diff->GetYaxis()->SetTitleSize(0.025);
@@ -548,7 +567,7 @@
     //TCanvas* canvas_Nminus1_choices_bkg_diff = new TCanvas("canvas_Nminus1_choices_bkg_diff","",200,10,1000,800);
     canvas_Nminus1_choices_bkg->cd(2);
     Nminus1_pisel_mu_diff->GetYaxis()->SetRangeUser(-0.1, 0.1);
-    Nminus1_pisel_mu_diff->GetXaxis()->SetRangeUser(0, 17);
+    Nminus1_pisel_mu_diff->GetXaxis()->SetRangeUser(0, 18);
     Nminus1_pisel_mu_diff->GetYaxis()->SetTitle("Difference in efficiency");
     Nminus1_pisel_mu_diff->GetYaxis()->SetLabelSize(0.025);
     Nminus1_pisel_mu_diff->GetYaxis()->SetTitleSize(0.025);
