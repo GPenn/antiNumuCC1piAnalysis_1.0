@@ -453,7 +453,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_antimu->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_antimu->SetLineWidth(2);
    graph_bdt_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
-   graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed angle w.r.t. detector Z-axis (rad)");
    graph_bdt_efficiency_recomom_antimu->Draw("AL");
    
    TGraph* graph_bdt_efficiency_recomom_piplus = new TGraph();
