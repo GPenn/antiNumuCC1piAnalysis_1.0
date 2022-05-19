@@ -52,30 +52,51 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t esel_nProton = 0;
    Int_t esel_nPositron = 0;
    
-   // Existing CC1pi selection
+   // Existing numu selection
    
-   Int_t musel_cc1pi_nAntimu = 0;
-   Int_t musel_cc1pi_nPiplus = 0;
-   Int_t musel_cc1pi_nProton = 0;
-   Int_t musel_cc1pi_nPositron = 0;
-   Int_t pisel_cc1pi_nAntimu = 0;
-   Int_t pisel_cc1pi_nPiplus = 0;
-   Int_t pisel_cc1pi_nProton = 0;
-   Int_t pisel_cc1pi_nPositron = 0;
-   Int_t psel_cc1pi_nAntimu = 0;
-   Int_t psel_cc1pi_nPiplus = 0;
-   Int_t psel_cc1pi_nProton = 0;
-   Int_t psel_cc1pi_nPositron = 0;
-   Int_t esel_cc1pi_nAntimu = 0;
-   Int_t esel_cc1pi_nPiplus = 0;
-   Int_t esel_cc1pi_nProton = 0;
-   Int_t esel_cc1pi_nPositron = 0;
-   Int_t nosel_cc1pi_nAntimu = 0;
-   Int_t nosel_cc1pi_nPiplus = 0;
-   Int_t nosel_cc1pi_nProton = 0;
-   Int_t nosel_cc1pi_nPositron = 0;
+   Int_t musel_numu_nAntimu = 0;
+   Int_t musel_numu_nPiplus = 0;
+   Int_t musel_numu_nProton = 0;
+   Int_t musel_numu_nPositron = 0;
+   Int_t pisel_numu_nAntimu = 0;
+   Int_t pisel_numu_nPiplus = 0;
+   Int_t pisel_numu_nProton = 0;
+   Int_t pisel_numu_nPositron = 0;
+   Int_t psel_numu_nAntimu = 0;
+   Int_t psel_numu_nPiplus = 0;
+   Int_t psel_numu_nProton = 0;
+   Int_t psel_numu_nPositron = 0;
+   Int_t esel_numu_nAntimu = 0;
+   Int_t esel_numu_nPiplus = 0;
+   Int_t esel_numu_nProton = 0;
+   Int_t esel_numu_nPositron = 0;
+   Int_t nosel_numu_nAntimu = 0;
+   Int_t nosel_numu_nPiplus = 0;
+   Int_t nosel_numu_nProton = 0;
+   Int_t nosel_numu_nPositron = 0;
    
+   // Existing numu selection
    
+   Int_t musel_nue_nAntimu = 0;
+   Int_t musel_nue_nPiplus = 0;
+   Int_t musel_nue_nProton = 0;
+   Int_t musel_nue_nPositron = 0;
+   Int_t pisel_nue_nAntimu = 0;
+   Int_t pisel_nue_nPiplus = 0;
+   Int_t pisel_nue_nProton = 0;
+   Int_t pisel_nue_nPositron = 0;
+   Int_t psel_nue_nAntimu = 0;
+   Int_t psel_nue_nPiplus = 0;
+   Int_t psel_nue_nProton = 0;
+   Int_t psel_nue_nPositron = 0;
+   Int_t esel_nue_nAntimu = 0;
+   Int_t esel_nue_nPiplus = 0;
+   Int_t esel_nue_nProton = 0;
+   Int_t esel_nue_nPositron = 0;
+   Int_t nosel_nue_nAntimu = 0;
+   Int_t nosel_nue_nPiplus = 0;
+   Int_t nosel_nue_nProton = 0;
+   Int_t nosel_nue_nPositron = 0;
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -132,35 +153,56 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == -11) esel_nPositron++;
          }
          
-         // CC1pi selection:
+         // numu selection:
          
          if (((selmu_tpc_like_mu+selmu_tpc_like_pi)/(1-selmu_tpc_like_p) > 0.9 || selmu_mom[0] > 500.0 ) && (selmu_tpc_like_mu>0.1))
          {
-            if (particle == -13) musel_cc1pi_nAntimu++;
-            if (particle == 211) musel_cc1pi_nPiplus++;
-            if (particle == 2212) musel_cc1pi_nProton++;
-            if (particle == -11) musel_cc1pi_nPositron++;
+            if (particle == -13) musel_numu_nAntimu++;
+            if (particle == 211) musel_numu_nPiplus++;
+            if (particle == 2212) musel_numu_nProton++;
+            if (particle == -11) musel_numu_nPositron++;
          }
          if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
          {
-            if (particle == -13) pisel_cc1pi_nAntimu++;
-            if (particle == 211) pisel_cc1pi_nPiplus++;
-            if (particle == 2212) pisel_cc1pi_nProton++;
-            if (particle == -11) pisel_cc1pi_nPositron++;
+            if (particle == -13) pisel_numu_nAntimu++;
+            if (particle == 211) pisel_numu_nPiplus++;
+            if (particle == 2212) pisel_numu_nProton++;
+            if (particle == -11) pisel_numu_nPositron++;
          }
          else if ((selmu_tpc_like_e > selmu_tpc_like_p) && (selmu_tpc_like_e > selmu_tpc_like_pi) && (selmu_mom[0] < 900.0))
          {
-            if (particle == -13) esel_cc1pi_nAntimu++;
-            if (particle == 211) esel_cc1pi_nPiplus++;
-            if (particle == 2212) esel_cc1pi_nProton++;
-            if (particle == -11) esel_cc1pi_nPositron++;
+            if (particle == -13) esel_numu_nAntimu++;
+            if (particle == 211) esel_numu_nPiplus++;
+            if (particle == 2212) esel_numu_nProton++;
+            if (particle == -11) esel_numu_nPositron++;
          }
          else //if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
          {
-            if (particle == -13) psel_cc1pi_nAntimu++;
-            if (particle == 211) psel_cc1pi_nPiplus++;
-            if (particle == 2212) psel_cc1pi_nProton++;
-            if (particle == -11) psel_cc1pi_nPositron++;
+            if (particle == -13) psel_numu_nAntimu++;
+            if (particle == 211) psel_numu_nPiplus++;
+            if (particle == 2212) psel_numu_nProton++;
+            if (particle == -11) psel_numu_nPositron++;
+         }
+         
+         // nue selection
+         
+         if ( (selmu_tpc_pullele[0] > -2.0) && (selmu_tpc_pullele[0] < 2.5) ) // Relaxed TPC e pull cut
+         {
+            if ( ((selmu_necals==0) && (selmu_tpc_pullele[0]>-1.0) && (selmu_tpc_pullele[0]<2.0) // No ECal segment
+                 && !((selmu_tpc_pullmu[0]>-2.5) && (selmu_tpc_pullmu[0]<2.5)) && !((selmu_tpc_pullpi[0]>-2.5) && (selmu_tpc_pullpi[0]<2.5)))
+              || ((selmu_necals>0) && ((selmu_mom[0]>1000 && selmu_ecal_EMenergy[0]>1100) || (selmu_mom[0]<1000 && selmu_ecal_mipem[0]>0))) )  // ECal segment
+            {
+               if ( (selmu_mom[0]<600) || (selmu_necals>0) || (selmu_tpc_pullele[1]>-3.0 && selmu_tpc_pullele[1]<3.0)  ) // Proton TPC3 PID
+               {
+                  if ( (selmu_mom[0]<600) || (selmu_necals==0) || (selmu_ecal_EMenergy[0]/selmu_mom[0]>0.65 && selmu_ecal_mipem[0]<0) ) // Proton ECal PID
+                  {
+                     if (particle == -13) esel_nue_nAntimu++;
+                     if (particle == 211) esel_nue_nPiplus++;
+                     if (particle == 2212) esel_nue_nProton++;
+                     if (particle == -11) esel_nue_nPositron++;
+                  }
+               }
+            }
          }
          
       }
@@ -220,42 +262,49 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "p efficiency: " << (Float_t)psel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)psel_nPositron/presel_nPositron << std::endl;
   
-   std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
+   std::cout << "=========== Electron-like ===========" << std::endl << std::endl;
    
    std::cout << "mu+ efficiency: " << (Float_t)esel_nAntimu/presel_nAntimu << std::endl;
    std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
    
-   std::cout << "================ CC1PI SELECTION ================" << std::endl << std::endl;
+   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
    
    std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
    
-   std::cout << "mu+ efficiency: " <<  (Float_t)musel_cc1pi_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)musel_cc1pi_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)musel_cc1pi_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)musel_cc1pi_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " <<  (Float_t)musel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_numu_nPositron/presel_nPositron << std::endl;
    
    std::cout << "=========== Pi-like ===========" << std::endl << std::endl;
    
-   std::cout << "mu+ efficiency: " << (Float_t)pisel_cc1pi_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)pisel_cc1pi_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)pisel_cc1pi_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)pisel_cc1pi_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)pisel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)pisel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)pisel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)pisel_numu_nPositron/presel_nPositron << std::endl;
    
    std::cout << "=========== Proton-like ===========" << std::endl << std::endl;
    
-   std::cout << "mu+ efficiency: " << (Float_t)psel_cc1pi_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)psel_cc1pi_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)psel_cc1pi_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)psel_cc1pi_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)psel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)psel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)psel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)psel_numu_nPositron/presel_nPositron << std::endl;
   
-   std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
+   std::cout << "=========== Electron-like ===========" << std::endl << std::endl;
    
-   std::cout << "mu+ efficiency: " << (Float_t)esel_cc1pi_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)esel_cc1pi_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)esel_cc1pi_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)esel_cc1pi_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)esel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_numu_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_nue_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_nue_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_nue_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_nue_nPositron/presel_nPositron << std::endl;
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
