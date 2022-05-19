@@ -75,7 +75,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t nosel_numu_nProton = 0;
    Int_t nosel_numu_nPositron = 0;
    
-   // Existing numu selection
+   // Existing nue selection
    
    Int_t musel_nue_nAntimu = 0;
    Int_t musel_nue_nPiplus = 0;
@@ -100,26 +100,26 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    // TPC likelihood PID
    
-   Int_t musel_tpc__nAntimu = 0;
-   Int_t musel_tpc__nPiplus = 0;
-   Int_t musel_tpc__nProton = 0;
-   Int_t musel_tpc__nPositron = 0;
-   Int_t pisel_tpc__nAntimu = 0;
-   Int_t pisel_tpc__nPiplus = 0;
-   Int_t pisel_tpc__nProton = 0;
-   Int_t pisel_tpc__nPositron = 0;
-   Int_t psel_tpc__nAntimu = 0;
-   Int_t psel_tpc__nPiplus = 0;
-   Int_t psel_tpc__nProton = 0;
-   Int_t psel_tpc__nPositron = 0;
-   Int_t esel_tpc__nAntimu = 0;
-   Int_t esel_tpc__nPiplus = 0;
-   Int_t esel_tpc__nProton = 0;
-   Int_t esel_tpc__nPositron = 0;
-   Int_t nosel_tpc__nAntimu = 0;
-   Int_t nosel_tpc__nPiplus = 0;
-   Int_t nosel_tpc__nProton = 0;
-   Int_t nosel_tpc__nPositron = 0;
+   Int_t musel_tpc_nAntimu = 0;
+   Int_t musel_tpc_nPiplus = 0;
+   Int_t musel_tpc_nProton = 0;
+   Int_t musel_tpc_nPositron = 0;
+   Int_t pisel_tpc_nAntimu = 0;
+   Int_t pisel_tpc_nPiplus = 0;
+   Int_t pisel_tpc_nProton = 0;
+   Int_t pisel_tpc_nPositron = 0;
+   Int_t psel_tpc_nAntimu = 0;
+   Int_t psel_tpc_nPiplus = 0;
+   Int_t psel_tpc_nProton = 0;
+   Int_t psel_tpc_nPositron = 0;
+   Int_t esel_tpc_nAntimu = 0;
+   Int_t esel_tpc_nPiplus = 0;
+   Int_t esel_tpc_nProton = 0;
+   Int_t esel_tpc_nPositron = 0;
+   Int_t nosel_tpc_nAntimu = 0;
+   Int_t nosel_tpc_nPiplus = 0;
+   Int_t nosel_tpc_nProton = 0;
+   Int_t nosel_tpc_nPositron = 0;
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
