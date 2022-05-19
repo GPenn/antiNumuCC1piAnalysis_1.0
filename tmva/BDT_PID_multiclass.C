@@ -194,6 +194,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->AddVariable( "myvar2 := var1-var2", "Expression 2", "", 'F' );
    //factory->AddVariable( "var3",                "Variable 3", "units", 'F' );
    
+   /*
    // Kinematic variables
    factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
    factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
@@ -250,8 +251,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    
    // Muon candidate SMRD variables
    factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
+   */
    
-   /*
    // Tuned list:
    factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
    factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
@@ -269,7 +270,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "fbr := selmu_ecal_fbr",                          "ECal FBR",               "", 'F' );
    factory->AddVariable( "tmr := selmu_ecal_tmr",                          "ECal TMR",               "", 'F' );
    factory->AddVariable( "qrms := selmu_ecal_qrms",                        "ECal QRMS",              "", 'F' );
-   factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );*/
+   factory->AddVariable( "nsmrds := selmu_nsmrds",               "SMRD segments",         "", 'I' );
 
    // You can add so-called "Spectator variables", which are not used in the MVA training,
    // but will appear in the final "TestTree" produced by TMVA. This TestTree will contain the
@@ -312,10 +313,10 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddTree    (inputTree_e, "Electron");
    
    //Event-by-event weighting:
-   factory->SetWeightExpression("selmu_mom_weight", "Muon");
+   /*factory->SetWeightExpression("selmu_mom_weight", "Muon");
    factory->SetWeightExpression("selmu_mom_weight", "Pion");
    factory->SetWeightExpression("selmu_mom_weight", "Proton");
-   factory->SetWeightExpression("selmu_mom_weight", "Electron");
+   factory->SetWeightExpression("selmu_mom_weight", "Electron");*/
    
    /*Double_t desiredsamplesize = 50000;
    Double_t weight_mu = inputTree_mu->GetEntries() / desiredsamplesize;
@@ -587,8 +588,9 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_minus_nsmrds", "!H:!V:NTrees=2000:BoostType=Grad:Shrinkage=0.1:nCuts=2000:MaxDepth=4:UseBaggedBoost:BaggedSampleFraction=0.70:UseRandomisedTrees:UseNvars=10");
    
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedparams", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecalhighlevel", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecalhighlevel", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars_noweights", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
