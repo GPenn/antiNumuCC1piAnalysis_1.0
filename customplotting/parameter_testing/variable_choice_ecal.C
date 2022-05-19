@@ -14,7 +14,7 @@
     
     // =============== ECal variable choice ===============
     
-    const char *ecalvarchoices[3] = {"ECal low-level", "ECal high-level"};
+    const char *ecalvarchoices[2] = {"ECal low-level", "ECal high-level"};
     
     TH1F* ECal_musel_mu = new TH1F("ECal_musel_mu","#mu^{+} identified as #mu^{+}",3,0,3);
     TH1F* ECal_musel_pi = new TH1F("ECal_musel_pi","#pi^{+} identified as #mu^{+}",3,0,3);
