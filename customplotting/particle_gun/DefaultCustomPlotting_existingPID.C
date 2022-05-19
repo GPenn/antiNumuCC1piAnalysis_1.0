@@ -470,6 +470,9 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_positron->SetFillColor( kWhite);
    graph_bdt_efficiency_positron->SetLineWidth(2);
    graph_bdt_efficiency_positron->Draw("L same");
+   
+   canvas_bdt_efficiency_sig->BuildLegend();
+   canvas_bdt_efficiency_sig->Write();
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
