@@ -420,7 +420,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    TCanvas* canvas_bdt_efficiency_sig = new TCanvas("canvas_bdt_efficiency_sig","canvas_bdt_efficiency_sig",200,10,1000,600);
    
    TGraph* graph_bdt_efficiency_antimu = new TGraph();
-   graph_bdt_efficiency_antimu->SetTitle("#mu^{+} identified as #mu^{+};Reconstructed momentum (MeV/c);Efficiency");
+   graph_bdt_efficiency_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
@@ -430,10 +430,12 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_antimu->SetLineColor( kBlue);
    graph_bdt_efficiency_antimu->SetFillColor( kWhite);
    graph_bdt_efficiency_antimu->SetLineWidth(2);
+   graph_bdt_efficiency_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_bdt_efficiency_antimu->Draw("AL");
    
    TGraph* graph_bdt_efficiency_piplus = new TGraph();
-   graph_bdt_efficiency_piplus->SetTitle("#pi^{+} identified as #pi^{+};Reconstructed momentum (MeV/c);Efficiency");
+   graph_bdt_efficiency_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
@@ -446,7 +448,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_piplus->Draw("L same");
    
    TGraph* graph_bdt_efficiency_proton = new TGraph();
-   graph_bdt_efficiency_proton->SetTitle("p identified as p;Reconstructed momentum (MeV/c);Efficiency");
+   graph_bdt_efficiency_proton->SetTitle("p identified as p");
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
@@ -459,7 +461,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_proton->Draw("L same");
    
    TGraph* graph_bdt_efficiency_positron = new TGraph();
-   graph_bdt_efficiency_positron->SetTitle("e^{+} identified as e^{+};Reconstructed momentum (MeV/c);Efficiency");
+   graph_bdt_efficiency_positron->SetTitle("e^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
