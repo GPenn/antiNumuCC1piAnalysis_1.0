@@ -13,7 +13,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
-   gStyle->SetTitleYOffset(1.6);
+   gStyle->SetTitleYOffset(1.0);
    gStyle->SetTitleXOffset(1.2);
    
    
@@ -421,7 +421,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_antimu = new TGraph();
    graph_bdt_efficiency_antimu->SetTitle("#mu^{+} identified as #mu^{+};Reconstructed momentum (MeV/c);Efficiency");
-   for (Int_t bin=1; bin <= 14; bin++)
+   for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
       graph_bdt_efficiency_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
@@ -434,7 +434,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_piplus = new TGraph();
    graph_bdt_efficiency_piplus->SetTitle("#pi^{+} identified as #pi^{+};Reconstructed momentum (MeV/c);Efficiency");
-   for (Int_t bin=1; bin <= 14; bin++)
+   for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
       graph_bdt_efficiency_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
@@ -447,10 +447,10 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_proton = new TGraph();
    graph_bdt_efficiency_proton->SetTitle("p identified as p;Reconstructed momentum (MeV/c);Efficiency");
-   for (Int_t bin=1; bin <= 14; bin++)
+   for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_proton->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_proton->SetLineColor( kGreen);
@@ -460,7 +460,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_positron = new TGraph();
    graph_bdt_efficiency_positron->SetTitle("e^{+} identified as e^{+};Reconstructed momentum (MeV/c);Efficiency");
-   for (Int_t bin=1; bin <= 14; bin++)
+   for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
       graph_bdt_efficiency_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
