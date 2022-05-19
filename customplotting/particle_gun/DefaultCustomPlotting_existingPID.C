@@ -38,6 +38,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    TH1F* presel_recomom_proton = new TH1F("presel_recomom_proton", "p identified as p", 13, 200.0, 1500.0);
    TH1F* presel_recomom_positron = new TH1F("presel_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
    
+   TH1F* presel_theta_antimu = new TH1F("presel_theta_antimu", "#mu^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* presel_theta_piplus = new TH1F("presel_theta_piplus", "#pi^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* presel_theta_proton = new TH1F("presel_theta_proton", "p identified as p", 13, 0.0, 1.0472);
+   TH1F* presel_theta_positron = new TH1F("presel_theta_positron", "e^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   
    // BDT selection
    
    Int_t musel_nAntimu = 0;
@@ -73,6 +78,23 @@ void DefaultCustomPlotting_existingPID::Loop()
    TH1F* esel_recomom_piplus = new TH1F("esel_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_recomom_proton = new TH1F("esel_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_recomom_positron = new TH1F("esel_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
+   TH1F* musel_theta_antimu = new TH1F("musel_theta_antimu", "#mu^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* musel_theta_piplus = new TH1F("musel_theta_piplus", "#pi^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* musel_theta_proton = new TH1F("musel_theta_proton", "p identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* musel_theta_positron = new TH1F("musel_theta_positron", "e^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_theta_antimu = new TH1F("pisel_theta_antimu", "#mu^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_theta_piplus = new TH1F("pisel_theta_piplus", "#pi^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_theta_proton = new TH1F("pisel_theta_proton", "p identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_theta_positron = new TH1F("pisel_theta_positron", "e^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* psel_theta_antimu = new TH1F("psel_theta_antimu", "#mu^{+} identified as p", 13, 0.0, 1.0472);
+   TH1F* psel_theta_piplus = new TH1F("psel_theta_piplus", "#pi^{+} identified as p", 13, 0.0, 1.0472);
+   TH1F* psel_theta_proton = new TH1F("psel_theta_proton", "p identified as p", 13, 0.0, 1.0472);
+   TH1F* psel_theta_positron = new TH1F("psel_theta_positron", "e^{+} identified as p", 13, 0.0, 1.0472);
+   TH1F* esel_theta_antimu = new TH1F("esel_theta_antimu", "#mu^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   TH1F* esel_theta_piplus = new TH1F("esel_theta_piplus", "#pi^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   TH1F* esel_theta_proton = new TH1F("esel_theta_proton", "p identified as e^{+}", 13, 0.0, 1.0472);
+   TH1F* esel_theta_positron = new TH1F("esel_theta_positron", "e^{+} identified as e^{+}", 13, 0.0, 1.0472);
    
    // Existing numu selection
    
@@ -159,43 +181,43 @@ void DefaultCustomPlotting_existingPID::Loop()
       
       if ((accum_level[0][1] > 4) && (selmu_necals < 2) && (selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472)){ 
          
-         if (particle == -13)       {presel_nAntimu++; presel_recomom_antimu->Fill(selmu_mom[0]);}
-         else if (particle == 211)  {presel_nPiplus++; presel_recomom_piplus->Fill(selmu_mom[0]);}
-         else if (particle == 2212) {presel_nProton++; presel_recomom_proton->Fill(selmu_mom[0]);}
-         else if (particle == -11)  {presel_nPositron++; presel_recomom_positron->Fill(selmu_mom[0]);}
+         if (particle == -13)       {presel_nAntimu++; presel_recomom_antimu->Fill(selmu_mom[0]); presel_theta_antimu->Fill(selmu_det_theta);}
+         else if (particle == 211)  {presel_nPiplus++; presel_recomom_piplus->Fill(selmu_mom[0]); presel_theta_piplus->Fill(selmu_det_theta);}
+         else if (particle == 2212) {presel_nProton++; presel_recomom_proton->Fill(selmu_mom[0]); presel_theta_proton->Fill(selmu_det_theta);}
+         else if (particle == -11)  {presel_nPositron++; presel_recomom_positron->Fill(selmu_mom[0]); presel_theta_positron->Fill(selmu_det_theta);}
          
          // BDT selection:
          
          if ((selmu_bdt_pid_mu > selmu_bdt_pid_pi) && (selmu_bdt_pid_mu > selmu_bdt_pid_p) && (selmu_bdt_pid_mu > selmu_bdt_pid_e))
          {
-            if (particle == -13) {musel_nAntimu++; musel_recomom_antimu->Fill(selmu_mom[0]);}
-            if (particle == 211) {musel_nPiplus++; musel_recomom_piplus->Fill(selmu_mom[0]);}
-            if (particle == 2212) {musel_nProton++; musel_recomom_proton->Fill(selmu_mom[0]);}
-            if (particle == -11) {musel_nPositron++; musel_recomom_positron->Fill(selmu_mom[0]);}
+            if (particle == -13) {musel_nAntimu++; musel_recomom_antimu->Fill(selmu_mom[0]); musel_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {musel_nPiplus++; musel_recomom_piplus->Fill(selmu_mom[0]); musel_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {musel_nProton++; musel_recomom_proton->Fill(selmu_mom[0]); musel_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {musel_nPositron++; musel_recomom_positron->Fill(selmu_mom[0]); musel_theta_positron->Fill(selmu_det_theta);}
          }
          
          if ((selmu_bdt_pid_pi > selmu_bdt_pid_mu) && (selmu_bdt_pid_pi > selmu_bdt_pid_p) && (selmu_bdt_pid_pi > selmu_bdt_pid_e))
          {
-            if (particle == -13) {pisel_nAntimu++; pisel_recomom_antimu->Fill(selmu_mom[0]);}
-            if (particle == 211) {pisel_nPiplus++; pisel_recomom_piplus->Fill(selmu_mom[0]);}
-            if (particle == 2212) {pisel_nProton++; pisel_recomom_proton->Fill(selmu_mom[0]);}
-            if (particle == -11) {pisel_nPositron++; pisel_recomom_positron->Fill(selmu_mom[0]);}
+            if (particle == -13) {pisel_nAntimu++; pisel_recomom_antimu->Fill(selmu_mom[0]); pisel_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {pisel_nPiplus++; pisel_recomom_piplus->Fill(selmu_mom[0]); pisel_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {pisel_nProton++; pisel_recomom_proton->Fill(selmu_mom[0]); pisel_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {pisel_nPositron++; pisel_recomom_positron->Fill(selmu_mom[0]); pisel_theta_positron->Fill(selmu_det_theta);}
          }
          
          if ((selmu_bdt_pid_p > selmu_bdt_pid_mu) && (selmu_bdt_pid_p > selmu_bdt_pid_pi) && (selmu_bdt_pid_p > selmu_bdt_pid_e))
          {
-            if (particle == -13) {psel_nAntimu++; psel_recomom_antimu->Fill(selmu_mom[0]);}
-            if (particle == 211) {psel_nPiplus++; psel_recomom_piplus->Fill(selmu_mom[0]);}
-            if (particle == 2212) {psel_nProton++; psel_recomom_proton->Fill(selmu_mom[0]);}
-            if (particle == -11) {psel_nPositron++; psel_recomom_positron->Fill(selmu_mom[0]);}
+            if (particle == -13) {psel_nAntimu++; psel_recomom_antimu->Fill(selmu_mom[0]); psel_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {psel_nPiplus++; psel_recomom_piplus->Fill(selmu_mom[0]); psel_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {psel_nProton++; psel_recomom_proton->Fill(selmu_mom[0]); psel_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {psel_nPositron++; psel_recomom_positron->Fill(selmu_mom[0]); psel_theta_positron->Fill(selmu_det_theta);}
          }
          
          if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
          {
-            if (particle == -13) {esel_nAntimu++; esel_recomom_antimu->Fill(selmu_mom[0]);}
-            if (particle == 211) {esel_nPiplus++; esel_recomom_piplus->Fill(selmu_mom[0]);}
-            if (particle == 2212) {esel_nProton++; esel_recomom_proton->Fill(selmu_mom[0]);}
-            if (particle == -11) {esel_nPositron++; esel_recomom_positron->Fill(selmu_mom[0]);}
+            if (particle == -13) {esel_nAntimu++; esel_recomom_antimu->Fill(selmu_mom[0]); esel_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {esel_nPiplus++; esel_recomom_piplus->Fill(selmu_mom[0]); esel_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {esel_nProton++; esel_recomom_proton->Fill(selmu_mom[0]); esel_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {esel_nPositron++; esel_recomom_positron->Fill(selmu_mom[0]); esel_theta_positron->Fill(selmu_det_theta);}
          }
          
          // TPC likelihoods:
@@ -415,66 +437,127 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "p efficiency: " << (Float_t)esel_nue_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nue_nPositron/presel_nPositron << std::endl;
    
+   // Efficiency vs recomom
    
+   TCanvas* canvas_bdt_efficiency_recomom_sig = new TCanvas("canvas_bdt_efficiency_recomom_sig","canvas_bdt_efficiency_recomom_sig",200,10,1000,600);
    
-   TCanvas* canvas_bdt_efficiency_sig = new TCanvas("canvas_bdt_efficiency_sig","canvas_bdt_efficiency_sig",200,10,1000,600);
-   
-   TGraph* graph_bdt_efficiency_antimu = new TGraph();
-   graph_bdt_efficiency_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
+   TGraph* graph_bdt_efficiency_recomom_antimu = new TGraph();
+   graph_bdt_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
-      graph_bdt_efficiency_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_antimu->SetLineColor( kBlue);
-   graph_bdt_efficiency_antimu->SetFillColor( kWhite);
-   graph_bdt_efficiency_antimu->SetLineWidth(2);
-   graph_bdt_efficiency_antimu->GetYaxis()->SetTitle("Efficiency");
-   graph_bdt_efficiency_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
-   graph_bdt_efficiency_antimu->Draw("AL");
+   graph_bdt_efficiency_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_bdt_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_bdt_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_bdt_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_recomom_antimu->Draw("AL");
    
-   TGraph* graph_bdt_efficiency_piplus = new TGraph();
-   graph_bdt_efficiency_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
+   TGraph* graph_bdt_efficiency_recomom_piplus = new TGraph();
+   graph_bdt_efficiency_recomom_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
-      graph_bdt_efficiency_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_piplus->SetLineColor( kRed);
-   graph_bdt_efficiency_piplus->SetFillColor( kWhite);
-   graph_bdt_efficiency_piplus->SetLineWidth(2);
-   graph_bdt_efficiency_piplus->Draw("L same");
+   graph_bdt_efficiency_recomom_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_piplus->SetLineColor( kRed);
+   graph_bdt_efficiency_recomom_piplus->SetFillColor( kWhite);
+   graph_bdt_efficiency_recomom_piplus->SetLineWidth(2);
+   graph_bdt_efficiency_recomom_piplus->Draw("L same");
    
-   TGraph* graph_bdt_efficiency_proton = new TGraph();
-   graph_bdt_efficiency_proton->SetTitle("p identified as p");
+   TGraph* graph_bdt_efficiency_recomom_proton = new TGraph();
+   graph_bdt_efficiency_recomom_proton->SetTitle("p identified as p");
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_proton->SetLineColor( kGreen);
-   graph_bdt_efficiency_proton->SetFillColor( kWhite);
-   graph_bdt_efficiency_proton->SetLineWidth(2);
-   graph_bdt_efficiency_proton->Draw("L same");
+   graph_bdt_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdt_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdt_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdt_efficiency_recomom_proton->Draw("L same");
    
-   TGraph* graph_bdt_efficiency_positron = new TGraph();
-   graph_bdt_efficiency_positron->SetTitle("e^{+} identified as e^{+}");
+   TGraph* graph_bdt_efficiency_recomom_positron = new TGraph();
+   graph_bdt_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
-      graph_bdt_efficiency_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_positron->SetLineColor( kMagenta);
-   graph_bdt_efficiency_positron->SetFillColor( kWhite);
-   graph_bdt_efficiency_positron->SetLineWidth(2);
-   graph_bdt_efficiency_positron->Draw("L same");
+   graph_bdt_efficiency_recomom_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_positron->SetLineColor( kMagenta);
+   graph_bdt_efficiency_recomom_positron->SetFillColor( kWhite);
+   graph_bdt_efficiency_recomom_positron->SetLineWidth(2);
+   graph_bdt_efficiency_recomom_positron->Draw("L same");
    
-   canvas_bdt_efficiency_sig->BuildLegend();
-   canvas_bdt_efficiency_sig->Write();
+   canvas_bdt_efficiency_recomom_sig->BuildLegend();
+   canvas_bdt_efficiency_recomom_sig->Write();
+   
+   // Efficiency vs theta
+   
+   TCanvas* canvas_bdt_efficiency_theta_sig = new TCanvas("canvas_bdt_efficiency_theta_sig","canvas_bdt_efficiency_theta_sig",200,10,1000,600);
+   
+   TGraph* graph_bdt_efficiency_theta_antimu = new TGraph();
+   graph_bdt_efficiency_theta_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_theta_antimu->GetBinContent(bin))/(presel_theta_antimu->GetBinContent(bin));
+      graph_bdt_efficiency_theta_antimu->SetPoint(bin-1, presel_theta_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_theta_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_theta_antimu->SetLineColor( kBlue);
+   graph_bdt_efficiency_theta_antimu->SetFillColor( kWhite);
+   graph_bdt_efficiency_theta_antimu->SetLineWidth(2);
+   graph_bdt_efficiency_theta_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_theta_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_theta_antimu->Draw("AL");
+   
+   TGraph* graph_bdt_efficiency_theta_piplus = new TGraph();
+   graph_bdt_efficiency_theta_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(pisel_theta_piplus->GetBinContent(bin))/(presel_theta_piplus->GetBinContent(bin));
+      graph_bdt_efficiency_theta_piplus->SetPoint(bin-1, presel_theta_piplus->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_theta_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_theta_piplus->SetLineColor( kRed);
+   graph_bdt_efficiency_theta_piplus->SetFillColor( kWhite);
+   graph_bdt_efficiency_theta_piplus->SetLineWidth(2);
+   graph_bdt_efficiency_theta_piplus->Draw("L same");
+   
+   TGraph* graph_bdt_efficiency_theta_proton = new TGraph();
+   graph_bdt_efficiency_theta_proton->SetTitle("p identified as p");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(psel_theta_proton->GetBinContent(bin))/(presel_theta_proton->GetBinContent(bin));
+      graph_bdt_efficiency_theta_proton->SetPoint(bin-1, presel_theta_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_theta_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_theta_proton->SetLineColor( kGreen);
+   graph_bdt_efficiency_theta_proton->SetFillColor( kWhite);
+   graph_bdt_efficiency_theta_proton->SetLineWidth(2);
+   graph_bdt_efficiency_theta_proton->Draw("L same");
+   
+   TGraph* graph_bdt_efficiency_theta_positron = new TGraph();
+   graph_bdt_efficiency_theta_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_theta_positron->GetBinContent(bin))/(presel_theta_positron->GetBinContent(bin));
+      graph_bdt_efficiency_theta_positron->SetPoint(bin-1, presel_theta_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_theta_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_theta_positron->SetLineColor( kMagenta);
+   graph_bdt_efficiency_theta_positron->SetFillColor( kWhite);
+   graph_bdt_efficiency_theta_positron->SetLineWidth(2);
+   graph_bdt_efficiency_theta_positron->Draw("L same");
+   
+   canvas_bdt_efficiency_theta_sig->BuildLegend();
+   canvas_bdt_efficiency_theta_sig->Write();
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
