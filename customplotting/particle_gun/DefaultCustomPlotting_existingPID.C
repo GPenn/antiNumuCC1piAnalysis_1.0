@@ -420,7 +420,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_antimu->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_antimu->SetLineWidth(2);
    graph_bdt_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
-   graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed angle w.r.t. detector Z-axis (rad)");
+   graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_bdt_efficiency_recomom_antimu->Draw("AL");
    
    TGraph* graph_bdt_efficiency_recomom_piplus = new TGraph();
@@ -481,7 +481,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_theta_antimu->SetFillColor( kWhite);
    graph_bdt_efficiency_theta_antimu->SetLineWidth(2);
    graph_bdt_efficiency_theta_antimu->GetYaxis()->SetTitle("Efficiency");
-   graph_bdt_efficiency_theta_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_theta_antimu->GetXaxis()->SetTitle("Reconstructed angle w.r.t. detector Z-axis (rad)");
    graph_bdt_efficiency_theta_antimu->Draw("AL");
    
    TGraph* graph_bdt_efficiency_theta_piplus = new TGraph();
@@ -588,125 +588,125 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    // Efficiency vs recomom
    
-   TCanvas* canvas_bdt_efficiency_numu_recomom_sig = new TCanvas("canvas_bdt_efficiency_numu_recomom_sig","canvas_bdt_efficiency_numu_recomom_sig",200,10,1000,600);
+   TCanvas* canvas_numu_efficiency_recomom_sig = new TCanvas("canvas_numu_efficiency_recomom_sig","canvas_numu_efficiency_recomom_sig",200,10,1000,600);
    
-   TGraph* graph_bdt_efficiency_numu_recomom_antimu = new TGraph();
-   graph_bdt_efficiency_numu_recomom_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
+   TGraph* graph_numu_efficiency_recomom_antimu = new TGraph();
+   graph_numu_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_numu_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_recomom_antimu->SetLineColor( kBlue);
-   graph_bdt_efficiency_numu_recomom_antimu->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_recomom_antimu->SetLineWidth(2);
-   graph_bdt_efficiency_numu_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
-   graph_bdt_efficiency_numu_recomom_antimu->GetXaxis()->SetTitle("Reconstructed angle w.r.t. detector Z-axis (rad)");
-   graph_bdt_efficiency_numu_recomom_antimu->Draw("AL");
+   graph_numu_efficiency_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_numu_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_numu_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_numu_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_numu_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_numu_efficiency_recomom_antimu->Draw("AL");
    
-   TGraph* graph_bdt_efficiency_numu_recomom_piplus = new TGraph();
-   graph_bdt_efficiency_numu_recomom_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
+   TGraph* graph_numu_efficiency_recomom_piplus = new TGraph();
+   graph_numu_efficiency_recomom_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_numu_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_recomom_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_recomom_piplus->SetLineColor( kRed);
-   graph_bdt_efficiency_numu_recomom_piplus->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_recomom_piplus->SetLineWidth(2);
-   graph_bdt_efficiency_numu_recomom_piplus->Draw("L same");
+   graph_numu_efficiency_recomom_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_recomom_piplus->SetLineColor( kRed);
+   graph_numu_efficiency_recomom_piplus->SetFillColor( kWhite);
+   graph_numu_efficiency_recomom_piplus->SetLineWidth(2);
+   graph_numu_efficiency_recomom_piplus->Draw("L same");
    
-   TGraph* graph_bdt_efficiency_numu_recomom_proton = new TGraph();
-   graph_bdt_efficiency_numu_recomom_proton->SetTitle("p identified as p");
+   TGraph* graph_numu_efficiency_recomom_proton = new TGraph();
+   graph_numu_efficiency_recomom_proton->SetTitle("p identified as p");
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_numu_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_recomom_proton->SetLineColor( kGreen);
-   graph_bdt_efficiency_numu_recomom_proton->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_recomom_proton->SetLineWidth(2);
-   graph_bdt_efficiency_numu_recomom_proton->Draw("L same");
+   graph_numu_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_numu_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_numu_efficiency_recomom_proton->SetLineWidth(2);
+   graph_numu_efficiency_recomom_proton->Draw("L same");
    
-   TGraph* graph_bdt_efficiency_numu_recomom_positron = new TGraph();
-   graph_bdt_efficiency_numu_recomom_positron->SetTitle("e^{+} identified as e^{+}");
+   TGraph* graph_numu_efficiency_recomom_positron = new TGraph();
+   graph_numu_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_numu_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_recomom_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_recomom_positron->SetLineColor( kMagenta);
-   graph_bdt_efficiency_numu_recomom_positron->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_recomom_positron->SetLineWidth(2);
-   graph_bdt_efficiency_numu_recomom_positron->Draw("L same");
+   graph_numu_efficiency_recomom_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_recomom_positron->SetLineColor( kMagenta);
+   graph_numu_efficiency_recomom_positron->SetFillColor( kWhite);
+   graph_numu_efficiency_recomom_positron->SetLineWidth(2);
+   graph_numu_efficiency_recomom_positron->Draw("L same");
    
-   canvas_bdt_efficiency_numu_recomom_sig->BuildLegend();
-   canvas_bdt_efficiency_numu_recomom_sig->Write();
+   canvas_numu_efficiency_recomom_sig->BuildLegend();
+   canvas_numu_efficiency_recomom_sig->Write();
    
    // Efficiency vs theta
    
-   TCanvas* canvas_bdt_efficiency_numu_theta_sig = new TCanvas("canvas_bdt_efficiency_numu_theta_sig","canvas_bdt_efficiency_numu_theta_sig",200,10,1000,600);
+   TCanvas* canvas_numu_efficiency_theta_sig = new TCanvas("canvas_numu_efficiency_theta_sig","canvas_numu_efficiency_theta_sig",200,10,1000,600);
    
-   TGraph* graph_bdt_efficiency_numu_theta_antimu = new TGraph();
-   graph_bdt_efficiency_numu_theta_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
+   TGraph* graph_numu_efficiency_theta_antimu = new TGraph();
+   graph_numu_efficiency_theta_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_numu_theta_antimu->GetBinContent(bin))/(presel_theta_antimu->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_antimu->SetPoint(bin-1, presel_theta_antimu->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_theta_antimu->SetPoint(bin-1, presel_theta_antimu->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_theta_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_theta_antimu->SetLineColor( kBlue);
-   graph_bdt_efficiency_numu_theta_antimu->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_theta_antimu->SetLineWidth(2);
-   graph_bdt_efficiency_numu_theta_antimu->GetYaxis()->SetTitle("Efficiency");
-   graph_bdt_efficiency_numu_theta_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
-   graph_bdt_efficiency_numu_theta_antimu->Draw("AL");
+   graph_numu_efficiency_theta_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_theta_antimu->SetLineColor( kBlue);
+   graph_numu_efficiency_theta_antimu->SetFillColor( kWhite);
+   graph_numu_efficiency_theta_antimu->SetLineWidth(2);
+   graph_numu_efficiency_theta_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_numu_efficiency_theta_antimu->GetXaxis()->SetTitle("Reconstructed angle w.r.t. detector Z-axis (rad)");
+   graph_numu_efficiency_theta_antimu->Draw("AL");
    
-   TGraph* graph_bdt_efficiency_numu_theta_piplus = new TGraph();
-   graph_bdt_efficiency_numu_theta_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
+   TGraph* graph_numu_efficiency_theta_piplus = new TGraph();
+   graph_numu_efficiency_theta_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_numu_theta_piplus->GetBinContent(bin))/(presel_theta_piplus->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_piplus->SetPoint(bin-1, presel_theta_piplus->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_theta_piplus->SetPoint(bin-1, presel_theta_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_theta_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_theta_piplus->SetLineColor( kRed);
-   graph_bdt_efficiency_numu_theta_piplus->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_theta_piplus->SetLineWidth(2);
-   graph_bdt_efficiency_numu_theta_piplus->Draw("L same");
+   graph_numu_efficiency_theta_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_theta_piplus->SetLineColor( kRed);
+   graph_numu_efficiency_theta_piplus->SetFillColor( kWhite);
+   graph_numu_efficiency_theta_piplus->SetLineWidth(2);
+   graph_numu_efficiency_theta_piplus->Draw("L same");
    
-   TGraph* graph_bdt_efficiency_numu_theta_proton = new TGraph();
-   graph_bdt_efficiency_numu_theta_proton->SetTitle("p identified as p");
+   TGraph* graph_numu_efficiency_theta_proton = new TGraph();
+   graph_numu_efficiency_theta_proton->SetTitle("p identified as p");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_numu_theta_proton->GetBinContent(bin))/(presel_theta_proton->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_proton->SetPoint(bin-1, presel_theta_proton->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_theta_proton->SetPoint(bin-1, presel_theta_proton->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_theta_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_theta_proton->SetLineColor( kGreen);
-   graph_bdt_efficiency_numu_theta_proton->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_theta_proton->SetLineWidth(2);
-   graph_bdt_efficiency_numu_theta_proton->Draw("L same");
+   graph_numu_efficiency_theta_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_theta_proton->SetLineColor( kGreen);
+   graph_numu_efficiency_theta_proton->SetFillColor( kWhite);
+   graph_numu_efficiency_theta_proton->SetLineWidth(2);
+   graph_numu_efficiency_theta_proton->Draw("L same");
    
-   TGraph* graph_bdt_efficiency_numu_theta_positron = new TGraph();
-   graph_bdt_efficiency_numu_theta_positron->SetTitle("e^{+} identified as e^{+}");
+   TGraph* graph_numu_efficiency_theta_positron = new TGraph();
+   graph_numu_efficiency_theta_positron->SetTitle("e^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_numu_theta_positron->GetBinContent(bin))/(presel_theta_positron->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_positron->SetPoint(bin-1, presel_theta_positron->GetBinCenter(bin), efficiency);
+      graph_numu_efficiency_theta_positron->SetPoint(bin-1, presel_theta_positron->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_numu_theta_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_bdt_efficiency_numu_theta_positron->SetLineColor( kMagenta);
-   graph_bdt_efficiency_numu_theta_positron->SetFillColor( kWhite);
-   graph_bdt_efficiency_numu_theta_positron->SetLineWidth(2);
-   graph_bdt_efficiency_numu_theta_positron->Draw("L same");
+   graph_numu_efficiency_theta_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_theta_positron->SetLineColor( kMagenta);
+   graph_numu_efficiency_theta_positron->SetFillColor( kWhite);
+   graph_numu_efficiency_theta_positron->SetLineWidth(2);
+   graph_numu_efficiency_theta_positron->Draw("L same");
    
-   canvas_bdt_efficiency_numu_theta_sig->BuildLegend();
-   canvas_bdt_efficiency_numu_theta_sig->Write();
+   canvas_numu_efficiency_theta_sig->BuildLegend();
+   canvas_numu_efficiency_theta_sig->Write();
    
    std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
    
