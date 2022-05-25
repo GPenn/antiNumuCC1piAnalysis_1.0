@@ -261,7 +261,7 @@ void DefaultCustomPlotting_existingPID::Loop()
          
          // BDT strict positron cut
          
-         if (selmu_bdt_pid_e > 0.8)
+         if (selmu_bdt_pid_e > 0.9)
          {
             if (particle == -13) esel_strict_nAntimu++;
             if (particle == 211) esel_strict_nPiplus++;
