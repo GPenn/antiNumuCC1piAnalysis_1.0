@@ -62,6 +62,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t esel_nProton = 0;
    Int_t esel_nPositron = 0;
    
+   Int_t esel_strict_nAntimu = 0;
+   Int_t esel_strict_nPiplus = 0;
+   Int_t esel_strict_nProton = 0;
+   Int_t esel_strict_nPositron = 0;
+   
    TH1F* musel_recomom_antimu = new TH1F("musel_recomom_antimu", "#mu^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
    TH1F* musel_recomom_piplus = new TH1F("musel_recomom_piplus", "#pi^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
    TH1F* musel_recomom_proton = new TH1F("musel_recomom_proton", "p identified as #mu^{+}", 13, 200.0, 1500.0);
@@ -254,6 +259,16 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == -11) {esel_nPositron++; esel_recomom_positron->Fill(selmu_mom[0]); esel_theta_positron->Fill(selmu_det_theta);}
          }
          
+         // BDT strict positron cut
+         
+         if (selmu_bdt_pid_e > 0.8)
+         {
+            if (particle == -13) esel_strict_nAntimu++;
+            if (particle == 211) esel_strict_nPiplus++;
+            if (particle == 2212) esel_strict_nProton++;
+            if (particle == -11) esel_strict_nPositron++; 
+         }
+         
          // TPC likelihoods:
          
          if ((selmu_tpc_like_mu > selmu_tpc_like_pi) && (selmu_tpc_like_mu > selmu_tpc_like_p) && (selmu_tpc_like_mu > selmu_tpc_like_e))
@@ -403,6 +418,13 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Stricter electron-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_strict_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_strict_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_strict_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_strict_nPositron/presel_nPositron << std::endl;
    
    // Efficiency vs recomom
    
