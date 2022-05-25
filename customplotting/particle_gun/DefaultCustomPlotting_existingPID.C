@@ -594,8 +594,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_recomom_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(musel_numu_recomom_antimu->GetBinContent(bin))/(presel_numu_recomom_antimu->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_antimu->SetPoint(bin-1, presel_numu_recomom_antimu->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(musel_numu_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_recomom_antimu->SetLineColor( kBlue);
@@ -609,8 +609,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_recomom_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(pisel_numu_recomom_piplus->GetBinContent(bin))/(presel_numu_recomom_piplus->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_piplus->SetPoint(bin-1, presel_numu_recomom_piplus->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(pisel_numu_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_recomom_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_recomom_piplus->SetLineColor( kRed);
@@ -622,8 +622,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_recomom_proton->SetTitle("p identified as p");
    for (Int_t bin=2; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(psel_numu_recomom_proton->GetBinContent(bin))/(presel_numu_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_proton->SetPoint(bin-2, presel_numu_recomom_proton->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(psel_numu_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_recomom_proton->SetLineColor( kGreen);
@@ -635,8 +635,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_recomom_positron->SetTitle("e^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(esel_numu_recomom_positron->GetBinContent(bin))/(presel_numu_recomom_positron->GetBinContent(bin));
-      graph_bdt_efficiency_numu_recomom_positron->SetPoint(bin-1, presel_numu_recomom_positron->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(esel_numu_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_recomom_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_recomom_positron->SetLineColor( kMagenta);
@@ -655,8 +655,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_theta_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(musel_numu_theta_antimu->GetBinContent(bin))/(presel_numu_theta_antimu->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_antimu->SetPoint(bin-1, presel_numu_theta_antimu->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(musel_numu_theta_antimu->GetBinContent(bin))/(presel_theta_antimu->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_antimu->SetPoint(bin-1, presel_theta_antimu->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_theta_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_theta_antimu->SetLineColor( kBlue);
@@ -670,8 +670,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_theta_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(pisel_numu_theta_piplus->GetBinContent(bin))/(presel_numu_theta_piplus->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_piplus->SetPoint(bin-1, presel_numu_theta_piplus->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(pisel_numu_theta_piplus->GetBinContent(bin))/(presel_theta_piplus->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_piplus->SetPoint(bin-1, presel_theta_piplus->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_theta_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_theta_piplus->SetLineColor( kRed);
@@ -683,8 +683,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_theta_proton->SetTitle("p identified as p");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(psel_numu_theta_proton->GetBinContent(bin))/(presel_numu_theta_proton->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_proton->SetPoint(bin-1, presel_numu_theta_proton->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(psel_numu_theta_proton->GetBinContent(bin))/(presel_theta_proton->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_proton->SetPoint(bin-1, presel_theta_proton->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_theta_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_theta_proton->SetLineColor( kGreen);
@@ -696,8 +696,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_numu_theta_positron->SetTitle("e^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(esel_numu_theta_positron->GetBinContent(bin))/(presel_numu_theta_positron->GetBinContent(bin));
-      graph_bdt_efficiency_numu_theta_positron->SetPoint(bin-1, presel_numu_theta_positron->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(esel_numu_theta_positron->GetBinContent(bin))/(presel_theta_positron->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_positron->SetPoint(bin-1, presel_theta_positron->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_numu_theta_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_bdt_efficiency_numu_theta_positron->SetLineColor( kMagenta);
