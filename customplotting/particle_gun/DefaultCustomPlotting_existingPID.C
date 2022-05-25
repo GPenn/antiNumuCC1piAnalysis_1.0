@@ -119,6 +119,40 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t nosel_numu_nProton = 0;
    Int_t nosel_numu_nPositron = 0;
    
+   TH1F* musel_numu_recomom_antimu = new TH1F("musel_numu_recomom_antimu", "#mu^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_numu_recomom_piplus = new TH1F("musel_numu_recomom_piplus", "#pi^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_numu_recomom_proton = new TH1F("musel_numu_recomom_proton", "p identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_numu_recomom_positron = new TH1F("musel_numu_recomom_positron", "e^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_numu_recomom_antimu = new TH1F("pisel_numu_recomom_antimu", "#mu^{+} identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_numu_recomom_piplus = new TH1F("pisel_numu_recomom_piplus", "#pi^{+} identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_numu_recomom_proton = new TH1F("pisel_numu_recomom_proton", "p identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_numu_recomom_positron = new TH1F("pisel_numu_recomom_positron", "e^{+} identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* psel_numu_recomom_antimu = new TH1F("psel_numu_recomom_antimu", "#mu^{+} identified as p", 13, 200.0, 1500.0);
+   TH1F* psel_numu_recomom_piplus = new TH1F("psel_numu_recomom_piplus", "#pi^{+} identified as p", 13, 200.0, 1500.0);
+   TH1F* psel_numu_recomom_proton = new TH1F("psel_numu_recomom_proton", "p identified as p", 13, 200.0, 1500.0);
+   TH1F* psel_numu_recomom_positron = new TH1F("psel_numu_recomom_positron", "e^{+} identified as p", 13, 200.0, 1500.0);
+   TH1F* esel_numu_recomom_antimu = new TH1F("esel_numu_recomom_antimu", "#mu^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_numu_recomom_piplus = new TH1F("esel_numu_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_numu_recomom_proton = new TH1F("esel_numu_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_numu_recomom_positron = new TH1F("esel_numu_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
+   TH1F* musel_numu_theta_antimu = new TH1F("musel_numu_theta_antimu", "#mu^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* musel_numu_theta_piplus = new TH1F("musel_numu_theta_piplus", "#pi^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* musel_numu_theta_proton = new TH1F("musel_numu_theta_proton", "p identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* musel_numu_theta_positron = new TH1F("musel_numu_theta_positron", "e^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_numu_theta_antimu = new TH1F("pisel_numu_theta_antimu", "#mu^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_numu_theta_piplus = new TH1F("pisel_numu_theta_piplus", "#pi^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_numu_theta_proton = new TH1F("pisel_numu_theta_proton", "p identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* pisel_numu_theta_positron = new TH1F("pisel_numu_theta_positron", "e^{+} identified as #pi^{+}", 13, 0.0, 1.0472);
+   TH1F* psel_numu_theta_antimu = new TH1F("psel_numu_theta_antimu", "#mu^{+} identified as p", 13, 0.0, 1.0472);
+   TH1F* psel_numu_theta_piplus = new TH1F("psel_numu_theta_piplus", "#pi^{+} identified as p", 13, 0.0, 1.0472);
+   TH1F* psel_numu_theta_proton = new TH1F("psel_numu_theta_proton", "p identified as p", 13, 0.0, 1.0472);
+   TH1F* psel_numu_theta_positron = new TH1F("psel_numu_theta_positron", "e^{+} identified as p", 13, 0.0, 1.0472);
+   TH1F* esel_numu_theta_antimu = new TH1F("esel_numu_theta_antimu", "#mu^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   TH1F* esel_numu_theta_piplus = new TH1F("esel_numu_theta_piplus", "#pi^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   TH1F* esel_numu_theta_proton = new TH1F("esel_numu_theta_proton", "p identified as e^{+}", 13, 0.0, 1.0472);
+   TH1F* esel_numu_theta_positron = new TH1F("esel_numu_theta_positron", "e^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   
    // Existing nue selection
    
    Int_t musel_nue_nAntimu = 0;
@@ -258,31 +292,31 @@ void DefaultCustomPlotting_existingPID::Loop()
          
          if (((selmu_tpc_like_mu+selmu_tpc_like_pi)/(1-selmu_tpc_like_p) > 0.9 || selmu_mom[0] > 500.0 ) && (selmu_tpc_like_mu>0.1))
          {
-            if (particle == -13) musel_numu_nAntimu++;
-            if (particle == 211) musel_numu_nPiplus++;
-            if (particle == 2212) musel_numu_nProton++;
-            if (particle == -11) musel_numu_nPositron++;
+            if (particle == -13) {musel_numu_nAntimu++; musel_numu_recomom_antimu->Fill(selmu_mom[0]); musel_numu_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {musel_numu_nPiplus++; musel_numu_recomom_piplus->Fill(selmu_mom[0]); musel_numu_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {musel_numu_nProton++; musel_numu_recomom_proton->Fill(selmu_mom[0]); musel_numu_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {musel_numu_nPositron++; musel_numu_recomom_positron->Fill(selmu_mom[0]); musel_numu_theta_positron->Fill(selmu_det_theta);}
          }
          if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
          {
-            if (particle == -13) pisel_numu_nAntimu++;
-            if (particle == 211) pisel_numu_nPiplus++;
-            if (particle == 2212) pisel_numu_nProton++;
-            if (particle == -11) pisel_numu_nPositron++;
+            if (particle == -13) {pisel_numu_nAntimu++; pisel_numu_recomom_antimu->Fill(selmu_mom[0]); pisel_numu_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {pisel_numu_nPiplus++; pisel_numu_recomom_piplus->Fill(selmu_mom[0]); pisel_numu_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {pisel_numu_nProton++; pisel_numu_recomom_proton->Fill(selmu_mom[0]); pisel_numu_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {pisel_numu_nPositron++; pisel_numu_recomom_positron->Fill(selmu_mom[0]); pisel_numu_theta_positron->Fill(selmu_det_theta);}
          }
          else if ((selmu_tpc_like_e > selmu_tpc_like_p) && (selmu_tpc_like_e > selmu_tpc_like_pi) && (selmu_mom[0] < 900.0))
          {
-            if (particle == -13) esel_numu_nAntimu++;
-            if (particle == 211) esel_numu_nPiplus++;
-            if (particle == 2212) esel_numu_nProton++;
-            if (particle == -11) esel_numu_nPositron++;
+            if (particle == -13) {esel_numu_nAntimu++; esel_numu_recomom_antimu->Fill(selmu_mom[0]); esel_numu_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {esel_numu_nPiplus++; esel_numu_recomom_piplus->Fill(selmu_mom[0]); esel_numu_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {esel_numu_nProton++; esel_numu_recomom_proton->Fill(selmu_mom[0]); esel_numu_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {esel_numu_nPositron++; esel_numu_recomom_positron->Fill(selmu_mom[0]); esel_numu_theta_positron->Fill(selmu_det_theta);}
          }
          else //if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
          {
-            if (particle == -13) psel_numu_nAntimu++;
-            if (particle == 211) psel_numu_nPiplus++;
-            if (particle == 2212) psel_numu_nProton++;
-            if (particle == -11) psel_numu_nPositron++;
+            if (particle == -13) {psel_numu_nAntimu++; psel_numu_recomom_antimu->Fill(selmu_mom[0]); psel_numu_theta_antimu->Fill(selmu_det_theta);}
+            if (particle == 211) {psel_numu_nPiplus++; psel_numu_recomom_piplus->Fill(selmu_mom[0]); psel_numu_theta_piplus->Fill(selmu_det_theta);}
+            if (particle == 2212) {psel_numu_nProton++; psel_numu_recomom_proton->Fill(selmu_mom[0]); psel_numu_theta_proton->Fill(selmu_det_theta);}
+            if (particle == -11) {psel_numu_nPositron++; psel_numu_recomom_positron->Fill(selmu_mom[0]); psel_numu_theta_positron->Fill(selmu_det_theta);}
          }
          
          // nue selection
@@ -369,73 +403,6 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "================ TPC LLRS ================" << std::endl << std::endl;
-   
-   std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " <<  (Float_t)musel_tpc_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)musel_tpc_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)musel_tpc_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)musel_tpc_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "=========== Pi-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)pisel_tpc_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)pisel_tpc_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)pisel_tpc_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)pisel_tpc_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "=========== Proton-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)psel_tpc_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)psel_tpc_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)psel_tpc_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)psel_tpc_nPositron/presel_nPositron << std::endl;
-  
-   std::cout << "=========== Electron-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)esel_tpc_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)esel_tpc_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)esel_tpc_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)esel_tpc_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
-   
-   std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " <<  (Float_t)musel_numu_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)musel_numu_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)musel_numu_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)musel_numu_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "=========== Pi-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)pisel_numu_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)pisel_numu_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)pisel_numu_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)pisel_numu_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "=========== Proton-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)psel_numu_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)psel_numu_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)psel_numu_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)psel_numu_nPositron/presel_nPositron << std::endl;
-  
-   std::cout << "=========== Electron-like ===========" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)esel_numu_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)esel_numu_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)esel_numu_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)esel_numu_nPositron/presel_nPositron << std::endl;
-   
-   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
-   
-   std::cout << "mu+ efficiency: " << (Float_t)esel_nue_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)esel_nue_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)esel_nue_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)esel_nue_nPositron/presel_nPositron << std::endl;
    
    // Efficiency vs recomom
    
@@ -558,6 +525,197 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    canvas_bdt_efficiency_theta_sig->BuildLegend();
    canvas_bdt_efficiency_theta_sig->Write();
+   
+   std::cout << "================ TPC LLRS ================" << std::endl << std::endl;
+   
+   std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " <<  (Float_t)musel_tpc_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_tpc_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_tpc_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_tpc_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Pi-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)pisel_tpc_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)pisel_tpc_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)pisel_tpc_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)pisel_tpc_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Proton-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)psel_tpc_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)psel_tpc_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)psel_tpc_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)psel_tpc_nPositron/presel_nPositron << std::endl;
+  
+   std::cout << "=========== Electron-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_tpc_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_tpc_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_tpc_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_tpc_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
+   
+   std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " <<  (Float_t)musel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_numu_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Pi-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)pisel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)pisel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)pisel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)pisel_numu_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Proton-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)psel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)psel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)psel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)psel_numu_nPositron/presel_nPositron << std::endl;
+  
+   std::cout << "=========== Electron-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_numu_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_numu_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_numu_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_numu_nPositron/presel_nPositron << std::endl;
+   
+   // Efficiency vs recomom
+   
+   TCanvas* canvas_bdt_efficiency_numu_recomom_sig = new TCanvas("canvas_bdt_efficiency_numu_recomom_sig","canvas_bdt_efficiency_numu_recomom_sig",200,10,1000,600);
+   
+   TGraph* graph_bdt_efficiency_numu_recomom_antimu = new TGraph();
+   graph_bdt_efficiency_numu_recomom_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_numu_recomom_antimu->GetBinContent(bin))/(presel_numu_recomom_antimu->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_antimu->SetPoint(bin-1, presel_numu_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_recomom_antimu->SetLineColor( kBlue);
+   graph_bdt_efficiency_numu_recomom_antimu->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_recomom_antimu->SetLineWidth(2);
+   graph_bdt_efficiency_numu_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_numu_recomom_antimu->GetXaxis()->SetTitle("Reconstructed angle w.r.t. detector Z-axis (rad)");
+   graph_bdt_efficiency_numu_recomom_antimu->Draw("AL");
+   
+   TGraph* graph_bdt_efficiency_numu_recomom_piplus = new TGraph();
+   graph_bdt_efficiency_numu_recomom_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(pisel_numu_recomom_piplus->GetBinContent(bin))/(presel_numu_recomom_piplus->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_piplus->SetPoint(bin-1, presel_numu_recomom_piplus->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_recomom_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_recomom_piplus->SetLineColor( kRed);
+   graph_bdt_efficiency_numu_recomom_piplus->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_recomom_piplus->SetLineWidth(2);
+   graph_bdt_efficiency_numu_recomom_piplus->Draw("L same");
+   
+   TGraph* graph_bdt_efficiency_numu_recomom_proton = new TGraph();
+   graph_bdt_efficiency_numu_recomom_proton->SetTitle("p identified as p");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(psel_numu_recomom_proton->GetBinContent(bin))/(presel_numu_recomom_proton->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_proton->SetPoint(bin-2, presel_numu_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_recomom_proton->SetLineColor( kGreen);
+   graph_bdt_efficiency_numu_recomom_proton->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_recomom_proton->SetLineWidth(2);
+   graph_bdt_efficiency_numu_recomom_proton->Draw("L same");
+   
+   TGraph* graph_bdt_efficiency_numu_recomom_positron = new TGraph();
+   graph_bdt_efficiency_numu_recomom_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_numu_recomom_positron->GetBinContent(bin))/(presel_numu_recomom_positron->GetBinContent(bin));
+      graph_bdt_efficiency_numu_recomom_positron->SetPoint(bin-1, presel_numu_recomom_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_recomom_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_recomom_positron->SetLineColor( kMagenta);
+   graph_bdt_efficiency_numu_recomom_positron->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_recomom_positron->SetLineWidth(2);
+   graph_bdt_efficiency_numu_recomom_positron->Draw("L same");
+   
+   canvas_bdt_efficiency_numu_recomom_sig->BuildLegend();
+   canvas_bdt_efficiency_numu_recomom_sig->Write();
+   
+   // Efficiency vs theta
+   
+   TCanvas* canvas_bdt_efficiency_numu_theta_sig = new TCanvas("canvas_bdt_efficiency_numu_theta_sig","canvas_bdt_efficiency_numu_theta_sig",200,10,1000,600);
+   
+   TGraph* graph_bdt_efficiency_numu_theta_antimu = new TGraph();
+   graph_bdt_efficiency_numu_theta_antimu->SetTitle("#mu^{+} identified as #mu^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_numu_theta_antimu->GetBinContent(bin))/(presel_numu_theta_antimu->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_antimu->SetPoint(bin-1, presel_numu_theta_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_theta_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_theta_antimu->SetLineColor( kBlue);
+   graph_bdt_efficiency_numu_theta_antimu->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_theta_antimu->SetLineWidth(2);
+   graph_bdt_efficiency_numu_theta_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_numu_theta_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_numu_theta_antimu->Draw("AL");
+   
+   TGraph* graph_bdt_efficiency_numu_theta_piplus = new TGraph();
+   graph_bdt_efficiency_numu_theta_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(pisel_numu_theta_piplus->GetBinContent(bin))/(presel_numu_theta_piplus->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_piplus->SetPoint(bin-1, presel_numu_theta_piplus->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_theta_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_theta_piplus->SetLineColor( kRed);
+   graph_bdt_efficiency_numu_theta_piplus->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_theta_piplus->SetLineWidth(2);
+   graph_bdt_efficiency_numu_theta_piplus->Draw("L same");
+   
+   TGraph* graph_bdt_efficiency_numu_theta_proton = new TGraph();
+   graph_bdt_efficiency_numu_theta_proton->SetTitle("p identified as p");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(psel_numu_theta_proton->GetBinContent(bin))/(presel_numu_theta_proton->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_proton->SetPoint(bin-1, presel_numu_theta_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_theta_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_theta_proton->SetLineColor( kGreen);
+   graph_bdt_efficiency_numu_theta_proton->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_theta_proton->SetLineWidth(2);
+   graph_bdt_efficiency_numu_theta_proton->Draw("L same");
+   
+   TGraph* graph_bdt_efficiency_numu_theta_positron = new TGraph();
+   graph_bdt_efficiency_numu_theta_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_numu_theta_positron->GetBinContent(bin))/(presel_numu_theta_positron->GetBinContent(bin));
+      graph_bdt_efficiency_numu_theta_positron->SetPoint(bin-1, presel_numu_theta_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_efficiency_numu_theta_positron->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_numu_theta_positron->SetLineColor( kMagenta);
+   graph_bdt_efficiency_numu_theta_positron->SetFillColor( kWhite);
+   graph_bdt_efficiency_numu_theta_positron->SetLineWidth(2);
+   graph_bdt_efficiency_numu_theta_positron->Draw("L same");
+   
+   canvas_bdt_efficiency_numu_theta_sig->BuildLegend();
+   canvas_bdt_efficiency_numu_theta_sig->Write();
+   
+   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_nue_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_nue_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_nue_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_nue_nPositron/presel_nPositron << std::endl;
+   
+   
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
