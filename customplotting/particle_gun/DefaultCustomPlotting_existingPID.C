@@ -503,7 +503,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_recomom_p_as_mu = new TGraph();
    graph_bdt_efficiency_recomom_p_as_mu->SetTitle("p identified as #mu^{+}");
-   for (Int_t bin=1; bin <= 13; bin++)
+   for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
       graph_bdt_efficiency_recomom_p_as_mu->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
@@ -539,7 +539,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_recomom_p_as_pi = new TGraph();
    graph_bdt_efficiency_recomom_p_as_pi->SetTitle("p identified as #pi^{+}");
-   for (Int_t bin=1; bin <= 13; bin++)
+   for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
       graph_bdt_efficiency_recomom_p_as_pi->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
@@ -623,7 +623,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TGraph* graph_bdt_efficiency_recomom_p_as_e = new TGraph();
    graph_bdt_efficiency_recomom_p_as_e->SetTitle("p identified as e^{+}");
-   for (Int_t bin=1; bin <= 13; bin++)
+   for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
       graph_bdt_efficiency_recomom_p_as_e->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
