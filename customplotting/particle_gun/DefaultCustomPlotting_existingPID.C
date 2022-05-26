@@ -506,7 +506,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(musel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_recomom_p_as_mu->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_p_as_mu->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_recomom_p_as_mu->SetLineColor( kGreen);
    graph_bdt_efficiency_recomom_p_as_mu->SetFillColor( kWhite);
@@ -542,7 +542,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(pisel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_recomom_p_as_pi->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_p_as_pi->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_recomom_p_as_pi->SetLineColor( kGreen+1);
    graph_bdt_efficiency_recomom_p_as_pi->SetFillColor( kWhite);
@@ -626,7 +626,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdt_efficiency_recomom_p_as_e->SetPoint(bin-1, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_bdt_efficiency_recomom_p_as_e->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
    graph_bdt_efficiency_recomom_p_as_e->SetLineColor( kGreen+2);
    graph_bdt_efficiency_recomom_p_as_e->SetFillColor( kWhite);
