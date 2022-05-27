@@ -959,7 +959,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_nue_efficiency_recomom_positron->SetLineColor( kMagenta);
    graph_nue_efficiency_recomom_positron->SetFillColor( kWhite);
    graph_nue_efficiency_recomom_positron->SetLineWidth(2);
-   graph_nue_efficiency_recomom_antimu->Draw("AL");
+   graph_nue_efficiency_recomom_positron->Draw("AL");
    
    canvas_nue_efficiency_recomom_sig->BuildLegend();
    canvas_nue_efficiency_recomom_sig->Write();
