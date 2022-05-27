@@ -947,7 +947,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_elike_strict2_efficiency_recomom_positron->SetLineColor( kMagenta);
    graph_bdt_elike_strict2_efficiency_recomom_positron->SetFillColor( kWhite);
    graph_bdt_elike_strict2_efficiency_recomom_positron->SetLineWidth(2);
-   graph_bdt_elike_strict2_efficiency_recomom_positron->Draw("AL");
+   graph_bdt_elike_strict2_efficiency_recomom_positron->Draw("L same");
    
    TGraph* graph_nue_efficiency_recomom_positron = new TGraph();
    graph_nue_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
@@ -959,7 +959,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_nue_efficiency_recomom_positron->SetLineColor( kMagenta);
    graph_nue_efficiency_recomom_positron->SetFillColor( kWhite);
    graph_nue_efficiency_recomom_positron->SetLineWidth(2);
-   graph_nue_efficiency_recomom_positron->Draw("AL");
+   graph_nue_efficiency_recomom_positron->Draw("L same");
    
    canvas_nue_efficiency_recomom_sig->BuildLegend();
    canvas_nue_efficiency_recomom_sig->Write();
