@@ -17,9 +17,6 @@ void DefaultCustomPlotting_existingPID::Loop()
    gStyle->SetTitleXOffset(1.2);
    
    
-   TString parameter = "treenumber";
-   
-   
    if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntries();
@@ -62,10 +59,15 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t esel_nProton = 0;
    Int_t esel_nPositron = 0;
    
-   Int_t esel_strict_nAntimu = 0;
-   Int_t esel_strict_nPiplus = 0;
-   Int_t esel_strict_nProton = 0;
-   Int_t esel_strict_nPositron = 0;
+   Int_t esel_strict1_nAntimu = 0;
+   Int_t esel_strict1_nPiplus = 0;
+   Int_t esel_strict1_nProton = 0;
+   Int_t esel_strict1_nPositron = 0;
+   
+   Int_t esel_strict2_nAntimu = 0;
+   Int_t esel_strict2_nPiplus = 0;
+   Int_t esel_strict2_nProton = 0;
+   Int_t esel_strict2_nPositron = 0;
    
    TH1F* musel_recomom_antimu = new TH1F("musel_recomom_antimu", "#mu^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
    TH1F* musel_recomom_piplus = new TH1F("musel_recomom_piplus", "#pi^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
@@ -83,6 +85,16 @@ void DefaultCustomPlotting_existingPID::Loop()
    TH1F* esel_recomom_piplus = new TH1F("esel_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_recomom_proton = new TH1F("esel_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_recomom_positron = new TH1F("esel_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
+   TH1F* esel_strict1_recomom_antimu = new TH1F("esel_strict1_recomom_antimu", "#mu^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_strict1_recomom_piplus = new TH1F("esel_strict1_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_strict1_recomom_proton = new TH1F("esel_strict1_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_strict1_recomom_positron = new TH1F("esel_strict1_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
+   TH1F* esel_strict2_recomom_antimu = new TH1F("esel_strict2_recomom_antimu", "#mu^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_strict2_recomom_piplus = new TH1F("esel_strict2_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_strict2_recomom_proton = new TH1F("esel_strict2_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_strict2_recomom_positron = new TH1F("esel_strict2_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
    
    TH1F* musel_theta_antimu = new TH1F("musel_theta_antimu", "#mu^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
    TH1F* musel_theta_piplus = new TH1F("musel_theta_piplus", "#pi^{+} identified as #mu^{+}", 13, 0.0, 1.0472);
@@ -181,6 +193,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t nosel_nue_nProton = 0;
    Int_t nosel_nue_nPositron = 0;
    
+   TH1F* esel_nue_recomom_antimu = new TH1F("esel_nue_recomom_antimu", "#mu^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_nue_recomom_piplus = new TH1F("esel_nue_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_nue_recomom_proton = new TH1F("esel_nue_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_nue_recomom_positron = new TH1F("esel_nue_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
    // TPC likelihood PID
    
    Int_t musel_tpc_nAntimu = 0;
@@ -261,12 +278,20 @@ void DefaultCustomPlotting_existingPID::Loop()
          
          // BDT strict positron cut
          
+         if (selmu_bdt_pid_e > 0.8)
+         {
+            if (particle == -13) {esel_strict1_nAntimu++; esel_strict1_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {esel_strict1_nPiplus++; esel_strict1_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {esel_strict1_nProton++; esel_strict1_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {esel_strict1_nPositron++; esel_strict1_recomom_positron->Fill(selmu_mom[0]);}
+         }
+         
          if (selmu_bdt_pid_e > 0.9)
          {
-            if (particle == -13) esel_strict_nAntimu++;
-            if (particle == 211) esel_strict_nPiplus++;
-            if (particle == 2212) esel_strict_nProton++;
-            if (particle == -11) esel_strict_nPositron++; 
+            if (particle == -13) {esel_strict2_nAntimu++; esel_strict2_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {esel_strict2_nPiplus++; esel_strict2_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {esel_strict2_nProton++; esel_strict2_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {esel_strict2_nPositron++; esel_strict2_recomom_positron->Fill(selmu_mom[0]);}
          }
          
          // TPC likelihoods:
@@ -346,10 +371,10 @@ void DefaultCustomPlotting_existingPID::Loop()
                {
                   if ( (selmu_mom[0]<600) || (selmu_necals==0) || (selmu_ecal_EMenergy[0]/selmu_mom[0]>0.65 && selmu_ecal_mipem[0]<0) ) // Proton ECal PID
                   {
-                     if (particle == -13) esel_nue_nAntimu++;
-                     if (particle == 211) esel_nue_nPiplus++;
-                     if (particle == 2212) esel_nue_nProton++;
-                     if (particle == -11) esel_nue_nPositron++;
+                     if (particle == -13) {esel_nue_nAntimu++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
+                     if (particle == 211) {esel_nue_nPiplus++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
+                     if (particle == 2212) {esel_nue_nProton++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
+                     if (particle == -11) {esel_nue_nPositron++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
                   }
                }
             }
