@@ -923,6 +923,49 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TCanvas* canvas_nue_efficiency_recomom_sig = new TCanvas("canvas_nue_efficiency_recomom_sig","canvas_nue_efficiency_recomom_sig",200,10,1000,600);
    
+   TGraph* graph_bdt_elike_strict1_efficiency_recomom_positron = new TGraph();
+   graph_bdt_elike_strict1_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_strict1_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
+      graph_bdt_elike_strict1_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_elike_strict1_efficiency_recomom_positron->SetLineColor( kMagenta);
+   graph_bdt_elike_strict1_efficiency_recomom_positron->SetFillColor( kWhite);
+   graph_bdt_elike_strict1_efficiency_recomom_positron->SetLineWidth(2);
+   graph_bdt_elike_strict1_efficiency_recomom_positron->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_elike_strict1_efficiency_recomom_positron->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_elike_strict1_efficiency_recomom_positron->Draw("AL");
+   
+   TGraph* graph_bdt_elike_strict2_efficiency_recomom_positron = new TGraph();
+   graph_bdt_elike_strict2_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_strict2_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
+      graph_bdt_elike_strict2_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_elike_strict2_efficiency_recomom_positron->SetLineColor( kMagenta);
+   graph_bdt_elike_strict2_efficiency_recomom_positron->SetFillColor( kWhite);
+   graph_bdt_elike_strict2_efficiency_recomom_positron->SetLineWidth(2);
+   graph_bdt_elike_strict2_efficiency_recomom_positron->Draw("AL");
+   
+   TGraph* graph_nue_efficiency_recomom_positron = new TGraph();
+   graph_nue_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_nue_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
+      graph_nue_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_nue_efficiency_recomom_positron->SetLineColor( kMagenta);
+   graph_nue_efficiency_recomom_positron->SetFillColor( kWhite);
+   graph_nue_efficiency_recomom_positron->SetLineWidth(2);
+   graph_nue_efficiency_recomom_antimu->Draw("AL");
+   
+   canvas_nue_efficiency_recomom_sig->BuildLegend();
+   canvas_nue_efficiency_recomom_sig->Write();
+   
+   TCanvas* canvas_nue_efficiency_recomom_bkg = new TCanvas("canvas_nue_efficiency_recomom_bkg","canvas_nue_efficiency_recomom_bkg",200,10,1000,600);
+   
    TGraph* graph_nue_efficiency_recomom_antimu = new TGraph();
    graph_nue_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
@@ -962,20 +1005,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_nue_efficiency_recomom_proton->SetLineWidth(2);
    graph_nue_efficiency_recomom_proton->Draw("L same");
    
-   TGraph* graph_nue_efficiency_recomom_positron = new TGraph();
-   graph_nue_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
-   for (Int_t bin=1; bin <= 13; bin++)
-   {
-      Float_t efficiency = (float)(esel_nue_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
-      graph_nue_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
-   }
-   graph_nue_efficiency_recomom_positron->SetLineColor( kMagenta);
-   graph_nue_efficiency_recomom_positron->SetFillColor( kWhite);
-   graph_nue_efficiency_recomom_positron->SetLineWidth(2);
-   graph_nue_efficiency_recomom_positron->Draw("L same");
-   
-   canvas_nue_efficiency_recomom_sig->BuildLegend();
-   canvas_nue_efficiency_recomom_sig->Write();
+   canvas_nue_efficiency_recomom_bkg->BuildLegend();
+   canvas_nue_efficiency_recomom_bkg->Write();
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
