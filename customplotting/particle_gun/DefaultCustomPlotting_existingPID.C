@@ -904,7 +904,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    canvas_numu_efficiency_theta_sig->BuildLegend();
    canvas_numu_efficiency_theta_sig->Write();
    
-   std::cout << "================ NUMU SELECTION ================" << std::endl << std::endl;
+   std::cout << "================ NUE SELECTION ================" << std::endl << std::endl;
    
    std::cout << "mu+ efficiency: " << (Float_t)esel_nue_nAntimu/presel_nAntimu << std::endl;
    std::cout << "pi+ efficiency: " << (Float_t)esel_nue_nPiplus/presel_nPiplus << std::endl;
@@ -912,6 +912,39 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "e+ efficiency: " << (Float_t)esel_nue_nPositron/presel_nPositron << std::endl;
    
    
+   // Positron efficiency comparison:
+   
+   TCanvas* canvas_nue_efficiency_recomom_sig = new TCanvas("canvas_nue_efficiency_recomom_sig","canvas_nue_efficiency_recomom_sig",200,10,1000,600);
+   
+   TGraph* graph_nue_efficiency_recomom_antimu = new TGraph();
+   graph_nue_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_nue_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_nue_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_nue_efficiency_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_nue_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_nue_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_nue_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_nue_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
+   graph_nue_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_nue_efficiency_recomom_antimu->Draw("AL");
+   
+   TGraph* graph_nue_efficiency_recomom_piplus = new TGraph();
+   graph_nue_efficiency_recomom_piplus->SetTitle("#pi^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_nue_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
+      graph_nue_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
+   }
+   graph_nue_efficiency_recomom_piplus->SetLineColor( kRed);
+   graph_nue_efficiency_recomom_piplus->SetFillColor( kWhite);
+   graph_nue_efficiency_recomom_piplus->SetLineWidth(2);
+   graph_nue_efficiency_recomom_piplus->Draw("L same");
+   
+   canvas_nue_efficiency_recomom_sig->BuildLegend();
+   canvas_nue_efficiency_recomom_sig->Write();
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
