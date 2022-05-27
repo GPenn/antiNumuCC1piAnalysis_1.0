@@ -372,9 +372,9 @@ void DefaultCustomPlotting_existingPID::Loop()
                   if ( (selmu_mom[0]<600) || (selmu_necals==0) || (selmu_ecal_EMenergy[0]/selmu_mom[0]>0.65 && selmu_ecal_mipem[0]<0) ) // Proton ECal PID
                   {
                      if (particle == -13) {esel_nue_nAntimu++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
-                     if (particle == 211) {esel_nue_nPiplus++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
-                     if (particle == 2212) {esel_nue_nProton++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
-                     if (particle == -11) {esel_nue_nPositron++; esel_nue_recomom_antimu->Fill(selmu_mom[0]);}
+                     if (particle == 211) {esel_nue_nPiplus++; esel_nue_recomom_piplus->Fill(selmu_mom[0]);}
+                     if (particle == 2212) {esel_nue_nProton++; esel_nue_recomom_proton->Fill(selmu_mom[0]);}
+                     if (particle == -11) {esel_nue_nPositron++; esel_nue_recomom_positron->Fill(selmu_mom[0]);}
                   }
                }
             }
