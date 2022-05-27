@@ -943,6 +943,30 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_nue_efficiency_recomom_piplus->SetLineWidth(2);
    graph_nue_efficiency_recomom_piplus->Draw("L same");
    
+   TGraph* graph_nue_efficiency_recomom_proton = new TGraph();
+   graph_nue_efficiency_recomom_proton->SetTitle("p identified as e^{+}");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_nue_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_nue_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_nue_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_nue_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_nue_efficiency_recomom_proton->SetLineWidth(2);
+   graph_nue_efficiency_recomom_proton->Draw("L same");
+   
+   TGraph* graph_nue_efficiency_recomom_positron = new TGraph();
+   graph_nue_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_nue_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
+      graph_nue_efficiency_recomom_positron->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
+   }
+   graph_nue_efficiency_recomom_positron->SetLineColor( kMagenta);
+   graph_nue_efficiency_recomom_positron->SetFillColor( kWhite);
+   graph_nue_efficiency_recomom_positron->SetLineWidth(2);
+   graph_nue_efficiency_recomom_positron->Draw("L same");
+   
    canvas_nue_efficiency_recomom_sig->BuildLegend();
    canvas_nue_efficiency_recomom_sig->Write();
      
