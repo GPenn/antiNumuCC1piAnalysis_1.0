@@ -444,12 +444,19 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
    
-   std::cout << "=========== Stricter electron-like ===========" << std::endl << std::endl;
+   std::cout << "=========== Stricter electron-like (>0.8) ===========" << std::endl << std::endl;
    
-   std::cout << "mu+ efficiency: " << (Float_t)esel_strict_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)esel_strict_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)esel_strict_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)esel_strict_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)esel_strict1_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_strict1_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_strict1_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_strict1_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Stricter electron-like (>0.9) ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)esel_strict2_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_strict2_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_strict2_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_strict2_nPositron/presel_nPositron << std::endl;
    
    // Efficiency vs recomom
    
