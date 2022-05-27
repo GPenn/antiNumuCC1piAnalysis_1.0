@@ -924,7 +924,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    TCanvas* canvas_nue_efficiency_recomom_sig = new TCanvas("canvas_nue_efficiency_recomom_sig","canvas_nue_efficiency_recomom_sig",200,10,1000,600);
    
    TGraph* graph_nue_efficiency_recomom_positron = new TGraph();
-   graph_nue_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}, #bar{#nu}_e selection");
+   graph_nue_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}, #bar{#nu}_{e} selection");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_nue_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
@@ -970,7 +970,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    TCanvas* canvas_nue_efficiency_recomom_bkg = new TCanvas("canvas_nue_efficiency_recomom_bkg","canvas_nue_efficiency_recomom_bkg",200,10,1000,600);
    
    TGraph* graph_nue_efficiency_recomom_antimu = new TGraph();
-   graph_nue_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as e^{+}");
+   graph_nue_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as e^{+}, #bar{#nu}_{e} selection");
    for (Int_t bin=1; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_nue_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
@@ -984,20 +984,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_nue_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_nue_efficiency_recomom_antimu->Draw("AL");
    
-   TGraph* graph_nue_efficiency_recomom_piplus = new TGraph();
-   graph_nue_efficiency_recomom_piplus->SetTitle("#pi^{+} identified as e^{+}");
-   for (Int_t bin=1; bin <= 13; bin++)
-   {
-      Float_t efficiency = (float)(esel_nue_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
-      graph_nue_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
-   }
-   graph_nue_efficiency_recomom_piplus->SetLineColor( kRed);
-   graph_nue_efficiency_recomom_piplus->SetFillColor( kWhite);
-   graph_nue_efficiency_recomom_piplus->SetLineWidth(2);
-   graph_nue_efficiency_recomom_piplus->Draw("L same");
-   
    TGraph* graph_nue_efficiency_recomom_proton = new TGraph();
-   graph_nue_efficiency_recomom_proton->SetTitle("p identified as e^{+}");
+   graph_nue_efficiency_recomom_proton->SetTitle("p identified as e^{+}, #bar{#nu}_{e} selection");
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(esel_nue_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
@@ -1007,6 +995,58 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_nue_efficiency_recomom_proton->SetFillColor( kWhite);
    graph_nue_efficiency_recomom_proton->SetLineWidth(2);
    graph_nue_efficiency_recomom_proton->Draw("L same");
+   
+   TGraph* graph_bdt_elike_strict1_efficiency_recomom_antimu = new TGraph();
+   graph_bdt_elike_strict1_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as e^{+}, BDT e-like > 0.8");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_strict1_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_bdt_elike_strict1_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_elike_strict1_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_bdt_elike_strict1_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_bdt_elike_strict1_efficiency_recomom_antimu->SetLineStyle( kDashed);
+   graph_bdt_elike_strict1_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_bdt_elike_strict1_efficiency_recomom_antimu->Draw("L same");
+   
+   TGraph* graph_bdt_elike_strict1_efficiency_recomom_proton = new TGraph();
+   graph_bdt_elike_strict1_efficiency_recomom_proton->SetTitle("p identified as e^{+}, BDT e-like > 0.8");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_strict1_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_bdt_elike_strict1_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_elike_strict1_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdt_elike_strict1_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdt_elike_strict1_efficiency_recomom_proton->SetLineStyle( kDashed);
+   graph_bdt_elike_strict1_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdt_elike_strict1_efficiency_recomom_proton->Draw("L same");
+   
+   TGraph* graph_bdt_elike_strict2_efficiency_recomom_antimu = new TGraph();
+   graph_bdt_elike_strict2_efficiency_recomom_antimu->SetTitle("#mu^{+} identified as e^{+}, BDT e-like > 0.9");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_strict2_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_bdt_elike_strict2_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_elike_strict2_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_bdt_elike_strict2_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_bdt_elike_strict2_efficiency_recomom_antimu->SetLineStyle( kDotted);
+   graph_bdt_elike_strict2_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_bdt_elike_strict2_efficiency_recomom_antimu->Draw("L same");
+   
+   TGraph* graph_bdt_elike_strict2_efficiency_recomom_proton = new TGraph();
+   graph_bdt_elike_strict2_efficiency_recomom_proton->SetTitle("p identified as e^{+}, BDT e-like > 0.9");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(esel_strict2_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_bdt_elike_strict2_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_elike_strict2_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdt_elike_strict2_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdt_elike_strict2_efficiency_recomom_proton->SetLineStyle( kDotted);
+   graph_bdt_elike_strict2_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdt_elike_strict2_efficiency_recomom_proton->Draw("L same");
    
    canvas_nue_efficiency_recomom_bkg->BuildLegend();
    canvas_nue_efficiency_recomom_bkg->Write();
