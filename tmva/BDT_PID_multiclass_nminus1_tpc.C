@@ -184,8 +184,8 @@ void BDT_PID_multiclass_nminus1_tpc( TString myMethodList = "" )
 
    
    // Tuned list:
-   //factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
-   //factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
+   factory->AddVariable( "mom := selmu_mom",                               "Momentum",          "MeV/c", 'F' );
+   factory->AddVariable( "theta := selmu_theta",                       "Angle",             "rad",   'F' );
    factory->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      "FGD1 E/L",               "", 'F' );
    factory->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      "FGD2 E/L",               "", 'F' );
    //factory->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                  "TPC2 mu pull",    "", 'F' );
