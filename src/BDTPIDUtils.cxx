@@ -61,12 +61,12 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "theta := selmu_theta",                           &bdt_theta);
   tmvareader->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      &bdt_fgd1_EbyL);
   tmvareader->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      &bdt_fgd2_EbyL);
-  tmvareader->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                 &bdt_tpc2_pullmu);
-  tmvareader->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                   &bdt_tpc2_pulle);
-  tmvareader->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                   &bdt_tpc2_pullp);
-  tmvareader->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                 &bdt_tpc2_pullpi);
-  tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
-  tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
+  //tmvareader->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                 &bdt_tpc2_pullmu);
+  //tmvareader->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                   &bdt_tpc2_pulle);
+  //tmvareader->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                   &bdt_tpc2_pullp);
+  //tmvareader->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                 &bdt_tpc2_pullpi);
+  //tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
+  //tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
   tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
   tmvareader->AddVariable( "EbyL := selmu_ecal_bestseg_EbyL",                 &bdt_ecal_EbyL);
   tmvareader->AddVariable( "circularity := selmu_ecal_circularity",          &bdt_ecal_circularity);
@@ -145,8 +145,8 @@ BDTPIDmanager::BDTPIDmanager() {
   
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
   //tmvareader->BookMVA( "BDTG_ecalhighlevel", "parameters/weights/BDT_PID_multiclass_BDTG_ecalhighlevel.weights.xml" );
-  //tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_mom_BDTG_tuned.weights.xml" );
-  tmvareader->BookMVA( "BDTG_tunedvars_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tunedvars_noweights.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_tpc_BDTG_tuned.weights.xml" );
+  //tmvareader->BookMVA( "BDTG_tunedvars_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tunedvars_noweights.weights.xml" );
   
 }
 
