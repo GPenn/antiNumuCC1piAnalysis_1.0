@@ -527,7 +527,7 @@
     legend_bkg->AddEntry(Nminus1_psel_e,"e^{+} identified as p","f");
     legend_bkg->Draw();
     
-    for (int i=0; i < 17; i++) 
+    for (int i=0; i < 15; i++) 
     {
         Nminus1_musel_mu_diff->Fill(nminus1varchoices[i], 0.928829-Nminus1_musel_mu->GetBinContent(i+1) );
         Nminus1_musel_pi_diff->Fill(nminus1varchoices[i], Nminus1_musel_pi->GetBinContent(i+1)-0. ); 
