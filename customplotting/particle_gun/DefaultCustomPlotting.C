@@ -2820,6 +2820,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "p efficiency: " << (Float_t)musel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)musel_nPositron/presel_nPositron << std::endl;
    
+   std::cout << "n-1 mu+ efficiency diff:" << (musel_nAntimu-musel_nAntimu_ref)/presel_nAntimu << std::endl;
    std::cout << "n-1 mu+ efficiency diff error:" << sqrt(abs(musel_nAntimu-musel_nAntimu_ref))/presel_nAntimu << std::endl;
    
    graph_opt_mu->Draw("AC");
@@ -2888,6 +2889,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "p efficiency: " << (Float_t)pisel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron/presel_nPositron << std::endl;
    
+   std::cout << "n-1 pi+ efficiency diff:" << (pisel_nPiplus-pisel_nPiplus_ref)/presel_nPiplus << std::endl;
    std::cout << "n-1 pi+ efficiency diff error:" << sqrt(abs(pisel_nPiplus-pisel_nPiplus_ref))/presel_nPiplus << std::endl;
    
    graph_opt_pi->Draw("AC");
@@ -2956,6 +2958,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "p efficiency: " << (Float_t)psel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)psel_nPositron/presel_nPositron << std::endl;
    
+   std::cout << "n-1 p efficiency diff:" << (psel_nProton-psel_nProton_ref)/presel_nProton << std::endl;
    std::cout << "n-1 p efficiency diff error:" << sqrt(abs(psel_nProton-psel_nProton_ref))/presel_nProton << std::endl;
    
    graph_opt_p->Draw("AC");
@@ -3024,6 +3027,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
    
+   std::cout << "n-1 e efficiency diff:" << (esel_nPositron-esel_nPositron_ref)/presel_nPositron << std::endl;
    std::cout << "n-1 e efficiency diff error:" << sqrt(abs(esel_nPositron-esel_nPositron_ref))/presel_nPositron << std::endl;
    
    graph_opt_e->Draw("AC");
