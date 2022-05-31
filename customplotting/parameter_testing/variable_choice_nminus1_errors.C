@@ -529,22 +529,22 @@
     
     for (int i=0; i < 15; i++) 
     {
-        Nminus1_musel_mu_diff->Fill(nminus1varchoices[i], sqrt(0.928829-Nminus1_musel_mu->GetBinContent(i+1))/69031 );
+        Nminus1_musel_mu_diff->Fill(nminus1varchoices[i], sqrt(abs(0.928829-Nminus1_musel_mu->GetBinContent(i+1)))/69031 );
         Nminus1_musel_pi_diff->Fill(nminus1varchoices[i], Nminus1_musel_pi->GetBinContent(i+1)-0. ); 
         Nminus1_musel_p_diff->Fill(nminus1varchoices[i], Nminus1_musel_p->GetBinContent(i+1)-0. );
         Nminus1_musel_e_diff->Fill(nminus1varchoices[i], Nminus1_musel_e->GetBinContent(i+1)-0. );
         Nminus1_pisel_mu_diff->Fill(nminus1varchoices[i], Nminus1_pisel_mu->GetBinContent(i+1)-0. );
-        Nminus1_pisel_pi_diff->Fill(nminus1varchoices[i], sqrt(0.634636-Nminus1_pisel_pi->GetBinContent(i+1))/58424 );
+        Nminus1_pisel_pi_diff->Fill(nminus1varchoices[i], sqrt(abs(0.634636-Nminus1_pisel_pi->GetBinContent(i+1)))/58424 );
         Nminus1_pisel_p_diff->Fill(nminus1varchoices[i], Nminus1_pisel_p->GetBinContent(i+1)-0. );
         Nminus1_pisel_e_diff->Fill(nminus1varchoices[i], Nminus1_pisel_e->GetBinContent(i+1)-0. );
         Nminus1_psel_mu_diff->Fill(nminus1varchoices[i], Nminus1_psel_mu->GetBinContent(i+1)-0. );
         Nminus1_psel_pi_diff->Fill(nminus1varchoices[i], Nminus1_psel_pi->GetBinContent(i+1)-0. );
-        Nminus1_psel_p_diff->Fill(nminus1varchoices[i], sqrt(0.898458-Nminus1_psel_p->GetBinContent(i+1))/57848 );
+        Nminus1_psel_p_diff->Fill(nminus1varchoices[i], sqrt(abs(0.898458-Nminus1_psel_p->GetBinContent(i+1)))/57848 );
         Nminus1_psel_e_diff->Fill(nminus1varchoices[i], Nminus1_psel_e->GetBinContent(i+1)-0. );
         Nminus1_esel_mu_diff->Fill(nminus1varchoices[i], Nminus1_esel_mu->GetBinContent(i+1)-0. );
         Nminus1_esel_pi_diff->Fill(nminus1varchoices[i], Nminus1_esel_pi->GetBinContent(i+1)-0. );
         Nminus1_esel_p_diff->Fill(nminus1varchoices[i], Nminus1_esel_p->GetBinContent(i+1)-0. );
-        Nminus1_esel_e_diff->Fill(nminus1varchoices[i], sqrt(0.932428-Nminus1_esel_e->GetBinContent(i+1))/67350 );
+        Nminus1_esel_e_diff->Fill(nminus1varchoices[i], sqrt(abs(0.932428-Nminus1_esel_e->GetBinContent(i+1)))/67350 );
     }
     
     
