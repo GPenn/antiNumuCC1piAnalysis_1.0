@@ -188,22 +188,22 @@
     nminus1det_esel_p->Fill(nminus1detchoices[1],0.0753181);
     nminus1det_esel_e->Fill(nminus1detchoices[1],0.916347);
     
-    nminus1det_musel_mu->Fill(nminus1detchoices[2],0.929539);
-    nminus1det_musel_pi->Fill(nminus1detchoices[2],0.436447); 
-    nminus1det_musel_p->Fill(nminus1detchoices[2],0.0742982);
-    nminus1det_musel_e->Fill(nminus1detchoices[2],0.145702);
-    nminus1det_pisel_mu->Fill(nminus1detchoices[2],0.0384755);
-    nminus1det_pisel_pi->Fill(nminus1detchoices[2],0.304618);
-    nminus1det_pisel_p->Fill(nminus1detchoices[2],0.0680404);
-    nminus1det_pisel_e->Fill(nminus1detchoices[2],0.107558);
-    nminus1det_psel_mu->Fill(nminus1detchoices[2],0.0174414);
-    nminus1det_psel_pi->Fill(nminus1detchoices[2],0.137255);
-    nminus1det_psel_p->Fill(nminus1detchoices[2],0.793441);
-    nminus1det_psel_e->Fill(nminus1detchoices[2],0.143014);
-    nminus1det_esel_mu->Fill(nminus1detchoices[2],0.0145442);
-    nminus1det_esel_pi->Fill(nminus1detchoices[2],0.121679);
-    nminus1det_esel_p->Fill(nminus1detchoices[2],0.06422);
-    nminus1det_esel_e->Fill(nminus1detchoices[2],0.603727);
+    nminus1det_musel_mu->Fill(nminus1detchoices[2],0.941751);
+    nminus1det_musel_pi->Fill(nminus1detchoices[2],0.397765); 
+    nminus1det_musel_p->Fill(nminus1detchoices[2],0.035455);
+    nminus1det_musel_e->Fill(nminus1detchoices[2],0.140148);
+    nminus1det_pisel_mu->Fill(nminus1detchoices[2],0.0365343);
+    nminus1det_pisel_pi->Fill(nminus1detchoices[2],0.365158);
+    nminus1det_pisel_p->Fill(nminus1detchoices[2],0.05065);
+    nminus1det_pisel_e->Fill(nminus1detchoices[2],0.117847);
+    nminus1det_psel_mu->Fill(nminus1detchoices[2],0.0116614);
+    nminus1det_psel_pi->Fill(nminus1detchoices[2],0.104341);
+    nminus1det_psel_p->Fill(nminus1detchoices[2],0.88105);
+    nminus1det_psel_e->Fill(nminus1detchoices[2],0.0762732);
+    nminus1det_esel_mu->Fill(nminus1detchoices[2],0.0100535);
+    nminus1det_esel_pi->Fill(nminus1detchoices[2],0.132737);
+    nminus1det_esel_p->Fill(nminus1detchoices[2],0.0328447);
+    nminus1det_esel_e->Fill(nminus1detchoices[2],0.665731);
     
     nminus1det_musel_mu->Fill(nminus1detchoices[3],0.885964);
     nminus1det_musel_pi->Fill(nminus1detchoices[3],0.526992); 
