@@ -2763,7 +2763,7 @@ void DefaultCustomPlotting::Loop()
    Int_t esel_nProton_ref = 0;
    Int_t esel_nPositron_ref = 0;
    
-   std::cout << "=========== Mu-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << "=========== Mu-like optimisation ===========" << std::endl << std::endl;
    
    //std::cout << "DEBUG: Total sig " << opt_mulike_sig->GetEntries() << ", total bkg " << opt_mulike_bkg->GetEntries() << std::endl;
    
@@ -2828,7 +2828,7 @@ void DefaultCustomPlotting::Loop()
    graph_opt_effpur_mu->Draw("AC");
    canvas_effpur_mu->Write();
    
-   std::cout << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << "=========== Pi-like optimisation ===========" << std::endl << std::endl;
    
    //std::cout << "DEBUG: Total sig " << opt_pilike_sig->GetEntries() << ", total bkg " << opt_pilike_bkg->GetEntries() << std::endl;
    
@@ -2894,7 +2894,7 @@ void DefaultCustomPlotting::Loop()
    graph_opt_effpur_pi->Draw("AC");
    canvas_effpur_pi->Write();
    
-   std::cout << "=========== Proton-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << "=========== Proton-like optimisation ===========" << std::endl << std::endl;
    
    //std::cout << "DEBUG: Total sig " << opt_plike_sig->GetEntries() << ", total bkg " << opt_plike_bkg->GetEntries() << std::endl;
    
@@ -2960,7 +2960,7 @@ void DefaultCustomPlotting::Loop()
    graph_opt_effpur_p->Draw("AC");
    canvas_effpur_p->Write();
    
-   std::cout << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
+   std::cout << std::endl << "=========== Electron-like optimisation ===========" << std::endl << std::endl;
    
    //std::cout << "DEBUG: Total sig " << opt_elike_sig->GetEntries() << ", total bkg " << opt_elike_bkg->GetEntries() << std::endl;
    
