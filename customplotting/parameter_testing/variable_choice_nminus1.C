@@ -293,20 +293,20 @@
     // TPC3 dedx gq
     
     Nminus1_musel_mu->Fill(nminus1varchoices[6],0.94049);
-    Nminus1_musel_pi->Fill(nminus1varchoices[6],0.); 
-    Nminus1_musel_p->Fill(nminus1varchoices[6],0.);
-    Nminus1_musel_e->Fill(nminus1varchoices[6],0.);
-    Nminus1_pisel_mu->Fill(nminus1varchoices[6],0.);
+    Nminus1_musel_pi->Fill(nminus1varchoices[6],0.346022); 
+    Nminus1_musel_p->Fill(nminus1varchoices[6],0.0257399);
+    Nminus1_musel_e->Fill(nminus1varchoices[6],0.0131403);
+    Nminus1_pisel_mu->Fill(nminus1varchoices[6],0.0508612);
     Nminus1_pisel_pi->Fill(nminus1varchoices[6],0.618034);
-    Nminus1_pisel_p->Fill(nminus1varchoices[6],0.);
-    Nminus1_pisel_e->Fill(nminus1varchoices[6],0.);
-    Nminus1_psel_mu->Fill(nminus1varchoices[6],0.);
-    Nminus1_psel_pi->Fill(nminus1varchoices[6],0.);
+    Nminus1_pisel_p->Fill(nminus1varchoices[6],0.0420931);
+    Nminus1_pisel_e->Fill(nminus1varchoices[6],0.0135709);
+    Nminus1_psel_mu->Fill(nminus1varchoices[6],0.00566412);
+    Nminus1_psel_pi->Fill(nminus1varchoices[6],0.0230214);
     Nminus1_psel_p->Fill(nminus1varchoices[6],0.879633);
-    Nminus1_psel_e->Fill(nminus1varchoices[6],0.);
-    Nminus1_esel_mu->Fill(nminus1varchoices[6],0.);
-    Nminus1_esel_pi->Fill(nminus1varchoices[6],0.);
-    Nminus1_esel_p->Fill(nminus1varchoices[6],0.);
+    Nminus1_psel_e->Fill(nminus1varchoices[6],0.0328879);
+    Nminus1_esel_mu->Fill(nminus1varchoices[6],0.00298417);
+    Nminus1_esel_pi->Fill(nminus1varchoices[6],0.0129228);
+    Nminus1_esel_p->Fill(nminus1varchoices[6],0.0525342);
     Nminus1_esel_e->Fill(nminus1varchoices[6],0.940401);
     
     // nTPCs
@@ -530,20 +530,20 @@
     for (int i=0; i < 15; i++) 
     {
         Nminus1_musel_mu_diff->Fill(nminus1varchoices[i], 0.928829-Nminus1_musel_mu->GetBinContent(i+1) );
-        Nminus1_musel_pi_diff->Fill(nminus1varchoices[i], Nminus1_musel_pi->GetBinContent(i+1)-0. ); 
-        Nminus1_musel_p_diff->Fill(nminus1varchoices[i], Nminus1_musel_p->GetBinContent(i+1)-0. );
-        Nminus1_musel_e_diff->Fill(nminus1varchoices[i], Nminus1_musel_e->GetBinContent(i+1)-0. );
-        Nminus1_pisel_mu_diff->Fill(nminus1varchoices[i], Nminus1_pisel_mu->GetBinContent(i+1)-0. );
+        Nminus1_musel_pi_diff->Fill(nminus1varchoices[i], 0.321837-Nminus1_musel_pi->GetBinContent(i+1) ); 
+        Nminus1_musel_p_diff->Fill(nminus1varchoices[i], 0.0194994-Nminus1_musel_p->GetBinContent(i+1) );
+        Nminus1_musel_e_diff->Fill(nminus1varchoices[i], 0.0137194-Nminus1_musel_e->GetBinContent(i+1) );
+        Nminus1_pisel_mu_diff->Fill(nminus1varchoices[i], 0.0600165-Nminus1_pisel_mu->GetBinContent(i+1) );
         Nminus1_pisel_pi_diff->Fill(nminus1varchoices[i], 0.634636-Nminus1_pisel_pi->GetBinContent(i+1) );
-        Nminus1_pisel_p_diff->Fill(nminus1varchoices[i], Nminus1_pisel_p->GetBinContent(i+1)-0. );
-        Nminus1_pisel_e_diff->Fill(nminus1varchoices[i], Nminus1_pisel_e->GetBinContent(i+1)-0. );
-        Nminus1_psel_mu_diff->Fill(nminus1varchoices[i], Nminus1_psel_mu->GetBinContent(i+1)-0. );
-        Nminus1_psel_pi_diff->Fill(nminus1varchoices[i], Nminus1_psel_pi->GetBinContent(i+1)-0. );
+        Nminus1_pisel_p_diff->Fill(nminus1varchoices[i], 0.0368206-Nminus1_pisel_p->GetBinContent(i+1) );
+        Nminus1_pisel_e_diff->Fill(nminus1varchoices[i], 0.0131849-Nminus1_pisel_e->GetBinContent(i+1) );
+        Nminus1_psel_mu_diff->Fill(nminus1varchoices[i], 0.00728658-Nminus1_psel_mu->GetBinContent(i+1) );
+        Nminus1_psel_pi_diff->Fill(nminus1varchoices[i], 0.0293201-Nminus1_psel_pi->GetBinContent(i+1) );
         Nminus1_psel_p_diff->Fill(nminus1varchoices[i], 0.898458-Nminus1_psel_p->GetBinContent(i+1) );
-        Nminus1_psel_e_diff->Fill(nminus1varchoices[i], Nminus1_psel_e->GetBinContent(i+1)-0. );
-        Nminus1_esel_mu_diff->Fill(nminus1varchoices[i], Nminus1_esel_mu->GetBinContent(i+1)-0. );
-        Nminus1_esel_pi_diff->Fill(nminus1varchoices[i], Nminus1_esel_pi->GetBinContent(i+1)-0. );
-        Nminus1_esel_p_diff->Fill(nminus1varchoices[i], Nminus1_esel_p->GetBinContent(i+1)-0. );
+        Nminus1_psel_e_diff->Fill(nminus1varchoices[i], 0.0406682-Nminus1_psel_e->GetBinContent(i+1) );
+        Nminus1_esel_mu_diff->Fill(nminus1varchoices[i], 0.00386783-Nminus1_esel_mu->GetBinContent(i+1) );
+        Nminus1_esel_pi_diff->Fill(nminus1varchoices[i], 0.0142065-Nminus1_esel_pi->GetBinContent(i+1) );
+        Nminus1_esel_p_diff->Fill(nminus1varchoices[i], 0.045222-Nminus1_esel_p->GetBinContent(i+1) );
         Nminus1_esel_e_diff->Fill(nminus1varchoices[i], 0.932428-Nminus1_esel_e->GetBinContent(i+1) );
     }
     
