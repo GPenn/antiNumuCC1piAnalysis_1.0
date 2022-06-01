@@ -1027,7 +1027,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(esel_nue_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
       graph_nue_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
    }
-   graph_nue_efficiency_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_nue_efficiency_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 0.01);
    graph_nue_efficiency_recomom_antimu->SetLineColor( kBlue);
    graph_nue_efficiency_recomom_antimu->SetFillColor( kWhite);
    graph_nue_efficiency_recomom_antimu->SetLineWidth(2);
@@ -1073,7 +1073,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(esel_nue_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
       graph_nue_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_nue_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_nue_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 0.11);
    graph_nue_efficiency_recomom_proton->SetLineColor( kGreen);
    graph_nue_efficiency_recomom_proton->SetFillColor( kWhite);
    graph_nue_efficiency_recomom_proton->SetLineWidth(2);
