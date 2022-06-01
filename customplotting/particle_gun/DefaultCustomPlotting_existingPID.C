@@ -1061,8 +1061,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_elike_strict2_efficiency_recomom_antimu->SetLineWidth(2);
    graph_bdt_elike_strict2_efficiency_recomom_antimu->Draw("L same");
    
-   canvas_nue_efficiency_recomom_proton->BuildLegend();
-   canvas_nue_efficiency_recomom_proton->Write();
+   canvas_nue_efficiency_recomom_antimu->BuildLegend();
+   canvas_nue_efficiency_recomom_antimu->Write();
    
    TCanvas* canvas_nue_efficiency_recomom_proton = new TCanvas("canvas_nue_efficiency_recomom_proton","canvas_nue_efficiency_recomom_proton",200,10,1000,600);
    
