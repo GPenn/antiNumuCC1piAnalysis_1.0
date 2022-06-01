@@ -295,7 +295,7 @@ void DefaultCustomPlotting_existingPID::Loop()
          
          // BDT strict muon cut
          
-         if (selmu_bdt_pid_mu > 0.5)
+         if (selmu_bdt_pid_mu > 0.9)
          {
             if (particle == -13) {musel_strict_nAntimu++; musel_strict_recomom_antimu->Fill(selmu_mom[0]);}
             if (particle == 211) {musel_strict_nPiplus++; musel_strict_recomom_piplus->Fill(selmu_mom[0]);}
@@ -479,7 +479,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
    
-   std::cout << "=========== Stricter Muon-like (>0.5) ===========" << std::endl << std::endl;
+   std::cout << "=========== Stricter Muon-like (>0.9) ===========" << std::endl << std::endl;
    
    std::cout << "mu+ efficiency: " << (Float_t)musel_strict_nAntimu/presel_nAntimu << std::endl;
    std::cout << "pi+ efficiency: " << (Float_t)musel_strict_nPiplus/presel_nPiplus << std::endl;
