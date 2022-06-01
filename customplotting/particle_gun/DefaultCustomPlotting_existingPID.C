@@ -69,6 +69,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t esel_strict2_nProton = 0;
    Int_t esel_strict2_nPositron = 0;
    
+   Int_t musel_strict_nAntimu = 0;
+   Int_t musel_strict_nPiplus = 0;
+   Int_t musel_strict_nProton = 0;
+   Int_t musel_strict_nPositron = 0;
+   
    TH1F* musel_recomom_antimu = new TH1F("musel_recomom_antimu", "#mu^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
    TH1F* musel_recomom_piplus = new TH1F("musel_recomom_piplus", "#pi^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
    TH1F* musel_recomom_proton = new TH1F("musel_recomom_proton", "p identified as #mu^{+}", 13, 200.0, 1500.0);
@@ -85,6 +90,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    TH1F* esel_recomom_piplus = new TH1F("esel_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_recomom_proton = new TH1F("esel_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_recomom_positron = new TH1F("esel_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
+   TH1F* musel_strict_recomom_antimu = new TH1F("musel_strict_recomom_antimu", "#mu^{+} identified as mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_strict_recomom_piplus = new TH1F("musel_strict_recomom_piplus", "#pi^{+} identified as mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_strict_recomom_proton = new TH1F("musel_strict_recomom_proton", "p identified as mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_strict_recomom_positron = new TH1F("musel_strict_recomom_positron", "e^{+} identified as mu^{+}", 13, 200.0, 1500.0);
    
    TH1F* esel_strict1_recomom_antimu = new TH1F("esel_strict1_recomom_antimu", "#mu^{+} identified as e^{+}", 13, 200.0, 1500.0);
    TH1F* esel_strict1_recomom_piplus = new TH1F("esel_strict1_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
@@ -169,6 +179,13 @@ void DefaultCustomPlotting_existingPID::Loop()
    TH1F* esel_numu_theta_piplus = new TH1F("esel_numu_theta_piplus", "#pi^{+} identified as e^{+}", 13, 0.0, 1.0472);
    TH1F* esel_numu_theta_proton = new TH1F("esel_numu_theta_proton", "p identified as e^{+}", 13, 0.0, 1.0472);
    TH1F* esel_numu_theta_positron = new TH1F("esel_numu_theta_positron", "e^{+} identified as e^{+}", 13, 0.0, 1.0472);
+   
+   // Improved antinumu selection
+   
+   Int_t musel_impsel_nAntimu = 0;
+   Int_t musel_impsel_nPiplus = 0;
+   Int_t musel_impsel_nProton = 0;
+   Int_t musel_impsel_nPositron = 0;
    
    // Existing nue selection
    
@@ -276,6 +293,16 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == -11) {esel_nPositron++; esel_recomom_positron->Fill(selmu_mom[0]); esel_theta_positron->Fill(selmu_det_theta);}
          }
          
+         // BDT strict muon cut
+         
+         if (selmu_bdt_pid_mu > 0.5)
+         {
+            if (particle == -13) {musel_strict_nAntimu++; esel_strict_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {musel_strict_nPiplus++; esel_strict_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {musel_strict_nProton++; esel_strict_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {musel_strict_nPositron++; esel_strict_recomom_positron->Fill(selmu_mom[0]);}
+         }
+         
          // BDT strict positron cut
          
          if (selmu_bdt_pid_e > 0.8)
@@ -336,6 +363,14 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == 211) {musel_numu_nPiplus++; musel_numu_recomom_piplus->Fill(selmu_mom[0]); musel_numu_theta_piplus->Fill(selmu_det_theta);}
             if (particle == 2212) {musel_numu_nProton++; musel_numu_recomom_proton->Fill(selmu_mom[0]); musel_numu_theta_proton->Fill(selmu_det_theta);}
             if (particle == -11) {musel_numu_nPositron++; musel_numu_recomom_positron->Fill(selmu_mom[0]); musel_numu_theta_positron->Fill(selmu_det_theta);}
+            
+            if (selmu_ecal_bestseg_EbyL < 0.88)
+            {
+               if (particle == -13) {musel_impsel_nAntimu++;}
+               if (particle == 211) {musel_impsel_nPiplus++;}
+               if (particle == 2212) {musel_impsel_nProton++;}
+               if (particle == -11) {musel_impsel_nPositron++;}
+            }
          }
          if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
          {
@@ -443,6 +478,13 @@ void DefaultCustomPlotting_existingPID::Loop()
    std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
    std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
    std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
+   
+   std::cout << "=========== Stricter Muon-like (>0.5) ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " << (Float_t)musel_strict_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_strict_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_strict_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_strict_nPositron/presel_nPositron << std::endl;
    
    std::cout << "=========== Stricter electron-like (>0.8) ===========" << std::endl << std::endl;
    
@@ -910,6 +952,15 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    canvas_numu_efficiency_theta_sig->BuildLegend();
    canvas_numu_efficiency_theta_sig->Write();
+   
+   std::cout << "================ ANTINUMU IMPROVED SELECTION ================" << std::endl << std::endl;
+   
+   std::cout << "=========== Mu-like ===========" << std::endl << std::endl;
+   
+   std::cout << "mu+ efficiency: " <<  (Float_t)musel_impsel_nAntimu/presel_nAntimu << std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)musel_impsel_nPiplus/presel_nPiplus << std::endl;
+   std::cout << "p efficiency: " << (Float_t)musel_impsel_nProton/presel_nProton << std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)musel_impsel_nPositron/presel_nPositron << std::endl;
    
    std::cout << "================ NUE SELECTION ================" << std::endl << std::endl;
    
