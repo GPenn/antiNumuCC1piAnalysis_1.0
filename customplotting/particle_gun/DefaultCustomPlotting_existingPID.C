@@ -187,6 +187,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t musel_impsel_nProton = 0;
    Int_t musel_impsel_nPositron = 0;
    
+   TH1F* musel_impsel_recomom_antimu = new TH1F("musel_impsel_recomom_antimu", "#mu^{+} identified as mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_impsel_recomom_piplus = new TH1F("musel_impsel_recomom_piplus", "#pi^{+} identified as mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_impsel_recomom_proton = new TH1F("musel_impsel_recomom_proton", "p identified as mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_impsel_recomom_positron = new TH1F("musel_impsel_recomom_positron", "e^{+} identified as mu^{+}", 13, 200.0, 1500.0);
+   
    // Existing nue selection
    
    Int_t musel_nue_nAntimu = 0;
@@ -366,10 +371,10 @@ void DefaultCustomPlotting_existingPID::Loop()
             
             if (selmu_ecal_bestseg_EbyL < 0.8)
             {
-               if (particle == -13) {musel_impsel_nAntimu++;}
-               if (particle == 211) {musel_impsel_nPiplus++;}
-               if (particle == 2212) {musel_impsel_nProton++;}
-               if (particle == -11) {musel_impsel_nPositron++;}
+               if (particle == -13) {musel_impsel_nAntimu++; musel_impsel_recomom_antimu->Fill(selmu_mom[0]);}
+               if (particle == 211) {musel_impsel_nPiplus++; musel_impsel_recomom_piplus->Fill(selmu_mom[0]);}
+               if (particle == 2212) {musel_impsel_nProton++; musel_impsel_recomom_proton->Fill(selmu_mom[0]);}
+               if (particle == -11) {musel_impsel_nPositron++; musel_impsel_recomom_positron->Fill(selmu_mom[0]);}
             }
          }
          if ((selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
