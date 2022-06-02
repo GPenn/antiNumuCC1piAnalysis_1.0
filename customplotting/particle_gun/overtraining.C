@@ -22,10 +22,10 @@
     TGraph* testing_proton = (TGraph*)testingfile.Get("graph_bdt_efficiency_recomom_proton");
     TGraph* testing_positron = (TGraph*)testingfile.Get("graph_bdt_efficiency_recomom_positron");
     
-    testing_antimu->SetLineStyle("kDashed");
-    testing_piplus->SetLineStyle("kDashed");
-    testing_proton->SetLineStyle("kDashed");
-    testing_positron->SetLineStyle("kDashed");
+    testing_antimu->SetLineStyle(kDashed);
+    testing_piplus->SetLineStyle(kDashed);
+    testing_proton->SetLineStyle(kDashed);
+    testing_positron->SetLineStyle(kDashed);
     
     testing_antimu->Draw("L same");
     testing_piplus->Draw("L same");
