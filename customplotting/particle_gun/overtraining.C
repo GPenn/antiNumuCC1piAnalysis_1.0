@@ -31,4 +31,6 @@
     testing_piplus->Draw("L same");
     testing_proton->Draw("L same");
     testing_positron->Draw("L same");
+    
+    canvas_overtrain_check->BuildLegend();
 }
