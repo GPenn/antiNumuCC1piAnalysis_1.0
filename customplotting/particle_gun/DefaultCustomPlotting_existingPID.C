@@ -523,6 +523,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
    graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_bdt_efficiency_recomom_antimu->Draw("AL");
+   graph_bdt_efficiency_recomom_antimu->SetName("graph_bdt_efficiency_recomom_antimu");
    graph_bdt_efficiency_recomom_antimu->Write();
    
    TGraph* graph_bdt_efficiency_recomom_piplus = new TGraph();
@@ -536,6 +537,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_piplus->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_piplus->SetLineWidth(2);
    graph_bdt_efficiency_recomom_piplus->Draw("L same");
+   graph_bdt_efficiency_recomom_piplus->SetTitle("graph_bdt_efficiency_recomom_piplus");
    graph_bdt_efficiency_recomom_piplus->Write();
    
    TGraph* graph_bdt_efficiency_recomom_proton = new TGraph();
@@ -549,6 +551,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_proton->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_proton->SetLineWidth(2);
    graph_bdt_efficiency_recomom_proton->Draw("L same");
+   graph_bdt_efficiency_recomom_proton->SetName("graph_bdt_efficiency_recomom_proton");
    graph_bdt_efficiency_recomom_proton->Write();
    
    TGraph* graph_bdt_efficiency_recomom_positron = new TGraph();
@@ -562,6 +565,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_positron->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_positron->SetLineWidth(2);
    graph_bdt_efficiency_recomom_positron->Draw("L same");
+   graph_bdt_efficiency_recomom_positron->SetName("graph_bdt_efficiency_recomom_positron");
    graph_bdt_efficiency_recomom_positron->Write();
    
    canvas_bdt_efficiency_recomom_sig->BuildLegend();
