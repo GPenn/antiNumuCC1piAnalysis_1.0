@@ -9,6 +9,11 @@
     TGraph* training_proton = (TGraph*)trainingfile.Get("graph_bdt_efficiency_recomom_proton");
     TGraph* training_positron = (TGraph*)trainingfile.Get("graph_bdt_efficiency_recomom_positron");
     
+    training_antimu->SetTitle("Training sample #mu^{+} identified as #mu^{+}");
+    training_piplus->SetTitle("Training sample #pi^{+} identified as #pi^{+}");
+    training_proton->SetTitle("Training sample p identified as p");
+    training_positron->SetTitle("Training sample e^{+} identified as e^{+}");
+    
     training_antimu->Draw("AL");
     training_piplus->Draw("L same");
     training_proton->Draw("L same");
@@ -26,6 +31,11 @@
     testing_piplus->SetLineStyle(kDashed);
     testing_proton->SetLineStyle(kDashed);
     testing_positron->SetLineStyle(kDashed);
+    
+    testing_antimu->SetTitle("Testing sample #mu^{+} identified as #mu^{+}");
+    testing_piplus->SetTitle("Testing sample #pi^{+} identified as #pi^{+}");
+    testing_proton->SetTitle("Testing sample p identified as p");
+    testing_positron->SetTitle("Testing sample e^{+} identified as e^{+}");
     
     testing_antimu->Draw("L same");
     testing_piplus->Draw("L same");
