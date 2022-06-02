@@ -1,5 +1,5 @@
 {
-    TFile *trainingfile = new TFile(“trainingsample.root”);
+    TFile *trainingfile = new TFile("output/trainingsample.root");
 
     trainingfile.ls();
     
