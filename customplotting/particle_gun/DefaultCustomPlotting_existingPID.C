@@ -1016,6 +1016,66 @@ void DefaultCustomPlotting_existingPID::Loop()
    canvas_numu_efficiency_recomom_pion->BuildLegend();
    canvas_numu_efficiency_recomom_pion->Write();
    
+   
+   TCanvas* canvas_numu_efficiency_recomom_proton = new TCanvas("canvas_numu_efficiency_recomom_proton","canvas_numu_efficiency_recomom_proton",200,10,1000,600);
+   
+   TGraph* graph_numu_efficiency_recomom_proton = new TGraph();
+   graph_numu_efficiency_recomom_proton->SetTitle("#bar{#nu}_{#mu} selection primary PID");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_numu_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_numu_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_numu_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_numu_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_numu_efficiency_recomom_proton->SetLineWidth(2);
+   graph_numu_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_numu_efficiency_recomom_proton->GetYaxis()->SetTitle("Efficiency (#mu^{+} identified as #mu^{+})");
+   graph_numu_efficiency_recomom_proton->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_numu_efficiency_recomom_proton->Draw("AL");
+   
+   TGraph* graph_impsel_efficiency_recomom_proton = new TGraph();
+   graph_impsel_efficiency_recomom_proton->SetTitle("#bar{#nu}_{#mu} primary PID with ECal");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_impsel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_impsel_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_impsel_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_impsel_efficiency_recomom_proton->SetLineStyle( kDashed);
+   graph_impsel_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_impsel_efficiency_recomom_proton->SetLineWidth(2);
+   graph_impsel_efficiency_recomom_proton->Draw("L same");
+   
+   TGraph* graph_bdt_pref_efficiency_recomom_proton = new TGraph();
+   graph_bdt_pref_efficiency_recomom_proton->SetTitle("BDT preference");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_bdt_pref_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_pref_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdt_pref_efficiency_recomom_proton->SetLineStyle( kDotted);
+   graph_bdt_pref_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdt_pref_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdt_pref_efficiency_recomom_proton->Draw("L same");
+   
+   TGraph* graph_bdt_mulike_strict_efficiency_recomom_proton = new TGraph();
+   graph_bdt_mulike_strict_efficiency_recomom_proton->SetTitle("BDT mu-like > 0.8");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_strict_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_bdt_mulike_strict_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdt_mulike_strict_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdt_mulike_strict_efficiency_recomom_proton->SetLineStyle( 10);
+   graph_bdt_mulike_strict_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdt_mulike_strict_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdt_mulike_strict_efficiency_recomom_proton->Draw("L same");
+   
+   canvas_numu_efficiency_recomom_proton->BuildLegend();
+   canvas_numu_efficiency_recomom_proton->Write();
+   
    // Efficiency vs theta
    
    TCanvas* canvas_numu_efficiency_theta_sig = new TCanvas("canvas_numu_efficiency_theta_sig","canvas_numu_efficiency_theta_sig",200,10,1000,600);
