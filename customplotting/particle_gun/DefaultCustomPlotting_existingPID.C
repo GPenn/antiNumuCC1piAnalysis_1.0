@@ -537,7 +537,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_piplus->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_piplus->SetLineWidth(2);
    graph_bdt_efficiency_recomom_piplus->Draw("L same");
-   graph_bdt_efficiency_recomom_piplus->SetTitle("graph_bdt_efficiency_recomom_piplus");
+   graph_bdt_efficiency_recomom_piplus->SetName("graph_bdt_efficiency_recomom_piplus");
    graph_bdt_efficiency_recomom_piplus->Write();
    
    TGraph* graph_bdt_efficiency_recomom_proton = new TGraph();
