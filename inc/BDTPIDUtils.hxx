@@ -16,7 +16,7 @@ class BDTPIDmanager{
     virtual ~BDTPIDmanager(){delete tmvareader;}
     
     //std::vector<Float_t> GetBDTPIDVars(const AnaTrackB& track, const AnaTECALReconObject& localecalsegment);
-  std::vector<Float_t> GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname="BDTG_tuned");
+  std::vector<Float_t> GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname="BDTG_tpc3dedx_gq");
   std::vector<Float_t> GetBDTPIDVarsNeg(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname="BDTG_tree3_neg");
   
   bool GetBDTPIDValidity(AnaTrackB* track);
