@@ -563,7 +563,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    canvas_bdt_efficiency_recomom_sig->BuildLegend();
    canvas_bdt_efficiency_recomom_sig->Write();
    
-   TCanvas* canvas_bdt_efficiency_recomom_bkg = new TCanvas("canvas_bdt_efficiency_recomom_bkg","canvas_bdt_efficiency_recomom_bkg",200,10,1000,600);
+   TCanvas* canvas_bdt_efficiency_recomom_bkg_antimu = new TCanvas("canvas_bdt_efficiency_recomom_bkg_antimu","canvas_bdt_efficiency_recomom_bkg_antimu",200,10,1000,600);
    
    TGraph* graph_bdt_efficiency_recomom_pi_as_mu = new TGraph();
    graph_bdt_efficiency_recomom_pi_as_mu->SetTitle("#pi^{+} identified as #mu^{+}");
@@ -604,6 +604,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_e_as_mu->SetLineWidth(2);
    graph_bdt_efficiency_recomom_e_as_mu->Draw("L same");
    
+   canvas_bdt_efficiency_recomom_bkg_antimu->BuildLegend();
+   canvas_bdt_efficiency_recomom_bkg_antimu->Write();
+   
+   TCanvas* canvas_bdt_efficiency_recomom_bkg_piplus = new TCanvas("canvas_bdt_efficiency_recomom_bkg_piplus","canvas_bdt_efficiency_recomom_bkg_piplus",200,10,1000,600);
+   
    TGraph* graph_bdt_efficiency_recomom_mu_as_pi = new TGraph();
    graph_bdt_efficiency_recomom_mu_as_pi->SetTitle("#mu^{+} identified as #pi^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
@@ -614,7 +619,10 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_mu_as_pi->SetLineColor( kBlue);
    graph_bdt_efficiency_recomom_mu_as_pi->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_mu_as_pi->SetLineWidth(2);
-   graph_bdt_efficiency_recomom_mu_as_pi->Draw("L same");
+   graph_bdt_efficiency_recomom_mu_as_pi->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_mu_as_pi->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_recomom_mu_as_pi->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_recomom_mu_as_pi->Draw("AL");
    
    TGraph* graph_bdt_efficiency_recomom_p_as_pi = new TGraph();
    graph_bdt_efficiency_recomom_p_as_pi->SetTitle("p identified as #pi^{+}");
@@ -640,6 +648,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_e_as_pi->SetLineWidth(2);
    graph_bdt_efficiency_recomom_e_as_pi->Draw("L same");
    
+   canvas_bdt_efficiency_recomom_bkg_piplus->BuildLegend();
+   canvas_bdt_efficiency_recomom_bkg_piplus->Write();
+   
+   TCanvas* canvas_bdt_efficiency_recomom_bkg_proton = new TCanvas("canvas_bdt_efficiency_recomom_bkg_proton","canvas_bdt_efficiency_recomom_bkg_proton",200,10,1000,600);
+   
    TGraph* graph_bdt_efficiency_recomom_mu_as_p = new TGraph();
    graph_bdt_efficiency_recomom_mu_as_p->SetTitle("#mu^{+} identified as p");
    for (Int_t bin=1; bin <= 13; bin++)
@@ -650,7 +663,10 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_mu_as_p->SetLineColor( kBlue+1);
    graph_bdt_efficiency_recomom_mu_as_p->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_mu_as_p->SetLineWidth(2);
-   graph_bdt_efficiency_recomom_mu_as_p->Draw("L same");
+   graph_bdt_efficiency_recomom_mu_as_p->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_mu_as_p->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_recomom_mu_as_p->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_recomom_mu_as_p->Draw("AL");
    
    TGraph* graph_bdt_efficiency_recomom_pi_as_p = new TGraph();
    graph_bdt_efficiency_recomom_pi_as_p->SetTitle("#pi^{+} identified as p");
@@ -676,6 +692,11 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_e_as_p->SetLineWidth(2);
    graph_bdt_efficiency_recomom_e_as_p->Draw("L same");
    
+   canvas_bdt_efficiency_recomom_bkg_proton->BuildLegend();
+   canvas_bdt_efficiency_recomom_bkg_proton->Write();
+   
+   TCanvas* canvas_bdt_efficiency_recomom_bkg_positron = new TCanvas("canvas_bdt_efficiency_recomom_bkg_positron","canvas_bdt_efficiency_recomom_bkg_positron",200,10,1000,600);
+   
    TGraph* graph_bdt_efficiency_recomom_mu_as_e = new TGraph();
    graph_bdt_efficiency_recomom_mu_as_e->SetTitle("#mu^{+} identified as e^{+}");
    for (Int_t bin=1; bin <= 13; bin++)
@@ -686,7 +707,10 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_mu_as_e->SetLineColor( kBlue+2);
    graph_bdt_efficiency_recomom_mu_as_e->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_mu_as_e->SetLineWidth(2);
-   graph_bdt_efficiency_recomom_mu_as_e->Draw("L same");
+   graph_bdt_efficiency_recomom_mu_as_e->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_bdt_efficiency_recomom_mu_as_e->GetYaxis()->SetTitle("Efficiency");
+   graph_bdt_efficiency_recomom_mu_as_e->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_bdt_efficiency_recomom_mu_as_e->Draw("AL");
    
    TGraph* graph_bdt_efficiency_recomom_pi_as_e = new TGraph();
    graph_bdt_efficiency_recomom_pi_as_e->SetTitle("#pi^{+} identified as e^{+}");
@@ -712,8 +736,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_p_as_e->SetLineWidth(2);
    graph_bdt_efficiency_recomom_p_as_e->Draw("L same");
    
-   canvas_bdt_efficiency_recomom_bkg->BuildLegend();
-   canvas_bdt_efficiency_recomom_bkg->Write();
+   canvas_bdt_efficiency_recomom_bkg_positron->BuildLegend();
+   canvas_bdt_efficiency_recomom_bkg_positron->Write();
    
    // Efficiency vs theta
    
