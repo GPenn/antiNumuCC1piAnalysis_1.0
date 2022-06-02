@@ -523,6 +523,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency");
    graph_bdt_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_bdt_efficiency_recomom_antimu->Draw("AL");
+   graph_bdt_efficiency_recomom_antimu->Write();
    
    TGraph* graph_bdt_efficiency_recomom_piplus = new TGraph();
    graph_bdt_efficiency_recomom_piplus->SetTitle("#pi^{+} identified as #pi^{+}");
@@ -535,6 +536,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_piplus->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_piplus->SetLineWidth(2);
    graph_bdt_efficiency_recomom_piplus->Draw("L same");
+   graph_bdt_efficiency_recomom_piplus->Write();
    
    TGraph* graph_bdt_efficiency_recomom_proton = new TGraph();
    graph_bdt_efficiency_recomom_proton->SetTitle("p identified as p");
@@ -547,6 +549,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_proton->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_proton->SetLineWidth(2);
    graph_bdt_efficiency_recomom_proton->Draw("L same");
+   graph_bdt_efficiency_recomom_proton->Write();
    
    TGraph* graph_bdt_efficiency_recomom_positron = new TGraph();
    graph_bdt_efficiency_recomom_positron->SetTitle("e^{+} identified as e^{+}");
@@ -559,6 +562,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_bdt_efficiency_recomom_positron->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_positron->SetLineWidth(2);
    graph_bdt_efficiency_recomom_positron->Draw("L same");
+   graph_bdt_efficiency_recomom_positron->Write();
    
    canvas_bdt_efficiency_recomom_sig->BuildLegend();
    canvas_bdt_efficiency_recomom_sig->Write();
@@ -738,6 +742,18 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    canvas_bdt_efficiency_recomom_bkg_positron->BuildLegend();
    canvas_bdt_efficiency_recomom_bkg_positron->Write();
+   
+   // Eff vs recomom output to text file
+   
+   /*ofstream file_eff_vs_recomom_antimu;
+   file_eff_vs_recomom_antimu.open ("eff_vs_recomom_antimu.txt");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(musel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_bdt_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   file_eff_vs_recomom_antimu << "Writing this to a file.\n";
+   file_eff_vs_recomom_antimu.close();*/
    
    // Efficiency vs theta
    
