@@ -631,7 +631,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(pisel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
       graph_bdt_efficiency_recomom_p_as_pi->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_p_as_pi->SetLineColor( kGreen+1);
+   graph_bdt_efficiency_recomom_p_as_pi->SetLineColor( kGreen);
    graph_bdt_efficiency_recomom_p_as_pi->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_p_as_pi->SetLineWidth(2);
    graph_bdt_efficiency_recomom_p_as_pi->Draw("L same");
@@ -643,7 +643,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(pisel_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
       graph_bdt_efficiency_recomom_e_as_pi->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_e_as_pi->SetLineColor( kMagenta+1);
+   graph_bdt_efficiency_recomom_e_as_pi->SetLineColor( kMagenta);
    graph_bdt_efficiency_recomom_e_as_pi->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_e_as_pi->SetLineWidth(2);
    graph_bdt_efficiency_recomom_e_as_pi->Draw("L same");
@@ -660,7 +660,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(psel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
       graph_bdt_efficiency_recomom_mu_as_p->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_mu_as_p->SetLineColor( kBlue+1);
+   graph_bdt_efficiency_recomom_mu_as_p->SetLineColor( kBlue);
    graph_bdt_efficiency_recomom_mu_as_p->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_mu_as_p->SetLineWidth(2);
    graph_bdt_efficiency_recomom_mu_as_p->GetYaxis()->SetRangeUser(0.0, 1.0);
@@ -675,7 +675,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(psel_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
       graph_bdt_efficiency_recomom_pi_as_p->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_pi_as_p->SetLineColor( kRed+1);
+   graph_bdt_efficiency_recomom_pi_as_p->SetLineColor( kRed);
    graph_bdt_efficiency_recomom_pi_as_p->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_pi_as_p->SetLineWidth(2);
    graph_bdt_efficiency_recomom_pi_as_p->Draw("L same");
@@ -687,7 +687,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(psel_recomom_positron->GetBinContent(bin))/(presel_recomom_positron->GetBinContent(bin));
       graph_bdt_efficiency_recomom_e_as_p->SetPoint(bin-1, presel_recomom_positron->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_e_as_p->SetLineColor( kMagenta+2);
+   graph_bdt_efficiency_recomom_e_as_p->SetLineColor( kMagenta);
    graph_bdt_efficiency_recomom_e_as_p->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_e_as_p->SetLineWidth(2);
    graph_bdt_efficiency_recomom_e_as_p->Draw("L same");
@@ -704,7 +704,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(esel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
       graph_bdt_efficiency_recomom_mu_as_e->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_mu_as_e->SetLineColor( kBlue+2);
+   graph_bdt_efficiency_recomom_mu_as_e->SetLineColor( kBlue);
    graph_bdt_efficiency_recomom_mu_as_e->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_mu_as_e->SetLineWidth(2);
    graph_bdt_efficiency_recomom_mu_as_e->GetYaxis()->SetRangeUser(0.0, 1.0);
@@ -719,7 +719,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(esel_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
       graph_bdt_efficiency_recomom_pi_as_e->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_pi_as_e->SetLineColor( kRed+2);
+   graph_bdt_efficiency_recomom_pi_as_e->SetLineColor( kRed);
    graph_bdt_efficiency_recomom_pi_as_e->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_pi_as_e->SetLineWidth(2);
    graph_bdt_efficiency_recomom_pi_as_e->Draw("L same");
@@ -731,7 +731,7 @@ void DefaultCustomPlotting_existingPID::Loop()
       Float_t efficiency = (float)(esel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
       graph_bdt_efficiency_recomom_p_as_e->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_bdt_efficiency_recomom_p_as_e->SetLineColor( kGreen+2);
+   graph_bdt_efficiency_recomom_p_as_e->SetLineColor( kGreen);
    graph_bdt_efficiency_recomom_p_as_e->SetFillColor( kWhite);
    graph_bdt_efficiency_recomom_p_as_e->SetLineWidth(2);
    graph_bdt_efficiency_recomom_p_as_e->Draw("L same");
