@@ -1029,8 +1029,8 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_numu_efficiency_recomom_proton->SetLineColor( kGreen);
    graph_numu_efficiency_recomom_proton->SetFillColor( kWhite);
    graph_numu_efficiency_recomom_proton->SetLineWidth(2);
-   graph_numu_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_numu_efficiency_recomom_proton->GetYaxis()->SetTitle("Efficiency (#mu^{+} identified as #mu^{+})");
+   graph_numu_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 0.7);
+   graph_numu_efficiency_recomom_proton->GetYaxis()->SetTitle("Efficiency (p identified as #mu^{+})");
    graph_numu_efficiency_recomom_proton->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_numu_efficiency_recomom_proton->Draw("AL");
    
