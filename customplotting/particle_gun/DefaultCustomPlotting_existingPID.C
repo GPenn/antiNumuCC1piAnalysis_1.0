@@ -1402,6 +1402,52 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    canvas_secondarypion_efficiency_recomom_sig->BuildLegend();
    canvas_secondarypion_efficiency_recomom_sig->Write();
+   
+   TCanvas* canvas_secondarypion_efficiency_recomom_antimu = new TCanvas("canvas_secondarypion_efficiency_recomom_antimu","canvas_secondarypion_efficiency_recomom_antimu",200,10,1000,600);
+   
+   TGraph* graph_secondarypion_efficiency_recomom_antimu = new TGraph();
+   graph_secondarypion_efficiency_recomom_antimu->SetTitle("#bar{#nu}_{#mu} secondary pion PID");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(pisel_numu_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_secondarypion_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_secondarypion_efficiency_recomom_antimu->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_secondarypion_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_secondarypion_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_secondarypion_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_secondarypion_efficiency_recomom_antimu->GetYaxis()->SetTitle("Efficiency (#mu^{+} identified as #pi^{+})");
+   graph_secondarypion_efficiency_recomom_antimu->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_secondarypion_efficiency_recomom_antimu->Draw("AL");
+   
+   TGraph* graph_tpcpion_efficiency_recomom_antimu = new TGraph();
+   graph_tpcpion_efficiency_recomom_antimu->SetTitle("TPC likelihood preference");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(pisel_tpc_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_tpcpion_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_tpcpion_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_tpcpion_efficiency_recomom_antimu->SetLineStyle( kDashed);
+   graph_tpcpion_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_tpcpion_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_tpcpion_efficiency_recomom_antimu->Draw("L same");
+   
+   TGraph* graph_bdtpion_efficiency_recomom_antimu = new TGraph();
+   graph_bdtpion_efficiency_recomom_antimu->SetTitle("BDT preference");
+   for (Int_t bin=1; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(pisel_recomom_antimu->GetBinContent(bin))/(presel_recomom_antimu->GetBinContent(bin));
+      graph_bdtpion_efficiency_recomom_antimu->SetPoint(bin-1, presel_recomom_antimu->GetBinCenter(bin), efficiency);
+   }
+   graph_bdtpion_efficiency_recomom_antimu->SetLineColor( kBlue);
+   graph_bdtpion_efficiency_recomom_antimu->SetLineStyle( kDotted);
+   graph_bdtpion_efficiency_recomom_antimu->SetFillColor( kWhite);
+   graph_bdtpion_efficiency_recomom_antimu->SetLineWidth(2);
+   graph_bdtpion_efficiency_recomom_antimu->Draw("L same");
+   
+   canvas_secondarypion_efficiency_recomom_antimu->BuildLegend();
+   canvas_secondarypion_efficiency_recomom_antimu->Write();
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
