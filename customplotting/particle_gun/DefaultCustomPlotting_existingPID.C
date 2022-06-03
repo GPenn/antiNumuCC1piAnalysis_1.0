@@ -1494,6 +1494,54 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    canvas_secondarypion_efficiency_recomom_proton->BuildLegend();
    canvas_secondarypion_efficiency_recomom_proton->Write();
+   
+   // Proton PID comparison
+   
+   TCanvas* canvas_secondaryproton_efficiency_recomom_sig = new TCanvas("canvas_secondaryproton_efficiency_recomom_sig","canvas_secondaryproton_efficiency_recomom_sig",200,10,1000,600);
+   
+   TGraph* graph_secondaryproton_efficiency_recomom_proton = new TGraph();
+   graph_secondaryproton_efficiency_recomom_proton->SetTitle("#bar{#nu}_{#mu} secondary pion PID");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(psel_numu_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_secondaryproton_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_secondaryproton_efficiency_recomom_proton->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_secondaryproton_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_secondaryproton_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_secondaryproton_efficiency_recomom_proton->SetLineWidth(2);
+   graph_secondaryproton_efficiency_recomom_proton->GetYaxis()->SetTitle("Efficiency (p identified as p)");
+   graph_secondaryproton_efficiency_recomom_proton->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_secondaryproton_efficiency_recomom_proton->Draw("AL");
+   
+   TGraph* graph_tpcpion_efficiency_recomom_proton = new TGraph();
+   graph_tpcpion_efficiency_recomom_proton->SetTitle("TPC likelihood preference");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(psel_tpc_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_tpcpion_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_tpcpion_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_tpcpion_efficiency_recomom_proton->SetLineStyle( kDashed);
+   graph_tpcpion_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_tpcpion_efficiency_recomom_proton->SetLineWidth(2);
+   graph_tpcpion_efficiency_recomom_proton->Draw("L same");
+   
+   TGraph* graph_bdtpion_efficiency_recomom_proton = new TGraph();
+   graph_bdtpion_efficiency_recomom_proton->SetTitle("BDT preference");
+   for (Int_t bin=2; bin <= 13; bin++)
+   {
+      Float_t efficiency = (float)(psel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
+      graph_bdtpion_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+   }
+   graph_bdtpion_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdtpion_efficiency_recomom_proton->SetLineStyle( kDotted);
+   graph_bdtpion_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdtpion_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdtpion_efficiency_recomom_proton->Draw("L same");
+   
+   canvas_secondaryproton_efficiency_recomom_sig->BuildLegend();
+   canvas_secondaryproton_efficiency_recomom_sig->Write();
      
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
