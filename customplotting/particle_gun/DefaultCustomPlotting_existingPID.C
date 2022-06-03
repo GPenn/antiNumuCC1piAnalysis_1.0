@@ -243,6 +243,23 @@ void DefaultCustomPlotting_existingPID::Loop()
    Int_t nosel_tpc_nProton = 0;
    Int_t nosel_tpc_nPositron = 0;
    
+   TH1F* musel_tpc_recomom_antimu = new TH1F("musel_tpc_recomom_antimu", "#mu^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_tpc_recomom_piplus = new TH1F("musel_tpc_recomom_piplus", "#pi^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_tpc_recomom_proton = new TH1F("musel_tpc_recomom_proton", "p identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* musel_tpc_recomom_positron = new TH1F("musel_tpc_recomom_positron", "e^{+} identified as #mu^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_tpc_recomom_antimu = new TH1F("pisel_tpc_recomom_antimu", "#mu^{+} identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_tpc_recomom_piplus = new TH1F("pisel_tpc_recomom_piplus", "#pi^{+} identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_tpc_recomom_proton = new TH1F("pisel_tpc_recomom_proton", "p identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* pisel_tpc_recomom_positron = new TH1F("pisel_tpc_recomom_positron", "e^{+} identified as #pi^{+}", 13, 200.0, 1500.0);
+   TH1F* psel_tpc_recomom_antimu = new TH1F("psel_tpc_recomom_antimu", "#mu^{+} identified as p", 13, 200.0, 1500.0);
+   TH1F* psel_tpc_recomom_piplus = new TH1F("psel_tpc_recomom_piplus", "#pi^{+} identified as p", 13, 200.0, 1500.0);
+   TH1F* psel_tpc_recomom_proton = new TH1F("psel_tpc_recomom_proton", "p identified as p", 13, 200.0, 1500.0);
+   TH1F* psel_tpc_recomom_positron = new TH1F("psel_tpc_recomom_positron", "e^{+} identified as p", 13, 200.0, 1500.0);
+   TH1F* esel_tpc_recomom_antimu = new TH1F("esel_tpc_recomom_antimu", "#mu^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_tpc_recomom_piplus = new TH1F("esel_tpc_recomom_piplus", "#pi^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_tpc_recomom_proton = new TH1F("esel_tpc_recomom_proton", "p identified as e^{+}", 13, 200.0, 1500.0);
+   TH1F* esel_tpc_recomom_positron = new TH1F("esel_tpc_recomom_positron", "e^{+} identified as e^{+}", 13, 200.0, 1500.0);
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -330,34 +347,34 @@ void DefaultCustomPlotting_existingPID::Loop()
          
          if ((selmu_tpc_like_mu > selmu_tpc_like_pi) && (selmu_tpc_like_mu > selmu_tpc_like_p) && (selmu_tpc_like_mu > selmu_tpc_like_e))
          {
-            if (particle == -13) musel_tpc_nAntimu++;
-            if (particle == 211) musel_tpc_nPiplus++;
-            if (particle == 2212) musel_tpc_nProton++;
-            if (particle == -11) musel_tpc_nPositron++;
+            if (particle == -13) {musel_tpc_nAntimu++; musel_tpc_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {musel_tpc_nPiplus++; musel_tpc_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {musel_tpc_nProton++; musel_tpc_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {musel_tpc_nPositron++; musel_tpc_recomom_positron->Fill(selmu_mom[0]);}
          }
          
          if ((selmu_tpc_like_pi > selmu_tpc_like_mu) && (selmu_tpc_like_pi > selmu_tpc_like_p) && (selmu_tpc_like_pi > selmu_tpc_like_e))
          {
-            if (particle == -13) pisel_tpc_nAntimu++;
-            if (particle == 211) pisel_tpc_nPiplus++;
-            if (particle == 2212) pisel_tpc_nProton++;
-            if (particle == -11) pisel_tpc_nPositron++;
+            if (particle == -13) {pisel_tpc_nAntimu++; pisel_tpc_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {pisel_tpc_nPiplus++; pisel_tpc_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {pisel_tpc_nProton++; pisel_tpc_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {pisel_tpc_nPositron++; pisel_tpc_recomom_positron->Fill(selmu_mom[0]);}
          }
          
          if ((selmu_tpc_like_p > selmu_tpc_like_mu) && (selmu_tpc_like_p > selmu_tpc_like_pi) && (selmu_tpc_like_p > selmu_tpc_like_e))
          {
-            if (particle == -13) psel_tpc_nAntimu++;
-            if (particle == 211) psel_tpc_nPiplus++;
-            if (particle == 2212) psel_tpc_nProton++;
-            if (particle == -11) psel_tpc_nPositron++;
+            if (particle == -13) {psel_tpc_nAntimu++; psel_tpc_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {psel_tpc_nPiplus++; psel_tpc_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {psel_tpc_nProton++; psel_tpc_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {psel_tpc_nPositron++; psel_tpc_recomom_positron->Fill(selmu_mom[0]);}
          }
          
          if ((selmu_tpc_like_e > selmu_tpc_like_mu) && (selmu_tpc_like_e > selmu_tpc_like_pi) && (selmu_tpc_like_e > selmu_tpc_like_p))
          {
-            if (particle == -13) esel_tpc_nAntimu++;
-            if (particle == 211) esel_tpc_nPiplus++;
-            if (particle == 2212) esel_tpc_nProton++;
-            if (particle == -11) esel_tpc_nPositron++;
+            if (particle == -13) {esel_tpc_nAntimu++; esel_tpc_recomom_antimu->Fill(selmu_mom[0]);}
+            if (particle == 211) {esel_tpc_nPiplus++; esel_tpc_recomom_piplus->Fill(selmu_mom[0]);}
+            if (particle == 2212) {esel_tpc_nProton++; esel_tpc_recomom_proton->Fill(selmu_mom[0]);}
+            if (particle == -11) {esel_tpc_nPositron++; esel_tpc_recomom_positron->Fill(selmu_mom[0]);}
          }
          
          // numu selection:
@@ -391,7 +408,7 @@ void DefaultCustomPlotting_existingPID::Loop()
             if (particle == 2212) {esel_numu_nProton++; esel_numu_recomom_proton->Fill(selmu_mom[0]); esel_numu_theta_proton->Fill(selmu_det_theta);}
             if (particle == -11) {esel_numu_nPositron++; esel_numu_recomom_positron->Fill(selmu_mom[0]); esel_numu_theta_positron->Fill(selmu_det_theta);}
          }
-         else //if ((selmu_bdt_pid_e > selmu_bdt_pid_mu) && (selmu_bdt_pid_e > selmu_bdt_pid_pi) && (selmu_bdt_pid_e > selmu_bdt_pid_p))
+         if (selmu_tpc_like_p > 0.5)
          {
             if (particle == -13) {psel_numu_nAntimu++; psel_numu_recomom_antimu->Fill(selmu_mom[0]); psel_numu_theta_antimu->Fill(selmu_det_theta);}
             if (particle == 211) {psel_numu_nPiplus++; psel_numu_recomom_piplus->Fill(selmu_mom[0]); psel_numu_theta_piplus->Fill(selmu_det_theta);}
