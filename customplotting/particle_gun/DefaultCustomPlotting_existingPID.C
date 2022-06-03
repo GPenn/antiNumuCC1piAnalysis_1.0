@@ -1514,31 +1514,31 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_secondaryproton_efficiency_recomom_proton->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_secondaryproton_efficiency_recomom_proton->Draw("AL");
    
-   TGraph* graph_tpcpion_efficiency_recomom_proton = new TGraph();
-   graph_tpcpion_efficiency_recomom_proton->SetTitle("TPC likelihood preference");
+   TGraph* graph_tpcproton_efficiency_recomom_proton = new TGraph();
+   graph_tpcproton_efficiency_recomom_proton->SetTitle("TPC likelihood preference");
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_tpc_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_tpcpion_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_tpcproton_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_tpcpion_efficiency_recomom_proton->SetLineColor( kGreen);
-   graph_tpcpion_efficiency_recomom_proton->SetLineStyle( kDashed);
-   graph_tpcpion_efficiency_recomom_proton->SetFillColor( kWhite);
-   graph_tpcpion_efficiency_recomom_proton->SetLineWidth(2);
-   graph_tpcpion_efficiency_recomom_proton->Draw("L same");
+   graph_tpcproton_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_tpcproton_efficiency_recomom_proton->SetLineStyle( kDashed);
+   graph_tpcproton_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_tpcproton_efficiency_recomom_proton->SetLineWidth(2);
+   graph_tpcproton_efficiency_recomom_proton->Draw("L same");
    
-   TGraph* graph_bdtpion_efficiency_recomom_proton = new TGraph();
-   graph_bdtpion_efficiency_recomom_proton->SetTitle("BDT preference");
+   TGraph* graph_bdtproton_efficiency_recomom_proton = new TGraph();
+   graph_bdtproton_efficiency_recomom_proton->SetTitle("BDT preference");
    for (Int_t bin=2; bin <= 13; bin++)
    {
       Float_t efficiency = (float)(psel_recomom_proton->GetBinContent(bin))/(presel_recomom_proton->GetBinContent(bin));
-      graph_bdtpion_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
+      graph_bdtproton_efficiency_recomom_proton->SetPoint(bin-2, presel_recomom_proton->GetBinCenter(bin), efficiency);
    }
-   graph_bdtpion_efficiency_recomom_proton->SetLineColor( kGreen);
-   graph_bdtpion_efficiency_recomom_proton->SetLineStyle( kDotted);
-   graph_bdtpion_efficiency_recomom_proton->SetFillColor( kWhite);
-   graph_bdtpion_efficiency_recomom_proton->SetLineWidth(2);
-   graph_bdtpion_efficiency_recomom_proton->Draw("L same");
+   graph_bdtproton_efficiency_recomom_proton->SetLineColor( kGreen);
+   graph_bdtproton_efficiency_recomom_proton->SetLineStyle( kDotted);
+   graph_bdtproton_efficiency_recomom_proton->SetFillColor( kWhite);
+   graph_bdtproton_efficiency_recomom_proton->SetLineWidth(2);
+   graph_bdtproton_efficiency_recomom_proton->Draw("L same");
    
    canvas_secondaryproton_efficiency_recomom_sig->BuildLegend();
    canvas_secondaryproton_efficiency_recomom_sig->Write();
