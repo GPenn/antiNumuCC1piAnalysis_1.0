@@ -261,7 +261,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    factory->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                  "TPC2 mu pull",    "", 'F' );
    factory->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                  "TPC2 e pull",     "", 'F' );
    factory->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                    "TPC2 p pull",     "", 'F' );
-   factory->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                  "TPC2 pi pull",    "", 'F' );
+   //factory->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                  "TPC2 pi pull",    "", 'F' );
    factory->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                   "TPC3 dE/dx (GQ)",    "", 'F' );
    factory->AddVariable( "ntpcs := selmu_ntpcs ",                          "TPC segments",    "", 'I' );
    factory->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        "ECal EM energy",    "MeV",   'F' );
@@ -590,7 +590,8 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedparams", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecalhighlevel", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars_noweights", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars_noweights", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tuned", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
