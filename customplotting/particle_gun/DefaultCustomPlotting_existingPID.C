@@ -1359,46 +1359,46 @@ void DefaultCustomPlotting_existingPID::Loop()
    
    TCanvas* canvas_secondarypion_efficiency_recomom_sig = new TCanvas("canvas_secondarypion_efficiency_recomom_sig","canvas_secondarypion_efficiency_recomom_sig",200,10,1000,600);
    
-   TGraph* graph_secondarypion_efficiency_recomom_pion = new TGraph();
-   graph_secondarypion_efficiency_recomom_pion->SetTitle("#bar{#nu}_{#mu} secondary pion PID");
+   TGraph* graph_secondarypion_efficiency_recomom_piplus = new TGraph();
+   graph_secondarypion_efficiency_recomom_piplus->SetTitle("#bar{#nu}_{#mu} secondary pion PID");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(pisel_numu_recomom_pion->GetBinContent(bin))/(presel_recomom_pion->GetBinContent(bin));
-      graph_secondarypion_efficiency_recomom_pion->SetPoint(bin-1, presel_recomom_pion->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(pisel_numu_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
+      graph_secondarypion_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_secondarypion_efficiency_recomom_pion->GetYaxis()->SetRangeUser(0.0, 1.0);
-   graph_secondarypion_efficiency_recomom_pion->SetLineColor( kRed);
-   graph_secondarypion_efficiency_recomom_pion->SetFillColor( kWhite);
-   graph_secondarypion_efficiency_recomom_pion->SetLineWidth(2);
-   graph_secondarypion_efficiency_recomom_pion->GetYaxis()->SetTitle("Efficiency (#pi^{+} identified as #pi^{+})");
-   graph_secondarypion_efficiency_recomom_pion->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
-   graph_secondarypion_efficiency_recomom_pion->Draw("AL");
+   graph_secondarypion_efficiency_recomom_piplus->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_secondarypion_efficiency_recomom_piplus->SetLineColor( kRed);
+   graph_secondarypion_efficiency_recomom_piplus->SetFillColor( kWhite);
+   graph_secondarypion_efficiency_recomom_piplus->SetLineWidth(2);
+   graph_secondarypion_efficiency_recomom_piplus->GetYaxis()->SetTitle("Efficiency (#pi^{+} identified as #pi^{+})");
+   graph_secondarypion_efficiency_recomom_piplus->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
+   graph_secondarypion_efficiency_recomom_piplus->Draw("AL");
    
-   Graph* graph_tpcpion_efficiency_recomom_pion = new TGraph();
-   graph_tpcpion_efficiency_recomom_pion->SetTitle("TPC likelihood preference");
+   Graph* graph_tpcpion_efficiency_recomom_piplus = new TGraph();
+   graph_tpcpion_efficiency_recomom_piplus->SetTitle("TPC likelihood preference");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(pisel_tpc_recomom_pion->GetBinContent(bin))/(presel_recomom_pion->GetBinContent(bin));
-      graph_tpcpion_efficiency_recomom_pion->SetPoint(bin-1, presel_recomom_pion->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(pisel_tpc_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
+      graph_tpcpion_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_tpcpion_efficiency_recomom_pion->SetLineColor( kRed);
-   graph_tpcpion_efficiency_recomom_pion->SetLineStyle( kDashed);
-   graph_tpcpion_efficiency_recomom_pion->SetFillColor( kWhite);
-   graph_tpcpion_efficiency_recomom_pion->SetLineWidth(2);
-   graph_tpcpion_efficiency_recomom_pion->Draw("L same");
+   graph_tpcpion_efficiency_recomom_piplus->SetLineColor( kRed);
+   graph_tpcpion_efficiency_recomom_piplus->SetLineStyle( kDashed);
+   graph_tpcpion_efficiency_recomom_piplus->SetFillColor( kWhite);
+   graph_tpcpion_efficiency_recomom_piplus->SetLineWidth(2);
+   graph_tpcpion_efficiency_recomom_piplus->Draw("L same");
    
-   Graph* graph_bdtpion_efficiency_recomom_pion = new TGraph();
-   graph_bdtpion_efficiency_recomom_pion->SetTitle("BDT preference");
+   Graph* graph_bdtpion_efficiency_recomom_piplus = new TGraph();
+   graph_bdtpion_efficiency_recomom_piplus->SetTitle("BDT preference");
    for (Int_t bin=1; bin <= 13; bin++)
    {
-      Float_t efficiency = (float)(pisel_recomom_pion->GetBinContent(bin))/(presel_recomom_pion->GetBinContent(bin));
-      graph_bdtpion_efficiency_recomom_pion->SetPoint(bin-1, presel_recomom_pion->GetBinCenter(bin), efficiency);
+      Float_t efficiency = (float)(pisel_recomom_piplus->GetBinContent(bin))/(presel_recomom_piplus->GetBinContent(bin));
+      graph_bdtpion_efficiency_recomom_piplus->SetPoint(bin-1, presel_recomom_piplus->GetBinCenter(bin), efficiency);
    }
-   graph_bdtpion_efficiency_recomom_pion->SetLineColor( kRed);
-   graph_bdtpion_efficiency_recomom_pion->SetLineStyle( kDotted);
-   graph_bdtpion_efficiency_recomom_pion->SetFillColor( kWhite);
-   graph_bdtpion_efficiency_recomom_pion->SetLineWidth(2);
-   graph_bdtpion_efficiency_recomom_pion->Draw("L same");
+   graph_bdtpion_efficiency_recomom_piplus->SetLineColor( kRed);
+   graph_bdtpion_efficiency_recomom_piplus->SetLineStyle( kDotted);
+   graph_bdtpion_efficiency_recomom_piplus->SetFillColor( kWhite);
+   graph_bdtpion_efficiency_recomom_piplus->SetLineWidth(2);
+   graph_bdtpion_efficiency_recomom_piplus->Draw("L same");
    
    canvas_secondarypion_efficiency_recomom_sig->BuildLegend();
    canvas_secondarypion_efficiency_recomom_sig->Write();
