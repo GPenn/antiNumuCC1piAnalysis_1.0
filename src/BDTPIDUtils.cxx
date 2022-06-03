@@ -6,7 +6,7 @@ BDTPIDmanager::BDTPIDmanager() {
   
   // Initialise TMVA Reader class
   tmvareader = new TMVA::Reader( "Color" );
-  
+  /*
   // Register BDT input variables
   tmvareader->AddVariable( "mom := selmu_mom",                               &bdt_mom);
   tmvareader->AddVariable( "theta := selmu_theta",                           &bdt_theta);
@@ -55,16 +55,16 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->AddVariable( "EmHip := selmu_ecal_emhip",                       &bdt_ecal_emhip);
   //tmvareader->AddVariable( "MipPion := selmu_ecal_mippion",                   &bdt_ecal_mippion);
   
-  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
+  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);*/
   
-  /*tmvareader->AddVariable( "mom := selmu_mom",                               &bdt_mom);
+  tmvareader->AddVariable( "mom := selmu_mom",                               &bdt_mom);
   tmvareader->AddVariable( "theta := selmu_theta",                           &bdt_theta);
   tmvareader->AddVariable( "fgd1EbyL := selmu_fgd1_EbyL",                      &bdt_fgd1_EbyL);
   tmvareader->AddVariable( "fgd2EbyL := selmu_fgd2_EbyL",                      &bdt_fgd2_EbyL);
   tmvareader->AddVariable( "tpc2pullmu := selmu_tpc2_pullmu",                 &bdt_tpc2_pullmu);
   tmvareader->AddVariable( "tpc2pulle := selmu_tpc2_pullele",                   &bdt_tpc2_pulle);
   tmvareader->AddVariable( "tpc2pullp := selmu_tpc2_pullp",                   &bdt_tpc2_pullp);
-  tmvareader->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                 &bdt_tpc2_pullpi);
+  //tmvareader->AddVariable( "tpc2pullpi := selmu_tpc2_pullpi",                 &bdt_tpc2_pullpi);
   tmvareader->AddVariable( "tpc3dedx_gq := selmu_tpc3_dedx_gq ",                 &bdt_tpc3_dedx_gq);
   tmvareader->AddVariable( "ntpcs := selmu_ntpcs",                           &bdt_ntpcs);
   tmvareader->AddVariable( "EMenergy := selmu_ecal_bestseg_EMenergy",        &bdt_ecal_EMenergy);
@@ -73,7 +73,7 @@ BDTPIDmanager::BDTPIDmanager() {
   tmvareader->AddVariable( "fbr := selmu_ecal_fbr",                          &bdt_ecal_fbr);
   tmvareader->AddVariable( "tmr := selmu_ecal_tmr",                          &bdt_ecal_tmr);
   tmvareader->AddVariable( "qrms := selmu_ecal_qrms",                        &bdt_ecal_qrms);
-  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);*/
+  tmvareader->AddVariable( "nsmrds := selmu_nsmrds",                          &bdt_nsmrds);
   
   // Book the BDTs
   
@@ -144,7 +144,7 @@ BDTPIDmanager::BDTPIDmanager() {
   //tmvareader->BookMVA( "BDTG_0.9shrinkage_2500trees", "parameters/weights/BDT_PID_multiclass_extrashrinkage_BDTG_0.9shrinkage_2500trees.weights.xml" );
   
   //tmvareader->BookMVA( "BDTG_tunedparams", "parameters/weights/BDT_PID_multiclass_BDTG_tunedparams.weights.xml" );
-  tmvareader->BookMVA( "BDTG_tpc3dedx_gq", "parameters/weights/BDT_PID_multiclass_BDTG_tpc3dedx_gq.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_BDTG_tuned.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_nminus1_tpc_BDTG_tuned.weights.xml" );
   //tmvareader->BookMVA( "BDTG_tunedvars_noweights", "parameters/weights/BDT_PID_multiclass_BDTG_tunedvars_noweights.weights.xml" );
   
