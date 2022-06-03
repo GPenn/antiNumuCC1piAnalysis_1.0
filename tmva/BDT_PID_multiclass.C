@@ -327,7 +327,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    // Optional cut to require an ECal segment
    TCut ecalsegcut = "selmu_necals==1";
    
-   factory->PrepareTrainingAndTestTree( "", "SplitMode=Random:NormMode=EqualNumEvents:!V" );
+   factory->PrepareTrainingAndTestTree( ecalsegcut, "SplitMode=Random:NormMode=EqualNumEvents:!V" );
 
    
    
@@ -591,7 +591,7 @@ void BDT_PID_multiclass( TString myMethodList = "" )
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_ecalhighlevel", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    //factory->BookMethod( TMVA::Types::kBDT, "BDTG_tunedvars_noweights", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
-   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tuned", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
+   factory->BookMethod( TMVA::Types::kBDT, "BDTG_tuned_ecalseg", "!H:!V:NTrees=1500:BoostType=Grad:Shrinkage=1.0:nCuts=2000:MaxDepth=4");
    
    // For an example of the category classifier usage, see: TMVAClassificationCategory
 
