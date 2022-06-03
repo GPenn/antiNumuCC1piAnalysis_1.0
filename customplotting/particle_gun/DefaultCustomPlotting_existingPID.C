@@ -1374,7 +1374,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_secondarypion_efficiency_recomom_piplus->GetXaxis()->SetTitle("Reconstructed momentum (MeV/c)");
    graph_secondarypion_efficiency_recomom_piplus->Draw("AL");
    
-   Graph* graph_tpcpion_efficiency_recomom_piplus = new TGraph();
+   TGraph* graph_tpcpion_efficiency_recomom_piplus = new TGraph();
    graph_tpcpion_efficiency_recomom_piplus->SetTitle("TPC likelihood preference");
    for (Int_t bin=1; bin <= 13; bin++)
    {
@@ -1387,7 +1387,7 @@ void DefaultCustomPlotting_existingPID::Loop()
    graph_tpcpion_efficiency_recomom_piplus->SetLineWidth(2);
    graph_tpcpion_efficiency_recomom_piplus->Draw("L same");
    
-   Graph* graph_bdtpion_efficiency_recomom_piplus = new TGraph();
+   TGraph* graph_bdtpion_efficiency_recomom_piplus = new TGraph();
    graph_bdtpion_efficiency_recomom_piplus->SetTitle("BDT preference");
    for (Int_t bin=1; bin <= 13; bin++)
    {
