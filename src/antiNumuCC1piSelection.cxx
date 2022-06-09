@@ -598,7 +598,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   
   AnaTrackB** NegTracksArray = box.NegativeTPCtracks;
   
-  /*for (int i=0; i < NNegTracks; i++)
+  for (int i=0; i < NNegTracks; i++)
   {
     AnaTrackB* track = NegTracksArray[i];
     
@@ -632,7 +632,7 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
       }
       //std::cout << "INFO: BDT muon PID applied!" << std::endl;
     }
-  }*/
+  }
   
   if (NMuonLike > 0) return false; // If there are any negative muon-like tracks, reject the event
   if (NAntimuonLike == 1) return true; // If there is a single antimu-like track, this is now the main track and the cut is passed
