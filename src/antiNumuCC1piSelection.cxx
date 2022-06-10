@@ -593,9 +593,9 @@ bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   
   
   // Loop over negative TPC tracks, applying muon PID
-  /*Int_t NNegTracks = box.nNegativeTPCtracks;
+  Int_t NNegTracks = box.nNegativeTPCtracks;
   Int_t NMuonLike = 0;
-  
+  /*
   AnaTrackB** NegTracksArray = box.NegativeTPCtracks;
   
   for (int i=0; i < NNegTracks; i++)
