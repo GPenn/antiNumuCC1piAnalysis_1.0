@@ -33,6 +33,8 @@ void DefaultCustomPlotting::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
    
+   Bool_t limit_kinematics = true;
+   
    gStyle->SetOptStat(0);
    gStyle->SetOptTitle(0);
    //gStyle->SetTitleYOffset(1.6);
@@ -182,7 +184,7 @@ void DefaultCustomPlotting::Loop()
          counter_all_accum6++;
       }
       
-      if (accum_level[0][1] > 7){
+      if ((accum_level[0][1] > 7) && ((!limit_kinematics) || ((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) ){
          
          counter_all_accum7++;
          recomom_all->Fill(selmu_mom[0]);
@@ -335,7 +337,7 @@ void DefaultCustomPlotting::Loop()
 
       }
       
-      if (accum_level[0][1] > 9){
+      if ((accum_level[0][1] > 9) && ((!limit_kinematics) || ((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) ){
             
          counter_all_accum9++;
          recomom_all_accum9->Fill(selmu_mom[0]);
