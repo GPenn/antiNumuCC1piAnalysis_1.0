@@ -101,7 +101,6 @@ void DefaultCustomPlotting::Loop()
          if (topology == 1)
          {
             recomom_sig_presel->Fill(selmu_mom[0]);
-            recotheta_sig_presel->Fill(selmu_det_theta);
          }
          
          if (particle == -13)
