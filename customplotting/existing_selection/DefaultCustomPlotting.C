@@ -372,6 +372,9 @@ void DefaultCustomPlotting::Loop()
    canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
    
+   graph_pur_vs_recomom->Write();
+   graph_eff_vs_recomom->Write();
+   
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
    defout->Write();
