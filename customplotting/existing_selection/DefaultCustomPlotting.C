@@ -51,10 +51,25 @@ void DefaultCustomPlotting::Loop()
    
    Int_t recomom_nbins = 15;
    
-   TH1F *recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 0.0, 5000.0);
-   TH1F *recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
-   TH1F *recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
-   TH1F *recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   TH1F *recomom_all;
+   TH1F *recomom_antimu;
+   TH1F *recomom_piplus;
+   TH1F *recomom_proton;
+   
+   if (limit_kinematics)
+   {
+      recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 200.0, 1500.0);
+   }
+   else
+   {
+      recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 0.0, 5000.0);
+      recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
+      recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
+      recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+   }
    
    Int_t recomomdiff_nbins = 20;
    TH1F *recomom_diff_sig = new TH1F("recomom_diff_sig", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", recomomdiff_nbins, -5000.0, 5000.0);
