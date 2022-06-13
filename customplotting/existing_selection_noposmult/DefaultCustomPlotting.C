@@ -75,6 +75,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus_accum9;
    TH1F *recomom_proton_accum9;
    
+   TH1F *recomom_sig_presel;
+   TH1F *recomom_sig_sel;
+   TH1F *recomom_bkg_sel;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -86,6 +90,10 @@ void DefaultCustomPlotting::Loop()
       recomom_antimu_accum9 = new TH1F("recomom_antimu_accum9", "True antimu vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_piplus_accum9 = new TH1F("recomom_piplus_accum9", "True piplus vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_proton_accum9 = new TH1F("recomom_proton_accum9", "True protons vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 200.0, 1500.0);
+      recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 200.0, 1500.0);
+      recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -98,6 +106,10 @@ void DefaultCustomPlotting::Loop()
       recomom_antimu_accum9 = new TH1F("recomom_antimu_accum9", "True antimu vs reco momentum", recomom_nbins, 0.0, recomom_max);
       recomom_piplus_accum9 = new TH1F("recomom_piplus_accum9", "True piplus vs reco momentum", recomom_nbins, 0.0, recomom_max);
       recomom_proton_accum9 = new TH1F("recomom_proton_accum9", "True protons vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
+      recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, recomom_max);
+      recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -155,9 +167,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_diff_bkg_accum9 = new TH1F("recomom_diff_bkg_accum9", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", 
                                             recomomdiff_nbins, -recomom_max, recomom_max);
    
-   TH1F *recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
-   TH1F *recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, recomom_max);
-   TH1F *recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, recomom_max);
+  
    
    Int_t recotheta_nbins = 15;
    
