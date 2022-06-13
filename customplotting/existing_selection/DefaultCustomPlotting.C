@@ -56,12 +56,20 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus;
    TH1F *recomom_proton;
    
+   TH1F *recomom_sig_presel;
+   TH1F *recomom_sig_sel;
+   TH1F *recomom_bkg_sel;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 200.0, 1500.0);
+      recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 200.0, 1500.0);
+      recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 200.0, 1500.0);
    }
    else
    {
@@ -69,6 +77,10 @@ void DefaultCustomPlotting::Loop()
       recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
       recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
       recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+      
+      recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
+      recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, recomom_max);
+      recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, recomom_max);
    }
    
    Int_t recomomdiff_nbins = 20;
@@ -82,7 +94,15 @@ void DefaultCustomPlotting::Loop()
       // Cut on accum_level etc
       if (accum_level[0][0] <= 4) continue; // Set accum_level
       
+      if ((limit_kinematics) && !((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) continue;
+      
       if (accum_level[0][1] > 5){
+         
+         if (topology == 1)
+         {
+            recomom_sig_presel->Fill(selmu_mom[0]);
+            recotheta_sig_presel->Fill(selmu_det_theta);
+         }
          
          if (particle == -13)
          {
@@ -126,6 +146,12 @@ void DefaultCustomPlotting::Loop()
          if (topology == 1)
          {
             counter_cc1pi++;
+            recomom_sig_sel->Fill(selmu_mom[0]);
+         }
+        
+         if (topology != 1)
+         {
+            recomom_bkg_sel->Fill(selmu_mom[0]);
          }
          
          if (topology == 2)
@@ -313,6 +339,39 @@ void DefaultCustomPlotting::Loop()
    
    recomom_diff_sig->Write();
    recomom_diff_bkg->Write();
+   
+   // Effpur plots
+   
+   TCanvas* canvas_effpur_vs_recomom = new TCanvas("canvas_effpur_vs_recomom","canvas_effpur_vs_recomom",200,10,1000,600);
+   TGraph* graph_pur_vs_recomom = new TGraph();
+   graph_pur_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Existing #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
+   TGraph* graph_eff_vs_recomom = new TGraph();
+   graph_eff_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);");
+   
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t signal = recomom_sig_sel->GetBinContent(bin);
+      Float_t background = recomom_bkg_sel->GetBinContent(bin);
+      Float_t sig_presel = recomom_sig_presel->GetBinContent(bin);
+      
+      Float_t purity = signal/(signal+background);
+      Float_t efficiency = signal/sig_presel;
+      if (signal == 0){purity = 0;}
+
+      graph_pur_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), purity);
+      graph_eff_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), efficiency);
+   }
+   
+   graph_pur_vs_recomom->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_pur_vs_recomom->SetLineWidth(2);
+   graph_pur_vs_recomom->SetFillColor(kWhite);
+   graph_pur_vs_recomom->Draw("AL");
+   graph_eff_vs_recomom->SetLineWidth(2);
+   graph_eff_vs_recomom->SetLineColor(kRed);
+   graph_eff_vs_recomom->SetFillColor(kWhite);
+   graph_eff_vs_recomom->Draw("L same");
+   canvas_effpur_vs_recomom->BuildLegend();
+   canvas_effpur_vs_recomom->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
