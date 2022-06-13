@@ -862,6 +862,9 @@ void DefaultCustomPlotting::Loop()
    canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
    
+   graph_pur_vs_recomom->Write();
+   graph_eff_vs_recomom->Write();
+   
    TCanvas* canvas_effpur_vs_recotheta = new TCanvas("canvas_effpur_vs_recotheta","canvas_effpur_vs_recotheta",200,10,1000,600);
    TGraph* graph_pur_vs_recotheta = new TGraph();
    graph_pur_vs_recotheta->SetTitle("Purity;#mu^{+} candidate reconstructed angle (degrees);Improved #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
