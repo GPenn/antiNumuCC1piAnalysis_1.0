@@ -32,6 +32,7 @@ void DefaultCustomPlotting::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
    
+   Bool_t limit_kinematics = true;
    
    
    if (fChain == 0) return;
@@ -97,7 +98,7 @@ void DefaultCustomPlotting::Loop()
          counter_all_accum7++;
       }
       
-      if (accum_level[0][1] > 8){
+      if ((accum_level[0][1] > 8) && ((!limit_kinematics) || ((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) ){
          
          counter_all_accum8++;
          recomom_all->Fill(selmu_mom[0]);
