@@ -376,6 +376,8 @@ void DefaultCustomPlotting::Loop()
    canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
    
+   graph_pur_vs_recomom->SetName("graph_pur_vs_recomom");
+   graph_eff_vs_recomom->SetName("graph_eff_vs_recomom");
    graph_pur_vs_recomom->Write();
    graph_eff_vs_recomom->Write();
    
