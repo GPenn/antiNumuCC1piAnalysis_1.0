@@ -14,6 +14,14 @@
     impsel_kinlimited_eff->SetTitle("Improved selection");
     impsel_kinlimited_pur->SetTitle("Improved selection");
     
+    exsel_kinlimited_eff->GetYaxis()->SetRangeUser(0.0, 1.0);
+    exsel_kinlimited_pur->GetYaxis()->SetRangeUser(0.0, 1.0);
+    exsel_kinlimited_eff->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency");
+    exsel_kinlimited_pur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection purity");
+    exsel_kinlimited_eff->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");
+    exsel_kinlimited_pur->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");
+                                               
+    
     impsel_kinlimited_eff->SetLineStyle(kDashed);
     impsel_kinlimited_pur->SetLineStyle(kDashed);
     
