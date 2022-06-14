@@ -37,10 +37,10 @@
     
     impsel_kinlimited_eff->SetLineStyle(kDashed);
     impsel_kinlimited_pur->SetLineStyle(kDashed);
-    nomuonrej_kinlimited_eff->SetLineStyle(kDotted);
-    nomuonrej_kinlimited_pur->SetLineStyle(kDotted);
     nomuonrej_kinlimited_eff->SetLineStyle(10);
     nomuonrej_kinlimited_pur->SetLineStyle(10);
+    muonrej_kinlimited_eff->SetLineStyle(kDotted);
+    muonrej_kinlimited_pur->SetLineStyle(kDotted);
     
     TCanvas* canvas_eff_kinlimited = new TCanvas("canvas_eff_kinlimited","canvas_eff_kinlimited",200,10,1000,600);
     
