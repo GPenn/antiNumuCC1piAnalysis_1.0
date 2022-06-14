@@ -180,18 +180,21 @@ void DefaultCustomPlotting::Loop()
       fChain->GetEntry(jentry);
 
       // Cut on accum_level etc
-      if (accum_level[0][0] <= 4) continue; // Set accum_level
+      //if (accum_level[0][0] <= 4) continue; // Set accum_level
       
       if ((limit_kinematics) && !((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) continue;
       
-      if (accum_level[0][1] > 4){
+      if (accum_level[0][1] > 2){
          
          if (topology == 1)
          {
             recomom_sig_presel->Fill(selmu_mom[0]);
             recotheta_sig_presel->Fill(selmu_det_theta);
          }
-         
+      }
+      
+      if (accum_level[0][1] > 4){
+   
          if (particle == -13)
          {
             counter_selmu_antimu_accum4++;
