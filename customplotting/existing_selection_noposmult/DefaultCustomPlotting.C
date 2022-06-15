@@ -839,6 +839,8 @@ void DefaultCustomPlotting::Loop()
    graph_pur_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Improved #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
    TGraph* graph_eff_vs_recomom = new TGraph();
    graph_eff_vs_recomom->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);");
+   TGraph* graph_effpur_vs_recomom = new TGraph();
+   TGraph* graph_signif_vs_recomom = new TGraph();
    
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
@@ -848,10 +850,13 @@ void DefaultCustomPlotting::Loop()
       
       Float_t purity = signal/(signal+background);
       Float_t efficiency = signal/sig_presel;
-      if (signal == 0){purity = 0;}
+      Float_t significance = signal/sqrt(signal+background);
+      if (signal == 0){purity = 0; significance = 0;}
 
       graph_pur_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), purity);
       graph_eff_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), efficiency);
+      graph_effpur_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), efficiency*purity);
+      graph_signif_vs_recomom->SetPoint(bin-1, recomom_sig_sel->GetBinCenter(bin), significance);
    }
    
    graph_pur_vs_recomom->GetYaxis()->SetRangeUser(0.0, 1.0);
@@ -865,10 +870,21 @@ void DefaultCustomPlotting::Loop()
    canvas_effpur_vs_recomom->BuildLegend();
    canvas_effpur_vs_recomom->Write();
    
+   graph_effpur_vs_recomom->SetLineWidth(2);
+   graph_effpur_vs_recomom->SetFillColor(kWhite);
+   graph_signif_vs_recomom->SetLineWidth(2);
+   graph_signif_vs_recomom->SetFillColor(kWhite);
+   
    graph_pur_vs_recomom->SetName("graph_pur_vs_recomom");
    graph_eff_vs_recomom->SetName("graph_eff_vs_recomom");
+   graph_effpur_vs_recomom->SetName("graph_effpur_vs_recomom");
+   graph_signif_vs_recomom->SetName("graph_signif_vs_recomom");
    graph_pur_vs_recomom->Write();
    graph_eff_vs_recomom->Write();
+   graph_effpur_vs_recomom->Write();
+   graph_signif_vs_recomom->Write();
+   
+   
    
    TCanvas* canvas_effpur_vs_recotheta = new TCanvas("canvas_effpur_vs_recotheta","canvas_effpur_vs_recotheta",200,10,1000,600);
    TGraph* graph_pur_vs_recotheta = new TGraph();
