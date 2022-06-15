@@ -56,6 +56,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus;
    TH1F *recomom_proton;
    
+   TH1F *recomom_hmnt_all;
+   TH1F *recomom_hmnt_piminus;
+   TH1F *recomom_hmnt_mu;
+   
    TH1F *recomom_sig_presel;
    TH1F *recomom_sig_sel;
    TH1F *recomom_bkg_sel;
@@ -67,6 +71,10 @@ void DefaultCustomPlotting::Loop()
       recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 200.0, 1500.0);
       
+      recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_hmnt_piminus = new TH1F("recomom_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_hmnt_mu = new TH1F("recomom_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 200.0, 1500.0);
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 200.0, 1500.0);
       recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 200.0, 1500.0);
@@ -77,6 +85,10 @@ void DefaultCustomPlotting::Loop()
       recomom_antimu = new TH1F("recomom_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, 5000.0);
       recomom_piplus = new TH1F("recomom_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, 5000.0);
       recomom_proton = new TH1F("recomom_proton", "True protons vs reco momentum", recomom_nbins, 0.0, 5000.0);
+      
+      recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, 5000.0);
+      recomom_hmnt_piminus = new TH1F("recomom_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, 0.0, 5000.0);
+      recomom_hmnt_mu = new TH1F("recomom_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 0.0, 5000.0);
       
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, 5000.0);
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, 5000.0);
@@ -140,6 +152,7 @@ void DefaultCustomPlotting::Loop()
          
          counter_all_accum8++;
          recomom_all->Fill(selmu_mom[0]);
+         recomom_hmnt_all->Fill(HMNT_mom);
          
          if (topology == 0)
          {
@@ -221,11 +234,14 @@ void DefaultCustomPlotting::Loop()
             if (HMNT_truepdg == -211)
             {
                counter_selpi_piminus++;
+               recomom_hmnt_piminus->Fill(HMNT_mom);
+               
             }
             
             if (HMNT_truepdg == 13)
             {
                counter_selpi_mu++;
+               recomom_hmnt_mu->Fill(HMNT_mom);
             }
             
             if (HMNT_truepdg == 11)
