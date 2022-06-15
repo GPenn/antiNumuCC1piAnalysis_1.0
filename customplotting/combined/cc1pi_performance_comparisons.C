@@ -47,7 +47,7 @@
     exsel_kinlimited_eff->GetYaxis()->SetRangeUser(0.0, 1.0);
     exsel_kinlimited_pur->GetYaxis()->SetRangeUser(0.0, 1.0);
     exsel_kinlimited_effpur->GetYaxis()->SetRangeUser(0.0, 1.0);
-    exsel_kinlimited_signif->GetYaxis()->SetRangeUser(0.0, 1.0);
+    //exsel_kinlimited_signif->GetYaxis()->SetRangeUser(0.0, 1.0);
     exsel_kinlimited_eff->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency");
     exsel_kinlimited_pur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection purity");
     exsel_kinlimited_effpur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency*purity");
@@ -151,7 +151,7 @@
     exsel_kinfull_eff->GetYaxis()->SetRangeUser(0.0, 1.0);
     exsel_kinfull_pur->GetYaxis()->SetRangeUser(0.0, 1.0);
     exsel_kinfull_effpur->GetYaxis()->SetRangeUser(0.0, 1.0);
-    exsel_kinfull_signif->GetYaxis()->SetRangeUser(0.0, 1.0);
+    //exsel_kinfull_signif->GetYaxis()->SetRangeUser(0.0, 1.0);
     exsel_kinfull_eff->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency");
     exsel_kinfull_pur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection purity");
     exsel_kinfull_effpur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency*purity");
