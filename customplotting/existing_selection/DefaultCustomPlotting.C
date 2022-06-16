@@ -359,6 +359,48 @@ void DefaultCustomPlotting::Loop()
    recomom_diff_sig->Write();
    recomom_diff_bkg->Write();
    
+   graph_selmu_antimu_purity->SetName("graph_selmu_antimu_purity");
+   graph_selmu_antimu_purity->Write();
+   graph_selmu_piplus_purity->SetName("graph_selmu_piplus_purity");
+   graph_selmu_piplus_purity->Write();
+   graph_selmu_proton_purity->SetName("graph_selmu_proton_purity");
+   graph_selmu_proton_purity->Write();
+   
+   TCanvas* canvas_hmnt_purity = new TCanvas("canvas_hmnt_purity","canvas_hmnt_purity",200,10,1000,600);
+   TGraph* graph_hmnt_piminus_purity = new TGraph();
+   graph_hmnt_piminus_purity->SetTitle(" ;#pi^{-} candidate reconstructed momentum (MeV/c);Track purity;");
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_hmnt_piminus->GetBinContent(bin))/(recomom_hmnt_all->GetBinContent(bin));
+      graph_hmnt_piminus_purity->SetPoint(bin-1, recomom_hmnt_all->GetBinCenter(bin), purity);
+   }
+   graph_hmnt_piminus_purity->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_hmnt_piminus_purity->SetLineColor( kRed);
+   graph_hmnt_piminus_purity->SetFillColor( kWhite);
+   graph_hmnt_piminus_purity->SetLineWidth(2);
+   graph_hmnt_piminus_purity->Draw("AL");
+   //canvas_selmu_antimu_purity->Write();
+   
+   TGraph* graph_hmnt_mu_purity = new TGraph();
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_hmnt_mu->GetBinContent(bin))/(recomom_hmnt_all->GetBinContent(bin));
+      graph_hmnt_mu_purity->SetPoint(bin-1, recomom_hmnt_all->GetBinCenter(bin), purity);
+   }
+   graph_hmnt_mu_purity->SetLineColor( kBlue);
+   graph_hmnt_mu_purity->SetFillColor( kWhite);
+   graph_hmnt_mu_purity->SetLineWidth(2);
+   graph_hmnt_mu_purity->Draw("L same");
+   //canvas_selmu_piplus_purity->Write();
+
+   canvas_hmnt_purity->BuildLegend();
+   canvas_hmnt_purity->Write();
+   
+   graph_hmnt_piminus_purity->SetName("graph_hmnt_piminus_purity");
+   graph_hmnt_piminus_purity->Write();
+   graph_hmnt_mu_purity->SetName("graph_hmnt_mu_purity");
+   graph_hmnt_mu_purity->Write();
+   
    // Effpur plots
    
    TCanvas* canvas_effpur_vs_recomom = new TCanvas("canvas_effpur_vs_recomom","canvas_effpur_vs_recomom",200,10,1000,600);
