@@ -75,6 +75,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_piplus_accum9;
    TH1F *recomom_proton_accum9;
    
+   TH1F *recomom_hmnt_all;
+   TH1F *recomom_hmnt_piminus;
+   TH1F *recomom_hmnt_mu;
+   
    TH1F *recomom_sig_presel;
    TH1F *recomom_sig_sel;
    TH1F *recomom_bkg_sel;
@@ -91,6 +95,10 @@ void DefaultCustomPlotting::Loop()
       recomom_piplus_accum9 = new TH1F("recomom_piplus_accum9", "True piplus vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recomom_proton_accum9 = new TH1F("recomom_proton_accum9", "True protons vs reco momentum", recomom_nbins, 200.0, 1500.0);
       
+      recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_hmnt_piminus = new TH1F("recomom_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_hmnt_mu = new TH1F("recomom_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 200.0, 1500.0);
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 200.0, 1500.0);
       recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 200.0, 1500.0);
@@ -106,6 +114,10 @@ void DefaultCustomPlotting::Loop()
       recomom_antimu_accum9 = new TH1F("recomom_antimu_accum9", "True antimu vs reco momentum", recomom_nbins, 0.0, recomom_max);
       recomom_piplus_accum9 = new TH1F("recomom_piplus_accum9", "True piplus vs reco momentum", recomom_nbins, 0.0, recomom_max);
       recomom_proton_accum9 = new TH1F("recomom_proton_accum9", "True protons vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
+      recomom_hmnt_piminus = new TH1F("recomom_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, recomom_max);
+      recomom_hmnt_mu = new TH1F("recomom_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, recomom_max);
@@ -425,6 +437,7 @@ void DefaultCustomPlotting::Loop()
          if (ntpcnegQualityFV == 1)
          {
             counter_selpi_accum9++;
+            recomom_hmnt_all->Fill(HMNT_mom);
             
             if (topology == 1){recomom_diff_sig_accum9->Fill(selmu_mom[0] - HMNT_mom);}
             if (topology != 1){recomom_diff_bkg_accum9->Fill(selmu_mom[0] - HMNT_mom);}
@@ -432,11 +445,13 @@ void DefaultCustomPlotting::Loop()
             if (HMNT_truepdg == -211)
             {
                counter_selpi_piminus_accum9++;
+               recomom_hmnt_piminus->Fill(HMNT_mom);
             }
             
             if (HMNT_truepdg == 13)
             {
                counter_selpi_mu_accum9++;
+               recomom_hmnt_mu->Fill(HMNT_mom);
             }
          }
       }
@@ -609,6 +624,48 @@ void DefaultCustomPlotting::Loop()
    
    canvas_selmu_antimu_purity_accum9->BuildLegend();
    canvas_selmu_antimu_purity_accum9->Write();
+   
+   graph_selmu_antimu_purity_accum9->SetName("graph_selmu_antimu_purity");
+   graph_selmu_antimu_purity_accum9->Write();
+   graph_selmu_piplus_purity_accum9->SetName("graph_selmu_piplus_purity");
+   graph_selmu_piplus_purity_accum9->Write();
+   graph_selmu_proton_purity_accum9->SetName("graph_selmu_proton_purity");
+   graph_selmu_proton_purity_accum9->Write();
+   
+   TCanvas* canvas_hmnt_purity = new TCanvas("canvas_hmnt_purity","canvas_hmnt_purity",200,10,1000,600);
+   TGraph* graph_hmnt_piminus_purity = new TGraph();
+   graph_hmnt_piminus_purity->SetTitle(" ;#pi^{-} candidate reconstructed momentum (MeV/c);Track purity;");
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_hmnt_piminus->GetBinContent(bin))/(recomom_hmnt_all->GetBinContent(bin));
+      graph_hmnt_piminus_purity->SetPoint(bin-1, recomom_hmnt_all->GetBinCenter(bin), purity);
+   }
+   graph_hmnt_piminus_purity->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_hmnt_piminus_purity->SetLineColor( kRed);
+   graph_hmnt_piminus_purity->SetFillColor( kWhite);
+   graph_hmnt_piminus_purity->SetLineWidth(2);
+   graph_hmnt_piminus_purity->Draw("AL");
+   //canvas_selmu_antimu_purity->Write();
+   
+   TGraph* graph_hmnt_mu_purity = new TGraph();
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t purity = (float)(recomom_hmnt_mu->GetBinContent(bin))/(recomom_hmnt_all->GetBinContent(bin));
+      graph_hmnt_mu_purity->SetPoint(bin-1, recomom_hmnt_all->GetBinCenter(bin), purity);
+   }
+   graph_hmnt_mu_purity->SetLineColor( kBlue);
+   graph_hmnt_mu_purity->SetFillColor( kWhite);
+   graph_hmnt_mu_purity->SetLineWidth(2);
+   graph_hmnt_mu_purity->Draw("L same");
+   //canvas_selmu_piplus_purity->Write();
+
+   canvas_hmnt_purity->BuildLegend();
+   canvas_hmnt_purity->Write();
+   
+   graph_hmnt_piminus_purity->SetName("graph_hmnt_piminus_purity");
+   graph_hmnt_piminus_purity->Write();
+   graph_hmnt_mu_purity->SetName("graph_hmnt_mu_purity");
+   graph_hmnt_mu_purity->Write();
    
    // MipPion plots
    
