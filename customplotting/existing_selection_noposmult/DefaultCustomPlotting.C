@@ -62,7 +62,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selmu_bdtvalid = 0, counter_selmu_antimu_bdtvalid = 0, counter_selmu_piplus_bdtvalid = 0, counter_selmu_proton_bdtvalid = 0;
    Int_t counter_selpi_bdtvalid = 0, counter_selpi_piminus_bdtvalid = 0, counter_selpi_mu_bdtvalid = 0;
    
-   Int_t recomom_nbins = 15;
+   Int_t recomom_nbins = 8;
    Double_t recomom_max = 5000.0;
    
    TH1F *recomom_all;
