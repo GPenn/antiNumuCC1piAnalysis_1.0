@@ -152,7 +152,6 @@ void DefaultCustomPlotting::Loop()
          
          counter_all_accum8++;
          recomom_all->Fill(selmu_mom[0]);
-         recomom_hmnt_all->Fill(HMNT_mom);
          
          if (topology == 0)
          {
@@ -226,6 +225,7 @@ void DefaultCustomPlotting::Loop()
          if (ntpcnegQualityFV == 1)
          {
             counter_selpi++;
+            recomom_hmnt_all->Fill(HMNT_mom);
             
             if (topology == 1){recomom_diff_sig->Fill(selmu_mom[0] - HMNT_mom);}
             if (topology != 1){recomom_diff_bkg->Fill(selmu_mom[0] - HMNT_mom);}
