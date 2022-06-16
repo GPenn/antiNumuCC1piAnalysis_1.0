@@ -49,7 +49,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
    Int_t counter_selmu_antimu_accum5 = 0, counter_selmu_antimu_accum6 = 0, counter_selmu_piplus_accum5 = 0, counter_selmu_piplus_accum6 = 0;
    
-   Int_t recomom_nbins = 15;
+   Int_t recomom_nbins = 8;
    
    TH1F *recomom_all;
    TH1F *recomom_antimu;
