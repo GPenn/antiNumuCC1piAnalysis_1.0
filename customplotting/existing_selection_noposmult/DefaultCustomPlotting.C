@@ -116,7 +116,7 @@ void DefaultCustomPlotting::Loop()
       recomom_proton_accum9 = new TH1F("recomom_proton_accum9", "True protons vs reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
-      recomom_hmnt_piminus = new TH1F("recomom_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, recomom_max);
+      recomom_hmnt_piminus = new TH1F("recomom_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       recomom_hmnt_mu = new TH1F("recomom_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
