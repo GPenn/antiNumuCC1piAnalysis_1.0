@@ -177,6 +177,8 @@ void DefaultCustomPlotting::Loop()
                                           bdt_optimisation_nbins, 0.0, 1.0, bdt_optimisation_nbins, 0.0, 1.0);
    TH2F *bdt_cut_optimisation_signif = new TH2F("bdt_cut_optimisation_signif", "bdt_cut_optimisation_signif;Antimuon candidate BDT cut;Pion candidate BDT cut",
                                           bdt_optimisation_nbins, 0.0, 1.0, bdt_optimisation_nbins, 0.0, 1.0);
+   Int_t cross_check_sig = 0;
+   Int_t cross_check_bkg = 0;
    
    Int_t recomomdiff_nbins = 20;
    TH1F *recomom_diff_sig = new TH1F("recomom_diff_sig", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", 
@@ -188,7 +190,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_diff_bkg_accum9 = new TH1F("recomom_diff_bkg_accum9", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", 
                                             recomomdiff_nbins, -recomom_max, recomom_max);
    
-  
+
    
    Int_t recotheta_nbins = 15;
    
@@ -231,10 +233,12 @@ void DefaultCustomPlotting::Loop()
             if (topology == 1)
             {
                bdt_cut_optimisation_sig->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
+               if ((selmu_bdt_pid_mu > 0.24) && (hmnt_bdt_pid_pi > 98)) cross_check_sig++;
             }
             if (topology != 1)
             {
                bdt_cut_optimisation_bkg->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
+               if ((selmu_bdt_pid_mu > 0.24) && (hmnt_bdt_pid_pi > 98)) cross_check_bkg++;
             }
          }
       }
@@ -1028,6 +1032,8 @@ void DefaultCustomPlotting::Loop()
    }
    
    std::cout << "Optimal CC1pi significance = " << optimal_signif << " at cut BDT mu-like  = " << opt_cut_signif_mu << ", pi-like = " << opt_cut_signif_pi << std::endl;
+   // Cross-check:
+   std::cout << "Cross-check CC1pi significance = " << cross_check_sig/sqrt(cross_check_sig+cross_check_bkg) << std::endl;
    
    TCanvas* canvas_bdt_cut_optimisation_signif = new TCanvas("canvas_bdt_cut_optimisation_signif","",200,10,1000,800);
    graph_bdt_cut_optimisation_signif->Draw("surf1");
