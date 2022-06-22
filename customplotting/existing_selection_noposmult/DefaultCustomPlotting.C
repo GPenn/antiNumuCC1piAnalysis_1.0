@@ -1030,7 +1030,7 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Optimal CC1pi significance = " << optimal_signif << " at cut BDT mu-like  = " << opt_cut_signif_mu << ", pi-like = " << opt_cut_signif_pi << std::endl;
    
    TCanvas* canvas_bdt_cut_optimisation_signif = new TCanvas("canvas_bdt_cut_optimisation_signif","",200,10,1000,800);
-   canvas_bdt_cut_optimisation_signif->Draw("surf1");
+   graph_bdt_cut_optimisation_signif->Draw("surf1");
    canvas_bdt_cut_optimisation_signif->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
