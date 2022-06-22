@@ -169,6 +169,15 @@ void DefaultCustomPlotting::Loop()
    TH2F *selpi_ebyl_vs_mippion_bkg = new TH2F("selpi_ebyl_vs_mippion_bkg", "selpi_ebyl_vs_mippion_bkg;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           optimisation_nbins, -20, 50.0, optimisation_nbins, 0, 4.0);
    
+   Int_t bdt_optimisation_nbins = 50;
+   
+   TH2F *bdt_cut_optimisation_sig = new TH2F("bdt_cut_optimisation_sig", "bdt_cut_optimisation_sig;Antimuon candidate BDT mu-like;Pion candidate BDT pi-like",
+                                          bdt_optimisation_nbins, 0.0, 1.0, bdt_optimisation_nbins, 0.0, 1.0);
+   TH2F *bdt_cut_optimisation_bkg = new TH2F("bdt_cut_optimisation_bkg", "bdt_cut_optimisation_bkg;Antimuon candidate BDT mu-like;Pion candidate BDT pi-like",
+                                          bdt_optimisation_nbins, 0.0, 1.0, bdt_optimisation_nbins, 0.0, 1.0);
+   TH2F *bdt_cut_optimisation_signif = new TH2F("bdt_cut_optimisation_signif", "bdt_cut_optimisation_signif;Antimuon candidate BDT cut;Pion candidate BDT cut",
+                                          bdt_optimisation_nbins, 0.0, 1.0, bdt_optimisation_nbins, 0.0, 1.0);
+   
    Int_t recomomdiff_nbins = 20;
    TH1F *recomom_diff_sig = new TH1F("recomom_diff_sig", "Signal;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", 
                                      recomomdiff_nbins, -recomom_max, recomom_max);
@@ -216,6 +225,18 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_piplus_accum4++;
          }
+         
+         if ((ntpcposQualityFV==1) && (ntpcnegQualityFV==1))
+         {
+            if (topology == 1)
+            {
+               bdt_cut_optimisation_sig->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
+            }
+            if (topology != 1)
+            {
+               bdt_cut_optimisation_bkg->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
+            }
+         }
       }
       
       if (accum_level[0][1] > 5){
@@ -236,7 +257,7 @@ void DefaultCustomPlotting::Loop()
          counter_all_accum6++;
       }
       
-      if ((accum_level[0][1] > 7) && ((!limit_kinematics) || ((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) ){
+      if (accum_level[0][1] > 7){
          
          counter_all_accum7++;
          recomom_all->Fill(selmu_mom[0]);
@@ -389,7 +410,7 @@ void DefaultCustomPlotting::Loop()
 
       }
       
-      if ((accum_level[0][1] > 9) && ((!limit_kinematics) || ((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) ){
+      if (accum_level[0][1] > 9){
             
          counter_all_accum9++;
          recomom_all_accum9->Fill(selmu_mom[0]);
@@ -973,6 +994,44 @@ void DefaultCustomPlotting::Loop()
    graph_eff_vs_recotheta->Draw("L same");
    canvas_effpur_vs_recotheta->BuildLegend();
    canvas_effpur_vs_recotheta->Write();
+   
+   // BDT cuts optimisation
+   
+   optimal_signif = 0;
+   Float_t opt_cut_signif_mu = 0;
+   Float_t opt_cut_signif_pi = 0;
+   TGraph2D* graph_bdt_cut_optimisation_signif = new TGraph2D();
+   graph_bdt_cut_optimisation_signif->SetTitle("graph_bdt_cut_optimisation_signif; Antimuon candidate BDT cut; Pion candidate BDT cut; Significance");
+   graphpoint = 0;
+   for (Int_t cutx=1; cutx <= bdt_optimisation_nbins; cutx++)
+   {
+      for (Int_t cuty=1; cuty <= bdt_optimisation_nbins; cuty++)
+      {
+         Float_t passed_sig = bdt_cut_optimisation_sig->GetEntries() - bdt_cut_optimisation_sig->Integral(cutx,bdt_optimisation_nbins,cuty,bdt_optimisation_nbins);
+         Float_t passed_bkg = bdt_cut_optimisation_bkg->GetEntries() - bdt_cut_optimisation_bkg->Integral(cutx,bdt_optimisation_nbins,cuty,bdt_optimisation_nbins);
+
+         Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
+         if (passed_sig == 0){significance = 0;}
+      
+         bdt_cut_optimisation_signif->SetBinContent(cutx, cuty, significance);
+         graph_bdt_cut_optimisation_signif->SetPoint(graphpoint, bdt_cut_optimisation_sig->ProjectionX()->GetBinLowEdge(cutx), 
+                                                                  bdt_cut_optimisation_sig->ProjectionY()->GetBinLowEdge(cuty), significance);
+         graphpoint++;
+            
+         if (significance > optimal_signif)
+         {
+            optimal_signif = significance;
+            opt_cut_signif_mu = bdt_cut_optimisation_sig->ProjectionX()->GetBinLowEdge(cutx);
+            opt_cut_signif_pi = bdt_cut_optimisation_sig->ProjectionY()->GetBinLowEdge(cuty);
+         }
+      }
+   }
+   
+   std::cout << "Optimal CC1pi significance = " << optimal_signif << " at cut BDT mu-like  = " << opt_cut_signif_mu << ", pi-like = " << opt_cut_signif_pi << std::endl;
+   
+   TCanvas* canvas_bdt_cut_optimisation_signif = new TCanvas("canvas_bdt_cut_optimisation_signif","",200,10,1000,800);
+   canvas_bdt_cut_optimisation_signif->Draw("surf1");
+   canvas_bdt_cut_optimisation_signif->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
