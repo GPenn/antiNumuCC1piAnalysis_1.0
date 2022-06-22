@@ -233,12 +233,12 @@ void DefaultCustomPlotting::Loop()
             if (topology == 1)
             {
                bdt_cut_optimisation_sig->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
-               if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 1.0)) cross_check_sig++;
+               if ((selmu_bdt_pid_mu > 0.24) && (hmnt_bdt_pid_pi > 0.98)) cross_check_sig++;
             }
             if (topology != 1)
             {
                bdt_cut_optimisation_bkg->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
-               if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 1.0)) cross_check_bkg++;
+               if ((selmu_bdt_pid_mu > 0.24) && (hmnt_bdt_pid_pi > 0.98)) cross_check_bkg++;
             }
          }
       }
@@ -1011,8 +1011,8 @@ void DefaultCustomPlotting::Loop()
    {
       for (Int_t cuty=1; cuty <= bdt_optimisation_nbins; cuty++)
       {
-         Float_t passed_sig = bdt_cut_optimisation_sig->GetEntries() - bdt_cut_optimisation_sig->Integral(0,cutx,0,cuty);
-         Float_t passed_bkg = bdt_cut_optimisation_bkg->GetEntries() - bdt_cut_optimisation_bkg->Integral(0,cutx,0,cuty);
+         Float_t passed_sig = bdt_cut_optimisation_sig->Integral(cutx,bdt_optimisation_nbins,cuty,bdt_optimisation_nbins);
+         Float_t passed_bkg = bdt_cut_optimisation_bkg->Integral(cutx,bdt_optimisation_nbins,cuty,bdt_optimisation_nbins);
 
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          if (passed_sig == 0){significance = 0;}
