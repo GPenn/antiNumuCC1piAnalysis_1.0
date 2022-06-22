@@ -233,12 +233,12 @@ void DefaultCustomPlotting::Loop()
             if (topology == 1)
             {
                bdt_cut_optimisation_sig->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
-               if ((selmu_bdt_pid_mu > 0.24) && (hmnt_bdt_pid_pi > 0.98)) cross_check_sig++;
+               if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 0.12)) cross_check_sig++;
             }
             if (topology != 1)
             {
                bdt_cut_optimisation_bkg->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
-               if ((selmu_bdt_pid_mu > 0.24) && (hmnt_bdt_pid_pi > 0.98)) cross_check_bkg++;
+               if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 0.12)) cross_check_bkg++;
             }
          }
       }
