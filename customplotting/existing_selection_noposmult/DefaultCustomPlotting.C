@@ -1007,8 +1007,8 @@ void DefaultCustomPlotting::Loop()
    {
       for (Int_t cuty=1; cuty <= bdt_optimisation_nbins; cuty++)
       {
-         Float_t passed_sig = bdt_cut_optimisation_sig->GetEntries() - bdt_cut_optimisation_sig->Integral(cutx,bdt_optimisation_nbins,cuty,bdt_optimisation_nbins);
-         Float_t passed_bkg = bdt_cut_optimisation_bkg->GetEntries() - bdt_cut_optimisation_bkg->Integral(cutx,bdt_optimisation_nbins,cuty,bdt_optimisation_nbins);
+         Float_t passed_sig = bdt_cut_optimisation_sig->GetEntries() - bdt_cut_optimisation_sig->Integral(0,cutx,0,cuty);
+         Float_t passed_bkg = bdt_cut_optimisation_bkg->GetEntries() - bdt_cut_optimisation_bkg->Integral(0,cutx,0,cuty);
 
          Float_t significance = passed_sig/sqrt(passed_sig + passed_bkg);
          if (passed_sig == 0){significance = 0;}
