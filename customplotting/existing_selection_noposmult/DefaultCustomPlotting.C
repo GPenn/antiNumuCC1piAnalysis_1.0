@@ -1086,7 +1086,7 @@ void DefaultCustomPlotting::Loop()
    graph_eff_vs_recomom_optsel->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);");
    TGraph* graph_effpur_vs_recomom_optsel = new TGraph();
    TGraph* graph_signif_vs_recomom_optsel = new TGraph();
-   
+   /*
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t signal = recomom_optsel_sig_sel->GetBinContent(bin);
@@ -1103,7 +1103,7 @@ void DefaultCustomPlotting::Loop()
       graph_effpur_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), efficiency*purity);
       graph_signif_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), significance);
    }
-   /*
+   
    graph_pur_vs_recomom_optsel->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_pur_vs_recomom_optsel->SetLineWidth(2);
    graph_pur_vs_recomom_optsel->SetFillColor(kWhite);
