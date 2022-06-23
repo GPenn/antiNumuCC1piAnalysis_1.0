@@ -84,6 +84,19 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_sig_sel;
    TH1F *recomom_bkg_sel;
    
+   TH1F *recomom_optsel_all;
+   TH1F *recomom_optsel_antimu;
+   TH1F *recomom_optsel_piplus;
+   TH1F *recomom_optsel_proton;
+   
+   TH1F *recomom_optsel_hmnt_all;
+   TH1F *recomom_optsel_hmnt_piminus;
+   TH1F *recomom_optsel_hmnt_mu;
+   
+   TH1F *recomom_optsel_sig_presel;
+   TH1F *recomom_optsel_sig_sel;
+   TH1F *recomom_optsel_bkg_sel;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -103,6 +116,18 @@ void DefaultCustomPlotting::Loop()
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 200.0, 1500.0);
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 200.0, 1500.0);
       recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_antimu = new TH1F("recomom_optsel_antimu", "True antimu vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_piplus = new TH1F("recomom_optsel_piplus", "True piplus vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_proton = new TH1F("recomom_optsel_proton", "True protons vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_hmnt_piminus = new TH1F("recomom_optsel_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_hmnt_mu = new TH1F("recomom_optsel_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_optsel_sig_sel = new TH1F("recomom_optsel_sig_sel", "recomom_optsel_sig_sel", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_bkg_sel = new TH1F("recomom_optsel_bkg_sel", "recomom_optsel_bkg_sel", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -123,6 +148,18 @@ void DefaultCustomPlotting::Loop()
       recomom_sig_presel = new TH1F("recomom_sig_presel", "recomom_sig_presel", recomom_nbins, 0.0, recomom_max);
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, recomom_max);
       recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      recomom_optsel_antimu = new TH1F("recomom_optsel_antimu", "True antimu vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      recomom_optsel_piplus = new TH1F("recomom_optsel_piplus", "True piplus vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      recomom_optsel_proton = new TH1F("recomom_optsel_proton", "True protons vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
+      recomom_optsel_hmnt_piminus = new TH1F("recomom_optsel_hmnt_piminus", "True piminus vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
+      recomom_optsel_hmnt_mu = new TH1F("recomom_optsel_hmnt_mu", "True mu vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_optsel_sig_sel = new TH1F("recomom_optsel_sig_sel", "recomom_optsel_sig_sel", recomom_nbins, 0.0, recomom_max);
+      recomom_optsel_bkg_sel = new TH1F("recomom_optsel_bkg_sel", "recomom_optsel_bkg_sel", recomom_nbins, 0.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -242,6 +279,45 @@ void DefaultCustomPlotting::Loop()
                bdt_cut_optimisation_bkg->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
                if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 0.12)) cross_check_bkg++;
             }
+            
+            if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 0.12))
+            {
+               if (topology == 1)
+               {
+                  recomom_optsel_sig_sel->Fill(selmu_mom[0]);
+               }
+               if (topology != 1)
+               {
+                  recomom_optsel_bkg_sel->Fill(selmu_mom[0]);
+               }
+               if (particle == -13)
+               {
+                  recomom_optsel_antimu->Fill(selmu_mom[0]);
+               }
+               if (particle == 211)
+               {
+                  recomom_optsel_piplus->Fill(selmu_mom[0]);
+               }
+               if (particle == 2212)
+               {
+                  recomom_optsel_proton->Fill(selmu_mom[0]);
+               }
+               if (ntpcnegQualityFV == 1)
+               {
+                  recomom_optsel_hmnt_all->Fill(HMNT_mom);
+            
+                  if (HMNT_truepdg == -211)
+                  {
+                     recomom_optsel_hmnt_piminus->Fill(HMNT_mom);
+                  }
+            
+                  if (HMNT_truepdg == 13)
+                  {
+                     recomom_optsel_hmnt_mu->Fill(HMNT_mom);
+                  }
+               }
+            }
+            
          }
       }
       
@@ -1000,6 +1076,58 @@ void DefaultCustomPlotting::Loop()
    graph_eff_vs_recotheta->Draw("L same");
    canvas_effpur_vs_recotheta->BuildLegend();
    canvas_effpur_vs_recotheta->Write();
+   
+   // Effpur (optimised BDT selection)
+   
+   TCanvas* canvas_effpur_vs_recomom_optsel = new TCanvas("canvas_effpur_vs_recomom_optsel","canvas_effpur_vs_recomom_optsel",200,10,1000,600);
+   TGraph* graph_pur_vs_recomom_optsel = new TGraph();
+   graph_pur_vs_recomom_optsel->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Optimised BDT #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
+   TGraph* graph_eff_vs_recomom_optsel = new TGraph();
+   graph_eff_vs_recomom_optsel->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);");
+   TGraph* graph_effpur_vs_recomom_optsel = new TGraph();
+   TGraph* graph_signif_vs_recomom_optsel = new TGraph();
+   
+   for (Int_t bin=1; bin <= recomom_nbins; bin++)
+   {
+      Float_t signal = recomom_optsel_sig_sel->GetBinContent(bin);
+      Float_t background = recomom_optsel_bkg_sel->GetBinContent(bin);
+      Float_t sig_presel = recomom_optsel_sig_presel->GetBinContent(bin);
+      
+      Float_t purity = signal/(signal+background);
+      Float_t efficiency = signal/sig_presel;
+      Float_t significance = signal/sqrt(signal+background);
+      if (signal == 0){purity = 0; significance = 0;}
+
+      graph_pur_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), purity);
+      graph_eff_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), efficiency);
+      graph_effpur_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), efficiency*purity);
+      graph_signif_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), significance);
+   }
+   
+   graph_pur_vs_recomom_optsel->GetYaxis()->SetRangeUser(0.0, 1.0);
+   graph_pur_vs_recomom_optsel->SetLineWidth(2);
+   graph_pur_vs_recomom_optsel->SetFillColor(kWhite);
+   graph_pur_vs_recomom_optsel->Draw("AL");
+   graph_eff_vs_recomom_optsel->SetLineWidth(2);
+   graph_eff_vs_recomom_optsel->SetLineColor(kRed);
+   graph_eff_vs_recomom_optsel->SetFillColor(kWhite);
+   graph_eff_vs_recomom_optsel->Draw("L same");
+   canvas_effpur_vs_recomom_optsel->BuildLegend();
+   canvas_effpur_vs_recomom_optsel->Write();
+   
+   graph_effpur_vs_recomom_optsel->SetLineWidth(2);
+   graph_effpur_vs_recomom_optsel->SetFillColor(kWhite);
+   graph_signif_vs_recomom_optsel->SetLineWidth(2);
+   graph_signif_vs_recomom_optsel->SetFillColor(kWhite);
+   
+   graph_pur_vs_recomom_optsel->SetName("graph_pur_vs_recomom_optsel");
+   graph_eff_vs_recomom_optsel->SetName("graph_eff_vs_recomom_optsel");
+   graph_effpur_vs_recomom_optsel->SetName("graph_effpur_vs_recomom_optsel");
+   graph_signif_vs_recomom_optsel->SetName("graph_signif_vs_recomom_optsel");
+   graph_pur_vs_recomom_optsel->Write();
+   graph_eff_vs_recomom_optsel->Write();
+   graph_effpur_vs_recomom_optsel->Write();
+   graph_signif_vs_recomom_optsel->Write();
    
    // BDT cuts optimisation
    
