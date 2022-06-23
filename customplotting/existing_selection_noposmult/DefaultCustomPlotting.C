@@ -1079,7 +1079,7 @@ void DefaultCustomPlotting::Loop()
    
    // Effpur (optimised BDT selection)
    
-   /*TCanvas* canvas_effpur_vs_recomom_optsel = new TCanvas("canvas_effpur_vs_recomom_optsel","canvas_effpur_vs_recomom_optsel",200,10,1000,600);
+   TCanvas* canvas_effpur_vs_recomom_optsel = new TCanvas("canvas_effpur_vs_recomom_optsel","canvas_effpur_vs_recomom_optsel",200,10,1000,600);
    TGraph* graph_pur_vs_recomom_optsel = new TGraph();
    graph_pur_vs_recomom_optsel->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);Optimised BDT #bar{#nu}_{#mu} CC1pi- selection purity, efficiency");
    TGraph* graph_eff_vs_recomom_optsel = new TGraph();
@@ -1103,7 +1103,7 @@ void DefaultCustomPlotting::Loop()
       graph_effpur_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), efficiency*purity);
       graph_signif_vs_recomom_optsel->SetPoint(bin-1, recomom_optsel_sig_sel->GetBinCenter(bin), significance);
    }
-   
+   /*
    graph_pur_vs_recomom_optsel->GetYaxis()->SetRangeUser(0.0, 1.0);
    graph_pur_vs_recomom_optsel->SetLineWidth(2);
    graph_pur_vs_recomom_optsel->SetFillColor(kWhite);
