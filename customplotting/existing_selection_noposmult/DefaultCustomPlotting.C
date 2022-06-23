@@ -93,7 +93,6 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_optsel_hmnt_piminus;
    TH1F *recomom_optsel_hmnt_mu;
    
-   TH1F *recomom_optsel_sig_presel;
    TH1F *recomom_optsel_sig_sel;
    TH1F *recomom_optsel_bkg_sel;
    
@@ -1086,12 +1085,12 @@ void DefaultCustomPlotting::Loop()
    graph_eff_vs_recomom_optsel->SetTitle(" ;#mu^{+} candidate reconstructed momentum (MeV/c);");
    TGraph* graph_effpur_vs_recomom_optsel = new TGraph();
    TGraph* graph_signif_vs_recomom_optsel = new TGraph();
-   /*
+   
    for (Int_t bin=1; bin <= recomom_nbins; bin++)
    {
       Float_t signal = recomom_optsel_sig_sel->GetBinContent(bin);
       Float_t background = recomom_optsel_bkg_sel->GetBinContent(bin);
-      Float_t sig_presel = recomom_optsel_sig_presel->GetBinContent(bin);
+      Float_t sig_presel = recomom_sig_presel->GetBinContent(bin);
       
       Float_t purity = signal/(signal+background);
       Float_t efficiency = signal/sig_presel;
@@ -1127,7 +1126,7 @@ void DefaultCustomPlotting::Loop()
    graph_pur_vs_recomom_optsel->Write();
    graph_eff_vs_recomom_optsel->Write();
    graph_effpur_vs_recomom_optsel->Write();
-   graph_signif_vs_recomom_optsel->Write();*/
+   graph_signif_vs_recomom_optsel->Write();
    
    // BDT cuts optimisation
    
