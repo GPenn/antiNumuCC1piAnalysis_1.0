@@ -107,7 +107,7 @@
     TCanvas* canvas_eff_kinlimited = new TCanvas("canvas_eff_kinlimited","canvas_eff_kinlimited",200,10,1000,600);
     
     exsel_kinlimited_eff->Draw("AL");
-    impsel_kinlimited_eff->Draw("L same");
+    //impsel_kinlimited_eff->Draw("L same");
     nomuonrej_kinlimited_eff->Draw("L same");
     //muonrej_kinlimited_eff->Draw("L same");
     optsel_kinlimited_eff->Draw("L same");
@@ -115,7 +115,7 @@
     TCanvas* canvas_pur_kinlimited = new TCanvas("canvas_pur_kinlimited","canvas_pur_kinlimited",200,10,1000,600);
     
     exsel_kinlimited_pur->Draw("AL");
-    impsel_kinlimited_pur->Draw("L same");
+    //impsel_kinlimited_pur->Draw("L same");
     nomuonrej_kinlimited_pur->Draw("L same");
     //muonrej_kinlimited_pur->Draw("L same");
     optsel_kinlimited_pur->Draw("L same");
@@ -123,7 +123,7 @@
     TCanvas* canvas_effpur_kinlimited = new TCanvas("canvas_effpur_kinlimited","canvas_effpur_kinlimited",200,10,1000,600);
     
     exsel_kinlimited_effpur->Draw("AL");
-    impsel_kinlimited_effpur->Draw("L same");
+    //impsel_kinlimited_effpur->Draw("L same");
     nomuonrej_kinlimited_effpur->Draw("L same");
     //muonrej_kinlimited_effpur->Draw("L same");
     optsel_kinlimited_effpur->Draw("L same");
@@ -131,7 +131,7 @@
     TCanvas* canvas_signif_kinlimited = new TCanvas("canvas_signif_kinlimited","canvas_signif_kinlimited",200,10,1000,600);
     
     exsel_kinlimited_signif->Draw("AL");
-    impsel_kinlimited_signif->Draw("L same");
+    //impsel_kinlimited_signif->Draw("L same");
     nomuonrej_kinlimited_signif->Draw("L same");
     //muonrej_kinlimited_signif->Draw("L same");
     optsel_kinlimited_signif->Draw("L same");
