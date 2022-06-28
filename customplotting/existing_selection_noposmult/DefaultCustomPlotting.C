@@ -279,44 +279,44 @@ void DefaultCustomPlotting::Loop()
                if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 0.12)) cross_check_bkg++;
             }
             
-            if ((selmu_bdt_pid_mu > 0.26) && (hmnt_bdt_pid_pi > 0.12))
+         }
+         
+         if ((selmu_bdt_pid_mu > 0.26) && ((hmnt_bdt_pid_pi > 0.12) || (ntpcnegQualityFV == 0)))
+         {
+            if (topology == 1)
             {
-               if (topology == 1)
-               {
-                  recomom_optsel_sig_sel->Fill(selmu_mom[0]);
-               }
-               if (topology != 1)
-               {
-                  recomom_optsel_bkg_sel->Fill(selmu_mom[0]);
-               }
-               if (particle == -13)
-               {
-                  recomom_optsel_antimu->Fill(selmu_mom[0]);
-               }
-               if (particle == 211)
-               {
-                  recomom_optsel_piplus->Fill(selmu_mom[0]);
-               }
-               if (particle == 2212)
-               {
-                  recomom_optsel_proton->Fill(selmu_mom[0]);
-               }
-               if (ntpcnegQualityFV == 1)
-               {
-                  recomom_optsel_hmnt_all->Fill(HMNT_mom);
+               recomom_optsel_sig_sel->Fill(selmu_mom[0]);
+            }
+            if (topology != 1)
+            {
+               recomom_optsel_bkg_sel->Fill(selmu_mom[0]);
+            }
+            if (particle == -13)
+            {
+               recomom_optsel_antimu->Fill(selmu_mom[0]);
+            }
+            if (particle == 211)
+            {
+               recomom_optsel_piplus->Fill(selmu_mom[0]);
+            }
+            if (particle == 2212)
+            {
+               recomom_optsel_proton->Fill(selmu_mom[0]);
+            }
+            if (ntpcnegQualityFV == 1)
+            {
+               recomom_optsel_hmnt_all->Fill(HMNT_mom);
             
-                  if (HMNT_truepdg == -211)
-                  {
-                     recomom_optsel_hmnt_piminus->Fill(HMNT_mom);
-                  }
+               if (HMNT_truepdg == -211)
+               {
+                  recomom_optsel_hmnt_piminus->Fill(HMNT_mom);
+               }
             
-                  if (HMNT_truepdg == 13)
-                  {
-                     recomom_optsel_hmnt_mu->Fill(HMNT_mom);
-                  }
+               if (HMNT_truepdg == 13)
+               {
+                  recomom_optsel_hmnt_mu->Fill(HMNT_mom);
                }
             }
-            
          }
       }
       
