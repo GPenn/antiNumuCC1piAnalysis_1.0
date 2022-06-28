@@ -178,7 +178,7 @@
     exsel_kinfull_effpur->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");
     exsel_kinfull_signif->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");  
     
-    impsel_kinfull_eff->SetLineStyle(kDashed);
+    /*impsel_kinfull_eff->SetLineStyle(kDashed);
     impsel_kinfull_pur->SetLineStyle(kDashed);
     impsel_kinfull_effpur->SetLineStyle(kDashed);
     impsel_kinfull_signif->SetLineStyle(kDashed);
@@ -189,7 +189,24 @@
     muonrej_kinfull_eff->SetLineStyle(kDotted);
     muonrej_kinfull_pur->SetLineStyle(kDotted);
     muonrej_kinfull_effpur->SetLineStyle(kDotted);
-    muonrej_kinfull_signif->SetLineStyle(kDotted);
+    muonrej_kinfull_signif->SetLineStyle(kDotted);*/
+    
+    exsel_kinfull_eff->SetLineColor(kBlack);
+    exsel_kinfull_pur->SetLineColor(kBlack);
+    exsel_kinfull_effpur->SetLineColor(kBlack);
+    exsel_kinfull_signif->SetLineColor(kBlack);
+    impsel_kinfull_eff->SetLineColor(kRed+1);
+    impsel_kinfull_pur->SetLineColor(kRed+1);
+    impsel_kinfull_effpur->SetLineColor(kRed+1);
+    impsel_kinfull_signif->SetLineColor(kRed+1);
+    nomuonrej_kinfull_eff->SetLineColor(kYellow+1);
+    nomuonrej_kinfull_pur->SetLineColor(kYellow+1);
+    nomuonrej_kinfull_effpur->SetLineColor(kYellow+1);
+    nomuonrej_kinfull_signif->SetLineColor(kYellow+1);
+    muonrej_kinfull_eff->SetLineColor(kGreen+1);
+    muonrej_kinfull_pur->SetLineColor(kGreen+1);
+    muonrej_kinfull_effpur->SetLineColor(kGreen+1);
+    muonrej_kinfull_signif->SetLineColor(kGreen+1);
     
     TCanvas* canvas_eff_kinfull = new TCanvas("canvas_eff_kinfull","canvas_eff_kinfull",200,10,1000,600);
     
