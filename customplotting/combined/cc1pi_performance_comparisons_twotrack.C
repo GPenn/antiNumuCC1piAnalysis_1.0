@@ -140,4 +140,146 @@
     canvas_pur_kinlimited->BuildLegend();
     canvas_effpur_kinlimited->BuildLegend();
     canvas_signif_kinlimited->BuildLegend();
+    
+    TFile *file_existing_selection_kinfull = new TFile("../existing_selection/output/existing_selection_twotrack.root");
+    //file_existing_selection_kinfull.ls();
+    TGraph* exsel_kinfull_eff = (TGraph*)file_existing_selection_kinfull.Get("graph_eff_vs_recomom");
+    TGraph* exsel_kinfull_pur = (TGraph*)file_existing_selection_kinfull.Get("graph_pur_vs_recomom");
+    TGraph* exsel_kinfull_effpur = (TGraph*)file_existing_selection_kinfull.Get("graph_effpur_vs_recomom");
+    TGraph* exsel_kinfull_signif = (TGraph*)file_existing_selection_kinfull.Get("graph_signif_vs_recomom");
+    
+    TFile *file_improved_selection_kinfull = new TFile("../existing_selection_noposmult/output/improved_selection_twotrack.root");
+    //file_improved_selection_kinfull.ls();
+    TGraph* impsel_kinfull_eff = (TGraph*)file_improved_selection_kinfull.Get("graph_eff_vs_recomom");
+    TGraph* impsel_kinfull_pur = (TGraph*)file_improved_selection_kinfull.Get("graph_pur_vs_recomom");
+    TGraph* impsel_kinfull_effpur = (TGraph*)file_improved_selection_kinfull.Get("graph_effpur_vs_recomom");
+    TGraph* impsel_kinfull_signif = (TGraph*)file_improved_selection_kinfull.Get("graph_signif_vs_recomom");
+    
+    TFile *file_nomuonrej_selection_kinfull = new TFile("../existing_selection_noposmult/output/nomuonrejection_twotrack.root");
+    //file_nomuonrej_selection_kinfull.ls();
+    TGraph* nomuonrej_kinfull_eff = (TGraph*)file_nomuonrej_selection_kinfull.Get("graph_eff_vs_recomom");
+    TGraph* nomuonrej_kinfull_pur = (TGraph*)file_nomuonrej_selection_kinfull.Get("graph_pur_vs_recomom");
+    TGraph* nomuonrej_kinfull_effpur = (TGraph*)file_nomuonrej_selection_kinfull.Get("graph_effpur_vs_recomom");
+    TGraph* nomuonrej_kinfull_signif = (TGraph*)file_nomuonrej_selection_kinfull.Get("graph_signif_vs_recomom");
+    
+    TFile *file_muonrej_selection_kinfull = new TFile("../existing_selection_noposmult/output/muonrejection_twotrack.root");
+    //file_muonrej_selection_kinfull.ls();
+    TGraph* muonrej_kinfull_eff = (TGraph*)file_muonrej_selection_kinfull.Get("graph_eff_vs_recomom");
+    TGraph* muonrej_kinfull_pur = (TGraph*)file_muonrej_selection_kinfull.Get("graph_pur_vs_recomom");
+    TGraph* muonrej_kinfull_effpur = (TGraph*)file_muonrej_selection_kinfull.Get("graph_effpur_vs_recomom");
+    TGraph* muonrej_kinfull_signif = (TGraph*)file_muonrej_selection_kinfull.Get("graph_signif_vs_recomom");
+  
+    TGraph* optsel_kinfull_eff = (TGraph*)file_muonrej_selection_kinfull.Get("graph_eff_vs_recomom_optsel");
+    TGraph* optsel_kinfull_pur = (TGraph*)file_muonrej_selection_kinfull.Get("graph_pur_vs_recomom_optsel");
+    TGraph* optsel_kinfull_effpur = (TGraph*)file_muonrej_selection_kinfull.Get("graph_effpur_vs_recomom_optsel");
+    TGraph* optsel_kinfull_signif = (TGraph*)file_muonrej_selection_kinfull.Get("graph_signif_vs_recomom_optsel");
+    
+    exsel_kinfull_eff->SetTitle("Existing selection");
+    exsel_kinfull_pur->SetTitle("Existing selection");
+    exsel_kinfull_effpur->SetTitle("Existing selection");
+    exsel_kinfull_signif->SetTitle("Existing selection");
+    impsel_kinfull_eff->SetTitle("Improved selection");
+    impsel_kinfull_pur->SetTitle("Improved selection");
+    impsel_kinfull_effpur->SetTitle("Improved selection");
+    impsel_kinfull_signif->SetTitle("Improved selection");
+    nomuonrej_kinfull_eff->SetTitle("BDT selection (no #mu^{-} rejection)");
+    nomuonrej_kinfull_pur->SetTitle("BDT selection (no #mu^{-} rejection)");
+    nomuonrej_kinfull_effpur->SetTitle("BDT selection (no #mu^{-} rejection)");
+    nomuonrej_kinfull_signif->SetTitle("BDT selection (no #mu^{-} rejection)");
+    muonrej_kinfull_eff->SetTitle("BDT selection (full)");
+    muonrej_kinfull_pur->SetTitle("BDT selection (full)");
+    muonrej_kinfull_effpur->SetTitle("BDT selection (full)");
+    muonrej_kinfull_signif->SetTitle("BDT selection (full)");
+    optsel_kinfull_eff->SetTitle("BDT selection (optimised)");
+    optsel_kinfull_pur->SetTitle("BDT selection (optimised)");
+    optsel_kinfull_effpur->SetTitle("BDT selection (optimised)");
+    optsel_kinfull_signif->SetTitle("BDT selection (optimised)");
+    
+    exsel_kinfull_eff->GetYaxis()->SetRangeUser(0.0, 1.0);
+    exsel_kinfull_pur->GetYaxis()->SetRangeUser(0.0, 1.0);
+    exsel_kinfull_effpur->GetYaxis()->SetRangeUser(0.0, 1.0);
+    //exsel_kinfull_signif->GetYaxis()->SetRangeUser(0.0, 1.0);
+    exsel_kinfull_eff->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency");
+    exsel_kinfull_pur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection purity");
+    exsel_kinfull_effpur->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection efficiency*purity");
+    exsel_kinfull_signif->GetYaxis()->SetTitle("#bar{#nu}_{#mu} selection significance");
+    exsel_kinfull_eff->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");
+    exsel_kinfull_pur->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");
+    exsel_kinfull_effpur->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");
+    exsel_kinfull_signif->GetXaxis()->SetTitle("Antimuon candidate reconstructed momentum (MeV/c)");  
+    
+    /*impsel_kinfull_eff->SetLineStyle(kDashed);
+    impsel_kinfull_pur->SetLineStyle(kDashed);
+    impsel_kinfull_effpur->SetLineStyle(kDashed);
+    impsel_kinfull_signif->SetLineStyle(kDashed);
+    nomuonrej_kinfull_eff->SetLineStyle(10);
+    nomuonrej_kinfull_pur->SetLineStyle(10);
+    nomuonrej_kinfull_effpur->SetLineStyle(10);
+    nomuonrej_kinfull_signif->SetLineStyle(10);
+    muonrej_kinfull_eff->SetLineStyle(kDotted);
+    muonrej_kinfull_pur->SetLineStyle(kDotted);
+    muonrej_kinfull_effpur->SetLineStyle(kDotted);
+    muonrej_kinfull_signif->SetLineStyle(kDotted);
+    optsel_kinfull_eff->SetLineStyle(kDotted);
+    optsel_kinfull_pur->SetLineStyle(kDotted);
+    optsel_kinfull_effpur->SetLineStyle(kDotted);
+    optsel_kinfull_signif->SetLineStyle(kDotted);*/
+    
+    exsel_kinfull_eff->SetLineColor(kBlack);
+    exsel_kinfull_pur->SetLineColor(kBlack);
+    exsel_kinfull_effpur->SetLineColor(kBlack);
+    exsel_kinfull_signif->SetLineColor(kBlack);
+    impsel_kinfull_eff->SetLineColor(kRed+1);
+    impsel_kinfull_pur->SetLineColor(kRed+1);
+    impsel_kinfull_effpur->SetLineColor(kRed+1);
+    impsel_kinfull_signif->SetLineColor(kRed+1);
+    nomuonrej_kinfull_eff->SetLineColor(kYellow+1);
+    nomuonrej_kinfull_pur->SetLineColor(kYellow+1);
+    nomuonrej_kinfull_effpur->SetLineColor(kYellow+1);
+    nomuonrej_kinfull_signif->SetLineColor(kYellow+1);
+    muonrej_kinfull_eff->SetLineColor(kGreen+1);
+    muonrej_kinfull_pur->SetLineColor(kGreen+1);
+    muonrej_kinfull_effpur->SetLineColor(kGreen+1);
+    muonrej_kinfull_signif->SetLineColor(kGreen+1);
+    optsel_kinfull_eff->SetLineColor(kBlue);
+    optsel_kinfull_pur->SetLineColor(kBlue);
+    optsel_kinfull_effpur->SetLineColor(kBlue);
+    optsel_kinfull_signif->SetLineColor(kBlue);
+    
+    TCanvas* canvas_eff_kinfull = new TCanvas("canvas_eff_kinfull","canvas_eff_kinfull",200,10,1000,600);
+    
+    exsel_kinfull_eff->Draw("AL");
+    //impsel_kinfull_eff->Draw("L same");
+    nomuonrej_kinfull_eff->Draw("L same");
+    //muonrej_kinfull_eff->Draw("L same");
+    optsel_kinfull_eff->Draw("L same");
+    
+    TCanvas* canvas_pur_kinfull = new TCanvas("canvas_pur_kinfull","canvas_pur_kinfull",200,10,1000,600);
+    
+    exsel_kinfull_pur->Draw("AL");
+    //impsel_kinfull_pur->Draw("L same");
+    nomuonrej_kinfull_pur->Draw("L same");
+    //muonrej_kinfull_pur->Draw("L same");
+    optsel_kinfull_pur->Draw("L same");
+    
+    TCanvas* canvas_effpur_kinfull = new TCanvas("canvas_effpur_kinfull","canvas_effpur_kinfull",200,10,1000,600);
+    
+    exsel_kinfull_effpur->Draw("AL");
+    //impsel_kinfull_effpur->Draw("L same");
+    nomuonrej_kinfull_effpur->Draw("L same");
+    //muonrej_kinfull_effpur->Draw("L same");
+    optsel_kinfull_effpur->Draw("L same");
+    
+    TCanvas* canvas_signif_kinfull = new TCanvas("canvas_signif_kinfull","canvas_signif_kinfull",200,10,1000,600);
+    
+    exsel_kinfull_signif->Draw("AL");
+    //impsel_kinfull_signif->Draw("L same");
+    nomuonrej_kinfull_signif->Draw("L same");
+    //muonrej_kinfull_signif->Draw("L same");
+    optsel_kinfull_signif->Draw("L same");
+    
+    canvas_eff_kinfull->BuildLegend();
+    canvas_pur_kinfull->BuildLegend();
+    canvas_effpur_kinfull->BuildLegend();
+    canvas_signif_kinfull->BuildLegend();
 }
