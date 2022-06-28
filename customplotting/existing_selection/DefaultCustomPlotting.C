@@ -32,8 +32,8 @@ void DefaultCustomPlotting::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
    
-   Bool_t limit_kinematics = true;
-   Bool_t two_track_only = true;
+   Bool_t limit_kinematics = false;
+   Bool_t two_track_only = false;
    
    if (fChain == 0) return;
 
