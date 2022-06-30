@@ -772,7 +772,7 @@ void DefaultCustomPlotting::Loop()
                tpc3pulle_gq_piplus_weighted->Fill(selmu_tpc_pullele[1], weight);
             }
          }
-         else if ((particle == 2212)&&(particle_pg == 2212)&&(selmu_mom[0] > 300.0))
+         else if ((particle == 2212)&&(particle_pg == 2212)&&(selmu_mom[0] > 400.0))
          {
             // Calculate event weight based on reco mom histogram:
             Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
