@@ -447,6 +447,26 @@ void DefaultCustomPlotting::Loop()
    Int_t psel_nProton_test5 = 0;
    Int_t esel_nPositron_test5 = 0;
    
+   TH1F *bdt_mulike_antimu = new TH1F("bdt_mulike_antimu", "#mu^{+};BDT #mu-like output;Entries", 20, 0.0, 1.0);
+   TH1F *bdt_mulike_piplus = new TH1F("bdt_mulike_piplus", "#pi^{+}", 20, 0.0, 1.0);
+   TH1F *bdt_mulike_proton = new TH1F("bdt_mulike_proton", "p", 20, 0.0, 1.0);
+   TH1F *bdt_mulike_positron = new TH1F("bdt_mulike_positron", "e^{+}", 20, 0.0, 1.0);
+   
+   TH1F *bdt_pilike_antimu = new TH1F("bdt_pilike_antimu", "#mu^{+};BDT #pi-like output;Entries", 20, 0.0, 1.0);
+   TH1F *bdt_pilike_piplus = new TH1F("bdt_pilike_piplus", "#pi^{+}", 20, 0.0, 1.0);
+   TH1F *bdt_pilike_proton = new TH1F("bdt_pilike_proton", "p", 20, 0.0, 1.0);
+   TH1F *bdt_pilike_positron = new TH1F("bdt_pilike_positron", "e^{+}", 20, 0.0, 1.0);
+   
+   TH1F *bdt_plike_antimu = new TH1F("bdt_plike_antimu", "#mu^{+};BDT proton-like output;Entries", 20, 0.0, 1.0);
+   TH1F *bdt_plike_piplus = new TH1F("bdt_plike_piplus", "#pi^{+}", 20, 0.0, 1.0);
+   TH1F *bdt_plike_proton = new TH1F("bdt_plike_proton", "p", 20, 0.0, 1.0);
+   TH1F *bdt_plike_positron = new TH1F("bdt_plike_positron", "e^{+}", 20, 0.0, 1.0);
+   
+   TH1F *bdt_elike_antimu = new TH1F("bdt_elike_antimu", "#mu^{+};BDT #mu-like output;Entries", 20, 0.0, 1.0);
+   TH1F *bdt_elike_piplus = new TH1F("bdt_elike_piplus", "#pi^{+}", 20, 0.0, 1.0);
+   TH1F *bdt_elike_proton = new TH1F("bdt_elike_proton", "p", 20, 0.0, 1.0);
+   TH1F *bdt_elike_positron = new TH1F("bdt_elike_positron", "e^{+}", 20, 0.0, 1.0);
+   
    Int_t optimisation_nbins = 50;
    
    TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
@@ -984,6 +1004,11 @@ void DefaultCustomPlotting::Loop()
             opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
             opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
             
+            bdt_mulike_antimu->Fill(selmu_bdt_pid_mu);
+            bdt_pilike_antimu->Fill(selmu_bdt_pid_pi);
+            bdt_plike_antimu->Fill(selmu_bdt_pid_p);
+            bdt_elike_antimu->Fill(selmu_bdt_pid_e);
+            
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
@@ -1018,6 +1043,11 @@ void DefaultCustomPlotting::Loop()
             opt_pilike_sig_test5->Fill(selmu_bdt_pid_pi_test5);
             opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
             opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
+            
+            bdt_mulike_piplus->Fill(selmu_bdt_pid_mu);
+            bdt_pilike_piplus->Fill(selmu_bdt_pid_pi);
+            bdt_plike_piplus->Fill(selmu_bdt_pid_p);
+            bdt_elike_piplus->Fill(selmu_bdt_pid_e);
          }
          else if ((particle == 2212)&&(particle_pg == 2212))
          {
@@ -1053,7 +1083,10 @@ void DefaultCustomPlotting::Loop()
             opt_plike_sig_test5->Fill(selmu_bdt_pid_p_test5);
             opt_elike_bkg_test5->Fill(selmu_bdt_pid_e_test5);
 
-
+            bdt_mulike_proton->Fill(selmu_bdt_pid_mu);
+            bdt_pilike_proton->Fill(selmu_bdt_pid_pi);
+            bdt_plike_proton->Fill(selmu_bdt_pid_p);
+            bdt_elike_proton->Fill(selmu_bdt_pid_e);
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
@@ -1089,7 +1122,10 @@ void DefaultCustomPlotting::Loop()
             opt_plike_bkg_test5->Fill(selmu_bdt_pid_p_test5);
             opt_elike_sig_test5->Fill(selmu_bdt_pid_e_test5);
             
-            
+            bdt_mulike_positron->Fill(selmu_bdt_pid_mu);
+            bdt_pilike_positron->Fill(selmu_bdt_pid_pi);
+            bdt_plike_positron->Fill(selmu_bdt_pid_p);
+            bdt_elike_positron->Fill(selmu_bdt_pid_e);
          }
          
          // Fill counters for new performance testing
@@ -2738,6 +2774,85 @@ void DefaultCustomPlotting::Loop()
    nsmrds_positron_weighted->Draw("same");
    canvas_weighted_nsmrds->BuildLegend();
    canvas_weighted_nsmrds->Write();
+   
+   // ============= Plot BDT output variables =============
+   
+   // BDT mu-like
+   
+   TCanvas* canvas_bdtoutputs = new TCanvas("canvas_bdtoutputs","",200,10,1000,800);
+   canvas_bdtoutputs->Divide(2,2,0.005,0.005);
+   canvas_bdtoutputs->cd(1);
+   
+   bdt_mulike_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   bdt_mulike_antimu->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(bdt_mulike_antimu, "antimu");
+   SetHistParticleStyle(bdt_mulike_piplus, "piplus");
+   SetHistParticleStyle(bdt_mulike_proton, "proton");
+   SetHistParticleStyle(bdt_mulike_positron, "positron");
+   
+   bdt_mulike_antimu->Draw();
+   bdt_mulike_piplus->Draw("same");
+   bdt_mulike_proton->Draw("same");
+   bdt_mulike_positron->Draw("same");
+   canvas_bdtoutputs->cd(1)->SetLogy();
+   
+   // BDT pi-like
+   
+   canvas_bdtoutputs->cd(2);
+   
+   bdt_pilike_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   bdt_pilike_antimu->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(bdt_pilike_antimu, "antimu");
+   SetHistParticleStyle(bdt_pilike_piplus, "piplus");
+   SetHistParticleStyle(bdt_pilike_proton, "proton");
+   SetHistParticleStyle(bdt_pilike_positron, "positron");
+   
+   bdt_pilike_antimu->Draw();
+   bdt_pilike_piplus->Draw("same");
+   bdt_pilike_proton->Draw("same");
+   bdt_pilike_positron->Draw("same");
+   canvas_bdtoutputs->cd(2)->SetLogy();
+   
+   // BDT p-like
+   
+   canvas_bdtoutputs->cd(3);
+   
+   bdt_plike_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   bdt_plike_antimu->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(bdt_plike_antimu, "antimu");
+   SetHistParticleStyle(bdt_plike_piplus, "piplus");
+   SetHistParticleStyle(bdt_plike_proton, "proton");
+   SetHistParticleStyle(bdt_plike_positron, "positron");
+   
+   bdt_plike_antimu->Draw();
+   bdt_plike_piplus->Draw("same");
+   bdt_plike_proton->Draw("same");
+   bdt_plike_positron->Draw("same");
+   canvas_bdtoutputs->cd(3)->SetLogy();
+   
+   // TPC e-like
+   
+   canvas_bdtoutputs->cd(4);
+   
+   bdt_elike_antimu->GetYaxis()->SetRangeUser(1.0, 120000.0);
+   bdt_elike_antimu->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(bdt_elike_antimu, "antimu");
+   SetHistParticleStyle(bdt_elike_piplus, "piplus");
+   SetHistParticleStyle(bdt_elike_proton, "proton");
+   SetHistParticleStyle(bdt_elike_positron, "positron");
+   
+   bdt_elike_antimu->Draw();
+   bdt_elike_piplus->Draw("same");
+   bdt_elike_proton->Draw("same");
+   bdt_elike_positron->Draw("same");
+   canvas_bdtoutputs->cd(4)->SetLogy();
+   
+   canvas_bdtoutputs->cd(1)->BuildLegend();
+   canvas_bdtoutputs->Write();
    
    // ============= Find optimal cuts =============
    
