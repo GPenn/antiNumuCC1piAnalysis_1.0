@@ -462,7 +462,7 @@ void DefaultCustomPlotting::Loop()
    TH1F *bdt_plike_proton = new TH1F("bdt_plike_proton", "p", 20, 0.0, 1.0);
    TH1F *bdt_plike_positron = new TH1F("bdt_plike_positron", "e^{+}", 20, 0.0, 1.0);
    
-   TH1F *bdt_elike_antimu = new TH1F("bdt_elike_antimu", "#mu^{+};BDT #mu-like output;Entries", 20, 0.0, 1.0);
+   TH1F *bdt_elike_antimu = new TH1F("bdt_elike_antimu", "#mu^{+};BDT e-like output;Entries", 20, 0.0, 1.0);
    TH1F *bdt_elike_piplus = new TH1F("bdt_elike_piplus", "#pi^{+}", 20, 0.0, 1.0);
    TH1F *bdt_elike_proton = new TH1F("bdt_elike_proton", "p", 20, 0.0, 1.0);
    TH1F *bdt_elike_positron = new TH1F("bdt_elike_positron", "e^{+}", 20, 0.0, 1.0);
@@ -2795,7 +2795,7 @@ void DefaultCustomPlotting::Loop()
    bdt_mulike_piplus->Draw("same");
    bdt_mulike_proton->Draw("same");
    bdt_mulike_positron->Draw("same");
-   canvas_bdtoutputs->cd(1)->SetLogy();
+   //canvas_bdtoutputs->cd(1)->SetLogy();
    
    // BDT pi-like
    
@@ -2813,7 +2813,7 @@ void DefaultCustomPlotting::Loop()
    bdt_pilike_piplus->Draw("same");
    bdt_pilike_proton->Draw("same");
    bdt_pilike_positron->Draw("same");
-   canvas_bdtoutputs->cd(2)->SetLogy();
+   //canvas_bdtoutputs->cd(2)->SetLogy();
    
    // BDT p-like
    
@@ -2831,7 +2831,7 @@ void DefaultCustomPlotting::Loop()
    bdt_plike_piplus->Draw("same");
    bdt_plike_proton->Draw("same");
    bdt_plike_positron->Draw("same");
-   canvas_bdtoutputs->cd(3)->SetLogy();
+   //canvas_bdtoutputs->cd(3)->SetLogy();
    
    // TPC e-like
    
@@ -2849,7 +2849,7 @@ void DefaultCustomPlotting::Loop()
    bdt_elike_piplus->Draw("same");
    bdt_elike_proton->Draw("same");
    bdt_elike_positron->Draw("same");
-   canvas_bdtoutputs->cd(4)->SetLogy();
+   //canvas_bdtoutputs->cd(4)->SetLogy();
    
    canvas_bdtoutputs->cd(1)->BuildLegend();
    canvas_bdtoutputs->Write();
