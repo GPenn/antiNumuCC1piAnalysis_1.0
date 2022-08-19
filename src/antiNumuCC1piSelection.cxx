@@ -74,7 +74,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
   AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
   AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
-  //AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+  AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
   AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
   AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
   AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
@@ -83,16 +83,16 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
-  //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
-  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
+  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
   
-  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
+  //AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
 
@@ -120,8 +120,8 @@ void antiNumuCC1piSelection::DefineSteps(){
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
-  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
+  //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
+  //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
   
   //AddSplit(2,1);
   //CC1pi with muon candidate ECal segment
