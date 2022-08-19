@@ -267,7 +267,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   //else{
    // _numuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   //}
-  std::cout << "DEBUG: Filling micro trees from _antiNumuCCMultiPiAnalysis..." << std::endl;
+  //std::cout << "DEBUG: Filling micro trees from _antiNumuCCMultiPiAnalysis..." << std::endl;
   _antiNumuCCMultiPiAnalysis->FillMicroTrees(addBase); 
   
   //ResetBDTInputVariables();
@@ -275,11 +275,11 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   // Fill muon candidate variables
   if (mybox().MainTrack  ) 
   {
-    std::cout << "DEBUG: Filling muon candidate variables..." << std::endl;
+    //std::cout << "DEBUG: Filling muon candidate variables..." << std::endl;
     //std::cout << "DEBUG: Filling PDG ID..." << std::endl;
-    //output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
+    //output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG); // Note: meant for particle gun MC, okay for full MC, but disable this for real data
     
-    std::cout << "DEBUG: Filling angle wrt detector..." << std::endl;
+    //std::cout << "DEBUG: Filling angle wrt detector..." << std::endl;
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
     TVector3 muDirVec = anaUtils::ArrayToTVector3(box().MainTrack->DirectionStart);
     //double costheta_mu_nu = nuDirVec.Dot(muDirVec);
@@ -287,13 +287,13 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     
     output().FillVar(selmu_det_theta,        selmu_theta_wrt_detector);
     
-    std::cout << "DEBUG: Filling TPC info..." << std::endl;
+    //std::cout << "DEBUG: Filling TPC info..." << std::endl;
     output().FillVar(selmu_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),0));
     output().FillVar(selmu_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),1));
     output().FillVar(selmu_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().MainTrack),2));
     output().FillVar(selmu_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().MainTrack),3));
     
-    std::cout << "DEBUG: Filling FGD1 info..." << std::endl;
+    //std::cout << "DEBUG: Filling FGD1 info..." << std::endl;
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
     {
@@ -315,7 +315,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_has_fgd1seg,      0);
     }
     
-    std::cout << "DEBUG: Filling FGD2 info..." << std::endl;
+    //std::cout << "DEBUG: Filling FGD2 info..." << std::endl;
     AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().MainTrack,static_cast<SubDetId::SubDetEnum >(1)));
     if (FGD2Segment) 
     {
@@ -338,7 +338,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(selmu_has_fgd2seg,      0);
     }
     
-    std::cout << "DEBUG: Filling ECal info..." << std::endl;
+    //std::cout << "DEBUG: Filling ECal info..." << std::endl;
     
     Float_t selmu_max_EMenergy = -999.0;
     Float_t selmu_best_mippion = -999.0;
@@ -375,7 +375,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     
     
     // Get variables from local reco ECal segment:
-    std::cout << "DEBUG: Filling local ECal info..." << std::endl;
+    //std::cout << "DEBUG: Filling local ECal info..." << std::endl;
     if (mybox().MainTrackLocalECalSegment  )
     {
       output().FillVar(selmu_ecal_amr,            mybox().MainTrackLocalECalSegment->PIDAMR);
@@ -408,7 +408,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(selmu_bdt_pid_p, BDT_PID_results[2]);
     output().FillVar(selmu_bdt_pid_e, BDT_PID_results[3]);*/
     
-    std::cout << "DEBUG: Filling BDT outputs..." << std::endl;
+    //std::cout << "DEBUG: Filling BDT outputs..." << std::endl;
     
     std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVarsPos(mybox().MainTrack, mybox().MainTrackLocalECalSegment);
     //output().FillVar(selmu_bdt_pid_mu_cc1pi, BDT_PID_results_vector[0]);
@@ -451,7 +451,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     //BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().MainTrack, mybox().MainTrackLocalECalSegment, "BDTG_tree3_noweights");
     //output().FillVar(selmu_bdt_pid_unweighted_mu_cc1pi, BDT_PID_results_vector[0]);
     
-    std::cout << "DEBUG: Finished filling muon candidate variables." << std::endl;
+    //std::cout << "DEBUG: Finished filling muon candidate variables." << std::endl;
 
   }
   
@@ -461,7 +461,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   // Fill HMNT variables
   if (mybox().HMNtrack  ) 
   {
-    std::cout << "DEBUG: Filling HMNT variables..." << std::endl;
+    //std::cout << "DEBUG: Filling HMNT variables..." << std::endl;
     output().FillVar(HMNT_mom,      mybox().HMNtrack->Momentum);
     //output().FillVar(HMNT_costheta, mybox().HMNtrack->Costheta);
     if (mybox().HMNtrack->GetTrueParticle()  ) 
@@ -471,7 +471,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     
     output().FillVar(HMNT_NEcalSegments,      mybox().HMNtrack->nECALSegments);
     
-    std::cout << "DEBUG: Filling ECal info..." << std::endl;
+    //std::cout << "DEBUG: Filling ECal info..." << std::endl;
     if (mybox().HMNtrack->nECALSegments > 0)
     {
       AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( mybox().HMNtrack->ECALSegments[0] );
@@ -515,14 +515,14 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
     output().FillVar(HMNT_ecal_bestseg_mippion,     HMNT_best_mippion);
     output().FillVar(HMNT_ecal_bestseg_EbyL,        HMNT_best_EbyL);
     
-    std::cout << "DEBUG: Filling TPC info..." << std::endl;
+    //std::cout << "DEBUG: Filling TPC info..." << std::endl;
     
     output().FillVar(HMNT_tpc_like_mu,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),0));
     output().FillVar(HMNT_tpc_like_e,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),1));
     output().FillVar(HMNT_tpc_like_p,       anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),2));
     output().FillVar(HMNT_tpc_like_pi,      anaUtils::GetPIDLikelihood( *(mybox().HMNtrack),3));
     
-    std::cout << "DEBUG: Filling FGD1 info..." << std::endl;
+    //std::cout << "DEBUG: Filling FGD1 info..." << std::endl;
     
     AnaFGDParticle* FGD1Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(0)));
     if (FGD1Segment) 
@@ -539,7 +539,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_has_fgd1seg,      0);
     }
     
-    std::cout << "DEBUG: Filling FGD2 info..." << std::endl;
+    //std::cout << "DEBUG: Filling FGD2 info..." << std::endl;
     
     AnaFGDParticle* FGD2Segment = static_cast<AnaFGDParticle*>(anaUtils::GetSegmentInDet( *mybox().HMNtrack,static_cast<SubDetId::SubDetEnum >(1)));
     if (FGD2Segment) 
@@ -556,7 +556,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       output().FillVar(HMNT_has_fgd2seg,      0);
     }
     
-      std::cout << "DEBUG: Filling BDT outputs..." << std::endl;
+      //std::cout << "DEBUG: Filling BDT outputs..." << std::endl;
     
       std::vector<Float_t> BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVarsPos(mybox().HMNtrack, mybox().HMNTLocalECalSegment);
     
@@ -586,7 +586,7 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
       //BDT_PID_results_vector = myBDTPIDmanagerCC1pi->GetBDTPIDVars(mybox().HMNtrack, mybox().HMNTLocalECalSegment, "BDTG_tree3_noweights");
       //output().FillVar(hmnt_bdt_pid_unweighted_pi_cc1pi, BDT_PID_results_vector[1]);
     
-    std::cout << "DEBUG: Finished filling HMNT variables." << std::endl;
+    //std::cout << "DEBUG: Finished filling HMNT variables." << std::endl;
     
   }
 
