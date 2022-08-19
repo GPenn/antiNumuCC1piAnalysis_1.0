@@ -14,6 +14,5 @@ include(antiNumuCC1piAnalysisND280_USE.cmake)
 ND280_STANDARD_LIBRARY()
 
 ND280_EXECUTABLE(RunAntiNumuCC1piAnalysis RunAntiNumuCC1piAnalysis.cxx)
-ND280_EXECUTABLE(RunAntiNumuBDTTestingAnalysis RunAntiNumuBDTTestingAnalysis.cxx)
 
 ND280_END_PROJECT()
