@@ -276,8 +276,8 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   if (mybox().MainTrack  ) 
   {
     std::cout << "DEBUG: Filling muon candidate variables..." << std::endl;
-    std::cout << "DEBUG: Filling PDG ID..." << std::endl;
-    output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
+    //std::cout << "DEBUG: Filling PDG ID..." << std::endl;
+    //output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG);
     
     std::cout << "DEBUG: Filling angle wrt detector..." << std::endl;
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
