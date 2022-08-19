@@ -1,7 +1,7 @@
 # antiNumuCC1piAnalysis_1.0
 Gabriel Penn (gabriel.penn@liverpool.ac.uk)
 
-This is a Highland analysis package for antinumu CC1pi- events, also containing the code from my BDT PID development work.
+This is a Highland analysis package for antinumu CC1pi- events, based on antiNumuCCMultiPiAnalysis. It also contains the code from my BDT PID development work.
 
 Branches:
  - main
