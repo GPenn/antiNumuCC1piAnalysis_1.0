@@ -1,1 +1,0 @@
-root://hepgrid11.ph.liv.ac.uk//dpm/ph.liv.ac.uk/home/t2k.org/t2kliverpooldisk/production6T/mc/neut/flattree/run7/root/run7_v2r43_geombugfix_03_05_000.root
