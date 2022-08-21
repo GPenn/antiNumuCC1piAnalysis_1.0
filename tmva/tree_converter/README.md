@@ -2,6 +2,8 @@ Program for reading and converting my Highland analysis output files into flat t
 
 This is intended for particle gun MC ONLY. Each particle type sample must be run through the program separately, and the particle type must be specified in defaultAntiNumuCC1pi.C (this requires recompiling the program each time). If the Highland output variables are changed, the variables and branch addresses must be updated in defaultAntiNumuCC1pi.h.
 
+You may need to create 'bin' and 'output' directories here for it to work.
+
 Originally created by using MakeClass on the microtree default tree from a Highland output file:
 
 ```
