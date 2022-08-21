@@ -1,16 +1,33 @@
+# Python script to set up config files and launch scripts for producing extra low-momentum protons for a PG sample.
+# Note that the particle gun takes relativistic kinetic energies (NOT momenta) as input, so you will need to convert the
+# desired momentum range to an energy range. The values given here are for the momentum range 150-2000 MeV for each particle
+# type.
+
 import random
+import os
 
-launchscriptfile = open("submit_batch_jobs_protonlowmom.sh", 'w')
-
+# Run and subrun numbers (update these if you want to add to an existing sample, I just used the current date and time)
 run = "0126"
 subrun = 1804
+
+# Path for the scripts, config files and output:
+path = "/bundle/data/T2K/users/gpenn/particle_gun/"
+
+# Setup script paths for your ND280 software installation:
+nd280setup_path = "/hepstore/gpenn/nd280v11r31p43setup.sh"
+nd280control_path = "/hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh"
+
+# Desired number of files (10k events per file):
+nProton = 25
+
+launchscriptfile = open(path + "submit_batch_jobs_protonlowmom.sh", 'w')
 
 print "Generating proton config files and job scripts..."
 
 launchscriptfile.write("cd proton/output\n")
 
-for i in range(0, 25):
-    cfgname = "proton/cfg/protonlowmom" + str(i) + ".cfg"
+for i in range(0, nProton):
+    cfgname = path + "proton/cfg/protonlowmom" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -23,7 +40,7 @@ for i in range(0, 25):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "proton/scripts/protonlowmom_job" + str(i) + ".sh"
+    shname = path + "proton/scripts/protonlowmom_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -34,9 +51,9 @@ for i in range(0, 25):
     shfile.write("#SBATCH -J pg_pro" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
