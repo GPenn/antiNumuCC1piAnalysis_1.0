@@ -12,6 +12,9 @@ subrun = 1804
 # Path for the scripts, config files and output:
 path = "/bundle/data/T2K/users/gpenn/particle_gun/test/"
 
+# Set to "true" if you need to create the directory structure at the destination
+set_up_directories = true;
+
 # Setup script paths for your ND280 software installation:
 nd280setup_path = "/hepstore/gpenn/nd280v11r31p43setup.sh"
 nd280control_path = "/hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh"
@@ -24,6 +27,36 @@ nPositron = 25
 nMu = 0
 nPiminus = 0
 nElectron = 0
+
+if set_up_directories:
+    os.mkdir(path + "antimu")
+    os.mkdir(path + "antimu/cfg")
+    os.mkdir(path + "antimu/scripts")
+    os.mkdir(path + "antimu/output")
+    os.mkdir(path + "proton")
+    os.mkdir(path + "proton/cfg")
+    os.mkdir(path + "proton/scripts")
+    os.mkdir(path + "proton/output")
+    os.mkdir(path + "piplus")
+    os.mkdir(path + "piplus/cfg")
+    os.mkdir(path + "piplus/scripts")
+    os.mkdir(path + "piplus/output")
+    os.mkdir(path + "positron")
+    os.mkdir(path + "positron/cfg")
+    os.mkdir(path + "positron/scripts")
+    os.mkdir(path + "positron/output")
+    os.mkdir(path + "mu")
+    os.mkdir(path + "mu/cfg")
+    os.mkdir(path + "mu/scripts")
+    os.mkdir(path + "mu/output")
+    os.mkdir(path + "piminus")
+    os.mkdir(path + "piminus/cfg")
+    os.mkdir(path + "piminus/scripts")
+    os.mkdir(path + "piminus/output")
+    os.mkdir(path + "electron")
+    os.mkdir(path + "electron/cfg")
+    os.mkdir(path + "electron/scripts")
+    os.mkdir(path + "electron/output")
 
 launchscriptfile = open(path + "submit_batch_jobs.sh", 'w')
 
