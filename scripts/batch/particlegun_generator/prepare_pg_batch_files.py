@@ -3,6 +3,8 @@
 # desired momentum range to an energy range. The values given here are for the momentum range 150-2000 MeV for each particle
 # type.
 
+# Generates a single script (submit_batch_jobs.sh) to submit all jobs for all particle types.
+
 import random
 import os
 
