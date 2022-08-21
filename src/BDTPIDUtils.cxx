@@ -30,7 +30,7 @@ BDTPIDmanager::BDTPIDmanager() {
   
   // Book the BDT(s)
   
-  tmvareader->BookMVA( "BDTG_tuned", "parameters/weights/BDT_PID_multiclass_BDTG_tuned.weights.xml" );
+  tmvareader->BookMVA( "BDTG_tuned", "parameters/BDT_PID_multiclass_BDTG_tuned.weights.xml" );
   
 }
 
