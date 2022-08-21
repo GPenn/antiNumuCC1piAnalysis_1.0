@@ -1,5 +1,9 @@
 Program for reading and converting my Highland analysis output files into flat trees suitable for input into TMVA macros. Also generates event-by-event weights based on the reconstructed momentum distribution of each particle type.
 
+Example usage:
+
+`./bin/defaultAntiNumuCC1pi.exe path/to/highland/output.root -o output/output_file_name.root`
+
 This is intended for particle gun MC ONLY. Each particle type sample must be run through the program separately, and the particle type must be specified in defaultAntiNumuCC1pi.C (this requires recompiling the program each time). If the Highland output variables are changed, the variables and branch addresses must be updated in defaultAntiNumuCC1pi.h.
 
 You may need to create 'bin' and 'output' directories here for it to work.
