@@ -1,3 +1,5 @@
+# Script to clean up unnecessary (i.e. non-oaAnalysis) files in particle gun output directories. Needs to be run from the particle gun working directory.
+
 rm antimu/output/*cali_*
 rm antimu/output/*g4mc_*
 rm antimu/output/*elmc_*
