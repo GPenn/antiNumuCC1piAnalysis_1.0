@@ -8,7 +8,7 @@ Standard Highland package directories:
  - cmake
  - doc
  - inc
- - parameters (note: I've been putting the TMVA xml files here to read into Highland in my copy)
+ - parameters (also contains the BDT weights file from TMVA)
  - src
  
 Additional directories:
