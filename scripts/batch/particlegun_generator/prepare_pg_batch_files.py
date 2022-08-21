@@ -4,6 +4,7 @@
 # type.
 
 import random
+import os
 
 # Run and subrun numbers (update these if you want to add to an existing sample, I just used the current date and time)
 run = "1213"
