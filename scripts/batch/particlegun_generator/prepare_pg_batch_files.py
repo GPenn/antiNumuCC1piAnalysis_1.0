@@ -162,7 +162,7 @@ for i in range(0, nPiplus):
     shfile.write("#SBATCH -J pg_pip" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    sshfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
     shfile.write("source " + nd280control_path + "\n")
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
