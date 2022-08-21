@@ -11,7 +11,7 @@ run = "1213"
 subrun = 1804
 
 # Path for the scripts, config files and output:
-path = "/bundle/data/T2K/users/gpenn/particle_gun/test/"
+path = "/bundle/data/T2K/users/gpenn/particle_gun/"
 
 # Set to "true" if you need to create the directory structure at the destination
 set_up_directories = True;
