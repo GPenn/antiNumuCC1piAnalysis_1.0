@@ -11,6 +11,6 @@ root outputFile.root
 default->MakeClass(“defaultAntiNumuCC1pi”)
 ```
 
-This produces the .C and .h files which can then be edited as needed. When you need to update the variable lists in the header file, you can run this again with a different name (e.g. `default->MakeClass(“defaultAntiNumuCC1pi_forupdate”)` and copy the lists of variables and branches over.
+This produces the .C and .h files which I then edited as needed. When you need to update the variable lists in the header file, you can run this again with a different name (e.g. `default->MakeClass(“defaultAntiNumuCC1pi_forupdate”)` and copy the lists of variables and branches over.
 
 This process can also be used when you need to write custom analysis code.
