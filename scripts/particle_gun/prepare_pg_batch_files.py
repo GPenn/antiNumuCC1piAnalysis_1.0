@@ -1,16 +1,38 @@
+# Python script to set up config files and launch scripts for producing a MC particle gun sample suitable for BDT training.
+# Note that the particle gun takes relativistic kinetic energies (NOT momenta) as input, so you will need to convert the
+# desired momentum range to an energy range. The values given here are for the momentum range 150-2000 MeV for each particle
+# type.
+
 import random
 
-launchscriptfile = open("submit_batch_jobs.sh", 'w')
-
+# Run and subrun numbers (update these if you want to add to an existing sample, I just used the current date and time)
 run = "1213"
 subrun = 1804
+
+# Path for the scripts, config files and output:
+path = "/bundle/data/T2K/users/gpenn/particle_gun/"
+
+# Setup script paths for your ND280 software installation:
+nd280setup_path = "/hepstore/gpenn/nd280v11r31p43setup.sh"
+nd280control_path = "/hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh"
+
+# Desired number of files for each particle type (10k events per file):
+nAntimu = 25
+nProton = 25
+nPiplus = 25
+nPositron = 25
+nMu = 0
+nPiminus = 0
+nElectron = 0
+
+launchscriptfile = open(path + "submit_batch_jobs.sh", 'w')
 
 print "Generating antimu config files and job scripts..."
 
 launchscriptfile.write("cd antimu/output\n")
 
-for i in range(0, 0):
-    cfgname = "antimu/cfg/antimu" + str(i) + ".cfg"
+for i in range(0, nAntimu):
+    cfgname = path + "antimu/cfg/antimu" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -23,7 +45,7 @@ for i in range(0, 0):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "antimu/scripts/antimu_job" + str(i) + ".sh"
+    shname = path + "antimu/scripts/antimu_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -34,9 +56,9 @@ for i in range(0, 0):
     shfile.write("#SBATCH -J pg_amu" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
@@ -45,8 +67,8 @@ print "Generating proton config files and job scripts..."
 
 launchscriptfile.write("cd ../../proton/output\n")
 
-for i in range(0, 0):
-    cfgname = "proton/cfg/proton" + str(i) + ".cfg"
+for i in range(0, nProton):
+    cfgname = path + "proton/cfg/proton" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -59,7 +81,7 @@ for i in range(0, 0):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "proton/scripts/proton_job" + str(i) + ".sh"
+    shname = path + "proton/scripts/proton_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -70,9 +92,9 @@ for i in range(0, 0):
     shfile.write("#SBATCH -J pg_pro" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
@@ -81,8 +103,8 @@ print "Generating piplus config files and job scripts..."
 
 launchscriptfile.write("cd ../../piplus/output\n")
 
-for i in range(0, 0):
-    cfgname = "piplus/cfg/piplus" + str(i) + ".cfg"
+for i in range(0, nPiplus):
+    cfgname = path + "piplus/cfg/piplus" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -95,7 +117,7 @@ for i in range(0, 0):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "piplus/scripts/piplus_job" + str(i) + ".sh"
+    shname = path + "piplus/scripts/piplus_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -106,9 +128,9 @@ for i in range(0, 0):
     shfile.write("#SBATCH -J pg_pip" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    sshfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
@@ -117,8 +139,8 @@ print "Generating positron config files and job scripts..."
 
 launchscriptfile.write("cd ../../positron/output\n")
 
-for i in range(0, 0):
-    cfgname = "positron/cfg/positron" + str(i) + ".cfg"
+for i in range(0, nPositron):
+    cfgname = path + "positron/cfg/positron" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -131,7 +153,7 @@ for i in range(0, 0):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "positron/scripts/positron_job" + str(i) + ".sh"
+    shname = path + "positron/scripts/positron_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -142,9 +164,9 @@ for i in range(0, 0):
     shfile.write("#SBATCH -J pg_pos" + str(i) + "\n")
     shfile.write("#SBATCH -t 30:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
@@ -153,8 +175,8 @@ print "Generating mu config files and job scripts..."
 
 launchscriptfile.write("cd ../../mu/output\n")
 
-for i in range(0, 25):
-    cfgname = "mu/cfg/mu" + str(i) + ".cfg"
+for i in range(0, nMu):
+    cfgname = path + "mu/cfg/mu" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -167,7 +189,7 @@ for i in range(0, 25):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "mu/scripts/mu_job" + str(i) + ".sh"
+    shname = path + "mu/scripts/mu_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -178,9 +200,9 @@ for i in range(0, 25):
     shfile.write("#SBATCH -J pg_mu" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
@@ -189,8 +211,8 @@ print "Generating piminus config files and job scripts..."
 
 launchscriptfile.write("cd ../../piminus/output\n")
 
-for i in range(0, 25):
-    cfgname = "piminus/cfg/piminus" + str(i) + ".cfg"
+for i in range(0, nPiminus):
+    cfgname = path + "piminus/cfg/piminus" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -203,7 +225,7 @@ for i in range(0, 25):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "piminus/scripts/piminus_job" + str(i) + ".sh"
+    shname = path + "piminus/scripts/piminus_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -214,9 +236,9 @@ for i in range(0, 25):
     shfile.write("#SBATCH -J pg_pim" + str(i) + "\n")
     shfile.write("#SBATCH -t 18:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
@@ -225,8 +247,8 @@ print "Generating electron config files and job scripts..."
 
 launchscriptfile.write("cd ../../electron/output\n")
 
-for i in range(0, 25):
-    cfgname = "electron/cfg/electron" + str(i) + ".cfg"
+for i in range(0, nElectron):
+    cfgname = path + "electron/cfg/electron" + str(i) + ".cfg"
     subrun += 1
     seed = random.randrange(10000000, 100000000, 1)
     elecseed = random.randrange(10000000, 100000000, 1)
@@ -239,7 +261,7 @@ for i in range(0, 25):
     cfgfile.write("[electronics]\nrandom_seed = " + str(elecseed) + "\n\n")
     cfgfile.close()
 
-    shname = "electron/scripts/electron_job" + str(i) + ".sh"
+    shname = path + "electron/scripts/electron_job" + str(i) + ".sh"
     shfile = open(shname, 'w')
     shfile.write("#!/bin/bash\n")
     shfile.write("#SBATCH -N 1\n")
@@ -250,9 +272,9 @@ for i in range(0, 25):
     shfile.write("#SBATCH -J pg_ele" + str(i) + "\n")
     shfile.write("#SBATCH -t 30:00:00\n\n")
     shfile.write("#run the application:\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43setup.sh\n")
-    shfile.write("source /hepstore/gpenn/nd280v11r31p43/nd280Control/v1r77p1/cmt/setup.sh\n")
-    shfile.write("runND280 -c /bundle/data/T2K/users/gpenn/particle_gun/" + cfgname + "\n")
+    shfile.write("source " + nd280setup_path + "\n")
+    shfile.write("source " + nd280control_path + "\n")
+    shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
     launchscriptfile.write("sbatch ../../" + shname + "\n")
