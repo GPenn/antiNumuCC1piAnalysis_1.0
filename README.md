@@ -22,10 +22,10 @@ Additional directories:
  - scripts: shell and python scripts for various purposes, mostly for bulk submission of batch jobs
  
 BDT development workflow:
- 1. Prepare particle gun input oaAnalysis files and split into training and testing samples
+ 1. Prepare particle gun input oaAnalysis files (*scripts/batch/particlegun_generator*) and split into training and testing samples
  2. Run training sample through Highland analysis to extract BDT input variables from suitable events
- 3. Convert training sample Highland output file(s) to flat trees files for TMVA input
- 4. Run TMVA macro on training sample to train BDT(s)
- 5. Load new BDT xml file into Highland (see src/BDTPIDUtils.cxx)
+ 3. Convert training sample Highland output file(s) to flat trees files for TMVA input (*tmva/tree_converter*)
+ 4. Run TMVA macro on training sample to train BDT(s) (*tmva/BDT_PID_multiclass.C*)
+ 5. Load new BDT xml file into Highland (*src/BDTPIDUtils.cxx*)
  6. Run PG testing sample (or full event MC/real data) through Highland analysis to extract BDT outputs and/or apply BDT PID cuts to events
- 7. Analyse Highland output file(s) using DrawingTools macros and/or custom code
+ 7. Analyse Highland output file(s) using DrawingTools macros and/or custom code (see *customplotting* and *macro* for reference, but you'll mostly need to write these yourself)
