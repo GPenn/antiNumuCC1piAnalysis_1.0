@@ -10,7 +10,7 @@ run = "1213"
 subrun = 1804
 
 # Path for the scripts, config files and output:
-path = "/bundle/data/T2K/users/gpenn/particle_gun/"
+path = "/bundle/data/T2K/users/gpenn/particle_gun/test"
 
 # Setup script paths for your ND280 software installation:
 nd280setup_path = "/hepstore/gpenn/nd280v11r31p43setup.sh"
