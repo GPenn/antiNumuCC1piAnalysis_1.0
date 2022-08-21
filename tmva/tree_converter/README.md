@@ -2,7 +2,9 @@ Program for reading and converting my Highland analysis output files into flat t
 
 Example usage:
 
-`./bin/defaultAntiNumuCC1pi.exe path/to/highland/output.root -o output/output_file_name.root`
+```
+./bin/defaultAntiNumuCC1pi.exe path/to/highland/output.root -o output/output_file_name.root
+```
 
 This is intended for particle gun MC ONLY. Each particle type sample must be run through the program separately, and the particle type must be specified in defaultAntiNumuCC1pi.C (this requires recompiling the program each time). If the Highland output variables are changed, the variables and branch addresses must be updated in defaultAntiNumuCC1pi.h.
 
