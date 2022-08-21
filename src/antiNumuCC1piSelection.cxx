@@ -83,16 +83,16 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
   AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
   
-  AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
+  //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
-  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
   
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
-  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
+  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
+  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
   
-  //AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
+  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
   
   //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
 
@@ -100,61 +100,29 @@ void antiNumuCC1piSelection::DefineSteps(){
   AddSplit(3);
 
   //First branch is for CC-0pi
-  //AddStep(0, StepBase::kCut, "Antimu PID",         new AntiMuonPIDCut());
   AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
   AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
-  
-  //AddStep(0, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
-  //AddStep(0, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
-  //AddStep(0, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
   
 
   //Second branch is for CC-1pi
   
-  // --------------- old version ---------------
-  //AddStep(1, StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
-  //AddStep(1, StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
   AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
   AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
   //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
-  //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
-  //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
-  
-  //AddSplit(2,1);
-  //CC1pi with muon candidate ECal segment
-  //AddStep(1, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
-  //AddStep(1, StepBase::kCut, "ECal Muon E/L", new MuonECalEMEnergyLengthCut());
-  //AddStep(1, StepBase::kCut, "ECal Muon MipPion", new MuonECalMipPionCut());
-  //AddStep(1, StepBase::kCut, "ECal Pion E/L", new PionECalEMEnergyLengthCut());
-  
-  //CC1pi without muon candidate ECal segment
-  //AddStep(1, 1, StepBase::kCut, "Muon without ECal segments", new MuonWithoutECalSegmentsCut());
-  
-  // --------------- BDT testing version ---------------
-  /*
-  AddStep(1, StepBase::kCut, "Main track kinematics for BDT",      new BDTPreselectionKinematicsCut());
-  AddStep(1, StepBase::kCut, "1pos1neg TPC tracks",                new TwoTrack1pos1negCut());
-  AddStep(1, StepBase::kCut, "HMNT kinematics for BDT",            new BDTPreselectionKinematicsPiCandCut());
-  */
+  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
+  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
   
   //Third branch is for CC-Other
-  //AddStep(2, StepBase::kCut, "Antimu PID", new AntiMuonPIDCut());
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
-  
-  //AddStep(2, StepBase::kCut, "Muon with ECal segments", new MuonWithECalSegmentsCut());
-  AddStep(2, StepBase::kCut, "ECal Muon PID EMEnergy/Length", new MuonECalEMEnergyLengthCut());
-  AddStep(2, StepBase::kCut, "ECal Muon PID MipPion", new MuonECalMipPionCut());
   
 
   // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
   SetBranchAlias(1,"CC-1pi",  1);
-  //SetBranchAlias(1, "CC-1pi with ECal",  1);
   SetBranchAlias(2,"CC-Other",2);
-  //SetBranchAlias(3, "CC-1pi without ECal",  1,1);
 
   // By default the preselection correspond to cuts 0-2
   SetPreSelectionAccumLevel(2);
@@ -470,7 +438,10 @@ bool antiNumuCC1piSelection::CheckRedoSelection(const AnaEventC& event, const To
   return false;
 }
 
-// PID cuts:
+
+
+
+// -------------------- PID cuts: --------------------
 
 //**************************************************
 bool MyDummyCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
@@ -481,6 +452,7 @@ bool MyDummyCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
 bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
+// Looped version of the antimuon PID cut. Checks all positive tracks.
 
   (void)event;
   // Cast the ToyBox to the appropriate type
@@ -524,6 +496,7 @@ bool AntiMuonPIDCut_Loop::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
 bool AntiMuonPIDCut_LoopBDTPID::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
+// As above, but using the BDT PID instead of just TPC PID. Also checks negative tracks to see if any are muon-like (this can be disabled below).
 
   (void)event;
   // Cast the ToyBox to the appropriate type
@@ -673,71 +646,11 @@ bool MuonWithoutECalSegmentsCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 
 }
 
-//**************************************************
-bool MuonECalEMEnergyLengthCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
-  
-  // Waive cut if muon candidate track has no ECal segments
-  if (box.MainTrack->nECALSegments == 0) return true;
-  
-  AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
-
-  if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) < 1.0) return true;
-
-  return false;
-
-}
-
-//**************************************************
-bool MuonECalMipPionCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
-  
-  // Waive cut if muon candidate track has no ECal segments
-  if (box.MainTrack->nECALSegments == 0) return true;
-  
-  AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.MainTrack->ECALSegments[0] );
-
-  if (ECalSeg->PIDMipPion < 0.0) return true;
-
-  return false;
-}
-
-//**************************************************
-bool PionECalEMEnergyLengthCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxTracker& box = *static_cast<ToyBoxTracker*>(&boxB);
-  
-  // Waive cut if HMN track does not exist
-  if (!box.HMNtrack) return true;
-  
-  // Waive cut if pion candidate track has no ECal segments
-  if (box.HMNtrack->nECALSegments == 0) return true;
-  
-  AnaECALParticle* ECalSeg = static_cast<AnaECALParticle*>( box.HMNtrack->ECALSegments[0] );
-
-  if ( (ECalSeg->EMEnergy)/(ECalSeg->Length) > 1.0) return true;
-
-  return false;
-
-}
 
 //**************************************************
 bool OptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut on ECal variables to improve purity (version 1).
 
   (void)event;
 
@@ -768,6 +681,7 @@ bool OptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
 bool ReoptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut on ECal variables to improve purity (version 2).
 
   (void)event;
 
@@ -788,6 +702,7 @@ bool ReoptimisedMuonECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
 bool ReoptimisedMuonECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut on ECal variables to improve purity (version 2, if BDT PID is being applied to valid tracks).
 
   (void)event;
 
@@ -812,6 +727,7 @@ bool ReoptimisedMuonECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
 //**************************************************
 bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut on ECal variables to improve purity (version 1).
 
   (void)event;
 
@@ -846,6 +762,7 @@ bool OptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
 bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut on ECal variables to improve purity (version 2).
 
   (void)event;
 
@@ -870,6 +787,7 @@ bool ReoptimisedPionECalPIDCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //**************************************************
 bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut on ECal variables to improve purity (version 2, if BDT PID is being applied to valid tracks).
 
   (void)event;
 
@@ -898,6 +816,7 @@ bool ReoptimisedPionECalPIDCut_ifnoBDT::Apply(AnaEventC& event, ToyBoxB& boxB) c
 //********************************************************************
 bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
 //********************************************************************
+// Function to find all local ECal reconstruction objects. Necessary to access the low-level ECal variables.
 
   AnaEventB&           event      = *static_cast<AnaEventB*>(&eventC);
   ToyBoxAntiCC1Pi*     toyBox     = static_cast<ToyBoxAntiCC1Pi*>(&boxB);
@@ -923,6 +842,7 @@ bool GetAllTECALReconObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) cons
 //********************************************************************
 bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB) const{
 //********************************************************************
+// Function to match all local ECal reconstruction objects to their corresponding global tracks. Necessary to access the low-level ECal variables.
 
   //if (anaCCPi0Utils::utils().Verbosity())
   //  std::cout << this->Index() << " MatchECalGlobalToLocalObjectsAction" <<std::endl;
@@ -987,6 +907,7 @@ bool MatchECalGlobalToLocalObjectsAction::Apply(AnaEventC& eventC, ToyBoxB& boxB
 //**************************************************
 bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Example of a cut on the BDT muon-like output.
 
   (void)event;
   
@@ -1007,74 +928,9 @@ bool BDTPIDMuLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 }
 
 //**************************************************
-bool BDTPIDPiLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-  
-  Float_t pilike_cutvalue = 0.490;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
-  
-  // Waive cut if muon candidate track has no ECal segments
-  //if (!box.MainTrack) return true;
-  
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
-  Float_t pilike_bdtvalue = pidvars[1];
-
-  if (pilike_bdtvalue > pilike_cutvalue) return true;
-
-  return false;
-}
-
-//**************************************************
-bool BDTPIDProtonLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-  
-  Float_t plike_cutvalue = 0.648;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
-  
-  // Waive cut if muon candidate track has no ECal segments
-  //if (!box.MainTrack) return true;
-  
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
-  Float_t plike_bdtvalue = pidvars[2];
-
-  if (plike_bdtvalue > plike_cutvalue) return true;
-
-  return false;
-}
-
-//**************************************************
-bool BDTPIDElectronLikeCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
-  //**************************************************
-
-  (void)event;
-  
-  Float_t elike_cutvalue = 0.791;
-
-  // Cast the ToyBox to the appropriate type
-  ToyBoxAntiCC1Pi& box = *static_cast<ToyBoxAntiCC1Pi*>(&boxB);
-  
-  // Waive cut if muon candidate track has no ECal segments
-  //if (!box.MainTrack) return true;
-  
-  std::vector<Float_t> pidvars = _bdtpidmanager->GetBDTPIDVarsPos(box.MainTrack, box.MainTrackLocalECalSegment);
-  Float_t elike_bdtvalue = pidvars[3];
-
-  if (elike_bdtvalue > elike_cutvalue) return true;
-
-  return false;
-}
-
-//**************************************************
 bool TwoTrack1pos1negCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
   //**************************************************
+  // Cut to select events with exactly one positive and one negative TPC track.
 
   (void)event;
 
@@ -1090,6 +946,7 @@ bool TwoTrack1pos1negCut::Apply(AnaEventC& event, ToyBoxB& boxB) const{
 //*********************************************************************
 bool FindPionsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   //*********************************************************************
+  // Modified version of FindPionsAction, using the BDT PID.
 
   // Slightly different filling w.r.t. the one of numuCCmultipi, so keep it 
   
@@ -1121,6 +978,7 @@ bool FindPionsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
 //*********************************************************************
 bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
   //*********************************************************************
+  // Modified version of FindProtonsAction, using the BDT PID.
 
   ToyBoxAntiCC1Pi* anticc1pibox = static_cast<ToyBoxAntiCC1Pi*>(&box);
 
@@ -1140,6 +998,7 @@ bool FindProtonsAction_BDTPID::Apply(AnaEventC& event, ToyBoxB& box) const{
 void CC1piPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::PionSelectionParams& params, 
                                BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
 //*********************************************************************
+// Modified version of FillPionInfo, using the BDT PID.
   
   EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
   if (!EventBox){
@@ -1180,6 +1039,7 @@ void CC1piPIDUtils::FillPionInfo(const AnaEventC& event, multipart::MultiParticl
 void CC1piPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParticleBox& pionBox, const multipart::ProtonSelectionParams& params, 
                                  BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
   //*********************************************************************
+  // Modified version of FillProtonInfo, using the BDT PID.
 
   EventBoxTracker* EventBox = static_cast<EventBoxTracker*>(event.EventBoxes[EventBoxId::kEventBoxTracker]);
   if (!EventBox){
@@ -1205,6 +1065,7 @@ void CC1piPIDUtils::FillProtonInfo(const AnaEventC& event, multipart::MultiParti
 void CC1piPIDUtils::FindGoodQualityTPCPionInfoInFGDFV(const AnaEventC& event, const AnaTrackB* reftrack, multipart::MultiParticleBox& pionBox, 
     bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
   //*********************************************************************
+  // Modified version of FindGoodQualityTPCPionInfoInFGDFV, using the BDT PID.
 
   EventBoxTracker::RecObjectGroupEnum groupID;
   if      (pionBox.Detector == SubDetId::kFGD1) groupID = EventBoxTracker::kTracksWithGoodQualityTPCInFGD1FV;
@@ -1222,6 +1083,8 @@ void CC1piPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const Ana
     EventBoxTracker::RecObjectGroupEnum groupID, 
     bool useOldSecondaryPID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
   //*********************************************************************
+  // Modified version of FindGoodQualityTPCPionInfo, using the BDT PID.
+
 
   pionBox.nPositivePionTPCtracks = 0;
   pionBox.nPosPi0TPCtracks       = 0;
@@ -1377,6 +1240,7 @@ void CC1piPIDUtils::FindGoodQualityTPCPionInfo(const AnaEventC& event, const Ana
 void CC1piPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
                                                    BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
   //**************************************************
+  // Modified version of FindGoodQualityTPCProtonsInFGDFV, using the BDT PID.
 
 
   EventBoxTracker::RecObjectGroupEnum groupID;
@@ -1393,6 +1257,7 @@ void CC1piPIDUtils::FindGoodQualityTPCProtonsInFGDFV(const AnaEventC& event, mul
 void CC1piPIDUtils::FindGoodQualityTPCProtons(const AnaEventC& event, multipart::MultiParticleBox& protonBox, const multipart::ProtonSelectionParams& params, 
     EventBoxTracker::RecObjectGroupEnum groupID, BDTPIDmanager* bdtpidmanager, ToyBoxAntiCC1Pi* anticc1pibox){
   //**************************************************
+  // Modified version of FindGoodQualityTPCProtons, using the BDT PID.
 
   protonBox.nProtonTPCtracks = 0;
 
