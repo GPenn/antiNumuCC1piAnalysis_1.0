@@ -1165,7 +1165,8 @@ void DefaultCustomPlotting::Loop()
    std::cout << "Cross-check CC1pi significance = " << cross_check_sig/sqrt(cross_check_sig+cross_check_bkg) << std::endl;
    
    TCanvas* canvas_bdt_cut_optimisation_signif = new TCanvas("canvas_bdt_cut_optimisation_signif","",200,10,1000,800);
-   graph_bdt_cut_optimisation_signif->Draw("surf1");
+   //graph_bdt_cut_optimisation_signif->Draw("surf1");
+   graph_bdt_cut_optimisation_signif->Draw("colz");
    canvas_bdt_cut_optimisation_signif->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
