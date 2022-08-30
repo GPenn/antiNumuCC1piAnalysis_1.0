@@ -62,6 +62,10 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi_accum9 = 0, counter_selpi_piminus_accum9 = 0, counter_selpi_mu_accum9 = 0;
    Int_t counter_selmu_bdtvalid = 0, counter_selmu_antimu_bdtvalid = 0, counter_selmu_piplus_bdtvalid = 0, counter_selmu_proton_bdtvalid = 0;
    Int_t counter_selpi_bdtvalid = 0, counter_selpi_piminus_bdtvalid = 0, counter_selpi_mu_bdtvalid = 0;
+   Int_t counter_all_opt = 0, counter_cc1pi_opt = 0, counter_bkg_opt = 0;
+   Int_t counter_selmu_antimu_opt = 0, counter_selmu_piplus_opt = 0, counter_selmu_proton_opt = 0;
+   Int_t counter_selpi_opt = 0, counter_selpi_piminus_opt = 0, counter_selpi_mu_opt = 0;
+   
    
    Int_t recomom_nbins = 8;
    Double_t recomom_max = 5000.0;
@@ -283,38 +287,51 @@ void DefaultCustomPlotting::Loop()
          
          if ((selmu_bdt_pid_mu > 0.26) && ((hmnt_bdt_pid_pi > 0.12) || (ntpcnegQualityFV == 0)))
          {
+            counter_all_opt++;
+            
             if (topology == 1)
             {
                recomom_optsel_sig_sel->Fill(selmu_mom[0]);
+               counter_cc1pi_opt++;
             }
             if (topology != 1)
             {
                recomom_optsel_bkg_sel->Fill(selmu_mom[0]);
             }
+            if (topology == 1)
+            {
+               counter_bkg_opt++;
+            }
             if (particle == -13)
             {
                recomom_optsel_antimu->Fill(selmu_mom[0]);
+               counter_selmu_antimu_opt++;
             }
             if (particle == 211)
             {
                recomom_optsel_piplus->Fill(selmu_mom[0]);
+               counter_selmu_piplus_opt++;
             }
             if (particle == 2212)
             {
                recomom_optsel_proton->Fill(selmu_mom[0]);
+               counter_selmu_proton_opt++;
             }
             if (ntpcnegQualityFV == 1)
             {
                recomom_optsel_hmnt_all->Fill(HMNT_mom);
+               counter_selpi_opt++;
             
                if (HMNT_truepdg == -211)
                {
                   recomom_optsel_hmnt_piminus->Fill(HMNT_mom);
+                  counter_selpi_piminus_opt++;
                }
             
                if (HMNT_truepdg == 13)
                {
                   recomom_optsel_hmnt_mu->Fill(HMNT_mom);
+                  counter_selpi_mu_opt++;
                }
             }
          }
@@ -635,6 +652,23 @@ void DefaultCustomPlotting::Loop()
    std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu_bdtvalid << " (" << 100*(float)counter_selmu_antimu_bdtvalid/counter_selmu_bdtvalid << "\%)";
    std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus_bdtvalid << " (" << 100*(float)counter_selmu_piplus_bdtvalid/counter_selmu_bdtvalid << "\%)";
    std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton_bdtvalid << " (" << 100*(float)counter_selmu_proton_bdtvalid/counter_selmu_bdtvalid << "\%)";
+   
+   std::cout << std::endl << "===== WITH OPTIMISED BDT CUTS: =====" << std::endl;
+   
+   std::cout << std::endl << "Significance: " << (float)counter_cc1pi_opt/sqrt(counter_all_opt);
+   
+   std::cout << std::endl << "Events selected: " << counter_all_opt;
+   
+   std::cout << std::endl << "True CC1pi: " << counter_cc1pi_opt << " (" << 100*(float)counter_cc1pi_opt/counter_all_opt << "\%)";
+   std::cout << std::endl << "True BKG: " << counter_bkg_opt << " (" << 100*(float)counter_bkg_opt/counter_all_opt << "\%)";
+   
+   std::cout << std::endl << "Antimu candidate true antimu: " << counter_selmu_antimu_opt << " (" << 100*(float)counter_selmu_antimu_opt/counter_all_opt << "\%)";
+   std::cout << std::endl << "Antimu candidate true piplus: " << counter_selmu_piplus_opt << " (" << 100*(float)counter_selmu_piplus_opt/counter_all_opt << "\%)";
+   std::cout << std::endl << "Antimu candidate true protons: " << counter_selmu_proton_opt << " (" << 100*(float)counter_selmu_proton_opt/counter_all_opt << "\%)";
+   
+   std::cout << std::endl << "Pi- candidates: " << counter_selpi_opt << std::endl;
+   std::cout << std::endl << "Pi- candidate true piminus: " << counter_selpi_piminus_opt << " (" << 100*(float)counter_selpi_piminus_opt/counter_selpi_opt << "\%)";
+   std::cout << std::endl << "Pi- candidate true muons: " << counter_selpi_mu_opt << " (" << 100*(float)counter_selpi_mu_opt/counter_selpi_opt << "\%)";
    
    // Track purity plots (before ECal PID)
    
