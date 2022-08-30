@@ -298,7 +298,7 @@ void DefaultCustomPlotting::Loop()
             {
                recomom_optsel_bkg_sel->Fill(selmu_mom[0]);
             }
-            if (topology == 1)
+            if (topology == 3)
             {
                counter_bkg_opt++;
             }
