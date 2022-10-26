@@ -196,7 +196,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsPos(AnaTrackB* track, AnaTECALR
   
   return output;
 }
-
+/*
 //--------------------------------------------------------------------------------------------------//
 std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsNeg(AnaTrackB* track, AnaTECALReconObject* localecalsegment, TString BDTname) {
 //--------------------------------------------------------------------------------------------------//
@@ -314,7 +314,7 @@ std::vector<Float_t> BDTPIDmanager::GetBDTPIDVarsNeg(AnaTrackB* track, AnaTECALR
   output = tmvareader->EvaluateMulticlass( BDTname );
   
   return output;
-}
+}*/
 
 //--------------------------------------------------------------------------------------------------//
 bool BDTPIDmanager::GetBDTPIDValidity(AnaTrackB* track) {
