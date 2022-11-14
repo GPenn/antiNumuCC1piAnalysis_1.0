@@ -277,7 +277,10 @@ void antiNumuCC1piAnalysis::FillMicroTrees(bool addBase){
   {
     //std::cout << "DEBUG: Filling muon candidate variables..." << std::endl;
     //std::cout << "DEBUG: Filling PDG ID..." << std::endl;
-    //output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG); // Note: meant for particle gun MC, okay for full MC, but disable this for real data
+    if (GetEvent().GetIsMC())
+    {
+      output().FillVar(particle_pg, mybox().MainTrack->GetTrueParticle()->PDG); // Note: meant for particle gun MC, okay for full MC, but can't be filled for real data
+    }
     
     //std::cout << "DEBUG: Filling angle wrt detector..." << std::endl;
     TVector3 nuDirVec = anaUtils::GetNuDirRec(box().MainTrack->PositionStart);
