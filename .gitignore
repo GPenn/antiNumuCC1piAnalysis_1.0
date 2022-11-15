@@ -18,6 +18,8 @@
 /customplotting/existing_selection/output
 /customplotting/existing_selection_noposmult/bin
 /customplotting/existing_selection_noposmult/output
+/customplotting/real_data/bin
+/customplotting/real_data/output
 /scripts/log
 /scripts/batch/run5
 /scripts/batch/run6
