@@ -116,7 +116,14 @@ void DefaultCustomPlotting::Loop()
    Int_t bdt_outputs_nbins = 20;
    
    TH1F* bdt_output_selmu_mulike = new TH1F("bdt_output_selmu_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_pilike = new TH1F("bdt_output_selmu_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_plike = new TH1F("bdt_output_selmu_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_elike = new TH1F("bdt_output_selmu_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
+   TH1F* bdt_output_selpi_mulike = new TH1F("bdt_output_selpi_mulike", "#pi^- candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
    TH1F* bdt_output_selpi_pilike = new TH1F("bdt_output_selpi_pilike", "#pi^- candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_plike = new TH1F("bdt_output_selpi_plike", "#pi^- candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_elike = new TH1F("bdt_output_selpi_elike", "#pi^- candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
    
    
    Long64_t nbytes = 0, nb = 0;
@@ -134,10 +141,16 @@ void DefaultCustomPlotting::Loop()
          
          counter_all_accum4++;
          bdt_output_selmu_mulike->Fill(selmu_bdt_pid_mu);
+         bdt_output_selmu_pilike->Fill(selmu_bdt_pid_pi);
+         bdt_output_selmu_plike->Fill(selmu_bdt_pid_p);
+         bdt_output_selmu_elike->Fill(selmu_bdt_pid_e);
          
          if (ntpcnegQualityFV == 1)
          {
             bdt_output_selpi_pilike->Fill(hmnt_bdt_pid_pi);
+            bdt_output_selpi_mulike->Fill(hmnt_bdt_pid_mu);
+            bdt_output_selpi_plike->Fill(hmnt_bdt_pid_p);
+            bdt_output_selpi_elike->Fill(hmnt_bdt_pid_e);
          }
          
          if ((selmu_bdt_pid_mu > 0.26) && ((hmnt_bdt_pid_pi > 0.12) || (ntpcnegQualityFV == 0)))
@@ -261,7 +274,14 @@ void DefaultCustomPlotting::Loop()
    canvas_selpi_ebyl_vs_mippion->Write();
    
    bdt_output_selmu_mulike->Write();
+   bdt_output_selmu_pilike->Write();
+   bdt_output_selmu_plike->Write();
+   bdt_output_selmu_elike->Write();
+   
+   bdt_output_selpi_mulike->Write();
    bdt_output_selpi_pilike->Write();
+   bdt_output_selpi_plike->Write();
+   bdt_output_selpi_elike->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
