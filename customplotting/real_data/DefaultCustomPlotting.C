@@ -54,6 +54,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi = 0, counter_selpiecal = 0;
    Int_t counter_noecalinfo = 0;
    Int_t counter_all_accum9 = 0;
+   Int_t counter_selpi_accum9 = 0;
    Int_t counter_selmu_bdtvalid = 0;
    Int_t counter_selpi_bdtvalid = 0;
    Int_t counter_all_opt;
