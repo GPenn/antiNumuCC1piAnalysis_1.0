@@ -50,7 +50,7 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
-   Int_t counter_all_accum7 = 0, counter_all_accum6 = 0, counter_selmuecal_accum7 = 0;
+   Int_t counter_all_accum4 = 0, counter_all_accum7 = 0, counter_all_accum6 = 0, counter_selmuecal_accum7 = 0;
    Int_t counter_selpi = 0, counter_selpiecal = 0;
    Int_t counter_noecalinfo = 0;
    Int_t counter_all_accum9 = 0;
@@ -113,6 +113,11 @@ void DefaultCustomPlotting::Loop()
    TH2F *selpi_ebyl_vs_mippion = new TH2F("selpi_ebyl_vs_mippion", "selpi_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           100, -20, 50.0, 100, 0, 6.0);
    
+   Int_t bdt_outputs_nbins = 20;
+   
+   TH1F* bdt_output_selmu_mulike = new TH1F("bdt_output_selmu_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_pilike = new TH1F("bdt_output_selpi_pilike", "#pi^- candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -127,6 +132,14 @@ void DefaultCustomPlotting::Loop()
       
       if (accum_level[0][1] > 4){
          
+         counter_all_accum4++;
+         bdt_output_selmu_mulike->Fill(selmu_bdt_pid_mu);
+         
+         if (ntpcnegQualityFV == 1)
+         {
+            bdt_output_selpi_pilike->Fill(hmnt_bdt_pid_pi);
+         }
+         
          if ((selmu_bdt_pid_mu > 0.26) && ((hmnt_bdt_pid_pi > 0.12) || (ntpcnegQualityFV == 0)))
          {
             counter_all_opt++;
@@ -135,6 +148,7 @@ void DefaultCustomPlotting::Loop()
             {
                counter_selpi_opt++;
             }
+         }
       }
       
       
@@ -210,6 +224,7 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl;
    
+   std::cout << std::endl << "Events above accum_level 4: " << counter_all_accum4 << std::endl;
    std::cout << std::endl << "Events above accum_level 6: " << counter_all_accum6 << std::endl;
    std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
    
@@ -244,6 +259,9 @@ void DefaultCustomPlotting::Loop()
    TCanvas* canvas_selpi_ebyl_vs_mippion = new TCanvas("canvas_selpi_ebyl_vs_mippion","",200,10,1000,800);
    selpi_ebyl_vs_mippion->Draw("colz");
    canvas_selpi_ebyl_vs_mippion->Write();
+   
+   bdt_output_selmu_mulike->Write();
+   bdt_output_selpi_pilike->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
