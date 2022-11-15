@@ -57,8 +57,8 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi_accum9 = 0;
    Int_t counter_selmu_bdtvalid = 0;
    Int_t counter_selpi_bdtvalid = 0;
-   Int_t counter_all_opt;
-   Int_t counter_selpi_opt;
+   Int_t counter_all_opt = 0;
+   Int_t counter_selpi_opt = 0;
    
    
    Int_t recomom_nbins = 8;
