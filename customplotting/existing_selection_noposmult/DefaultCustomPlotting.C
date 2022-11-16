@@ -1291,6 +1291,10 @@ void DefaultCustomPlotting::Loop()
    SetHistParticleStyle(bdt_output_selmu_proton_pilike, "proton");
    SetHistParticleStyle(bdt_output_selmu_proton_plike, "proton");
    SetHistParticleStyle(bdt_output_selmu_proton_elike, "proton");
+   SetHistParticleStyle(bdt_output_selmu_other_mulike, "other");
+   SetHistParticleStyle(bdt_output_selmu_other_pilike, "other");
+   SetHistParticleStyle(bdt_output_selmu_other_plike, "other");
+   SetHistParticleStyle(bdt_output_selmu_other_elike, "other");
    
    bdt_output_selmu_antimu_mulike->Write();
    bdt_output_selmu_antimu_pilike->Write();
@@ -1448,35 +1452,35 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    if (particle == "antimu")
    {
       hist->SetLineColor( kBlue);
-      if (SetFillColors) {hist->SetFillColorAlpha(kBlue-10, 0.35);}
+      if (SetFillColors) {hist->SetFillColorAlpha(kBlue-10, 0.35); hist->SetFillStyle( 3006);}
       //hist->SetFillStyle( 3006);
    }
    
    else if (particle == "piplus")
    {
       hist->SetLineColor( kRed);
-      if (SetFillColors) {hist->SetFillColorAlpha(kRed, 0.35);}
+      if (SetFillColors) {hist->SetFillColorAlpha(kRed, 0.35); hist->SetFillStyle( 3006);}
       //hist->SetFillStyle( 3354);
    }
    
    else if (particle == "proton")
    {
       hist->SetLineColor( kGreen);
-      if (SetFillColors) {hist->SetFillColorAlpha(kGreen, 0.35);}
+      if (SetFillColors) {hist->SetFillColorAlpha(kGreen, 0.35); hist->SetFillStyle( 3006);}
       //hist->SetFillStyle( 3003);
    }
    
    else if (particle == "positron")
    {
       hist->SetLineColor( kMagenta);
-      if (SetFillColors) {hist->SetFillColorAlpha(kMagenta, 0.35);}
+      if (SetFillColors) {hist->SetFillColorAlpha(kMagenta, 0.35); hist->SetFillStyle( 3006);}
       //hist->SetFillStyle( 3345);
    }
    
    else if (particle == "other")
    {
       hist->SetLineColor( kBlack);
-      if (SetFillColors) {hist->SetFillColorAlpha(kBlack, 0.35);}
+      if (SetFillColors) {hist->SetFillColorAlpha(kBlack, 0.35); hist->SetFillStyle( 3006);}
       //hist->SetFillStyle( 3345);
    }
    
