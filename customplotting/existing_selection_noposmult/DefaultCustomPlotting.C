@@ -1317,6 +1317,27 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_other_mulike);
    bdt_output_selmu_mulike_stack->Write();
    
+   THStack* bdt_output_selmu_pilike_stack = new THStack("bdt_output_selmu_pilike_stack","");
+   bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_antimu_pilike);
+   bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_piplus_pilike);
+   bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_proton_pilike);
+   bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_other_pilike);
+   bdt_output_selmu_pilike_stack->Write();
+   
+   THStack* bdt_output_selmu_plike_stack = new THStack("bdt_output_selmu_plike_stack","");
+   bdt_output_selmu_plike_stack->Add(bdt_output_selmu_antimu_plike);
+   bdt_output_selmu_plike_stack->Add(bdt_output_selmu_piplus_plike);
+   bdt_output_selmu_plike_stack->Add(bdt_output_selmu_proton_plike);
+   bdt_output_selmu_plike_stack->Add(bdt_output_selmu_other_plike);
+   bdt_output_selmu_plike_stack->Write();
+   
+   THStack* bdt_output_selmu_elike_stack = new THStack("bdt_output_selmu_elike_stack","");
+   bdt_output_selmu_elike_stack->Add(bdt_output_selmu_antimu_elike);
+   bdt_output_selmu_elike_stack->Add(bdt_output_selmu_piplus_elike);
+   bdt_output_selmu_elike_stack->Add(bdt_output_selmu_proton_elike);
+   bdt_output_selmu_elike_stack->Add(bdt_output_selmu_other_elike);
+   bdt_output_selmu_elike_stack->Write();
+   
    bdt_output_selpi_mulike->Write();
    bdt_output_selpi_pilike->Write();
    bdt_output_selpi_plike->Write();
@@ -1420,33 +1441,42 @@ Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist_sig, TH1F* hi
 
 void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
    
+   Bool_t SetFillColors = true;
+   
    hist->SetLineWidth(2);
    
    if (particle == "antimu")
    {
       hist->SetLineColor( kBlue);
-      //hist->SetFillColorAlpha(kBlue-10, 0.35);
+      if (SetFillColors) {hist->SetFillColorAlpha(kBlue-10, 0.35);}
       //hist->SetFillStyle( 3006);
    }
    
    else if (particle == "piplus")
    {
       hist->SetLineColor( kRed);
-      //hist->SetFillColorAlpha(kRed, 0.35);
+      if (SetFillColors) {hist->SetFillColorAlpha(kRed, 0.35);}
       //hist->SetFillStyle( 3354);
    }
    
    else if (particle == "proton")
    {
       hist->SetLineColor( kGreen);
-      //hist->SetFillColorAlpha(kGreen, 0.35);
+      if (SetFillColors) {hist->SetFillColorAlpha(kGreen, 0.35);}
       //hist->SetFillStyle( 3003);
    }
    
    else if (particle == "positron")
    {
       hist->SetLineColor( kMagenta);
-      //hist->SetFillColorAlpha(kMagenta, 0.35);
+      if (SetFillColors) {hist->SetFillColorAlpha(kMagenta, 0.35);}
+      //hist->SetFillStyle( 3345);
+   }
+   
+   else if (particle == "other")
+   {
+      hist->SetLineColor( kBlack);
+      if (SetFillColors) {hist->SetFillColorAlpha(kBlack, 0.35);}
       //hist->SetFillStyle( 3345);
    }
    
