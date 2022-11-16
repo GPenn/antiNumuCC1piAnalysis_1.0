@@ -245,6 +245,26 @@ void DefaultCustomPlotting::Loop()
    TH1F* bdt_output_selmu_plike = new TH1F("bdt_output_selmu_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
    TH1F* bdt_output_selmu_elike = new TH1F("bdt_output_selmu_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
    
+   TH1F* bdt_output_selmu_antimu_mulike = new TH1F("bdt_output_selmu_antimu_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_antimu_pilike = new TH1F("bdt_output_selmu_antimu_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_antimu_plike = new TH1F("bdt_output_selmu_antimu_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_antimu_elike = new TH1F("bdt_output_selmu_antimu_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
+   TH1F* bdt_output_selmu_piplus_mulike = new TH1F("bdt_output_selmu_piplus_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_piplus_pilike = new TH1F("bdt_output_selmu_piplus_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_piplus_plike = new TH1F("bdt_output_selmu_piplus_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_piplus_elike = new TH1F("bdt_output_selmu_piplus_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
+   TH1F* bdt_output_selmu_proton_mulike = new TH1F("bdt_output_selmu_proton_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_proton_pilike = new TH1F("bdt_output_selmu_proton_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_proton_plike = new TH1F("bdt_output_selmu_proton_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_proton_elike = new TH1F("bdt_output_selmu_proton_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
+   TH1F* bdt_output_selmu_other_mulike = new TH1F("bdt_output_selmu_other_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_other_pilike = new TH1F("bdt_output_selmu_other_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_other_plike = new TH1F("bdt_output_selmu_other_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_other_elike = new TH1F("bdt_output_selmu_other_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
    TH1F* bdt_output_selpi_mulike = new TH1F("bdt_output_selpi_mulike", "#pi^- candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
    TH1F* bdt_output_selpi_pilike = new TH1F("bdt_output_selpi_pilike", "#pi^- candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
    TH1F* bdt_output_selpi_plike = new TH1F("bdt_output_selpi_plike", "#pi^- candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
@@ -288,11 +308,35 @@ void DefaultCustomPlotting::Loop()
          if (particle == -13)
          {
             counter_selmu_antimu_accum4++;
+            bdt_output_selmu_antimu_mulike->Fill(selmu_bdt_pid_mu);
+            bdt_output_selmu_antimu_pilike->Fill(selmu_bdt_pid_pi);
+            bdt_output_selmu_antimu_plike->Fill(selmu_bdt_pid_p);
+            bdt_output_selmu_antimu_elike->Fill(selmu_bdt_pid_e);
          }
          
-         if (particle == 211)
+         else if (particle == 211)
          {
             counter_selmu_piplus_accum4++;
+            bdt_output_selmu_piplus_mulike->Fill(selmu_bdt_pid_mu);
+            bdt_output_selmu_piplus_pilike->Fill(selmu_bdt_pid_pi);
+            bdt_output_selmu_piplus_plike->Fill(selmu_bdt_pid_p);
+            bdt_output_selmu_piplus_elike->Fill(selmu_bdt_pid_e);
+         }
+         
+         else if (particle == 2212)
+         {
+            bdt_output_selmu_proton_mulike->Fill(selmu_bdt_pid_mu);
+            bdt_output_selmu_proton_pilike->Fill(selmu_bdt_pid_pi);
+            bdt_output_selmu_proton_plike->Fill(selmu_bdt_pid_p);
+            bdt_output_selmu_proton_elike->Fill(selmu_bdt_pid_e);
+         }
+         
+         else
+         {
+            bdt_output_selmu_other_mulike->Fill(selmu_bdt_pid_mu);
+            bdt_output_selmu_other_pilike->Fill(selmu_bdt_pid_pi);
+            bdt_output_selmu_other_plike->Fill(selmu_bdt_pid_p);
+            bdt_output_selmu_other_elike->Fill(selmu_bdt_pid_e);
          }
          
          if ((ntpcposQualityFV==1) && (ntpcnegQualityFV==1))
@@ -1233,6 +1277,44 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_pilike->Write();
    bdt_output_selmu_plike->Write();
    bdt_output_selmu_elike->Write();
+   
+   SetHistParticleStyle(bdt_output_selmu_antimu_mulike, "antimu");
+   SetHistParticleStyle(bdt_output_selmu_antimu_pilike, "antimu");
+   SetHistParticleStyle(bdt_output_selmu_antimu_plike, "antimu");
+   SetHistParticleStyle(bdt_output_selmu_antimu_elike, "antimu");
+   SetHistParticleStyle(bdt_output_selmu_piplus_mulike, "piplus");
+   SetHistParticleStyle(bdt_output_selmu_piplus_pilike, "piplus");
+   SetHistParticleStyle(bdt_output_selmu_piplus_plike, "piplus");
+   SetHistParticleStyle(bdt_output_selmu_piplus_elike, "piplus");
+   SetHistParticleStyle(bdt_output_selmu_proton_mulike, "proton");
+   SetHistParticleStyle(bdt_output_selmu_proton_pilike, "proton");
+   SetHistParticleStyle(bdt_output_selmu_proton_plike, "proton");
+   SetHistParticleStyle(bdt_output_selmu_proton_elike, "proton");
+   
+   bdt_output_selmu_antimu_mulike->Write();
+   bdt_output_selmu_antimu_pilike->Write();
+   bdt_output_selmu_antimu_plike->Write();
+   bdt_output_selmu_antimu_elike->Write();
+   bdt_output_selmu_piplus_mulike->Write();
+   bdt_output_selmu_piplus_pilike->Write();
+   bdt_output_selmu_piplus_plike->Write();
+   bdt_output_selmu_piplus_elike->Write();
+   bdt_output_selmu_proton_mulike->Write();
+   bdt_output_selmu_proton_pilike->Write();
+   bdt_output_selmu_proton_plike->Write();
+   bdt_output_selmu_proton_elike->Write();
+   bdt_output_selmu_other_mulike->Write();
+   bdt_output_selmu_other_pilike->Write();
+   bdt_output_selmu_other_plike->Write();
+   bdt_output_selmu_other_elike->Write();
+   
+   //TCanvas* c1 = new TCanvas("c1","stacked hists",700,900);
+   THStack* bdt_output_selmu_mulike_stack = new THStack("bdt_output_selmu_mulike_stack","");
+   bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_antimu_mulike);
+   bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_piplus_mulike);
+   bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_proton_mulike);
+   bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_other_mulike);
+   bdt_output_selmu_mulike_stack->Write();
    
    bdt_output_selpi_mulike->Write();
    bdt_output_selpi_pilike->Write();
