@@ -50,7 +50,7 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
-   Int_t counter_all_accum7 = 0, counter_all_accum6 = 0, counter_selmuecal_accum7 = 0;
+   Int_t counter_all_accum4 = 0, counter_all_accum7 = 0, counter_all_accum6 = 0, counter_selmuecal_accum7 = 0;
    Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0, counter_oofv = 0;
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, 
          counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
@@ -231,13 +231,24 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_diff_bkg_accum9 = new TH1F("recomom_diff_bkg_accum9", "Background;#mu^{+} candidate p_{reco} - #pi^{-} candidate p_{reco} (MeV/c); Events", 
                                             recomomdiff_nbins, -recomom_max, recomom_max);
    
-
    
    Int_t recotheta_nbins = 15;
    
    TH1F *recotheta_sig_presel = new TH1F("recotheta_sig_presel", "recotheta_sig_presel", recotheta_nbins, 0.0, 1.3);
    TH1F *recotheta_sig_sel = new TH1F("recotheta_sig_sel", "recotheta_sig_sel", recotheta_nbins, 0.0, 1.3);
    TH1F *recotheta_bkg_sel = new TH1F("recotheta_bkg_sel", "recotheta_bkg_sel", recotheta_nbins, 0.0, 1.3);
+   
+   Int_t bdt_outputs_nbins = 20;
+   
+   TH1F* bdt_output_selmu_mulike = new TH1F("bdt_output_selmu_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_pilike = new TH1F("bdt_output_selmu_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_plike = new TH1F("bdt_output_selmu_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_elike = new TH1F("bdt_output_selmu_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   
+   TH1F* bdt_output_selpi_mulike = new TH1F("bdt_output_selpi_mulike", "#pi^- candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_pilike = new TH1F("bdt_output_selpi_pilike", "#pi^- candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_plike = new TH1F("bdt_output_selpi_plike", "#pi^- candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_elike = new TH1F("bdt_output_selpi_elike", "#pi^- candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -260,6 +271,20 @@ void DefaultCustomPlotting::Loop()
       
       if (accum_level[0][1] > 4){
    
+         counter_all_accum4++;
+         bdt_output_selmu_mulike->Fill(selmu_bdt_pid_mu);
+         bdt_output_selmu_pilike->Fill(selmu_bdt_pid_pi);
+         bdt_output_selmu_plike->Fill(selmu_bdt_pid_p);
+         bdt_output_selmu_elike->Fill(selmu_bdt_pid_e);
+         
+         if (ntpcnegQualityFV == 1)
+         {
+            bdt_output_selpi_pilike->Fill(hmnt_bdt_pid_pi);
+            bdt_output_selpi_mulike->Fill(hmnt_bdt_pid_mu);
+            bdt_output_selpi_plike->Fill(hmnt_bdt_pid_p);
+            bdt_output_selpi_elike->Fill(hmnt_bdt_pid_e);
+         }
+         
          if (particle == -13)
          {
             counter_selmu_antimu_accum4++;
@@ -595,6 +620,7 @@ void DefaultCustomPlotting::Loop()
    
    std::cout << std::endl;
    
+   std::cout << std::endl << "Events above accum_level 4: " << counter_all_accum4 << std::endl;
    std::cout << std::endl << "Events above accum_level 6: " << counter_all_accum6 << std::endl;
    std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
    
@@ -1202,6 +1228,16 @@ void DefaultCustomPlotting::Loop()
    //graph_bdt_cut_optimisation_signif->Draw("surf1");
    graph_bdt_cut_optimisation_signif->Draw("colz");
    canvas_bdt_cut_optimisation_signif->Write();
+   
+   bdt_output_selmu_mulike->Write();
+   bdt_output_selmu_pilike->Write();
+   bdt_output_selmu_plike->Write();
+   bdt_output_selmu_elike->Write();
+   
+   bdt_output_selpi_mulike->Write();
+   bdt_output_selpi_pilike->Write();
+   bdt_output_selpi_plike->Write();
+   bdt_output_selpi_elike->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
