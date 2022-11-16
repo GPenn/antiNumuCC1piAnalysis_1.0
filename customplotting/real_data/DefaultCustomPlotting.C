@@ -273,6 +273,11 @@ void DefaultCustomPlotting::Loop()
    selpi_ebyl_vs_mippion->Draw("colz");
    canvas_selpi_ebyl_vs_mippion->Write();
    
+   bdt_output_selmu_mulike->Sumw2();
+   bdt_output_selmu_pilike->Sumw2();
+   bdt_output_selmu_plike->Sumw2();
+   bdt_output_selmu_elike->Sumw2();
+   
    bdt_output_selmu_mulike->Write();
    bdt_output_selmu_pilike->Write();
    bdt_output_selmu_plike->Write();
