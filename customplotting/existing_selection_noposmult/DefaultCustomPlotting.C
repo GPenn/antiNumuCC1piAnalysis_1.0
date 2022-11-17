@@ -1313,7 +1313,7 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_other_plike->Write();
    bdt_output_selmu_other_elike->Write();
    
-   Double_t scale_factor = 1;
+   Double_t scale_factor = 0.1;
    //Double_t scale_factor = 1/counter_all_accum4;
    
    bdt_output_selmu_antimu_mulike->Scale(scale_factor);
