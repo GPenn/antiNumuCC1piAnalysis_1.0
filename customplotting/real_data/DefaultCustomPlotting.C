@@ -273,10 +273,26 @@ void DefaultCustomPlotting::Loop()
    selpi_ebyl_vs_mippion->Draw("colz");
    canvas_selpi_ebyl_vs_mippion->Write();
    
+   Double_t scale_factor = 1/counter_all_accum4;
+   
    bdt_output_selmu_mulike->Sumw2();
    bdt_output_selmu_pilike->Sumw2();
    bdt_output_selmu_plike->Sumw2();
    bdt_output_selmu_elike->Sumw2();
+   
+   bdt_output_selmu_mulike->Scale(scale_factor);
+   bdt_output_selmu_pilike->Scale(scale_factor);
+   bdt_output_selmu_plike->Scale(scale_factor);
+   bdt_output_selmu_elike->Scale(scale_factor);
+   
+   bdt_output_selmu_mulike->SetLineWidth(2);
+   bdt_output_selmu_pilike->SetLineWidth(2);
+   bdt_output_selmu_plike->SetLineWidth(2);
+   bdt_output_selmu_elike->SetLineWidth(2);
+   bdt_output_selmu_mulike->SetLineColor(kBlack);
+   bdt_output_selmu_pilike->SetLineColor(kBlack);
+   bdt_output_selmu_plike->SetLineColor(kBlack);
+   bdt_output_selmu_elike->SetLineColor(kBlack);
    
    bdt_output_selmu_mulike->Write();
    bdt_output_selmu_pilike->Write();
