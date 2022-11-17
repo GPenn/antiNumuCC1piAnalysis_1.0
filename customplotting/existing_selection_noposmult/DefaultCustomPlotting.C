@@ -1313,6 +1313,25 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_other_plike->Write();
    bdt_output_selmu_other_elike->Write();
    
+   Double_t scale_factor = 1/counter_all_accum4;
+   
+   bdt_output_selmu_antimu_mulike->Scale(scale_factor);
+   bdt_output_selmu_piplus_mulike->Scale(scale_factor);
+   bdt_output_selmu_proton_mulike->Scale(scale_factor);
+   bdt_output_selmu_other_mulike->Scale(scale_factor);
+   bdt_output_selmu_antimu_pilike->Scale(scale_factor);
+   bdt_output_selmu_piplus_pilike->Scale(scale_factor);
+   bdt_output_selmu_proton_pilike->Scale(scale_factor);
+   bdt_output_selmu_other_pilike->Scale(scale_factor);
+   bdt_output_selmu_antimu_plike->Scale(scale_factor);
+   bdt_output_selmu_piplus_plike->Scale(scale_factor);
+   bdt_output_selmu_proton_plike->Scale(scale_factor);
+   bdt_output_selmu_other_plike->Scale(scale_factor);
+   bdt_output_selmu_antimu_elike->Scale(scale_factor);
+   bdt_output_selmu_piplus_elike->Scale(scale_factor);
+   bdt_output_selmu_proton_elike->Scale(scale_factor);
+   bdt_output_selmu_other_elike->Scale(scale_factor);
+   
    //TCanvas* c1 = new TCanvas("c1","stacked hists",700,900);
    THStack* bdt_output_selmu_mulike_stack = new THStack("bdt_output_selmu_mulike_stack","");
    bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_antimu_mulike);
