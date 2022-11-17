@@ -273,7 +273,8 @@ void DefaultCustomPlotting::Loop()
    selpi_ebyl_vs_mippion->Draw("colz");
    canvas_selpi_ebyl_vs_mippion->Write();
    
-   Double_t scale_factor = 1/counter_all_accum4;
+   Double_t scale_factor = 1;
+   //Double_t scale_factor = 1/counter_all_accum4;
    
    bdt_output_selmu_mulike->Sumw2();
    bdt_output_selmu_pilike->Sumw2();
