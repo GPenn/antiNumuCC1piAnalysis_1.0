@@ -1351,28 +1351,28 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_other_elike->Scale(scale_factor);
    
    //TCanvas* c1 = new TCanvas("c1","stacked hists",700,900);
-   THStack* bdt_output_selmu_mulike_stack = new THStack("bdt_output_selmu_mulike_stack;Antimuon candidate BDT mu-like output;Events","");
+   THStack* bdt_output_selmu_mulike_stack = new THStack("bdt_output_selmu_mulike_stack","bdt_output_selmu_mulike_stack;Antimuon candidate BDT mu-like output;Events");
    bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_antimu_mulike);
    bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_piplus_mulike);
    bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_proton_mulike);
    bdt_output_selmu_mulike_stack->Add(bdt_output_selmu_other_mulike);
    bdt_output_selmu_mulike_stack->Write();
    
-   THStack* bdt_output_selmu_pilike_stack = new THStack("bdt_output_selmu_pilike_stack;Antimuon candidate BDT pi-like output;Events","");
+   THStack* bdt_output_selmu_pilike_stack = new THStack("bdt_output_selmu_pilike_stack","bdt_output_selmu_pilike_stack;Antimuon candidate BDT pi-like output;Events");
    bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_antimu_pilike);
    bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_piplus_pilike);
    bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_proton_pilike);
    bdt_output_selmu_pilike_stack->Add(bdt_output_selmu_other_pilike);  
    bdt_output_selmu_pilike_stack->Write();
    
-   THStack* bdt_output_selmu_plike_stack = new THStack("bdt_output_selmu_plike_stack;Antimuon candidate BDT p-like output;Events","");
+   THStack* bdt_output_selmu_plike_stack = new THStack("bdt_output_selmu_plike_stack","bdt_output_selmu_plike_stack;Antimuon candidate BDT p-like output;Events");
    bdt_output_selmu_plike_stack->Add(bdt_output_selmu_antimu_plike);
    bdt_output_selmu_plike_stack->Add(bdt_output_selmu_piplus_plike);
    bdt_output_selmu_plike_stack->Add(bdt_output_selmu_proton_plike);
    bdt_output_selmu_plike_stack->Add(bdt_output_selmu_other_plike);   
    bdt_output_selmu_plike_stack->Write();
    
-   THStack* bdt_output_selmu_elike_stack = new THStack("bdt_output_selmu_elike_stack;Antimuon candidate BDT e-like output;Events","");
+   THStack* bdt_output_selmu_elike_stack = new THStack("bdt_output_selmu_elike_stack","bdt_output_selmu_elike_stack;Antimuon candidate BDT e-like output;Events");
    bdt_output_selmu_elike_stack->Add(bdt_output_selmu_antimu_elike);
    bdt_output_selmu_elike_stack->Add(bdt_output_selmu_piplus_elike);
    bdt_output_selmu_elike_stack->Add(bdt_output_selmu_proton_elike);
