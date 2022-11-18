@@ -1313,14 +1313,14 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_other_plike->Write();
    bdt_output_selmu_other_elike->Write();
    
-   bdt_output_selmu_antimu_mulike->SetTitle("NEUT MC - true #mu^+");
-   bdt_output_selmu_antimu_pilike->SetTitle("NEUT MC - true #mu^+");
-   bdt_output_selmu_antimu_plike->SetTitle("NEUT MC - true #mu^+");
-   bdt_output_selmu_antimu_elike->SetTitle("NEUT MC - true #mu^+");
-   bdt_output_selmu_piplus_mulike->SetTitle("NEUT MC - true #pi^+");
-   bdt_output_selmu_piplus_pilike->SetTitle("NEUT MC - true #pi^+");
-   bdt_output_selmu_piplus_plike->SetTitle("NEUT MC - true #pi^+");
-   bdt_output_selmu_piplus_elike->SetTitle("NEUT MC - true #pi^+");
+   bdt_output_selmu_antimu_mulike->SetTitle("NEUT MC - true #mu^{+}");
+   bdt_output_selmu_antimu_pilike->SetTitle("NEUT MC - true #mu^{+}");
+   bdt_output_selmu_antimu_plike->SetTitle("NEUT MC - true #mu^{+}");
+   bdt_output_selmu_antimu_elike->SetTitle("NEUT MC - true #mu^{+}");
+   bdt_output_selmu_piplus_mulike->SetTitle("NEUT MC - true #pi^{+}");
+   bdt_output_selmu_piplus_pilike->SetTitle("NEUT MC - true #pi^{+}");
+   bdt_output_selmu_piplus_plike->SetTitle("NEUT MC - true #pi^{+}");
+   bdt_output_selmu_piplus_elike->SetTitle("NEUT MC - true #pi^{+}");
    bdt_output_selmu_proton_mulike->SetTitle("NEUT MC - true protons");
    bdt_output_selmu_proton_pilike->SetTitle("NEUT MC - true protons");
    bdt_output_selmu_proton_plike->SetTitle("NEUT MC - true protons");
