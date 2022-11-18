@@ -67,8 +67,8 @@
     
     TCanvas* canvas_comparison_mulike = new TCanvas("canvas_comparison_mulike","canvas_comparison_mulike",200,10,1000,600);
     
-    bdt_output_selmu_mulike_stack->GetXaxis()->SetTitle("Antimuon candidate BDT mu-like output");
-    bdt_output_selmu_mulike_stack->GetYaxis()->SetTitle("Events");
+    bdt_output_selmu_mulike_stack->GetHistogram()->GetXaxis()->SetTitle("Antimuon candidate BDT mu-like output");
+    bdt_output_selmu_mulike_stack->GetHistogram()->GetYaxis()->SetTitle("Events");
     
     bdt_output_selmu_mulike_stack->Draw();
     bdt_output_selmu_mulike->Draw("same E1");
