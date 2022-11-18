@@ -67,17 +67,11 @@
     
     TCanvas* canvas_comparison_mulike = new TCanvas("canvas_comparison_mulike","canvas_comparison_mulike",200,10,1000,600);
     
-    bdt_output_selmu_mulike_stack->GetHistogram()->GetXaxis()->SetTitle("Antimuon candidate BDT mu-like output");
-    bdt_output_selmu_mulike_stack->GetHistogram()->GetYaxis()->SetTitle("Events");
-    
     bdt_output_selmu_mulike_stack->Draw();
     bdt_output_selmu_mulike->Draw("same E1");
     canvas_comparison_mulike->BuildLegend();
     
     TCanvas* canvas_comparison_pilike = new TCanvas("canvas_comparison_pilike","canvas_comparison_pilike",200,10,1000,600);
-    
-    bdt_output_selmu_pilike_stack->GetXaxis()->SetTitle("Antimuon candidate BDT pi-like output");
-    bdt_output_selmu_pilike_stack->GetYaxis()->SetTitle("Events");
     
     bdt_output_selmu_pilike_stack->Draw();
     bdt_output_selmu_pilike->Draw("same E1");
@@ -85,17 +79,11 @@
     
     TCanvas* canvas_comparison_plike = new TCanvas("canvas_comparison_plike","canvas_comparison_plike",200,10,1000,600);
     
-    bdt_output_selmu_plike_stack->GetXaxis()->SetTitle("Antimuon candidate BDT p-like output");
-    bdt_output_selmu_plike_stack->GetYaxis()->SetTitle("Events");
-    
     bdt_output_selmu_plike_stack->Draw();
     bdt_output_selmu_plike->Draw("same E1");
     canvas_comparison_plike->BuildLegend();
     
     TCanvas* canvas_comparison_elike = new TCanvas("canvas_comparison_elike","canvas_comparison_elike",200,10,1000,600);
-    
-    bdt_output_selmu_elike_stack->GetXaxis()->SetTitle("Antimuon candidate BDT e-like output");
-    bdt_output_selmu_elike_stack->GetYaxis()->SetTitle("Events");
     
     bdt_output_selmu_elike_stack->Draw();
     bdt_output_selmu_elike->Draw("same E1");
