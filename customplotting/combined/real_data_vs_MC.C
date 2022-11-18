@@ -68,6 +68,8 @@
     TCanvas* canvas_comparison_mulike = new TCanvas("canvas_comparison_mulike","canvas_comparison_mulike",200,10,1000,600);
     
     bdt_output_selmu_mulike_stack->Draw();
+    bdt_output_selmu_mulike->GetXaxis()->SetTitle("BDT mu-like output");
+    bdt_output_selmu_mulike->GetYaxis()->SetTitle("Events");
     bdt_output_selmu_mulike->Draw("same E1");
     canvas_comparison_mulike->BuildLegend();
     
