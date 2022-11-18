@@ -70,4 +70,22 @@
     bdt_output_selmu_mulike_stack->Draw();
     bdt_output_selmu_mulike->Draw("same");
     canvas_comparison_mulike->BuildLegend();
+    
+    TCanvas* canvas_comparison_pilike = new TCanvas("canvas_comparison_pilike","canvas_comparison_pilike",200,10,1000,600);
+    
+    bdt_output_selmu_pilike_stack->Draw();
+    bdt_output_selmu_pilike->Draw("same");
+    canvas_comparison_pilike->BuildLegend();
+    
+    TCanvas* canvas_comparison_plike = new TCanvas("canvas_comparison_plike","canvas_comparison_plike",200,10,1000,600);
+    
+    bdt_output_selmu_plike_stack->Draw();
+    bdt_output_selmu_plike->Draw("same");
+    canvas_comparison_plike->BuildLegend();
+    
+    TCanvas* canvas_comparison_elike = new TCanvas("canvas_comparison_elike","canvas_comparison_elike",200,10,1000,600);
+    
+    bdt_output_selmu_elike_stack->Draw();
+    bdt_output_selmu_elike->Draw("same");
+    canvas_comparison_elike->BuildLegend();
 }
