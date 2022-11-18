@@ -281,11 +281,20 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_plike->Sumw2();
    bdt_output_selmu_elike->Sumw2();
    
+   bdt_output_selmu_mulike->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   bdt_output_selmu_pilike->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   bdt_output_selmu_plike->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   bdt_output_selmu_elike->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   
    bdt_output_selmu_mulike->Scale(scale_factor);
    bdt_output_selmu_pilike->Scale(scale_factor);
    bdt_output_selmu_plike->Scale(scale_factor);
    bdt_output_selmu_elike->Scale(scale_factor);
    
+   bdt_output_selmu_mulike->SetMarkerStyle(kFullCircle);
+   bdt_output_selmu_pilike->SetMarkerStyle(kFullCircle);
+   bdt_output_selmu_plike->SetMarkerStyle(kFullCircle);
+   bdt_output_selmu_elike->SetMarkerStyle(kFullCircle);
    bdt_output_selmu_mulike->SetLineWidth(2);
    bdt_output_selmu_pilike->SetLineWidth(2);
    bdt_output_selmu_plike->SetLineWidth(2);
