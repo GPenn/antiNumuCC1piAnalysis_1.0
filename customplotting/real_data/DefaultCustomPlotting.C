@@ -156,6 +156,7 @@ void DefaultCustomPlotting::Loop()
          if ((selmu_bdt_pid_mu > 0.26) && ((hmnt_bdt_pid_pi > 0.12) || (ntpcnegQualityFV == 0)))
          {
             counter_all_opt++;
+            recomom_optsel_all->Fill(selmu_mom[0]);
             
             if (ntpcnegQualityFV == 1)
             {
