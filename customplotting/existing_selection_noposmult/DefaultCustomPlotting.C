@@ -68,7 +68,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi_opt = 0, counter_selpi_piminus_opt = 0, counter_selpi_mu_opt = 0;
    
    
-   Int_t recomom_nbins = 8;
+   Int_t recomom_nbins = 13;
    Double_t recomom_max = 5000.0;
    
    TH1F *recomom_all;
@@ -101,6 +101,12 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_optsel_sig_sel;
    TH1F *recomom_optsel_bkg_sel;
    
+   TH1F *recomom_optsel_cc0pi;
+   TH1F *recomom_optsel_cc1pi;
+   TH1F *recomom_optsel_ccother;
+   TH1F *recomom_optsel_bkg;
+   TH1F *recomom_optsel_oofv;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -132,6 +138,12 @@ void DefaultCustomPlotting::Loop()
       
       recomom_optsel_sig_sel = new TH1F("recomom_optsel_sig_sel", "recomom_optsel_sig_sel", recomom_nbins, 200.0, 1500.0);
       recomom_optsel_bkg_sel = new TH1F("recomom_optsel_bkg_sel", "recomom_optsel_bkg_sel", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_optsel_cc0pi = new TH1F("recomom_optsel_cc0pi", "recomom_optsel_cc0pi", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_cc1pi = new TH1F("recomom_optsel_cc1pi", "recomom_optsel_cc1pi", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_ccother = new TH1F("recomom_optsel_ccother", "recomom_optsel_ccother", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_bkg = new TH1F("recomom_optsel_bkg", "recomom_optsel_bkg", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_oofv = new TH1F("recomom_optsel_oofv", "recomom_optsel_oofv", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -164,6 +176,12 @@ void DefaultCustomPlotting::Loop()
       
       recomom_optsel_sig_sel = new TH1F("recomom_optsel_sig_sel", "recomom_optsel_sig_sel", recomom_nbins, 0.0, recomom_max);
       recomom_optsel_bkg_sel = new TH1F("recomom_optsel_bkg_sel", "recomom_optsel_bkg_sel", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_optsel_cc0pi = new TH1F("recomom_optsel_cc0pi", "recomom_optsel_cc0pi", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_cc1pi = new TH1F("recomom_optsel_cc1pi", "recomom_optsel_cc1pi", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_ccother = new TH1F("recomom_optsel_ccother", "recomom_optsel_ccother", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_bkg = new TH1F("recomom_optsel_bkg", "recomom_optsel_bkg", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_oofv = new TH1F("recomom_optsel_oofv", "recomom_optsel_oofv", recomom_nbins, 200.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -363,15 +381,30 @@ void DefaultCustomPlotting::Loop()
             {
                recomom_optsel_sig_sel->Fill(selmu_mom[0]);
                counter_cc1pi_opt++;
+               recomom_optsel_cc1pi->Fill(selmu_mom[0]);
             }
             if (topology != 1)
             {
                recomom_optsel_bkg_sel->Fill(selmu_mom[0]);
             }
+            if (topology == 0)
+            {
+               recomom_optsel_cc0pi->Fill(selmu_mom[0]);
+            }
+            if (topology == 2)
+            {
+               recomom_optsel_ccother->Fill(selmu_mom[0]);
+            }
             if (topology == 3)
             {
                counter_bkg_opt++;
+               recomom_optsel_bkg->Fill(selmu_mom[0]);
             }
+            if (topology == 7)
+            {
+               recomom_optsel_oofv->Fill(selmu_mom[0]);
+            }
+            
             if (particle == -13)
             {
                recomom_optsel_antimu->Fill(selmu_mom[0]);
@@ -1384,6 +1417,38 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selpi_plike->Write();
    bdt_output_selpi_elike->Write();
    
+   SetHistParticleStyle(recomom_optsel_cc1pi, "antimu");
+   SetHistParticleStyle(recomom_optsel_cc0pi, "proton");
+   SetHistParticleStyle(recomom_optsel_ccother, "positron");
+   SetHistParticleStyle(recomom_optsel_bkg, "piplus");
+   SetHistParticleStyle(recomom_optsel_oofv, "other");
+   
+   recomom_optsel_cc0pi->Write();
+   recomom_optsel_cc1pi->Write();
+   recomom_optsel_ccother->Write();
+   recomom_optsel_bkg->Write();
+   recomom_optsel_oofv->Write();
+   
+   recomom_optsel_cc0pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC0pi");
+   recomom_optsel_cc1pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)");
+   recomom_optsel_ccother->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC-Other");
+   recomom_optsel_bkg->SetTitle("NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds");
+   recomom_optsel_oofv->SetTitle("NEUT MC: vertex outside FV");
+   
+   recomom_optsel_cc0pi->Scale(scale_factor);
+   recomom_optsel_cc1pi->Scale(scale_factor);
+   recomom_optsel_ccother->Scale(scale_factor);
+   recomom_optsel_bkg->Scale(scale_factor);
+   recomom_optsel_oofv->Scale(scale_factor);
+   
+   THStack* recomom_optsel_stack = new THStack("recomom_optsel_stack","recomom_optsel_stack;Antimuon candidate reconstructed momentum (MeV/c);Events");
+   recomom_optsel_stack->Add(recomom_optsel_oofv);
+   recomom_optsel_stack->Add(recomom_optsel_bkg);
+   recomom_optsel_stack->Add(recomom_optsel_ccother);
+   recomom_optsel_stack->Add(recomom_optsel_cc0pi);
+   recomom_optsel_stack->Add(recomom_optsel_cc1pi);
+   recomom_optsel_stack->Write();
+   
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
    defout->Write();
@@ -1525,3 +1590,50 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    
    return;
 }
+
+void DefaultCustomPlotting::SetHistTopologyStyle(TH1F* hist, std::string topology) {
+   
+   Bool_t SetFillColors = true;
+   
+   hist->SetLineWidth(2);
+   
+   if (topology == 1)
+   {
+      hist->SetLineColor( kBlue);
+      if (SetFillColors) {hist->SetFillColor(kBlue-10);}
+      //hist->SetFillStyle( 3006);
+   }
+   
+   else if (topology == "piplus")
+   {
+      hist->SetLineColor( kRed);
+      if (SetFillColors) {hist->SetFillColor(kRed-10);}
+      //hist->SetFillStyle( 3354);
+   }
+   
+   else if (particle == "proton")
+   {
+      hist->SetLineColor( kGreen);
+      if (SetFillColors) {hist->SetFillColor(kGreen-10);}
+      //hist->SetFillStyle( 3003);
+   }
+   
+   else if (particle == "positron")
+   {
+      hist->SetLineColor( kMagenta);
+      if (SetFillColors) {hist->SetFillColor(kMagenta-10);}
+      //hist->SetFillStyle( 3345);
+   }
+   
+   else if (particle == "other")
+   {
+      hist->SetLineColor( kGray+2);
+      if (SetFillColors) {hist->SetFillColor(kGray);}
+      //hist->SetFillStyle( 3345);
+   }
+   
+   else std::cout << "Error in SetHistParticleStyle: particle type not recognised." << std::endl;
+   
+   return;
+}
+
