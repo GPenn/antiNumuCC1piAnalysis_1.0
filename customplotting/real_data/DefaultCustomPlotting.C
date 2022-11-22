@@ -74,6 +74,8 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *recomom_optsel_hmnt_all;
    
+   TH1F *recomom_exsel_all;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -86,6 +88,7 @@ void DefaultCustomPlotting::Loop()
       
       recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
       
+      recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -98,6 +101,8 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
+      
+      recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -197,6 +202,10 @@ void DefaultCustomPlotting::Loop()
             {
                counter_selpiecal++;
                selpi_ebyl_vs_mippion->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);
+            }
+            if (selmu_mom[0]>HMNT_mom)
+            {
+               recomom_exsel_all->Fill(selmu_mom[0]);
             }
          }
       }
@@ -316,16 +325,20 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selpi_elike->Write();
    
    recomom_optsel_all->Sumw2();
-   
    recomom_optsel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
-   
    recomom_optsel_all->Scale(scale_factor);
-   
    recomom_optsel_all->SetMarkerStyle(kFullCircle);
    recomom_optsel_all->SetLineWidth(2);
    recomom_optsel_all->SetLineColor(kBlack);
-   
    recomom_optsel_all->Write();
+   
+   recomom_exsel_all->Sumw2();
+   recomom_exsel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   recomom_exsel_all->Scale(scale_factor);
+   recomom_exsel_all->SetMarkerStyle(kFullCircle);
+   recomom_exsel_all->SetLineWidth(2);
+   recomom_exsel_all->SetLineColor(kBlack);
+   recomom_exsel_all->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
