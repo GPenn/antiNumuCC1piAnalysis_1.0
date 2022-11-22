@@ -6,12 +6,16 @@
     THStack* bdt_output_selmu_plike_stack = (THStack*)file_MC.Get("bdt_output_selmu_plike_stack");
     THStack* bdt_output_selmu_elike_stack = (THStack*)file_MC.Get("bdt_output_selmu_elike_stack");
     
+    THStack* recomom_optsel_stack = (THStack*)file_MC.Get("recomom_optsel_stack");
+    
     TFile *file_realdata = new TFile("../real_data/output/data_for_MC_comparison.root");
     //file_improved_selection_kinlimited.ls();
     TH1F* bdt_output_selmu_mulike = (TH1F*)file_realdata.Get("bdt_output_selmu_mulike");
     TH1F* bdt_output_selmu_pilike = (TH1F*)file_realdata.Get("bdt_output_selmu_pilike");
     TH1F* bdt_output_selmu_plike = (TH1F*)file_realdata.Get("bdt_output_selmu_plike");
     TH1F* bdt_output_selmu_elike = (TH1F*)file_realdata.Get("bdt_output_selmu_elike");
+    
+    TH1F* recomom_optsel_all = (TH1F*)file_realdata.Get("recomom_optsel_all");
     
     
     /*exsel_kinlimited_eff->SetTitle("Existing selection");
@@ -88,4 +92,10 @@
     bdt_output_selmu_elike_stack->Draw();
     bdt_output_selmu_elike->Draw("same E1");
     canvas_comparison_elike->BuildLegend();
+    
+    TCanvas* canvas_comparison_recomom_optsel = new TCanvas("canvas_comparison_recomom_optsel","canvas_comparison_recomom_optsel",200,10,1000,600);
+    
+    recomom_optsel_stack->Draw();
+    recomom_optsel_all->Draw("same E1");
+    canvas_comparison_recomom_optsel->BuildLegend();
 }
