@@ -61,7 +61,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi_opt = 0;
    
    
-   Int_t recomom_nbins = 8;
+   Int_t recomom_nbins = 13;
    Double_t recomom_max = 5000.0;
    
    TH1F *recomom_all;
@@ -113,17 +113,17 @@ void DefaultCustomPlotting::Loop()
    TH2F *selpi_ebyl_vs_mippion = new TH2F("selpi_ebyl_vs_mippion", "selpi_ebyl_vs_mippion;ECal MipPion variable (dimensionless);ECal EM energy/ECal segment length (MeV/mm)",
                                           100, -20, 50.0, 100, 0, 6.0);
    
-   Int_t bdt_outputs_nbins = 20;
+   Int_t bdt_output_nbins = 20;
    
-   TH1F* bdt_output_selmu_mulike = new TH1F("bdt_output_selmu_mulike", "#mu^+ candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
-   TH1F* bdt_output_selmu_pilike = new TH1F("bdt_output_selmu_pilike", "#mu^+ candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
-   TH1F* bdt_output_selmu_plike = new TH1F("bdt_output_selmu_plike", "#mu^+ candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
-   TH1F* bdt_output_selmu_elike = new TH1F("bdt_output_selmu_elike", "#mu^+ candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_mulike = new TH1F("bdt_output_selmu_mulike", "#mu^+ candidate BDT mu-like output", bdt_output_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_pilike = new TH1F("bdt_output_selmu_pilike", "#mu^+ candidate BDT pi-like output", bdt_output_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_plike = new TH1F("bdt_output_selmu_plike", "#mu^+ candidate BDT p-like output", bdt_output_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selmu_elike = new TH1F("bdt_output_selmu_elike", "#mu^+ candidate BDT e-like output", bdt_output_nbins, 0.0, 1.0);
    
-   TH1F* bdt_output_selpi_mulike = new TH1F("bdt_output_selpi_mulike", "#pi^- candidate BDT mu-like output", bdt_outputs_nbins, 0.0, 1.0);
-   TH1F* bdt_output_selpi_pilike = new TH1F("bdt_output_selpi_pilike", "#pi^- candidate BDT pi-like output", bdt_outputs_nbins, 0.0, 1.0);
-   TH1F* bdt_output_selpi_plike = new TH1F("bdt_output_selpi_plike", "#pi^- candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
-   TH1F* bdt_output_selpi_elike = new TH1F("bdt_output_selpi_elike", "#pi^- candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_mulike = new TH1F("bdt_output_selpi_mulike", "#pi^- candidate BDT mu-like output", bdt_output_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_pilike = new TH1F("bdt_output_selpi_pilike", "#pi^- candidate BDT pi-like output", bdt_output_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_plike = new TH1F("bdt_output_selpi_plike", "#pi^- candidate BDT p-like output", bdt_output_nbins, 0.0, 1.0);
+   TH1F* bdt_output_selpi_elike = new TH1F("bdt_output_selpi_elike", "#pi^- candidate BDT e-like output", bdt_output_nbins, 0.0, 1.0);
    
    
    Long64_t nbytes = 0, nb = 0;
@@ -313,6 +313,18 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selpi_pilike->Write();
    bdt_output_selpi_plike->Write();
    bdt_output_selpi_elike->Write();
+   
+   recomom_optsel_all->Sumw2();
+   
+   recomom_optsel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   
+   recomom_optsel_all->Scale(scale_factor);
+   
+   recomom_optsel_all->SetMarkerStyle(kFullCircle);
+   recomom_optsel_all->SetLineWidth(2);
+   recomom_optsel_all->SetLineColor(kBlack);
+   
+   recomom_optsel_all->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
