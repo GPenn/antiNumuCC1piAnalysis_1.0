@@ -107,6 +107,12 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_optsel_bkg;
    TH1F *recomom_optsel_oofv;
    
+   TH1F *recomom_exsel_cc0pi;
+   TH1F *recomom_exsel_cc1pi;
+   TH1F *recomom_exsel_ccother;
+   TH1F *recomom_exsel_bkg;
+   TH1F *recomom_exsel_oofv;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -144,6 +150,12 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_ccother = new TH1F("recomom_optsel_ccother", "recomom_optsel_ccother", recomom_nbins, 200.0, 1500.0);
       recomom_optsel_bkg = new TH1F("recomom_optsel_bkg", "recomom_optsel_bkg", recomom_nbins, 200.0, 1500.0);
       recomom_optsel_oofv = new TH1F("recomom_optsel_oofv", "recomom_optsel_oofv", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_exsel_cc0pi = new TH1F("recomom_exsel_cc0pi", "recomom_exsel_cc0pi", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_cc1pi = new TH1F("recomom_exsel_cc1pi", "recomom_exsel_cc1pi", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_ccother = new TH1F("recomom_exsel_ccother", "recomom_exsel_ccother", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_bkg = new TH1F("recomom_exsel_bkg", "recomom_exsel_bkg", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_oofv = new TH1F("recomom_exsel_oofv", "recomom_exsel_oofv", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -182,6 +194,12 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_ccother = new TH1F("recomom_optsel_ccother", "recomom_optsel_ccother", recomom_nbins, 200.0, recomom_max);
       recomom_optsel_bkg = new TH1F("recomom_optsel_bkg", "recomom_optsel_bkg", recomom_nbins, 200.0, recomom_max);
       recomom_optsel_oofv = new TH1F("recomom_optsel_oofv", "recomom_optsel_oofv", recomom_nbins, 200.0, recomom_max);
+      
+      recomom_exsel_cc0pi = new TH1F("recomom_exsel_cc0pi", "recomom_exsel_cc0pi", recomom_nbins, 200.0, recomom_max);
+      recomom_exsel_cc1pi = new TH1F("recomom_exsel_cc1pi", "recomom_exsel_cc1pi", recomom_nbins, 200.0, recomom_max);
+      recomom_exsel_ccother = new TH1F("recomom_exsel_ccother", "recomom_exsel_ccother", recomom_nbins, 200.0, recomom_max);
+      recomom_exsel_bkg = new TH1F("recomom_exsel_bkg", "recomom_exsel_bkg", recomom_nbins, 200.0, recomom_max);
+      recomom_exsel_oofv = new TH1F("recomom_exsel_oofv", "recomom_exsel_oofv", recomom_nbins, 200.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -605,9 +623,18 @@ void DefaultCustomPlotting::Loop()
                counter_selpi_proton++;
             }
             
-            
+            if (selmu_mom[0]>HMNT_mom)
+            {
+               if (topology == 0) recomom_exsel_cc0pi->Fill(selmu_mom[0]);
+               if (topology == 1) recomom_exsel_cc1pi->Fill(selmu_mom[0]);
+               if (topology == 2) recomom_exsel_ccother->Fill(selmu_mom[0]);
+               if (topology == 3) recomom_exsel_bkg->Fill(selmu_mom[0]);
+               if (topology == 7) recomom_exsel_oofv->Fill(selmu_mom[0]);
+            }
             
          }
+         
+         
 
       }
       
@@ -1442,13 +1469,44 @@ void DefaultCustomPlotting::Loop()
    recomom_optsel_oofv->Scale(scale_factor);
    
    THStack* recomom_optsel_stack = new THStack("recomom_optsel_stack","recomom_optsel_stack;Antimuon candidate reconstructed momentum (MeV/c);Events");
-   recomom_optsel_oofv->GetYaxis()->SetRangeUser(0.0, 45.0);
    recomom_optsel_stack->Add(recomom_optsel_oofv);
    recomom_optsel_stack->Add(recomom_optsel_bkg);
    recomom_optsel_stack->Add(recomom_optsel_ccother);
    recomom_optsel_stack->Add(recomom_optsel_cc0pi);
    recomom_optsel_stack->Add(recomom_optsel_cc1pi);
    recomom_optsel_stack->Write();
+   
+   SetHistParticleStyle(recomom_exsel_cc1pi, "antimu");
+   SetHistParticleStyle(recomom_exsel_cc0pi, "proton");
+   SetHistParticleStyle(recomom_exsel_ccother, "positron");
+   SetHistParticleStyle(recomom_exsel_bkg, "piplus");
+   SetHistParticleStyle(recomom_exsel_oofv, "other");
+   
+   recomom_exsel_cc0pi->Write();
+   recomom_exsel_cc1pi->Write();
+   recomom_exsel_ccother->Write();
+   recomom_exsel_bkg->Write();
+   recomom_exsel_oofv->Write();
+   
+   recomom_exsel_cc0pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC0pi");
+   recomom_exsel_cc1pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)");
+   recomom_exsel_ccother->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC-Other");
+   recomom_exsel_bkg->SetTitle("NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds");
+   recomom_exsel_oofv->SetTitle("NEUT MC: vertex outside FV");
+   
+   recomom_exsel_cc0pi->Scale(scale_factor);
+   recomom_exsel_cc1pi->Scale(scale_factor);
+   recomom_exsel_ccother->Scale(scale_factor);
+   recomom_exsel_bkg->Scale(scale_factor);
+   recomom_exsel_oofv->Scale(scale_factor);
+   
+   THStack* recomom_exsel_stack = new THStack("recomom_exsel_stack","recomom_exsel_stack;Antimuon candidate reconstructed momentum (MeV/c);Events");
+   recomom_exsel_stack->Add(recomom_exsel_oofv);
+   recomom_exsel_stack->Add(recomom_exsel_bkg);
+   recomom_exsel_stack->Add(recomom_exsel_ccother);
+   recomom_exsel_stack->Add(recomom_exsel_cc0pi);
+   recomom_exsel_stack->Add(recomom_exsel_cc1pi);
+   recomom_exsel_stack->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
