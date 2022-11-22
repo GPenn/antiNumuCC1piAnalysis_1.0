@@ -95,7 +95,8 @@
     
     TCanvas* canvas_comparison_recomom_optsel = new TCanvas("canvas_comparison_recomom_optsel","canvas_comparison_recomom_optsel",200,10,1000,600);
     
-    recomom_optsel_stack->Draw();
+    recomom_optsel_all->Draw("E1");
+    recomom_optsel_stack->Draw("same");
     recomom_optsel_all->Draw("same E1");
     canvas_comparison_recomom_optsel->BuildLegend();
 }
