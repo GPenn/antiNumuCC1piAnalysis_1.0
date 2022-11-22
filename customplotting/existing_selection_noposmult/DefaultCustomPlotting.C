@@ -1591,7 +1591,7 @@ void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particl
    return;
 }
 
-void DefaultCustomPlotting::SetHistTopologyStyle(TH1F* hist, std::string topology) {
+/*void DefaultCustomPlotting::SetHistTopologyStyle(TH1F* hist, std::string topology) {
    
    Bool_t SetFillColors = true;
    
@@ -1635,5 +1635,5 @@ void DefaultCustomPlotting::SetHistTopologyStyle(TH1F* hist, std::string topolog
    else std::cout << "Error in SetHistParticleStyle: particle type not recognised." << std::endl;
    
    return;
-}
+}*/
 
