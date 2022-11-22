@@ -1442,6 +1442,7 @@ void DefaultCustomPlotting::Loop()
    recomom_optsel_oofv->Scale(scale_factor);
    
    THStack* recomom_optsel_stack = new THStack("recomom_optsel_stack","recomom_optsel_stack;Antimuon candidate reconstructed momentum (MeV/c);Events");
+   recomom_optsel_oofv->GetYaxis()->SetRangeUser(0.0, 45.0);
    recomom_optsel_stack->Add(recomom_optsel_oofv);
    recomom_optsel_stack->Add(recomom_optsel_bkg);
    recomom_optsel_stack->Add(recomom_optsel_ccother);
