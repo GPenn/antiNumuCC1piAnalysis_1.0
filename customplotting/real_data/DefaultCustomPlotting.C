@@ -61,7 +61,7 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selpi_opt = 0;
    
    
-   Int_t recomom_nbins = 13;
+   Int_t recomom_nbins = 8;
    Double_t recomom_max = 5000.0;
    
    TH1F *recomom_all;
