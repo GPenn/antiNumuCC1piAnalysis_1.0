@@ -4,6 +4,7 @@
 #include <TGraph.h>
 #include <TStyle.h>
 #include <TCanvas.h>
+#include <THStack.h>
 #include <ctime> 
 
 void DefaultCustomPlotting::Loop()
@@ -106,11 +107,11 @@ void DefaultCustomPlotting::Loop()
       recomom_sig_sel = new TH1F("recomom_sig_sel", "recomom_sig_sel", recomom_nbins, 0.0, 5000.0);
       recomom_bkg_sel = new TH1F("recomom_bkg_sel", "recomom_bkg_sel", recomom_nbins, 0.0, 5000.0);
       
-      recomom_exsel_cc0pi = new TH1F("recomom_exsel_cc0pi", "recomom_exsel_cc0pi", recomom_nbins, 200.0, recomom_max);
-      recomom_exsel_cc1pi = new TH1F("recomom_exsel_cc1pi", "recomom_exsel_cc1pi", recomom_nbins, 200.0, recomom_max);
-      recomom_exsel_ccother = new TH1F("recomom_exsel_ccother", "recomom_exsel_ccother", recomom_nbins, 200.0, recomom_max);
-      recomom_exsel_bkg = new TH1F("recomom_exsel_bkg", "recomom_exsel_bkg", recomom_nbins, 200.0, recomom_max);
-      recomom_exsel_oofv = new TH1F("recomom_exsel_oofv", "recomom_exsel_oofv", recomom_nbins, 200.0, recomom_max);
+      recomom_exsel_cc0pi = new TH1F("recomom_exsel_cc0pi", "recomom_exsel_cc0pi", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_cc1pi = new TH1F("recomom_exsel_cc1pi", "recomom_exsel_cc1pi", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_ccother = new TH1F("recomom_exsel_ccother", "recomom_exsel_ccother", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_bkg = new TH1F("recomom_exsel_bkg", "recomom_exsel_bkg", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_oofv = new TH1F("recomom_exsel_oofv", "recomom_exsel_oofv", recomom_nbins, 200.0, 5000.0);
    }
    
    Int_t recomomdiff_nbins = 20;
