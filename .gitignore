@@ -20,6 +20,8 @@
 /customplotting/existing_selection_noposmult/output
 /customplotting/real_data/bin
 /customplotting/real_data/output
+/customplotting/real_data_exsel/bin
+/customplotting/real_data_exsel/output
 /scripts/log
 /scripts/batch/run5
 /scripts/batch/run6
