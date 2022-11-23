@@ -31,7 +31,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
   
   // ======== EXISTING SELECTION ========
-  
+  /*
   // Copy all steps from the antiNumuCCSelection
   CopySteps(_antiNumuCCSelection);
 
@@ -61,11 +61,11 @@ void antiNumuCC1piSelection::DefineSteps(){
 
   //Third branch is for CC-Other
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
-  
+  */
   
   
   // ======== MODIFIED SELECTION ========
-  /*
+  
   // Cuts must be added in the right order
   // last "true" means the step sequence is broken if cut is not passed (default is "false")
   AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
@@ -118,7 +118,7 @@ void antiNumuCC1piSelection::DefineSteps(){
   //Third branch is for CC-Other
   AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
   
-  */
+  
   // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
   SetBranchAlias(1,"CC-1pi",  1);
