@@ -608,3 +608,49 @@ Float_t DefaultCustomPlotting::GetOptSignificanceValues(TH1F* hist_sig, TH1F* hi
    
    return optimal_signif;
 }
+
+void DefaultCustomPlotting::SetHistParticleStyle(TH1F* hist, std::string particle) {
+   
+   Bool_t SetFillColors = true;
+   
+   hist->SetLineWidth(2);
+   
+   if (particle == "antimu")
+   {
+      hist->SetLineColor( kBlue);
+      if (SetFillColors) {hist->SetFillColor(kBlue-10);}
+      //hist->SetFillStyle( 3006);
+   }
+   
+   else if (particle == "piplus")
+   {
+      hist->SetLineColor( kRed);
+      if (SetFillColors) {hist->SetFillColor(kRed-10);}
+      //hist->SetFillStyle( 3354);
+   }
+   
+   else if (particle == "proton")
+   {
+      hist->SetLineColor( kGreen);
+      if (SetFillColors) {hist->SetFillColor(kGreen-10);}
+      //hist->SetFillStyle( 3003);
+   }
+   
+   else if (particle == "positron")
+   {
+      hist->SetLineColor( kMagenta);
+      if (SetFillColors) {hist->SetFillColor(kMagenta-10);}
+      //hist->SetFillStyle( 3345);
+   }
+   
+   else if (particle == "other")
+   {
+      hist->SetLineColor( kGray+2);
+      if (SetFillColors) {hist->SetFillColor(kGray);}
+      //hist->SetFillStyle( 3345);
+   }
+   
+   else std::cout << "Error in SetHistParticleStyle: particle type not recognised." << std::endl;
+   
+   return;
+}
