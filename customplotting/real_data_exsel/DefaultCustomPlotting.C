@@ -203,28 +203,13 @@ void DefaultCustomPlotting::Loop()
                counter_selpiecal++;
                selpi_ebyl_vs_mippion->Fill(HMNT_ecal_bestseg_mippion, HMNT_ecal_bestseg_EbyL);
             }
-            if (selmu_mom[0]>HMNT_mom)
-            {
-               recomom_exsel_all->Fill(selmu_mom[0]);
-            }
          }
       }
       
-      if (accum_level[0][1] > 9){
-            
-         counter_all_accum9++;
-         recomom_all_accum9->Fill(selmu_mom[0]);
+      if (accum_level[0][1] > 8){
          
-         if ((selmu_mom[0] > 200) && (selmu_mom[0] < 1500) && (selmu_det_theta < 1.0472))
-         {
-            counter_selmu_bdtvalid++;
-         }
+         recomom_exsel_all->Fill(selmu_mom[0]);
          
-         if (ntpcnegQualityFV == 1)
-         {
-            counter_selpi_accum9++;
-            recomom_hmnt_all->Fill(HMNT_mom);
-         }
       }
       
       
