@@ -8,7 +8,7 @@
     TCanvas* canvas_comparison_recomom_exsel = new TCanvas("canvas_comparison_recomom_exsel","canvas_comparison_recomom_exsel",200,10,1000,600);
     
     recomom_exsel_stack->Draw("");
-    recomom_exsel_stack->SetMaximum(45.0);
+    recomom_exsel_stack->SetMaximum(50.0);
     recomom_exsel_stack->Draw("");
     recomom_exsel_all->Draw("same E1");
     canvas_comparison_recomom_exsel->BuildLegend();
