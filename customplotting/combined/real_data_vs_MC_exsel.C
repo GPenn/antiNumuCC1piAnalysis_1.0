@@ -20,6 +20,11 @@
     
     auto legend = new TLegend(0.1,0.7,0.48,0.9);
     //legend->SetHeader("The Legend Title","C"); // option "C" allows to center the header
-    legend->AddEntry(recomom_exsel_cc1pi,"Test","f");
+    legend->AddEntry(recomom_exsel_all,"T2K data (Run 5+6+7+9)","");
+    legend->AddEntry(recomom_exsel_cc1pi,"NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)","f");
+    legend->AddEntry(recomom_exsel_cc0pi,"NEUT MC: #bar{#nu}_{#mu} CC0pi","f");
+    legend->AddEntry(recomom_exsel_ccother,"NEUT MC: #bar{#nu}_{#mu} CC-other","f");
+    legend->AddEntry(recomom_exsel_bkg,"NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds","f");
+    legend->AddEntry(recomom_exsel_oofv,"NEUT MC: OOFV backgrounds","f");
     legend->Draw();
 }
