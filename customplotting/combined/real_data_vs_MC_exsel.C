@@ -1,11 +1,11 @@
 {
     TFile *file_MC = new TFile("../existing_selection/output/MC_for_data_comparison_exsel.root");
     THStack* recomom_exsel_stack = (THStack*)file_MC.Get("recomom_exsel_stack");
-    TH1F* recomom_exsel_cc0pi = (THStack*)file_MC.Get("recomom_exsel_cc0pi");
-    TH1F* recomom_exsel_cc1pi = (THStack*)file_MC.Get("recomom_exsel_cc1pi");
-    TH1F* recomom_exsel_ccother = (THStack*)file_MC.Get("recomom_exsel_ccother");
-    TH1F* recomom_exsel_bkg = (THStack*)file_MC.Get("recomom_exsel_bkg");
-    TH1F* recomom_exsel_oofv = (THStack*)file_MC.Get("recomom_exsel_oofv");
+    TH1F* recomom_exsel_cc0pi = (TH1F*)file_MC.Get("recomom_exsel_cc0pi");
+    TH1F* recomom_exsel_cc1pi = (TH1F*)file_MC.Get("recomom_exsel_cc1pi");
+    TH1F* recomom_exsel_ccother = (TH1F*)file_MC.Get("recomom_exsel_ccother");
+    TH1F* recomom_exsel_bkg = (TH1F*)file_MC.Get("recomom_exsel_bkg");
+    TH1F* recomom_exsel_oofv = (TH1F*)file_MC.Get("recomom_exsel_oofv");
     
     TFile *file_realdata = new TFile("../real_data_exsel/output/data_for_MC_comparison.root");
     TH1F* recomom_exsel_all = (TH1F*)file_realdata.Get("recomom_exsel_all");
