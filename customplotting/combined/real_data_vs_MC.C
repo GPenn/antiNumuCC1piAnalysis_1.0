@@ -6,6 +6,12 @@
     THStack* bdt_output_selmu_plike_stack = (THStack*)file_MC.Get("bdt_output_selmu_plike_stack");
     THStack* bdt_output_selmu_elike_stack = (THStack*)file_MC.Get("bdt_output_selmu_elike_stack");
     
+    TH1F* recomom_optsel_cc0pi = (TH1F*)file_MC.Get("recomom_optsel_cc0pi");
+    TH1F* recomom_optsel_cc1pi = (TH1F*)file_MC.Get("recomom_optsel_cc1pi");
+    TH1F* recomom_optsel_ccother = (TH1F*)file_MC.Get("recomom_optsel_ccother");
+    TH1F* recomom_optsel_bkg = (TH1F*)file_MC.Get("recomom_optsel_bkg");
+    TH1F* recomom_optsel_oofv = (TH1F*)file_MC.Get("recomom_optsel_oofv");
+    
     THStack* recomom_optsel_stack = (THStack*)file_MC.Get("recomom_optsel_stack");
     THStack* recomom_exsel_stack = (THStack*)file_MC.Get("recomom_exsel_stack");
     
@@ -49,13 +55,22 @@
     recomom_optsel_stack->SetMaximum(53.0);
     recomom_optsel_stack->Draw("");
     recomom_optsel_all->Draw("same E1");
-    canvas_comparison_recomom_optsel->BuildLegend();
+    //canvas_comparison_recomom_optsel->BuildLegend();
     
-    TCanvas* canvas_comparison_recomom_exsel = new TCanvas("canvas_comparison_recomom_exsel","canvas_comparison_recomom_exsel",200,10,1000,600);
+    auto legend = new TLegend(0.1,0.7,0.48,0.9);
+    legend->AddEntry(recomom_optsel_all,"T2K data (Run 5+6+7+9)","lep");
+    legend->AddEntry(recomom_optsel_cc1pi,"NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)","f");
+    legend->AddEntry(recomom_optsel_cc0pi,"NEUT MC: #bar{#nu}_{#mu} CC0pi","f");
+    legend->AddEntry(recomom_optsel_ccother,"NEUT MC: #bar{#nu}_{#mu} CC-other","f");
+    legend->AddEntry(recomom_optsel_bkg,"NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds","f");
+    legend->AddEntry(recomom_optsel_oofv,"NEUT MC: OOFV backgrounds","f");
+    legend->Draw();
+    
+    /*TCanvas* canvas_comparison_recomom_exsel = new TCanvas("canvas_comparison_recomom_exsel","canvas_comparison_recomom_exsel",200,10,1000,600);
     
     recomom_exsel_stack->Draw("");
     recomom_exsel_stack->SetMaximum(21.0);
     recomom_exsel_stack->Draw("");
     recomom_exsel_all->Draw("same E1");
-    canvas_comparison_recomom_exsel->BuildLegend();
+    canvas_comparison_recomom_exsel->BuildLegend();*/
 }
