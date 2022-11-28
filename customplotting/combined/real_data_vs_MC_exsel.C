@@ -18,9 +18,7 @@
     recomom_exsel_all->Draw("same E1");
     //canvas_comparison_recomom_exsel->BuildLegend();
     
-    //auto legend = new TLegend(0.1,0.7,0.48,0.9);
-    auto legend = new TLegend(0.48,0.9,0.48,0.9);
-    //legend->SetHeader("The Legend Title","C"); // option "C" allows to center the header
+    auto legend = new TLegend(0.1,0.7,0.48,0.9);
     legend->AddEntry(recomom_exsel_all,"T2K data (Run 5+6+7+9)","lep");
     legend->AddEntry(recomom_exsel_cc1pi,"NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)","f");
     legend->AddEntry(recomom_exsel_cc0pi,"NEUT MC: #bar{#nu}_{#mu} CC0pi","f");
