@@ -11,8 +11,12 @@
     TH1F* recomom_optsel_ccother = (TH1F*)file_MC.Get("recomom_optsel_ccother");
     TH1F* recomom_optsel_bkg = (TH1F*)file_MC.Get("recomom_optsel_bkg");
     TH1F* recomom_optsel_oofv = (TH1F*)file_MC.Get("recomom_optsel_oofv");
+    TH1F* recomom_optsel_numubarccbkg = (TH1F*)file_MC.Get("recomom_optsel_numubarccbkg");
+    TH1F* recomom_optsel_numucc = (TH1F*)file_MC.Get("recomom_optsel_bkg");
+    TH1F* recomom_optsel_otherbkg = (TH1F*)file_MC.Get("recomom_optsel_otherbkg");
     
     THStack* recomom_optsel_stack = (THStack*)file_MC.Get("recomom_optsel_stack");
+    THStack* recomom_optsel_stack_altbkg = (THStack*)file_MC.Get("recomom_optsel_stack_altbkg");
     THStack* recomom_exsel_stack = (THStack*)file_MC.Get("recomom_exsel_stack");
     
     TFile *file_realdata = new TFile("../real_data/output/data_for_MC_comparison.root");
@@ -63,8 +67,25 @@
     legend->AddEntry(recomom_optsel_cc0pi,"NEUT MC: #bar{#nu}_{#mu} CC0pi","f");
     legend->AddEntry(recomom_optsel_ccother,"NEUT MC: #bar{#nu}_{#mu} CC-other","f");
     legend->AddEntry(recomom_optsel_bkg,"NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds","f");
-    legend->AddEntry(recomom_optsel_oofv,"NEUT MC: OOFV backgrounds","f");
+    legend->AddEntry(recomom_optsel_oofv,"NEUT MC: OOFV","f");
     legend->Draw();
+    
+    TCanvas* canvas_comparison_recomom_optsel_altbkg = new TCanvas("canvas_comparison_recomom_optsel_altbkg","canvas_comparison_recomom_optsel_altbkg",200,10,1000,600);
+    
+    recomom_optsel_stack_altbkg->Draw("");
+    recomom_optsel_stack_altbkg->SetMaximum(53.0);
+    recomom_optsel_stack_altbkg->Draw("");
+    recomom_optsel_all->Draw("same E1");
+    //canvas_comparison_recomom_optsel->BuildLegend();
+    
+    auto legend_altbkg = new TLegend(0.1,0.7,0.48,0.9);
+    legend_altbkg->AddEntry(recomom_optsel_all,"T2K data (Run 5+6+7+9)","lep");
+    legend_altbkg->AddEntry(recomom_optsel_cc1pi,"NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)","f");
+    legend_altbkg->AddEntry(recomom_optsel_numubarccbkg,"NEUT MC: #bar{#nu}_{#mu} CC backgrounds","f");
+    legend_altbkg->AddEntry(recomom_optsel_numucc,"NEUT MC: #nu_{#mu} CC backgrounds","f");
+    legend_altbkg->AddEntry(recomom_optsel_otherbkg,"NEUT MC: other backgrounds","f");
+    legend_altbkg->AddEntry(recomom_optsel_oofv,"NEUT MC: OOFV","f");
+    legend_altbkg->Draw();
     
     /*TCanvas* canvas_comparison_recomom_exsel = new TCanvas("canvas_comparison_recomom_exsel","canvas_comparison_recomom_exsel",200,10,1000,600);
     
