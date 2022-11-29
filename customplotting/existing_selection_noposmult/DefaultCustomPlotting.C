@@ -106,6 +106,9 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_optsel_ccother;
    TH1F *recomom_optsel_bkg;
    TH1F *recomom_optsel_oofv;
+   TH1F *recomom_optsel_numubarccbkg;
+   TH1F *recomom_optsel_numucc;
+   TH1F *recomom_optsel_otherbkg;
    
    TH1F *recomom_exsel_cc0pi;
    TH1F *recomom_exsel_cc1pi;
@@ -150,6 +153,9 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_ccother = new TH1F("recomom_optsel_ccother", "recomom_optsel_ccother", recomom_nbins, 200.0, 1500.0);
       recomom_optsel_bkg = new TH1F("recomom_optsel_bkg", "recomom_optsel_bkg", recomom_nbins, 200.0, 1500.0);
       recomom_optsel_oofv = new TH1F("recomom_optsel_oofv", "recomom_optsel_oofv", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_numubarccbkg = new TH1F("recomom_optsel_numubarccbkg", "recomom_optsel_numubarccbkg", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_numucc = new TH1F("recomom_optsel_numucc", "recomom_optsel_numucc", recomom_nbins, 200.0, 1500.0);
+      recomom_optsel_otherbkg = new TH1F("recomom_optsel_otherbkg", "recomom_optsel_otherbkg", recomom_nbins, 200.0, 1500.0);
       
       recomom_exsel_cc0pi = new TH1F("recomom_exsel_cc0pi", "recomom_exsel_cc0pi", recomom_nbins, 200.0, 1500.0);
       recomom_exsel_cc1pi = new TH1F("recomom_exsel_cc1pi", "recomom_exsel_cc1pi", recomom_nbins, 200.0, 1500.0);
@@ -194,6 +200,9 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_ccother = new TH1F("recomom_optsel_ccother", "recomom_optsel_ccother", recomom_nbins, 200.0, recomom_max);
       recomom_optsel_bkg = new TH1F("recomom_optsel_bkg", "recomom_optsel_bkg", recomom_nbins, 200.0, recomom_max);
       recomom_optsel_oofv = new TH1F("recomom_optsel_oofv", "recomom_optsel_oofv", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_numubarccbkg = new TH1F("recomom_optsel_numubarccbkg", "recomom_optsel_numubarccbkg", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_numucc = new TH1F("recomom_optsel_numucc", "recomom_optsel_numucc", recomom_nbins, 200.0, recomom_max);
+      recomom_optsel_otherbkg = new TH1F("recomom_optsel_otherbkg", "recomom_optsel_otherbkg", recomom_nbins, 200.0, recomom_max);
       
       recomom_exsel_cc0pi = new TH1F("recomom_exsel_cc0pi", "recomom_exsel_cc0pi", recomom_nbins, 200.0, recomom_max);
       recomom_exsel_cc1pi = new TH1F("recomom_exsel_cc1pi", "recomom_exsel_cc1pi", recomom_nbins, 200.0, recomom_max);
@@ -408,15 +417,19 @@ void DefaultCustomPlotting::Loop()
             if (topology == 0)
             {
                recomom_optsel_cc0pi->Fill(selmu_mom[0]);
+               recomom_optsel_numubarccbkg->Fill(selmu_mom[0]);
             }
             if (topology == 2)
             {
                recomom_optsel_ccother->Fill(selmu_mom[0]);
+               recomom_optsel_numubarccbkg->Fill(selmu_mom[0]);
             }
             if (topology == 3)
             {
                counter_bkg_opt++;
                recomom_optsel_bkg->Fill(selmu_mom[0]);
+               if (reaction == 5) recomom_optsel_numucc->Fill(selmu_mom[0]);
+               else               recomom_optsel_otherbkg->Fill(selmu_mom[0]);
             }
             if (topology == 7)
             {
@@ -1449,24 +1462,36 @@ void DefaultCustomPlotting::Loop()
    SetHistParticleStyle(recomom_optsel_ccother, "positron");
    SetHistParticleStyle(recomom_optsel_bkg, "piplus");
    SetHistParticleStyle(recomom_optsel_oofv, "other");
+   SetHistParticleStyle(recomom_optsel_numubarccbkg, "proton");
+   SetHistParticleStyle(recomom_optsel_numucc, "piplus");
+   SetHistParticleStyle(recomom_optsel_otherbkg, "positron");
    
    recomom_optsel_cc0pi->Write();
    recomom_optsel_cc1pi->Write();
    recomom_optsel_ccother->Write();
    recomom_optsel_bkg->Write();
    recomom_optsel_oofv->Write();
+   recomom_optsel_numubarccbkg->Write();
+   recomom_optsel_numucc->Write();
+   recomom_optsel_otherbkg->Write();
    
    recomom_optsel_cc0pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC0pi");
    recomom_optsel_cc1pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)");
    recomom_optsel_ccother->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC-Other");
    recomom_optsel_bkg->SetTitle("NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds");
    recomom_optsel_oofv->SetTitle("NEUT MC: vertex outside FV");
+   recomom_optsel_numubarccbkg->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC backgrounds");
+   recomom_optsel_numucc->SetTitle("NEUT MC: #nu_{#mu} CC backgrounds");
+   recomom_optsel_otherbkg->SetTitle("NEUT MC: other backgrounds");
    
    recomom_optsel_cc0pi->Scale(scale_factor);
    recomom_optsel_cc1pi->Scale(scale_factor);
    recomom_optsel_ccother->Scale(scale_factor);
    recomom_optsel_bkg->Scale(scale_factor);
    recomom_optsel_oofv->Scale(scale_factor);
+   recomom_optsel_numubarccbkg->Scale(scale_factor);
+   recomom_optsel_numucc->Scale(scale_factor);
+   recomom_optsel_otherbkg->Scale(scale_factor);
    
    THStack* recomom_optsel_stack = new THStack("recomom_optsel_stack","recomom_optsel_stack;Antimuon candidate reconstructed momentum (MeV/c);Events");
    recomom_optsel_stack->Add(recomom_optsel_oofv);
@@ -1475,6 +1500,14 @@ void DefaultCustomPlotting::Loop()
    recomom_optsel_stack->Add(recomom_optsel_cc0pi);
    recomom_optsel_stack->Add(recomom_optsel_cc1pi);
    recomom_optsel_stack->Write();
+   
+   THStack* recomom_optsel_stack_altbkg = new THStack("recomom_optsel_stack_altbkg","recomom_optsel_stack_altbkg;Antimuon candidate reconstructed momentum (MeV/c);Events");
+   recomom_optsel_stack->Add(recomom_optsel_oofv);
+   recomom_optsel_stack->Add(recomom_optsel_otherbkg);
+   recomom_optsel_stack->Add(recomom_optsel_numucc);
+   recomom_optsel_stack->Add(recomom_optsel_numubarccbkg);
+   recomom_optsel_stack->Add(recomom_optsel_cc1pi);
+   recomom_optsel_stack_altbkg->Write();
    
    SetHistParticleStyle(recomom_exsel_cc1pi, "antimu");
    SetHistParticleStyle(recomom_exsel_cc0pi, "proton");
