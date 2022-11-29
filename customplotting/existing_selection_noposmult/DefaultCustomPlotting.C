@@ -1502,11 +1502,11 @@ void DefaultCustomPlotting::Loop()
    recomom_optsel_stack->Write();
    
    THStack* recomom_optsel_stack_altbkg = new THStack("recomom_optsel_stack_altbkg","recomom_optsel_stack_altbkg;Antimuon candidate reconstructed momentum (MeV/c);Events");
-   recomom_optsel_stack->Add(recomom_optsel_oofv);
-   recomom_optsel_stack->Add(recomom_optsel_otherbkg);
-   recomom_optsel_stack->Add(recomom_optsel_numucc);
-   recomom_optsel_stack->Add(recomom_optsel_numubarccbkg);
-   recomom_optsel_stack->Add(recomom_optsel_cc1pi);
+   recomom_optsel_stack_altbkg->Add(recomom_optsel_oofv);
+   recomom_optsel_stack_altbkg->Add(recomom_optsel_otherbkg);
+   recomom_optsel_stack_altbkg->Add(recomom_optsel_numucc);
+   recomom_optsel_stack_altbkg->Add(recomom_optsel_numubarccbkg);
+   recomom_optsel_stack_altbkg->Add(recomom_optsel_cc1pi);
    recomom_optsel_stack_altbkg->Write();
    
    SetHistParticleStyle(recomom_exsel_cc1pi, "antimu");
