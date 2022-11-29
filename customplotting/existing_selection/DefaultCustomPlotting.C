@@ -70,6 +70,9 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_exsel_ccother;
    TH1F *recomom_exsel_bkg;
    TH1F *recomom_exsel_oofv;
+   TH1F *recomom_exsel_numubarccbkg;
+   TH1F *recomom_exsel_numucc;
+   TH1F *recomom_exsel_otherbkg;
    
    if (limit_kinematics)
    {
@@ -91,6 +94,9 @@ void DefaultCustomPlotting::Loop()
       recomom_exsel_ccother = new TH1F("recomom_exsel_ccother", "recomom_exsel_ccother", recomom_nbins, 200.0, 1500.0);
       recomom_exsel_bkg = new TH1F("recomom_exsel_bkg", "recomom_exsel_bkg", recomom_nbins, 200.0, 1500.0);
       recomom_exsel_oofv = new TH1F("recomom_exsel_oofv", "recomom_exsel_oofv", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_numubarccbkg = new TH1F("recomom_exsel_numubarccbkg", "recomom_exsel_numubarccbkg", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_numucc = new TH1F("recomom_exsel_numucc", "recomom_exsel_numucc", recomom_nbins, 200.0, 1500.0);
+      recomom_exsel_otherbkg = new TH1F("recomom_exsel_otherbkg", "recomom_exsel_otherbkg", recomom_nbins, 200.0, 1500.0);
    }
    else
    {
@@ -112,6 +118,9 @@ void DefaultCustomPlotting::Loop()
       recomom_exsel_ccother = new TH1F("recomom_exsel_ccother", "recomom_exsel_ccother", recomom_nbins, 200.0, 5000.0);
       recomom_exsel_bkg = new TH1F("recomom_exsel_bkg", "recomom_exsel_bkg", recomom_nbins, 200.0, 5000.0);
       recomom_exsel_oofv = new TH1F("recomom_exsel_oofv", "recomom_exsel_oofv", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_numubarccbkg = new TH1F("recomom_exsel_numubarccbkg", "recomom_exsel_numubarccbkg", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_numucc = new TH1F("recomom_exsel_numucc", "recomom_exsel_numucc", recomom_nbins, 200.0, 5000.0);
+      recomom_exsel_otherbkg = new TH1F("recomom_exsel_otherbkg", "recomom_exsel_otherbkg", recomom_nbins, 200.0, 5000.0);
    }
    
    Int_t recomomdiff_nbins = 20;
@@ -274,10 +283,15 @@ void DefaultCustomPlotting::Loop()
                counter_selpi_proton++;
             }
             
-            if (topology == 0) recomom_exsel_cc0pi->Fill(selmu_mom[0]);
+            if (topology == 0) {recomom_exsel_cc0pi->Fill(selmu_mom[0]); recomom_exsel_numubarccbkg->Fill(selmu_mom[0]);}
             if (topology == 1) recomom_exsel_cc1pi->Fill(selmu_mom[0]);
-            if (topology == 2) recomom_exsel_ccother->Fill(selmu_mom[0]);
-            if (topology == 3) recomom_exsel_bkg->Fill(selmu_mom[0]);
+            if (topology == 2) {recomom_exsel_ccother->Fill(selmu_mom[0]); recomom_exsel_numubarccbkg->Fill(selmu_mom[0]);}
+            if (topology == 3) 
+            {
+               recomom_exsel_bkg->Fill(selmu_mom[0]);
+               if (reaction == 5) recomom_exsel_numucc->Fill(selmu_mom[0]);
+               else               recomom_exsel_otherbkg->Fill(selmu_mom[0]);
+            }
             if (topology == 7) recomom_exsel_oofv->Fill(selmu_mom[0]);
             
          }
@@ -486,24 +500,36 @@ void DefaultCustomPlotting::Loop()
    SetHistParticleStyle(recomom_exsel_ccother, "positron");
    SetHistParticleStyle(recomom_exsel_bkg, "piplus");
    SetHistParticleStyle(recomom_exsel_oofv, "other");
+   SetHistParticleStyle(recomom_exsel_numubarccbkg, "proton");
+   SetHistParticleStyle(recomom_exsel_numucc, "piplus");
+   SetHistParticleStyle(recomom_exsel_otherbkg, "positron");
    
    recomom_exsel_cc0pi->Write();
    recomom_exsel_cc1pi->Write();
    recomom_exsel_ccother->Write();
    recomom_exsel_bkg->Write();
    recomom_exsel_oofv->Write();
+   recomom_exsel_numubarccbkg->Write();
+   recomom_exsel_numucc->Write();
+   recomom_exsel_otherbkg->Write();
    
    recomom_exsel_cc0pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC0pi");
    recomom_exsel_cc1pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)");
    recomom_exsel_ccother->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC-Other");
    recomom_exsel_bkg->SetTitle("NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds");
    recomom_exsel_oofv->SetTitle("NEUT MC: vertex outside FV");
+   recomom_exsel_numubarccbkg->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC backgrounds");
+   recomom_exsel_numucc->SetTitle("NEUT MC: #nu_{#mu} CC backgrounds");
+   recomom_exsel_otherbkg->SetTitle("NEUT MC: other backgrounds");
    
    recomom_exsel_cc0pi->Scale(scale_factor);
    recomom_exsel_cc1pi->Scale(scale_factor);
    recomom_exsel_ccother->Scale(scale_factor);
    recomom_exsel_bkg->Scale(scale_factor);
    recomom_exsel_oofv->Scale(scale_factor);
+   recomom_exsel_numubarccbkg->Scale(scale_factor);
+   recomom_exsel_numucc->Scale(scale_factor);
+   recomom_exsel_otherbkg->Scale(scale_factor);
    
    THStack* recomom_exsel_stack = new THStack("recomom_exsel_stack","recomom_exsel_stack;Antimuon candidate reconstructed momentum (MeV/c);Events");
    recomom_exsel_stack->Add(recomom_exsel_oofv);
@@ -512,6 +538,14 @@ void DefaultCustomPlotting::Loop()
    recomom_exsel_stack->Add(recomom_exsel_cc0pi);
    recomom_exsel_stack->Add(recomom_exsel_cc1pi);
    recomom_exsel_stack->Write();
+   
+   THStack* recomom_exsel_stack_altbkg = new THStack("recomom_exsel_stack_altbkg","recomom_exsel_stack_altbkg;Antimuon candidate reconstructed momentum (MeV/c);Events");
+   recomom_exsel_stack_altbkg->Add(recomom_exsel_oofv);
+   recomom_exsel_stack_altbkg->Add(recomom_exsel_otherbkg);
+   recomom_exsel_stack_altbkg->Add(recomom_exsel_numucc);
+   recomom_exsel_stack_altbkg->Add(recomom_exsel_numubarccbkg);
+   recomom_exsel_stack_altbkg->Add(recomom_exsel_cc1pi);
+   recomom_exsel_stack_altbkg->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
