@@ -76,6 +76,8 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *recomom_exsel_all;
    
+   TH1F *recomom_impsel_all;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -89,6 +91,8 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
       
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      
+      recomom_impsel_all = new TH1F("recomom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -103,6 +107,8 @@ void DefaultCustomPlotting::Loop()
       recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
+      
+      recomom_impsel_all = new TH1F("recomom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -224,6 +230,8 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selpi_accum9++;
             recomom_hmnt_all->Fill(HMNT_mom);
+            
+            recomom_impsel_all->Fill(selmu_mom[0]);
          }
       }
       
@@ -339,6 +347,14 @@ void DefaultCustomPlotting::Loop()
    recomom_exsel_all->SetLineWidth(2);
    recomom_exsel_all->SetLineColor(kBlack);
    recomom_exsel_all->Write();
+   
+   recomom_impsel_all->Sumw2();
+   recomom_impsel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   recomom_impsel_all->Scale(scale_factor);
+   recomom_impsel_all->SetMarkerStyle(kFullCircle);
+   recomom_impsel_all->SetLineWidth(2);
+   recomom_impsel_all->SetLineColor(kBlack);
+   recomom_impsel_all->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
