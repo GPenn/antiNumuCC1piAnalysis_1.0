@@ -30,7 +30,7 @@ antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* IN
 void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
   
-  Int_t which_selection = 1;
+  Int_t which_selection = 2;
   // Set as needed to choose which selection to use
   // 0: existing selection
   // 1: improved selection
