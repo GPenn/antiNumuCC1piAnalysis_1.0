@@ -30,94 +30,135 @@ antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* IN
 void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
   
-  // ======== EXISTING SELECTION ========
-  /*
-  // Copy all steps from the antiNumuCCSelection
-  CopySteps(_antiNumuCCSelection);
+  Int_t which_selection = 1;
+  // Set as needed to choose which selection to use
+  // 0: existing selection
+  // 1: improved selection
+  // 2: BDT selection
+  
+  if (which_selection == 0)
+  {
+    // ======== EXISTING SELECTION ========
+  
+    // Copy all steps from the antiNumuCCSelection
+    CopySteps(_antiNumuCCSelection);
 
-  //Pawel - Pions sele
-  //Additional actions for the multi-pi selection.
-  
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  
-  AddStep(StepBase::kAction, "set_vertex_to_box",                 new SetVertexToBoxAction());
-  AddStep(StepBase::kAction, "fill_iso_fgd_proton_mom_to_vertex", new FillFgdIsoProtonsKinVertexAction());
-  AddStep(StepBase::kAction, "find_iso_fgd_pion_mom_to_vertex",   new FillFgdIsoPionsKinVertexAction());
-  
-  
-  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
+    AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+    AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
 
-  //Add a split to the trunk with 3 branches.
-  AddSplit(3);
+    AddStep(StepBase::kAction, "set_vertex_to_box",                 new SetVertexToBoxAction());
+    AddStep(StepBase::kAction, "fill_iso_fgd_proton_mom_to_vertex", new FillFgdIsoProtonsKinVertexAction());
+    AddStep(StepBase::kAction, "find_iso_fgd_pion_mom_to_vertex",   new FillFgdIsoPionsKinVertexAction());
 
-  //First branch is for CC-0pi
-  AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
-  AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+    AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
 
-  //Second branch is for CC-1pi
-  AddStep(1, StepBase::kCut, "CC-1pi",        new OnePionCut(false));
-  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+    //Add a split to the trunk with 3 branches.
+    AddSplit(3);
 
-  //Third branch is for CC-Other
-  AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
-  */
-  
-  
-  // ======== MODIFIED SELECTION ========
-  
-  // Cuts must be added in the right order
-  // last "true" means the step sequence is broken if cut is not passed (default is "false")
-  AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
-  AddStep(StepBase::kCut,    "> 0 tracks ",        new TotalMultiplicityCut(),      true);  
-  AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
-  AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
-  AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
-  AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
-  AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
-  AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
-  AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
-  AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
-  AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
-  
-  AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
-  AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
-  
-  //AddStep(StepBase::kCut,    "Antimu PID",         new AntiMuonPIDCut());
-  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
-  AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
-  
-  //AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
-  //AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
-  AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
-  AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
-  
-  AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
-  
-  //AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+    //First branch is for CC-0pi
+    AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
+    AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
 
-  //Add a split to the trunk with 3 branches.
-  AddSplit(3);
+    //Second branch is for CC-1pi
+    AddStep(1, StepBase::kCut, "CC-1pi",        new OnePionCut(false));
+    AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
 
-  //First branch is for CC-0pi
-  AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
-  AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+    //Third branch is for CC-Other
+    AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
+  }
   
+  if (which_selection == 1)
+  {
+    // ======== IMPROVED SELECTION ========
+  
+    // Cuts must be added in the right order
+    // last "true" means the step sequence is broken if cut is not passed (default is "false")
+    AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
+    AddStep(StepBase::kCut,    "> 0 tracks ",        new TotalMultiplicityCut(),      true);  
+    AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
+    AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
+    AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
+    AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
+    AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+    AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
+    AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
+    AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
+    AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
 
-  //Second branch is for CC-1pi
+    AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_Loop());
+
+    AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_antinuCCMultiPi());
+    AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction());
+
+    AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
+
+    //Add a split to the trunk with 3 branches.
+    AddSplit(3);
+
+    //First branch is for CC-0pi
+    AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
+    AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+
+
+    //Second branch is for CC-1pi
+
+    AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
+    AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+    //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
+    //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
+    AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
+    AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
+
+    //Third branch is for CC-Other
+    AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
+  }
   
-  AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
-  AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
-  //AddStep(1, StepBase::kCut, "ECal muon PID", new OptimisedMuonECalPIDCut());
-  //AddStep(1, StepBase::kCut, "ECal pion PID", new OptimisedPionECalPIDCut());
-  //AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut());
-  //AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut());
-  AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
-  AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
-  
-  //Third branch is for CC-Other
-  AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
-  
+  if (which_selection == 2)
+  {
+    // ======== BDT SELECTION ========
+
+    // Cuts must be added in the right order
+    // last "true" means the step sequence is broken if cut is not passed (default is "false")
+    AddStep(StepBase::kCut,    "event quality",      new EventQualityCut(),           true);
+    AddStep(StepBase::kCut,    "> 0 tracks ",        new TotalMultiplicityCut(),      true);  
+    AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
+    AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
+    AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
+    AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
+    AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+    AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
+    AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
+    AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
+    AddStep(StepBase::kCut,    "External FGD1",      new ExternalFGD1lastlayersCut());
+
+    AddStep(StepBase::kAction, "GetAllTECALReconObjects",            new GetAllTECALReconObjectsAction(_input)); // GetAllTECALReconObjects from the AnaLocalReconBunch
+    AddStep(StepBase::kAction, "MatchECalGlobalToLocalObjects",      new MatchECalGlobalToLocalObjectsAction ()); // Match to local reconstruction
+
+    AddStep(StepBase::kCut,    "Antimu PID loop",      new AntiMuonPIDCut_LoopBDTPID(_bdtpid));
+
+    AddStep(StepBase::kAction, "find_pions",                new FindPionsAction_BDTPID(_bdtpid));
+    AddStep(StepBase::kAction, "find_protons",              new FindProtonsAction_BDTPID(_bdtpid));
+
+    AddStep(StepBase::kAction, "fill_summary antinu_pion",  new FillSummaryAction_antinuCCMultiPi());
+
+    //Add a split to the trunk with 3 branches.
+    AddSplit(3);
+
+    //First branch is for CC-0pi
+    AddStep(0, StepBase::kCut, "CC-0pi",        new NoPionCut());
+    AddStep(0, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+
+
+    //Second branch is for CC-1pi
+
+    AddStep(1, StepBase::kCut, "CC1pi TPC PID",        new OnePionCut(false));
+    AddStep(1, StepBase::kCut, "ECal Pi0 veto", new EcalPi0VetoCut());
+    AddStep(1, StepBase::kCut, "ECal muon PID", new ReoptimisedMuonECalPIDCut_ifnoBDT(_bdtpid));
+    AddStep(1, StepBase::kCut, "ECal pion PID", new ReoptimisedPionECalPIDCut_ifnoBDT(_bdtpid));
+
+    //Third branch is for CC-Other
+    AddStep(2, StepBase::kCut, "CC-Other", new OthersCut());
+  }
   
   // Set the branch aliases to the branches
   SetBranchAlias(0,"CC-0pi",  0);
