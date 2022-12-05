@@ -30,7 +30,7 @@ antiNumuCC1piSelection::antiNumuCC1piSelection(bool forceBreak, InputManager* IN
 void antiNumuCC1piSelection::DefineSteps(){
   //********************************************************************
   
-  Int_t which_selection = 2;
+  Int_t which_selection = 1;
   // Set as needed to choose which selection to use
   // 0: existing selection
   // 1: improved selection
@@ -78,8 +78,7 @@ void antiNumuCC1piSelection::DefineSteps(){
     AddStep(StepBase::kAction, "find leading tracks",new FindLeadingTracksAction_antinu());  
     AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
     AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
-    AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
-    AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
+    AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true); 
     AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
     AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
     AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
@@ -125,7 +124,6 @@ void antiNumuCC1piSelection::DefineSteps(){
     AddStep(StepBase::kAction, "find vertex",        new FindVertexAction());  
     AddStep(StepBase::kAction, "fill summary",       new FillSummaryAction_antinu());  
     AddStep(StepBase::kCut,    "quality+fiducial",   new TrackQualityFiducialCut(),   true);
-    AddStep(StepBase::kCut,    "pos_mult",           new PositiveMultiplicityCut());  
     AddStep(StepBase::kAction, "find veto track",    new FindVetoTrackAction());
     AddStep(StepBase::kCut,    "veto",               new ExternalVetoCut());
     AddStep(StepBase::kAction, "find oofv track",    new FindOOFVTrackAction());
