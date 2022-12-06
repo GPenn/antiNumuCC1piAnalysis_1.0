@@ -71,12 +71,13 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_hmnt_all;
 
    TH1F *recomom_optsel_all;
-   
-   TH1F *recomom_optsel_hmnt_all;
-   
    TH1F *recomom_exsel_all;
-   
    TH1F *recomom_impsel_all;
+   
+   TH1F *recopimom_optsel_all;
+   TH1F *recopimom_impsel_all;
+   
+   
    
    if (limit_kinematics)
    {
@@ -88,11 +89,12 @@ void DefaultCustomPlotting::Loop()
       
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       
-      recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
-      
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       
       recomom_impsel_all = new TH1F("recomom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      
+      recopimom_optsel_all = new TH1F("recopimom_optsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recopimom_impsel_all = new TH1F("recopimom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -104,11 +106,12 @@ void DefaultCustomPlotting::Loop()
       
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
       
-      recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
-      
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
       
       recomom_impsel_all = new TH1F("recomom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
+      
+      recopimom_optsel_all = new TH1F("recopimom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
+      recopimom_impsel_all = new TH1F("recopimom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -172,6 +175,7 @@ void DefaultCustomPlotting::Loop()
             if (ntpcnegQualityFV == 1)
             {
                counter_selpi_opt++;
+               recopimom_optsel_all->Fill(HMNT_mom);
             }
          }
       }
@@ -232,6 +236,7 @@ void DefaultCustomPlotting::Loop()
             recomom_hmnt_all->Fill(HMNT_mom);
             
             recomom_impsel_all->Fill(selmu_mom[0]);
+            recopimom_impsel_all->Fill(HMNT_mom);
          }
       }
       
