@@ -74,6 +74,15 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_exsel_numucc;
    TH1F *recomom_exsel_otherbkg;
    
+   TH1F *recopimom_exsel_cc0pi;
+   TH1F *recopimom_exsel_cc1pi;
+   TH1F *recopimom_exsel_ccother;
+   TH1F *recopimom_exsel_bkg;
+   TH1F *recopimom_exsel_oofv;
+   TH1F *recopimom_exsel_numubarccbkg;
+   TH1F *recopimom_exsel_numucc;
+   TH1F *recopimom_exsel_otherbkg;
+   
    if (limit_kinematics)
    {
       recomom_all = new TH1F("recomom_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
@@ -97,6 +106,15 @@ void DefaultCustomPlotting::Loop()
       recomom_exsel_numubarccbkg = new TH1F("recomom_exsel_numubarccbkg", "recomom_exsel_numubarccbkg", recomom_nbins, 200.0, 1500.0);
       recomom_exsel_numucc = new TH1F("recomom_exsel_numucc", "recomom_exsel_numucc", recomom_nbins, 200.0, 1500.0);
       recomom_exsel_otherbkg = new TH1F("recomom_exsel_otherbkg", "recomom_exsel_otherbkg", recomom_nbins, 200.0, 1500.0);
+      
+      recopimom_exsel_cc0pi = new TH1F("recopimom_exsel_cc0pi", "recopimom_exsel_cc0pi", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_cc1pi = new TH1F("recopimom_exsel_cc1pi", "recopimom_exsel_cc1pi", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_ccother = new TH1F("recopimom_exsel_ccother", "recopimom_exsel_ccother", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_bkg = new TH1F("recopimom_exsel_bkg", "recopimom_exsel_bkg", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_oofv = new TH1F("recopimom_exsel_oofv", "recopimom_exsel_oofv", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_numubarccbkg = new TH1F("recopimom_exsel_numubarccbkg", "recopimom_exsel_numubarccbkg", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_numucc = new TH1F("recopimom_exsel_numucc", "recopimom_exsel_numucc", recomom_nbins, 200.0, 1500.0);
+      recopimom_exsel_otherbkg = new TH1F("recopimom_exsel_otherbkg", "recopimom_exsel_otherbkg", recomom_nbins, 200.0, 1500.0);
    }
    else
    {
@@ -121,6 +139,15 @@ void DefaultCustomPlotting::Loop()
       recomom_exsel_numubarccbkg = new TH1F("recomom_exsel_numubarccbkg", "recomom_exsel_numubarccbkg", recomom_nbins, 200.0, 5000.0);
       recomom_exsel_numucc = new TH1F("recomom_exsel_numucc", "recomom_exsel_numucc", recomom_nbins, 200.0, 5000.0);
       recomom_exsel_otherbkg = new TH1F("recomom_exsel_otherbkg", "recomom_exsel_otherbkg", recomom_nbins, 200.0, 5000.0);
+      
+      recopimom_exsel_cc0pi = new TH1F("recopimom_exsel_cc0pi", "recopimom_exsel_cc0pi", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_cc1pi = new TH1F("recopimom_exsel_cc1pi", "recopimom_exsel_cc1pi", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_ccother = new TH1F("recopimom_exsel_ccother", "recopimom_exsel_ccother", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_bkg = new TH1F("recopimom_exsel_bkg", "recopimom_exsel_bkg", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_oofv = new TH1F("recopimom_exsel_oofv", "recopimom_exsel_oofv", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_numubarccbkg = new TH1F("recopimom_exsel_numubarccbkg", "recopimom_exsel_numubarccbkg", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_numucc = new TH1F("recopimom_exsel_numucc", "recopimom_exsel_numucc", recomom_nbins, 200.0, 5000.0);
+      recopimom_exsel_otherbkg = new TH1F("recopimom_exsel_otherbkg", "recopimom_exsel_otherbkg", recomom_nbins, 200.0, 5000.0);
    }
    
    Int_t recomomdiff_nbins = 20;
@@ -294,6 +321,16 @@ void DefaultCustomPlotting::Loop()
             }
             if (topology == 7) recomom_exsel_oofv->Fill(selmu_mom[0]);
             
+            if (topology == 0) {recopimom_exsel_cc0pi->Fill(HMNT_mom); recopimom_exsel_numubarccbkg->Fill(HMNT_mom);}
+            if (topology == 1) recopimom_exsel_cc1pi->Fill(HMNT_mom);
+            if (topology == 2) {recopimom_exsel_ccother->Fill(HMNT_mom); recopimom_exsel_numubarccbkg->Fill(HMNT_mom);}
+            if (topology == 3) 
+            {
+               recopimom_exsel_bkg->Fill(HMNT_mom);
+               if (reaction == 5) recopimom_exsel_numucc->Fill(HMNT_mom);
+               else               recopimom_exsel_otherbkg->Fill(HMNT_mom);
+            }
+            if (topology == 7) recopimom_exsel_oofv->Fill(HMNT_mom);
          }
          
       }
@@ -546,6 +583,58 @@ void DefaultCustomPlotting::Loop()
    recomom_exsel_stack_altbkg->Add(recomom_exsel_numubarccbkg);
    recomom_exsel_stack_altbkg->Add(recomom_exsel_cc1pi);
    recomom_exsel_stack_altbkg->Write();
+   
+   SetHistParticleStyle(recopimom_exsel_cc1pi, "antimu");
+   SetHistParticleStyle(recopimom_exsel_cc0pi, "proton");
+   SetHistParticleStyle(recopimom_exsel_ccother, "positron");
+   SetHistParticleStyle(recopimom_exsel_bkg, "piplus");
+   SetHistParticleStyle(recopimom_exsel_oofv, "other");
+   SetHistParticleStyle(recopimom_exsel_numubarccbkg, "proton");
+   SetHistParticleStyle(recopimom_exsel_numucc, "piplus");
+   SetHistParticleStyle(recopimom_exsel_otherbkg, "positron");
+   
+   recopimom_exsel_cc0pi->Write();
+   recopimom_exsel_cc1pi->Write();
+   recopimom_exsel_ccother->Write();
+   recopimom_exsel_bkg->Write();
+   recopimom_exsel_oofv->Write();
+   recopimom_exsel_numubarccbkg->Write();
+   recopimom_exsel_numucc->Write();
+   recopimom_exsel_otherbkg->Write();
+   
+   recopimom_exsel_cc0pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC0pi");
+   recopimom_exsel_cc1pi->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)");
+   recopimom_exsel_ccother->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC-Other");
+   recopimom_exsel_bkg->SetTitle("NEUT MC: non-#bar{#nu}_{#mu}-CC backgrounds");
+   recopimom_exsel_oofv->SetTitle("NEUT MC: vertex outside FV");
+   recopimom_exsel_numubarccbkg->SetTitle("NEUT MC: #bar{#nu}_{#mu} CC backgrounds");
+   recopimom_exsel_numucc->SetTitle("NEUT MC: #nu_{#mu} CC backgrounds");
+   recopimom_exsel_otherbkg->SetTitle("NEUT MC: other backgrounds");
+   
+   recopimom_exsel_cc0pi->Scale(scale_factor);
+   recopimom_exsel_cc1pi->Scale(scale_factor);
+   recopimom_exsel_ccother->Scale(scale_factor);
+   recopimom_exsel_bkg->Scale(scale_factor);
+   recopimom_exsel_oofv->Scale(scale_factor);
+   recopimom_exsel_numubarccbkg->Scale(scale_factor);
+   recopimom_exsel_numucc->Scale(scale_factor);
+   recopimom_exsel_otherbkg->Scale(scale_factor);
+   
+   THStack* recopimom_exsel_stack = new THStack("recopimom_exsel_stack","recopimom_exsel_stack;Pion candidate reconstructed momentum (MeV/c);Events");
+   recopimom_exsel_stack->Add(recopimom_exsel_oofv);
+   recopimom_exsel_stack->Add(recopimom_exsel_bkg);
+   recopimom_exsel_stack->Add(recopimom_exsel_ccother);
+   recopimom_exsel_stack->Add(recopimom_exsel_cc0pi);
+   recopimom_exsel_stack->Add(recopimom_exsel_cc1pi);
+   recopimom_exsel_stack->Write();
+   
+   THStack* recopimom_exsel_stack_altbkg = new THStack("recopimom_exsel_stack_altbkg","recopimom_exsel_stack_altbkg;Pion candidate reconstructed momentum (MeV/c);Events");
+   recopimom_exsel_stack_altbkg->Add(recopimom_exsel_oofv);
+   recopimom_exsel_stack_altbkg->Add(recopimom_exsel_otherbkg);
+   recopimom_exsel_stack_altbkg->Add(recopimom_exsel_numucc);
+   recopimom_exsel_stack_altbkg->Add(recopimom_exsel_numubarccbkg);
+   recopimom_exsel_stack_altbkg->Add(recopimom_exsel_cc1pi);
+   recopimom_exsel_stack_altbkg->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
