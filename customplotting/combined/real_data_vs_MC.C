@@ -19,6 +19,18 @@
     THStack* recomom_optsel_stack_altbkg = (THStack*)file_MC.Get("recomom_optsel_stack_altbkg");
     THStack* recomom_exsel_stack = (THStack*)file_MC.Get("recomom_exsel_stack");
     
+    TH1F* recopimom_optsel_cc0pi = (TH1F*)file_MC.Get("recopimom_optsel_cc0pi");
+    TH1F* recopimom_optsel_cc1pi = (TH1F*)file_MC.Get("recopimom_optsel_cc1pi");
+    TH1F* recopimom_optsel_ccother = (TH1F*)file_MC.Get("recopimom_optsel_ccother");
+    TH1F* recopimom_optsel_bkg = (TH1F*)file_MC.Get("recopimom_optsel_bkg");
+    TH1F* recopimom_optsel_oofv = (TH1F*)file_MC.Get("recopimom_optsel_oofv");
+    TH1F* recopimom_optsel_numubarccbkg = (TH1F*)file_MC.Get("recopimom_optsel_numubarccbkg");
+    TH1F* recopimom_optsel_numucc = (TH1F*)file_MC.Get("recopimom_optsel_bkg");
+    TH1F* recopimom_optsel_otherbkg = (TH1F*)file_MC.Get("recopimom_optsel_otherbkg");
+    
+    THStack* recopimom_optsel_stack = (THStack*)file_MC.Get("recopimom_optsel_stack");
+    THStack* recopimom_optsel_stack_altbkg = (THStack*)file_MC.Get("recopimom_optsel_stack_altbkg");
+    
     TFile *file_realdata = new TFile("../real_data/output/data_for_MC_comparison.root");
     //file_improved_selection_kinlimited.ls();
     TH1F* bdt_output_selmu_mulike = (TH1F*)file_realdata.Get("bdt_output_selmu_mulike");
@@ -28,6 +40,7 @@
     
     TH1F* recomom_optsel_all = (TH1F*)file_realdata.Get("recomom_optsel_all");
     TH1F* recomom_exsel_all = (TH1F*)file_realdata.Get("recomom_exsel_all");
+    TH1F* recopimom_optsel_all = (TH1F*)file_realdata.Get("recopimom_optsel_all");
     
     TCanvas* canvas_comparison_mulike = new TCanvas("canvas_comparison_mulike","canvas_comparison_mulike",200,10,1000,600);
     
@@ -94,4 +107,13 @@
     recomom_exsel_stack->Draw("");
     recomom_exsel_all->Draw("same E1");
     canvas_comparison_recomom_exsel->BuildLegend();*/
+    
+    TCanvas* canvas_comparison_recopimom_optsel_altbkg = new TCanvas("canvas_comparison_recopimom_optsel_altbkg","canvas_comparison_recopimom_optsel_altbkg",200,10,1000,600);
+    
+    recopimom_optsel_stack_altbkg->Draw("");
+    recopimom_optsel_stack_altbkg->SetMaximum(53.0);
+    recopimom_optsel_stack_altbkg->Draw("");
+    recopimom_optsel_all->Draw("same E1");
+    //canvas_comparison_recopimom_optsel->BuildLegend();
+    legend_altbkg->Draw();
 }
