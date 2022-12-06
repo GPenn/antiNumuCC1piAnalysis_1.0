@@ -361,6 +361,22 @@ void DefaultCustomPlotting::Loop()
    recomom_impsel_all->SetLineColor(kBlack);
    recomom_impsel_all->Write();
    
+   recopimom_optsel_all->Sumw2();
+   recopimom_optsel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   recopimom_optsel_all->Scale(scale_factor);
+   recopimom_optsel_all->SetMarkerStyle(kFullCircle);
+   recopimom_optsel_all->SetLineWidth(2);
+   recopimom_optsel_all->SetLineColor(kBlack);
+   recopimom_optsel_all->Write();
+   
+   recopimom_impsel_all->Sumw2();
+   recopimom_impsel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   recopimom_impsel_all->Scale(scale_factor);
+   recopimom_impsel_all->SetMarkerStyle(kFullCircle);
+   recopimom_impsel_all->SetLineWidth(2);
+   recopimom_impsel_all->SetLineColor(kBlack);
+   recopimom_impsel_all->Write();
+   
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
    defout->Write();
