@@ -85,8 +85,6 @@ void DefaultCustomPlotting::Loop()
       
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       
-      recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
-      
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recopimom_exsel_all = new TH1F("recopimom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
    }
@@ -99,8 +97,6 @@ void DefaultCustomPlotting::Loop()
       recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
-      
-      recomom_optsel_hmnt_all = new TH1F("recomom_optsel_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
       recopimom_exsel_all = new TH1F("recopimom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
