@@ -11,8 +11,20 @@
     TH1F* recomom_exsel_numucc = (TH1F*)file_MC.Get("recomom_exsel_bkg");
     TH1F* recomom_exsel_otherbkg = (TH1F*)file_MC.Get("recomom_exsel_otherbkg");
     
+    THStack* recopimom_exsel_stack = (THStack*)file_MC.Get("recopimom_exsel_stack");
+    THStack* recopimom_exsel_stack_altbkg = (THStack*)file_MC.Get("recopimom_exsel_stack_altbkg");
+    TH1F* recopimom_exsel_cc0pi = (TH1F*)file_MC.Get("recopimom_exsel_cc0pi");
+    TH1F* recopimom_exsel_cc1pi = (TH1F*)file_MC.Get("recopimom_exsel_cc1pi");
+    TH1F* recopimom_exsel_ccother = (TH1F*)file_MC.Get("recopimom_exsel_ccother");
+    TH1F* recopimom_exsel_bkg = (TH1F*)file_MC.Get("recopimom_exsel_bkg");
+    TH1F* recopimom_exsel_oofv = (TH1F*)file_MC.Get("recopimom_exsel_oofv");
+    TH1F* recopimom_exsel_numubarccbkg = (TH1F*)file_MC.Get("recopimom_exsel_numubarccbkg");
+    TH1F* recopimom_exsel_numucc = (TH1F*)file_MC.Get("recopimom_exsel_bkg");
+    TH1F* recopimom_exsel_otherbkg = (TH1F*)file_MC.Get("recopimom_exsel_otherbkg");
+    
     TFile *file_realdata = new TFile("../real_data_exsel/output/data_for_MC_comparison.root");
     TH1F* recomom_exsel_all = (TH1F*)file_realdata.Get("recomom_exsel_all");
+    TH1F* recopimom_exsel_all = (TH1F*)file_realdata.Get("recopimom_exsel_all");
     
     TCanvas* canvas_comparison_recomom_exsel = new TCanvas("canvas_comparison_recomom_exsel","canvas_comparison_recomom_exsel",200,10,1000,600);
     
@@ -46,5 +58,22 @@
     legend_altbkg->AddEntry(recomom_exsel_numucc,"NEUT MC: #nu_{#mu} CC backgrounds","f");
     legend_altbkg->AddEntry(recomom_exsel_otherbkg,"NEUT MC: other backgrounds","f");
     legend_altbkg->AddEntry(recomom_exsel_oofv,"NEUT MC: OOFV","f");
+    legend_altbkg->Draw();
+    
+    TCanvas* canvas_comparison_recopimom_exsel_altbkg = new TCanvas("canvas_comparison_recopimom_exsel_altbkg","canvas_comparison_recopimom_exsel_altbkg",200,10,1000,600);
+    
+    recopimom_exsel_stack_altbkg->Draw("");
+    recopimom_exsel_stack_altbkg->SetMaximum(53.0);
+    recopimom_exsel_stack_altbkg->Draw("");
+    recopimom_exsel_all->Draw("same E1");
+    //canvas_comparison_recopimom_exsel->BuildLegend();
+    
+    /*auto legend_altbkg = new TLegend(0.1,0.7,0.48,0.9);
+    legend_altbkg->AddEntry(recopimom_exsel_all,"T2K data (Run 5+6+7+9)","lep");
+    legend_altbkg->AddEntry(recopimom_exsel_cc1pi,"NEUT MC: #bar{#nu}_{#mu} CC1pi (signal)","f");
+    legend_altbkg->AddEntry(recopimom_exsel_numubarccbkg,"NEUT MC: #bar{#nu}_{#mu} CC backgrounds","f");
+    legend_altbkg->AddEntry(recopimom_exsel_numucc,"NEUT MC: #nu_{#mu} CC backgrounds","f");
+    legend_altbkg->AddEntry(recopimom_exsel_otherbkg,"NEUT MC: other backgrounds","f");
+    legend_altbkg->AddEntry(recopimom_exsel_oofv,"NEUT MC: OOFV","f");*/
     legend_altbkg->Draw();
 }
