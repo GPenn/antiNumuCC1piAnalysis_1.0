@@ -63,7 +63,7 @@
     TCanvas* canvas_comparison_recopimom_exsel_altbkg = new TCanvas("canvas_comparison_recopimom_exsel_altbkg","canvas_comparison_recopimom_exsel_altbkg",200,10,1000,600);
     
     recopimom_exsel_stack_altbkg->Draw("");
-    recopimom_exsel_stack_altbkg->SetMaximum(70.0);
+    recopimom_exsel_stack_altbkg->SetMaximum(80.0);
     recopimom_exsel_stack_altbkg->Draw("");
     recopimom_exsel_all->Draw("same E1");
     //canvas_comparison_recopimom_exsel->BuildLegend();
