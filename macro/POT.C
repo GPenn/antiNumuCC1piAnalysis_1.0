@@ -6,7 +6,7 @@
   
     // Set up MC data sample
     DataSample MC("/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_1.root");
-  
+    drawingtools.DumpPOT(MC);
     // Add Run 5 MC POT info
     for (int i = 2; i <= 11s; i++)
     {
