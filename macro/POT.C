@@ -24,8 +24,9 @@
     // Add Run 5 MC POT info
     for (int i = 2; i < 113; i++)
     {
-        TString filename = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_" + i + ".root";
-        MC.AddHeader(filename);
+        TString prefix = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_";
+        TString suffix = ".root"
+        MC.AddHeader(prefix + i + suffix);
     }
     
     drawingtools.DumpPOT(MC);
