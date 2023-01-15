@@ -51,4 +51,8 @@
     data.AddHeader("/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/real_data/real_data_run9_all.root");
     
     drawingtools.DumpPOT(data);
+    
+    // Create experiment for data-MC comparison
+    Experiment comparison("comparison", data, MC);
+    comparison.DumpPOTRatios;
  }
