@@ -6,10 +6,10 @@
     DataSample MC("/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_1.root");
   
     // Add Run 5 MC POT info
-    for (Int_t i = 2; i < 113; i++)
+    for (int i = 2; i < 113; i++)
     {
-        TString filename = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_";
-        filename += i;
+        std::string filename = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_";
+        //filename += i;
         filename += ".root";
         MC.AddHeader(filename);
     }
