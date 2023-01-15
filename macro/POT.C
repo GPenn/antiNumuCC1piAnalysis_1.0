@@ -22,7 +22,7 @@
     DataSample MC("/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_1.root");
   
     // Add Run 5 MC POT info
-    for (int i = 2; i < 113; i++)
+    for (Int_t i = 2; i < 113; i++)
     {
         TString prefix = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_";
         TString suffix = ".root"
