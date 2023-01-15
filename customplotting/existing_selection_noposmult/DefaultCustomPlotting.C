@@ -1531,7 +1531,7 @@ void DefaultCustomPlotting::Loop()
    bdt_output_selmu_other_plike->SetTitle("NEUT MC - other");
    bdt_output_selmu_other_elike->SetTitle("NEUT MC - other");
    
-   Double_t scale_factor = 0.1;
+   Double_t scale_factor = 1/9.91955;
    //Double_t scale_factor = 1/counter_all_accum4;
    
    bdt_output_selmu_antimu_mulike->Scale(scale_factor);
