@@ -53,6 +53,6 @@
     drawingtools.DumpPOT(data);
     
     // Create experiment for data-MC comparison
-    Experiment comparison("comparison", data, MC);
+    Experiment comparison("comparison", *data, *MC);
     comparison.DumpPOTRatios;
  }
