@@ -24,7 +24,8 @@
     // Add Run 5 MC POT info
     for (int i = 2; i < 113; i++)
     {
-        std::string filename = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_" << i << ".root";
+        std::string filename; 
+        filename << "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_" << i << ".root";
         MC.AddHeader(filename);
     }
     
