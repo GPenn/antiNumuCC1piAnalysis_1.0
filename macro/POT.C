@@ -26,7 +26,7 @@
     {
         TString prefix = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_";
         TString suffix = ".root"
-        MC.AddHeader(prefix + i + suffix);
+        MC.AddHeader(prefix + suffix);
     }
     
     drawingtools.DumpPOT(MC);
