@@ -1,4 +1,6 @@
 {
+    #include <string>;
+    
     // Initialise DrawingTools
     DrawingTools drawingtools("/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_1.root");
   
@@ -9,7 +11,7 @@
     for (int i = 2; i <= 11s; i++)
     {
         std::string filename = "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_";
-        filename += i;
+        filename += std::to_string(i);
         filename += ".root";
         MC.AddHeader(filename);
     }
