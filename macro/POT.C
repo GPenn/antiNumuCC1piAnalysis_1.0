@@ -6,14 +6,41 @@
   
     // Set up MC data sample
     DataSample MC("/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_1.root");
-    drawingtools.DumpPOT(MC);
+    //drawingtools.DumpPOT(MC);
+    
     // Add Run 5 MC POT info
-    for (int i = 2; i <= 11s; i++)
+    for (int i = 2; i <= 112; i++)
     {
         std::stringstream filename;
         filename << "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun5_" << i << ".root";
         MC.AddHeader(filename.str());
     }
+    drawingtools.DumpPOT(MC);
     
+    // Add Run 6 MC POT info
+    for (int i = 1; i <= 54; i++)
+    {
+        std::stringstream filename;
+        filename << "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun6_" << i << ".root";
+        MC.AddHeader(filename.str());
+    }
+    drawingtools.DumpPOT(MC);
+    
+    // Add Run 7 MC POT info
+    for (int i = 1; i <= 67; i++)
+    {
+        std::stringstream filename;
+        filename << "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun7_" << i << ".root";
+        MC.AddHeader(filename.str());
+    }
+    drawingtools.DumpPOT(MC);
+    
+    // Add Run 9 MC POT info
+    for (int i = 1; i <= 12; i++)
+    {
+        std::stringstream filename;
+        filename << "/bundle/data/T2K/users/gpenn/highlandBDTtests/final/cc1pi/nomuonrejection/oaAnalysis_prod6Trun9_" << i << ".root";
+        MC.AddHeader(filename.str());
+    }
     drawingtools.DumpPOT(MC);
  }
