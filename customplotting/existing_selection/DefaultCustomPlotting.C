@@ -529,7 +529,7 @@ void DefaultCustomPlotting::Loop()
    graph_effpur_vs_recomom->Write();
    graph_signif_vs_recomom->Write();
    
-   Double_t scale_factor = 0.1;
+   Double_t scale_factor = 1/9.91955;
    //Double_t scale_factor = 1/counter_all_accum4;
    
    SetHistParticleStyle(recomom_exsel_cc1pi, "antimu");
