@@ -3393,7 +3393,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_purvseff_mulike = new TGraph();
    roc_purvseff_mulike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
    
-   for (Int_t cut = 1; cut < optimisation_nbins; cut++)
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
       Float_t efficiency = opt_mulike_sig->Integral(cut,optimisation_nbins)/opt_mulike_sig->GetEntries();
       Float_t purity = opt_mulike_sig->Integral(cut,optimisation_nbins)/(opt_mulike_sig->Integral(cut,optimisation_nbins) + opt_mulike_bkg->Integral(cut,optimisation_nbins));
