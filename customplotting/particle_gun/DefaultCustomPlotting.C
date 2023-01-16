@@ -480,19 +480,7 @@ void DefaultCustomPlotting::Loop()
    
    TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
-   
-   
-   TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
-   TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
-   
-   TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
-   TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
-   
-   TH1F *opt_plike_sig = new TH1F("opt_plike_sig", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
-   TH1F *opt_plike_bkg = new TH1F("opt_plike_bkg", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
-   
-   TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
-   TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+
    
    
    TH1F *tpc_mulike_sig = new TH1F("tpc_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
