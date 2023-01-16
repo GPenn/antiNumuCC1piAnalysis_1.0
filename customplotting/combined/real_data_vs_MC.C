@@ -154,7 +154,7 @@
     TCanvas* canvas_comparison_recopimom_presel_altbkg = new TCanvas("canvas_comparison_recopimom_presel_altbkg","canvas_comparison_recopimom_presel_altbkg",200,10,1000,600);
     
     recopimom_presel_stack_altbkg->Draw("");
-    recopimom_presel_stack_altbkg->SetMaximum(260.0);
+    recopimom_presel_stack_altbkg->SetMaximum(270.0);
     recopimom_presel_stack_altbkg->Draw("");
     recopimom_presel_all->Draw("same E1");
     legend_altbkg->Draw();
