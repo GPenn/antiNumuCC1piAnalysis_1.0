@@ -3401,6 +3401,43 @@ void DefaultCustomPlotting::Loop()
    }
    roc_purvseff_mulike->SetLineColor( kBlue);
    roc_purvseff_mulike->Write();
+   
+   TGraph* roc_purvseff_pilike = new TGraph();
+   roc_purvseff_pilike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = opt_pilike_sig->Integral(cut,optimisation_nbins)/opt_pilike_sig->GetEntries();
+      Float_t purity = opt_pilike_sig->Integral(cut,optimisation_nbins)/(opt_pilike_sig->Integral(cut,optimisation_nbins) + opt_pilike_bkg->Integral(cut,optimisation_nbins));
+      roc_purvseff_pilike->SetPoint(cut, efficiency, purity);
+   }
+   roc_purvseff_pilike->SetLineColor( kRed);
+   roc_purvseff_pilike->Write();
+   
+   TGraph* roc_purvseff_plike = new TGraph();
+   roc_purvseff_plike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = opt_plike_sig->Integral(cut,optimisation_nbins)/opt_plike_sig->GetEntries();
+      Float_t purity = opt_plike_sig->Integral(cut,optimisation_nbins)/(opt_plike_sig->Integral(cut,optimisation_nbins) + opt_plike_bkg->Integral(cut,optimisation_nbins));
+      roc_purvseff_plike->SetPoint(cut, efficiency, purity);
+   }
+   roc_purvseff_plike->SetLineColor( kGreen);
+   roc_purvseff_plike->Write();
+   
+   TGraph* roc_purvseff_elike = new TGraph();
+   roc_purvseff_elike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = opt_elike_sig->Integral(cut,optimisation_nbins)/opt_elike_sig->GetEntries();
+      Float_t purity = opt_elike_sig->Integral(cut,optimisation_nbins)/(opt_elike_sig->Integral(cut,optimisation_nbins) + opt_elike_bkg->Integral(cut,optimisation_nbins));
+      roc_purvseff_elike->SetPoint(cut, efficiency, purity);
+   }
+   roc_purvseff_elike->SetLineColor( kMagenta);
+   roc_purvseff_elike->Write();
+   
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
