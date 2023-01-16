@@ -3438,6 +3438,12 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->SetLineColor( kMagenta);
    roc_purvseff_elike->Write();
    
+   TCanvas* canvas_roc_bdtall = new TCanvas("canvas_roc_bdtall","BDT output ROC curves",200,10,1000,600);
+   roc_purvseff_mulike->Draw();
+   roc_purvseff_mulike->Draw("same");
+   roc_purvseff_mulike->Draw("same");
+   roc_purvseff_mulike->Draw("same");
+   
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
