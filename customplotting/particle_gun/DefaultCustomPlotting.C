@@ -3534,7 +3534,7 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
-   roc_tpc_purvseff_pilike->Draw("same");
+   roc_tpc_purvseff_mulike->Draw("same");
    canvas_roc_mu->Write();
    
    TCanvas* canvas_roc_pi = new TCanvas("canvas_roc_pi","pi-like ROC curves",200,10,1000,600);
