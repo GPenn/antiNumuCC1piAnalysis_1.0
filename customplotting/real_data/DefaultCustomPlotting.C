@@ -73,9 +73,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *recomom_optsel_all;
    TH1F *recomom_exsel_all;
    TH1F *recomom_impsel_all;
+   TH1F *recomom_presel_all;
    
    TH1F *recopimom_optsel_all;
    TH1F *recopimom_impsel_all;
+   TH1F *recopimom_presel_all;
    
    
    
@@ -88,13 +90,13 @@ void DefaultCustomPlotting::Loop()
       recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 200.0, 1500.0);
       
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
-      
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
-      
       recomom_impsel_all = new TH1F("recomom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recomom_presel_all = new TH1F("recomom_presel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       
       recopimom_optsel_all = new TH1F("recopimom_optsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
       recopimom_impsel_all = new TH1F("recopimom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
+      recopimom_presel_all = new TH1F("recopimom_presel_all", "Events vs reco momentum", recomom_nbins, 200.0, 1500.0);
    }
    else 
    {
@@ -105,13 +107,13 @@ void DefaultCustomPlotting::Loop()
       recomom_hmnt_all = new TH1F("recomom_hmnt_all", "Events vs HMNT reco momentum", recomom_nbins, 0.0, recomom_max);
       
       recomom_optsel_all = new TH1F("recomom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
-      
       recomom_exsel_all = new TH1F("recomom_exsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
-      
       recomom_impsel_all = new TH1F("recomom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
+      recomom_presel_all = new TH1F("recomom_presel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
       
       recopimom_optsel_all = new TH1F("recopimom_optsel_all", "Events vs reco momentum", recomom_nbins, 0.0, recomom_max);
       recopimom_impsel_all = new TH1F("recopimom_impsel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
+      recopimom_presel_all = new TH1F("recopimom_presel_all", "Events vs reco momentum", recomom_nbins, 200.0, recomom_max);
    }
    
    Int_t mippion_nbins = 40;
@@ -159,12 +161,16 @@ void DefaultCustomPlotting::Loop()
          bdt_output_selmu_plike->Fill(selmu_bdt_pid_p);
          bdt_output_selmu_elike->Fill(selmu_bdt_pid_e);
          
+         recomom_presel_all->Fill(selmu_mom[0]);
+         
          if (ntpcnegQualityFV == 1)
          {
             bdt_output_selpi_pilike->Fill(hmnt_bdt_pid_pi);
             bdt_output_selpi_mulike->Fill(hmnt_bdt_pid_mu);
             bdt_output_selpi_plike->Fill(hmnt_bdt_pid_p);
             bdt_output_selpi_elike->Fill(hmnt_bdt_pid_e);
+            
+            recopimom_presel_all->Fill(HMNT_mom);
          }
          
          if ((selmu_bdt_pid_mu > 0.26) && ((hmnt_bdt_pid_pi > 0.12) || (ntpcnegQualityFV == 0)))
@@ -376,6 +382,22 @@ void DefaultCustomPlotting::Loop()
    recopimom_impsel_all->SetLineWidth(2);
    recopimom_impsel_all->SetLineColor(kBlack);
    recopimom_impsel_all->Write();
+   
+   recomom_presel_all->Sumw2();
+   recomom_presel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   recomom_presel_all->Scale(scale_factor);
+   recomom_presel_all->SetMarkerStyle(kFullCircle);
+   recomom_presel_all->SetLineWidth(2);
+   recomom_presel_all->SetLineColor(kBlack);
+   recomom_presel_all->Write();
+   
+   recopimom_presel_all->Sumw2();
+   recopimom_presel_all->SetTitle("T2K RHC data (Run 5+6+7+9)");
+   recopimom_presel_all->Scale(scale_factor);
+   recopimom_presel_all->SetMarkerStyle(kFullCircle);
+   recopimom_presel_all->SetLineWidth(2);
+   recopimom_presel_all->SetLineColor(kBlack);
+   recopimom_presel_all->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
