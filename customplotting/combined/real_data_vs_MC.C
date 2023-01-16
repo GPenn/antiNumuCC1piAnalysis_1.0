@@ -31,6 +31,30 @@
     THStack* recopimom_optsel_stack = (THStack*)file_MC.Get("recopimom_optsel_stack");
     THStack* recopimom_optsel_stack_altbkg = (THStack*)file_MC.Get("recopimom_optsel_stack_altbkg");
     
+    TH1F* recomom_presel_cc0pi = (TH1F*)file_MC.Get("recomom_presel_cc0pi");
+    TH1F* recomom_presel_cc1pi = (TH1F*)file_MC.Get("recomom_presel_cc1pi");
+    TH1F* recomom_presel_ccother = (TH1F*)file_MC.Get("recomom_presel_ccother");
+    TH1F* recomom_presel_bkg = (TH1F*)file_MC.Get("recomom_presel_bkg");
+    TH1F* recomom_presel_oofv = (TH1F*)file_MC.Get("recomom_presel_oofv");
+    TH1F* recomom_presel_numubarccbkg = (TH1F*)file_MC.Get("recomom_presel_numubarccbkg");
+    TH1F* recomom_presel_numucc = (TH1F*)file_MC.Get("recomom_presel_bkg");
+    TH1F* recomom_presel_otherbkg = (TH1F*)file_MC.Get("recomom_presel_otherbkg");
+    
+    THStack* recomom_presel_stack = (THStack*)file_MC.Get("recomom_presel_stack");
+    THStack* recomom_presel_stack_altbkg = (THStack*)file_MC.Get("recomom_presel_stack_altbkg");
+    
+    TH1F* recopimom_presel_cc0pi = (TH1F*)file_MC.Get("recopimom_presel_cc0pi");
+    TH1F* recopimom_presel_cc1pi = (TH1F*)file_MC.Get("recopimom_presel_cc1pi");
+    TH1F* recopimom_presel_ccother = (TH1F*)file_MC.Get("recopimom_presel_ccother");
+    TH1F* recopimom_presel_bkg = (TH1F*)file_MC.Get("recopimom_presel_bkg");
+    TH1F* recopimom_presel_oofv = (TH1F*)file_MC.Get("recopimom_presel_oofv");
+    TH1F* recopimom_presel_numubarccbkg = (TH1F*)file_MC.Get("recopimom_presel_numubarccbkg");
+    TH1F* recopimom_presel_numucc = (TH1F*)file_MC.Get("recopimom_presel_bkg");
+    TH1F* recopimom_presel_otherbkg = (TH1F*)file_MC.Get("recopimom_presel_otherbkg");
+    
+    THStack* recopimom_presel_stack = (THStack*)file_MC.Get("recopimom_presel_stack");
+    THStack* recopimom_presel_stack_altbkg = (THStack*)file_MC.Get("recopimom_presel_stack_altbkg");
+    
     TFile *file_realdata = new TFile("../real_data/output/data_for_MC_comparison.root");
     //file_improved_selection_kinlimited.ls();
     TH1F* bdt_output_selmu_mulike = (TH1F*)file_realdata.Get("bdt_output_selmu_mulike");
@@ -41,6 +65,8 @@
     TH1F* recomom_optsel_all = (TH1F*)file_realdata.Get("recomom_optsel_all");
     TH1F* recomom_exsel_all = (TH1F*)file_realdata.Get("recomom_exsel_all");
     TH1F* recopimom_optsel_all = (TH1F*)file_realdata.Get("recopimom_optsel_all");
+    TH1F* recomom_presel_all = (TH1F*)file_realdata.Get("recomom_presel_all");
+    TH1F* recopimom_presel_all = (TH1F*)file_realdata.Get("recopimom_presel_all");
     
     TCanvas* canvas_comparison_mulike = new TCanvas("canvas_comparison_mulike","canvas_comparison_mulike",200,10,1000,600);
     
@@ -115,5 +141,21 @@
     recopimom_optsel_stack_altbkg->Draw("");
     recopimom_optsel_all->Draw("same E1");
     //canvas_comparison_recopimom_optsel->BuildLegend();
+    legend_altbkg->Draw();
+    
+    TCanvas* canvas_comparison_recomom_presel_altbkg = new TCanvas("canvas_comparison_recomom_presel_altbkg","canvas_comparison_recomom_presel_altbkg",200,10,1000,600);
+    
+    recomom_presel_stack_altbkg->Draw("");
+    recomom_presel_stack_altbkg->SetMaximum(250.0);
+    recomom_presel_stack_altbkg->Draw("");
+    recomom_presel_all->Draw("same E1");
+    legend_altbkg->Draw();
+    
+    TCanvas* canvas_comparison_recopimom_presel_altbkg = new TCanvas("canvas_comparison_recopimom_presel_altbkg","canvas_comparison_recopimom_presel_altbkg",200,10,1000,600);
+    
+    recopimom_presel_stack_altbkg->Draw("");
+    recopimom_presel_stack_altbkg->SetMaximum(250.0);
+    recopimom_presel_stack_altbkg->Draw("");
+    recopimom_presel_all->Draw("same E1");
     legend_altbkg->Draw();
 }
