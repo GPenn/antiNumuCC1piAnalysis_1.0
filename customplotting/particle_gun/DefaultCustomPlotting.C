@@ -3393,13 +3393,13 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_purvseff_mulike = new TGraph();
    roc_purvseff_mulike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
    
-   for (Int_t cut = 1; cut <= optimisation_nbins; cut++)
+   for (Int_t cut = 1; cut < optimisation_nbins; cut++)
    {
       Float_t efficiency = opt_mulike_sig->Integral(cut,optimisation_nbins)/opt_mulike_sig->GetEntries();
       Float_t purity = opt_mulike_sig->Integral(cut,optimisation_nbins)/(opt_mulike_sig->Integral(cut,optimisation_nbins) + opt_mulike_bkg->Integral(cut,optimisation_nbins));
       roc_purvseff_mulike->SetPoint(cut, efficiency, purity);
    }
-   
+   roc_purvseff_mulike->SetLineColor( kBlue);
    roc_purvseff_mulike->Write();
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
