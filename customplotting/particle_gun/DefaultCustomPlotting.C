@@ -482,6 +482,32 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
    
    
+   TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_plike_sig = new TH1F("opt_plike_sig", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_plike_bkg = new TH1F("opt_plike_bkg", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_elike_sig = new TH1F("opt_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_elike_bkg = new TH1F("opt_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   
+   TH1F *tpc_mulike_sig = new TH1F("tpc_mulike_sig", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
+   TH1F *tpc_mulike_bkg = new TH1F("tpc_mulike_bkg", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *tpc_pilike_sig = new TH1F("tpc_pilike_sig", "Pi-like (true pi+)", optimisation_nbins, 0.0, 1.0);
+   TH1F *tpc_pilike_bkg = new TH1F("tpc_pilike_bkg", "Pi-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *tpc_plike_sig = new TH1F("tpc_plike_sig", "Proton-like (true protons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *tpc_plike_bkg = new TH1F("tpc_plike_bkg", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *tpc_elike_sig = new TH1F("tpc_elike_sig", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
+   TH1F *tpc_elike_bkg = new TH1F("tpc_elike_bkg", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   
    
    TH1F *opt_mulike_sig_test1 = new TH1F("opt_mulike_sig_test1", "Mu-like (true antimu)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_mulike_bkg_test1 = new TH1F("opt_mulike_bkg_test1", "Mu-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
@@ -1009,6 +1035,11 @@ void DefaultCustomPlotting::Loop()
             bdt_plike_antimu->Fill(selmu_bdt_pid_p);
             bdt_elike_antimu->Fill(selmu_bdt_pid_e);
             
+            tpc_mulike_sig->Fill(selmu_tpc_like_mu);
+            tpc_pilike_bkg->Fill(selmu_tpc_like_pi);
+            tpc_plike_bkg->Fill(selmu_tpc_like_p);
+            tpc_elike_bkg->Fill(selmu_tpc_like_e);
+            
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
@@ -1048,6 +1079,11 @@ void DefaultCustomPlotting::Loop()
             bdt_pilike_piplus->Fill(selmu_bdt_pid_pi);
             bdt_plike_piplus->Fill(selmu_bdt_pid_p);
             bdt_elike_piplus->Fill(selmu_bdt_pid_e);
+            
+            tpc_mulike_bkg->Fill(selmu_tpc_like_mu);
+            tpc_pilike_sig->Fill(selmu_tpc_like_pi);
+            tpc_plike_bkg->Fill(selmu_tpc_like_p);
+            tpc_elike_bkg->Fill(selmu_tpc_like_e);
          }
          else if ((particle == 2212)&&(particle_pg == 2212))
          {
@@ -1087,6 +1123,11 @@ void DefaultCustomPlotting::Loop()
             bdt_pilike_proton->Fill(selmu_bdt_pid_pi);
             bdt_plike_proton->Fill(selmu_bdt_pid_p);
             bdt_elike_proton->Fill(selmu_bdt_pid_e);
+            
+            tpc_mulike_bkg->Fill(selmu_tpc_like_mu);
+            tpc_pilike_bkg->Fill(selmu_tpc_like_pi);
+            tpc_plike_sig->Fill(selmu_tpc_like_p);
+            tpc_elike_bkg->Fill(selmu_tpc_like_e);
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
@@ -1126,6 +1167,11 @@ void DefaultCustomPlotting::Loop()
             bdt_pilike_positron->Fill(selmu_bdt_pid_pi);
             bdt_plike_positron->Fill(selmu_bdt_pid_p);
             bdt_elike_positron->Fill(selmu_bdt_pid_e);
+            
+            tpc_mulike_bkg->Fill(selmu_tpc_like_mu);
+            tpc_pilike_bkg->Fill(selmu_tpc_like_pi);
+            tpc_plike_bkg->Fill(selmu_tpc_like_p);
+            tpc_elike_sig->Fill(selmu_tpc_like_e);
          }
          
          // Fill counters for new performance testing
@@ -3438,6 +3484,58 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->SetLineColor( kMagenta);
    roc_purvseff_elike->Write();
    
+   TGraph* roc_tpc_purvseff_mulike = new TGraph();
+   roc_tpc_purvseff_mulike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = tpc_mulike_sig->Integral(cut,optimisation_nbins)/tpc_mulike_sig->GetEntries();
+      Float_t purity = tpc_mulike_sig->Integral(cut,optimisation_nbins)/(tpc_mulike_sig->Integral(cut,optimisation_nbins) + tpc_mulike_bkg->Integral(cut,optimisation_nbins));
+      roc_tpc_purvseff_mulike->SetPoint(cut, efficiency, purity);
+   }
+   roc_tpc_purvseff_mulike->SetLineColor( kBlue);
+   roc_tpc_purvseff_mulike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_mulike->Write();
+   
+   TGraph* roc_tpc_purvseff_pilike = new TGraph();
+   roc_tpc_purvseff_pilike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = tpc_pilike_sig->Integral(cut,optimisation_nbins)/tpc_pilike_sig->GetEntries();
+      Float_t purity = tpc_pilike_sig->Integral(cut,optimisation_nbins)/(tpc_pilike_sig->Integral(cut,optimisation_nbins) + tpc_pilike_bkg->Integral(cut,optimisation_nbins));
+      roc_tpc_purvseff_pilike->SetPoint(cut, efficiency, purity);
+   }
+   roc_tpc_purvseff_pilike->SetLineColor( kRed);
+   roc_tpc_purvseff_pilike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_pilike->Write();
+   
+   TGraph* roc_tpc_purvseff_plike = new TGraph();
+   roc_tpc_purvseff_plike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = tpc_plike_sig->Integral(cut,optimisation_nbins)/tpc_plike_sig->GetEntries();
+      Float_t purity = tpc_plike_sig->Integral(cut,optimisation_nbins)/(tpc_plike_sig->Integral(cut,optimisation_nbins) + tpc_plike_bkg->Integral(cut,optimisation_nbins));
+      roc_tpc_purvseff_plike->SetPoint(cut, efficiency, purity);
+   }
+   roc_tpc_purvseff_plike->SetLineColor( kGreen);
+   roc_tpc_purvseff_plike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_plike->Write();
+   
+   TGraph* roc_tpc_purvseff_elike = new TGraph();
+   roc_tpc_purvseff_elike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   
+   for (Int_t cut = 0; cut < optimisation_nbins; cut++)
+   {
+      Float_t efficiency = tpc_elike_sig->Integral(cut,optimisation_nbins)/tpc_elike_sig->GetEntries();
+      Float_t purity = tpc_elike_sig->Integral(cut,optimisation_nbins)/(tpc_elike_sig->Integral(cut,optimisation_nbins) + tpc_elike_bkg->Integral(cut,optimisation_nbins));
+      roc_tpc_purvseff_elike->SetPoint(cut, efficiency, purity);
+   }
+   roc_tpc_purvseff_elike->SetLineColor( kMagenta);
+   roc_tpc_purvseff_elike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_elike->Write();
+   
    TCanvas* canvas_roc_bdtall = new TCanvas("canvas_roc_bdtall","BDT output ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
    roc_purvseff_pilike->Draw("same");
@@ -3446,6 +3544,25 @@ void DefaultCustomPlotting::Loop()
    
    canvas_roc_bdtall->Write();
    
+   TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
+   roc_purvseff_mulike->Draw();
+   roc_tpc_purvseff_pilike->Draw("same");
+   canvas_roc_mu->Write();
+   
+   TCanvas* canvas_roc_pi = new TCanvas("canvas_roc_pi","pi-like ROC curves",200,10,1000,600);
+   roc_purvseff_pilike->Draw();
+   roc_tpc_purvseff_pilike->Draw("same");
+   canvas_roc_pi->Write();
+   
+   TCanvas* canvas_roc_p = new TCanvas("canvas_roc_p","p-like ROC curves",200,10,1000,600);
+   roc_purvseff_plike->Draw();
+   roc_tpc_purvseff_plike->Draw("same");
+   canvas_roc_p->Write();
+   
+   TCanvas* canvas_roc_e = new TCanvas("canvas_roc_e","e-like ROC curves",200,10,1000,600);
+   roc_purvseff_elike->Draw();
+   roc_tpc_purvseff_elike->Draw("same");
+   canvas_roc_e->Write();
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
