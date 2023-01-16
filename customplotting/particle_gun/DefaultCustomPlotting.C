@@ -3440,9 +3440,9 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_roc_bdtall = new TCanvas("canvas_roc_bdtall","BDT output ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
-   roc_purvseff_mulike->Draw("same");
-   roc_purvseff_mulike->Draw("same");
-   roc_purvseff_mulike->Draw("same");
+   roc_purvseff_pilike->Draw("same");
+   roc_purvseff_plike->Draw("same");
+   roc_purvseff_elike->Draw("same");
    
    canvas_roc_bdtall->Write();
    
