@@ -3444,6 +3444,8 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->Draw("same");
    roc_purvseff_mulike->Draw("same");
    
+   canvas_roc_bdtall->Write();
+   
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
