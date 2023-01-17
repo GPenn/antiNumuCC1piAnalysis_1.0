@@ -3561,6 +3561,8 @@ void DefaultCustomPlotting::Loop()
    roc_antinumu_primary_pid->SetMarkerStyle(20);
    roc_antinumu_primary_pid->SetMarkerSize(1.);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
+   std::cout << "DEBUG: antinumu primary PID efficiency = " << (Float_t) antinumu_primary_pid_sig/presel_nAntimu << std::endl;
+   std::cout << "DEBUG: antinumu primary PID purity = " << (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg) << std::endl;
    
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
