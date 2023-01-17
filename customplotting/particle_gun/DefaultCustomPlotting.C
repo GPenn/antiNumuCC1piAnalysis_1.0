@@ -3503,13 +3503,15 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
-      Float_t efficiency = tpc_plike_sig->Integral(cut-1,optimisation_nbins)/tpc_plike_sig->GetEntries();
-      Float_t purity = tpc_plike_sig->Integral(cut-1,optimisation_nbins)/(tpc_plike_sig->Integral(cut-1,optimisation_nbins) + tpc_plike_bkg->Integral(cut-1,optimisation_nbins));
+      Float_t efficiency = tpc_plike_sig->Integral(cut,optimisation_nbins)/tpc_plike_sig->GetEntries();
+      Float_t purity = tpc_plike_sig->Integral(cut,optimisation_nbins)/(tpc_plike_sig->Integral(cut,optimisation_nbins) + tpc_plike_bkg->Integral(cut,optimisation_nbins));
       roc_tpc_purvseff_plike->SetPoint(cut, efficiency, purity);
    }
    roc_tpc_purvseff_plike->SetLineColor( kGreen);
    roc_tpc_purvseff_plike->SetLineStyle( kDashed);
    roc_tpc_purvseff_plike->Write();
+   tpc_plike_sig->Write();
+   tpc_plike_bkg->Write();
    
    TGraph* roc_tpc_purvseff_elike = new TGraph();
    roc_tpc_purvseff_elike->SetTitle("TPC e likelihood");
@@ -3523,6 +3525,8 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_elike->SetLineColor( kMagenta);
    roc_tpc_purvseff_elike->SetLineStyle( kDashed);
    roc_tpc_purvseff_elike->Write();
+   tpc_elike_sig->Write();
+   tpc_elike_bkg->Write();
    
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
