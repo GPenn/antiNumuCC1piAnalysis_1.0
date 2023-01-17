@@ -3473,7 +3473,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->Write();
    
    TGraph* roc_tpc_purvseff_mulike = new TGraph();
-   roc_tpc_purvseff_mulike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_tpc_purvseff_mulike->SetTitle(" ;Efficiency;Purity;");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3486,7 +3486,7 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_mulike->Write();
    
    TGraph* roc_tpc_purvseff_pilike = new TGraph();
-   roc_tpc_purvseff_pilike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_tpc_purvseff_pilike->SetTitle(" ;Efficiency;Purity;");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3499,7 +3499,7 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_pilike->Write();
    
    TGraph* roc_tpc_purvseff_plike = new TGraph();
-   roc_tpc_purvseff_plike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_tpc_purvseff_plike->SetTitle(" ;Efficiency;Purity;");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3512,7 +3512,7 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_plike->Write();
    
    TGraph* roc_tpc_purvseff_elike = new TGraph();
-   roc_tpc_purvseff_elike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_tpc_purvseff_elike->SetTitle(" ;Efficiency;Purity;");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3534,7 +3534,11 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
+   roc_purvseff_mulike->GetXaxis->SetLimits(0.0,1.1);
+   roc_purvseff_mulike->GetYaxis->SetLimits(0.0,1.1);
+   roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
+   gr->GetXaxis->SetLimits(0.2,0.4)
    canvas_roc_mu->Write();
    
    TCanvas* canvas_roc_pi = new TCanvas("canvas_roc_pi","pi-like ROC curves",200,10,1000,600);
