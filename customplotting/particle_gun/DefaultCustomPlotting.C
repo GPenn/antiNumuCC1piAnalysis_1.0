@@ -3427,7 +3427,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_purvseff_mulike = new TGraph();
    roc_purvseff_mulike->SetTitle("BDT #mu-like output");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = opt_mulike_sig->Integral(cut,optimisation_nbins+1)/opt_mulike_sig->GetEntries();
       Float_t purity = opt_mulike_sig->Integral(cut,optimisation_nbins+1)/(opt_mulike_sig->Integral(cut,optimisation_nbins+1) + opt_mulike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3439,7 +3439,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_purvseff_pilike = new TGraph();
    roc_purvseff_pilike->SetTitle("BDT #pi-like output");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = opt_pilike_sig->Integral(cut,optimisation_nbins+1)/opt_pilike_sig->GetEntries();
       Float_t purity = opt_pilike_sig->Integral(cut,optimisation_nbins+1)/(opt_pilike_sig->Integral(cut,optimisation_nbins+1) + opt_pilike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3451,7 +3451,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_purvseff_plike = new TGraph();
    roc_purvseff_plike->SetTitle("BDT p-like output");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = opt_plike_sig->Integral(cut,optimisation_nbins+1)/opt_plike_sig->GetEntries();
       Float_t purity = opt_plike_sig->Integral(cut,optimisation_nbins+1)/(opt_plike_sig->Integral(cut,optimisation_nbins+1) + opt_plike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3463,7 +3463,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_purvseff_elike = new TGraph();
    roc_purvseff_elike->SetTitle("BDT e-like output");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = opt_elike_sig->Integral(cut,optimisation_nbins+1)/opt_elike_sig->GetEntries();
       Float_t purity = opt_elike_sig->Integral(cut,optimisation_nbins+1)/(opt_elike_sig->Integral(cut,optimisation_nbins+1) + opt_elike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3475,7 +3475,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_tpc_purvseff_mulike = new TGraph();
    roc_tpc_purvseff_mulike->SetTitle("TPC #mu likelihood");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = tpc_mulike_sig->Integral(cut,optimisation_nbins+1)/tpc_mulike_sig->GetEntries();
       Float_t purity = tpc_mulike_sig->Integral(cut,optimisation_nbins+1)/(tpc_mulike_sig->Integral(cut,optimisation_nbins+1) + tpc_mulike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3490,7 +3490,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_tpc_purvseff_pilike = new TGraph();
    roc_tpc_purvseff_pilike->SetTitle("TPC #pi likelihood");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = tpc_pilike_sig->Integral(cut,optimisation_nbins+1)/tpc_pilike_sig->GetEntries();
       Float_t purity = tpc_pilike_sig->Integral(cut,optimisation_nbins+1)/(tpc_pilike_sig->Integral(cut,optimisation_nbins+1) + tpc_pilike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3505,7 +3505,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_tpc_purvseff_plike = new TGraph();
    roc_tpc_purvseff_plike->SetTitle("TPC p likelihood");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = tpc_plike_sig->Integral(cut,optimisation_nbins+1)/tpc_plike_sig->GetEntries();
       Float_t purity = tpc_plike_sig->Integral(cut,optimisation_nbins+1)/(tpc_plike_sig->Integral(cut,optimisation_nbins+1) + tpc_plike_bkg->Integral(cut,optimisation_nbins+1));
@@ -3522,7 +3522,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_tpc_purvseff_elike = new TGraph();
    roc_tpc_purvseff_elike->SetTitle("TPC e likelihood");
    
-   for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = tpc_elike_sig->Integral(cut,optimisation_nbins+1)/tpc_elike_sig->GetEntries();
       Float_t purity = tpc_elike_sig->Integral(cut,optimisation_nbins+1)/(tpc_elike_sig->Integral(cut,optimisation_nbins+1) + tpc_elike_bkg->Integral(cut,optimisation_nbins+1));
