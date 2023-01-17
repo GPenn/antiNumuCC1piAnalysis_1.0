@@ -3542,15 +3542,24 @@ void DefaultCustomPlotting::Loop()
    
    TCanvas* canvas_roc_pi = new TCanvas("canvas_roc_pi","pi-like ROC curves",200,10,1000,600);
    roc_purvseff_pilike->Draw();
+   roc_purvseff_pilike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_pilike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_pilike->Draw();
    roc_tpc_purvseff_pilike->Draw("same");
    canvas_roc_pi->Write();
    
    TCanvas* canvas_roc_p = new TCanvas("canvas_roc_p","p-like ROC curves",200,10,1000,600);
    roc_purvseff_plike->Draw();
+   roc_purvseff_plike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_plike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_plike->Draw();
    roc_tpc_purvseff_plike->Draw("same");
    canvas_roc_p->Write();
    
    TCanvas* canvas_roc_e = new TCanvas("canvas_roc_e","e-like ROC curves",200,10,1000,600);
+   roc_purvseff_elike->Draw();
+   roc_purvseff_elike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_elike->GetYaxis()->SetLimits(0.0,1.1);
    roc_purvseff_elike->Draw();
    roc_tpc_purvseff_elike->Draw("same");
    canvas_roc_e->Write();
