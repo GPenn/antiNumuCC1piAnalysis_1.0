@@ -3572,7 +3572,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
-   roc_antinumu_primary_pid->Draw("same");
+   roc_antinumu_primary_pid->Draw("P same");
    canvas_roc_mu->BuildLegend();
    canvas_roc_mu->Write();
    
