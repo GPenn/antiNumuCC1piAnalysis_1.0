@@ -541,6 +541,9 @@ void DefaultCustomPlotting::Loop()
    TH1F *opt_plike_bkg_test5 = new TH1F("opt_plike_bkg_test5", "Proton-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_sig_test5 = new TH1F("opt_elike_sig_test5", "Electron-like (true positrons)", optimisation_nbins, 0.0, 1.0);
    TH1F *opt_elike_bkg_test5 = new TH1F("opt_elike_bkg_test5", "Electron-like (backgrounds)", optimisation_nbins, 0.0, 1.0);
+   
+   Int_t antinumu_primary_pid_sig = 0;
+   Int_t antinumu_primary_pid_bkg = 0;
 
    /*Int_t correlation_nbins = 40;
    
@@ -1027,7 +1030,6 @@ void DefaultCustomPlotting::Loop()
             tpc_pilike_bkg->Fill(selmu_tpc_like_pi);
             tpc_plike_bkg->Fill(selmu_tpc_like_p);
             tpc_elike_bkg->Fill(selmu_tpc_like_e);
-            
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
@@ -1231,6 +1233,24 @@ void DefaultCustomPlotting::Loop()
          //corr_pilikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_pi-selmu_bdt_pid_unweighted_pi);
          //corr_plikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_p-selmu_bdt_pid_unweighted_p);
          //corr_elikediff_recomom->Fill(selmu_mom[0], selmu_bdt_pid_e-selmu_bdt_pid_unweighted_e);
+         
+         // Fill variables for existing PID (ROC points)
+      
+         if (((selmu_tpc_like_mu+selmu_tpc_like_pi)/(1-selmu_tpc_like_p) > 0.9 || selmu_mom[0] > 500.0 ) && (selmu_tpc_like_mu>0.1))
+         {
+            if ((particle == -13) && (particle_pg == -13)) {antinumu_primary_pid_sig++;}
+            if ((particle == 211) && (particle_pg == 211)) {antinumu_primary_pid_bkg++;}
+            if ((particle == 2212) && (particle_pg == 2212)) {antinumu_primary_pid_bkg++;}
+            if ((particle == -11) && (particle_pg == -11)) {antinumu_primary_pid_bkg++;}
+
+            /*if (selmu_ecal_bestseg_EbyL < 0.8)
+            {
+               if (particle == -13) {musel_impsel_nAntimu++; musel_impsel_recomom_antimu->Fill(selmu_mom[0]);}
+               if (particle == 211) {musel_impsel_nPiplus++; musel_impsel_recomom_piplus->Fill(selmu_mom[0]);}
+               if (particle == 2212) {musel_impsel_nProton++; musel_impsel_recomom_proton->Fill(selmu_mom[0]);}
+               if (particle == -11) {musel_impsel_nPositron++; musel_impsel_recomom_positron->Fill(selmu_mom[0]);}
+            }*/
+         }
       }
       
       
@@ -1269,6 +1289,7 @@ void DefaultCustomPlotting::Loop()
          if (particle == 2212) {esel_nProton++; esel_bkg_recomom->Fill(selmu_mom[0]);}
          if (particle == -11) {esel_nPositron++; esel_sig_recomom->Fill(selmu_mom[0]);}
       }*/
+      
       
       // Code to keep track of completion percentage and estimate time remaining:
          
@@ -3534,6 +3555,13 @@ void DefaultCustomPlotting::Loop()
    tpc_elike_sig->Write();
    tpc_elike_bkg->Write();
    
+   TGraph* roc_antinumu_primary_pid = new TGraph();
+   roc_antinumu_primary_pid->SetTitle("#bar{#nu}_#mu selection primary PID");
+   roc_antinumu_primary_pid->SetPoint(0, antinumu_primary_pid_sig/presel_nAntimu, antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
+   roc_antinumu_primary_pid->SetMarkerStyle(20);
+   roc_antinumu_primary_pid->SetMarkerSize(1.);
+   roc_antinumu_primary_pid->SetMarkerColor(kBlue);
+   
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
    roc_purvseff_mulike->GetXaxis()->SetLimits(0.0,1.1);
@@ -3542,6 +3570,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
+   roc_antinumu_primary_pid->Draw("AP same");
    canvas_roc_mu->BuildLegend();
    canvas_roc_mu->Write();
    
