@@ -3484,6 +3484,8 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_mulike->SetLineColor( kBlue);
    roc_tpc_purvseff_mulike->SetLineStyle( kDashed);
    roc_tpc_purvseff_mulike->Write();
+   tpc_mulike_sig->Write();
+   tpc_mulike_bkg->Write();
    
    TGraph* roc_tpc_purvseff_pilike = new TGraph();
    roc_tpc_purvseff_pilike->SetTitle("TPC #pi likelihood");
@@ -3497,6 +3499,8 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_pilike->SetLineColor( kRed);
    roc_tpc_purvseff_pilike->SetLineStyle( kDashed);
    roc_tpc_purvseff_pilike->Write();
+   tpc_pilike_sig->Write();
+   tpc_pilike_bkg->Write();
    
    TGraph* roc_tpc_purvseff_plike = new TGraph();
    roc_tpc_purvseff_plike->SetTitle("TPC p likelihood");
