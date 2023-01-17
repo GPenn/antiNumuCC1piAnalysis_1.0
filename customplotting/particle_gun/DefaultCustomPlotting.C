@@ -3557,7 +3557,7 @@ void DefaultCustomPlotting::Loop()
    
    TGraph* roc_antinumu_primary_pid = new TGraph();
    roc_antinumu_primary_pid->SetTitle("#bar{#nu}_#mu selection primary PID");
-   roc_antinumu_primary_pid->SetPoint(0, antinumu_primary_pid_sig/presel_nAntimu, antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
+   roc_antinumu_primary_pid->SetPoint(0, (Float_t) antinumu_primary_pid_sig/presel_nAntimu, (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
    roc_antinumu_primary_pid->SetMarkerStyle(20);
    roc_antinumu_primary_pid->SetMarkerSize(1.);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
@@ -3570,7 +3570,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
-   roc_antinumu_primary_pid->Draw("AP same");
+   roc_antinumu_primary_pid->Draw("same");
    canvas_roc_mu->BuildLegend();
    canvas_roc_mu->Write();
    
