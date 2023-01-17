@@ -3517,7 +3517,7 @@ void DefaultCustomPlotting::Loop()
    tpc_plike_sig->Write();
    tpc_plike_bkg->Write();
    std::cout << "DEBUG: tpc_plike_sig->GetEntries() = " << tpc_plike_sig->GetEntries() << std::endl;
-   std::cout << "DEBUG: tpc_plike_sig->Integral(-1,optimisation_nbins) = " << tpc_plike_sig->Integral(-1,optimisation_nbins) << std::endl;
+   std::cout << "DEBUG: tpc_plike_sig->Integral(-1,optimisation_nbins+1) = " << tpc_plike_sig->Integral(-1,optimisation_nbins+1) << std::endl;
    
    TGraph* roc_tpc_purvseff_elike = new TGraph();
    roc_tpc_purvseff_elike->SetTitle("TPC e likelihood");
