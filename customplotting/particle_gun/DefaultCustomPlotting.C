@@ -3501,7 +3501,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_tpc_purvseff_plike = new TGraph();
    roc_tpc_purvseff_plike->SetTitle("TPC p likelihood");
    
-   for (Int_t cut = ; cut <= optimisation_nbins; cut++)
+   for (Int_t cut = 0; cut <= optimisation_nbins; cut++)
    {
       Float_t efficiency = tpc_plike_sig->Integral(cut-1,optimisation_nbins)/tpc_plike_sig->GetEntries();
       Float_t purity = tpc_plike_sig->Integral(cut-1,optimisation_nbins)/(tpc_plike_sig->Integral(cut-1,optimisation_nbins) + tpc_plike_bkg->Integral(cut-1,optimisation_nbins));
