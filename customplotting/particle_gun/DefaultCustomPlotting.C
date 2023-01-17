@@ -3429,8 +3429,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = opt_mulike_sig->Integral(cut,optimisation_nbins)/opt_mulike_sig->GetEntries();
-      Float_t purity = opt_mulike_sig->Integral(cut,optimisation_nbins)/(opt_mulike_sig->Integral(cut,optimisation_nbins) + opt_mulike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = opt_mulike_sig->Integral(cut,optimisation_nbins+1)/opt_mulike_sig->GetEntries();
+      Float_t purity = opt_mulike_sig->Integral(cut,optimisation_nbins+1)/(opt_mulike_sig->Integral(cut,optimisation_nbins+1) + opt_mulike_bkg->Integral(cut,optimisation_nbins+1));
       roc_purvseff_mulike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_mulike->SetLineColor( kBlue);
@@ -3441,8 +3441,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = opt_pilike_sig->Integral(cut,optimisation_nbins)/opt_pilike_sig->GetEntries();
-      Float_t purity = opt_pilike_sig->Integral(cut,optimisation_nbins)/(opt_pilike_sig->Integral(cut,optimisation_nbins) + opt_pilike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = opt_pilike_sig->Integral(cut,optimisation_nbins+1)/opt_pilike_sig->GetEntries();
+      Float_t purity = opt_pilike_sig->Integral(cut,optimisation_nbins+1)/(opt_pilike_sig->Integral(cut,optimisation_nbins+1) + opt_pilike_bkg->Integral(cut,optimisation_nbins+1));
       roc_purvseff_pilike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_pilike->SetLineColor( kRed);
@@ -3453,8 +3453,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = opt_plike_sig->Integral(cut,optimisation_nbins)/opt_plike_sig->GetEntries();
-      Float_t purity = opt_plike_sig->Integral(cut,optimisation_nbins)/(opt_plike_sig->Integral(cut,optimisation_nbins) + opt_plike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = opt_plike_sig->Integral(cut,optimisation_nbins+1)/opt_plike_sig->GetEntries();
+      Float_t purity = opt_plike_sig->Integral(cut,optimisation_nbins+1)/(opt_plike_sig->Integral(cut,optimisation_nbins+1) + opt_plike_bkg->Integral(cut,optimisation_nbins+1));
       roc_purvseff_plike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_plike->SetLineColor( kGreen);
@@ -3465,8 +3465,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = opt_elike_sig->Integral(cut,optimisation_nbins)/opt_elike_sig->GetEntries();
-      Float_t purity = opt_elike_sig->Integral(cut,optimisation_nbins)/(opt_elike_sig->Integral(cut,optimisation_nbins) + opt_elike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = opt_elike_sig->Integral(cut,optimisation_nbins+1)/opt_elike_sig->GetEntries();
+      Float_t purity = opt_elike_sig->Integral(cut,optimisation_nbins+1)/(opt_elike_sig->Integral(cut,optimisation_nbins+1) + opt_elike_bkg->Integral(cut,optimisation_nbins+1));
       roc_purvseff_elike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_elike->SetLineColor( kMagenta);
@@ -3477,8 +3477,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = tpc_mulike_sig->Integral(cut,optimisation_nbins)/tpc_mulike_sig->GetEntries();
-      Float_t purity = tpc_mulike_sig->Integral(cut,optimisation_nbins)/(tpc_mulike_sig->Integral(cut,optimisation_nbins) + tpc_mulike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = tpc_mulike_sig->Integral(cut,optimisation_nbins+1)/tpc_mulike_sig->GetEntries();
+      Float_t purity = tpc_mulike_sig->Integral(cut,optimisation_nbins+1)/(tpc_mulike_sig->Integral(cut,optimisation_nbins+1) + tpc_mulike_bkg->Integral(cut,optimisation_nbins+1));
       roc_tpc_purvseff_mulike->SetPoint(cut, efficiency, purity);
    }
    roc_tpc_purvseff_mulike->SetLineColor( kBlue);
@@ -3492,8 +3492,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = tpc_pilike_sig->Integral(cut,optimisation_nbins)/tpc_pilike_sig->GetEntries();
-      Float_t purity = tpc_pilike_sig->Integral(cut,optimisation_nbins)/(tpc_pilike_sig->Integral(cut,optimisation_nbins) + tpc_pilike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = tpc_pilike_sig->Integral(cut,optimisation_nbins+1)/tpc_pilike_sig->GetEntries();
+      Float_t purity = tpc_pilike_sig->Integral(cut,optimisation_nbins+1)/(tpc_pilike_sig->Integral(cut,optimisation_nbins+1) + tpc_pilike_bkg->Integral(cut,optimisation_nbins+1));
       roc_tpc_purvseff_pilike->SetPoint(cut, efficiency, purity);
    }
    roc_tpc_purvseff_pilike->SetLineColor( kRed);
@@ -3507,8 +3507,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = tpc_plike_sig->Integral(cut,optimisation_nbins)/tpc_plike_sig->GetEntries();
-      Float_t purity = tpc_plike_sig->Integral(cut,optimisation_nbins)/(tpc_plike_sig->Integral(cut,optimisation_nbins) + tpc_plike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = tpc_plike_sig->Integral(cut,optimisation_nbins+1)/tpc_plike_sig->GetEntries();
+      Float_t purity = tpc_plike_sig->Integral(cut,optimisation_nbins+1)/(tpc_plike_sig->Integral(cut,optimisation_nbins+1) + tpc_plike_bkg->Integral(cut,optimisation_nbins+1));
       roc_tpc_purvseff_plike->SetPoint(cut, efficiency, purity);
    }
    roc_tpc_purvseff_plike->SetLineColor( kGreen);
@@ -3524,8 +3524,8 @@ void DefaultCustomPlotting::Loop()
    
    for (Int_t cut = 0; cut <= optimisation_nbins+1; cut++)
    {
-      Float_t efficiency = tpc_elike_sig->Integral(cut,optimisation_nbins)/tpc_elike_sig->GetEntries();
-      Float_t purity = tpc_elike_sig->Integral(cut,optimisation_nbins)/(tpc_elike_sig->Integral(cut,optimisation_nbins) + tpc_elike_bkg->Integral(cut,optimisation_nbins));
+      Float_t efficiency = tpc_elike_sig->Integral(cut,optimisation_nbins+1)/tpc_elike_sig->GetEntries();
+      Float_t purity = tpc_elike_sig->Integral(cut,optimisation_nbins+1)/(tpc_elike_sig->Integral(cut,optimisation_nbins+1) + tpc_elike_bkg->Integral(cut,optimisation_nbins+1));
       roc_tpc_purvseff_elike->SetPoint(cut, efficiency, purity);
    }
    roc_tpc_purvseff_elike->SetLineColor( kMagenta);
