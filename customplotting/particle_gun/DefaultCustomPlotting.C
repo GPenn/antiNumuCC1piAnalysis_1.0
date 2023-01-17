@@ -3425,7 +3425,7 @@ void DefaultCustomPlotting::Loop()
    // ROC curves
    
    TGraph* roc_purvseff_mulike = new TGraph();
-   roc_purvseff_mulike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_purvseff_mulike->SetTitle("BDT #mu-like output");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3437,7 +3437,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->Write();
    
    TGraph* roc_purvseff_pilike = new TGraph();
-   roc_purvseff_pilike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_purvseff_pilike->SetTitle("BDT #pi-like output");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3449,7 +3449,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_pilike->Write();
    
    TGraph* roc_purvseff_plike = new TGraph();
-   roc_purvseff_plike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_purvseff_plike->SetTitle("BDT p-like output");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3461,7 +3461,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_plike->Write();
    
    TGraph* roc_purvseff_elike = new TGraph();
-   roc_purvseff_elike->SetTitle(" ;Antimuon selection efficiency;Antimuon selection purity;");
+   roc_purvseff_elike->SetTitle("BDT e-like output");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3473,7 +3473,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->Write();
    
    TGraph* roc_tpc_purvseff_mulike = new TGraph();
-   roc_tpc_purvseff_mulike->SetTitle(" ;Efficiency;Purity;");
+   roc_tpc_purvseff_mulike->SetTitle("TPC #mu likelihood");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3486,7 +3486,7 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_mulike->Write();
    
    TGraph* roc_tpc_purvseff_pilike = new TGraph();
-   roc_tpc_purvseff_pilike->SetTitle(" ;Efficiency;Purity;");
+   roc_tpc_purvseff_pilike->SetTitle("TPC #pi likelihood");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3499,7 +3499,7 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_pilike->Write();
    
    TGraph* roc_tpc_purvseff_plike = new TGraph();
-   roc_tpc_purvseff_plike->SetTitle(" ;Efficiency;Purity;");
+   roc_tpc_purvseff_plike->SetTitle("TPC p likelihood");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3512,7 +3512,7 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_plike->Write();
    
    TGraph* roc_tpc_purvseff_elike = new TGraph();
-   roc_tpc_purvseff_elike->SetTitle(" ;Efficiency;Purity;");
+   roc_tpc_purvseff_elike->SetTitle("TPC e likelihood");
    
    for (Int_t cut = 0; cut < optimisation_nbins; cut++)
    {
@@ -3524,45 +3524,60 @@ void DefaultCustomPlotting::Loop()
    roc_tpc_purvseff_elike->SetLineStyle( kDashed);
    roc_tpc_purvseff_elike->Write();
    
-   TCanvas* canvas_roc_bdtall = new TCanvas("canvas_roc_bdtall","BDT output ROC curves",200,10,1000,600);
-   roc_purvseff_mulike->Draw();
-   roc_purvseff_pilike->Draw("same");
-   roc_purvseff_plike->Draw("same");
-   roc_purvseff_elike->Draw("same");
-   
-   canvas_roc_bdtall->Write();
-   
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
    roc_purvseff_mulike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_mulike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_mulike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_mulike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
+   canvas_roc_mu->BuildLegend();
    canvas_roc_mu->Write();
    
    TCanvas* canvas_roc_pi = new TCanvas("canvas_roc_pi","pi-like ROC curves",200,10,1000,600);
    roc_purvseff_pilike->Draw();
    roc_purvseff_pilike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_pilike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_pilike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_pilike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_pilike->Draw();
    roc_tpc_purvseff_pilike->Draw("same");
+   canvas_roc_pi->BuildLegend();
    canvas_roc_pi->Write();
    
    TCanvas* canvas_roc_p = new TCanvas("canvas_roc_p","p-like ROC curves",200,10,1000,600);
    roc_purvseff_plike->Draw();
    roc_purvseff_plike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_plike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_plike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_plike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_plike->Draw();
    roc_tpc_purvseff_plike->Draw("same");
+   canvas_roc_p->BuildLegend();
    canvas_roc_p->Write();
    
    TCanvas* canvas_roc_e = new TCanvas("canvas_roc_e","e-like ROC curves",200,10,1000,600);
    roc_purvseff_elike->Draw();
    roc_purvseff_elike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_elike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_elike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_elike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_elike->Draw();
    roc_tpc_purvseff_elike->Draw("same");
+   canvas_roc_e->BuildLegend();
    canvas_roc_e->Write();
+   
+   TCanvas* canvas_roc_bdtall = new TCanvas("canvas_roc_bdtall","BDT output ROC curves",200,10,1000,600);
+   roc_purvseff_mulike->Draw();
+   roc_purvseff_pilike->Draw("same");
+   roc_purvseff_plike->Draw("same");
+   roc_purvseff_elike->Draw("same");
+   canvas_roc_bdtall->BuildLegend();
+   canvas_roc_bdtall->Write();
+   
+   
+   
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
