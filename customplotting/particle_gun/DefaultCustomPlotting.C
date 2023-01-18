@@ -544,6 +544,10 @@ void DefaultCustomPlotting::Loop()
    
    Int_t antinumu_primary_pid_sig = 0;
    Int_t antinumu_primary_pid_bkg = 0;
+   Int_t antinumu_improved_pid_sig = 0;
+   Int_t antinumu_improved_pid_bkg = 0;
+   Int_t antinue_primary_pid_sig = 0;
+   Int_t antinue_primary_pid_bkg = 0;
 
    /*Int_t correlation_nbins = 40;
    
@@ -1243,13 +1247,32 @@ void DefaultCustomPlotting::Loop()
             if ((particle == 2212) && (particle_pg == 2212)) {antinumu_primary_pid_bkg++;}
             if ((particle == -11) && (particle_pg == -11)) {antinumu_primary_pid_bkg++;}
 
-            /*if (selmu_ecal_bestseg_EbyL < 0.8)
+            if (selmu_ecal_bestseg_EbyL < 0.8)
             {
-               if (particle == -13) {musel_impsel_nAntimu++; musel_impsel_recomom_antimu->Fill(selmu_mom[0]);}
-               if (particle == 211) {musel_impsel_nPiplus++; musel_impsel_recomom_piplus->Fill(selmu_mom[0]);}
-               if (particle == 2212) {musel_impsel_nProton++; musel_impsel_recomom_proton->Fill(selmu_mom[0]);}
-               if (particle == -11) {musel_impsel_nPositron++; musel_impsel_recomom_positron->Fill(selmu_mom[0]);}
-            }*/
+               if ((particle == -13) && (particle_pg == -13)) {antinumu_improved_pid_sig++;}
+               if ((particle == 211) && (particle_pg == 211)) {antinumu_improved_pid_bkg++;}
+               if ((particle == 2212) && (particle_pg == 2212)) {antinumu_improved_pid_bkg++;}
+               if ((particle == -11) && (particle_pg == -11)) {antinumu_improved_pid_bkg++;}
+            }
+         }
+         
+         if ( (selmu_tpc_pullele[0] > -2.0) && (selmu_tpc_pullele[0] < 2.5) ) // Relaxed TPC e pull cut
+         {
+            if ( ((selmu_necals==0) && (selmu_tpc_pullele[0]>-1.0) && (selmu_tpc_pullele[0]<2.0) // No ECal segment
+                 && !((selmu_tpc_pullmu[0]>-2.5) && (selmu_tpc_pullmu[0]<2.5)) && !((selmu_tpc_pullpi[0]>-2.5) && (selmu_tpc_pullpi[0]<2.5)))
+              || ((selmu_necals>0) && ((selmu_mom[0]>1000 && selmu_ecal_EMenergy[0]>1100) || (selmu_mom[0]<1000 && selmu_ecal_mipem[0]>0))) )  // ECal segment
+            {
+               if ( (selmu_mom[0]<600) || (selmu_necals>0) || (selmu_tpc_pullele[1]>-3.0 && selmu_tpc_pullele[1]<3.0)  ) // Proton TPC3 PID
+               {
+                  if ( (selmu_mom[0]<600) || (selmu_necals==0) || (selmu_ecal_EMenergy[0]/selmu_mom[0]>0.65 && selmu_ecal_mipem[0]<0) ) // Proton ECal PID
+                  {
+                     if ((particle == -13) && (particle_pg == -13)) {antinue_primary_pid_bkg++;}
+                     if ((particle == 211) && (particle_pg == 211)) {antinue_primary_pid_bkg++;}
+                     if ((particle == 2212) && (particle_pg == 2212)) {antinue_primary_pid_bkg++;}
+                     if ((particle == -11) && (particle_pg == -11)) {antinue_primary_pid_sig++;}
+                  }
+               }
+            }
          }
       }
       
@@ -3558,11 +3581,29 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_antinumu_primary_pid = new TGraph();
    roc_antinumu_primary_pid->SetTitle("#bar{#nu}_#mu selection primary PID");
    roc_antinumu_primary_pid->SetPoint(0, (Float_t) antinumu_primary_pid_sig/presel_nAntimu, (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
-   roc_antinumu_primary_pid->SetMarkerStyle(20);
+   roc_antinumu_primary_pid->SetMarkerStyle(106);
    roc_antinumu_primary_pid->SetMarkerSize(1.);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
    std::cout << "DEBUG: antinumu primary PID efficiency = " << (Float_t) antinumu_primary_pid_sig/presel_nAntimu << std::endl;
    std::cout << "DEBUG: antinumu primary PID purity = " << (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg) << std::endl;
+   
+   TGraph* roc_antinumu_improved_pid = new TGraph();
+   roc_antinumu_improved_pid->SetTitle("#bar{#nu}_#mu selection primary PID + ECal cut");
+   roc_antinumu_improved_pid->SetPoint(0, (Float_t) antinumu_improved_pid_sig/presel_nAntimu, (Float_t) antinumu_improved_pid_sig/(antinumu_improved_pid_sig+antinumu_improved_pid_bkg));
+   roc_antinumu_improved_pid->SetMarkerStyle(29);
+   roc_antinumu_improved_pid->SetMarkerSize(1.);
+   roc_antinumu_improved_pid->SetMarkerColor(kBlue);
+   std::cout << "DEBUG: antinumu improved PID efficiency = " << (Float_t) antinumu_improved_pid_sig/presel_nAntimu << std::endl;
+   std::cout << "DEBUG: antinumu improved PID purity = " << (Float_t) antinumu_improved_pid_sig/(antinumu_improved_pid_sig+antinumu_improved_pid_bkg) << std::endl;
+   
+   TGraph* roc_antinue_primary_pid = new TGraph();
+   roc_antinue_primary_pid->SetTitle("#bar{#nu}_e selection primary PID");
+   roc_antinue_primary_pid->SetPoint(0, (Float_t) antinue_primary_pid_sig/presel_nPositron, (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg));
+   roc_antinue_primary_pid->SetMarkerStyle(106);
+   roc_antinue_primary_pid->SetMarkerSize(1.);
+   roc_antinue_primary_pid->SetMarkerColor(kBlue);
+   std::cout << "DEBUG: antinue primary PID efficiency = " << (Float_t) antinue_primary_pid_sig/presel_nPositron << std::endl;
+   std::cout << "DEBUG: antinue primary PID purity = " << (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg) << std::endl;
    
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
@@ -3573,6 +3614,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
    roc_antinumu_primary_pid->Draw("P same");
+   roc_antinumu_improved_pid->Draw("P same");
    canvas_roc_mu->BuildLegend();
    canvas_roc_mu->Write();
    
@@ -3606,6 +3648,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->GetYaxis()->SetTitle("Purity");
    roc_purvseff_elike->Draw();
    roc_tpc_purvseff_elike->Draw("same");
+   roc_antinue_primary_pid->Draw("P same");
    canvas_roc_e->BuildLegend();
    canvas_roc_e->Write();
    
