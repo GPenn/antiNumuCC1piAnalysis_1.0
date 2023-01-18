@@ -3603,7 +3603,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_antinumu_primary_pid = new TGraph();
    roc_antinumu_primary_pid->SetTitle("#bar{#nu}_{#mu} selection primary PID");
    roc_antinumu_primary_pid->SetPoint(0, (Float_t) antinumu_primary_pid_sig/presel_nAntimu, (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
-   roc_antinumu_primary_pid->SetMarkerStyle(5);
+   roc_antinumu_primary_pid->SetMarkerStyle(22);
    roc_antinumu_primary_pid->SetMarkerSize(1.7);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
    roc_antinumu_primary_pid->SetFillColor( kWhite);
