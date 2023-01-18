@@ -56,7 +56,7 @@ for i in range(0, nProton):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 
 
