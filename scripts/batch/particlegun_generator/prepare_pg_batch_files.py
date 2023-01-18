@@ -97,7 +97,7 @@ for i in range(0, nAntimu):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 print "Generating proton config files and job scripts..."
 
@@ -133,7 +133,7 @@ for i in range(0, nProton):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 print "Generating piplus config files and job scripts..."
 
@@ -169,7 +169,7 @@ for i in range(0, nPiplus):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 print "Generating positron config files and job scripts..."
 
@@ -205,7 +205,7 @@ for i in range(0, nPositron):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 print "Generating mu config files and job scripts..."
 
@@ -241,7 +241,7 @@ for i in range(0, nMu):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 print "Generating piminus config files and job scripts..."
 
@@ -277,7 +277,7 @@ for i in range(0, nPiminus):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 print "Generating electron config files and job scripts..."
 
@@ -313,7 +313,7 @@ for i in range(0, nElectron):
     shfile.write("runND280 -c " + cfgname + "\n")
     shfile.close()
 
-    launchscriptfile.write("sbatch ../../" + shname + "\n")
+    launchscriptfile.write("sbatch " + shname + "\n")
 
 launchscriptfile.write("cd ../..\n")
 
