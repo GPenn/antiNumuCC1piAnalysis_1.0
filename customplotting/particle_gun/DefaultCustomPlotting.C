@@ -3478,6 +3478,7 @@ void DefaultCustomPlotting::Loop()
       roc_purvseff_mulike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_mulike->SetLineColor( kBlue);
+   roc_purvseff_mulike->SetFillColor( kWhite);
    roc_purvseff_mulike->Write();
    
    TGraph* roc_purvseff_pilike = new TGraph();
@@ -3490,6 +3491,7 @@ void DefaultCustomPlotting::Loop()
       roc_purvseff_pilike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_pilike->SetLineColor( kRed);
+   roc_purvseff_pilike->SetFillColor( kWhite);
    roc_purvseff_pilike->Write();
    
    TGraph* roc_purvseff_plike = new TGraph();
@@ -3502,6 +3504,7 @@ void DefaultCustomPlotting::Loop()
       roc_purvseff_plike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_plike->SetLineColor( kGreen);
+   roc_purvseff_plike->SetFillColor( kWhite);
    roc_purvseff_plike->Write();
    
    TGraph* roc_purvseff_elike = new TGraph();
@@ -3514,6 +3517,7 @@ void DefaultCustomPlotting::Loop()
       roc_purvseff_elike->SetPoint(cut, efficiency, purity);
    }
    roc_purvseff_elike->SetLineColor( kMagenta);
+   roc_purvseff_elike->SetFillColor( kWhite);
    roc_purvseff_elike->Write();
    
    TGraph* roc_tpc_purvseff_mulike = new TGraph();
@@ -3527,6 +3531,7 @@ void DefaultCustomPlotting::Loop()
    }
    roc_tpc_purvseff_mulike->SetLineColor( kBlue);
    roc_tpc_purvseff_mulike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_mulike->SetFillColor( kWhite);
    roc_tpc_purvseff_mulike->Write();
    tpc_mulike_sig->Write();
    tpc_mulike_bkg->Write();
@@ -3542,6 +3547,7 @@ void DefaultCustomPlotting::Loop()
    }
    roc_tpc_purvseff_pilike->SetLineColor( kRed);
    roc_tpc_purvseff_pilike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_pilike->SetFillColor( kWhite);
    roc_tpc_purvseff_pilike->Write();
    tpc_pilike_sig->Write();
    tpc_pilike_bkg->Write();
@@ -3557,6 +3563,7 @@ void DefaultCustomPlotting::Loop()
    }
    roc_tpc_purvseff_plike->SetLineColor( kGreen);
    roc_tpc_purvseff_plike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_plike->SetFillColor( kWhite);
    roc_tpc_purvseff_plike->Write();
    tpc_plike_sig->Write();
    tpc_plike_bkg->Write();
@@ -3574,6 +3581,7 @@ void DefaultCustomPlotting::Loop()
    }
    roc_tpc_purvseff_elike->SetLineColor( kMagenta);
    roc_tpc_purvseff_elike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_elike->SetFillColor( kWhite);
    roc_tpc_purvseff_elike->Write();
    tpc_elike_sig->Write();
    tpc_elike_bkg->Write();
@@ -3581,9 +3589,10 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_antinumu_primary_pid = new TGraph();
    roc_antinumu_primary_pid->SetTitle("#bar{#nu}_#mu selection primary PID");
    roc_antinumu_primary_pid->SetPoint(0, (Float_t) antinumu_primary_pid_sig/presel_nAntimu, (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
-   roc_antinumu_primary_pid->SetMarkerStyle(20);
-   roc_antinumu_primary_pid->SetMarkerSize(1.);
+   roc_antinumu_primary_pid->SetMarkerStyle(5);
+   roc_antinumu_primary_pid->SetMarkerSize(2.);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
+   roc_antinumu_primary_pid->SetFillColor( kWhite);
    std::cout << "DEBUG: antinumu primary PID efficiency = " << (Float_t) antinumu_primary_pid_sig/presel_nAntimu << std::endl;
    std::cout << "DEBUG: antinumu primary PID purity = " << (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg) << std::endl;
    
@@ -3591,17 +3600,19 @@ void DefaultCustomPlotting::Loop()
    roc_antinumu_improved_pid->SetTitle("#bar{#nu}_#mu selection primary PID + ECal cut");
    roc_antinumu_improved_pid->SetPoint(0, (Float_t) antinumu_improved_pid_sig/presel_nAntimu, (Float_t) antinumu_improved_pid_sig/(antinumu_improved_pid_sig+antinumu_improved_pid_bkg));
    roc_antinumu_improved_pid->SetMarkerStyle(29);
-   roc_antinumu_improved_pid->SetMarkerSize(1.);
+   roc_antinumu_improved_pid->SetMarkerSize(2.);
    roc_antinumu_improved_pid->SetMarkerColor(kBlue);
+   roc_antinumu_improved_pid->SetFillColor( kWhite);
    std::cout << "DEBUG: antinumu improved PID efficiency = " << (Float_t) antinumu_improved_pid_sig/presel_nAntimu << std::endl;
    std::cout << "DEBUG: antinumu improved PID purity = " << (Float_t) antinumu_improved_pid_sig/(antinumu_improved_pid_sig+antinumu_improved_pid_bkg) << std::endl;
    
    TGraph* roc_antinue_primary_pid = new TGraph();
    roc_antinue_primary_pid->SetTitle("#bar{#nu}_e selection primary PID");
    roc_antinue_primary_pid->SetPoint(0, (Float_t) antinue_primary_pid_sig/presel_nPositron, (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg));
-   roc_antinue_primary_pid->SetMarkerStyle(20);
-   roc_antinue_primary_pid->SetMarkerSize(1.);
+   roc_antinue_primary_pid->SetMarkerStyle(5);
+   roc_antinue_primary_pid->SetMarkerSize(2.);
    roc_antinue_primary_pid->SetMarkerColor(kMagenta);
+   roc_antinue_primary_pid->SetFillColor( kWhite);
    std::cout << "DEBUG: antinue primary PID efficiency = " << (Float_t) antinue_primary_pid_sig/presel_nPositron << std::endl;
    std::cout << "DEBUG: antinue primary PID purity = " << (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg) << std::endl;
    
