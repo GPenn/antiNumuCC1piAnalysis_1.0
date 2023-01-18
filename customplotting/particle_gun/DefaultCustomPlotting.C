@@ -546,6 +546,10 @@ void DefaultCustomPlotting::Loop()
    Int_t antinumu_primary_pid_bkg = 0;
    Int_t antinumu_improved_pid_sig = 0;
    Int_t antinumu_improved_pid_bkg = 0;
+   Int_t antinumu_pion_pid_sig = 0;
+   Int_t antinumu_pion_pid_bkg = 0;
+   Int_t antinumu_improved_pion_pid_sig = 0;
+   Int_t antinumu_improved_pion_pid_bkg = 0;
    Int_t antinue_primary_pid_sig = 0;
    Int_t antinue_primary_pid_bkg = 0;
 
@@ -1255,6 +1259,8 @@ void DefaultCustomPlotting::Loop()
                if ((particle == -11) && (particle_pg == -11)) {antinumu_improved_pid_bkg++;}
             }
          }
+         
+         
          
          if ( (selmu_tpc_pullele[0] > -2.0) && (selmu_tpc_pullele[0] < 2.5) ) // Relaxed TPC e pull cut
          {
@@ -3595,22 +3601,22 @@ void DefaultCustomPlotting::Loop()
    tpc_elike_bkg->Write();
    
    TGraph* roc_antinumu_primary_pid = new TGraph();
-   roc_antinumu_primary_pid->SetTitle("#bar{#nu}_#mu selection primary PID");
+   roc_antinumu_primary_pid->SetTitle("#bar{#nu}_{#mu} selection primary PID");
    roc_antinumu_primary_pid->SetPoint(0, (Float_t) antinumu_primary_pid_sig/presel_nAntimu, (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
    roc_antinumu_primary_pid->SetMarkerStyle(5);
-   roc_antinumu_primary_pid->SetMarkerSize(2.);
+   roc_antinumu_primary_pid->SetMarkerSize(1.7);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
    roc_antinumu_primary_pid->SetFillColor( kWhite);
    roc_antinumu_primary_pid->SetLineColor( kWhite);
-   roc_antinumu_primary_pid->SetLineWidth(2);
+   roc_antinumu_primary_pid->SetLineWidth(22);
    std::cout << "DEBUG: antinumu primary PID efficiency = " << (Float_t) antinumu_primary_pid_sig/presel_nAntimu << std::endl;
    std::cout << "DEBUG: antinumu primary PID purity = " << (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg) << std::endl;
    
    TGraph* roc_antinumu_improved_pid = new TGraph();
-   roc_antinumu_improved_pid->SetTitle("#bar{#nu}_#mu selection primary PID + ECal cut");
+   roc_antinumu_improved_pid->SetTitle("#bar{#nu}_{#mu} selection primary PID + ECal cut");
    roc_antinumu_improved_pid->SetPoint(0, (Float_t) antinumu_improved_pid_sig/presel_nAntimu, (Float_t) antinumu_improved_pid_sig/(antinumu_improved_pid_sig+antinumu_improved_pid_bkg));
    roc_antinumu_improved_pid->SetMarkerStyle(29);
-   roc_antinumu_improved_pid->SetMarkerSize(2.);
+   roc_antinumu_improved_pid->SetMarkerSize(1.7);
    roc_antinumu_improved_pid->SetMarkerColor(kBlue);
    roc_antinumu_improved_pid->SetFillColor( kWhite);
    roc_antinumu_improved_pid->SetLineColor( kWhite);
@@ -3619,10 +3625,10 @@ void DefaultCustomPlotting::Loop()
    std::cout << "DEBUG: antinumu improved PID purity = " << (Float_t) antinumu_improved_pid_sig/(antinumu_improved_pid_sig+antinumu_improved_pid_bkg) << std::endl;
    
    TGraph* roc_antinue_primary_pid = new TGraph();
-   roc_antinue_primary_pid->SetTitle("#bar{#nu}_e selection primary PID");
+   roc_antinue_primary_pid->SetTitle("#bar{#nu}_{e} selection primary PID");
    roc_antinue_primary_pid->SetPoint(0, (Float_t) antinue_primary_pid_sig/presel_nPositron, (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg));
-   roc_antinue_primary_pid->SetMarkerStyle(5);
-   roc_antinue_primary_pid->SetMarkerSize(2.);
+   roc_antinue_primary_pid->SetMarkerStyle(22);
+   roc_antinue_primary_pid->SetMarkerSize(1.7);
    roc_antinue_primary_pid->SetMarkerColor(kMagenta);
    roc_antinue_primary_pid->SetFillColor( kWhite);
    roc_antinue_primary_pid->SetLineColor( kWhite);
@@ -3636,6 +3642,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_mulike->GetYaxis()->SetLimits(0.0,1.1);
    roc_purvseff_mulike->GetYaxis()->SetTitle("Purity");
+   roc_purvseff_mulike->GetYaxis()->SetTitleOffset(0.9);
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
    roc_antinumu_primary_pid->Draw("P same");
@@ -3649,6 +3656,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_pilike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_pilike->GetYaxis()->SetLimits(0.0,1.1);
    roc_purvseff_pilike->GetYaxis()->SetTitle("Purity");
+   roc_purvseff_pilike->GetYaxis()->SetTitleOffset(0.9);
    roc_purvseff_pilike->Draw();
    roc_tpc_purvseff_pilike->Draw("same");
    canvas_roc_pi->BuildLegend();
@@ -3660,6 +3668,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_plike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_plike->GetYaxis()->SetLimits(0.0,1.1);
    roc_purvseff_plike->GetYaxis()->SetTitle("Purity");
+   roc_purvseff_plike->GetYaxis()->SetTitleOffset(0.9);
    roc_purvseff_plike->Draw();
    roc_tpc_purvseff_plike->Draw("same");
    canvas_roc_p->BuildLegend();
@@ -3671,6 +3680,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->GetXaxis()->SetTitle("Efficiency");
    roc_purvseff_elike->GetYaxis()->SetLimits(0.0,1.1);
    roc_purvseff_elike->GetYaxis()->SetTitle("Purity");
+   roc_purvseff_elike->GetYaxis()->SetTitleOffset(0.9);
    roc_purvseff_elike->Draw();
    roc_tpc_purvseff_elike->Draw("same");
    roc_antinue_primary_pid->Draw("P same");
