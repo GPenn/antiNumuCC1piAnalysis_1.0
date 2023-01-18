@@ -3581,7 +3581,7 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_antinumu_primary_pid = new TGraph();
    roc_antinumu_primary_pid->SetTitle("#bar{#nu}_#mu selection primary PID");
    roc_antinumu_primary_pid->SetPoint(0, (Float_t) antinumu_primary_pid_sig/presel_nAntimu, (Float_t) antinumu_primary_pid_sig/(antinumu_primary_pid_sig+antinumu_primary_pid_bkg));
-   roc_antinumu_primary_pid->SetMarkerStyle(41);
+   roc_antinumu_primary_pid->SetMarkerStyle(20);
    roc_antinumu_primary_pid->SetMarkerSize(1.);
    roc_antinumu_primary_pid->SetMarkerColor(kBlue);
    std::cout << "DEBUG: antinumu primary PID efficiency = " << (Float_t) antinumu_primary_pid_sig/presel_nAntimu << std::endl;
@@ -3599,9 +3599,9 @@ void DefaultCustomPlotting::Loop()
    TGraph* roc_antinue_primary_pid = new TGraph();
    roc_antinue_primary_pid->SetTitle("#bar{#nu}_e selection primary PID");
    roc_antinue_primary_pid->SetPoint(0, (Float_t) antinue_primary_pid_sig/presel_nPositron, (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg));
-   roc_antinue_primary_pid->SetMarkerStyle(41);
+   roc_antinue_primary_pid->SetMarkerStyle(20);
    roc_antinue_primary_pid->SetMarkerSize(1.);
-   roc_antinue_primary_pid->SetMarkerColor(kBlue);
+   roc_antinue_primary_pid->SetMarkerColor(kMagenta);
    std::cout << "DEBUG: antinue primary PID efficiency = " << (Float_t) antinue_primary_pid_sig/presel_nPositron << std::endl;
    std::cout << "DEBUG: antinue primary PID purity = " << (Float_t) antinue_primary_pid_sig/(antinue_primary_pid_sig+antinue_primary_pid_bkg) << std::endl;
    
