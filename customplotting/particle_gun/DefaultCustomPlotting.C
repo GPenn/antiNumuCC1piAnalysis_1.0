@@ -557,11 +557,13 @@ void DefaultCustomPlotting::Loop()
    ks_test_bdt_mulike_pilike_train->SetTitle("BDT mu-like and pi-like outputs for KS (training sample appropriate cuts)");
    TGraph* ks_test_bdt_plike_elike_train = new TGraph();
    ks_test_bdt_plike_elike_train->SetTitle("BDT p-like and e-like outputs for KS (training sample appropriate cuts)");
+   Int_t ks_test_point_train = 0;
    
    TGraph* ks_test_bdt_mulike_pilike_test = new TGraph();
    ks_test_bdt_mulike_pilike_test->SetTitle("BDT mu-like and pi-like outputs for KS (testing sample appropriate cuts)");
    TGraph* ks_test_bdt_plike_elike_test = new TGraph();
    ks_test_bdt_plike_elike_test->SetTitle("BDT p-like and e-like outputs for KS (testing sample appropriate cuts)");
+   Int_t ks_test_point_test = 0;
 
    /*Int_t correlation_nbins = 40;
    
@@ -656,8 +658,9 @@ void DefaultCustomPlotting::Loop()
          
          if ((particle == -13)&&(particle_pg == -13))
          {
-            ks_test_bdt_mulike_pilike_train->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_train->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_train++;
             
             // Calculate event weight based on reco mom histogram:
             Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
@@ -746,8 +749,9 @@ void DefaultCustomPlotting::Loop()
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
-            ks_test_bdt_mulike_pilike_train->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_train->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_train++;
             
             // Calculate event weight based on reco mom histogram:
             Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
@@ -835,8 +839,9 @@ void DefaultCustomPlotting::Loop()
          }
          else if ((particle == 2212)&&(particle_pg == 2212)&&(selmu_mom[0] > 600.0))
          {
-            ks_test_bdt_mulike_pilike_train->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_train->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_train++;
             
             // Calculate event weight based on reco mom histogram:
             Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
@@ -924,8 +929,9 @@ void DefaultCustomPlotting::Loop()
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
-            ks_test_bdt_mulike_pilike_train->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_train->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_train->SetPoint(ks_test_point_train, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_train++;
             
             Int_t weight_bin = floor(selmu_mom[0]/10) + 1;
             Float_t inv_weight = weighting_hist_positron->GetBinContent(weight_bin);
@@ -1019,8 +1025,9 @@ void DefaultCustomPlotting::Loop()
          
          if ((particle == -13)&&(particle_pg == -13))
          {
-            ks_test_bdt_mulike_pilike_test->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_test->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_test++;
             
             presel_nAntimu++;
             
@@ -1066,8 +1073,9 @@ void DefaultCustomPlotting::Loop()
          }
          else if ((particle == 211)&&(particle_pg == 211))
          {
-            ks_test_bdt_mulike_pilike_test->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_test->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_test++;
             
             presel_nPiplus++;
             
@@ -1113,8 +1121,9 @@ void DefaultCustomPlotting::Loop()
          }
          else if ((particle == 2212)&&(particle_pg == 2212))
          {
-            ks_test_bdt_mulike_pilike_test->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_test->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_test++;
             
             presel_nProton++;
             
@@ -1160,8 +1169,9 @@ void DefaultCustomPlotting::Loop()
          }
          else if ((particle == -11)&&(particle_pg == -11))
          {
-            ks_test_bdt_mulike_pilike_test->AddPoint(selmu_bdt_pid_mu, selmu_bdt_pid_pi);
-            ks_test_bdt_plike_elike_test->AddPoint(selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_bdt_mulike_pilike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_mu, selmu_bdt_pid_pi);
+            ks_test_bdt_plike_elike_test->SetPoint(ks_test_point_test, selmu_bdt_pid_p, selmu_bdt_pid_e);
+            ks_test_point_test++;
             
             presel_nPositron++;
             
