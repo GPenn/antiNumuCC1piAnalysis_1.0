@@ -12,7 +12,7 @@
     
     for (Int_t i=0; i < n_training; i++)
     {
-        training_mulike[i] = ks_test_bdt_mulike_pilike_train->GetPoint(i,training_mulike[i],training_pilike[i]);
+        ks_test_bdt_mulike_pilike_train->GetPoint(i,training_mulike[i],training_pilike[i]);
         std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << std::endl;
     }
 
