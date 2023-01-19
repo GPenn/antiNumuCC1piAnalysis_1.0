@@ -63,7 +63,7 @@
     for (Int_t i=0; i < n_training; i++)
     {
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
-        training_mulike_sorted[training_mulike_ind[i]] = training_mulike[i];
+        training_mulike_sorted[i] = training_mulike[training_mulike_ind[i]];
         std::cout << "DEBUG: training_mulike_sorted[" << i << "] = " << training_mulike_sorted[i] << std::endl;
     }
     std::cout << training_mulike << std::endl;
