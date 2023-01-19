@@ -64,11 +64,17 @@
     {
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
         training_mulike_sorted[i] = training_mulike[training_mulike_ind[i]];
-        std::cout << "DEBUG: training_mulike_sorted[" << i << "] = " << training_mulike_sorted[i] << std::endl;
+        //std::cout << "DEBUG: training_mulike_sorted[" << i << "] = " << training_mulike_sorted[i] << std::endl;
     }
-    std::cout << training_mulike << std::endl;
     TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
-    Double_t ks_result_mulike = TMath::KolmogorovTest(n_training, training_mulike, n_testing, testing_mulike, "D");
+    for (Int_t i=0; i < n_testing; i++)
+    {
+        //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
+        testing_mulike_sorted[i] = testing_mulike[testing_mulike_ind[i]];
+        //std::cout << "DEBUG: testing_mulike_sorted[" << i << "] = " << testing_mulike_sorted[i] << std::endl;
+    }
+
+    Double_t ks_result_mulike = TMath::KolmogorovTest(n_training, training_mulike_sorted, n_testing, testing_mulike_sorted, "D");
     std::cout << "Mu-like output KS test result: " << ks_result_mulike << std::endl;
     Double_t ks_result_pilike = TMath::KolmogorovTest(n_training, training_pilike, n_testing, testing_pilike, "D");
     std::cout << "Pi-like output KS test result: " << ks_result_pilike << std::endl;
