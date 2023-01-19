@@ -52,6 +52,7 @@
     }
     
     TMath::Sort(n_training,training_mulike,training_mulike_ind,kFALSE);
+    std::cout << training_mulike << std::endl;
     TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
     Double_t ks_result_mulike = TMath::KolmogorovTest(n_training, training_mulike, n_testing, testing_mulike, "D");
     std::cout << "Mu-like output KS test result: " << ks_result_mulike << std::endl;
