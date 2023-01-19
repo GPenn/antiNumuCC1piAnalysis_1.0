@@ -3,10 +3,10 @@
     TGraph* ks_test_bdt_mulike_pilike_train  = (TGraph*)file_trainingsample.Get("ks_test_bdt_mulike_pilike_train");
     TGraph* ks_test_bdt_mulike_pilike_train  = (TGraph*)file_trainingsample.Get("ks_test_bdt_mulike_pilike_train");
     Int_t n_training = ks_test_bdt_mulike_pilike_train->GetN();
-    Double_t[n_training] training_mulike;
-    Double_t[n_training] training_pilike;
-    Double_t[n_training] training_plike;
-    Double_t[n_training] training_elike;
+    Double_t training_mulike[n_training];
+    Double_t training_pilike[n_training];
+    Double_t training_plike[n_training];
+    Double_t training_elike[n_training];
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
     
