@@ -14,15 +14,16 @@
     TGraph* roc_purvseff_elike_test  = (TGraph*)file_testingsample.Get("roc_purvseff_elike");
     
     TCanvas* roc_comparison_all = new TCanvas("roc_comparison_all","roc_comparison_all",200,10,1000,600);
+    
+    roc_purvseff_mulike_train->SetLineStyle(kDashed);
+    roc_purvseff_pilike_train->SetLineStyle(kDashed);
+    roc_purvseff_plike_train->SetLineStyle(kDashed);
+    roc_purvseff_elike_train->SetLineStyle(kDashed);
+    
     roc_purvseff_mulike_train->Draw();
     roc_purvseff_pilike_train->Draw("same");
     roc_purvseff_plike_train->Draw("same");
     roc_purvseff_elike_train->Draw("same");
-    
-    roc_purvseff_mulike_test->SetLineStyle(kDashed);
-    roc_purvseff_pilike_test->SetLineStyle(kDashed);
-    roc_purvseff_plike_test->SetLineStyle(kDashed);
-    roc_purvseff_elike_test->SetLineStyle(kDashed);
     
     roc_purvseff_mulike_test->Draw("same");
     roc_purvseff_pilike_test->Draw("same");
