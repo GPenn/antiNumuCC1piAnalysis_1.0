@@ -13,7 +13,8 @@
     for (Int_t i=0; i < n_training; i++)
     {
         ks_test_bdt_mulike_pilike_train->GetPoint(i,training_mulike[i],training_pilike[i]);
-        std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << std::endl;
+        //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << std::endl;
+        ks_test_bdt_plike_elike_train->GetPoint(i,training_plike[i],training_elike[i]);
     }
 
     TFile *file_testingsample = new TFile("../particle_gun/output/ks_testingsample.root");
@@ -30,9 +31,16 @@
     for (Int_t i=0; i < n_testing; i++)
     {
         ks_test_bdt_mulike_pilike_test->GetPoint(i,testing_mulike[i],testing_pilike[i]);
-        std::cout << "DEBUG: testing_mulike[" << i << "] = " << testing_mulike[i] << std::endl;
+        //std::cout << "DEBUG: testing_mulike[" << i << "] = " << testing_mulike[i] << std::endl;
+        ks_test_bdt_plike_elike_test->GetPoint(i,testing_plike[i],testing_elike[i]);
     }
     
     Double_t ks_result_mulike = TMath::KolmogorovTest(n_training, training_mulike, n_testing, testing_mulike, "D");
     std::cout << "Mu-like output KS test result: " << ks_result_mulike << std::endl;
+    Double_t ks_result_pilike = TMath::KolmogorovTest(n_training, training_pilike, n_testing, testing_pilike, "D");
+    std::cout << "Pi-like output KS test result: " << ks_result_pilike << std::endl;
+    Double_t ks_result_plike = TMath::KolmogorovTest(n_training, training_plike, n_testing, testing_plike, "D");
+    std::cout << "Proton-like output KS test result: " << ks_result_plike << std::endl;
+    Double_t ks_result_elike = TMath::KolmogorovTest(n_training, training_elike, n_testing, testing_elike, "D");
+    std::cout << "Electron-like output KS test result: " << ks_result_elike << std::endl;
 }
