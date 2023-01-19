@@ -14,7 +14,7 @@
     for (Int_t i=0; i < n_training; i++)
     {
         ks_test_bdt_mulike_pilike_train->GetPoint(i,training_mulike[i],training_pilike[i]);
-        training_mulike[i] = Uniform();
+        training_mulike[i] = TRandom::Uniform();
         training_mulike_debug_hist->Fill(training_mulike[i]);
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << std::endl;
         ks_test_bdt_plike_elike_train->GetPoint(i,training_plike[i],training_elike[i]);
@@ -35,7 +35,7 @@
     for (Int_t i=0; i < n_testing; i++)
     {
         ks_test_bdt_mulike_pilike_test->GetPoint(i,testing_mulike[i],testing_pilike[i]);
-        testing_mulike[i] = Uniform();
+        testing_mulike[i] = TRandom::Uniform();
         testing_mulike_debug_hist->Fill(testing_mulike[i]);
         //std::cout << "DEBUG: testing_mulike[" << i << "] = " << testing_mulike[i] << std::endl;
         ks_test_bdt_plike_elike_test->GetPoint(i,testing_plike[i],testing_elike[i]);
