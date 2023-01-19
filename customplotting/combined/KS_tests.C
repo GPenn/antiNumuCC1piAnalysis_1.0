@@ -9,6 +9,10 @@
     Double_t training_pilike[n_training];
     Double_t training_plike[n_training];
     Double_t training_elike[n_training];
+    long long training_mulike_ind[n_training];
+    long long training_pilike_ind[n_training];
+    long long training_plike_ind[n_training];
+    long long training_elike_ind[n_training];
     TH1F* training_mulike_debug_hist = new TH1F("training_mulike_debug_hist", "training_mulike_debug_hist", 20, 0.0, 1.0);
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
@@ -30,6 +34,10 @@
     Double_t testing_pilike[n_testing];
     Double_t testing_plike[n_testing];
     Double_t testing_elike[n_testing];
+    long long testing_mulike_ind[n_testing];
+    long long testing_pilike_ind[n_testing];
+    long long testing_plike_ind[n_testing];
+    long long testing_elike_ind[n_testing];
     TH1F* testing_mulike_debug_hist = new TH1F("testing_mulike_debug_hist", "testing_mulike_debug_hist", 20, 0.0, 1.0);
     
     std::cout << "Reading " << n_testing << " points from testing sample..." << std::endl;
@@ -43,6 +51,8 @@
         ks_test_bdt_plike_elike_test->GetPoint(i,testing_plike[i],testing_elike[i]);
     }
     
+    TMath::Sort(n_training,training_mulike,training_mulike_ind,kFALSE);
+    TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
     Double_t ks_result_mulike = TMath::KolmogorovTest(n_training, training_mulike, n_testing, testing_mulike, "D");
     std::cout << "Mu-like output KS test result: " << ks_result_mulike << std::endl;
     Double_t ks_result_pilike = TMath::KolmogorovTest(n_training, training_pilike, n_testing, testing_pilike, "D");
