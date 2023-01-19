@@ -13,6 +13,10 @@
     long long training_pilike_ind[n_training];
     long long training_plike_ind[n_training];
     long long training_elike_ind[n_training];
+    Double_t training_mulike_sorted[n_training];
+    Double_t training_pilike_sorted[n_training];
+    Double_t training_plike_sorted[n_training];
+    Double_t training_elike_sorted[n_training];
     TH1F* training_mulike_debug_hist = new TH1F("training_mulike_debug_hist", "training_mulike_debug_hist", 20, 0.0, 1.0);
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
@@ -38,6 +42,10 @@
     long long testing_pilike_ind[n_testing];
     long long testing_plike_ind[n_testing];
     long long testing_elike_ind[n_testing];
+    Double_t testing_mulike_sorted[n_testing];
+    Double_t testing_pilike_sorted[n_testing];
+    Double_t testing_plike_sorted[n_testing];
+    Double_t testing_elike_sorted[n_testing];
     TH1F* testing_mulike_debug_hist = new TH1F("testing_mulike_debug_hist", "testing_mulike_debug_hist", 20, 0.0, 1.0);
     
     std::cout << "Reading " << n_testing << " points from testing sample..." << std::endl;
@@ -54,7 +62,9 @@
     TMath::Sort(n_training,training_mulike,training_mulike_ind,kFALSE);
     for (Int_t i=0; i < n_training; i++)
     {
-        std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << training_mulike_ind[i] << std::endl;
+        //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
+        training_mulike_sorted[training_mulike_ind[i]] = training_mulike[i];
+        std::cout << "DEBUG: training_mulike_sorted[" << i << "] = " << training_mulike_sorted[i] << std::endl;
     }
     std::cout << training_mulike << std::endl;
     TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
