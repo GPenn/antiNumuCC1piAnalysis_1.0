@@ -60,11 +60,17 @@
     }
     
     TMath::Sort(n_training,training_mulike,training_mulike_ind,kFALSE);
+    TMath::Sort(n_training,training_pilike,training_pilike_ind,kFALSE);
+    TMath::Sort(n_training,training_plike,training_plike_ind,kFALSE);
+    TMath::Sort(n_training,training_elike,training_elike_ind,kFALSE);
     for (Int_t i=0; i < n_training; i++)
     {
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
         training_mulike_sorted[i] = training_mulike[training_mulike_ind[i]];
         //std::cout << "DEBUG: training_mulike_sorted[" << i << "] = " << training_mulike_sorted[i] << std::endl;
+        training_pilike_sorted[i] = training_pilike[training_pilike_ind[i]];
+        training_plike_sorted[i] = training_plike[training_plike_ind[i]];
+        training_elike_sorted[i] = training_elike[training_elike_ind[i]];
     }
     TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
     for (Int_t i=0; i < n_testing; i++)
@@ -72,15 +78,18 @@
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
         testing_mulike_sorted[i] = testing_mulike[testing_mulike_ind[i]];
         //std::cout << "DEBUG: testing_mulike_sorted[" << i << "] = " << testing_mulike_sorted[i] << std::endl;
+        testing_pilike_sorted[i] = testing_pilike[testing_pilike_ind[i]];
+        testing_plike_sorted[i] = testing_plike[testing_plike_ind[i]];
+        testing_elike_sorted[i] = testing_elike[testing_elike_ind[i]];
     }
 
     Double_t ks_result_mulike = TMath::KolmogorovTest(n_training, training_mulike_sorted, n_testing, testing_mulike_sorted, "D");
     std::cout << "Mu-like output KS test result: " << ks_result_mulike << std::endl;
-    Double_t ks_result_pilike = TMath::KolmogorovTest(n_training, training_pilike, n_testing, testing_pilike, "D");
+    Double_t ks_result_pilike = TMath::KolmogorovTest(n_training, training_pilike_sorted, n_testing, testing_pilike_sorted, "D");
     std::cout << "Pi-like output KS test result: " << ks_result_pilike << std::endl;
-    Double_t ks_result_plike = TMath::KolmogorovTest(n_training, training_plike, n_testing, testing_plike, "D");
+    Double_t ks_result_plike = TMath::KolmogorovTest(n_training, training_plike_sorted, n_testing, testing_plike_sorted, "D");
     std::cout << "Proton-like output KS test result: " << ks_result_plike << std::endl;
-    Double_t ks_result_elike = TMath::KolmogorovTest(n_training, training_elike, n_testing, testing_elike, "D");
+    Double_t ks_result_elike = TMath::KolmogorovTest(n_training, training_elike_sorted, n_testing, testing_elike_sorted, "D");
     std::cout << "Electron-like output KS test result: " << ks_result_elike << std::endl;
     
     TCanvas* mulike_debug_canvas = new TCanvas("mulike_debug_canvas","mulike_debug_canvas",200,10,1000,600);
