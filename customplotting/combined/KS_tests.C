@@ -50,5 +50,5 @@
     
     TCanvas* mulike_debug_canvas = new TCanvas("mulike_debug_canvas","mulike_debug_canvas",200,10,1000,600);
     training_mulike_debug_hist->Draw();
-    testing_mulike_debug_hist->Draw();
+    testing_mulike_debug_hist->Draw("same");
 }
