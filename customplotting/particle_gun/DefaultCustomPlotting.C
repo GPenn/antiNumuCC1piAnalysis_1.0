@@ -3534,6 +3534,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->SetLineColor( kBlue);
    roc_purvseff_mulike->SetFillColor( kWhite);
    roc_purvseff_mulike->SetLineWidth(2);
+   roc_purvseff_mulike->SetName("roc_purvseff_mulike");
    roc_purvseff_mulike->Write();
    
    TGraph* roc_purvseff_pilike = new TGraph();
@@ -3548,6 +3549,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_pilike->SetLineColor( kRed);
    roc_purvseff_pilike->SetFillColor( kWhite);
    roc_purvseff_pilike->SetLineWidth(2);
+   roc_purvseff_pilike->SetName("roc_purvseff_pilike");
    roc_purvseff_pilike->Write();
    
    TGraph* roc_purvseff_plike = new TGraph();
@@ -3562,6 +3564,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_plike->SetLineColor( kGreen);
    roc_purvseff_plike->SetFillColor( kWhite);
    roc_purvseff_plike->SetLineWidth(2);
+   roc_purvseff_plike->SetName("roc_purvseff_plike");
    roc_purvseff_plike->Write();
    
    TGraph* roc_purvseff_elike = new TGraph();
@@ -3576,6 +3579,7 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_elike->SetLineColor( kMagenta);
    roc_purvseff_elike->SetFillColor( kWhite);
    roc_purvseff_elike->SetLineWidth(2);
+   roc_purvseff_elike->SetName("roc_purvseff_elike");
    roc_purvseff_elike->Write();
    
    TGraph* roc_tpc_purvseff_mulike = new TGraph();
