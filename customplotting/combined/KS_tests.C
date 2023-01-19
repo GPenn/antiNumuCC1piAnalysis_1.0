@@ -54,7 +54,7 @@
     TMath::Sort(n_training,training_mulike,training_mulike_ind,kFALSE);
     for (Int_t i=0; i < n_training; i++)
     {
-        std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << std::endl;
+        std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << training_mulike_ind[i] << std::endl;
     }
     std::cout << training_mulike << std::endl;
     TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
