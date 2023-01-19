@@ -554,14 +554,18 @@ void DefaultCustomPlotting::Loop()
    Int_t antinue_primary_pid_bkg = 0;
    
    TGraph* ks_test_bdt_mulike_pilike_train = new TGraph();
+   ks_test_bdt_mulike_pilike_train->SetName("ks_test_bdt_mulike_pilike_train");
    ks_test_bdt_mulike_pilike_train->SetTitle("BDT mu-like and pi-like outputs for KS (training sample appropriate cuts)");
    TGraph* ks_test_bdt_plike_elike_train = new TGraph();
+   ks_test_bdt_plike_elike_train->SetName("ks_test_bdt_plike_elike_train");
    ks_test_bdt_plike_elike_train->SetTitle("BDT p-like and e-like outputs for KS (training sample appropriate cuts)");
    Int_t ks_test_point_train = 0;
    
    TGraph* ks_test_bdt_mulike_pilike_test = new TGraph();
+   ks_test_bdt_mulike_pilike_test->SetName("ks_test_bdt_mulike_pilike_test");
    ks_test_bdt_mulike_pilike_test->SetTitle("BDT mu-like and pi-like outputs for KS (testing sample appropriate cuts)");
    TGraph* ks_test_bdt_plike_elike_test = new TGraph();
+   ks_test_bdt_plike_elike_test->SetName("ks_test_bdt_plike_elike_test");
    ks_test_bdt_plike_elike_test->SetTitle("BDT p-like and e-like outputs for KS (testing sample appropriate cuts)");
    Int_t ks_test_point_test = 0;
 
