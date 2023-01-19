@@ -1,4 +1,6 @@
 {
+    TRandom *random = new TRandom();
+    
     TFile *file_trainingsample = new TFile("../particle_gun/output/ks_trainingsample.root");
     TGraph* ks_test_bdt_mulike_pilike_train  = (TGraph*)file_trainingsample.Get("ks_test_bdt_mulike_pilike_train");
     TGraph* ks_test_bdt_plike_elike_train  = (TGraph*)file_trainingsample.Get("ks_test_bdt_plike_elike_train");
@@ -14,7 +16,7 @@
     for (Int_t i=0; i < n_training; i++)
     {
         ks_test_bdt_mulike_pilike_train->GetPoint(i,training_mulike[i],training_pilike[i]);
-        std::cout << TRandom::Uniform() << std::endl;
+        std::cout << random->Uniform() << std::endl;
         training_mulike_debug_hist->Fill(training_mulike[i]);
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << std::endl;
         ks_test_bdt_plike_elike_train->GetPoint(i,training_plike[i],training_elike[i]);
@@ -35,7 +37,7 @@
     for (Int_t i=0; i < n_testing; i++)
     {
         ks_test_bdt_mulike_pilike_test->GetPoint(i,testing_mulike[i],testing_pilike[i]);
-        std::cout << TRandom::Uniform() << std::endl;
+        std::cout << random->Uniform() << std::endl;
         testing_mulike_debug_hist->Fill(testing_mulike[i]);
         //std::cout << "DEBUG: testing_mulike[" << i << "] = " << testing_mulike[i] << std::endl;
         ks_test_bdt_plike_elike_test->GetPoint(i,testing_plike[i],testing_elike[i]);
