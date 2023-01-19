@@ -72,7 +72,11 @@
         training_plike_sorted[i] = training_plike[training_plike_ind[i]];
         training_elike_sorted[i] = training_elike[training_elike_ind[i]];
     }
+    
     TMath::Sort(n_testing,testing_mulike,testing_mulike_ind,kFALSE);
+    TMath::Sort(n_testing,testing_pilike,testing_pilike_ind,kFALSE);
+    TMath::Sort(n_testing,testing_plike,testing_plike_ind,kFALSE);
+    TMath::Sort(n_testing,testing_elike,testing_elike_ind,kFALSE);
     for (Int_t i=0; i < n_testing; i++)
     {
         //std::cout << "DEBUG: training_mulike[" << i << "] = " << training_mulike[i] << " " << training_mulike_ind[i] << std::endl;
