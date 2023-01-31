@@ -51,6 +51,8 @@ void DefaultCustomPlotting::Loop()
    
    std::time_t time_start = std::time(0);
    
+   Int_t counter_numu = 0, counter_antinumu = 0;
+   
    Int_t counter_all_accum4 = 0, counter_all_accum7 = 0, counter_all_accum6 = 0, counter_selmuecal_accum7 = 0;
    Int_t counter_cc1pi = 0, counter_cc0pi = 0, counter_ccother = 0, counter_bkg = 0, counter_oofv = 0;
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, 
@@ -457,6 +459,9 @@ void DefaultCustomPlotting::Loop()
 
       // Cut on accum_level etc
       //if (accum_level[0][0] <= 4) continue; // Set accum_level
+      
+      if (nutype == 14)  counter_numu++;
+      if (nutype == -14) counter_antinumu++;
       
       if ((limit_kinematics) && !((selmu_mom[0] > 200.0) && (selmu_mom[0] < 1500.0) && (selmu_det_theta < 1.0472) && (HMNT_mom > 200.0) && (HMNT_mom < 1500.0))) continue;
       if ((two_track_only) && !((ntpcposQualityFV==1) && (ntpcnegQualityFV==1))) continue;
@@ -941,6 +946,9 @@ void DefaultCustomPlotting::Loop()
    }
    
    std::cout << std::endl;
+   
+   std::cout << std::endl << "Numu events: " << counter_numu << std::endl;
+   std::cout << std::endl << "Antinumu events: " << counter_antinumu << std::endl;
    
    std::cout << std::endl << "Events above accum_level 4: " << counter_all_accum4 << std::endl;
    std::cout << std::endl << "Events above accum_level 6: " << counter_all_accum6 << std::endl;
