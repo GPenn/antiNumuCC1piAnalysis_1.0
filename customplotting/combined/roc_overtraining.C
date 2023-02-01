@@ -20,6 +20,16 @@
     roc_purvseff_plike_train->SetLineStyle(kDashed);
     roc_purvseff_elike_train->SetLineStyle(kDashed);
     
+    roc_purvseff_mulike_train->SetTitle("BDT #mu-like output (training)");
+    roc_purvseff_pilike_train->SetTitle("BDT #pi-like output (training)");
+    roc_purvseff_plike_train->SetTitle("BDT p-like output (training)");
+    roc_purvseff_elike_train->SetTitle("BDT e-like output (training)");
+    
+    roc_purvseff_mulike_test->SetTitle("BDT #mu-like output (testing)");
+    roc_purvseff_pilike_test->SetTitle("BDT #pi-like output (testing)");
+    roc_purvseff_plike_test->SetTitle("BDT p-like output (testing)");
+    roc_purvseff_elike_test->SetTitle("BDT e-like output (testing)");
+    
     roc_purvseff_mulike_train->Draw();
     roc_purvseff_pilike_train->Draw("same");
     roc_purvseff_plike_train->Draw("same");
