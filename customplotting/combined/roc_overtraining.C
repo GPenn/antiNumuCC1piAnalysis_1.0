@@ -20,6 +20,8 @@
     roc_purvseff_plike_train->SetLineStyle(kDashed);
     roc_purvseff_elike_train->SetLineStyle(kDashed);
     
+    roc_purvseff_mulike_train->SetTitle("BDT #mu-like output (training);Efficiency;Purity");
+    
     roc_purvseff_mulike_train->SetTitle("BDT #mu-like output (training)");
     roc_purvseff_pilike_train->SetTitle("BDT #pi-like output (training)");
     roc_purvseff_plike_train->SetTitle("BDT p-like output (training)");
