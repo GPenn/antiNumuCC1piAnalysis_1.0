@@ -29,4 +29,6 @@
     roc_purvseff_pilike_test->Draw("same");
     roc_purvseff_plike_test->Draw("same");
     roc_purvseff_elike_test->Draw("same");
+    
+    roc_comparison_all->BuildLegend();
 }
