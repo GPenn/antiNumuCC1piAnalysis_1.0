@@ -453,6 +453,21 @@ void DefaultCustomPlotting::Loop()
    TH1F* bdt_output_selpi_plike = new TH1F("bdt_output_selpi_plike", "#pi^- candidate BDT p-like output", bdt_outputs_nbins, 0.0, 1.0);
    TH1F* bdt_output_selpi_elike = new TH1F("bdt_output_selpi_elike", "#pi^- candidate BDT e-like output", bdt_outputs_nbins, 0.0, 1.0);
    
+   
+   
+   TH1F *opt_mulike_sig = new TH1F("opt_mulike_sig", "Mu-like (true antimu)", bdt_optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_mulike_bkg = new TH1F("opt_mulike_bkg", "Mu-like (backgrounds)", bdt_optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *opt_pilike_sig = new TH1F("opt_pilike_sig", "Pi-like (true pi-)", bdt_optimisation_nbins, 0.0, 1.0);
+   TH1F *opt_pilike_bkg = new TH1F("opt_pilike_bkg", "Pi-like (backgrounds)", bdt_optimisation_nbins, 0.0, 1.0);
+
+   TH1F *tpc_mulike_sig = new TH1F("tpc_mulike_sig", "Mu-like (true antimu)", bdt_optimisation_nbins, 0.0, 1.0);
+   TH1F *tpc_mulike_bkg = new TH1F("tpc_mulike_bkg", "Mu-like (backgrounds)", bdt_optimisation_nbins, 0.0, 1.0);
+   
+   TH1F *tpc_pilike_sig = new TH1F("tpc_pilike_sig", "Pi-like (true pi-)", bdt_optimisation_nbins, 0.0, 1.0);
+   TH1F *tpc_pilike_bkg = new TH1F("tpc_pilike_bkg", "Pi-like (backgrounds)", bdt_optimisation_nbins, 0.0, 1.0);
+   
+   
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       fChain->GetEntry(jentry);
@@ -527,6 +542,13 @@ void DefaultCustomPlotting::Loop()
          
          if ((ntpcposQualityFV==1) && (ntpcnegQualityFV==1))
          {
+            if (particle == 13)  {opt_mulike_sig->Fill(selmu_bdt_pid_mu); tpc_mulike_sig->Fill(selmu_tpc_like_mu);}
+            else                 {opt_mulike_bkg->Fill(selmu_bdt_pid_mu); tpc_mulike_bkg->Fill(selmu_tpc_like_mu);}
+            
+            if (HMNT_truepdg == -211)  {opt_pilike_sig->Fill(hmnt_bdt_pid_pi); tpc_pilike_sig->Fill(selmu_tpc_like_pi);}
+            else                       {opt_pilike_bkg->Fill(hmnt_bdt_pid_pi); tpc_pilike_bkg->Fill(selmu_tpc_like_pi);}
+            
+            
             if (topology == 1)
             {
                bdt_cut_optimisation_sig->Fill(selmu_bdt_pid_mu, hmnt_bdt_pid_pi);
@@ -2012,6 +2034,74 @@ void DefaultCustomPlotting::Loop()
    recopimom_presel_stack_altbkg->Add(recopimom_presel_numubarccbkg);
    recopimom_presel_stack_altbkg->Add(recopimom_presel_cc1pi);
    recopimom_presel_stack_altbkg->Write();
+   
+   // ROC curves
+   
+   TGraph* roc_purvseff_mulike = new TGraph();
+   roc_purvseff_mulike->SetTitle("BDT #mu-like output");
+   
+   for (Int_t cut = 0; cut <= bdt_optimisation_nbins; cut++)
+   {
+      Float_t efficiency = opt_mulike_sig->Integral(cut,bdt_optimisation_nbins+1)/opt_mulike_sig->GetEntries();
+      Float_t purity = opt_mulike_sig->Integral(cut,bdt_optimisation_nbins+1)/(opt_mulike_sig->Integral(cut,bdt_optimisation_nbins+1) + opt_mulike_bkg->Integral(cut,bdt_optimisation_nbins+1));
+      roc_purvseff_mulike->SetPoint(cut, efficiency, purity);
+   }
+   roc_purvseff_mulike->SetLineColor( kBlue);
+   roc_purvseff_mulike->SetFillColor( kWhite);
+   roc_purvseff_mulike->SetLineWidth(2);
+   roc_purvseff_mulike->SetName("roc_purvseff_mulike");
+   roc_purvseff_mulike->Write();
+   
+   TGraph* roc_purvseff_pilike = new TGraph();
+   roc_purvseff_pilike->SetTitle("BDT #pi-like output");
+   
+   for (Int_t cut = 0; cut <= bdt_optimisation_nbins; cut++)
+   {
+      Float_t efficiency = opt_pilike_sig->Integral(cut,bdt_optimisation_nbins+1)/opt_pilike_sig->GetEntries();
+      Float_t purity = opt_pilike_sig->Integral(cut,bdt_optimisation_nbins+1)/(opt_pilike_sig->Integral(cut,bdt_optimisation_nbins+1) + opt_pilike_bkg->Integral(cut,bdt_optimisation_nbins+1));
+      roc_purvseff_pilike->SetPoint(cut, efficiency, purity);
+   }
+   roc_purvseff_pilike->SetLineColor( kRed);
+   roc_purvseff_pilike->SetFillColor( kWhite);
+   roc_purvseff_pilike->SetLineWidth(2);
+   roc_purvseff_pilike->SetName("roc_purvseff_pilike");
+   roc_purvseff_pilike->Write();
+      
+   TGraph* roc_tpc_purvseff_mulike = new TGraph();
+   roc_tpc_purvseff_mulike->SetName("roc_tpc_purvseff_mulike");
+   roc_tpc_purvseff_mulike->SetTitle("TPC #mu likelihood");
+   
+   for (Int_t cut = 0; cut <= bdt_optimisation_nbins; cut++)
+   {
+      Float_t efficiency = tpc_mulike_sig->Integral(cut,bdt_optimisation_nbins+1)/tpc_mulike_sig->GetEntries();
+      Float_t purity = tpc_mulike_sig->Integral(cut,bdt_optimisation_nbins+1)/(tpc_mulike_sig->Integral(cut,bdt_optimisation_nbins+1) + tpc_mulike_bkg->Integral(cut,bdt_optimisation_nbins+1));
+      roc_tpc_purvseff_mulike->SetPoint(cut, efficiency, purity);
+   }
+   roc_tpc_purvseff_mulike->SetLineColor( kBlue);
+   roc_tpc_purvseff_mulike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_mulike->SetFillColor( kWhite);
+   roc_tpc_purvseff_mulike->SetLineWidth(2);
+   roc_tpc_purvseff_mulike->Write();
+   tpc_mulike_sig->Write();
+   tpc_mulike_bkg->Write();
+   
+   TGraph* roc_tpc_purvseff_pilike = new TGraph();
+   roc_tpc_purvseff_pilike->SetName("roc_tpc_purvseff_pilike");
+   roc_tpc_purvseff_pilike->SetTitle("TPC #pi likelihood");
+   
+   for (Int_t cut = 0; cut <= bdt_optimisation_nbins; cut++)
+   {
+      Float_t efficiency = tpc_pilike_sig->Integral(cut,bdt_optimisation_nbins+1)/tpc_pilike_sig->GetEntries();
+      Float_t purity = tpc_pilike_sig->Integral(cut,bdt_optimisation_nbins+1)/(tpc_pilike_sig->Integral(cut,bdt_optimisation_nbins+1) + tpc_pilike_bkg->Integral(cut,bdt_optimisation_nbins+1));
+      roc_tpc_purvseff_pilike->SetPoint(cut, efficiency, purity);
+   }
+   roc_tpc_purvseff_pilike->SetLineColor( kRed);
+   roc_tpc_purvseff_pilike->SetLineStyle( kDashed);
+   roc_tpc_purvseff_pilike->SetFillColor( kWhite);
+   roc_tpc_purvseff_pilike->SetLineWidth(2);
+   roc_tpc_purvseff_pilike->Write();
+   tpc_pilike_sig->Write();
+   tpc_pilike_bkg->Write();
    
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
