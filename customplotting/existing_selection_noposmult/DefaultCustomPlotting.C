@@ -2103,6 +2103,30 @@ void DefaultCustomPlotting::Loop()
    tpc_pilike_sig->Write();
    tpc_pilike_bkg->Write();
    
+   TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
+   roc_purvseff_mulike->Draw();
+   roc_purvseff_mulike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_mulike->GetXaxis()->SetTitle("Efficiency");
+   roc_purvseff_mulike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_mulike->GetYaxis()->SetTitle("Purity");
+   roc_purvseff_mulike->GetYaxis()->SetTitleOffset(0.9);
+   roc_purvseff_mulike->Draw();
+   roc_tpc_purvseff_mulike->Draw("same");
+   canvas_roc_mu->BuildLegend();
+   canvas_roc_mu->Write();
+   
+   TCanvas* canvas_roc_pi = new TCanvas("canvas_roc_pi","pi-like ROC curves",200,10,1000,600);
+   roc_purvseff_pilike->Draw();
+   roc_purvseff_pilike->GetXaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_pilike->GetXaxis()->SetTitle("Efficiency");
+   roc_purvseff_pilike->GetYaxis()->SetLimits(0.0,1.1);
+   roc_purvseff_pilike->GetYaxis()->SetTitle("Purity");
+   roc_purvseff_pilike->GetYaxis()->SetTitleOffset(0.9);
+   roc_purvseff_pilike->Draw();
+   roc_tpc_purvseff_pilike->Draw("same");
+   canvas_roc_pi->BuildLegend();
+   canvas_roc_pi->Write();
+   
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
    defout->Write();
