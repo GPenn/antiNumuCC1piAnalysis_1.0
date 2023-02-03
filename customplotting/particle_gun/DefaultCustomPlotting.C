@@ -1299,7 +1299,7 @@ void DefaultCustomPlotting::Loop()
             if ((particle == 2212) && (particle_pg == 2212)) {antinumu_primary_pid_bkg++;}
             if ((particle == -11) && (particle_pg == -11)) {antinumu_primary_pid_bkg++;}
 
-            if (selmu_ecal_bestseg_EbyL <= 0.88)
+            if ((selmu_ecal_bestseg_EbyL <= 0.88) || (selmu_necals != 1))
             {
                if ((particle == -13) && (particle_pg == -13)) {antinumu_improved_pid_sig++;}
                if ((particle == 211) && (particle_pg == 211)) {antinumu_improved_pid_bkg++;}
