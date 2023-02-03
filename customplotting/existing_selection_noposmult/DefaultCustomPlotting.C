@@ -467,6 +467,15 @@ void DefaultCustomPlotting::Loop()
    TH1F *tpc_pilike_sig = new TH1F("tpc_pilike_sig", "Pi-like (true pi-)", bdt_optimisation_nbins, 0.0, 1.0);
    TH1F *tpc_pilike_bkg = new TH1F("tpc_pilike_bkg", "Pi-like (backgrounds)", bdt_optimisation_nbins, 0.0, 1.0);
    
+   Int_t antimu_existing_pid_sig = 0;
+   Int_t antimu_existing_pid_bkg = 0;
+   Int_t antimu_improved_pid_sig = 0;
+   Int_t antimu_improved_pid_bkg = 0;
+   Int_t piminus_existing_pid_sig = 0;
+   Int_t piminus_existing_pid_bkg = 0;
+   Int_t piminus_improved_pid_sig = 0;
+   Int_t piminus_improved_pid_bkg = 0;
+   
    
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -545,9 +554,38 @@ void DefaultCustomPlotting::Loop()
             if (particle == -13)  {opt_mulike_sig->Fill(selmu_bdt_pid_mu); tpc_mulike_sig->Fill(selmu_tpc_like_mu);}
             else                 {opt_mulike_bkg->Fill(selmu_bdt_pid_mu); tpc_mulike_bkg->Fill(selmu_tpc_like_mu);}
             
-            if (HMNT_truepdg == -211)  {opt_pilike_sig->Fill(hmnt_bdt_pid_pi); tpc_pilike_sig->Fill(selmu_tpc_like_pi);}
-            else                       {opt_pilike_bkg->Fill(hmnt_bdt_pid_pi); tpc_pilike_bkg->Fill(selmu_tpc_like_pi);}
+            if (HMNT_truepdg == -211)  {opt_pilike_sig->Fill(hmnt_bdt_pid_pi); tpc_pilike_sig->Fill(HMNT_tpc_like_pi);}
+            else                       {opt_pilike_bkg->Fill(hmnt_bdt_pid_pi); tpc_pilike_bkg->Fill(HMNT_tpc_like_pi);}
             
+            if (((selmu_tpc_like_mu+selmu_tpc_like_pi)/(1-selmu_tpc_like_p) > 0.9 || selmu_mom[0] > 500.0 ) && (selmu_tpc_like_mu>0.1))
+            {
+               if (selmu_mom[0] > HMNT_mom)
+               {
+                  if (particle == -13)   {antimu_existing_pid_sig++;}
+                  else                   {antimu_existing_pid_bkg++;}
+               }
+
+               if ((selmu_ecal_bestseg_EbyL <= 0.88) || (selmu_necals != 1))
+               {
+                  if (particle == -13) {antimu_improved_pid_sig++;}
+                  else                 {antimu_improved_pid_bkg++;}
+               }
+            }
+            
+            if (HMNT_tpc_like_pi > HMNT_tpc_like_e)
+            {
+               if (selmu_mom[0] > HMNT_mom)
+               {
+                  if (particle == -211)   {piminus_existing_pid_sig++;}
+                  else                    {piminus_existing_pid_bkg++;}
+               }
+
+               if ((HMNT_ecal_bestseg_mippion >= 1.0) || (HMNT_NEcalSegments != 1))
+               {
+                  if (particle == -211) {piminus_improved_pid_sig++;}
+                  else                 {piminus_improved_pid_bkg++;}
+               }
+            }
             
             if (topology == 1)
             {
