@@ -542,7 +542,7 @@ void DefaultCustomPlotting::Loop()
          
          if ((ntpcposQualityFV==1) && (ntpcnegQualityFV==1))
          {
-            if (particle == 13)  {opt_mulike_sig->Fill(selmu_bdt_pid_mu); tpc_mulike_sig->Fill(selmu_tpc_like_mu);}
+            if (particle == -13)  {opt_mulike_sig->Fill(selmu_bdt_pid_mu); tpc_mulike_sig->Fill(selmu_tpc_like_mu);}
             else                 {opt_mulike_bkg->Fill(selmu_bdt_pid_mu); tpc_mulike_bkg->Fill(selmu_tpc_like_mu);}
             
             if (HMNT_truepdg == -211)  {opt_pilike_sig->Fill(hmnt_bdt_pid_pi); tpc_pilike_sig->Fill(selmu_tpc_like_pi);}
