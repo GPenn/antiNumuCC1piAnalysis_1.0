@@ -576,13 +576,13 @@ void DefaultCustomPlotting::Loop()
             {
                if (selmu_mom[0] > HMNT_mom)
                {
-                  if (particle == -211)   {piminus_existing_pid_sig++;}
+                  if (HMNT_truepdg == -211)   {piminus_existing_pid_sig++;}
                   else                    {piminus_existing_pid_bkg++;}
                }
 
                if ((HMNT_ecal_bestseg_mippion >= 1.0) || (HMNT_NEcalSegments != 1))
                {
-                  if (particle == -211) {piminus_improved_pid_sig++;}
+                  if (HMNT_truepdg == -211) {piminus_improved_pid_sig++;}
                   else                 {piminus_improved_pid_bkg++;}
                }
             }
