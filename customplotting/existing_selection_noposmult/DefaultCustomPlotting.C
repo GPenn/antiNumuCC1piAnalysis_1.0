@@ -2141,6 +2141,42 @@ void DefaultCustomPlotting::Loop()
    tpc_pilike_sig->Write();
    tpc_pilike_bkg->Write();
    
+   TGraph* roc_antimu_existing_pid = new TGraph();
+   roc_antimu_existing_pid->SetTitle("Existing selection #mu^{+} PID");
+   roc_antimu_existing_pid->SetPoint(0, (Float_t) antimu_existing_pid_sig/opt_mulike_sig->GetEntries(), (Float_t) antimu_existing_pid_sig/(antimu_existing_pid_sig+antimu_existing_pid_bkg));
+   roc_antimu_existing_pid->SetMarkerStyle(22);
+   roc_antimu_existing_pid->SetMarkerSize(1.7);
+   roc_antimu_existing_pid->SetMarkerColor(kBlue);
+   roc_antimu_existing_pid->SetFillColor( kWhite);
+   roc_antimu_existing_pid->SetLineColor( kWhite);
+   
+   TGraph* roc_antimu_improved_pid = new TGraph();
+   roc_antimu_improved_pid->SetTitle("Improved selection #mu^{+} PID");
+   roc_antimu_improved_pid->SetPoint(0, (Float_t) antimu_improved_pid_sig/opt_mulike_sig->GetEntries(), (Float_t) antimu_improved_pid_sig/(antimu_improved_pid_sig+antimu_improved_pid_bkg));
+   roc_antimu_improved_pid->SetMarkerStyle(29);
+   roc_antimu_improved_pid->SetMarkerSize(1.7);
+   roc_antimu_improved_pid->SetMarkerColor(kBlue);
+   roc_antimu_improved_pid->SetFillColor( kWhite);
+   roc_antimu_improved_pid->SetLineColor( kWhite);
+   
+   TGraph* roc_piminus_existing_pid = new TGraph();
+   roc_piminus_existing_pid->SetTitle("Existing selection #pi^{-} PID");
+   roc_piminus_existing_pid->SetPoint(0, (Float_t) piminus_existing_pid_sig/opt_pilike_sig->GetEntries(), (Float_t) piminus_existing_pid_sig/(piminus_existing_pid_sig+piminus_existing_pid_bkg));
+   roc_piminus_existing_pid->SetMarkerStyle(22);
+   roc_piminus_existing_pid->SetMarkerSize(1.7);
+   roc_piminus_existing_pid->SetMarkerColor(kRed);
+   roc_piminus_existing_pid->SetFillColor( kWhite);
+   roc_piminus_existing_pid->SetLineColor( kWhite);
+   
+   TGraph* roc_piminus_improved_pid = new TGraph();
+   roc_piminus_improved_pid->SetTitle("Improved selection #pi^{-} PID");
+   roc_piminus_improved_pid->SetPoint(0, (Float_t) piminus_improved_pid_sig/opt_pilike_sig->GetEntries(), (Float_t) piminus_improved_pid_sig/(piminus_improved_pid_sig+piminus_improved_pid_bkg));
+   roc_piminus_improved_pid->SetMarkerStyle(29);
+   roc_piminus_improved_pid->SetMarkerSize(1.7);
+   roc_piminus_improved_pid->SetMarkerColor(kRed);
+   roc_piminus_improved_pid->SetFillColor( kWhite);
+   roc_piminus_improved_pid->SetLineColor( kWhite);
+   
    TCanvas* canvas_roc_mu = new TCanvas("canvas_roc_mu","mu-like ROC curves",200,10,1000,600);
    roc_purvseff_mulike->Draw();
    roc_purvseff_mulike->GetXaxis()->SetLimits(0.0,1.1);
@@ -2150,6 +2186,8 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_mulike->GetYaxis()->SetTitleOffset(0.9);
    roc_purvseff_mulike->Draw();
    roc_tpc_purvseff_mulike->Draw("same");
+   roc_antimu_existing_pid->Draw("same P");
+   roc_antimu_improved_pid->Draw("same P");
    canvas_roc_mu->BuildLegend();
    canvas_roc_mu->Write();
    
@@ -2162,6 +2200,8 @@ void DefaultCustomPlotting::Loop()
    roc_purvseff_pilike->GetYaxis()->SetTitleOffset(0.9);
    roc_purvseff_pilike->Draw();
    roc_tpc_purvseff_pilike->Draw("same");
+   roc_piminus_existing_pid->Draw("same P");
+   roc_piminus_improved_pid->Draw("same P");
    canvas_roc_pi->BuildLegend();
    canvas_roc_pi->Write();
    
