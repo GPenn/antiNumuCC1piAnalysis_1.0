@@ -168,4 +168,17 @@
     std::cout << "bdt_elike_proton KS test result: " << ks_result_bdt_elike_proton << std::endl;
     Double_t ks_result_bdt_elike_positron = bdt_elike_positron_train->KolmogorovTest(bdt_elike_positron_test, "X");
     std::cout << "bdt_elike_positron KS test result: " << ks_result_bdt_elike_positron << std::endl;
+    
+    TH1F* bdt_mulike_all_train = bdt_mulike_antimu_train->Clone("bdt_mulike_all_train");
+    bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
+    bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
+    bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
+    
+    TH1F* bdt_mulike_all_test = bdt_mulike_antimu_test->Clone("bdt_mulike_all_test");
+    bdt_mulike_all_test->Add(bdt_mulike_piplus_test);
+    bdt_mulike_all_test->Add(bdt_mulike_piplus_test);
+    bdt_mulike_all_test->Add(bdt_mulike_piplus_test);
+    
+    Double_t ks_result_bdt_mulike = bdt_mulike_all_train->KolmogorovTest(bdt_mulike_all_test, "X");
+    std::cout << "bdt_mulike_all KS test result: " << ks_result_bdt_mulike << std::endl;
 }
