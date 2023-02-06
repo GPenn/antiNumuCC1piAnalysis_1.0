@@ -3747,13 +3747,30 @@ void DefaultCustomPlotting::Loop()
    canvas_roc_bdtall->BuildLegend();
    canvas_roc_bdtall->Write();
    
-   // Save TGraphs for KS tests
+   // Save TGraphs and hists for KS tests
    
    ks_test_bdt_mulike_pilike_train->Write();
    ks_test_bdt_plike_elike_train->Write();
    
    ks_test_bdt_mulike_pilike_test->Write();
    ks_test_bdt_plike_elike_test->Write();
+   
+   bdt_mulike_antimu->Write();
+   bdt_mulike_piplus->Write();
+   bdt_mulike_proton->Write();
+   bdt_mulike_positron->Write();
+   bdt_pilike_antimu->Write();
+   bdt_pilike_piplus->Write();
+   bdt_pilike_proton->Write();
+   bdt_pilike_positron->Write();
+   bdt_plike_antimu->Write();
+   bdt_plike_piplus->Write();
+   bdt_plike_proton->Write();
+   bdt_plike_positron->Write();
+   bdt_elike_antimu->Write();
+   bdt_elike_piplus->Write();
+   bdt_elike_proton->Write();
+   bdt_elike_positron->Write();
       
    std::cout << std::endl << "All entries processed. Writing output file...\n\n";
    
