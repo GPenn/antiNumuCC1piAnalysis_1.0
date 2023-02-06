@@ -19,6 +19,21 @@
     Double_t training_elike_sorted[n_training];
     TH1F* training_mulike_debug_hist = new TH1F("training_mulike_debug_hist", "training_mulike_debug_hist", 1000, 0.0, 1.0);
     TH1F* bdt_mulike_antimu_train = (TH1F*)file_trainingsample.Get("bdt_mulike_antimu");
+    TH1F* bdt_mulike_piplus_train = (TH1F*)file_trainingsample.Get("bdt_mulike_piplus");
+    TH1F* bdt_mulike_proton_train = (TH1F*)file_trainingsample.Get("bdt_mulike_proton");
+    TH1F* bdt_mulike_positron_train = (TH1F*)file_trainingsample.Get("bdt_mulike_positron");
+    TH1F* bdt_pilike_antimu_train = (TH1F*)file_trainingsample.Get("bdt_pilike_antimu");
+    TH1F* bdt_pilike_piplus_train = (TH1F*)file_trainingsample.Get("bdt_pilike_piplus");
+    TH1F* bdt_pilike_proton_train = (TH1F*)file_trainingsample.Get("bdt_pilike_proton");
+    TH1F* bdt_pilike_positron_train = (TH1F*)file_trainingsample.Get("bdt_pilike_positron");
+    TH1F* bdt_plike_antimu_train = (TH1F*)file_trainingsample.Get("bdt_plike_antimu");
+    TH1F* bdt_plike_piplus_train = (TH1F*)file_trainingsample.Get("bdt_plike_piplus");
+    TH1F* bdt_plike_proton_train = (TH1F*)file_trainingsample.Get("bdt_plike_proton");
+    TH1F* bdt_plike_positron_train = (TH1F*)file_trainingsample.Get("bdt_plike_positron");
+    TH1F* bdt_elike_antimu_train = (TH1F*)file_trainingsample.Get("bdt_elike_antimu");
+    TH1F* bdt_elike_piplus_train = (TH1F*)file_trainingsample.Get("bdt_elike_piplus");
+    TH1F* bdt_elike_proton_train = (TH1F*)file_trainingsample.Get("bdt_elike_proton");
+    TH1F* bdt_elike_positron_train = (TH1F*)file_trainingsample.Get("bdt_elike_positron");
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
     
@@ -49,6 +64,21 @@
     Double_t testing_elike_sorted[n_testing];
     TH1F* testing_mulike_debug_hist = new TH1F("testing_mulike_debug_hist", "testing_mulike_debug_hist", 1000, 0.0, 1.0);
     TH1F* bdt_mulike_antimu_test = (TH1F*)file_testingsample.Get("bdt_mulike_antimu");
+    TH1F* bdt_mulike_piplus_test = (TH1F*)file_testingsample.Get("bdt_mulike_piplus");
+    TH1F* bdt_mulike_proton_test = (TH1F*)file_testingsample.Get("bdt_mulike_proton");
+    TH1F* bdt_mulike_positron_test = (TH1F*)file_testingsample.Get("bdt_mulike_positron");
+    TH1F* bdt_pilike_antimu_test = (TH1F*)file_testingsample.Get("bdt_pilike_antimu");
+    TH1F* bdt_pilike_piplus_test = (TH1F*)file_testingsample.Get("bdt_pilike_piplus");
+    TH1F* bdt_pilike_proton_test = (TH1F*)file_testingsample.Get("bdt_pilike_proton");
+    TH1F* bdt_pilike_positron_test = (TH1F*)file_testingsample.Get("bdt_pilike_positron");
+    TH1F* bdt_plike_antimu_test = (TH1F*)file_testingsample.Get("bdt_plike_antimu");
+    TH1F* bdt_plike_piplus_test = (TH1F*)file_testingsample.Get("bdt_plike_piplus");
+    TH1F* bdt_plike_proton_test = (TH1F*)file_testingsample.Get("bdt_plike_proton");
+    TH1F* bdt_plike_positron_test = (TH1F*)file_testingsample.Get("bdt_plike_positron");
+    TH1F* bdt_elike_antimu_test = (TH1F*)file_testingsample.Get("bdt_elike_antimu");
+    TH1F* bdt_elike_piplus_test = (TH1F*)file_testingsample.Get("bdt_elike_piplus");
+    TH1F* bdt_elike_proton_test = (TH1F*)file_testingsample.Get("bdt_elike_proton");
+    TH1F* bdt_elike_positron_test = (TH1F*)file_testingsample.Get("bdt_elike_positron");
     
     std::cout << "Reading " << n_testing << " points from testing sample..." << std::endl;
     
@@ -108,4 +138,34 @@
     
     Double_t ks_result_bdt_mulike_antimu = bdt_mulike_antimu_train->KolmogorovTest(bdt_mulike_antimu_test, "XD");
     std::cout << "bdt_mulike_antimu KS test result: " << ks_result_bdt_mulike_antimu << std::endl;
+    Double_t ks_result_bdt_mulike_piplus = bdt_mulike_piplus_train->KolmogorovTest(bdt_mulike_piplus_test, "XD");
+    std::cout << "bdt_mulike_piplus KS test result: " << ks_result_bdt_mulike_piplus << std::endl;
+    Double_t ks_result_bdt_mulike_proton = bdt_mulike_proton_train->KolmogorovTest(bdt_mulike_proton_test, "XD");
+    std::cout << "bdt_mulike_proton KS test result: " << ks_result_bdt_mulike_proton << std::endl;
+    Double_t ks_result_bdt_mulike_positron = bdt_mulike_positron_train->KolmogorovTest(bdt_mulike_positron_test, "XD");
+    std::cout << "bdt_mulike_positron KS test result: " << ks_result_bdt_mulike_positron << std::endl;
+    Double_t ks_result_bdt_pilike_antimu = bdt_pilike_antimu_train->KolmogorovTest(bdt_pilike_antimu_test, "XD");
+    std::cout << "bdt_pilike_antimu KS test result: " << ks_result_bdt_pilike_antimu << std::endl;
+    Double_t ks_result_bdt_pilike_piplus = bdt_pilike_piplus_train->KolmogorovTest(bdt_pilike_piplus_test, "XD");
+    std::cout << "bdt_pilike_piplus KS test result: " << ks_result_bdt_pilike_piplus << std::endl;
+    Double_t ks_result_bdt_pilike_proton = bdt_pilike_proton_train->KolmogorovTest(bdt_pilike_proton_test, "XD");
+    std::cout << "bdt_pilike_proton KS test result: " << ks_result_bdt_pilike_proton << std::endl;
+    Double_t ks_result_bdt_pilike_positron = bdt_pilike_positron_train->KolmogorovTest(bdt_pilike_positron_test, "XD");
+    std::cout << "bdt_pilike_positron KS test result: " << ks_result_bdt_pilike_positron << std::endl;
+    Double_t ks_result_bdt_plike_antimu = bdt_plike_antimu_train->KolmogorovTest(bdt_plike_antimu_test, "XD");
+    std::cout << "bdt_plike_antimu KS test result: " << ks_result_bdt_plike_antimu << std::endl;
+    Double_t ks_result_bdt_plike_piplus = bdt_plike_piplus_train->KolmogorovTest(bdt_plike_piplus_test, "XD");
+    std::cout << "bdt_plike_piplus KS test result: " << ks_result_bdt_plike_piplus << std::endl;
+    Double_t ks_result_bdt_plike_proton = bdt_plike_proton_train->KolmogorovTest(bdt_plike_proton_test, "XD");
+    std::cout << "bdt_plike_proton KS test result: " << ks_result_bdt_plike_proton << std::endl;
+    Double_t ks_result_bdt_plike_positron = bdt_plike_positron_train->KolmogorovTest(bdt_plike_positron_test, "XD");
+    std::cout << "bdt_plike_positron KS test result: " << ks_result_bdt_plike_positron << std::endl;
+    Double_t ks_result_bdt_elike_antimu = bdt_elike_antimu_train->KolmogorovTest(bdt_elike_antimu_test, "XD");
+    std::cout << "bdt_elike_antimu KS test result: " << ks_result_bdt_elike_antimu << std::endl;
+    Double_t ks_result_bdt_elike_piplus = bdt_elike_piplus_train->KolmogorovTest(bdt_elike_piplus_test, "XD");
+    std::cout << "bdt_elike_piplus KS test result: " << ks_result_bdt_elike_piplus << std::endl;
+    Double_t ks_result_bdt_elike_proton = bdt_elike_proton_train->KolmogorovTest(bdt_elike_proton_test, "XD");
+    std::cout << "bdt_elike_proton KS test result: " << ks_result_bdt_elike_proton << std::endl;
+    Double_t ks_result_bdt_elike_positron = bdt_elike_positron_train->KolmogorovTest(bdt_elike_positron_test, "XD");
+    std::cout << "bdt_elike_positron KS test result: " << ks_result_bdt_elike_positron << std::endl;
 }
