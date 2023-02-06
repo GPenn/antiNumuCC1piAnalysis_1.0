@@ -169,6 +169,39 @@
     Double_t ks_result_bdt_elike_positron = bdt_elike_positron_train->KolmogorovTest(bdt_elike_positron_test, "X");
     std::cout << "bdt_elike_positron KS test result: " << ks_result_bdt_elike_positron << std::endl;
     
+    Double_t chi2_result_bdt_mulike_antimu = bdt_mulike_antimu_train->Chi2Test(bdt_mulike_antimu_test, "UU");
+    std::cout << "bdt_mulike_antimu chi2 test result: " << chi2_result_bdt_mulike_antimu << std::endl;
+    Double_t chi2_result_bdt_mulike_piplus = bdt_mulike_piplus_train->Chi2Test(bdt_mulike_piplus_test, "UU");
+    std::cout << "bdt_mulike_piplus chi2 test result: " << chi2_result_bdt_mulike_piplus << std::endl;
+    Double_t chi2_result_bdt_mulike_proton = bdt_mulike_proton_train->Chi2Test(bdt_mulike_proton_test, "UU");
+    std::cout << "bdt_mulike_proton chi2 test result: " << chi2_result_bdt_mulike_proton << std::endl;
+    Double_t chi2_result_bdt_mulike_positron = bdt_mulike_positron_train->Chi2Test(bdt_mulike_positron_test, "UU");
+    std::cout << "bdt_mulike_positron chi2 test result: " << chi2_result_bdt_mulike_positron << std::endl;
+    Double_t chi2_result_bdt_pilike_antimu = bdt_pilike_antimu_train->Chi2Test(bdt_pilike_antimu_test, "UU");
+    std::cout << "bdt_pilike_antimu chi2 test result: " << chi2_result_bdt_pilike_antimu << std::endl;
+    Double_t chi2_result_bdt_pilike_piplus = bdt_pilike_piplus_train->Chi2Test(bdt_pilike_piplus_test, "UU");
+    std::cout << "bdt_pilike_piplus chi2 test result: " << chi2_result_bdt_pilike_piplus << std::endl;
+    Double_t chi2_result_bdt_pilike_proton = bdt_pilike_proton_train->Chi2Test(bdt_pilike_proton_test, "UU");
+    std::cout << "bdt_pilike_proton chi2 test result: " << chi2_result_bdt_pilike_proton << std::endl;
+    Double_t chi2_result_bdt_pilike_positron = bdt_pilike_positron_train->Chi2Test(bdt_pilike_positron_test, "UU");
+    std::cout << "bdt_pilike_positron chi2 test result: " << chi2_result_bdt_pilike_positron << std::endl;
+    Double_t chi2_result_bdt_plike_antimu = bdt_plike_antimu_train->Chi2Test(bdt_plike_antimu_test, "UU");
+    std::cout << "bdt_plike_antimu chi2 test result: " << chi2_result_bdt_plike_antimu << std::endl;
+    Double_t chi2_result_bdt_plike_piplus = bdt_plike_piplus_train->Chi2Test(bdt_plike_piplus_test, "UU");
+    std::cout << "bdt_plike_piplus chi2 test result: " << chi2_result_bdt_plike_piplus << std::endl;
+    Double_t chi2_result_bdt_plike_proton = bdt_plike_proton_train->Chi2Test(bdt_plike_proton_test, "UU");
+    std::cout << "bdt_plike_proton chi2 test result: " << chi2_result_bdt_plike_proton << std::endl;
+    Double_t chi2_result_bdt_plike_positron = bdt_plike_positron_train->Chi2Test(bdt_plike_positron_test, "UU");
+    std::cout << "bdt_plike_positron chi2 test result: " << chi2_result_bdt_plike_positron << std::endl;
+    Double_t chi2_result_bdt_elike_antimu = bdt_elike_antimu_train->Chi2Test(bdt_elike_antimu_test, "UU");
+    std::cout << "bdt_elike_antimu chi2 test result: " << chi2_result_bdt_elike_antimu << std::endl;
+    Double_t chi2_result_bdt_elike_piplus = bdt_elike_piplus_train->Chi2Test(bdt_elike_piplus_test, "UU");
+    std::cout << "bdt_elike_piplus chi2 test result: " << chi2_result_bdt_elike_piplus << std::endl;
+    Double_t chi2_result_bdt_elike_proton = bdt_elike_proton_train->Chi2Test(bdt_elike_proton_test, "UU");
+    std::cout << "bdt_elike_proton chi2 test result: " << chi2_result_bdt_elike_proton << std::endl;
+    Double_t chi2_result_bdt_elike_positron = bdt_elike_positron_train->Chi2Test(bdt_elike_positron_test, "UU");
+    std::cout << "bdt_elike_positron chi2 test result: " << chi2_result_bdt_elike_positron << std::endl;
+    
     TH1F* bdt_mulike_all_train = bdt_mulike_antimu_train->Clone("bdt_mulike_all_train");
     bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
     bdt_mulike_all_train->Add(bdt_mulike_proton_train);
@@ -181,6 +214,8 @@
     
     Double_t ks_result_bdt_mulike = bdt_mulike_all_train->KolmogorovTest(bdt_mulike_all_test, "X");
     std::cout << "bdt_mulike_all KS test result: " << ks_result_bdt_mulike << std::endl;
+    Double_t chi2_result_bdt_mulike = bdt_mulike_all_train->Chi2Test(bdt_mulike_all_test, "UU");
+    std::cout << "bdt_mulike_all chi2 test result: " << chi2_result_bdt_mulike << std::endl;
     
     TH1F* bdt_pilike_all_train = bdt_pilike_antimu_train->Clone("bdt_pilike_all_train");
     bdt_pilike_all_train->Add(bdt_pilike_piplus_train);
@@ -194,6 +229,8 @@
     
     Double_t ks_result_bdt_pilike = bdt_pilike_all_train->KolmogorovTest(bdt_pilike_all_test, "X");
     std::cout << "bdt_pilike_all KS test result: " << ks_result_bdt_pilike << std::endl;
+    Double_t chi2_result_bdt_pilike = bdt_pilike_all_train->Chi2Test(bdt_pilike_all_test, "UU");
+    std::cout << "bdt_pilike_all chi2 test result: " << chi2_result_bdt_pilike << std::endl;
     
     TH1F* bdt_plike_all_train = bdt_plike_antimu_train->Clone("bdt_plike_all_train");
     bdt_plike_all_train->Add(bdt_plike_piplus_train);
@@ -207,6 +244,8 @@
     
     Double_t ks_result_bdt_plike = bdt_plike_all_train->KolmogorovTest(bdt_plike_all_test, "X");
     std::cout << "bdt_plike_all KS test result: " << ks_result_bdt_plike << std::endl;
+    Double_t chi2_result_bdt_plike = bdt_plike_all_train->Chi2Test(bdt_plike_all_test, "UU");
+    std::cout << "bdt_plike_all chi2 test result: " << chi2_result_bdt_plike << std::endl;
     
     TH1F* bdt_elike_all_train = bdt_elike_antimu_train->Clone("bdt_elike_all_train");
     bdt_elike_all_train->Add(bdt_elike_piplus_train);
@@ -220,4 +259,6 @@
     
     Double_t ks_result_bdt_elike = bdt_elike_all_train->KolmogorovTest(bdt_elike_all_test, "X");
     std::cout << "bdt_elike_all KS test result: " << ks_result_bdt_elike << std::endl;
+    Double_t chi2_result_bdt_elike = bdt_elike_all_train->Chi2Test(bdt_elike_all_test, "UU");
+    std::cout << "bdt_elike_all chi2 test result: " << chi2_result_bdt_elike << std::endl;
 }
