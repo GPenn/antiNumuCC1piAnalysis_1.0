@@ -34,6 +34,22 @@
     TH1F* bdt_elike_piplus_train = (TH1F*)file_trainingsample.Get("bdt_elike_piplus");
     TH1F* bdt_elike_proton_train = (TH1F*)file_trainingsample.Get("bdt_elike_proton");
     TH1F* bdt_elike_positron_train = (TH1F*)file_trainingsample.Get("bdt_elike_positron");
+    bdt_mulike_antimu_train->Sumw2();
+    bdt_mulike_piplus_train->Sumw2();
+    bdt_mulike_proton_train->Sumw2();
+    bdt_mulike_positron_train->Sumw2();
+    bdt_pilike_antimu_train->Sumw2();
+    bdt_pilike_piplus_train->Sumw2();
+    bdt_pilike_proton_train->Sumw2();
+    bdt_pilike_positron_train->Sumw2();
+    bdt_plike_antimu_train->Sumw2();
+    bdt_plike_piplus_train->Sumw2();
+    bdt_plike_proton_train->Sumw2();
+    bdt_plike_positron_train->Sumw2();
+    bdt_elike_antimu_train->Sumw2();
+    bdt_elike_piplus_train->Sumw2();
+    bdt_elike_proton_train->Sumw2();
+    bdt_elike_positron_train->Sumw2();
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
     
@@ -79,6 +95,22 @@
     TH1F* bdt_elike_piplus_test = (TH1F*)file_testingsample.Get("bdt_elike_piplus");
     TH1F* bdt_elike_proton_test = (TH1F*)file_testingsample.Get("bdt_elike_proton");
     TH1F* bdt_elike_positron_test = (TH1F*)file_testingsample.Get("bdt_elike_positron");
+    bdt_mulike_antimu_test->Sumw2();
+    bdt_mulike_piplus_test->Sumw2();
+    bdt_mulike_proton_test->Sumw2();
+    bdt_mulike_positron_test->Sumw2();
+    bdt_pilike_antimu_test->Sumw2();
+    bdt_pilike_piplus_test->Sumw2();
+    bdt_pilike_proton_test->Sumw2();
+    bdt_pilike_positron_test->Sumw2();
+    bdt_plike_antimu_test->Sumw2();
+    bdt_plike_piplus_test->Sumw2();
+    bdt_plike_proton_test->Sumw2();
+    bdt_plike_positron_test->Sumw2();
+    bdt_elike_antimu_test->Sumw2();
+    bdt_elike_piplus_test->Sumw2();
+    bdt_elike_proton_test->Sumw2();
+    bdt_elike_positron_test->Sumw2();
     
     std::cout << "Reading " << n_testing << " points from testing sample..." << std::endl;
     
