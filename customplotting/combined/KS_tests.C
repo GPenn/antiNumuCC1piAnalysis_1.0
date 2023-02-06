@@ -18,6 +18,7 @@
     Double_t training_plike_sorted[n_training];
     Double_t training_elike_sorted[n_training];
     TH1F* training_mulike_debug_hist = new TH1F("training_mulike_debug_hist", "training_mulike_debug_hist", 20, 0.0, 1.0);
+    TH1F* bdt_mulike_antimu_train = (TH1F*)file_trainingsample.Get("bdt_mulike_antimu");
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
     
@@ -47,6 +48,7 @@
     Double_t testing_plike_sorted[n_testing];
     Double_t testing_elike_sorted[n_testing];
     TH1F* testing_mulike_debug_hist = new TH1F("testing_mulike_debug_hist", "testing_mulike_debug_hist", 20, 0.0, 1.0);
+    TH1F* bdt_mulike_antimu_test = (TH1F*)file_trainingsample.Get("bdt_mulike_antimu_test");
     
     std::cout << "Reading " << n_testing << " points from testing sample..." << std::endl;
     
@@ -101,5 +103,7 @@
     testing_mulike_debug_hist->Draw("same");
     
     Double_t ks_result_hists = training_mulike_debug_hist->KolmogorovTest(testing_mulike_debug_hist);
-    std::cout << "Debug hist KS test result: " << ks_result_plike << std::endl;
+    std::cout << "Debug hist KS test result: " << ks_result_hists << std::endl;
+    
+    std::cout << "bdt_mulike_antimu KS test result: " << bdt_mulike_antimu_train->KolmogorovTest(bdt_mulike_antimu_test, "X") << std::endl;
 }
