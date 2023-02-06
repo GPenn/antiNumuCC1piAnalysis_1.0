@@ -17,7 +17,7 @@
     Double_t training_pilike_sorted[n_training];
     Double_t training_plike_sorted[n_training];
     Double_t training_elike_sorted[n_training];
-    TH1F* training_mulike_debug_hist = new TH1F("training_mulike_debug_hist", "training_mulike_debug_hist", 20, 0.0, 1.0);
+    TH1F* training_mulike_debug_hist = new TH1F("training_mulike_debug_hist", "training_mulike_debug_hist", 100, 0.0, 1.0);
     TH1F* bdt_mulike_antimu_train = (TH1F*)file_trainingsample.Get("bdt_mulike_antimu");
     
     std::cout << "Reading " << n_training << " points from training sample..." << std::endl;
@@ -47,7 +47,7 @@
     Double_t testing_pilike_sorted[n_testing];
     Double_t testing_plike_sorted[n_testing];
     Double_t testing_elike_sorted[n_testing];
-    TH1F* testing_mulike_debug_hist = new TH1F("testing_mulike_debug_hist", "testing_mulike_debug_hist", 20, 0.0, 1.0);
+    TH1F* testing_mulike_debug_hist = new TH1F("testing_mulike_debug_hist", "testing_mulike_debug_hist", 100, 0.0, 1.0);
     TH1F* bdt_mulike_antimu_test = (TH1F*)file_testingsample.Get("bdt_mulike_antimu");
     
     std::cout << "Reading " << n_testing << " points from testing sample..." << std::endl;
