@@ -181,4 +181,43 @@
     
     Double_t ks_result_bdt_mulike = bdt_mulike_all_train->KolmogorovTest(bdt_mulike_all_test, "X");
     std::cout << "bdt_mulike_all KS test result: " << ks_result_bdt_mulike << std::endl;
+    
+    TH1F* bdt_pilike_all_train = bdt_pilike_antimu_train->Clone("bdt_pilike_all_train");
+    bdt_pilike_all_train->Add(bdt_pilike_piplus_train);
+    bdt_pilike_all_train->Add(bdt_pilike_proton_train);
+    bdt_pilike_all_train->Add(bdt_pilike_positron_train);
+    
+    TH1F* bdt_pilike_all_test = bdt_pilike_antimu_test->Clone("bdt_pilike_all_test");
+    bdt_pilike_all_test->Add(bdt_pilike_piplus_test);
+    bdt_pilike_all_test->Add(bdt_pilike_proton_test);
+    bdt_pilike_all_test->Add(bdt_pilike_positron_test);
+    
+    Double_t ks_result_bdt_pilike = bdt_pilike_all_train->KolmogorovTest(bdt_pilike_all_test, "X");
+    std::cout << "bdt_pilike_all KS test result: " << ks_result_bdt_pilike << std::endl;
+    
+    TH1F* bdt_plike_all_train = bdt_plike_antimu_train->Clone("bdt_plike_all_train");
+    bdt_plike_all_train->Add(bdt_plike_piplus_train);
+    bdt_plike_all_train->Add(bdt_plike_proton_train);
+    bdt_plike_all_train->Add(bdt_plike_positron_train);
+    
+    TH1F* bdt_plike_all_test = bdt_plike_antimu_test->Clone("bdt_plike_all_test");
+    bdt_plike_all_test->Add(bdt_plike_piplus_test);
+    bdt_plike_all_test->Add(bdt_plike_proton_test);
+    bdt_plike_all_test->Add(bdt_plike_positron_test);
+    
+    Double_t ks_result_bdt_plike = bdt_plike_all_train->KolmogorovTest(bdt_plike_all_test, "X");
+    std::cout << "bdt_plike_all KS test result: " << ks_result_bdt_plike << std::endl;
+    
+    TH1F* bdt_elike_all_train = bdt_elike_antimu_train->Clone("bdt_elike_all_train");
+    bdt_elike_all_train->Add(bdt_elike_piplus_train);
+    bdt_elike_all_train->Add(bdt_elike_proton_train);
+    bdt_elike_all_train->Add(bdt_elike_positron_train);
+    
+    TH1F* bdt_elike_all_test = bdt_elike_antimu_test->Clone("bdt_elike_all_test");
+    bdt_elike_all_test->Add(bdt_elike_piplus_test);
+    bdt_elike_all_test->Add(bdt_elike_proton_test);
+    bdt_elike_all_test->Add(bdt_elike_positron_test);
+    
+    Double_t ks_result_bdt_elike = bdt_elike_all_train->KolmogorovTest(bdt_elike_all_test, "X");
+    std::cout << "bdt_elike_all KS test result: " << ks_result_bdt_elike << std::endl;
 }
