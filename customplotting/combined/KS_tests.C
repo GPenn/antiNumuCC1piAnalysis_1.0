@@ -103,9 +103,9 @@
     bdt_mulike_antimu_train->Draw();
     bdt_mulike_antimu_test->Draw("same");
     
-    Double_t ks_result_hists = training_mulike_debug_hist->KolmogorovTest(testing_mulike_debug_hist, "X");
+    Double_t ks_result_hists = training_mulike_debug_hist->KolmogorovTest(testing_mulike_debug_hist, "D");
     std::cout << "Debug hist KS test result: " << ks_result_hists << std::endl;
     
-    Double_t ks_result_bdt_mulike_antimu = bdt_mulike_antimu_train->KolmogorovTest(bdt_mulike_antimu_test, "X");
+    Double_t ks_result_bdt_mulike_antimu = bdt_mulike_antimu_train->KolmogorovTest(bdt_mulike_antimu_test, "D");
     std::cout << "bdt_mulike_antimu KS test result: " << ks_result_bdt_mulike_antimu << std::endl;
 }
