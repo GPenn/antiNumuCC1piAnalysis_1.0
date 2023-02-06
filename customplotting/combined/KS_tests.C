@@ -171,13 +171,13 @@
     
     TH1F* bdt_mulike_all_train = bdt_mulike_antimu_train->Clone("bdt_mulike_all_train");
     bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
-    bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
-    bdt_mulike_all_train->Add(bdt_mulike_piplus_train);
+    bdt_mulike_all_train->Add(bdt_mulike_proton_train);
+    bdt_mulike_all_train->Add(bdt_mulike_positron_train);
     
     TH1F* bdt_mulike_all_test = bdt_mulike_antimu_test->Clone("bdt_mulike_all_test");
     bdt_mulike_all_test->Add(bdt_mulike_piplus_test);
-    bdt_mulike_all_test->Add(bdt_mulike_piplus_test);
-    bdt_mulike_all_test->Add(bdt_mulike_piplus_test);
+    bdt_mulike_all_test->Add(bdt_mulike_proton_test);
+    bdt_mulike_all_test->Add(bdt_mulike_positron_test);
     
     Double_t ks_result_bdt_mulike = bdt_mulike_all_train->KolmogorovTest(bdt_mulike_all_test, "X");
     std::cout << "bdt_mulike_all KS test result: " << ks_result_bdt_mulike << std::endl;
