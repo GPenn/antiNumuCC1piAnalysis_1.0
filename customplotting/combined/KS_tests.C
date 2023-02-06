@@ -133,7 +133,7 @@
     bdt_mulike_antimu_train->SetLineColor(kRed);
     bdt_mulike_antimu_train->Draw();
     bdt_mulike_antimu_test->Sumw2();
-    bdt_mulike_antimu_train->SetLineColor(kBlack);
+    bdt_mulike_antimu_test->SetLineColor(kBlack);
     bdt_mulike_antimu_test->Draw("same");
     
     Double_t ks_result_hists = training_mulike_debug_hist->KolmogorovTest(testing_mulike_debug_hist, "XD");
