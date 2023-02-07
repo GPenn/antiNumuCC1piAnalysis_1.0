@@ -65,6 +65,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *EbyL_proton = new TH1F("EbyL_proton", "p", 40, 0.0, 4);
    TH1F *EbyL_positron = new TH1F("EbyL_positron", "e^{+}", 40, 0.0, 4);
    
+   TH1F *Ebyp_antimu = new TH1F("Ebyp_antimu", "#mu^{+};ECal EM energy/Reconstructed momentum (dimensionless);Entries/10 MeV/mm", 40, 0.0, 4);
+   TH1F *Ebyp_piplus = new TH1F("Ebyp_piplus", "#pi^{+}", 40, 0.0, 4);
+   TH1F *Ebyp_proton = new TH1F("Ebyp_proton", "p", 40, 0.0, 4);
+   TH1F *Ebyp_positron = new TH1F("Ebyp_positron", "e^{+}", 40, 0.0, 4);
+   
    TH1F *circularity_antimu = new TH1F("circularity_antimu", "#mu^{+};ECal circularity variable (dimensionless);Entries", 50, 0.0, 1.0);
    TH1F *circularity_piplus = new TH1F("circularity_piplus", "#pi^{+}", 50, 0.0, 1.0);
    TH1F *circularity_proton = new TH1F("circularity_proton", "p", 50, 0.0, 1.0);
@@ -235,6 +240,11 @@ void DefaultCustomPlotting::Loop()
    TH1F *EbyL_piplus_weighted = new TH1F("EbyL_piplus_weighted", "#pi^{+}", 40, 0.0, 4);
    TH1F *EbyL_proton_weighted = new TH1F("EbyL_proton_weighted", "p", 40, 0.0, 4);
    TH1F *EbyL_positron_weighted = new TH1F("EbyL_positron_weighted", "e^{+}", 40, 0.0, 4);
+   
+   TH1F *Ebyp_antimu_weighted = new TH1F("Ebyp_antimu_weighted", "#mu^{+};ECal EM energy/Reconstructed momentum (dimensionless);Weighted entries/10 MeV/mm", 40, 0.0, 4);
+   TH1F *Ebyp_piplus_weighted = new TH1F("Ebyp_piplus_weighted", "#pi^{+}", 40, 0.0, 4);
+   TH1F *Ebyp_proton_weighted = new TH1F("Ebyp_proton_weighted", "p", 40, 0.0, 4);
+   TH1F *Ebyp_positron_weighted = new TH1F("Ebyp_positron_weighted", "e^{+}", 40, 0.0, 4);
    
    TH1F *circularity_antimu_weighted = new TH1F("circularity_antimu_weighted", "#mu^{+};ECal circularity variable (dimensionless);Weighted entries", 50, 0.0, 1.0);
    TH1F *circularity_piplus_weighted = new TH1F("circularity_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
@@ -678,6 +688,7 @@ void DefaultCustomPlotting::Loop()
             theta_antimu->Fill(selmu_det_theta);
             EMEnergy_antimu->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_antimu->Fill(selmu_ecal_bestseg_EbyL);
+            Ebyp_antimu->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0]);
             circularity_antimu->Fill(selmu_ecal_circularity);
             fbr_antimu->Fill(selmu_ecal_fbr);
             tmr_antimu->Fill(selmu_ecal_tmr);
@@ -716,6 +727,7 @@ void DefaultCustomPlotting::Loop()
             theta_antimu_weighted->Fill(selmu_det_theta, weight);
             EMEnergy_antimu_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
             EbyL_antimu_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            Ebyp_antimu_weighted->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0], weight);
             circularity_antimu_weighted->Fill(selmu_ecal_circularity, weight);
             fbr_antimu_weighted->Fill(selmu_ecal_fbr, weight);
             tmr_antimu_weighted->Fill(selmu_ecal_tmr, weight);
@@ -769,6 +781,7 @@ void DefaultCustomPlotting::Loop()
             theta_piplus->Fill(selmu_det_theta);
             EMEnergy_piplus->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_piplus->Fill(selmu_ecal_bestseg_EbyL);
+            Ebyp_piplus->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0]);
             circularity_piplus->Fill(selmu_ecal_circularity);
             fbr_piplus->Fill(selmu_ecal_fbr);
             tmr_piplus->Fill(selmu_ecal_tmr);
@@ -807,6 +820,7 @@ void DefaultCustomPlotting::Loop()
             theta_piplus_weighted->Fill(selmu_det_theta, weight);
             EMEnergy_piplus_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
             EbyL_piplus_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            Ebyp_piplus_weighted->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0], weight);
             circularity_piplus_weighted->Fill(selmu_ecal_circularity, weight);
             fbr_piplus_weighted->Fill(selmu_ecal_fbr, weight);
             tmr_piplus_weighted->Fill(selmu_ecal_tmr, weight);
@@ -859,6 +873,7 @@ void DefaultCustomPlotting::Loop()
             theta_proton->Fill(selmu_det_theta);
             EMEnergy_proton->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_proton->Fill(selmu_ecal_bestseg_EbyL);
+            Ebyp_proton->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0]);
             circularity_proton->Fill(selmu_ecal_circularity);
             fbr_proton->Fill(selmu_ecal_fbr);
             tmr_proton->Fill(selmu_ecal_tmr);
@@ -897,6 +912,7 @@ void DefaultCustomPlotting::Loop()
             theta_proton_weighted->Fill(selmu_det_theta, weight*1.08333);
             EMEnergy_proton_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight*1.08333);
             EbyL_proton_weighted->Fill(selmu_ecal_bestseg_EbyL, weight*1.08333);
+            Ebyp_proton_weighted->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0], weight*1.08333);
             circularity_proton_weighted->Fill(selmu_ecal_circularity, weight*1.08333);
             fbr_proton_weighted->Fill(selmu_ecal_fbr, weight*1.08333);
             tmr_proton_weighted->Fill(selmu_ecal_tmr, weight*1.08333);
@@ -948,6 +964,7 @@ void DefaultCustomPlotting::Loop()
             theta_positron->Fill(selmu_det_theta);
             EMEnergy_positron->Fill(selmu_ecal_bestseg_EMenergy);
             EbyL_positron->Fill(selmu_ecal_bestseg_EbyL);
+            Ebyp_positron->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0]);
             circularity_positron->Fill(selmu_ecal_circularity);
             fbr_positron->Fill(selmu_ecal_fbr);
             tmr_positron->Fill(selmu_ecal_tmr);
@@ -986,6 +1003,7 @@ void DefaultCustomPlotting::Loop()
             theta_positron_weighted->Fill(selmu_det_theta, weight);
             EMEnergy_positron_weighted->Fill(selmu_ecal_bestseg_EMenergy, weight);
             EbyL_positron_weighted->Fill(selmu_ecal_bestseg_EbyL, weight);
+            Ebyp_positron_weighted->Fill(selmu_ecal_bestseg_EMenergy/selmu_mom[0], weight);
             circularity_positron_weighted->Fill(selmu_ecal_circularity, weight);
             fbr_positron_weighted->Fill(selmu_ecal_fbr, weight);
             tmr_positron_weighted->Fill(selmu_ecal_tmr, weight);
@@ -1535,8 +1553,8 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_EMEnergy = new TCanvas("canvas_EMEnergy","",200,10,1000,600);
    
-   TCanvas* canvas_EandEbyL = new TCanvas("canvas_EandEbyL","",200,10,1000,400);
-   canvas_EandEbyL->Divide(2,1,0.005,0.005);
+   TCanvas* canvas_EandEbyL = new TCanvas("canvas_EandEbyL","",200,10,1000,800);
+   canvas_EandEbyL->Divide(2,2,0.005,0.005);
    canvas_EandEbyL->cd(1);
    
    //EMEnergy_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -1572,6 +1590,20 @@ void DefaultCustomPlotting::Loop()
    EbyL_positron->Draw("same");
    //canvas_EbyL->BuildLegend();
    //canvas_EbyL->Write();
+   
+   canvas_EandEbyL->cd(3);
+   
+   //Ebyp_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
+  
+   SetHistParticleStyle(Ebyp_antimu, "antimu");
+   SetHistParticleStyle(Ebyp_piplus, "piplus");
+   SetHistParticleStyle(Ebyp_proton, "proton");
+   SetHistParticleStyle(Ebyp_positron, "positron");
+   
+   Ebyp_antimu->Draw();
+   Ebyp_piplus->Draw("same");
+   Ebyp_proton->Draw("same");
+   Ebyp_positron->Draw("same");
    canvas_EandEbyL->Write();
    
    // ECal circularity
