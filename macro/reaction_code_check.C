@@ -6,4 +6,6 @@
   
   TCanvas reaction;
   draw.Draw(default,"reaction",10,0,10,"reaction","accum_level[][1]>4");
+  TCanvas reactionCC;
+  draw.Draw(default,"reactionCC",10,0,10,"reactionCC","accum_level[][1]>4");
 }
