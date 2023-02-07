@@ -205,14 +205,14 @@ void DefaultCustomPlotting::Loop()
          
          if (reactionCC==1)   {counter_afterprimaryPID_sig++;}
          else                 {counter_afterprimaryPID_bkg++;}
+         
+         if (topology==1)   {counter_beforesecondaryPID_sig++;}
+         else               {counter_beforesecondaryPID_bkg++;}
       }
       
       if (accum_level[0][1] > 7){
          
          counter_all_accum7++;
-         
-         if (topology==1)   {counter_beforesecondaryPID_sig++;}
-         else               {counter_beforesecondaryPID_bkg++;}
       }
       
       if (accum_level[0][1] > 8){
