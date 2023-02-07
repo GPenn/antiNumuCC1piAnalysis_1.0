@@ -1591,6 +1591,8 @@ void DefaultCustomPlotting::Loop()
    //canvas_EbyL->BuildLegend();
    //canvas_EbyL->Write();
    
+   // ECal E/p
+   
    canvas_EandEbyL->cd(3);
    
    //Ebyp_antimu->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -2273,8 +2275,8 @@ void DefaultCustomPlotting::Loop()
    
    //TCanvas* canvas_weighted_EMEnergy = new TCanvas("canvas_weighted_EMEnergy","",200,10,1000,600);
    
-   TCanvas* canvas_weighted_EandEbyL = new TCanvas("canvas_weighted_EandEbyL","",200,10,1000,400);
-   canvas_weighted_EandEbyL->Divide(2,1,0.005,0.005);
+   TCanvas* canvas_weighted_EandEbyL = new TCanvas("canvas_weighted_EandEbyL","",200,10,1000,800);
+   canvas_weighted_EandEbyL->Divide(2,2,0.005,0.005);
    canvas_weighted_EandEbyL->cd(1);
    
    //EMEnergy_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
@@ -2312,6 +2314,23 @@ void DefaultCustomPlotting::Loop()
    EbyL_positron_weighted->Draw("same");
    //canvas_weighted_EbyL->BuildLegend();
    //canvas_weighted_EbyL->Write();
+   
+   // ECal E/p
+   
+   canvas_weighted_EandEbyL->cd(3);
+   
+   //Ebyp_antimu_weighted->GetYaxis()->SetRangeUser(0.0, 7000.0);
+   Ebyp_antimu_weighted->GetYaxis()->SetTitleOffset(1.2);
+  
+   SetHistParticleStyle(Ebyp_antimu_weighted, "antimu");
+   SetHistParticleStyle(Ebyp_piplus_weighted, "piplus");
+   SetHistParticleStyle(Ebyp_proton_weighted, "proton");
+   SetHistParticleStyle(Ebyp_positron_weighted, "positron");
+   
+   Ebyp_antimu_weighted->Draw();
+   Ebyp_piplus_weighted->Draw("same");
+   Ebyp_proton_weighted->Draw("same");
+   Ebyp_positron_weighted->Draw("same");
    canvas_weighted_EandEbyL->Write();
    
    // ECal circularity
