@@ -33,8 +33,8 @@ void DefaultCustomPlotting::Loop()
 //    fChain->GetEntry(jentry);       //read all branches
 //by  b_branchname->GetEntry(ientry); //read only this branch
    
-   Bool_t limit_kinematics = true;
-   Bool_t two_track_only = true;
+   Bool_t limit_kinematics = false;
+   Bool_t two_track_only = false;
    
    if (fChain == 0) return;
 
@@ -49,6 +49,8 @@ void DefaultCustomPlotting::Loop()
    Int_t counter_selmu_antimu = 0, counter_selmu_piplus = 0, counter_selmu_proton = 0, counter_selmu_positron = 0, counter_selmu_mu = 0, counter_selmu_piminus = 0, counter_selmu_electron = 0;
    Int_t counter_selpi = 0, counter_selpi_piminus = 0, counter_selpi_mu = 0, counter_selpi_electron = 0, counter_selpi_proton = 0;
    Int_t counter_selmu_antimu_accum5 = 0, counter_selmu_antimu_accum6 = 0, counter_selmu_piplus_accum5 = 0, counter_selmu_piplus_accum6 = 0;
+   Int_t counter_beforeprimaryPID_sig = 0, counter_beforeprimaryPID_bkg = 0, counter_afterprimaryPID_sig = 0, counter_afterprimaryPID_bkg = 0;
+   Int_t counter_beforesecondaryPID_sig = 0, counter_beforesecondaryPID_bkg = 0, counter_aftersecondaryPID_sig = 0, counter_aftersecondaryPID_bkg = 0;
    
    Int_t recomom_nbins = 8;
    
@@ -184,6 +186,9 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_piplus_accum5++;
          }
+         
+         if (reactionCC==1)   {counter_beforeprimaryPID_sig++;}
+         else                 {counter_beforeprimaryPID_bkg++;}
       }
       
       if (accum_level[0][1] > 6){
@@ -197,17 +202,26 @@ void DefaultCustomPlotting::Loop()
          {
             counter_selmu_piplus_accum6++;
          }
+         
+         if (reactionCC==1)   {counter_afterprimaryPID_sig++;}
+         else                 {counter_afterprimaryPID_bkg++;}
       }
       
       if (accum_level[0][1] > 7){
          
          counter_all_accum7++;
+         
+         if (topology==1)   {counter_beforesecondaryPID_sig++;}
+         else               {counter_beforesecondaryPID_bkg++;}
       }
       
       if (accum_level[0][1] > 8){
          
          counter_all_accum8++;
          recomom_all->Fill(selmu_mom[0]);
+         
+         if (topology==1)   {counter_aftersecondaryPID_sig++;}
+         else               {counter_aftersecondaryPID_bkg++;}
          
          if (topology == 0)
          {
@@ -354,6 +368,22 @@ void DefaultCustomPlotting::Loop()
    }
    
    std::cout << std::endl;
+   
+   std::cout << std::endl << "counter_beforeprimaryPID_sig: " << counter_beforeprimaryPID_sig << std::endl;
+   std::cout << std::endl << "counter_beforeprimaryPID_bkg: " << counter_beforeprimaryPID_bkg << std::endl;
+   std::cout << std::endl << "counter_afterprimaryPID_sig: " << counter_afterprimaryPID_sig << std::endl;
+   std::cout << std::endl << "counter_afterprimaryPID_bkg: " << counter_afterprimaryPID_bkg << std::endl;
+   
+   std::cout << std::endl << "Primary PID signal acceptance: " << (float)counter_afterprimaryPID_sig/counter_beforeprimaryPID_sig << std::endl;
+   std::cout << std::endl << "Primary PID background acceptance: " << (float)counter_afterprimaryPID_bkg/counter_beforeprimaryPID_bkg << std::endl;
+   
+   std::cout << std::endl << "counter_beforesecondaryPID_sig: " << counter_beforesecondaryPID_sig << std::endl;
+   std::cout << std::endl << "counter_beforesecondaryPID_bkg: " << counter_beforesecondaryPID_bkg << std::endl;
+   std::cout << std::endl << "counter_aftersecondaryPID_sig: " << counter_aftersecondaryPID_sig << std::endl;
+   std::cout << std::endl << "counter_aftersecondaryPID_bkg: " << counter_aftersecondaryPID_bkg << std::endl;
+   
+   std::cout << std::endl << "Secondary PID signal acceptance: " << (float)counter_aftersecondaryPID_sig/counter_beforesecondaryPID_sig << std::endl;
+   std::cout << std::endl << "Secondary PID background acceptance: " << (float)counter_aftersecondaryPID_bkg/counter_beforesecondaryPID_bkg << std::endl;
    
    std::cout << std::endl << "Events above accum_level 7: " << counter_all_accum7 << std::endl;
    std::cout << std::endl << "Events above accum_level 8: " << counter_all_accum8 << std::endl;
