@@ -65,10 +65,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *EbyL_proton = new TH1F("EbyL_proton", "p", 40, 0.0, 4);
    TH1F *EbyL_positron = new TH1F("EbyL_positron", "e^{+}", 40, 0.0, 4);
    
-   TH1F *Ebyp_antimu = new TH1F("Ebyp_antimu", "#mu^{+};ECal EM energy/Reconstructed momentum (dimensionless);Entries/10 MeV/mm", 40, 0.0, 4);
-   TH1F *Ebyp_piplus = new TH1F("Ebyp_piplus", "#pi^{+}", 40, 0.0, 4);
-   TH1F *Ebyp_proton = new TH1F("Ebyp_proton", "p", 40, 0.0, 4);
-   TH1F *Ebyp_positron = new TH1F("Ebyp_positron", "e^{+}", 40, 0.0, 4);
+   TH1F *Ebyp_antimu = new TH1F("Ebyp_antimu", "#mu^{+};ECal EM energy/Reconstructed momentum (dimensionless);Entries", 60, 0.0, 3);
+   TH1F *Ebyp_piplus = new TH1F("Ebyp_piplus", "#pi^{+}", 60, 0.0, 3);
+   TH1F *Ebyp_proton = new TH1F("Ebyp_proton", "p", 60, 0.0, 3);
+   TH1F *Ebyp_positron = new TH1F("Ebyp_positron", "e^{+}", 60, 0.0, 3);
    
    TH1F *circularity_antimu = new TH1F("circularity_antimu", "#mu^{+};ECal circularity variable (dimensionless);Entries", 50, 0.0, 1.0);
    TH1F *circularity_piplus = new TH1F("circularity_piplus", "#pi^{+}", 50, 0.0, 1.0);
@@ -241,10 +241,10 @@ void DefaultCustomPlotting::Loop()
    TH1F *EbyL_proton_weighted = new TH1F("EbyL_proton_weighted", "p", 40, 0.0, 4);
    TH1F *EbyL_positron_weighted = new TH1F("EbyL_positron_weighted", "e^{+}", 40, 0.0, 4);
    
-   TH1F *Ebyp_antimu_weighted = new TH1F("Ebyp_antimu_weighted", "#mu^{+};ECal EM energy/Reconstructed momentum (dimensionless);Weighted entries/10 MeV/mm", 40, 0.0, 4);
-   TH1F *Ebyp_piplus_weighted = new TH1F("Ebyp_piplus_weighted", "#pi^{+}", 40, 0.0, 4);
-   TH1F *Ebyp_proton_weighted = new TH1F("Ebyp_proton_weighted", "p", 40, 0.0, 4);
-   TH1F *Ebyp_positron_weighted = new TH1F("Ebyp_positron_weighted", "e^{+}", 40, 0.0, 4);
+   TH1F *Ebyp_antimu_weighted = new TH1F("Ebyp_antimu_weighted", "#mu^{+};ECal EM energy/Reconstructed momentum (dimensionless);Weighted entries", 60, 0.0, 3);
+   TH1F *Ebyp_piplus_weighted = new TH1F("Ebyp_piplus_weighted", "#pi^{+}", 60, 0.0, 3);
+   TH1F *Ebyp_proton_weighted = new TH1F("Ebyp_proton_weighted", "p", 60, 0.0, 3);
+   TH1F *Ebyp_positron_weighted = new TH1F("Ebyp_positron_weighted", "e^{+}", 60, 0.0, 3);
    
    TH1F *circularity_antimu_weighted = new TH1F("circularity_antimu_weighted", "#mu^{+};ECal circularity variable (dimensionless);Weighted entries", 50, 0.0, 1.0);
    TH1F *circularity_piplus_weighted = new TH1F("circularity_piplus_weighted", "#pi^{+}", 50, 0.0, 1.0);
