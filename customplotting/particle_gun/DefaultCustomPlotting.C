@@ -3061,30 +3061,30 @@ void DefaultCustomPlotting::Loop()
    Int_t esel_nProton_ref = 2616;
    Int_t esel_nPositron_ref = 62799;
    
-   Double_t presel_nAntimu_err = TMath::Sqrt(presel_nAntimu);
-   Double_t presel_nPiplus_err = TMath::Sqrt(presel_nPiplus);
-   Double_t presel_nProton_err = TMath::Sqrt(presel_nProton);
-   Double_t presel_nPositron_err = TMath::Sqrt(presel_nPositron);
+   Double_t presel_nAntimu_err = sqrt(presel_nAntimu);
+   Double_t presel_nPiplus_err = sqrt(presel_nPiplus);
+   Double_t presel_nProton_err = sqrt(presel_nProton);
+   Double_t presel_nPositron_err = sqrt(presel_nPositron);
    
-   Double_t musel_nAntimu_err = TMath::Sqrt(musel_nAntimu);
-   Double_t musel_nPiplus_err = TMath::Sqrt(musel_nPiplus);
-   Double_t musel_nProton_err = TMath::Sqrt(musel_nProton);
-   Double_t musel_nPositron_err = TMath::Sqrt(musel_nPositron);
+   Double_t musel_nAntimu_err = sqrt(musel_nAntimu);
+   Double_t musel_nPiplus_err = sqrt(musel_nPiplus);
+   Double_t musel_nProton_err = sqrt(musel_nProton);
+   Double_t musel_nPositron_err = sqrt(musel_nPositron);
    
-   Double_t pisel_nAntimu_err = TMath::Sqrt(pisel_nAntimu);
-   Double_t pisel_nPiplus_err = TMath::Sqrt(pisel_nPiplus);
-   Double_t pisel_nProton_err = TMath::Sqrt(pisel_nProton);
-   Double_t pisel_nPositron_err = TMath::Sqrt(pisel_nPositron);
+   Double_t pisel_nAntimu_err = sqrt(pisel_nAntimu);
+   Double_t pisel_nPiplus_err = sqrt(pisel_nPiplus);
+   Double_t pisel_nProton_err = sqrt(pisel_nProton);
+   Double_t pisel_nPositron_err = sqrt(pisel_nPositron);
    
-   Double_t psel_nAntimu_err = TMath::Sqrt(psel_nAntimu);
-   Double_t psel_nPiplus_err = TMath::Sqrt(psel_nPiplus);
-   Double_t psel_nProton_err = TMath::Sqrt(psel_nProton);
-   Double_t psel_nPositron_err = TMath::Sqrt(psel_nPositron);
+   Double_t psel_nAntimu_err = sqrt(psel_nAntimu);
+   Double_t psel_nPiplus_err = sqrt(psel_nPiplus);
+   Double_t psel_nProton_err = sqrt(psel_nProton);
+   Double_t psel_nPositron_err = sqrt(psel_nPositron);
    
-   Double_t esel_nAntimu_err = TMath::Sqrt(esel_nAntimu);
-   Double_t esel_nPiplus_err = TMath::Sqrt(esel_nPiplus);
-   Double_t esel_nProton_err = TMath::Sqrt(esel_nProton);
-   Double_t esel_nPositron_err = TMath::Sqrt(esel_nPositron);
+   Double_t esel_nAntimu_err = sqrt(esel_nAntimu);
+   Double_t esel_nPiplus_err = sqrt(esel_nPiplus);
+   Double_t esel_nProton_err = sqrt(esel_nProton);
+   Double_t esel_nPositron_err = sqrt(esel_nPositron);
    
    std::cout << std::endl << "=========== Mu-like optimisation ===========" << std::endl << std::endl;
    
