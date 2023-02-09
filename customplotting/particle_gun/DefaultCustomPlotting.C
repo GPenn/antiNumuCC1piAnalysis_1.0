@@ -3207,10 +3207,10 @@ void DefaultCustomPlotting::Loop()
    std::cout << "DEBUG: pi+: " << pisel_nPiplus << std::endl;
    std::cout << "DEBUG: p: " << pisel_nProton << std::endl;
    std::cout << "DEBUG: e+: " << pisel_nPositron << std::endl;*/
-   std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)pisel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)pisel_nAntimu/presel_nAntimu << " +/- " << ((Float_t)pisel_nAntimu/presel_nAntimu)*((pisel_nAntimu_err/pisel_nAntimu)+(presel_nAntimu_err/presel_nAntimu)) <<  std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)pisel_nPiplus/presel_nPiplus << " +/- " << ((Float_t)pisel_nPiplus/presel_nPiplus)*((pisel_nPiplus_err/pisel_nPiplus)+(presel_nPiplus_err/presel_nPiplus)) <<  std::endl;
+   std::cout << "p efficiency: " << (Float_t)pisel_nProton/presel_nProton << " +/- " << ((Float_t)pisel_nProton/presel_nProton)*((pisel_nProton_err/pisel_nProton)+(presel_nProton_err/presel_nProton)) <<  std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)pisel_nPositron/presel_nPositron << " +/- " << ((Float_t)pisel_nPositron/presel_nPositron)*((pisel_nPositron_err/pisel_nPositron)+(presel_nPositron_err/presel_nPositron)) <<  std::endl;
    
    std::cout << "n-1 pi+ efficiency diff:" << (Float_t)(pisel_nPiplus-pisel_nPiplus_ref)/presel_nPiplus << std::endl;
    std::cout << "n-1 pi+ efficiency diff error:" << sqrt(abs(pisel_nPiplus-pisel_nPiplus_ref))/presel_nPiplus << std::endl;
@@ -3276,10 +3276,10 @@ void DefaultCustomPlotting::Loop()
    std::cout << "DEBUG: p: " << psel_nProton << std::endl;
    std::cout << "DEBUG: e+: " << psel_nPositron << std::endl;*/
    
-   std::cout << "mu+ efficiency: " << (Float_t)psel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)psel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)psel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)psel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)psel_nAntimu/presel_nAntimu << " +/- " << ((Float_t)psel_nAntimu/presel_nAntimu)*((psel_nAntimu_err/psel_nAntimu)+(presel_nAntimu_err/presel_nAntimu)) <<  std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)psel_nPiplus/presel_nPiplus << " +/- " << ((Float_t)psel_nPiplus/presel_nPiplus)*((psel_nPiplus_err/psel_nPiplus)+(presel_nPiplus_err/presel_nPiplus)) <<  std::endl;
+   std::cout << "p efficiency: " << (Float_t)psel_nProton/presel_nProton << " +/- " << ((Float_t)psel_nProton/presel_nProton)*((psel_nProton_err/psel_nProton)+(presel_nProton_err/presel_nProton)) <<  std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)psel_nPositron/presel_nPositron << " +/- " << ((Float_t)psel_nPositron/presel_nPositron)*((psel_nPositron_err/psel_nPositron)+(presel_nPositron_err/presel_nPositron)) <<  std::endl;
    
    std::cout << "n-1 p efficiency diff:" << (Float_t)(psel_nProton-psel_nProton_ref)/presel_nProton << std::endl;
    std::cout << "n-1 p efficiency diff error:" << sqrt(abs(psel_nProton-psel_nProton_ref))/presel_nProton << std::endl;
@@ -3345,10 +3345,10 @@ void DefaultCustomPlotting::Loop()
    std::cout << "DEBUG: p: " << esel_nProton << std::endl;
    std::cout << "DEBUG: e+: " << esel_nPositron << std::endl;*/
    
-   std::cout << "mu+ efficiency: " << (Float_t)esel_nAntimu/presel_nAntimu << std::endl;
-   std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << std::endl;
-   std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << std::endl;
-   std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << std::endl;
+   std::cout << "mu+ efficiency: " << (Float_t)esel_nAntimu/presel_nAntimu << " +/- " << ((Float_t)esel_nAntimu/presel_nAntimu)*((esel_nAntimu_err/esel_nAntimu)+(presel_nAntimu_err/presel_nAntimu)) <<  std::endl;
+   std::cout << "pi+ efficiency: " << (Float_t)esel_nPiplus/presel_nPiplus << " +/- " << ((Float_t)esel_nPiplus/presel_nPiplus)*((esel_nPiplus_err/esel_nPiplus)+(presel_nPiplus_err/presel_nPiplus)) <<  std::endl;
+   std::cout << "p efficiency: " << (Float_t)esel_nProton/presel_nProton << " +/- " << ((Float_t)esel_nProton/presel_nProton)*((esel_nProton_err/esel_nProton)+(presel_nProton_err/presel_nProton)) <<  std::endl;
+   std::cout << "e+ efficiency: " << (Float_t)esel_nPositron/presel_nPositron << " +/- " << ((Float_t)esel_nPositron/presel_nPositron)*((esel_nPositron_err/esel_nPositron)+(presel_nPositron_err/presel_nPositron)) <<  std::endl;
    
    std::cout << "n-1 e efficiency diff:" << (Float_t)(esel_nPositron-esel_nPositron_ref)/presel_nPositron << std::endl;
    std::cout << "n-1 e efficiency diff error:" << sqrt(abs(esel_nPositron-esel_nPositron_ref))/presel_nPositron << std::endl;
